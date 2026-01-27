@@ -16,6 +16,8 @@ def load_config():
 
 
 def fetch_arxiv_papers(categories: list[str], max_results: int = 200) -> list[dict]:
+    # NOTE: On CI environments (including GitHub Actions), arXiv may return HTTP 406
+    # if no explicit User-Agent is provided. We build a Request with headers to avoid that.
     base_url = "http://export.arxiv.org/api/query?"
     
     cat_query = " OR ".join([f"cat:{cat}" for cat in categories])
@@ -32,8 +34,15 @@ def fetch_arxiv_papers(categories: list[str], max_results: int = 200) -> list[di
     }
     
     url = base_url + urllib.parse.urlencode(params)
-    
-    with urllib.request.urlopen(url, timeout=30) as response:
+
+    headers = {
+        "User-Agent": "arxiv-daily-digest/0.1 (+https://github.com/joey-pan/arxiv-daily-digest)",
+        "Accept": "application/atom+xml,application/xml"
+    }
+
+    req = urllib.request.Request(url, headers=headers)
+
+    with urllib.request.urlopen(req, timeout=30) as response:
         xml_data = response.read().decode("utf-8")
     
     return parse_arxiv_response(xml_data)
