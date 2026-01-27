@@ -217,9 +217,9 @@
       <p class="paper-authors">Xiao Liu, Jiawei Zhang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个系统框架（GAP）和基准数据集（GEOATTRACTION-500），用于评估文本到视频生成模型在地理视觉知识上的公平性与准确性，并发现当前最先进的模型（如Sora 2）展现出的地理偏见比预期更弱。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究设计了地理景点地标探测框架（GAP），通过构建包含全球500个不同地区和知名度景点的基准数据集（GEOATTRACTION-500），采用多维度评估指标：包括全局结构对齐、基于关键点的细粒度对齐以及视觉语言模型判断，并将这些指标与人类评估结果进行验证，以区分视频整体质量与景点特定知识。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 对Sora 2模型的评估显示，与常见的地理偏见假设相反，模型在不同地区、发展水平和文化群体中表现出相对均匀的地理视觉知识，仅与景点知名度有微弱关联。这表明当前文本到视频模型对全球视觉知识的表达比预期更均衡，既展现了其在全球应用中的潜力，也强调了随着系统发展需要持续评估。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一个系统框架（GAP）和基准数据集（GEOATTRACTION-500），用于评估文本到视频生成模型在不同地理区域视觉知识编码的公平性与准确性，并首次对Sora 2模型进行了大规模地理公平性分析。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究设计了“地理景点地标探测”（GAP）评估框架，通过构建包含全球500个分布广泛、流行度各异的景点数据集（GEOATTRACTION-500），采用多维度指标进行测评：包括整体结构对齐度、基于关键点的细粒度对齐度以及视觉语言模型的判断，所有指标均经过人工评估验证，以区分视频整体质量与景点特定知识的准确性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 研究发现，与普遍认为存在强烈地理偏见的假设相反，Sora 2模型在不同地区、发展水平和文化群体中表现出相对均匀的地理视觉知识编码能力，仅与景点流行度有微弱关联。这表明当前先进的文本到视频模型所表达的全球视觉知识比预期更为均衡，既显示了其在全球部署应用中的潜力，也强调了随着系统发展需要持续进行评估的必要性。</div>
       </div>
       
       <details class="paper-abstract">
@@ -246,9 +246,9 @@
       <p class="paper-authors">Kaixun Jiang, Yuzheng Wang, Junjie Zhou, Pandeng Li, Zhihang Liu 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了GenAgent，一个通过智能体框架将视觉理解与生成解耦的统一多模态模型，它利用多轮自主交互和链式思维来迭代优化图像生成，避免了传统统一模型的高训练成本和能力权衡问题。</div>
-        <div class="summary-section"><strong>方法:</strong> GenAgent采用智能体框架，由多模态模型负责视觉理解，将图像生成模型作为可调用的工具。通过两阶段训练策略：首先使用高质量工具调用和反思数据进行监督微调以启动智能体行为；然后进行端到端的智能体强化学习，结合最终图像质量的点奖励和反思准确性的对奖励，并利用轨迹重采样增强多轮探索。</div>
-        <div class="summary-section"><strong>关键发现:</strong> GenAgent显著提升了基础生成器（FLUX.1-dev）在GenEval++（+23.6%）和WISE（+14%）基准上的性能。框架展现出三个关键特性：1）能够泛化到不同能力的生成器；2）测试时可通过增加交互轮次持续提升效果；3）能根据任务自适应调整推理过程。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了GenAgent，一个通过智能体框架将视觉理解与生成解耦的统一多模态模型，它利用多轮自主交互和链式思维来迭代优化图像生成，避免了传统统一模型的高训练成本与能力权衡问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 采用智能体框架，由多模态模型负责视觉理解，将图像生成模型作为可调用工具。通过两阶段训练策略：首先使用高质量工具调用和反思数据进行监督微调以启动智能体行为；然后进行端到端的智能体强化学习，结合最终图像质量的点式奖励和反思准确性的对式奖励，并利用轨迹重采样增强多轮探索。</div>
+        <div class="summary-section"><strong>关键发现:</strong> GenAgent显著提升了基础生成器（FLUX.1-dev）在GenEval++（+23.6%）和WISE（+14%）上的性能。框架展现出三大特性：1）能泛化到不同能力的生成器；2）测试时性能随交互轮次增加持续提升；3）能自适应调整推理策略以适应不同任务。</div>
       </div>
       
       <details class="paper-abstract">
@@ -276,8 +276,8 @@
       
       <div class="paper-summary">
         <div class="summary-section"><strong>核心贡献:</strong> 提出了首个专门针对人像图像质量感知的综合性基准测试Q-Bench-Portrait，并系统评估了25个开源与闭源多模态大语言模型在该领域的表现。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究构建了一个包含2,765个图像-问题-答案三元组的数据集，涵盖自然图像、合成失真图像、AI生成图像、艺术图像和计算机图形图像等多种人像来源。基准测试设计了涵盖技术失真、AIGC特有失真和美学等多个质量维度的问题，并包含单选、多选、判断和开放式等多种问题形式，同时覆盖全局和局部两个分析层次。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 评估发现，当前的多模态大语言模型虽然具备一定的人像图像感知能力，但其表现仍然有限且不够精确，与人类判断存在明显差距。该基准测试有助于推动通用及领域专用MLLM在人像图像感知能力方面的进一步研究。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究构建了一个包含2,765个图像-问题-答案三元组的数据集，涵盖自然图像、合成失真图像、AI生成图像、艺术图像和计算机图形图像等多种人像来源；设计了覆盖技术失真、AIGC特有失真和美学等多个质量维度的评估体系；并采用了包括单选、多选、判断和开放式问题在内的多种问题形式，在全局和局部两个层面进行评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 评估发现，当前的多模态大语言模型虽然具备一定的人像图像感知能力，但其表现仍有限且不够精确，与人类判断存在明显差距；该基准测试有助于推动通用及领域专用模型在人像感知能力方面的进一步研究。</div>
       </div>
       
       <details class="paper-abstract">
@@ -304,9 +304,9 @@
       <p class="paper-authors">Zhixian Zhao, Wenjie Tian, Xiaohai Tian, Jun Zhang, Lei Xie</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了SABER-LLM框架，通过构建大规模细粒度情感推理数据集SABER，并设计结构化证据分解范式，有效缓解了多模态大语言模型在复杂场景下的单模态主导与幻觉问题，提升了情感推理的鲁棒性。</div>
-        <div class="summary-section"><strong>方法:</strong> 方法主要包括：1）构建了包含60万视频片段的大规模情感推理数据集SABER，采用一种新颖的六维标注方案，联合捕捉视听线索与因果逻辑；2）提出了结构化证据分解范式，强制将证据提取与推理过程分离，遵循“先感知后推理”的原则；3）引入一致性感知的直接偏好优化，在感知模糊或冲突的条件下显式鼓励多模态间的对齐，以增强对复杂场景的感知能力。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在EMER、EmoBench-M和SABER-Test等基准上的实验表明，SABER-LLM显著优于开源基线模型，并且在解码复杂情感动态方面达到了与闭源模型相竞争的鲁棒性。该框架能有效处理视听线索微妙、模糊甚至矛盾的场景（如讽刺情景）。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了SABER-LLM框架，通过构建大规模细粒度情感推理数据集SABER，并设计结构化证据分解范式，有效缓解了多模态大语言模型在复杂情感场景中的单模态主导与幻觉问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先，构建了一个包含60万视频片段的大规模情感推理数据集SABER，采用一种新颖的六维标注模式，联合捕捉视听线索与因果逻辑。其次，提出了结构化证据分解范式，将证据提取与推理过程分离，强制模型遵循“先感知后推理”的流程。此外，通过一致性感知的直接偏好优化技术，在感知模糊或冲突的场景下显式鼓励多模态间的对齐。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在EMER、EmoBench-M和SABER-Test等基准测试上的实验表明，SABER-LLM显著优于开源基线模型，并且在解码复杂情感动态方面的鲁棒性达到了与闭源模型相当的水平。</div>
       </div>
       
       <details class="paper-abstract">
@@ -333,9 +333,9 @@
       <p class="paper-authors">Tiffany Wang, Yuqian Sun, Yi Wang, Melissa Roemmele, John Joon Young Chung 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个利用大语言模型（LLM）将作者创作的故事框架转化为玩家驱动叙事体验的新范式，并通过Dramamancer系统展示了如何弥合作者意图与玩家自主性之间的鸿沟。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究以Dramamancer系统为案例，该系统采用大语言模型作为核心引擎，将作者预先设计的故事纲要（story schemas）动态转化为交互式叙事内容。系统设计侧重于利用LLM的生成能力，在保持作者预设故事结构的同时，实时响应玩家的选择与输入，生成连贯的剧情分支与对话。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 论文概述了与此类LLM驱动的交互叙事系统相关的关键设计技术与评估考量，表明大语言模型能够有效支撑一种兼顾作者叙事框架与玩家高度自主性的新型交互故事创作与体验模式。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个利用大语言模型（LLM）连接作者意图与玩家能动性的交互式叙事新范式，并通过Dramamancer系统展示了如何将作者创作的故事框架转化为玩家驱动的游戏过程。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究以Dramamancer系统为案例，该系统采用大语言模型作为核心引擎。作者首先创建结构化的故事框架（故事图式），系统随后利用LLM实时解析玩家输入，动态生成符合故事逻辑且尊重玩家选择的叙事内容，从而实现预设叙事结构与自由互动的融合。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 论文概述了与此类LLM驱动的交互叙事系统相关的关键设计技术与评估考量，表明大语言模型能够有效充当作者意图与玩家代理之间的桥梁，为创建兼具结构性与开放性的互动故事体验提供了可行路径。</div>
       </div>
       
       <details class="paper-abstract">
@@ -362,9 +362,9 @@
       <p class="paper-authors">Antonio Garzon-Vico, Krithika Sharon Komalapati, Arsalan Shahid, Jan Rosier</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本研究提出了一个利用大语言模型构建真实高层管理者虚拟人格的方法框架，为在难以直接接触高管的情况下进行组织研究提供了可信且互补的工具。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法基于真实CEO的沟通文本和道德基础理论，构建能模拟个体领导者决策的大语言模型参与者。研究通过三个阶段，以人类参与者为基准，对这些虚拟CEO的结构效度、信度和行为保真度进行了评估。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 结果表明，基于理论框架构建的虚拟人格能够近似人类样本中观察到的道德判断，说明基于大语言模型的虚拟人格在无法直接接触高管的研究情境中，可以作为组织研究的有效工具。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本研究提出了一种利用大语言模型构建真实高层管理者虚拟人格的方法论框架，为在难以直接接触高管的情况下进行组织研究提供了可信且互补的工具。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于真实CEO的沟通文本和道德基础理论，构建能够模拟个体领导者决策的大语言模型参与者。研究通过三个阶段，以人类参与者为基准，对这些虚拟CEO的结构效度、信度和行为保真度进行了评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 结果表明，基于理论构建的虚拟人格能够近似模拟人类样本中观察到的道德判断。这说明大语言模型构建的虚拟参与者可以作为组织研究中可信且互补的工具，尤其在难以直接接触高管的情况下。</div>
       </div>
       
       <details class="paper-abstract">
@@ -391,9 +391,9 @@
       <p class="paper-authors">Manuel Tonneau, Neil K. R. Seghal, Niyati Malhotra, Victor Orozco-Olvera, Ana María Muñoz Boudet 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示了当前广泛使用的人口统计学探测方法在评估大语言模型行为时缺乏构念效度，即单一人口线索（如姓名、方言）并不能稳定、一致地代表模型对特定人口群体的响应模式。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究在美国语境下，聚焦种族和性别，通过模拟现实中的寻求建议互动场景进行实验。研究者使用了多种意图代表同一人口群体（如不同种族或性别）的线索（例如不同的名字、方言特征），系统比较这些线索引发的大语言模型行为变化。同时，分析了线索本身对人口属性的编码强度差异以及潜在的语言混淆因素对模型行为的影响。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 关键发现包括：1) 意图代表同一人口群体的不同线索仅能引发模型行为部分重叠的变化，而不同群体间的行为区分度弱且不均匀；2) 基于不同线索估计的模型行为差异（即“差距”）不稳定，其大小和方向会随线索改变而变动；3) 这种不一致性部分源于线索编码人口属性的强度差异，以及独立影响模型行为的语言混淆因素。这些结果表明，单一线索的探测无法获得关于大语言模型如何处理人口信息的单一、稳定的表征。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示了当前广泛使用的人口统计学探测方法存在根本缺陷，其假设单一人口线索（如姓名或方言）可互换地代表同一人口群体的行为并不成立，导致对模型偏差的评估不稳定且不可靠。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究在模拟现实建议寻求的交互场景中，针对美国语境下的种族和性别，测试了多种常用的人口线索（如典型姓名、方言特征等）。通过分析这些线索如何影响大语言模型的回应，评估不同线索在表征同一人口群体时的一致性，并检验了线索间行为变化的重叠程度与组间差异的强度。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 关键发现包括：1) 旨在代表同一人口群体的不同线索仅能部分重叠地改变模型行为，而同一线索内不同群体间的区分度弱且不均衡；2) 估计的差异不稳定，其大小和方向因线索不同而变化；3) 这种不一致部分源于线索编码人口属性的强度差异，以及独立影响模型行为的语言混淆因素。结果表明，当前的人口统计学探测缺乏构念效度，无法提供关于大语言模型如何基于人口信息调整行为的单一、稳定表征。</div>
       </div>
       
       <details class="paper-abstract">
@@ -420,9 +420,9 @@
       <p class="paper-authors">Mingyang Song, Haoyu Sun, Jiawei Gu, Linjie Li, Luxin Xu 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出AdaReasoner，一种学习将工具使用作为通用推理技能的多模态模型家族，能够动态编排多种工具进行多步推理，并泛化至未见过的工具和任务。</div>
-        <div class="summary-section"><strong>方法:</strong> 方法包括：（1）构建可扩展的数据流水线，使模型接触长视野、多步骤的工具交互；（2）提出Tool-GRPO强化学习算法，基于最终任务成功率优化工具选择与序列规划；（3）引入自适应学习机制，动态调节工具使用频率与时机。</div>
-        <div class="summary-section"><strong>关键发现:</strong> AdaReasoner展现出强大的工具自适应与泛化能力：能自主选择有益工具、抑制无关工具，并根据任务需求动态调整工具使用频率。在多个挑战性基准测试中取得领先性能，使7B基础模型平均提升24.9%，并在VSP、Jigsaw等任务上超越GPT-5等强商业系统。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种能够将工具使用作为通用推理技能进行学习的多模态模型家族，使模型能够根据任务上下文和中间结果动态推断工具效用、编排多工具协作，并泛化至未见过的工具。</div>
+        <div class="summary-section"><strong>方法:</strong> 方法主要包括三个部分：1）一个可扩展的数据构建流程，让模型接触长视野、多步骤的工具交互序列；2）Tool-GRPO强化学习算法，基于最终任务成功率优化工具的选择与顺序编排；3）一种自适应学习机制，能够动态调节工具的使用频率和时机。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，AdaReasoner能自主采用有益工具、抑制无关工具，并根据任务需求动态调整工具使用策略，而无需对此进行显式训练。其在多个挑战性基准测试中取得了最先进的性能，将7B基础模型的平均性能提升了24.9%，并在VSP、Jigsaw等任务上超越了GPT-5等强大的闭源系统。</div>
       </div>
       
       <details class="paper-abstract">
@@ -449,9 +449,9 @@
       <p class="paper-authors">Franziska Weeber, Vera Neplenbroek, Jan Batzner, Sebastian Padó</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示了仅使用单一社会人口学线索（如姓名或明确属性）来研究大语言模型个性化偏见的局限性，并论证了不同线索会导致模型响应产生显著差异，从而挑战了基于单一线索得出的结论的可靠性。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究比较了六种常用的人设提示线索（如姓名、代词、显性描述等），在七个开源和专有大语言模型上，针对四项写作和咨询任务进行了系统性评估。该方法旨在检验不同线索在引发模型个性化响应时的一致性与差异性，并关注提示的鲁棒性和线索在真实交互中的外部有效性。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 关键发现表明，尽管不同线索引发的模型响应总体上高度相关，但它们在不同人设（社会人口学子群）上产生的响应存在实质性方差。因此，基于单一线索得出的关于模型个性化或偏见的结论可能具有误导性。研究建议未来的个性化研究应评估多种具有外部有效性的线索。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示了仅依赖单一社会人口学线索（如姓名或明确属性）来研究大语言模型个性化与偏见存在局限性，并提出了应评估多种具有外部效度的线索以提高研究稳健性的建议。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究比较了六种常用的人设提示线索（如姓名、属性描述等），在七个开源和专有大语言模型上，针对四项写作与建议任务进行了系统评估。通过分析不同线索下模型对同一社会人口子群体（人设）的响应差异，检验了提示线索的变异对结果的影响。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 关键发现包括：1）不同线索在整体上高度相关，但针对同一人设，不同线索会导致模型响应产生显著差异；2）单一线索的研究结论可能缺乏稳健性和外部效度，因为实际交互中某些线索可能罕见；3. 研究结果警示了基于单一线索进行模型个性化或偏见评估的风险，并建议未来研究应纳入多种有效线索进行综合评估。</div>
       </div>
       
       <details class="paper-abstract">
@@ -478,9 +478,9 @@
       <p class="paper-authors">Ramiro Valdes Jara, Adam Meyers</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无几何、纯数据驱动的条件扩散模型框架，用于求解心电逆问题，能够生成多个可能的概率性重建结果，而非单一确定性估计，从而更好地捕捉该问题的非唯一性和欠定性本质。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法采用条件扩散模型，学习从含噪声的体表信号到心表电位的概率映射。它利用扩散模型的生成特性，无需构建患者特定的几何网格，完全基于数据驱动。模型通过反向扩散过程，在给定体表测量值的条件下，采样生成可能的心表电位分布。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在真实心电逆问题数据集上的实验表明，与卷积神经网络、长短期记忆网络和基于Transformer的确定性基线模型相比，所提出的扩散方法取得了更高的重建精度，证明了扩散模型作为无创心脏电生理成像鲁棒工具的潜力。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无几何、纯数据驱动的条件扩散模型框架，用于求解心电逆问题，能够生成多个可能的概率性重建结果，而非单一确定性估计，从而捕捉该问题的非唯一性和欠定性本质。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法采用条件扩散模型，学习从含噪声的体表信号到心脏表面电位的概率映射。它利用扩散模型的生成特性，无需构建患者特定的几何网格（即“无几何”），完全通过数据驱动进行训练。框架通过反向扩散过程，在给定体表测量值的条件下，采样生成心脏表面的电位分布。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在真实心电逆问题数据集上的实验表明，与卷积神经网络、长短期记忆网络和基于Transformer的确定性基线模型相比，所提出的扩散方法取得了更高的重建精度，证明了扩散模型作为非侵入性心脏电生理成像鲁棒工具的潜力。</div>
       </div>
       
       <details class="paper-abstract">
@@ -507,9 +507,9 @@
       <p class="paper-authors">Chenxi Liu, Selena Ling, Alec Jacobson</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了GimmBO系统，通过基于偏好的贝叶斯优化（PBO）支持对扩散模型适配器融合空间的交互式探索，解决了高维权重手动调整效率低下的问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 方法采用两阶段贝叶斯优化后端，针对实际使用中观察到的稀疏性和权重范围受限的特点进行设计，以提高高维空间中的采样效率和收敛速度；系统允许用户通过交互反馈（如偏好选择）来引导优化过程。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，与基线方法相比，GimmBO在模拟和真实用户研究中均表现出更快的收敛速度、更高的任务成功率，且框架可通过扩展灵活适应多种应用场景。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个名为GimmBO的交互式系统，通过偏好贝叶斯优化（PBO）帮助用户高效探索扩散模型适配器（adapter）的权重融合空间，解决了传统手动滑块调节方法在高维空间中难以有效搜索的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于真实使用场景中观察到的稀疏性和权重范围受限的特点，设计了一个两阶段的贝叶斯优化后端。首先通过偏好学习获取用户对生成图像的反馈，然后利用这些反馈引导优化过程，从而在高达20-30个适配器的高维融合空间中提升采样效率和收敛速度。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，与标准贝叶斯优化和线性搜索基线相比，GimmBO在模拟用户和真实用户研究中均表现出更快的收敛速度、更高的成功率以及稳定的性能提升。此外，该框架还通过多种扩展展示了其灵活性和可扩展性。</div>
       </div>
       
       <details class="paper-abstract">
@@ -532,13 +532,13 @@
       <h3 class="paper-title">
         <a href="https://arxiv.org/abs/2601.18493" target="_blank">DisasterInsight: A Multimodal Benchmark for Function-Aware and Grounded Disaster Assessment</a>
       </h3>
-      <p class="paper-title-zh">DisasterInsight：一个面向功能感知与接地气灾害评估的多模态基准</p>
+      <p class="paper-title-zh">DisasterInsight：面向功能感知与实体化灾害评估的多模态基准</p>
       <p class="paper-authors">Sara Tehrani, Yonghao Xu, Leif Haglund, Amanda Berg, Michael Felsberg</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个名为DisasterInsight的多模态基准，旨在评估视觉-语言模型在真实灾害分析任务中的表现，特别是功能理解和指令鲁棒性；并提出了一个通过领域适应微调得到的基线模型DI-Chat。</div>
-        <div class="summary-section"><strong>方法:</strong> 1. 将xBD数据集重构为约11.2万个以建筑物为中心的实例。2. 支持跨多个任务的多样化指令评估，包括建筑物功能分类、损坏程度与灾害类型分类、计数以及符合人道主义评估指南的结构化报告生成。3. 提出DI-Chat基线模型，通过参数高效的LoRA方法，在灾害特定的指令数据上对现有视觉-语言模型骨干进行微调得到。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 1. 对最先进的通用和遥感视觉-语言模型的广泛实验揭示了跨任务的显著性能差距，特别是在损害理解和结构化报告生成方面。2. DI-Chat在损害程度与灾害类型分类以及报告生成质量上取得了显著改进。3. 建筑物功能分类对所有评估模型来说仍然具有挑战性。4. DisasterInsight为研究灾害图像中的接地气多模态推理提供了一个统一的基准。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个面向真实灾害分析任务的多模态基准DisasterInsight，用于评估视觉-语言模型在灾害场景下的功能理解与指令鲁棒性；并提出了通过参数高效微调方法构建的领域适应模型DI-Chat，显著提升了灾害分类与报告生成性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 基于xBD数据集重构出约11.2万个以建筑物为中心的实例，支持多种指令化任务评估，包括建筑功能分类、损毁程度与灾害类型分类、计数及符合人道评估指南的结构化报告生成。通过参数高效的LoRA方法对现有视觉-语言模型骨干进行灾害领域指令数据微调，构建了领域适应基线模型DI-Chat。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，现有通用及遥感视觉-语言模型在各项任务上存在显著性能差距，尤其在损毁理解和结构化报告生成方面。DI-Chat在损毁程度分类、灾害类型分类和报告生成质量上取得显著提升，但建筑功能分类对所有模型仍具挑战性。DisasterInsight为灾害影像中的实体化多模态推理研究提供了统一基准。</div>
       </div>
       
       <details class="paper-abstract">
@@ -561,13 +561,13 @@
       <h3 class="paper-title">
         <a href="https://arxiv.org/abs/2601.18353" target="_blank">Can Good Writing Be Generative? Expert-Level AI Writing Emerges through Fine-Tuning on High-Quality Books</a>
       </h3>
-      <p class="paper-title-zh">优秀写作能否是生成式的？基于高质量书籍微调催生专家级AI写作</p>
+      <p class="paper-title-zh">优秀写作能否是生成式的？通过对高质量书籍进行微调，专家级AI写作应运而生</p>
       <p class="paper-authors">Tuhin Chakrabarty, Paramveer S. Dhillon</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本研究通过行为实验证明，对作者完整作品进行微调的大型语言模型（LLM）所生成的文本，在专家评审的盲测中已能超越专业人类作家的模仿作品，并引发了创作者对“优秀写作”本质的认同危机。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究设计了行为实验，让28位艺术硕士（MFA）专业作家与三个LLM模型竞赛模仿50位广受好评的作家风格。实验比较了两种AI条件：上下文提示与基于作者全部作品微调。由28位专家评委和131位普通评委进行盲测配对比较，并后续对专家作家进行了访谈。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在上下文提示条件下，专家评委82.7%更偏好人类作品；但在对作者作品微调后，该偏好逆转，62%的专家评委更偏好AI作品。普通评委则始终更偏好AI写作。专家作家访谈揭示，他们对AI作品的偏好触发了身份危机，动摇了其审美自信，并引发了对“优秀写作”构成要素的根本性质疑。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本研究通过行为实验证明，对作者完整作品进行微调的大型语言模型（LLM）所生成的文本，在专家评审中已能超越专业作家的模仿作品，并引发了创作者对‘优秀写作’定义的深刻反思。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究设计了一项行为实验，让28位艺术硕士（MFA）专业作家与三个大型语言模型（LLM）竞赛模仿50位广受好评的作家风格。实验设置了两种条件：上下文提示（in-context prompting）和基于作者完整作品的微调（fine-tuning）。随后由28位专家评委和131位普通评委进行盲审配对比较，并对专家作家进行了事后访谈。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在上下文提示条件下，专家评委在82.7%的情况下更偏好人类写作；但在对作者作品进行微调后，这一结果发生逆转，专家评委对AI写作的偏好上升至62%。普通评委则始终更偏好AI写作。事后访谈揭示，专家作家对AI写作的偏好触发了他们的身份危机，动摇了其审美自信，并引发了对‘优秀写作’本质的质疑。</div>
       </div>
       
       <details class="paper-abstract">
@@ -590,13 +590,13 @@
       <h3 class="paper-title">
         <a href="https://arxiv.org/abs/2601.18271" target="_blank">Designing large language model prompts to extract scores from messy text: A shared dataset and challenge</a>
       </h3>
-      <p class="paper-title-zh">设计大型语言模型提示以从杂乱文本中提取评分：一个共享数据集与挑战</p>
+      <p class="paper-title-zh">设计大语言模型提示词从杂乱文本中提取分数：一个共享数据集与挑战</p>
       <p class="paper-authors">Mike Thelwall</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文引入了一个共享数据集和挑战任务，旨在推动社区设计最佳提示，使大型语言模型能够从非结构化的短文本中准确提取研究质量评分，并促进对提示工程及大模型处理复杂数值任务能力的理解。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究提供了一个包含1446条杂乱短文本的数据集，每条文本描述了一个基于英国1*至4*标准的研究质量评分，其中部分文本不包含有效评分或格式混乱。挑战要求设计一个大型语言模型提示，使其能够准确提取文本中的评分（或对无明确评分的文本返回缺失值代码-1），且输出必须仅为数字格式。论文还提供了一个简单提示作为基线示例。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 论文提出的初始解决方案（简单提示）在数据集上的准确率为72.6%，为后续研究设立了可超越的基准。该挑战旨在激励社区开发更有效的提示策略，以提升大模型从杂乱文本中提取结构化数值信息的准确性和鲁棒性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文引入了一个包含1446条杂乱短文本的共享数据集及相关挑战任务，旨在推动社区设计最佳的大语言模型提示词，以准确提取文本中隐含的研究质量评分（英国1*至4*制），并促进对提示词设计及大语言模型处理复杂数值任务能力的理解。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究提供了一个标注了正确分数（含缺失值）的“黄金标准”数据集，其中文本描述可能包含无效分数、怪异格式或无评分。挑战任务是设计一个提示词，引导大语言模型从文本中尽可能准确地提取分数，且输出必须仅为数字（无额外文本），对于无明确评分的文本需返回缺失值代码“-1”。论文还提供了一个简单提示词示例作为基线。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 论文提出的初始解决方案（简单提示词）准确率为72.6%，为后续研究设立了可超越的基准。该挑战旨在激励社区开发更优的提示词设计，以提升大语言模型在复杂、非结构化文本中识别和提取数值信息的性能。</div>
       </div>
       
       <details class="paper-abstract">
@@ -623,9 +623,9 @@
       <p class="paper-authors">Junling Wang, Hongyi Lan, Xiaotian Su, Mustafa Doga Dogan, April Yi Wang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了UI Remix系统，通过一个基于示例的交互式设计工作流，帮助非专业设计者进行移动UI设计，解决了现有工具在广泛探索与单一示例适应之间的权衡问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 系统采用多模态检索增强生成（MMRAG）模型，支持用户在全局（整个界面）和局部（组件）两个层面进行迭代式的示例搜索、选择与适配。同时，系统通过展示评分、下载量、开发者信息等来源透明度提示，以增强用户对设计选择的信任。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在24名终端用户的实证研究中，UI Remix显著提升了参与者实现设计目标的能力，促进了有效的设计迭代，并鼓励了对替代设计的探索。参与者反馈表明，来源透明度提示增强了他们适配示例的信心，证明了系统在提升用户控制感、信任度和探索开放性方面的有效性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了UI Remix系统，通过一个多模态检索增强生成模型，支持非专业用户在全局和局部层面交互式地检索、选择和改编UI设计示例，从而在促进探索的同时避免设计漂移或设计固着问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 系统采用多模态检索增强生成模型，支持用户通过迭代搜索、选择和改编示例进行UI设计。它允许在整体界面和单个组件两个层级进行操作，并提供来源透明度提示（如评分、下载量、开发者信息）以增强用户信任。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 针对24名终端用户的实证研究表明，UI Remix显著提升了参与者实现设计目标的能力，促进了有效迭代并鼓励了对替代设计的探索。参与者反馈来源透明度提示增强了他们改编示例的信心，证明了该系统在提升用户控制感、信任度和探索开放性方面的有效性。</div>
       </div>
       
       <details class="paper-abstract">
