@@ -38,6 +38,13 @@ jobs:
         
       - name: Generate HTML pages
         run: python scripts/generate_pages.py
+      
+      - name: Send WeChat notification via Server酱
+        if: success()
+        env:
+          SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
+        run: |
+          python scripts/notify_wechat.py
         
       - name: Commit and push changes
         run: |
