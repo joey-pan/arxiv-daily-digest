@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日 AI/CV/NLP/设计智能 论文精选</p>
+        <p class="date">📅 2026-01-28</p>
+        <p class="stats">共 15 篇论文 | 人工智能: 2 | 自然语言处理: 3 | 计算机视觉: 5 | cs.DL: 1 | 人机交互: 2 | 机器学习: 1 | 多媒体: 1</p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18698</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18698" target="_blank">Are Video Generation Models Geographically Fair? An Attraction-Centric Evaluation of Global Visual Knowledge</a>
+      </h3>
+      
+      <p class="paper-authors">Xiao Liu, Jiawei Zhang</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent advances in text-to-video generation have produced visually compelling results, yet it remains unclear whether these models encode geographically equitable visual knowledge. In this work, we investigate the geo-equity and geographically grounded visual knowledge of text-to-video models through an attraction-centric evaluation. We introduce Geo-Attraction Landmark Probing (GAP), a systematic framework for assessing how faithfully models synthesize tourist attractions from diverse regions, and construct GEOATTRACTION-500, a benchmark of 500 globally distributed attractions spanning varied regions and popularity levels. GAP integrates complementary metrics that disentangle overall video quality from attraction-specific knowledge, including global structural alignment, fine-grained keypoint-based alignment, and vision-language model judgments, all validated against human evaluation. Applying GAP to the state-of-the-art text-to-video model Sora 2, we find that, contrary to common assumptions of strong geographic bias, the model exhibits a relatively uniform level of geographically grounded visual knowledge across regions, development levels, and cultural groupings, with only weak dependence on attraction popularity. These results suggest that current text-to-video models express global visual knowledge more evenly than expected, highlighting both their promise for globally deployed applications and the need for continued evaluation as such systems evolve.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18698" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18698.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18543</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18543" target="_blank">GenAgent: Scaling Text-to-Image Generation via Agentic Multimodal Reasoning</a>
+      </h3>
+      
+      <p class="paper-authors">Kaixun Jiang, Yuzheng Wang, Junjie Zhou, Pandeng Li, Zhihang Liu 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We introduce GenAgent, unifying visual understanding and generation through an agentic multimodal model. Unlike unified models that face expensive training costs and understanding-generation trade-offs, GenAgent decouples these capabilities through an agentic framework: understanding is handled by the multimodal model itself, while generation is achieved by treating image generation models as invokable tools. Crucially, unlike existing modular systems constrained by static pipelines, this design enables autonomous multi-turn interactions where the agent generates multimodal chains-of-thought encompassing reasoning, tool invocation, judgment, and reflection to iteratively refine outputs. We employ a two-stage training strategy: first, cold-start with supervised fine-tuning on high-quality tool invocation and reflection data to bootstrap agent behaviors; second, end-to-end agentic reinforcement learning combining pointwise rewards (final image quality) and pairwise rewards (reflection accuracy), with trajectory resampling for enhanced multi-turn exploration. GenAgent significantly boosts base generator(FLUX.1-dev) performance on GenEval++ (+23.6\%) and WISE (+14\%). Beyond performance gains, our framework demonstrates three key properties: 1) cross-tool generalization to generators with varying capabilities, 2) test-time scaling with consistent improvements across interaction rounds, and 3) task-adaptive reasoning that automatically adjusts to different tasks. Our code will be available at \href{https://github.com/deep-kaixun/GenAgent}{this url}.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18543" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18543.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18346</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18346" target="_blank">Q-Bench-Portrait: Benchmarking Multimodal Large Language Models on Portrait Image Quality Perception</a>
+      </h3>
+      
+      <p class="paper-authors">Sijing Wu, Yunhao Li, Zicheng Zhang, Qi Jia, Xinyue Li 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent advances in multimodal large language models (MLLMs) have demonstrated impressive performance on existing low-level vision benchmarks, which primarily focus on generic images. However, their capabilities to perceive and assess portrait images, a domain characterized by distinct structural and perceptual properties, remain largely underexplored. To this end, we introduce Q-Bench-Portrait, the first holistic benchmark specifically designed for portrait image quality perception, comprising 2,765 image-question-answer triplets and featuring (1) diverse portrait image sources, including natural, synthetic distortion, AI-generated, artistic, and computer graphics images; (2) comprehensive quality dimensions, covering technical distortions, AIGC-specific distortions, and aesthetics; and (3) a range of question formats, including single-choice, multiple-choice, true/false, and open-ended questions, at both global and local levels. Based on Q-Bench-Portrait, we evaluate 20 open-source and 5 closed-source MLLMs, revealing that although current models demonstrate some competence in portrait image perception, their performance remains limited and imprecise, with a clear gap relative to human judgments. We hope that the proposed benchmark will foster further research into enhancing the portrait image perception capabilities of both general-purpose and domain-specific MLLMs.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18346" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18346.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">多媒体</span>
+        <span class="paper-id">2601.18321</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18321" target="_blank">Integrating Fine-Grained Audio-Visual Evidence for Robust Multimodal Emotion Reasoning</a>
+      </h3>
+      
+      <p class="paper-authors">Zhixian Zhao, Wenjie Tian, Xiaohai Tian, Jun Zhang, Lei Xie</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Multimodal emotion analysis is shifting from static classification to generative reasoning. Beyond simple label prediction, robust affective reasoning must synthesize fine-grained signals such as facial micro-expressions and prosodic which shifts to decode the latent causality within complex social contexts. However, current Multimodal Large Language Models (MLLMs) face significant limitations in fine-grained perception, primarily due to data scarcity and insufficient cross-modal fusion. As a result, these models often exhibit unimodal dominance which leads to hallucinations in complex multimodal interactions, particularly when visual and acoustic cues are subtle, ambiguous, or even contradictory (e.g., in sarcastic scenery). To address this, we introduce SABER-LLM, a framework designed for robust multimodal reasoning. First, we construct SABER, a large-scale emotion reasoning dataset comprising 600K video clips, annotated with a novel six-dimensional schema that jointly captures audiovisual cues and causal logic. Second, we propose the structured evidence decomposition paradigm, which enforces a "perceive-then-reason" separation between evidence extraction and reasoning to alleviate unimodal dominance. The ability to perceive complex scenes is further reinforced by consistency-aware direct preference optimization, which explicitly encourages alignment among modalities under ambiguous or conflicting perceptual conditions. Experiments on EMER, EmoBench-M, and SABER-Test demonstrate that SABER-LLM significantly outperforms open-source baselines and achieves robustness competitive with closed-source models in decoding complex emotional dynamics. The dataset and model are available at https://github.com/zxzhao0/SABER-LLM.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18321" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18321.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">人机交互</span>
+        <span class="paper-id">2601.18785</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18785" target="_blank">Design Techniques for LLM-Powered Interactive Storytelling: A Case Study of the Dramamancer System</a>
+      </h3>
+      
+      <p class="paper-authors">Tiffany Wang, Yuqian Sun, Yi Wang, Melissa Roemmele, John Joon Young Chung 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>The rise of Large Language Models (LLMs) has enabled a new paradigm for bridging authorial intent and player agency in interactive narrative. We consider this paradigm through the example of Dramamancer, a system that uses an LLM to transform author-created story schemas into player-driven playthroughs. This extended abstract outlines some design techniques and evaluation considerations associated with this system.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18785" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18785.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">自然语言处理</span>
+        <span class="paper-id">2601.18512</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18512" target="_blank">Using Large Language Models to Construct Virtual Top Managers: A Method for Organizational Research</a>
+      </h3>
+      
+      <p class="paper-authors">Antonio Garzon-Vico, Krithika Sharon Komalapati, Arsalan Shahid, Jan Rosier</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>This study introduces a methodological framework that uses large language models to create virtual personas of real top managers. Drawing on real CEO communications and Moral Foundations Theory, we construct LLM-based participants that simulate the decision-making of individual leaders. Across three phases, we assess construct validity, reliability, and behavioral fidelity by benchmarking these virtual CEOs against human participants. Our results indicate that theoretically scaffolded personas approximate the moral judgements observed in human samples, suggesting that LLM-based personas can serve as credible and complementary tools for organizational research in contexts where direct access to executives is limited. We conclude by outlining implications for future research using LLM-based personas in organizational settings.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18512" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18512.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">自然语言处理</span>
+        <span class="paper-id">2601.18486</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18486" target="_blank">Demographic Probing of Large Language Models Lacks Construct Validity</a>
+      </h3>
+      
+      <p class="paper-authors">Manuel Tonneau, Neil K. R. Seghal, Niyati Malhotra, Victor Orozco-Olvera, Ana María Muñoz Boudet 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Demographic probing is widely used to study how large language models (LLMs) adapt their behavior to signaled demographic attributes. This approach typically uses a single demographic cue in isolation (e.g., a name or dialect) as a signal for group membership, implicitly assuming strong construct validity: that such cues are interchangeable operationalizations of the same underlying, demographically conditioned behavior. We test this assumption in realistic advice-seeking interactions, focusing on race and gender in a U.S. context. We find that cues intended to represent the same demographic group induce only partially overlapping changes in model behavior, while differentiation between groups within a given cue is weak and uneven. Consequently, estimated disparities are unstable, with both magnitude and direction varying across cues. We further show that these inconsistencies partly arise from variation in how strongly cues encode demographic attributes and from linguistic confounders that independently shape model behavior. Together, our findings suggest that demographic probing lacks construct validity: it does not yield a single, stable characterization of how LLMs condition on demographic information, which may reflect a misspecified or fragmented construct. We conclude by recommending the use of multiple, ecologically valid cues and explicit control of confounders to support more defensible claims about demographic effects in LLMs.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18486" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18486.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">人工智能</span>
+        <span class="paper-id">2601.18631</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18631" target="_blank">AdaReasoner: Dynamic Tool Orchestration for Iterative Visual Reasoning</a>
+      </h3>
+      
+      <p class="paper-authors">Mingyang Song, Haoyu Sun, Jiawei Gu, Linjie Li, Luxin Xu 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>When humans face problems beyond their immediate capabilities, they rely on tools, providing a promising paradigm for improving visual reasoning in multimodal large language models (MLLMs). Effective reasoning, therefore, hinges on knowing which tools to use, when to invoke them, and how to compose them over multiple steps, even when faced with new tools or new tasks. We introduce \textbf{AdaReasoner}, a family of multimodal models that learn tool use as a general reasoning skill rather than as tool-specific or explicitly supervised behavior. AdaReasoner is enabled by (i) a scalable data curation pipeline exposing models to long-horizon, multi-step tool interactions; (ii) Tool-GRPO, a reinforcement learning algorithm that optimizes tool selection and sequencing based on end-task success; and (iii) an adaptive learning mechanism that dynamically regulates tool usage. Together, these components allow models to infer tool utility from task context and intermediate outcomes, enabling coordination of multiple tools and generalization to unseen tools. Empirically, AdaReasoner exhibits strong tool-adaptive and generalization behaviors: it autonomously adopts beneficial tools, suppresses irrelevant ones, and adjusts tool usage frequency based on task demands, despite never being explicitly trained to do so. These capabilities translate into state-of-the-art performance across challenging benchmarks, improving the 7B base model by +24.9\% on average and surpassing strong proprietary systems such as GPT-5 on multiple tasks, including VSP and Jigsaw.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18631" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18631.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">自然语言处理</span>
+        <span class="paper-id">2601.18572</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18572" target="_blank">One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization</a>
+      </h3>
+      
+      <p class="paper-authors">Franziska Weeber, Vera Neplenbroek, Jan Batzner, Sebastian Padó</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Personalization of LLMs by sociodemographic subgroup often improves user experience, but can also introduce or amplify biases and unfair outcomes across groups. Prior work has employed so-called personas, sociodemographic user attributes conveyed to a model, to study bias in LLMs by relying on a single cue to prompt a persona, such as user names or explicit attribute mentions. This disregards LLM sensitivity to prompt variations (robustness) and the rarity of some cues in real interactions (external validity). We compare six commonly used persona cues across seven open and proprietary LLMs on four writing and advice tasks. While cues are overall highly correlated, they produce substantial variance in responses across personas. We therefore caution against claims from a single persona cue and recommend future personalization research to evaluate multiple externally valid cues.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18572" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18572.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">机器学习</span>
+        <span class="paper-id">2601.18615</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18615" target="_blank">Geometry-Free Conditional Diffusion Modeling for Solving the Inverse Electrocardiography Problem</a>
+      </h3>
+      
+      <p class="paper-authors">Ramiro Valdes Jara, Adam Meyers</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>This paper proposes a data-driven model for solving the inverse problem of electrocardiography, the mathematical problem that forms the basis of electrocardiographic imaging (ECGI). We present a conditional diffusion framework that learns a probabilistic mapping from noisy body surface signals to heart surface electric potentials. The proposed approach leverages the generative nature of diffusion models to capture the non-unique and underdetermined nature of the ECGI inverse problem, enabling probabilistic sampling of multiple reconstructions rather than a single deterministic estimate. Unlike traditional methods, the proposed framework is geometry-free and purely data-driven, alleviating the need for patient-specific mesh construction. We evaluate the method on a real ECGI dataset and compare it against strong deterministic baselines, including a convolutional neural network, long short-term memory network, and transformer-based model. The results demonstrate that the proposed diffusion approach achieves improved reconstruction accuracy, highlighting the potential of diffusion models as a robust tool for noninvasive cardiac electrophysiology imaging.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18615" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18615.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18585</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18585" target="_blank">GimmBO: Interactive Generative Image Model Merging via Bayesian Optimization</a>
+      </h3>
+      
+      <p class="paper-authors">Chenxi Liu, Selena Ling, Alec Jacobson</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Fine-tuning-based adaptation is widely used to customize diffusion-based image generation, leading to large collections of community-created adapters that capture diverse subjects and styles. Adapters derived from the same base model can be merged with weights, enabling the synthesis of new visual results within a vast and continuous design space. To explore this space, current workflows rely on manual slider-based tuning, an approach that scales poorly and makes weight selection difficult, even when the candidate set is limited to 20-30 adapters. We propose GimmBO to support interactive exploration of adapter merging for image generation through Preferential Bayesian Optimization (PBO). Motivated by observations from real-world usage, including sparsity and constrained weight ranges, we introduce a two-stage BO backend that improves sampling efficiency and convergence in high-dimensional spaces. We evaluate our approach with simulated users and a user study, demonstrating improved convergence, high success rates, and consistent gains over BO and line-search baselines, and further show the flexibility of the framework through several extensions.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18585" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18585.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18493</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18493" target="_blank">DisasterInsight: A Multimodal Benchmark for Function-Aware and Grounded Disaster Assessment</a>
+      </h3>
+      
+      <p class="paper-authors">Sara Tehrani, Yonghao Xu, Leif Haglund, Amanda Berg, Michael Felsberg</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Timely interpretation of satellite imagery is critical for disaster response, yet existing vision-language benchmarks for remote sensing largely focus on coarse labels and image-level recognition, overlooking the functional understanding and instruction robustness required in real humanitarian workflows. We introduce DisasterInsight, a multimodal benchmark designed to evaluate vision-language models (VLMs) on realistic disaster analysis tasks. DisasterInsight restructures the xBD dataset into approximately 112K building-centered instances and supports instruction-diverse evaluation across multiple tasks, including building-function classification, damage-level and disaster-type classification, counting, and structured report generation aligned with humanitarian assessment guidelines. To establish domain-adapted baselines, we propose DI-Chat, obtained by fine-tuning existing VLM backbones on disaster-specific instruction data using parameter-efficient Low-Rank Adaptation (LoRA). Extensive experiments on state-of-the-art generic and remote-sensing VLMs reveal substantial performance gaps across tasks, particularly in damage understanding and structured report generation. DI-Chat achieves significant improvements on damage-level and disaster-type classification as well as report generation quality, while building-function classification remains challenging for all evaluated models. DisasterInsight provides a unified benchmark for studying grounded multimodal reasoning in disaster imagery.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18493" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18493.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">人工智能</span>
+        <span class="paper-id">2601.18353</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18353" target="_blank">Can Good Writing Be Generative? Expert-Level AI Writing Emerges through Fine-Tuning on High-Quality Books</a>
+      </h3>
+      
+      <p class="paper-authors">Tuhin Chakrabarty, Paramveer S. Dhillon</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Creative writing has long been considered a uniquely human endeavor, requiring voice and style that machines could not replicate. This assumption is challenged by Generative AI that can emulate thousands of author styles in seconds with negligible marginal labor. To understand this better, we conducted a behavioral experiment where 28 MFA writers (experts) competed against three LLMs in emulating 50 critically acclaimed authors. Based on blind pairwise comparisons by 28 expert judges and 131 lay judges, we find that experts preferred human writing in 82.7% of cases under the in-context prompting condition but this reversed to 62% preference for AI after fine-tuning on authors' complete works. Lay judges, however, consistently preferred AI writing. Debrief interviews with expert writers revealed that their preference for AI writing triggered an identity crisis, eroding aesthetic confidence and questioning what constitutes "good writing." These findings challenge discourse about AI's creative limitations and raise fundamental questions about the future of creative labor.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18353" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18353.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">cs.DL</span>
+        <span class="paper-id">2601.18271</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18271" target="_blank">Designing large language model prompts to extract scores from messy text: A shared dataset and challenge</a>
+      </h3>
+      
+      <p class="paper-authors">Mike Thelwall</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>In some areas of computing, natural language processing and information science, progress is made by sharing datasets and challenging the community to design the best algorithm for an associated task. This article introduces a shared dataset of 1446 short texts, each of which describes a research quality score on the UK scale of 1* to 4*. This is a messy collection, with some texts not containing scores and others including invalid scores or strange formats. With this dataset there is also a description of what constitutes a valid score and a "gold standard" of the correct scores for these texts (including missing values). The challenge is to design a prompt for Large Language Models (LLMs) to extract the scores from these texts as accurately as possible. The format for the response should be a number and no other text so there are two aspects to the challenge: ensuring that the LLM returns only a number, and instructing it to deduce the correct number for the text. As part of this, the LLM prompt needs to explain when to return the missing value code, -1, instead of a number when the text does not clearly contain one. The article also provides an example of a simple prompt. The purpose of the challenge is twofold: to get an effective solution to this problem, and to increase understanding of prompt design and LLM capabilities for complex numerical tasks. The initial solution suggested has an accuracy of 72.6%, so the challenge is to beat this.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18271" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18271.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">人机交互</span>
+        <span class="paper-id">2601.18759</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18759" target="_blank">UI Remix: Supporting UI Design Through Interactive Example Retrieval and Remixing</a>
+      </h3>
+      
+      <p class="paper-authors">Junling Wang, Hongyi Lan, Xiaotian Su, Mustafa Doga Dogan, April Yi Wang</p>
+      
+      <div class="paper-summary">
+        
+        
+        
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Designing user interfaces (UIs) is a critical step when launching products, building portfolios, or personalizing projects, yet end users without design expertise often struggle to articulate their intent and to trust design choices. Existing example-based tools either promote broad exploration, which can cause overwhelm and design drift, or require adapting a single example, risking design fixation. We present UI Remix, an interactive system that supports mobile UI design through an example-driven design workflow. Powered by a multimodal retrieval-augmented generation (MMRAG) model, UI Remix enables iterative search, selection, and adaptation of examples at both the global (whole interface) and local (component) level. To foster trust, it presents source transparency cues such as ratings, download counts, and developer information. In an empirical study with 24 end users, UI Remix significantly improved participants' ability to achieve their design goals, facilitated effective iteration, and encouraged exploration of alternative designs. Participants also reported that source transparency cues enhanced their confidence in adapting examples. Our findings suggest new directions for AI-assisted, example-driven systems that empower end users to design with greater control, trust, and openness to exploration.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18759" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18759.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
