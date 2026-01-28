@@ -11,7 +11,7 @@ categories:
 # 关键词过滤 (匹配标题或摘要，不区分大小写)
 # 论文需要匹配至少一个关键词才会被收录
 keywords:
-  # 图形设计 / 版式 / 视觉设计
+  # 平面设计 / 版式 / 视觉设计
   - graphic design
   - layout
   - page layout
@@ -55,6 +55,16 @@ deepseek:
   model: deepseek-chat
   max_tokens: 500
   temperature: 0.3
+
+# 偏好配置: 用于 DeepSeek 打分时描述你的兴趣
+preference:
+  profile: >
+    我是一名研究design intelligence的研究生，重点关注：
+    1）图像、海报、网页、UI、文档等视觉内容的生成与布局；
+    2）text-to-image、image generation、layout generation 等生成模型；
+    3）像 "Scaling Text-to-Image Diffusion Transformers with Representation Autoencoders" 这种
+       提升生成质量、效率或可控性的 diffusion / transformer 方法。
+    对医学影像、临床应用等 medical / clinical / MRI / CT / cancer / tumor 方向不感兴趣，应当打低分。
 
 # 站点配置
 site:

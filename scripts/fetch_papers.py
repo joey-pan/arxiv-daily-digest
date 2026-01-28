@@ -5,8 +5,17 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import json
 import re
-import yaml
+import os
 from pathlib import Path
+
+import yaml
+
+try:
+    from openai import OpenAI
+except ImportError:  # 本地环境缺少 openai 包时自动安装
+    import subprocess
+    subprocess.check_call(["pip", "install", "openai"])
+    from openai import OpenAI
 
 
 def load_config():
@@ -15,7 +24,7 @@ def load_config():
         return yaml.safe_load(f)
 
 
-def fetch_arxiv_papers(categories: list[str], max_results: int = 200) -> list[dict]:
+def fetch_arxiv_papers(categories: list[str], max_results: int = 300) -> list[dict]:
     # NOTE: On CI environments (including GitHub Actions), arXiv may return HTTP 406
     # if no explicit User-Agent is provided. We build a Request with headers to avoid that.
     base_url = "http://export.arxiv.org/api/query?"
@@ -111,15 +120,6 @@ def calculate_relevance(paper: dict, config: dict) -> float:
 
 
 def filter_papers(papers: list[dict], config: dict) -> list[dict]:
-    """基础筛选：按时间窗口 + 领域 + 关键词排序。
-
-    不负责“去重”，只负责：
-    - 只保留最近 N 天（这里是 30 天）
-    - 分类命中 config.categories
-    - 标题/摘要命中 keywords
-    然后按相关性打分排序。
-    """
-
     keywords = [kw.lower() for kw in config.get("keywords", [])]
     exclude = [ex.lower() for ex in config.get("exclude_keywords", [])]
     target_cats = set(config.get("categories", []))
@@ -157,6 +157,7 @@ def filter_papers(papers: list[dict], config: dict) -> list[dict]:
         paper["relevance_score"] = calculate_relevance(paper, config)
         filtered.append(paper)
     
+    # 先按启发式相关性排序，后续再用 DeepSeek 分数细排
     filtered.sort(key=lambda x: x["relevance_score"], reverse=True)
 
     return filtered
@@ -203,6 +204,98 @@ def select_unseen(papers: list[dict], seen: set[str], limit: int) -> tuple[list[
     return selected, new_seen
 
 
+def load_scores() -> dict[str, int]:
+    """载入 DeepSeek 打分缓存，避免重复打分。"""
+    path = Path(__file__).parent.parent / "data" / "scores.json"
+    if not path.exists():
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            # 统一转成 int 分数
+            return {str(k): int(v) for k, v in data.items()}
+    except Exception:
+        return {}
+    return {}
+
+
+def save_scores(scores: dict[str, int]) -> None:
+    path = Path(__file__).parent.parent / "data" / "scores.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(scores, f, ensure_ascii=False, indent=2)
+
+
+RANK_PROMPT_TEMPLATE = """你是一个论文筛选与打分助手，请基于以下信息判断论文是否"高度符合"用户的兴趣。
+
+请严格遵循下面的兴趣画像：
+
+{profile}
+
+打分标准（0-100 分）：
+- 80-100：与图形/视觉设计、布局生成、text-to-image 等紧密相关，方法实用、可用于构建工具或系统。
+- 40-79：与图像生成、多模态、视觉美学等相关，但与图形设计/布局生成的直接联系较弱或不清晰。
+- 0-39：医学影像或与图形设计无关的方向（如纯医学、临床、MRI/CT、肿瘤等）应尽量给低分。
+
+请只根据标题和摘要进行判断。
+
+论文标题: {title}
+
+论文摘要:
+{abstract}
+
+请直接返回一个 JSON，对象结构如下（确保是有效 JSON）：
+{{
+  "score": 0-100
+}}
+"""
+
+
+def create_ds_client(config: dict):
+    api_key = os.environ.get("DEEPSEEK_API_KEY")
+    if not api_key:
+        print("[rank] DEEPSEEK_API_KEY not set, skip DeepSeek ranking")
+        return None
+
+    ds = config.get("deepseek", {})
+    return OpenAI(
+        api_key=api_key,
+        base_url="https://api.deepseek.com",
+    )
+
+
+def score_with_deepseek(client: OpenAI, paper: dict, config: dict):
+    profile = config.get("preference", {}).get("profile") or ""
+    prompt = RANK_PROMPT_TEMPLATE.format(
+        profile=profile,
+        title=paper.get("title", ""),
+        abstract=paper.get("abstract", ""),
+    )
+
+    ds_cfg = config.get("deepseek", {})
+    try:
+        resp = client.chat.completions.create(
+            model=ds_cfg.get("model", "deepseek-chat"),
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=64,
+            temperature=0.0,
+        )
+        content = resp.choices[0].message.content.strip()
+        if content.startswith("```"):
+            content = content.split("```", 1)[1]
+            if content.lstrip().startswith("json"):
+                content = content.split("\n", 1)[1]
+        data = json.loads(content)
+        score = int(data.get("score", 0))
+        # clamp
+        score = max(0, min(100, score))
+        return score
+    except Exception as e:
+        print(f"[rank] DeepSeek scoring failed for {paper.get('id')}: {e}")
+        return None
+
+
 def save_papers(papers: list[dict], date_str: str):
     data_dir = Path(__file__).parent.parent / "data" / "papers"
     data_dir.mkdir(parents=True, exist_ok=True)
@@ -225,9 +318,43 @@ def main():
     base_filtered = filter_papers(all_papers, config)
     print(f"Filtered to {len(base_filtered)} candidates in last 30 days")
 
+    # 加载历史打分和已推送 ID
+    scores = load_scores()
     seen = load_seen_ids()
     limit = config.get("max_papers_per_day", 5)
-    today_papers, new_seen = select_unseen(base_filtered, seen, limit)
+
+    client = create_ds_client(config)
+
+    # 仅对未打分论文调用 DeepSeek 打分
+    if client is not None:
+        new_scores = 0
+        for paper in base_filtered:
+            pid = paper.get("id")
+            if not pid or pid in scores:
+                continue
+            s = score_with_deepseek(client, paper, config)
+            if s is not None:
+                scores[pid] = s
+                new_scores += 1
+        if new_scores:
+            print(f"Scored {new_scores} new papers with DeepSeek")
+            save_scores(scores)
+        else:
+            print("No new papers to score with DeepSeek")
+    else:
+        print("DeepSeek client not available, fallback to heuristic relevance only")
+
+    # 根据 DeepSeek 分数（或启发式分数）排序
+    def paper_score(p: dict) -> float:
+        pid = p.get("id")
+        if pid in scores:
+            return float(scores[pid])
+        return float(p.get("relevance_score", 0.0))
+
+    ranked = sorted(base_filtered, key=paper_score, reverse=True)
+
+    # 从排好序的列表中选出未推送过的 top-K
+    today_papers, new_seen = select_unseen(ranked, seen, limit)
     print(f"Selected {len(today_papers)} unseen papers (limit={limit})")
 
     today = datetime.now().strftime("%Y-%m-%d")
