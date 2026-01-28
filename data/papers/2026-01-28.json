@@ -1,1 +1,415 @@
-[]
+[
+  {
+    "id": "2601.18698",
+    "title": "Are Video Generation Models Geographically Fair? An Attraction-Centric Evaluation of Global Visual Knowledge",
+    "abstract": "Recent advances in text-to-video generation have produced visually compelling results, yet it remains unclear whether these models encode geographically equitable visual knowledge. In this work, we investigate the geo-equity and geographically grounded visual knowledge of text-to-video models through an attraction-centric evaluation. We introduce Geo-Attraction Landmark Probing (GAP), a systematic framework for assessing how faithfully models synthesize tourist attractions from diverse regions, and construct GEOATTRACTION-500, a benchmark of 500 globally distributed attractions spanning varied regions and popularity levels. GAP integrates complementary metrics that disentangle overall video quality from attraction-specific knowledge, including global structural alignment, fine-grained keypoint-based alignment, and vision-language model judgments, all validated against human evaluation. Applying GAP to the state-of-the-art text-to-video model Sora 2, we find that, contrary to common assumptions of strong geographic bias, the model exhibits a relatively uniform level of geographically grounded visual knowledge across regions, development levels, and cultural groupings, with only weak dependence on attraction popularity. These results suggest that current text-to-video models express global visual knowledge more evenly than expected, highlighting both their promise for globally deployed applications and the need for continued evaluation as such systems evolve.",
+    "authors": [
+      "Xiao Liu",
+      "Jiawei Zhang"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18698.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18698",
+    "primary_category": "cs.CV",
+    "relevance_score": 15.0,
+    "summary": {
+      "title_zh": "视频生成模型具有地理公平性吗？基于旅游景点的全球视觉知识评估",
+      "core_contribution": "本文提出了一个系统框架（GAP）和基准数据集（GEOATTRACTION-500），用于评估文本到视频生成模型在不同地理区域视觉知识编码的公平性与准确性。",
+      "method": "研究设计了“地理景点地标探测”（GAP）框架，通过构建包含全球500个分布广泛、流行度各异的景点数据集（GEOATTRACTION-500），综合使用全局结构对齐、细粒度关键点对齐以及视觉语言模型判断等多种互补指标，将视频整体质量与景点特定知识分离评估，并以人工评估验证了这些指标的有效性。",
+      "findings": "对前沿模型Sora 2的评估发现，与普遍认为存在强烈地理偏见的假设相反，模型在不同地区、发展水平和文化群体中表现出相对均匀的地理视觉知识编码能力，且对景点流行度的依赖较弱。这表明当前文本到视频模型表达的全球视觉知识比预期更均衡，既显示了其在全球部署应用中的潜力，也强调了随着系统发展需要持续评估的必要性。"
+    }
+  },
+  {
+    "id": "2601.18543",
+    "title": "GenAgent: Scaling Text-to-Image Generation via Agentic Multimodal Reasoning",
+    "abstract": "We introduce GenAgent, unifying visual understanding and generation through an agentic multimodal model. Unlike unified models that face expensive training costs and understanding-generation trade-offs, GenAgent decouples these capabilities through an agentic framework: understanding is handled by the multimodal model itself, while generation is achieved by treating image generation models as invokable tools. Crucially, unlike existing modular systems constrained by static pipelines, this design enables autonomous multi-turn interactions where the agent generates multimodal chains-of-thought encompassing reasoning, tool invocation, judgment, and reflection to iteratively refine outputs. We employ a two-stage training strategy: first, cold-start with supervised fine-tuning on high-quality tool invocation and reflection data to bootstrap agent behaviors; second, end-to-end agentic reinforcement learning combining pointwise rewards (final image quality) and pairwise rewards (reflection accuracy), with trajectory resampling for enhanced multi-turn exploration. GenAgent significantly boosts base generator(FLUX.1-dev) performance on GenEval++ (+23.6\\%) and WISE (+14\\%). Beyond performance gains, our framework demonstrates three key properties: 1) cross-tool generalization to generators with varying capabilities, 2) test-time scaling with consistent improvements across interaction rounds, and 3) task-adaptive reasoning that automatically adjusts to different tasks. Our code will be available at \\href{https://github.com/deep-kaixun/GenAgent}{this url}.",
+    "authors": [
+      "Kaixun Jiang",
+      "Yuzheng Wang",
+      "Junjie Zhou",
+      "Pandeng Li",
+      "Zhihang Liu",
+      "Chen-Wei Xie",
+      "Zhaoyu Chen",
+      "Yun Zheng",
+      "Wenqiang Zhang"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18543.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18543",
+    "primary_category": "cs.CV",
+    "relevance_score": 15.0,
+    "summary": {
+      "title_zh": "GenAgent：通过智能体多模态推理扩展文本到图像生成",
+      "core_contribution": "提出了GenAgent，一个通过智能体框架将视觉理解与生成解耦的统一多模态模型，它利用多轮自主交互和反思迭代优化生成结果，显著提升了基础图像生成器的性能。",
+      "method": "GenAgent采用智能体框架，由多模态模型负责视觉理解，将图像生成模型作为可调用工具。通过两阶段训练策略：首先使用高质量工具调用和反思数据进行监督微调以启动智能体行为；然后进行端到端的智能体强化学习，结合最终图像质量的点奖励和反思准确性的对奖励，并通过轨迹重采样增强多轮探索。",
+      "findings": "GenAgent在GenEval++和WISE基准上分别将基础生成器（FLUX.1-dev）性能提升了23.6%和14%。框架展现出三项关键特性：1）能够泛化到不同能力的生成器；2）测试时性能随交互轮次增加而持续提升；3）能自动适应不同任务的自适应推理能力。"
+    }
+  },
+  {
+    "id": "2601.18346",
+    "title": "Q-Bench-Portrait: Benchmarking Multimodal Large Language Models on Portrait Image Quality Perception",
+    "abstract": "Recent advances in multimodal large language models (MLLMs) have demonstrated impressive performance on existing low-level vision benchmarks, which primarily focus on generic images. However, their capabilities to perceive and assess portrait images, a domain characterized by distinct structural and perceptual properties, remain largely underexplored. To this end, we introduce Q-Bench-Portrait, the first holistic benchmark specifically designed for portrait image quality perception, comprising 2,765 image-question-answer triplets and featuring (1) diverse portrait image sources, including natural, synthetic distortion, AI-generated, artistic, and computer graphics images; (2) comprehensive quality dimensions, covering technical distortions, AIGC-specific distortions, and aesthetics; and (3) a range of question formats, including single-choice, multiple-choice, true/false, and open-ended questions, at both global and local levels. Based on Q-Bench-Portrait, we evaluate 20 open-source and 5 closed-source MLLMs, revealing that although current models demonstrate some competence in portrait image perception, their performance remains limited and imprecise, with a clear gap relative to human judgments. We hope that the proposed benchmark will foster further research into enhancing the portrait image perception capabilities of both general-purpose and domain-specific MLLMs.",
+    "authors": [
+      "Sijing Wu",
+      "Yunhao Li",
+      "Zicheng Zhang",
+      "Qi Jia",
+      "Xinyue Li",
+      "Huiyu Duan",
+      "Xiongkuo Min",
+      "Guangtao Zhai"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18346.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18346",
+    "primary_category": "cs.CV",
+    "relevance_score": 14.0,
+    "summary": {
+      "title_zh": "Q-Bench-Portrait：面向人像图像质量感知的多模态大语言模型基准测试",
+      "core_contribution": "本文提出了首个专门针对人像图像质量感知的综合性基准测试Q-Bench-Portrait，并系统评估了当前多模态大语言模型在该领域的表现与局限。",
+      "method": "研究构建了一个包含2,765个图像-问题-答案三元组的数据集，涵盖自然图像、合成失真图像、AI生成图像、艺术图像和计算机图形图像等多种人像来源。基准测试设计了包括技术失真、AIGC特有失真和美学在内的多维度质量评估，并采用单选、多选、判断和开放式等多种问题形式，在全局和局部两个层面进行考察。基于该基准，研究对20个开源和5个闭源的多模态大语言模型进行了系统性评估。",
+      "findings": "评估结果表明，当前多模态大语言模型虽然具备一定的人像图像感知能力，但其表现仍有限且不够精确，与人类判断存在明显差距。该研究揭示了现有模型在专门化图像质量感知任务上的不足，为未来提升通用及领域专用模型的感知能力提供了基准和方向。"
+    }
+  },
+  {
+    "id": "2601.18321",
+    "title": "Integrating Fine-Grained Audio-Visual Evidence for Robust Multimodal Emotion Reasoning",
+    "abstract": "Multimodal emotion analysis is shifting from static classification to generative reasoning. Beyond simple label prediction, robust affective reasoning must synthesize fine-grained signals such as facial micro-expressions and prosodic which shifts to decode the latent causality within complex social contexts. However, current Multimodal Large Language Models (MLLMs) face significant limitations in fine-grained perception, primarily due to data scarcity and insufficient cross-modal fusion. As a result, these models often exhibit unimodal dominance which leads to hallucinations in complex multimodal interactions, particularly when visual and acoustic cues are subtle, ambiguous, or even contradictory (e.g., in sarcastic scenery). To address this, we introduce SABER-LLM, a framework designed for robust multimodal reasoning. First, we construct SABER, a large-scale emotion reasoning dataset comprising 600K video clips, annotated with a novel six-dimensional schema that jointly captures audiovisual cues and causal logic. Second, we propose the structured evidence decomposition paradigm, which enforces a \"perceive-then-reason\" separation between evidence extraction and reasoning to alleviate unimodal dominance. The ability to perceive complex scenes is further reinforced by consistency-aware direct preference optimization, which explicitly encourages alignment among modalities under ambiguous or conflicting perceptual conditions. Experiments on EMER, EmoBench-M, and SABER-Test demonstrate that SABER-LLM significantly outperforms open-source baselines and achieves robustness competitive with closed-source models in decoding complex emotional dynamics. The dataset and model are available at https://github.com/zxzhao0/SABER-LLM.",
+    "authors": [
+      "Zhixian Zhao",
+      "Wenjie Tian",
+      "Xiaohai Tian",
+      "Jun Zhang",
+      "Lei Xie"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.MM",
+      "cs.CL",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18321.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18321",
+    "primary_category": "cs.MM",
+    "relevance_score": 14.0,
+    "summary": {
+      "title_zh": "融合细粒度视听证据以实现鲁棒的多模态情感推理",
+      "core_contribution": "本文提出了SABER-LLM框架，通过构建大规模细粒度情感推理数据集SABER，并设计结构化证据分解范式，有效缓解了多模态大语言模型中的单模态主导问题，提升了在复杂、模糊或矛盾场景下的情感推理鲁棒性。",
+      "method": "方法主要包括：1）构建了一个包含60万视频片段的大规模情感推理数据集SABER，采用一种新颖的六维标注方案，共同捕捉视听线索和因果逻辑；2）提出了结构化证据分解范式，强制将证据提取与推理过程分离，遵循“先感知后推理”的原则；3）通过一致性感知的直接偏好优化技术，在感知模糊或冲突的条件下显式鼓励多模态间的对齐，以增强对复杂场景的感知能力。",
+      "findings": "在EMER、EmoBench-M和SABER-Test等基准测试上的实验表明，SABER-LLM显著优于开源基线模型，并且在解码复杂情感动态方面的鲁棒性达到了与闭源模型相竞争的水平。该方法有效缓解了幻觉问题，提升了模型在微妙、模糊或矛盾的多模态交互（如讽刺场景）中的推理能力。"
+    }
+  },
+  {
+    "id": "2601.18785",
+    "title": "Design Techniques for LLM-Powered Interactive Storytelling: A Case Study of the Dramamancer System",
+    "abstract": "The rise of Large Language Models (LLMs) has enabled a new paradigm for bridging authorial intent and player agency in interactive narrative. We consider this paradigm through the example of Dramamancer, a system that uses an LLM to transform author-created story schemas into player-driven playthroughs. This extended abstract outlines some design techniques and evaluation considerations associated with this system.",
+    "authors": [
+      "Tiffany Wang",
+      "Yuqian Sun",
+      "Yi Wang",
+      "Melissa Roemmele",
+      "John Joon Young Chung",
+      "Max Kreminski"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.HC",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18785.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18785",
+    "primary_category": "cs.HC",
+    "relevance_score": 11.0,
+    "summary": {
+      "title_zh": "基于大语言模型的交互式叙事设计技术：以Dramamancer系统为例",
+      "core_contribution": "提出了一个利用大语言模型（LLM）将作者创作的故事框架转化为玩家驱动叙事体验的新范式，并通过Dramamancer系统展示了如何平衡作者意图与玩家自主性。",
+      "method": "研究以Dramamancer系统为案例，采用基于大语言模型的技术架构。系统首先接收作者预先设计的故事模式或框架，然后利用LLM实时生成符合玩家选择的分支叙事内容，实现从静态故事结构到动态交互体验的转换。",
+      "findings": "论文概述了与此类系统相关的关键设计技术和评估考量，表明LLM能够有效充当作者意图与玩家自主性之间的桥梁，为交互式叙事创作提供了新的可行路径。"
+    }
+  },
+  {
+    "id": "2601.18512",
+    "title": "Using Large Language Models to Construct Virtual Top Managers: A Method for Organizational Research",
+    "abstract": "This study introduces a methodological framework that uses large language models to create virtual personas of real top managers. Drawing on real CEO communications and Moral Foundations Theory, we construct LLM-based participants that simulate the decision-making of individual leaders. Across three phases, we assess construct validity, reliability, and behavioral fidelity by benchmarking these virtual CEOs against human participants. Our results indicate that theoretically scaffolded personas approximate the moral judgements observed in human samples, suggesting that LLM-based personas can serve as credible and complementary tools for organizational research in contexts where direct access to executives is limited. We conclude by outlining implications for future research using LLM-based personas in organizational settings.",
+    "authors": [
+      "Antonio Garzon-Vico",
+      "Krithika Sharon Komalapati",
+      "Arsalan Shahid",
+      "Jan Rosier"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18512.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18512",
+    "primary_category": "cs.CL",
+    "relevance_score": 11.0,
+    "summary": {
+      "title_zh": "利用大语言模型构建虚拟高层管理者：一种组织研究方法",
+      "core_contribution": "本研究提出了一种利用大语言模型构建真实高层管理者虚拟人格的方法论框架，为在难以直接接触高管的情况下开展组织研究提供了可信且互补的研究工具。",
+      "method": "该方法基于真实CEO的沟通文本和道德基础理论，构建能够模拟个体领导者决策的LLM参与者。研究通过三个阶段，以人类参与者为基准，对这些虚拟CEO进行了构念效度、信度和行为保真度的评估。",
+      "findings": "结果表明，基于理论框架构建的虚拟人格能够近似人类样本中观察到的道德判断。这说明LLM构建的虚拟人物在接触高管受限的研究情境下，可以作为组织研究中可靠且互补的工具。"
+    }
+  },
+  {
+    "id": "2601.18486",
+    "title": "Demographic Probing of Large Language Models Lacks Construct Validity",
+    "abstract": "Demographic probing is widely used to study how large language models (LLMs) adapt their behavior to signaled demographic attributes. This approach typically uses a single demographic cue in isolation (e.g., a name or dialect) as a signal for group membership, implicitly assuming strong construct validity: that such cues are interchangeable operationalizations of the same underlying, demographically conditioned behavior. We test this assumption in realistic advice-seeking interactions, focusing on race and gender in a U.S. context. We find that cues intended to represent the same demographic group induce only partially overlapping changes in model behavior, while differentiation between groups within a given cue is weak and uneven. Consequently, estimated disparities are unstable, with both magnitude and direction varying across cues. We further show that these inconsistencies partly arise from variation in how strongly cues encode demographic attributes and from linguistic confounders that independently shape model behavior. Together, our findings suggest that demographic probing lacks construct validity: it does not yield a single, stable characterization of how LLMs condition on demographic information, which may reflect a misspecified or fragmented construct. We conclude by recommending the use of multiple, ecologically valid cues and explicit control of confounders to support more defensible claims about demographic effects in LLMs.",
+    "authors": [
+      "Manuel Tonneau",
+      "Neil K. R. Seghal",
+      "Niyati Malhotra",
+      "Victor Orozco-Olvera",
+      "Ana María Muñoz Boudet",
+      "Lakshmi Subramanian",
+      "Sharath Chandra Guntuku",
+      "Valentin Hofmann"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CL",
+      "cs.CY"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18486.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18486",
+    "primary_category": "cs.CL",
+    "relevance_score": 11.0,
+    "summary": {
+      "title_zh": "大语言模型的人口统计学探测缺乏构念效度",
+      "core_contribution": "本文揭示了当前广泛使用的人口统计学探测方法存在根本缺陷，其假设单一人口线索（如姓名或方言）可等效代表同一人口群体的行为，但实际缺乏构念效度，导致对模型行为的评估不稳定且不可靠。",
+      "method": "研究在美国语境下聚焦种族与性别，通过模拟现实中的寻求建议互动场景，测试不同人口线索（如名字、方言等）对大型语言模型行为的影响。方法上比较了同一人口群体内不同线索所诱发模型行为的变化重叠程度，以及不同群体间行为的区分度，并进一步分析了线索编码人口属性的强度差异和语言混淆因素的影响。",
+      "findings": "关键发现包括：1) 代表同一人口群体的不同线索仅能部分重叠地改变模型行为，而群体间的行为区分度弱且不均匀；2) 估计的差异不稳定，其大小和方向随线索不同而变化；3) 这种不一致性部分源于线索编码人口属性的强度差异，以及独立影响模型行为的语言混淆因素。结果表明，单线索人口探测无法提供稳定、统一的人口条件化行为表征。"
+    }
+  },
+  {
+    "id": "2601.18631",
+    "title": "AdaReasoner: Dynamic Tool Orchestration for Iterative Visual Reasoning",
+    "abstract": "When humans face problems beyond their immediate capabilities, they rely on tools, providing a promising paradigm for improving visual reasoning in multimodal large language models (MLLMs). Effective reasoning, therefore, hinges on knowing which tools to use, when to invoke them, and how to compose them over multiple steps, even when faced with new tools or new tasks. We introduce \\textbf{AdaReasoner}, a family of multimodal models that learn tool use as a general reasoning skill rather than as tool-specific or explicitly supervised behavior. AdaReasoner is enabled by (i) a scalable data curation pipeline exposing models to long-horizon, multi-step tool interactions; (ii) Tool-GRPO, a reinforcement learning algorithm that optimizes tool selection and sequencing based on end-task success; and (iii) an adaptive learning mechanism that dynamically regulates tool usage. Together, these components allow models to infer tool utility from task context and intermediate outcomes, enabling coordination of multiple tools and generalization to unseen tools. Empirically, AdaReasoner exhibits strong tool-adaptive and generalization behaviors: it autonomously adopts beneficial tools, suppresses irrelevant ones, and adjusts tool usage frequency based on task demands, despite never being explicitly trained to do so. These capabilities translate into state-of-the-art performance across challenging benchmarks, improving the 7B base model by +24.9\\% on average and surpassing strong proprietary systems such as GPT-5 on multiple tasks, including VSP and Jigsaw.",
+    "authors": [
+      "Mingyang Song",
+      "Haoyu Sun",
+      "Jiawei Gu",
+      "Linjie Li",
+      "Luxin Xu",
+      "Ranjay Krishna",
+      "Yu Cheng"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.CV",
+      "cs.MA"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18631.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18631",
+    "primary_category": "cs.AI",
+    "relevance_score": 10.0,
+    "summary": {
+      "title_zh": "AdaReasoner：面向迭代式视觉推理的动态工具编排框架",
+      "core_contribution": "提出了一种能够将工具使用作为通用推理技能进行学习的多模态模型家族，使模型能够根据任务上下文和中间结果动态推断工具效用、编排多工具协作，并泛化至未见过的工具。",
+      "method": "方法主要包括三个部分：1）一个可扩展的数据构建流程，让模型接触长视野、多步骤的工具交互序列；2）Tool-GRPO强化学习算法，基于最终任务成功率优化工具的选择与顺序编排；3）一种自适应学习机制，能够动态调节工具的使用频率和时机。",
+      "findings": "实验表明，AdaReasoner展现出强大的工具自适应和泛化能力：它能自主采用有益工具、抑制无关工具，并根据任务需求调整工具使用频率，且这些行为均未经过显式训练。该模型在多个挑战性基准测试中取得了最先进的性能，将7B基础模型的平均性能提升了24.9%，并在VSP、Jigsaw等任务上超越了GPT-5等强大的闭源系统。"
+    }
+  },
+  {
+    "id": "2601.18572",
+    "title": "One Persona, Many Cues, Different Results: How Sociodemographic Cues Impact LLM Personalization",
+    "abstract": "Personalization of LLMs by sociodemographic subgroup often improves user experience, but can also introduce or amplify biases and unfair outcomes across groups. Prior work has employed so-called personas, sociodemographic user attributes conveyed to a model, to study bias in LLMs by relying on a single cue to prompt a persona, such as user names or explicit attribute mentions. This disregards LLM sensitivity to prompt variations (robustness) and the rarity of some cues in real interactions (external validity). We compare six commonly used persona cues across seven open and proprietary LLMs on four writing and advice tasks. While cues are overall highly correlated, they produce substantial variance in responses across personas. We therefore caution against claims from a single persona cue and recommend future personalization research to evaluate multiple externally valid cues.",
+    "authors": [
+      "Franziska Weeber",
+      "Vera Neplenbroek",
+      "Jan Batzner",
+      "Sebastian Padó"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18572.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18572",
+    "primary_category": "cs.CL",
+    "relevance_score": 10.0,
+    "summary": {
+      "title_zh": "一种人设，多种线索，不同结果：社会人口学线索如何影响大语言模型的个性化",
+      "core_contribution": "本文揭示了仅依赖单一社会人口学线索（如姓名或明确属性）来研究大语言模型个性化偏见的局限性，并强调需评估多种具有外部效度的线索，以提高研究的稳健性和现实有效性。",
+      "method": "研究比较了六种常用的人设提示线索（如姓名、属性描述等），在七个开源和专有大语言模型上，针对四项写作与建议任务进行了系统评估。通过分析不同线索下模型对同一社会人口子群体（人设）的响应差异，检验了提示线索的变异对结果的影响。",
+      "findings": "研究发现，尽管不同线索的总体响应相关性较高，但它们在不同人设上产生的响应存在显著差异。这表明，基于单一线索得出的关于模型个性化或偏见的结论可能不可靠。因此，论文建议未来研究应评估多种在真实交互中常见（具有外部效度）的线索，以避免因提示敏感性而导致的片面结论。"
+    }
+  },
+  {
+    "id": "2601.18615",
+    "title": "Geometry-Free Conditional Diffusion Modeling for Solving the Inverse Electrocardiography Problem",
+    "abstract": "This paper proposes a data-driven model for solving the inverse problem of electrocardiography, the mathematical problem that forms the basis of electrocardiographic imaging (ECGI). We present a conditional diffusion framework that learns a probabilistic mapping from noisy body surface signals to heart surface electric potentials. The proposed approach leverages the generative nature of diffusion models to capture the non-unique and underdetermined nature of the ECGI inverse problem, enabling probabilistic sampling of multiple reconstructions rather than a single deterministic estimate. Unlike traditional methods, the proposed framework is geometry-free and purely data-driven, alleviating the need for patient-specific mesh construction. We evaluate the method on a real ECGI dataset and compare it against strong deterministic baselines, including a convolutional neural network, long short-term memory network, and transformer-based model. The results demonstrate that the proposed diffusion approach achieves improved reconstruction accuracy, highlighting the potential of diffusion models as a robust tool for noninvasive cardiac electrophysiology imaging.",
+    "authors": [
+      "Ramiro Valdes Jara",
+      "Adam Meyers"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18615.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18615",
+    "primary_category": "cs.LG",
+    "relevance_score": 9.0,
+    "summary": {
+      "title_zh": "用于求解心电逆问题的无几何条件扩散建模",
+      "core_contribution": "提出了一种无几何、纯数据驱动的条件扩散模型框架，用于求解心电逆问题，能够生成多个可能的概率性重建结果，而非单一确定性估计，从而捕捉该问题的非唯一性和欠定性本质。",
+      "method": "该方法采用条件扩散模型，学习从含噪声的体表信号到心表电位的概率映射。它利用扩散模型的生成特性，无需构建患者特定的几何网格，完全基于数据驱动。框架通过反向扩散过程，在给定体表测量值的条件下，采样生成可能的心表电位分布。",
+      "findings": "在真实心电逆问题数据集上的实验表明，与卷积神经网络、长短期记忆网络和基于Transformer的确定性基线模型相比，所提出的扩散方法实现了更高的重建精度，证明了扩散模型作为无创心脏电生理成像鲁棒工具的潜力。"
+    }
+  },
+  {
+    "id": "2601.18585",
+    "title": "GimmBO: Interactive Generative Image Model Merging via Bayesian Optimization",
+    "abstract": "Fine-tuning-based adaptation is widely used to customize diffusion-based image generation, leading to large collections of community-created adapters that capture diverse subjects and styles. Adapters derived from the same base model can be merged with weights, enabling the synthesis of new visual results within a vast and continuous design space. To explore this space, current workflows rely on manual slider-based tuning, an approach that scales poorly and makes weight selection difficult, even when the candidate set is limited to 20-30 adapters. We propose GimmBO to support interactive exploration of adapter merging for image generation through Preferential Bayesian Optimization (PBO). Motivated by observations from real-world usage, including sparsity and constrained weight ranges, we introduce a two-stage BO backend that improves sampling efficiency and convergence in high-dimensional spaces. We evaluate our approach with simulated users and a user study, demonstrating improved convergence, high success rates, and consistent gains over BO and line-search baselines, and further show the flexibility of the framework through several extensions.",
+    "authors": [
+      "Chenxi Liu",
+      "Selena Ling",
+      "Alec Jacobson"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18585.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18585",
+    "primary_category": "cs.CV",
+    "relevance_score": 9.0,
+    "summary": {
+      "title_zh": "GimmBO：基于贝叶斯优化的交互式生成式图像模型融合",
+      "core_contribution": "提出了GimmBO系统，通过偏好贝叶斯优化支持对图像生成适配器融合空间的交互式探索，解决了高维空间中手动调整权重效率低、难以收敛的问题。",
+      "method": "方法基于偏好贝叶斯优化，针对实际使用中观察到的稀疏性和权重范围受限的特点，设计了一个两阶段的贝叶斯优化后端。该系统通过交互式用户反馈迭代优化适配器权重组合，提高了在高维空间中的采样效率和收敛速度。",
+      "findings": "通过模拟用户和真实用户研究评估，GimmBO相比基础的贝叶斯优化和线性搜索基线，在收敛速度、成功率方面均有显著提升，并展现出框架良好的扩展灵活性。"
+    }
+  },
+  {
+    "id": "2601.18493",
+    "title": "DisasterInsight: A Multimodal Benchmark for Function-Aware and Grounded Disaster Assessment",
+    "abstract": "Timely interpretation of satellite imagery is critical for disaster response, yet existing vision-language benchmarks for remote sensing largely focus on coarse labels and image-level recognition, overlooking the functional understanding and instruction robustness required in real humanitarian workflows. We introduce DisasterInsight, a multimodal benchmark designed to evaluate vision-language models (VLMs) on realistic disaster analysis tasks. DisasterInsight restructures the xBD dataset into approximately 112K building-centered instances and supports instruction-diverse evaluation across multiple tasks, including building-function classification, damage-level and disaster-type classification, counting, and structured report generation aligned with humanitarian assessment guidelines. To establish domain-adapted baselines, we propose DI-Chat, obtained by fine-tuning existing VLM backbones on disaster-specific instruction data using parameter-efficient Low-Rank Adaptation (LoRA). Extensive experiments on state-of-the-art generic and remote-sensing VLMs reveal substantial performance gaps across tasks, particularly in damage understanding and structured report generation. DI-Chat achieves significant improvements on damage-level and disaster-type classification as well as report generation quality, while building-function classification remains challenging for all evaluated models. DisasterInsight provides a unified benchmark for studying grounded multimodal reasoning in disaster imagery.",
+    "authors": [
+      "Sara Tehrani",
+      "Yonghao Xu",
+      "Leif Haglund",
+      "Amanda Berg",
+      "Michael Felsberg"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18493.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18493",
+    "primary_category": "cs.CV",
+    "relevance_score": 9.0,
+    "summary": {
+      "title_zh": "DisasterInsight：面向功能感知与实体化灾害评估的多模态基准",
+      "core_contribution": "提出了一个面向真实灾害分析任务的多模态基准DisasterInsight，用于评估视觉-语言模型在灾害场景下的功能理解与指令鲁棒性；并提出了基于LoRA微调的领域适应模型DI-Chat，显著提升了灾害分类与结构化报告生成能力。",
+      "method": "1. 将xBD数据集重构为约11.2万个以建筑物为中心的实例，支持多种指令化任务评估；2. 提出DI-Chat模型，通过参数高效的LoRA方法对现有视觉-语言模型骨干进行灾害领域指令数据微调；3. 设计了涵盖建筑物功能分类、损毁程度与灾害类型分类、计数及结构化报告生成的多任务评估框架。",
+      "findings": "1. 现有通用及遥感视觉-语言模型在灾害任务上存在显著性能差距，尤其在损毁理解和结构化报告生成方面；2. DI-Chat在损毁程度分类、灾害类型分类和报告生成质量上取得显著提升；3. 建筑物功能分类对所有评估模型仍具挑战性；4. DisasterInsight为灾害图像中的实体化多模态推理研究提供了统一基准。"
+    }
+  },
+  {
+    "id": "2601.18353",
+    "title": "Can Good Writing Be Generative? Expert-Level AI Writing Emerges through Fine-Tuning on High-Quality Books",
+    "abstract": "Creative writing has long been considered a uniquely human endeavor, requiring voice and style that machines could not replicate. This assumption is challenged by Generative AI that can emulate thousands of author styles in seconds with negligible marginal labor. To understand this better, we conducted a behavioral experiment where 28 MFA writers (experts) competed against three LLMs in emulating 50 critically acclaimed authors. Based on blind pairwise comparisons by 28 expert judges and 131 lay judges, we find that experts preferred human writing in 82.7% of cases under the in-context prompting condition but this reversed to 62% preference for AI after fine-tuning on authors' complete works. Lay judges, however, consistently preferred AI writing. Debrief interviews with expert writers revealed that their preference for AI writing triggered an identity crisis, eroding aesthetic confidence and questioning what constitutes \"good writing.\" These findings challenge discourse about AI's creative limitations and raise fundamental questions about the future of creative labor.",
+    "authors": [
+      "Tuhin Chakrabarty",
+      "Paramveer S. Dhillon"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.HC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18353.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18353",
+    "primary_category": "cs.AI",
+    "relevance_score": 9.0,
+    "summary": {
+      "title_zh": "优秀写作能否是生成式的？通过对高质量书籍进行微调，专家级AI写作应运而生",
+      "core_contribution": "本研究通过行为实验证明，对作者完整作品进行微调的大型语言模型（LLM）所生成的文本，在专家评审的盲测中，其偏好度超过了专业创意写作硕士（MFA）的仿写作品，从而挑战了创意写作是人类专属领域的传统假设。",
+      "method": "研究设计了一项行为实验，让28位创意写作硕士（专家）与三个大型语言模型（LLM）竞赛，模仿50位广受好评的作家风格。实验设置了两种条件：上下文提示和基于作者完整作品进行微调。随后，由28位专家评委和131位非专业评委对生成的文本进行盲测配对比较。",
+      "findings": "在上下文提示条件下，专家评委在82.7%的情况下更偏好人类写作；但在对作者作品进行微调后，这一偏好发生逆转，专家评委对AI写作的偏好率升至62%。非专业评委则始终更偏好AI写作。事后访谈显示，专家写作者对AI写作的偏好触发了他们的身份危机，动摇了其审美自信，并引发了对“优秀写作”本质的质疑。"
+    }
+  },
+  {
+    "id": "2601.18271",
+    "title": "Designing large language model prompts to extract scores from messy text: A shared dataset and challenge",
+    "abstract": "In some areas of computing, natural language processing and information science, progress is made by sharing datasets and challenging the community to design the best algorithm for an associated task. This article introduces a shared dataset of 1446 short texts, each of which describes a research quality score on the UK scale of 1* to 4*. This is a messy collection, with some texts not containing scores and others including invalid scores or strange formats. With this dataset there is also a description of what constitutes a valid score and a \"gold standard\" of the correct scores for these texts (including missing values). The challenge is to design a prompt for Large Language Models (LLMs) to extract the scores from these texts as accurately as possible. The format for the response should be a number and no other text so there are two aspects to the challenge: ensuring that the LLM returns only a number, and instructing it to deduce the correct number for the text. As part of this, the LLM prompt needs to explain when to return the missing value code, -1, instead of a number when the text does not clearly contain one. The article also provides an example of a simple prompt. The purpose of the challenge is twofold: to get an effective solution to this problem, and to increase understanding of prompt design and LLM capabilities for complex numerical tasks. The initial solution suggested has an accuracy of 72.6%, so the challenge is to beat this.",
+    "authors": [
+      "Mike Thelwall"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.DL",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18271.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18271",
+    "primary_category": "cs.DL",
+    "relevance_score": 9.0,
+    "summary": {
+      "title_zh": "设计大型语言模型提示词从杂乱文本中提取分数：一个共享数据集与挑战",
+      "core_contribution": "本文发布了一个包含1446条杂乱文本的共享数据集及配套挑战任务，旨在推动社区研究如何设计有效的大型语言模型提示词，以从非结构化文本中准确提取数值型评分。",
+      "method": "研究提供了一个描述英国研究质量评分（1*至4*）的文本数据集，其中部分文本缺失评分或格式混乱。挑战要求设计提示词，引导大型语言模型仅输出数字（或缺失值代码-1），并准确推断文本中的有效评分。论文还提供了一个基础提示词示例作为初始解决方案。",
+      "findings": "提出的初始提示词解决方案在数据集上的准确率为72.6%，为后续研究设立了基准。该挑战旨在寻求更优的提示词设计，以提升大型语言模型处理复杂数值提取任务的能力与鲁棒性。"
+    }
+  },
+  {
+    "id": "2601.18759",
+    "title": "UI Remix: Supporting UI Design Through Interactive Example Retrieval and Remixing",
+    "abstract": "Designing user interfaces (UIs) is a critical step when launching products, building portfolios, or personalizing projects, yet end users without design expertise often struggle to articulate their intent and to trust design choices. Existing example-based tools either promote broad exploration, which can cause overwhelm and design drift, or require adapting a single example, risking design fixation. We present UI Remix, an interactive system that supports mobile UI design through an example-driven design workflow. Powered by a multimodal retrieval-augmented generation (MMRAG) model, UI Remix enables iterative search, selection, and adaptation of examples at both the global (whole interface) and local (component) level. To foster trust, it presents source transparency cues such as ratings, download counts, and developer information. In an empirical study with 24 end users, UI Remix significantly improved participants' ability to achieve their design goals, facilitated effective iteration, and encouraged exploration of alternative designs. Participants also reported that source transparency cues enhanced their confidence in adapting examples. Our findings suggest new directions for AI-assisted, example-driven systems that empower end users to design with greater control, trust, and openness to exploration.",
+    "authors": [
+      "Junling Wang",
+      "Hongyi Lan",
+      "Xiaotian Su",
+      "Mustafa Doga Dogan",
+      "April Yi Wang"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.HC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.18759.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18759",
+    "primary_category": "cs.HC",
+    "relevance_score": 8.0,
+    "summary": {
+      "title_zh": "UI Remix：通过交互式示例检索与混搭支持用户界面设计",
+      "core_contribution": "提出了UI Remix系统，通过一个结合全局与局部示例检索、选择与适配的交互式工作流，帮助非专业设计者进行移动UI设计，并利用来源透明度提示增强用户对设计决策的信任。",
+      "method": "系统基于多模态检索增强生成（MMRAG）模型构建，支持用户在整体界面和单个组件两个层级上，对设计示例进行迭代式的搜索、选择和修改。同时，系统通过展示示例的评分、下载量和开发者信息等来源透明度线索，帮助用户评估和信任所选示例。",
+      "findings": "一项针对24名终端用户的实证研究表明，使用UI Remix显著提升了参与者实现其设计目标的能力，促进了有效的设计迭代，并鼓励了对替代设计的探索。参与者报告称，来源透明度提示增强了他们适配示例时的信心。"
+    }
+  }
+]
