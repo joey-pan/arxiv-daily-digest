@@ -1,18 +1,13 @@
 [
   {
-    "id": "2601.17868",
-    "title": "VidLaDA: Bidirectional Diffusion Large Language Models for Efficient Video Understanding",
-    "abstract": "Standard Autoregressive Video LLMs inevitably suffer from causal masking biases that hinder global spatiotemporal modeling, leading to suboptimal understanding efficiency. We propose VidLaDA, a Video LLM based on Diffusion Language Model utilizing bidirectional attention to capture bidirectional dependencies. To further tackle the inference bottleneck of diffusion decoding on massive video tokens, we introduce MARS-Cache. This framework accelerates inference by combining asynchronous visual cache refreshing with frame-wise chunk attention, effectively pruning redundancy while preserving global connectivity via anchor tokens. Extensive experiments show VidLaDA outperforms diffusion baselines and rivals state-of-the-art autoregressive models (e.g., Qwen2.5-VL and LLaVA-Video), with MARS-Cache delivering over 12x speedup without compromising reasoning accuracy. Code and checkpoints are open-sourced at https://github.com/ziHoHe/VidLaDA.",
+    "id": "2601.17673",
+    "title": "Uni-RS: A Spatially Faithful Unified Understanding and Generation Model for Remote Sensing",
+    "abstract": "Unified remote sensing multimodal models exhibit a pronounced spatial reversal curse: Although they can accurately recognize and describe object locations in images, they often fail to faithfully execute the same spatial relations during text-to-image generation, where such relations constitute core semantic information in remote sensing. Motivated by this observation, we propose Uni-RS, the first unified multimodal model tailored for remote sensing, to explicitly address the spatial asymmetry between understanding and generation. Specifically, we first introduce explicit Spatial-Layout Planning to transform textual instructions into spatial layout plans, decoupling geometric planning from visual synthesis. We then impose Spatial-Aware Query Supervision to bias learnable queries toward spatial relations explicitly specified in the instruction. Finally, we develop Image-Caption Spatial Layout Variation to expose the model to systematic geometry-consistent spatial transformations. Extensive experiments across multiple benchmarks show that our approach substantially improves spatial faithfulness in text-to-image generation, while maintaining strong performance on multimodal understanding tasks like image captioning, visual grounding, and VQA tasks.",
     "authors": [
-      "Zhihao He",
-      "Tieyuan Chen",
-      "Kangyu Wang",
-      "Ziran Qin",
-      "Yang Shao",
-      "Chaofan Gan",
-      "Shijie Li",
-      "Zuxuan Wu",
-      "Weiyao Lin"
+      "Weiyu Zhang",
+      "Yuan Hu",
+      "Yong Li",
+      "Yu Liu"
     ],
     "published": "2026-01-25",
     "updated": "2026-01-25",
@@ -20,131 +15,135 @@
       "cs.CV",
       "cs.AI"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17868.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17868",
+    "pdf_url": "https://arxiv.org/pdf/2601.17673.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17673",
     "primary_category": "cs.CV",
-    "relevance_score": 6.0,
+    "relevance_score": 5.0,
     "summary": {
-      "title_zh": "VidLaDA：基于双向扩散大语言模型的高效视频理解方法",
-      "core_contribution": "提出首个基于扩散语言模型的视频大语言模型（VidLaDA），通过双向注意力机制克服传统自回归模型的因果掩码偏差；并设计了MARS-Cache推理加速框架，在保持精度的同时显著提升解码速度。",
-      "method": "1. 采用扩散语言模型架构，利用双向注意力捕获视频时空序列中的全局依赖关系。2. 提出MARS-Cache框架，通过异步视觉缓存刷新机制动态更新关键特征。3. 结合帧级分块注意力与锚点令牌技术，在剪枝冗余信息的同时保持全局时空关联性。",
-      "findings": "1. VidLaDA在视频理解任务上超越现有扩散基线模型，性能媲美Qwen2.5-VL、LLaVA-Video等前沿自回归模型。2. MARS-Cache实现超过12倍的推理加速，且不影响模型推理精度。3. 开源代码与模型权重已发布。"
+      "title_zh": "Uni-RS：一种面向遥感、空间保真的统一理解与生成模型",
+      "core_contribution": "本文提出了首个面向遥感领域的统一多模态模型Uni-RS，旨在显式解决遥感图像理解与生成任务之间的空间不对称性问题，即缓解现有模型在文本生成图像时难以忠实执行空间关系的“空间反转诅咒”。",
+      "method": "首先，引入显式的空间布局规划模块，将文本指令转化为空间布局规划，实现几何规划与视觉合成的解耦。其次，通过空间感知查询监督机制，使可学习查询偏向于指令中明确指定的空间关系。最后，开发图像-描述空间布局变换方法，让模型系统性地接触几何一致的空间变换数据以增强泛化能力。",
+      "findings": "在多个基准测试上的实验表明，该方法显著提升了文本到图像生成任务中的空间忠实度，同时在图像描述、视觉定位、视觉问答等多模态理解任务上保持了强大的性能。"
     }
   },
   {
-    "id": "2601.17830",
-    "title": "VAE-REPA: Variational Autoencoder Representation Alignment for Efficient Diffusion Training",
-    "abstract": "Denoising-based diffusion transformers, despite their strong generation performance, suffer from inefficient training convergence. Existing methods addressing this issue, such as REPA (relying on external representation encoders) or SRA (requiring dual-model setups), inevitably incur heavy computational overhead during training due to external dependencies. To tackle these challenges, this paper proposes \\textbf{\\namex}, a lightweight intrinsic guidance framework for efficient diffusion training. \\name leverages off-the-shelf pre-trained Variational Autoencoder (VAE) features: their reconstruction property ensures inherent encoding of visual priors like rich texture details, structural patterns, and basic semantic information. Specifically, \\name aligns the intermediate latent features of diffusion transformers with VAE features via a lightweight projection layer, supervised by a feature alignment loss. This design accelerates training without extra representation encoders or dual-model maintenance, resulting in a simple yet effective pipeline. Extensive experiments demonstrate that \\name improves both generation quality and training convergence speed compared to vanilla diffusion transformers, matches or outperforms state-of-the-art acceleration methods, and incurs merely 4\\% extra GFLOPs with zero additional cost for external guidance models.",
+    "id": "2601.19606",
+    "title": "GMS-CAVP: Improving Audio-Video Correspondence with Multi-Scale Contrastive and Generative Pretraining",
+    "abstract": "Recent advances in video-audio (V-A) understanding and generation have increasingly relied on joint V-A embeddings, which serve as the foundation for tasks such as cross-modal retrieval and generation. While prior methods like CAVP effectively model semantic and temporal correspondences between modalities using contrastive objectives, their performance remains suboptimal. A key limitation is the insufficient modeling of the dense, multi-scale nature of both video and audio signals, correspondences often span fine- to coarse-grained spatial-temporal structures, which are underutilized in existing frameworks. To this end, we propose GMS-CAVP, a novel framework that combines Multi-Scale Video-Audio Alignment and Multi-Scale Spatial-Temporal Diffusion-based pretraining objectives to enhance V-A correspondence modeling. First, GMS-CAVP introduces a multi-scale contrastive learning strategy that captures semantic and temporal relations across varying granularities. Second, we go beyond traditional contrastive learning by incorporating a diffusion-based generative objective, enabling modality translation and synthesis between video and audio. This unified discriminative-generative formulation facilitates deeper cross-modal understanding and paves the way for high-fidelity generation. Extensive experiments on VGGSound, AudioSet, and Panda70M demonstrate that GMS-CAVP outperforms previous methods in generation and retrieval.",
     "authors": [
-      "Mengmeng Wang",
-      "Dengyang Jiang",
-      "Liuzhuozheng Li",
-      "Yucheng Lin",
-      "Guojiang Shen",
-      "Xiangjie Kong",
-      "Yong Liu",
-      "Guang Dai",
-      "Jingdong Wang"
+      "Shentong Mo",
+      "Zehua Chen",
+      "Jun Zhu"
+    ],
+    "published": "2026-01-27",
+    "updated": "2026-01-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG",
+      "cs.SD",
+      "eess.AS"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.19606.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19606",
+    "primary_category": "cs.CV",
+    "relevance_score": 3.0,
+    "summary": {
+      "title_zh": "GMS-CAVP：通过多尺度对比与生成式预训练改进音视频对应关系",
+      "core_contribution": "提出了一种结合多尺度对比学习和扩散生成目标的新型音视频对应建模框架，显著提升了跨模态检索与生成任务的性能。",
+      "method": "首先，设计多尺度对比学习策略，从细粒度到粗粒度捕捉音视频的语义与时序对应关系；其次，引入基于扩散模型的生成目标，实现音视频间的跨模态转换与合成；最终通过判别与生成目标的统一框架，促进更深层次的跨模态理解。",
+      "findings": "在VGGSound、AudioSet和Panda70M数据集上的实验表明，GMS-CAVP在生成与检索任务上均优于现有方法，验证了多尺度建模与生成式目标对提升音视频对应关系的有效性。"
+    }
+  },
+  {
+    "id": "2601.17917",
+    "title": "Streaming-dLLM: Accelerating Diffusion LLMs via Suffix Pruning and Dynamic Decoding",
+    "abstract": "Diffusion Large Language Models (dLLMs) offer a compelling paradigm for natural language generation, leveraging parallel decoding and bidirectional attention to achieve superior global coherence compared to autoregressive models. While recent works have accelerated inference via KV cache reuse or heuristic decoding, they overlook the intrinsic inefficiencies within the block-wise diffusion process. Specifically, they suffer from spatial redundancy by modeling informative-sparse suffix regions uniformly and temporal inefficiency by applying fixed denoising schedules across all the decoding process. To address this, we propose Streaming-dLLM, a training-free framework that streamlines inference across both spatial and temporal dimensions. Spatially, we introduce attenuation guided suffix modeling to approximate the full context by pruning redundant mask tokens. Temporally, we employ a dynamic confidence aware strategy with an early exit mechanism, allowing the model to skip unnecessary iterations for converged tokens. Extensive experiments show that Streaming-dLLM achieves up to 68.2X speedup while maintaining generation quality, highlighting its effectiveness in diffusion decoding. The code is available at https://github.com/xiaoshideta/Streaming-dLLM.",
+    "authors": [
+      "Zhongyu Xiao",
+      "Zhiwei Hao",
+      "Jianyuan Guo",
+      "Yong Luo",
+      "Jia Liu",
+      "Jie Xu",
+      "Han Hu"
+    ],
+    "published": "2026-01-25",
+    "updated": "2026-01-27",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CL",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.17917.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17917",
+    "primary_category": "cs.LG",
+    "relevance_score": 4.0,
+    "summary": {
+      "title_zh": "Streaming-dLLM：通过后缀剪枝与动态解码加速扩散大语言模型",
+      "core_contribution": "提出了Streaming-dLLM，一个无需训练即可在空间和时间维度上同时优化扩散大语言模型推理效率的框架，通过剪枝冗余后缀标记和动态调整去噪过程来显著加速生成。",
+      "method": "在空间维度上，引入衰减引导的后缀建模，通过剪枝信息稀疏的后缀区域中的冗余掩码标记来近似完整上下文；在时间维度上，采用动态置信度感知策略与提前退出机制，允许模型对已收敛的标记跳过不必要的去噪迭代。",
+      "findings": "实验表明，Streaming-dLLM在保持生成质量的同时，最高可实现68.2倍的推理加速，有效解决了扩散解码过程中的空间冗余与时间效率低下的问题。"
+    }
+  },
+  {
+    "id": "2601.17857",
+    "title": "SynMind: Reducing Semantic Hallucination in fMRI-Based Image Reconstruction",
+    "abstract": "Recent advances in fMRI-based image reconstruction have achieved remarkable photo-realistic fidelity. Yet, a persistent limitation remains: while reconstructed images often appear naturalistic and holistically similar to the target stimuli, they frequently suffer from severe semantic misalignment -- salient objects are often replaced or hallucinated despite high visual quality. In this work, we address this limitation by rethinking the role of explicit semantic interpretation in fMRI decoding. We argue that existing methods rely too heavily on entangled visual embeddings which prioritize low-level appearance cues -- such as texture and global gist -- over explicit semantic identity. To overcome this, we parse fMRI signals into rich, sentence-level semantic descriptions that mirror the hierarchical and compositional nature of human visual understanding. We achieve this by leveraging grounded VLMs to generate synthetic, human-like, multi-granularity textual representations that capture object identities and spatial organization. Built upon this foundation, we propose SynMind, a framework that integrates these explicit semantic encodings with visual priors to condition a pretrained diffusion model. Extensive experiments demonstrate that SynMind outperforms state-of-the-art methods across most quantitative metrics. Notably, by offloading semantic reasoning to our text-alignment module, SynMind surpasses competing methods based on SDXL while using the much smaller Stable Diffusion 1.4 and a single consumer GPU. Large-scale human evaluations further confirm that SynMind produces reconstructions more consistent with human visual perception. Neurovisualization analyses reveal that SynMind engages broader and more semantically relevant brain regions, mitigating the over-reliance on high-level visual areas.",
+    "authors": [
+      "Lan Yang",
+      "Minghan Yang",
+      "Ke Li",
+      "Honggang Zhang",
+      "Kaiyue Pang",
+      "Yi-Zhe Song"
     ],
     "published": "2026-01-25",
     "updated": "2026-01-25",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17830.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17830",
+    "pdf_url": "https://arxiv.org/pdf/2601.17857.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17857",
     "primary_category": "cs.CV",
-    "relevance_score": 6.0,
+    "relevance_score": 5.0,
     "summary": {
-      "title_zh": "VAE-REPA：基于变分自编码器表征对齐的高效扩散模型训练",
-      "core_contribution": "提出了一种轻量级的内在引导框架VAE-REPA，通过将扩散变换器的中间特征与预训练VAE特征对齐，显著加速训练收敛，且无需依赖外部表征编码器或双模型架构。",
-      "method": "该方法利用现成的预训练变分自编码器（VAE）提取的特征，这些特征因VAE的重建特性而天然编码了丰富的纹理细节、结构模式和基础语义信息。通过一个轻量级的投影层，将扩散变换器的中间潜在特征与VAE特征进行对齐，并使用特征对齐损失进行监督。整个设计无需额外表征编码器或维护双模型，实现了简单高效的训练流程。",
-      "findings": "实验表明，VAE-REPA相比原始扩散变换器，在生成质量和训练收敛速度上均有提升；其性能匹配或优于现有先进的加速方法，且仅增加约4%的计算开销（GFLOPs），同时完全避免了外部引导模型带来的额外成本。"
+      "title_zh": "SynMind：减少基于fMRI的图像重建中的语义幻觉",
+      "core_contribution": "本文提出SynMind框架，通过将fMRI信号解析为明确的、句子级别的语义描述，显著减少了图像重建中的语义错位问题，实现了更符合人类视觉感知的重建结果。",
+      "method": "该方法首先利用基于视觉语言模型生成合成、类人的多粒度文本表示，以捕获目标图像的物体身份和空间结构；然后将这些明确的语义编码与视觉先验结合，共同作为预训练扩散模型的条件输入，从而在重建过程中分离语义推理与外观生成。",
+      "findings": "实验表明，SynMind在多数定量指标上优于现有方法，且仅使用较小的Stable Diffusion 1.4模型和单张消费级GPU即可超越基于SDXL的对比方法；大规模人工评估证实其重建结果与人类视觉感知更一致；神经可视化分析显示，SynMind激活了更广泛且语义相关的大脑区域，减少了对高级视觉区域的过度依赖。"
     }
   },
   {
-    "id": "2601.17733",
-    "title": "Flatten The Complex: Joint B-Rep Generation via Compositional $k$-Cell Particles",
-    "abstract": "Boundary Representation (B-Rep) is the widely adopted standard in Computer-Aided Design (CAD) and manufacturing. However, generative modeling of B-Reps remains a formidable challenge due to their inherent heterogeneity as geometric cell complexes, which entangles topology with geometry across cells of varying orders (i.e., $k$-cells such as vertices, edges, faces). Previous methods typically rely on cascaded sequences to handle this hierarchy, which fails to fully exploit the geometric relationships between cells, such as adjacency and sharing, limiting context awareness and error recovery. To fill this gap, we introduce a novel paradigm that reformulates B-Reps into sets of compositional $k$-cell particles. Our approach encodes each topological entity as a composition of particles, where adjacent cells share identical latents at their interfaces, thereby promoting geometric coupling along shared boundaries. By decoupling the rigid hierarchy, our representation unifies vertices, edges, and faces, enabling the joint generation of topology and geometry with global context awareness. We synthesize these particle sets using a multi-modal flow matching framework to handle unconditional generation as well as precise conditional tasks, such as 3D reconstruction from single-view or point cloud. Furthermore, the explicit and localized nature of our representation naturally extends to downstream tasks like local in-painting and enables the direct synthesis of non-manifold structures (e.g., wireframes). Extensive experiments demonstrate that our method produces high-fidelity CAD models with superior validity and editability compared to state-of-the-art methods.",
+    "id": "2601.17883",
+    "title": "EEG Foundation Models: Progresses, Benchmarking, and Open Problems",
+    "abstract": "Electroencephalography (EEG) foundation models have recently emerged as a promising paradigm for brain-computer interfaces (BCIs), aiming to learn transferable neural representations from large-scale heterogeneous recordings. Despite rapid progresses, there lacks fair and comprehensive comparisons of existing EEG foundation models, due to inconsistent pre-training objectives, preprocessing choices, and downstream evaluation protocols. This paper fills this gap. We first review 50 representative models and organize their design choices into a unified taxonomic framework including data standardization, model architectures, and self-supervised pre-training strategies. We then evaluate 12 open-source foundation models and competitive specialist baselines across 13 EEG datasets spanning nine BCI paradigms. Emphasizing real-world deployments, we consider both cross-subject generalization under a leave-one-subject-out protocol and rapid calibration under a within-subject few-shot setting. We further compare full-parameter fine-tuning with linear probing to assess the transferability of pre-trained representations, and examine the relationship between model scale and downstream performance. Our results indicate that: 1) linear probing is frequently insufficient; 2) specialist models trained from scratch remain competitive across many tasks; and, 3) larger foundation models do not necessarily yield better generalization performance under current data regimes and training practices.",
     "authors": [
-      "Junran Lu",
-      "Yuanqi Li",
-      "Hengji Li",
-      "Jie Guo",
-      "Yanwen Guo"
+      "Dingkun Liu",
+      "Yuheng Chen",
+      "Zhu Chen",
+      "Zhenyao Cui",
+      "Yaozhi Wen",
+      "Jiayu An",
+      "Jingwei Luo",
+      "Dongrui Wu"
     ],
     "published": "2026-01-25",
     "updated": "2026-01-25",
     "categories": [
-      "cs.CV",
-      "cs.GR"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17733.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17733",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0,
-    "summary": {
-      "title_zh": "简化复杂性：基于组合式k-单元粒子的联合B-Rep生成",
-      "core_contribution": "提出了一种将边界表示（B-Rep）重构为组合式k-单元粒子集合的新范式，实现了拓扑与几何的联合生成，并增强了全局上下文感知能力。",
-      "method": "该方法将每个拓扑实体（如顶点、边、面）编码为一组组合粒子，相邻单元在其共享边界处使用相同的潜在表示，从而促进几何耦合。通过打破传统层级结构，统一表示不同阶的单元，并采用多模态流匹配框架来合成粒子集合，以支持无条件生成和条件生成任务。",
-      "findings": "实验表明，该方法能生成高保真、有效性更强的CAD模型，在编辑性上优于现有方法，并能直接合成非流形结构（如线框），同时自然地支持局部修复等下游任务。"
-    }
-  },
-  {
-    "id": "2601.17340",
-    "title": "TEXTS-Diff: TEXTS-Aware Diffusion Model for Real-World Text Image Super-Resolution",
-    "abstract": "Real-world text image super-resolution aims to restore overall visual quality and text legibility in images suffering from diverse degradations and text distortions. However, the scarcity of text image data in existing datasets results in poor performance on text regions. In addition, datasets consisting of isolated text samples limit the quality of background reconstruction. To address these limitations, we construct Real-Texts, a large-scale, high-quality dataset collected from real-world images, which covers diverse scenarios and contains natural text instances in both Chinese and English. Additionally, we propose the TEXTS-Aware Diffusion Model (TEXTS-Diff) to achieve high-quality generation in both background and textual regions. This approach leverages abstract concepts to improve the understanding of textual elements within visual scenes and concrete text regions to enhance textual details. It mitigates distortions and hallucination artifacts commonly observed in text regions, while preserving high-quality visual scene fidelity. Extensive experiments demonstrate that our method achieves state-of-the-art performance across multiple evaluation metrics, exhibiting superior generalization ability and text restoration accuracy in complex scenarios. All the code, model, and dataset will be released.",
-    "authors": [
-      "Haodong He",
-      "Xin Zhan",
-      "Yancheng Bai",
-      "Rui Lan",
-      "Lei Sun",
-      "Xiangxiang Chu"
-    ],
-    "published": "2026-01-24",
-    "updated": "2026-01-24",
-    "categories": [
+      "cs.LG",
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17340.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17340",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0,
+    "pdf_url": "https://arxiv.org/pdf/2601.17883.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17883",
+    "primary_category": "cs.LG",
+    "relevance_score": 1.0,
     "summary": {
-      "title_zh": "TEXTS-Diff：面向真实世界文本图像超分辨率的文本感知扩散模型",
-      "core_contribution": "本文构建了一个大规模高质量的真实世界文本图像数据集Real-Texts，并提出了一种文本感知扩散模型TEXTS-Diff，以同时提升背景和文本区域的超分辨率重建质量。",
-      "method": "该方法通过构建包含中英文自然文本实例的Real-Texts数据集，解决了现有数据集中文本图像稀缺和背景重建受限的问题。TEXTS-Diff模型利用抽象概念增强对视觉场景中文本元素的理解，并结合具体文本区域来细化文本细节。该设计旨在减少文本区域的失真和幻觉伪影，同时保持高质量的视觉场景保真度。",
-      "findings": "大量实验表明，该方法在多项评估指标上达到了最先进的性能，在复杂场景中表现出优异的泛化能力和文本恢复准确性。模型、代码及数据集将全部开源。"
-    }
-  },
-  {
-    "id": "2601.17228",
-    "title": "Semi-Supervised Domain Adaptation with Latent Diffusion for Pathology Image Classification",
-    "abstract": "Deep learning models in computational pathology often fail to generalize across cohorts and institutions due to domain shift. Existing approaches either fail to leverage unlabeled data from the target domain or rely on image-to-image translation, which can distort tissue structures and compromise model accuracy. In this work, we propose a semi-supervised domain adaptation (SSDA) framework that utilizes a latent diffusion model trained on unlabeled data from both the source and target domains to generate morphology-preserving and target-aware synthetic images. By conditioning the diffusion model on foundation model features, cohort identity, and tissue preparation method, we preserve tissue structure in the source domain while introducing target-domain appearance characteristics. The target-aware synthetic images, combined with real, labeled images from the source cohort, are subsequently used to train a downstream classifier, which is then tested on the target cohort. The effectiveness of the proposed SSDA framework is demonstrated on the task of lung adenocarcinoma prognostication. The proposed augmentation yielded substantially better performance on the held-out test set from the target cohort, without degrading source-cohort performance. The approach improved the weighted F1 score on the target-cohort held-out test set from 0.611 to 0.706 and the macro F1 score from 0.641 to 0.716. Our results demonstrate that target-aware diffusion-based synthetic data augmentation provides a promising and effective approach for improving domain generalization in computational pathology.",
-    "authors": [
-      "Tengyue Zhang",
-      "Ruiwen Ding",
-      "Luoting Zhuang",
-      "Yuxiao Wu",
-      "Erika F. Rodriguez",
-      "William Hsu"
-    ],
-    "published": "2026-01-23",
-    "updated": "2026-01-23",
-    "categories": [
-      "cs.CV",
-      "q-bio.QM"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17228.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17228",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0,
-    "summary": {
-      "title_zh": "基于潜在扩散的半监督域自适应方法用于病理图像分类",
-      "core_contribution": "提出了一种半监督域自适应框架，利用潜在扩散模型生成既保留源域组织结构、又具备目标域外观特征的合成图像，有效提升了计算病理学模型的域泛化能力。",
-      "method": "该方法在源域和目标域的未标记数据上训练一个潜在扩散模型，通过将基础模型特征、队列身份和组织制备方法作为条件输入，引导生成过程。生成的合成图像在保持源域组织结构的同时，引入了目标域的外观特性。随后，这些合成图像与源域的真实标记图像共同用于训练下游分类器。",
-      "findings": "在肺腺癌预后预测任务上的实验表明，该方法显著提升了模型在目标域测试集上的性能，且未损害源域性能。具体而言，目标域测试集的加权F1分数从0.611提升至0.706，宏观F1分数从0.641提升至0.716，证明了基于目标感知的扩散合成数据增强对于改善计算病理学域泛化的有效性和潜力。"
+      "title_zh": "脑电图基础模型：进展、基准测试与开放性问题",
+      "core_contribution": "本文首次对现有EEG基础模型进行了系统性的回顾与公平全面的基准测试，揭示了当前模型在跨被试泛化与少样本校准等实际场景中的表现与局限。",
+      "method": "首先回顾了50个代表性模型，将其设计选择统一归纳为数据标准化、模型架构和自监督预训练策略三个维度；随后在涵盖9种BCI范式的13个EEG数据集上，对12个开源基础模型及专业基线模型进行了评估，重点考察了留一被试跨被试泛化与少样本被试内校准两种实际部署场景，并对比了全参数微调与线性探测两种迁移策略。",
+      "findings": "实验结果表明：1）线性探测通常不足以充分迁移预训练表征；2）从头训练的专业模型在许多任务上仍具有竞争力；3）在当前数据规模和训练方式下，更大的基础模型未必带来更好的泛化性能。"
     }
   }
 ]
