@@ -111,14 +111,23 @@ def calculate_relevance(paper: dict, config: dict) -> float:
 
 
 def filter_papers(papers: list[dict], config: dict) -> list[dict]:
+    """基础筛选：按时间窗口 + 领域 + 关键词排序。
+
+    不负责“去重”，只负责：
+    - 只保留最近 N 天（这里是 30 天）
+    - 分类命中 config.categories
+    - 标题/摘要命中 keywords
+    然后按相关性打分排序。
+    """
+
     keywords = [kw.lower() for kw in config.get("keywords", [])]
     exclude = [ex.lower() for ex in config.get("exclude_keywords", [])]
     target_cats = set(config.get("categories", []))
-    
-    # 仅保留最近 24 小时内发布的论文
+
+    # 仅保留最近 30 天内发布的论文
     now = datetime.utcnow()
-    threshold = now - timedelta(days=1)
-    
+    threshold = now - timedelta(days=30)
+
     filtered = []
     for paper in papers:
         # arXiv published 字段格式为 YYYY-MM-DD
@@ -130,7 +139,7 @@ def filter_papers(papers: list[dict], config: dict) -> list[dict]:
             continue
 
         if pub_dt < threshold:
-            # 只看最近 24 小时
+            # 只看最近 30 天
             continue
 
         paper_cats = set(paper.get("categories", []))
@@ -149,9 +158,49 @@ def filter_papers(papers: list[dict], config: dict) -> list[dict]:
         filtered.append(paper)
     
     filtered.sort(key=lambda x: x["relevance_score"], reverse=True)
-    
-    max_papers = config.get("max_papers_per_day", 15)
-    return filtered[:max_papers]
+
+    return filtered
+
+
+def load_seen_ids() -> set[str]:
+    """载入已推送过的论文 ID 集合，用于避免重复推荐。"""
+    path = Path(__file__).parent.parent / "data" / "seen_ids.json"
+    if not path.exists():
+        return set()
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, list):
+            return set(str(x) for x in data)
+    except Exception:
+        return set()
+    return set()
+
+
+def save_seen_ids(seen: set[str]) -> None:
+    path = Path(__file__).parent.parent / "data" / "seen_ids.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(sorted(seen), f, ensure_ascii=False, indent=2)
+
+
+def select_unseen(papers: list[dict], seen: set[str], limit: int) -> tuple[list[dict], set[str]]:
+    """从已排序论文列表中选出未推送过的前 limit 篇。"""
+    selected: list[dict] = []
+    new_seen: set[str] = set()
+
+    for paper in papers:
+        pid = paper.get("id")
+        if not pid:
+            continue
+        if pid in seen:
+            continue
+        selected.append(paper)
+        new_seen.add(pid)
+        if len(selected) >= limit:
+            break
+
+    return selected, new_seen
 
 
 def save_papers(papers: list[dict], date_str: str):
@@ -172,13 +221,25 @@ def main():
     print(f"Fetching papers from categories: {config['categories']}")
     all_papers = fetch_arxiv_papers(config["categories"])
     print(f"Fetched {len(all_papers)} papers from arXiv")
-    
-    filtered = filter_papers(all_papers, config)
-    print(f"Filtered to {len(filtered)} relevant papers")
-    
+
+    base_filtered = filter_papers(all_papers, config)
+    print(f"Filtered to {len(base_filtered)} candidates in last 30 days")
+
+    seen = load_seen_ids()
+    limit = config.get("max_papers_per_day", 5)
+    today_papers, new_seen = select_unseen(base_filtered, seen, limit)
+    print(f"Selected {len(today_papers)} unseen papers (limit={limit})")
+
     today = datetime.now().strftime("%Y-%m-%d")
-    output_file = save_papers(filtered, today)
-    
+    output_file = save_papers(today_papers, today)
+
+    if new_seen:
+        updated_seen = seen.union(new_seen)
+        save_seen_ids(updated_seen)
+        print(f"Updated seen_ids.json with {len(new_seen)} new ids (total={len(updated_seen)})")
+    else:
+        print("No new unseen papers to add to seen_ids.json")
+
     return str(output_file)
 
 

@@ -42,7 +42,7 @@ exclude_keywords:
   - tumor
 
 # 每日最大论文数量
-max_papers_per_day: 10
+max_papers_per_day: 5
 
 # 相关性评分权重 (用于排序)
 relevance_weights:
