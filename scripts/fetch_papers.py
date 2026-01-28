@@ -120,9 +120,11 @@ def calculate_relevance(paper: dict, config: dict) -> float:
 
 
 def filter_papers(papers: list[dict], config: dict) -> list[dict]:
-    keywords = [kw.lower() for kw in config.get("keywords", [])]
-    exclude = [ex.lower() for ex in config.get("exclude_keywords", [])]
-    target_cats = set(config.get("categories", []))
+    """基础时间过滤：仅保留最近 30 天内的论文。
+
+    不再在这里做关键词/领域筛选，交给 DeepSeek 打分决定相关性，
+    这样第一次运行会对抓取到的 300 篇全部打分，之后只对新论文打分。
+    """
 
     # 仅保留最近 30 天内发布的论文
     now = datetime.utcnow()
@@ -142,23 +144,10 @@ def filter_papers(papers: list[dict], config: dict) -> list[dict]:
             # 只看最近 30 天
             continue
 
-        paper_cats = set(paper.get("categories", []))
-        if not paper_cats.intersection(target_cats):
-            continue
-        
-        text = (paper["title"] + " " + paper["abstract"]).lower()
-        
-        if any(ex in text for ex in exclude):
-            continue
-        
-        if keywords and not any(kw in text for kw in keywords):
-            continue
-        
-        paper["relevance_score"] = calculate_relevance(paper, config)
         filtered.append(paper)
-    
-    # 先按启发式相关性排序，后续再用 DeepSeek 分数细排
-    filtered.sort(key=lambda x: x["relevance_score"], reverse=True)
+
+    # 为无 DeepSeek 打分时的回退行为提供一个合理顺序：按发布时间降序
+    filtered.sort(key=lambda x: x.get("published", ""), reverse=True)
 
     return filtered
 
@@ -358,7 +347,8 @@ def main():
         pid = p.get("id")
         if pid in scores:
             return float(scores[pid])
-        return float(p.get("relevance_score", 0.0))
+        # 没有 DeepSeek 分数时退回到 0，由 filter_papers 的时间排序提供基础顺序
+        return 0.0
 
     ranked = sorted(base_filtered, key=paper_score, reverse=True)
 
