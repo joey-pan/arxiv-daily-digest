@@ -1,114 +1,150 @@
 [
   {
-    "id": "2601.17666",
-    "title": "Training-Free Text-to-Image Compositional Food Generation via Prompt Grafting",
-    "abstract": "Real-world meal images often contain multiple food items, making reliable compositional food image generation important for applications such as image-based dietary assessment, where multi-food data augmentation is needed, and recipe visualization. However, modern text-to-image diffusion models struggle to generate accurate multi-food images due to object entanglement, where adjacent foods (e.g., rice and soup) fuse together because many foods do not have clear boundaries. To address this challenge, we introduce Prompt Grafting (PG), a training-free framework that combines explicit spatial cues in text with implicit layout guidance during sampling. PG runs a two-stage process where a layout prompt first establishes distinct regions and the target prompt is grafted once layout formation stabilizes. The framework enables food entanglement control: users can specify which food items should remain separated or be intentionally mixed by editing the arrangement of layouts. Across two food datasets, our method significantly improves the presence of target objects and provides qualitative evidence of controllable separation.",
+    "id": "2601.17868",
+    "title": "VidLaDA: Bidirectional Diffusion Large Language Models for Efficient Video Understanding",
+    "abstract": "Standard Autoregressive Video LLMs inevitably suffer from causal masking biases that hinder global spatiotemporal modeling, leading to suboptimal understanding efficiency. We propose VidLaDA, a Video LLM based on Diffusion Language Model utilizing bidirectional attention to capture bidirectional dependencies. To further tackle the inference bottleneck of diffusion decoding on massive video tokens, we introduce MARS-Cache. This framework accelerates inference by combining asynchronous visual cache refreshing with frame-wise chunk attention, effectively pruning redundancy while preserving global connectivity via anchor tokens. Extensive experiments show VidLaDA outperforms diffusion baselines and rivals state-of-the-art autoregressive models (e.g., Qwen2.5-VL and LLaVA-Video), with MARS-Cache delivering over 12x speedup without compromising reasoning accuracy. Code and checkpoints are open-sourced at https://github.com/ziHoHe/VidLaDA.",
     "authors": [
-      "Xinyue Pan",
-      "Yuhao Chen",
-      "Fengqing Zhu"
+      "Zhihao He",
+      "Tieyuan Chen",
+      "Kangyu Wang",
+      "Ziran Qin",
+      "Yang Shao",
+      "Chaofan Gan",
+      "Shijie Li",
+      "Zuxuan Wu",
+      "Weiyao Lin"
+    ],
+    "published": "2026-01-25",
+    "updated": "2026-01-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.17868.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17868",
+    "primary_category": "cs.CV",
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "VidLaDA：基于双向扩散大语言模型的高效视频理解方法",
+      "core_contribution": "提出首个基于扩散语言模型的视频大语言模型（VidLaDA），通过双向注意力机制克服传统自回归模型的因果掩码偏差；并设计了MARS-Cache推理加速框架，在保持精度的同时显著提升解码速度。",
+      "method": "1. 采用扩散语言模型架构，利用双向注意力捕获视频时空序列中的全局依赖关系。2. 提出MARS-Cache框架，通过异步视觉缓存刷新机制动态更新关键特征。3. 结合帧级分块注意力与锚点令牌技术，在剪枝冗余信息的同时保持全局时空关联性。",
+      "findings": "1. VidLaDA在视频理解任务上超越现有扩散基线模型，性能媲美Qwen2.5-VL、LLaVA-Video等前沿自回归模型。2. MARS-Cache实现超过12倍的推理加速，且不影响模型推理精度。3. 开源代码与模型权重已发布。"
+    }
+  },
+  {
+    "id": "2601.17830",
+    "title": "VAE-REPA: Variational Autoencoder Representation Alignment for Efficient Diffusion Training",
+    "abstract": "Denoising-based diffusion transformers, despite their strong generation performance, suffer from inefficient training convergence. Existing methods addressing this issue, such as REPA (relying on external representation encoders) or SRA (requiring dual-model setups), inevitably incur heavy computational overhead during training due to external dependencies. To tackle these challenges, this paper proposes \\textbf{\\namex}, a lightweight intrinsic guidance framework for efficient diffusion training. \\name leverages off-the-shelf pre-trained Variational Autoencoder (VAE) features: their reconstruction property ensures inherent encoding of visual priors like rich texture details, structural patterns, and basic semantic information. Specifically, \\name aligns the intermediate latent features of diffusion transformers with VAE features via a lightweight projection layer, supervised by a feature alignment loss. This design accelerates training without extra representation encoders or dual-model maintenance, resulting in a simple yet effective pipeline. Extensive experiments demonstrate that \\name improves both generation quality and training convergence speed compared to vanilla diffusion transformers, matches or outperforms state-of-the-art acceleration methods, and incurs merely 4\\% extra GFLOPs with zero additional cost for external guidance models.",
+    "authors": [
+      "Mengmeng Wang",
+      "Dengyang Jiang",
+      "Liuzhuozheng Li",
+      "Yucheng Lin",
+      "Guojiang Shen",
+      "Xiangjie Kong",
+      "Yong Liu",
+      "Guang Dai",
+      "Jingdong Wang"
     ],
     "published": "2026-01-25",
     "updated": "2026-01-25",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17666.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17666",
+    "pdf_url": "https://arxiv.org/pdf/2601.17830.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17830",
     "primary_category": "cs.CV",
-    "relevance_score": 13.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "VAE-REPA：基于变分自编码器表征对齐的高效扩散模型训练",
+      "core_contribution": "提出了一种轻量级的内在引导框架VAE-REPA，通过将扩散变换器的中间特征与预训练VAE特征对齐，显著加速训练收敛，且无需依赖外部表征编码器或双模型架构。",
+      "method": "该方法利用现成的预训练变分自编码器（VAE）提取的特征，这些特征因VAE的重建特性而天然编码了丰富的纹理细节、结构模式和基础语义信息。通过一个轻量级的投影层，将扩散变换器的中间潜在特征与VAE特征进行对齐，并使用特征对齐损失进行监督。整个设计无需额外表征编码器或维护双模型，实现了简单高效的训练流程。",
+      "findings": "实验表明，VAE-REPA相比原始扩散变换器，在生成质量和训练收敛速度上均有提升；其性能匹配或优于现有先进的加速方法，且仅增加约4%的计算开销（GFLOPs），同时完全避免了外部引导模型带来的额外成本。"
+    }
   },
   {
-    "id": "2601.17259",
-    "title": "Inference-Time Loss-Guided Colour Preservation in Diffusion Sampling",
-    "abstract": "Precise color control remains a persistent failure mode in text-to-image diffusion systems, particularly in design-oriented workflows where outputs must satisfy explicit, user-specified color targets. We present an inference-time, region-constrained color preservation method that steers a pretrained diffusion model without any additional training. Our approach combines (i) ROI-based inpainting for spatial selectivity, (ii) background-latent re-imposition to prevent color drift outside the ROI, and (iii) latent nudging via gradient guidance using a composite loss defined in CIE Lab and linear RGB. The loss is constructed to control not only the mean ROI color but also the tail of the pixelwise error distribution through CVaR-style and soft-maximum penalties, with a late-start gate and a time-dependent schedule to stabilize guidance across denoising steps. We show that mean-only baselines can satisfy average color constraints while producing perceptually salient local failures, motivating our distribution-aware objective. The resulting method provides a practical, training-free mechanism for targeted color adherence that can be integrated into standard Stable Diffusion inpainting pipelines.",
+    "id": "2601.17733",
+    "title": "Flatten The Complex: Joint B-Rep Generation via Compositional $k$-Cell Particles",
+    "abstract": "Boundary Representation (B-Rep) is the widely adopted standard in Computer-Aided Design (CAD) and manufacturing. However, generative modeling of B-Reps remains a formidable challenge due to their inherent heterogeneity as geometric cell complexes, which entangles topology with geometry across cells of varying orders (i.e., $k$-cells such as vertices, edges, faces). Previous methods typically rely on cascaded sequences to handle this hierarchy, which fails to fully exploit the geometric relationships between cells, such as adjacency and sharing, limiting context awareness and error recovery. To fill this gap, we introduce a novel paradigm that reformulates B-Reps into sets of compositional $k$-cell particles. Our approach encodes each topological entity as a composition of particles, where adjacent cells share identical latents at their interfaces, thereby promoting geometric coupling along shared boundaries. By decoupling the rigid hierarchy, our representation unifies vertices, edges, and faces, enabling the joint generation of topology and geometry with global context awareness. We synthesize these particle sets using a multi-modal flow matching framework to handle unconditional generation as well as precise conditional tasks, such as 3D reconstruction from single-view or point cloud. Furthermore, the explicit and localized nature of our representation naturally extends to downstream tasks like local in-painting and enables the direct synthesis of non-manifold structures (e.g., wireframes). Extensive experiments demonstrate that our method produces high-fidelity CAD models with superior validity and editability compared to state-of-the-art methods.",
     "authors": [
-      "Angad Singh Ahuja",
-      "Aarush Ram Anandh"
+      "Junran Lu",
+      "Yuanqi Li",
+      "Hengji Li",
+      "Jie Guo",
+      "Yanwen Guo"
+    ],
+    "published": "2026-01-25",
+    "updated": "2026-01-25",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.17733.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17733",
+    "primary_category": "cs.CV",
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "简化复杂性：基于组合式k-单元粒子的联合B-Rep生成",
+      "core_contribution": "提出了一种将边界表示（B-Rep）重构为组合式k-单元粒子集合的新范式，实现了拓扑与几何的联合生成，并增强了全局上下文感知能力。",
+      "method": "该方法将每个拓扑实体（如顶点、边、面）编码为一组组合粒子，相邻单元在其共享边界处使用相同的潜在表示，从而促进几何耦合。通过打破传统层级结构，统一表示不同阶的单元，并采用多模态流匹配框架来合成粒子集合，以支持无条件生成和条件生成任务。",
+      "findings": "实验表明，该方法能生成高保真、有效性更强的CAD模型，在编辑性上优于现有方法，并能直接合成非流形结构（如线框），同时自然地支持局部修复等下游任务。"
+    }
+  },
+  {
+    "id": "2601.17340",
+    "title": "TEXTS-Diff: TEXTS-Aware Diffusion Model for Real-World Text Image Super-Resolution",
+    "abstract": "Real-world text image super-resolution aims to restore overall visual quality and text legibility in images suffering from diverse degradations and text distortions. However, the scarcity of text image data in existing datasets results in poor performance on text regions. In addition, datasets consisting of isolated text samples limit the quality of background reconstruction. To address these limitations, we construct Real-Texts, a large-scale, high-quality dataset collected from real-world images, which covers diverse scenarios and contains natural text instances in both Chinese and English. Additionally, we propose the TEXTS-Aware Diffusion Model (TEXTS-Diff) to achieve high-quality generation in both background and textual regions. This approach leverages abstract concepts to improve the understanding of textual elements within visual scenes and concrete text regions to enhance textual details. It mitigates distortions and hallucination artifacts commonly observed in text regions, while preserving high-quality visual scene fidelity. Extensive experiments demonstrate that our method achieves state-of-the-art performance across multiple evaluation metrics, exhibiting superior generalization ability and text restoration accuracy in complex scenarios. All the code, model, and dataset will be released.",
+    "authors": [
+      "Haodong He",
+      "Xin Zhan",
+      "Yancheng Bai",
+      "Rui Lan",
+      "Lei Sun",
+      "Xiangxiang Chu"
     ],
     "published": "2026-01-24",
     "updated": "2026-01-24",
     "categories": [
-      "cs.CV",
-      "cs.GR",
-      "cs.LG"
+      "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17259.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17259",
+    "pdf_url": "https://arxiv.org/pdf/2601.17340.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17340",
     "primary_category": "cs.CV",
-    "relevance_score": 7.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "TEXTS-Diff：面向真实世界文本图像超分辨率的文本感知扩散模型",
+      "core_contribution": "本文构建了一个大规模高质量的真实世界文本图像数据集Real-Texts，并提出了一种文本感知扩散模型TEXTS-Diff，以同时提升背景和文本区域的超分辨率重建质量。",
+      "method": "该方法通过构建包含中英文自然文本实例的Real-Texts数据集，解决了现有数据集中文本图像稀缺和背景重建受限的问题。TEXTS-Diff模型利用抽象概念增强对视觉场景中文本元素的理解，并结合具体文本区域来细化文本细节。该设计旨在减少文本区域的失真和幻觉伪影，同时保持高质量的视觉场景保真度。",
+      "findings": "大量实验表明，该方法在多项评估指标上达到了最先进的性能，在复杂场景中表现出优异的泛化能力和文本恢复准确性。模型、代码及数据集将全部开源。"
+    }
   },
   {
-    "id": "2601.17124",
-    "title": "iFSQ: Improving FSQ for Image Generation with 1 Line of Code",
-    "abstract": "The field of image generation is currently bifurcated into autoregressive (AR) models operating on discrete tokens and diffusion models utilizing continuous latents. This divide, rooted in the distinction between VQ-VAEs and VAEs, hinders unified modeling and fair benchmarking. Finite Scalar Quantization (FSQ) offers a theoretical bridge, yet vanilla FSQ suffers from a critical flaw: its equal-interval quantization can cause activation collapse. This mismatch forces a trade-off between reconstruction fidelity and information efficiency. In this work, we resolve this dilemma by simply replacing the activation function in original FSQ with a distribution-matching mapping to enforce a uniform prior. Termed iFSQ, this simple strategy requires just one line of code yet mathematically guarantees both optimal bin utilization and reconstruction precision. Leveraging iFSQ as a controlled benchmark, we uncover two key insights: (1) The optimal equilibrium between discrete and continuous representations lies at approximately 4 bits per dimension. (2) Under identical reconstruction constraints, AR models exhibit rapid initial convergence, whereas diffusion models achieve a superior performance ceiling, suggesting that strict sequential ordering may limit the upper bounds of generation quality. Finally, we extend our analysis by adapting Representation Alignment (REPA) to AR models, yielding LlamaGen-REPA. Codes is available at https://github.com/Tencent-Hunyuan/iFSQ",
+    "id": "2601.17228",
+    "title": "Semi-Supervised Domain Adaptation with Latent Diffusion for Pathology Image Classification",
+    "abstract": "Deep learning models in computational pathology often fail to generalize across cohorts and institutions due to domain shift. Existing approaches either fail to leverage unlabeled data from the target domain or rely on image-to-image translation, which can distort tissue structures and compromise model accuracy. In this work, we propose a semi-supervised domain adaptation (SSDA) framework that utilizes a latent diffusion model trained on unlabeled data from both the source and target domains to generate morphology-preserving and target-aware synthetic images. By conditioning the diffusion model on foundation model features, cohort identity, and tissue preparation method, we preserve tissue structure in the source domain while introducing target-domain appearance characteristics. The target-aware synthetic images, combined with real, labeled images from the source cohort, are subsequently used to train a downstream classifier, which is then tested on the target cohort. The effectiveness of the proposed SSDA framework is demonstrated on the task of lung adenocarcinoma prognostication. The proposed augmentation yielded substantially better performance on the held-out test set from the target cohort, without degrading source-cohort performance. The approach improved the weighted F1 score on the target-cohort held-out test set from 0.611 to 0.706 and the macro F1 score from 0.641 to 0.716. Our results demonstrate that target-aware diffusion-based synthetic data augmentation provides a promising and effective approach for improving domain generalization in computational pathology.",
     "authors": [
-      "Bin Lin",
-      "Zongjian Li",
-      "Yuwei Niu",
-      "Kaixiong Gong",
-      "Yunyang Ge",
-      "Yunlong Lin",
-      "Mingzhe Zheng",
-      "JianWei Zhang",
-      "Miles Yang",
-      "Zhao Zhong",
-      "Liefeng Bo",
-      "Li Yuan"
+      "Tengyue Zhang",
+      "Ruiwen Ding",
+      "Luoting Zhuang",
+      "Yuxiao Wu",
+      "Erika F. Rodriguez",
+      "William Hsu"
     ],
     "published": "2026-01-23",
-    "updated": "2026-01-27",
+    "updated": "2026-01-23",
     "categories": [
-      "cs.CV"
+      "cs.CV",
+      "q-bio.QM"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17124.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17124",
+    "pdf_url": "https://arxiv.org/pdf/2601.17228.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17228",
     "primary_category": "cs.CV",
-    "relevance_score": 7.0
-  },
-  {
-    "id": "2601.19785",
-    "title": "GeoDiff3D: Self-Supervised 3D Scene Generation with Geometry-Constrained 2D Diffusion Guidance",
-    "abstract": "3D scene generation is a core technology for gaming, film/VFX, and VR/AR. Growing demand for rapid iteration, high-fidelity detail, and accessible content creation has further increased interest in this area. Existing methods broadly follow two paradigms - indirect 2D-to-3D reconstruction and direct 3D generation - but both are limited by weak structural modeling and heavy reliance on large-scale ground-truth supervision, often producing structural artifacts, geometric inconsistencies, and degraded high-frequency details in complex scenes. We propose GeoDiff3D, an efficient self-supervised framework that uses coarse geometry as a structural anchor and a geometry-constrained 2D diffusion model to provide texture-rich reference images. Importantly, GeoDiff3D does not require strict multi-view consistency of the diffusion-generated references and remains robust to the resulting noisy, inconsistent guidance. We further introduce voxel-aligned 3D feature aggregation and dual self-supervision to maintain scene coherence and fine details while substantially reducing dependence on labeled data. GeoDiff3D also trains with low computational cost and enables fast, high-quality 3D scene generation. Extensive experiments on challenging scenes show improved generalization and generation quality over existing baselines, offering a practical solution for accessible and efficient 3D scene construction.",
-    "authors": [
-      "Haozhi Zhu",
-      "Miaomiao Zhao",
-      "Dingyao Liu",
-      "Runze Tian",
-      "Yan Zhang",
-      "Jie Guo",
-      "Fenggen Yu"
-    ],
-    "published": "2026-01-26",
-    "updated": "2026-01-26",
-    "categories": [
-      "cs.CV"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19785.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19785",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0
-  },
-  {
-    "id": "2601.19577",
-    "title": "MaDiS: Taming Masked Diffusion Language Models for Sign Language Generation",
-    "abstract": "Sign language generation (SLG) aims to translate written texts into expressive sign motions, bridging communication barriers for the Deaf and Hard-of-Hearing communities. Recent studies formulate SLG within the language modeling framework using autoregressive language models, which suffer from unidirectional context modeling and slow token-by-token inference. To address these limitations, we present MaDiS, a masked-diffusion-based language model for SLG that captures bidirectional dependencies and supports efficient parallel multi-token generation. We further introduce a tri-level cross-modal pretraining scheme that jointly learns from token-, latent-, and 3D physical-space objectives, leading to richer and more grounded sign representations. To accelerate model convergence in the fine-tuning stage, we design a novel unmasking strategy with temporal checkpoints, reducing the combinatorial complexity of unmasking orders by over $10^{41}$ times. In addition, a mixture-of-parts embedding layer is developed to effectively fuse information stored in different part-wise sign tokens through learnable gates and well-optimized codebooks. Extensive experiments on CSL-Daily, Phoenix-2014T, and How2Sign demonstrate that MaDiS achieves superior performance across multiple metrics, including DTW error and two newly introduced metrics, SiBLEU and SiCLIP, while reducing inference latency by nearly 30%. Code and models will be released on our project page.",
-    "authors": [
-      "Ronglai Zuo",
-      "Rolandos Alexandros Potamias",
-      "Qi Sun",
-      "Evangelos Ververas",
-      "Jiankang Deng",
-      "Stefanos Zafeiriou"
-    ],
-    "published": "2026-01-27",
-    "updated": "2026-01-27",
-    "categories": [
-      "cs.CV"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19577.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19577",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "基于潜在扩散的半监督域自适应方法用于病理图像分类",
+      "core_contribution": "提出了一种半监督域自适应框架，利用潜在扩散模型生成既保留源域组织结构、又具备目标域外观特征的合成图像，有效提升了计算病理学模型的域泛化能力。",
+      "method": "该方法在源域和目标域的未标记数据上训练一个潜在扩散模型，通过将基础模型特征、队列身份和组织制备方法作为条件输入，引导生成过程。生成的合成图像在保持源域组织结构的同时，引入了目标域的外观特性。随后，这些合成图像与源域的真实标记图像共同用于训练下游分类器。",
+      "findings": "在肺腺癌预后预测任务上的实验表明，该方法显著提升了模型在目标域测试集上的性能，且未损害源域性能。具体而言，目标域测试集的加权F1分数从0.611提升至0.706，宏观F1分数从0.641提升至0.716，证明了基于目标感知的扩散合成数据增强对于改善计算病理学域泛化的有效性和潜力。"
+    }
   }
 ]
