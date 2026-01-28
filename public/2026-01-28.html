@@ -200,7 +200,7 @@
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
         <p class="date">📅 2026-01-28</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 机器学习: 2</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
     </header>
     
     <main>
@@ -208,28 +208,28 @@
     <article class="paper-card">
       <div class="paper-header">
         <span class="category-badge">计算机视觉</span>
-        <span class="paper-id">2601.17673</span>
+        <span class="paper-id">2601.16836</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2601.17673" target="_blank">Uni-RS: A Spatially Faithful Unified Understanding and Generation Model for Remote Sensing</a>
+        <a href="https://arxiv.org/abs/2601.16836" target="_blank">ColorConceptBench: A Benchmark for Probabilistic Color-Concept Understanding in Text-to-Image Models</a>
       </h3>
-      <p class="paper-title-zh">Uni-RS：一种面向遥感、空间保真的统一理解与生成模型</p>
-      <p class="paper-authors">Weiyu Zhang, Yuan Hu, Yong Li, Yu Liu</p>
+      <p class="paper-title-zh">ColorConceptBench：一个用于评估文本到图像模型中概率性颜色-概念理解能力的基准</p>
+      <p class="paper-authors">Chenxi Ruan, Yu Xiao, Yihan Hou, Guosheng Hu, Wei Zeng</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了首个面向遥感领域的统一多模态模型Uni-RS，旨在显式解决遥感图像理解与生成任务之间的空间不对称性问题，即缓解现有模型在文本生成图像时难以忠实执行空间关系的“空间反转诅咒”。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先，引入显式的空间布局规划模块，将文本指令转化为空间布局规划，实现几何规划与视觉合成的解耦。其次，通过空间感知查询监督机制，使可学习查询偏向于指令中明确指定的空间关系。最后，开发图像-描述空间布局变换方法，让模型系统性地接触几何一致的空间变换数据以增强泛化能力。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多个基准测试上的实验表明，该方法显著提升了文本到图像生成任务中的空间忠实度，同时在图像描述、视觉定位、视觉问答等多模态理解任务上保持了强大的性能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个系统评估文本到图像模型对隐含颜色概念理解能力的人工标注基准，揭示了当前模型在抽象语义颜色关联上的根本性缺陷。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了包含1,281个隐含颜色概念和6,369个人工标注的数据集，通过概率性颜色分布而非显式颜色名称来评估模型。对七种主流文本到图像模型进行了系统性测试，并尝试了模型缩放、引导增强等标准干预措施。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 当前文本到图像模型对抽象语义的颜色关联缺乏敏感性，且这种局限性无法通过常规干预手段（如扩大模型规模或增强引导）有效改善，表明实现类人的颜色语义理解需要模型学习与表征隐含意义的方式发生根本性转变。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified remote sensing multimodal models exhibit a pronounced spatial reversal curse: Although they can accurately recognize and describe object locations in images, they often fail to faithfully execute the same spatial relations during text-to-image generation, where such relations constitute core semantic information in remote sensing. Motivated by this observation, we propose Uni-RS, the first unified multimodal model tailored for remote sensing, to explicitly address the spatial asymmetry between understanding and generation. Specifically, we first introduce explicit Spatial-Layout Planning to transform textual instructions into spatial layout plans, decoupling geometric planning from visual synthesis. We then impose Spatial-Aware Query Supervision to bias learnable queries toward spatial relations explicitly specified in the instruction. Finally, we develop Image-Caption Spatial Layout Variation to expose the model to systematic geometry-consistent spatial transformations. Extensive experiments across multiple benchmarks show that our approach substantially improves spatial faithfulness in text-to-image generation, while maintaining strong performance on multimodal understanding tasks like image captioning, visual grounding, and VQA tasks.</p>
+        <p>While text-to-image (T2I) models have advanced considerably, their capability to associate colors with implicit concepts remains underexplored. To address the gap, we introduce ColorConceptBench, a new human-annotated benchmark to systematically evaluate color-concept associations through the lens of probabilistic color distributions. ColorConceptBench moves beyond explicit color names or codes by probing how models translate 1,281 implicit color concepts using a foundation of 6,369 human annotations. Our evaluation of seven leading T2I models reveals that current models lack sensitivity to abstract semantics, and crucially, this limitation appears resistant to standard interventions (e.g., scaling and guidance). This demonstrates that achieving human-like color semantics requires more than larger models, but demands a fundamental shift in how models learn and represent implicit meaning.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2601.17673" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2601.17673.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2601.16836" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.16836.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -237,57 +237,28 @@
     <article class="paper-card">
       <div class="paper-header">
         <span class="category-badge">计算机视觉</span>
-        <span class="paper-id">2601.19606</span>
+        <span class="paper-id">2601.19433</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2601.19606" target="_blank">GMS-CAVP: Improving Audio-Video Correspondence with Multi-Scale Contrastive and Generative Pretraining</a>
+        <a href="https://arxiv.org/abs/2601.19433" target="_blank">RoamScene3D: Immersive Text-to-3D Scene Generation via Adaptive Object-aware Roaming</a>
       </h3>
-      <p class="paper-title-zh">GMS-CAVP：通过多尺度对比与生成式预训练改进音视频对应关系</p>
-      <p class="paper-authors">Shentong Mo, Zehua Chen, Jun Zhu</p>
+      <p class="paper-title-zh">RoamScene3D：通过自适应对象感知漫游实现沉浸式文本到3D场景生成</p>
+      <p class="paper-authors">Jisheng Chu, Wenrui Li, Rui Zhao, Wangmeng Zuo, Shifeng Chen 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种结合多尺度对比学习和扩散生成目标的新型音视频对应建模框架，显著提升了跨模态检索与生成任务的性能。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先，设计多尺度对比学习策略，从细粒度到粗粒度捕捉音视频的语义与时序对应关系；其次，引入基于扩散模型的生成目标，实现音视频间的跨模态转换与合成；最终通过判别与生成目标的统一框架，促进更深层次的跨模态理解。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在VGGSound、AudioSet和Panda70M数据集上的实验表明，GMS-CAVP在生成与检索任务上均优于现有方法，验证了多尺度建模与生成式目标对提升音视频对应关系的有效性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了RoamScene3D框架，通过语义推理与几何约束相结合，解决了现有方法在生成3D场景时存在的空间盲区、轨迹僵化以及遮挡内容推断困难的问题，显著提升了场景的一致性与真实感。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先，利用视觉语言模型构建编码对象关系的场景图，以指导相机感知显著对象边界并规划自适应的漫游轨迹。其次，针对静态2D先验的不足，提出了运动注入修复模型，该模型在集成了真实相机轨迹的合成全景数据集上进行微调，从而能够适应相机运动，更合理地填充因视角变化产生的空洞。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，该方法在生成一致且逼真的3D场景方面显著优于现有先进方法。通过语义推理和几何约束的有效结合，RoamScene3D能够更好地理解场景语义布局，并自适应地探索场景以推断被遮挡的内容。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Recent advances in video-audio (V-A) understanding and generation have increasingly relied on joint V-A embeddings, which serve as the foundation for tasks such as cross-modal retrieval and generation. While prior methods like CAVP effectively model semantic and temporal correspondences between modalities using contrastive objectives, their performance remains suboptimal. A key limitation is the insufficient modeling of the dense, multi-scale nature of both video and audio signals, correspondences often span fine- to coarse-grained spatial-temporal structures, which are underutilized in existing frameworks. To this end, we propose GMS-CAVP, a novel framework that combines Multi-Scale Video-Audio Alignment and Multi-Scale Spatial-Temporal Diffusion-based pretraining objectives to enhance V-A correspondence modeling. First, GMS-CAVP introduces a multi-scale contrastive learning strategy that captures semantic and temporal relations across varying granularities. Second, we go beyond traditional contrastive learning by incorporating a diffusion-based generative objective, enabling modality translation and synthesis between video and audio. This unified discriminative-generative formulation facilitates deeper cross-modal understanding and paves the way for high-fidelity generation. Extensive experiments on VGGSound, AudioSet, and Panda70M demonstrate that GMS-CAVP outperforms previous methods in generation and retrieval.</p>
+        <p>Generating immersive 3D scenes from texts is a core task in computer vision, crucial for applications in virtual reality and game development. Despite the promise of leveraging 2D diffusion priors, existing methods suffer from spatial blindness and rely on predefined trajectories that fail to exploit the inner relationships among salient objects. Consequently, these approaches are unable to comprehend the semantic layout, preventing them from exploring the scene adaptively to infer occluded content. Moreover, current inpainting models operate in 2D image space, struggling to plausibly fill holes caused by camera motion. To address these limitations, we propose RoamScene3D, a novel framework that bridges the gap between semantic guidance and spatial generation. Our method reasons about the semantic relations among objects and produces consistent and photorealistic scenes. Specifically, we employ a vision-language model (VLM) to construct a scene graph that encodes object relations, guiding the camera to perceive salient object boundaries and plan an adaptive roaming trajectory. Furthermore, to mitigate the limitations of static 2D priors, we introduce a Motion-Injected Inpainting model that is fine-tuned on a synthetic panoramic dataset integrating authentic camera trajectories, making it adaptive to camera motion. Extensive experiments demonstrate that with semantic reasoning and geometric constraints, our method significantly outperforms state-of-the-art approaches in producing consistent and photorealistic scenes. Our code is available at https://github.com/JS-CHU/RoamScene3D.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2601.19606" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2601.19606.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <span class="category-badge">机器学习</span>
-        <span class="paper-id">2601.17917</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2601.17917" target="_blank">Streaming-dLLM: Accelerating Diffusion LLMs via Suffix Pruning and Dynamic Decoding</a>
-      </h3>
-      <p class="paper-title-zh">Streaming-dLLM：通过后缀剪枝与动态解码加速扩散大语言模型</p>
-      <p class="paper-authors">Zhongyu Xiao, Zhiwei Hao, Jianyuan Guo, Yong Luo, Jia Liu 等 (7 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了Streaming-dLLM，一个无需训练即可在空间和时间维度上同时优化扩散大语言模型推理效率的框架，通过剪枝冗余后缀标记和动态调整去噪过程来显著加速生成。</div>
-        <div class="summary-section"><strong>方法:</strong> 在空间维度上，引入衰减引导的后缀建模，通过剪枝信息稀疏的后缀区域中的冗余掩码标记来近似完整上下文；在时间维度上，采用动态置信度感知策略与提前退出机制，允许模型对已收敛的标记跳过不必要的去噪迭代。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Streaming-dLLM在保持生成质量的同时，最高可实现68.2倍的推理加速，有效解决了扩散解码过程中的空间冗余与时间效率低下的问题。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Diffusion Large Language Models (dLLMs) offer a compelling paradigm for natural language generation, leveraging parallel decoding and bidirectional attention to achieve superior global coherence compared to autoregressive models. While recent works have accelerated inference via KV cache reuse or heuristic decoding, they overlook the intrinsic inefficiencies within the block-wise diffusion process. Specifically, they suffer from spatial redundancy by modeling informative-sparse suffix regions uniformly and temporal inefficiency by applying fixed denoising schedules across all the decoding process. To address this, we propose Streaming-dLLM, a training-free framework that streamlines inference across both spatial and temporal dimensions. Spatially, we introduce attenuation guided suffix modeling to approximate the full context by pruning redundant mask tokens. Temporally, we employ a dynamic confidence aware strategy with an early exit mechanism, allowing the model to skip unnecessary iterations for converged tokens. Extensive experiments show that Streaming-dLLM achieves up to 68.2X speedup while maintaining generation quality, highlighting its effectiveness in diffusion decoding. The code is available at https://github.com/xiaoshideta/Streaming-dLLM.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2601.17917" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2601.17917.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2601.19433" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.19433.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -295,57 +266,86 @@
     <article class="paper-card">
       <div class="paper-header">
         <span class="category-badge">计算机视觉</span>
-        <span class="paper-id">2601.17857</span>
+        <span class="paper-id">2601.18585</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2601.17857" target="_blank">SynMind: Reducing Semantic Hallucination in fMRI-Based Image Reconstruction</a>
+        <a href="https://arxiv.org/abs/2601.18585" target="_blank">GimmBO: Interactive Generative Image Model Merging via Bayesian Optimization</a>
       </h3>
-      <p class="paper-title-zh">SynMind：减少基于fMRI的图像重建中的语义幻觉</p>
-      <p class="paper-authors">Lan Yang, Minghan Yang, Ke Li, Honggang Zhang, Kaiyue Pang 等 (6 位作者)</p>
+      <p class="paper-title-zh">GimmBO：基于贝叶斯优化的交互式生成图像模型融合</p>
+      <p class="paper-authors">Chenxi Liu, Selena Ling, Alec Jacobson</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出SynMind框架，通过将fMRI信号解析为明确的、句子级别的语义描述，显著减少了图像重建中的语义错位问题，实现了更符合人类视觉感知的重建结果。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法首先利用基于视觉语言模型生成合成、类人的多粒度文本表示，以捕获目标图像的物体身份和空间结构；然后将这些明确的语义编码与视觉先验结合，共同作为预训练扩散模型的条件输入，从而在重建过程中分离语义推理与外观生成。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，SynMind在多数定量指标上优于现有方法，且仅使用较小的Stable Diffusion 1.4模型和单张消费级GPU即可超越基于SDXL的对比方法；大规模人工评估证实其重建结果与人类视觉感知更一致；神经可视化分析显示，SynMind激活了更广泛且语义相关的大脑区域，减少了对高级视觉区域的过度依赖。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个名为GimmBO的交互式系统，通过偏好贝叶斯优化（PBO）帮助用户高效探索扩散模型适配器（adapter）的权重融合空间，解决了手动调节权重时维度灾难和效率低下的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法采用两阶段贝叶斯优化后端：首先，针对真实使用中观察到的权重稀疏性和范围受限特性，设计了一种高效的采样策略；其次，通过交互式偏好反馈引导优化过程，使用户能够以直观的偏好比较（而非精确数值）来探索高维权重组合空间。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，GimmBO在模拟用户测试和真实用户研究中均表现出更快的收敛速度、更高的成功率，且显著优于传统贝叶斯优化和线性搜索基线；框架还展示了良好的扩展性，可支持多种适配器融合场景。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Recent advances in fMRI-based image reconstruction have achieved remarkable photo-realistic fidelity. Yet, a persistent limitation remains: while reconstructed images often appear naturalistic and holistically similar to the target stimuli, they frequently suffer from severe semantic misalignment -- salient objects are often replaced or hallucinated despite high visual quality. In this work, we address this limitation by rethinking the role of explicit semantic interpretation in fMRI decoding. We argue that existing methods rely too heavily on entangled visual embeddings which prioritize low-level appearance cues -- such as texture and global gist -- over explicit semantic identity. To overcome this, we parse fMRI signals into rich, sentence-level semantic descriptions that mirror the hierarchical and compositional nature of human visual understanding. We achieve this by leveraging grounded VLMs to generate synthetic, human-like, multi-granularity textual representations that capture object identities and spatial organization. Built upon this foundation, we propose SynMind, a framework that integrates these explicit semantic encodings with visual priors to condition a pretrained diffusion model. Extensive experiments demonstrate that SynMind outperforms state-of-the-art methods across most quantitative metrics. Notably, by offloading semantic reasoning to our text-alignment module, SynMind surpasses competing methods based on SDXL while using the much smaller Stable Diffusion 1.4 and a single consumer GPU. Large-scale human evaluations further confirm that SynMind produces reconstructions more consistent with human visual perception. Neurovisualization analyses reveal that SynMind engages broader and more semantically relevant brain regions, mitigating the over-reliance on high-level visual areas.</p>
+        <p>Fine-tuning-based adaptation is widely used to customize diffusion-based image generation, leading to large collections of community-created adapters that capture diverse subjects and styles. Adapters derived from the same base model can be merged with weights, enabling the synthesis of new visual results within a vast and continuous design space. To explore this space, current workflows rely on manual slider-based tuning, an approach that scales poorly and makes weight selection difficult, even when the candidate set is limited to 20-30 adapters. We propose GimmBO to support interactive exploration of adapter merging for image generation through Preferential Bayesian Optimization (PBO). Motivated by observations from real-world usage, including sparsity and constrained weight ranges, we introduce a two-stage BO backend that improves sampling efficiency and convergence in high-dimensional spaces. We evaluate our approach with simulated users and a user study, demonstrating improved convergence, high success rates, and consistent gains over BO and line-search baselines, and further show the flexibility of the framework through several extensions.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2601.17857" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2601.17857.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2601.18585" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18585.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
 
     <article class="paper-card">
       <div class="paper-header">
-        <span class="category-badge">机器学习</span>
-        <span class="paper-id">2601.17883</span>
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.16981</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2601.17883" target="_blank">EEG Foundation Models: Progresses, Benchmarking, and Open Problems</a>
+        <a href="https://arxiv.org/abs/2601.16981" target="_blank">SyncLight: Controllable and Consistent Multi-View Relighting</a>
       </h3>
-      <p class="paper-title-zh">脑电图基础模型：进展、基准测试与开放性问题</p>
-      <p class="paper-authors">Dingkun Liu, Yuheng Chen, Zhu Chen, Zhenyao Cui, Yaozhi Wen 等 (8 位作者)</p>
+      <p class="paper-title-zh">SyncLight：可控且一致的多视角重光照</p>
+      <p class="paper-authors">David Serrano-Lozano, Anand Bhattad, Luis Herranz, Jean-François Lalonde, Javier Vazquez-Corral</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文首次对现有EEG基础模型进行了系统性的回顾与公平全面的基准测试，揭示了当前模型在跨被试泛化与少样本校准等实际场景中的表现与局限。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先回顾了50个代表性模型，将其设计选择统一归纳为数据标准化、模型架构和自监督预训练策略三个维度；随后在涵盖9种BCI范式的13个EEG数据集上，对12个开源基础模型及专业基线模型进行了评估，重点考察了留一被试跨被试泛化与少样本被试内校准两种实际部署场景，并对比了全参数微调与线性探测两种迁移策略。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明：1）线性探测通常不足以充分迁移预训练表征；2）从头训练的专业模型在许多任务上仍具有竞争力；3）在当前数据规模和训练方式下，更大的基础模型未必带来更好的泛化性能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个能够在未标定的多视角静态场景图像中实现参数化、一致重光照的方法，解决了现有生成方法在多视角应用中难以保持严格光照一致性的关键问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法采用基于潜在桥匹配公式训练的多视角扩散Transformer模型，通过单次推理即可对整个图像集进行高保真重光照。训练使用了一个大规模混合数据集，包含多样化的合成环境（来自现有资源和新设计场景）以及在标定光照下的高保真实世界多视角采集数据。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 尽管仅使用图像对进行训练，SyncLight能够零样本泛化到任意数量的视角，有效地将光照变化传播到所有视图中，且无需相机位姿信息。这为多视角采集系统实现了实用的重光照工作流程。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Electroencephalography (EEG) foundation models have recently emerged as a promising paradigm for brain-computer interfaces (BCIs), aiming to learn transferable neural representations from large-scale heterogeneous recordings. Despite rapid progresses, there lacks fair and comprehensive comparisons of existing EEG foundation models, due to inconsistent pre-training objectives, preprocessing choices, and downstream evaluation protocols. This paper fills this gap. We first review 50 representative models and organize their design choices into a unified taxonomic framework including data standardization, model architectures, and self-supervised pre-training strategies. We then evaluate 12 open-source foundation models and competitive specialist baselines across 13 EEG datasets spanning nine BCI paradigms. Emphasizing real-world deployments, we consider both cross-subject generalization under a leave-one-subject-out protocol and rapid calibration under a within-subject few-shot setting. We further compare full-parameter fine-tuning with linear probing to assess the transferability of pre-trained representations, and examine the relationship between model scale and downstream performance. Our results indicate that: 1) linear probing is frequently insufficient; 2) specialist models trained from scratch remain competitive across many tasks; and, 3) larger foundation models do not necessarily yield better generalization performance under current data regimes and training practices.</p>
+        <p>We present SyncLight, the first method to enable consistent, parametric relighting across multiple uncalibrated views of a static scene. While single-view relighting has advanced significantly, existing generative approaches struggle to maintain the rigorous lighting consistency essential for multi-camera broadcasts, stereoscopic cinema, and virtual production. SyncLight addresses this by enabling precise control over light intensity and color across a multi-view capture of a scene, conditioned on a single reference edit. Our method leverages a multi-view diffusion transformer trained using a latent bridge matching formulation, achieving high-fidelity relighting of the entire image set in a single inference step. To facilitate training, we introduce a large-scale hybrid dataset comprising diverse synthetic environments -- curated from existing sources and newly designed scenes -- alongside high-fidelity, real-world multi-view captures under calibrated illumination. Surprisingly, though trained only on image pairs, SyncLight generalizes zero-shot to an arbitrary number of viewpoints, effectively propagating lighting changes across all views, without requiring camera pose information. SyncLight enables practical relighting workflows for multi-view capture systems.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2601.17883" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2601.17883.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2601.16981" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.16981.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.19717</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.19717" target="_blank">DiffStyle3D: Consistent 3D Gaussian Stylization via Attention Optimization</a>
+      </h3>
+      <p class="paper-title-zh">DiffStyle3D：通过注意力优化实现一致的3D高斯风格化</p>
+      <p class="paper-authors">Yitong Yang, Xuexin Liu, Yinglin Wang, Jing Wang, Hao Dou 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种基于扩散模型的新型3D高斯风格化范式，通过直接在潜在空间进行优化，解决了现有方法在保持多视图一致性方面的不足。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法首先引入注意力感知损失，通过在自注意力空间对齐风格特征并保留内容特征来实现风格迁移。其次，受3D风格化几何不变性启发，提出几何引导的多视图一致性方法，将几何信息融入自注意力以建模跨视图对应关系。此外，基于几何信息构建几何感知掩码，避免多视图重叠区域的冗余优化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，DiffStyle3D在风格化质量和视觉真实感方面均优于现有先进方法，能够生成更一致且高质量的风格化3D内容。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>3D style transfer enables the creation of visually expressive 3D content, enriching the visual appearance of 3D scenes and objects. However, existing VGG- and CLIP-based methods struggle to model multi-view consistency within the model itself, while diffusion-based approaches can capture such consistency but rely on denoising directions, leading to unstable training. To address these limitations, we propose DiffStyle3D, a novel diffusion-based paradigm for 3DGS style transfer that directly optimizes in the latent space. Specifically, we introduce an Attention-Aware Loss that performs style transfer by aligning style features in the self-attention space, while preserving original content through content feature alignment. Inspired by the geometric invariance of 3D stylization, we propose a Geometry-Guided Multi-View Consistency method that integrates geometric information into self-attention to enable cross-view correspondence modeling. Based on geometric information, we additionally construct a geometry-aware mask to prevent redundant optimization in overlapping regions across views, which further improves multi-view consistency. Extensive experiments show that DiffStyle3D outperforms state-of-the-art methods, achieving higher stylization quality and visual realism.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.19717" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.19717.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
