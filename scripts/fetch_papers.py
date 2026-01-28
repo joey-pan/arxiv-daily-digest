@@ -216,22 +216,36 @@ def save_scores(scores: dict[str, int]) -> None:
         json.dump(scores, f, ensure_ascii=False, indent=2)
 
 
-RANK_PROMPT_TEMPLATE = """你是一个论文筛选与打分助手，请基于以下信息判断论文是否\"高度符合\"用户的兴趣。
+RANK_PROMPT_TEMPLATE = """你是一个论文筛选与打分助手，请基于以下信息判断论文是否"高度符合"用户的兴趣。
+
 请严格遵循下面的兴趣画像：
+
 {profile}
+
 打分标准（0-100 分）：
-- 80-100：与图形/视觉设计、布局生成、text-to-image 等紧密相关，方法实用、可用于构建工具或系统。
-- 40-79：与图像生成、多模态、视觉美学等相关，但与图形设计/布局生成的直接联系较弱或不清晰。
-- 0-39：医学影像或与图形设计无关的方向（如纯医学、临床、MRI/CT、肿瘤等）应尽量给低分。
-请只根据标题和摘要进行判断。
+- 80-100：与Graphic Design、Design Intelligence、Layout Generation、text-to-image 等紧密相关，方法实用、可用于构建工具或系统。
+- 40-79：与图像生成、多模态、视觉美学等相关，但与Graphic Design/Design Intelligence/Layout Generation的直接联系较弱或不清晰。
+- 0-39：医学影像或其他无关的方向（如纯医学、临床、MRI/CT、肿瘤等）应尽量给低分。
+
+在主题相关性的基础上，如果作者列表中包含在图像生成 / 视觉生成 / 生成式模型领域有明显影响力的研究者或团队
+（例如在顶会/领域内经常出现、你非常熟悉的名字），可以适当上调分数（例如 +5~15 分），但总分仍需控制在 0-100 范围内。
+
+请主要依据："是否值得向一名做Graphic Design/Design Intelligence/Layout Generation的研究生重点推荐" 来给出综合分数。
+
 论文标题: {title}
+
+作者列表: {authors}
+
 论文摘要:
 {abstract}
+
 现在请**只输出一个 JSON 对象**，不要输出任何解释文字、不要使用代码块、不要添加额外内容。
 JSON 格式严格如下（注意 score 必须是 0 到 100 之间的整数）：
+
 {{
   "score": 0-100
-}}"""
+}}
+"""
 
 
 def create_ds_client(config: dict):
@@ -249,9 +263,11 @@ def create_ds_client(config: dict):
 
 def score_with_deepseek(client: OpenAI, paper: dict, config: dict):
     profile = config.get("preference", {}).get("profile") or ""
+    authors_str = ", ".join(paper.get("authors", []))
     prompt = RANK_PROMPT_TEMPLATE.format(
         profile=profile,
         title=paper.get("title", ""),
+        authors=authors_str,
         abstract=paper.get("abstract", ""),
     )
 
