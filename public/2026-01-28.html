@@ -200,11 +200,155 @@
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
         <p class="date">📅 2026-01-28</p>
-        <p class="stats">共 0 篇论文 | </p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
     </header>
     
     <main>
         
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.19785</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.19785" target="_blank">GeoDiff3D: Self-Supervised 3D Scene Generation with Geometry-Constrained 2D Diffusion Guidance</a>
+      </h3>
+      <p class="paper-title-zh">GeoDiff3D：基于几何约束的2D扩散引导的自监督3D场景生成</p>
+      <p class="paper-authors">Haozhi Zhu, Miaomiao Zhao, Dingyao Liu, Runze Tian, Yan Zhang 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个高效的自监督框架GeoDiff3D，它利用粗糙几何作为结构锚点，并通过几何约束的2D扩散模型提供纹理丰富的参考图像，显著降低了对大规模真实标注数据的依赖。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法首先使用粗糙几何体作为场景的结构基础；然后通过一个几何约束的2D扩散模型生成多视角的纹理参考图像，且不严格要求这些图像之间具有严格的一致性；最后通过体素对齐的3D特征聚合和双重自监督机制，整合多视角信息并保持场景的连贯性与细节。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在复杂场景上的大量实验表明，GeoDiff3D相比现有基线方法，在生成质量和泛化能力上均有提升，能有效减少结构伪影和几何不一致问题，同时以较低的计算成本实现快速、高质量的3D场景生成。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>3D scene generation is a core technology for gaming, film/VFX, and VR/AR. Growing demand for rapid iteration, high-fidelity detail, and accessible content creation has further increased interest in this area. Existing methods broadly follow two paradigms - indirect 2D-to-3D reconstruction and direct 3D generation - but both are limited by weak structural modeling and heavy reliance on large-scale ground-truth supervision, often producing structural artifacts, geometric inconsistencies, and degraded high-frequency details in complex scenes. We propose GeoDiff3D, an efficient self-supervised framework that uses coarse geometry as a structural anchor and a geometry-constrained 2D diffusion model to provide texture-rich reference images. Importantly, GeoDiff3D does not require strict multi-view consistency of the diffusion-generated references and remains robust to the resulting noisy, inconsistent guidance. We further introduce voxel-aligned 3D feature aggregation and dual self-supervision to maintain scene coherence and fine details while substantially reducing dependence on labeled data. GeoDiff3D also trains with low computational cost and enables fast, high-quality 3D scene generation. Extensive experiments on challenging scenes show improved generalization and generation quality over existing baselines, offering a practical solution for accessible and efficient 3D scene construction.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.19785" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.19785.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.19577</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.19577" target="_blank">MaDiS: Taming Masked Diffusion Language Models for Sign Language Generation</a>
+      </h3>
+      <p class="paper-title-zh">MaDiS：驾驭掩码扩散语言模型用于手语生成</p>
+      <p class="paper-authors">Ronglai Zuo, Rolandos Alexandros Potamias, Qi Sun, Evangelos Ververas, Jiankang Deng 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种基于掩码扩散的手语生成语言模型（MaDiS），通过双向依赖建模和并行多令牌生成，解决了自回归模型单向上下文建模和推理速度慢的问题，并引入了一种三层次跨模态预训练方案以学习更丰富的表示。</div>
+        <div class="summary-section"><strong>方法:</strong> MaDiS采用掩码扩散语言模型框架，通过预测被掩码的令牌来捕获双向上下文依赖，支持并行生成多个令牌以加速推理。模型设计了三层次跨模态预训练（令牌空间、潜在空间和3D物理空间），并提出了带时间检查点的去掩码策略以大幅降低训练复杂度，同时使用混合部件嵌入层通过可学习门控和优化码本融合不同身体部位的令牌信息。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在CSL-Daily、Phoenix-2014T和How2Sign数据集上的实验表明，MaDiS在DTW误差以及新提出的SiBLEU和SiCLIP等多个指标上均取得优越性能，同时将推理延迟降低了近30%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Sign language generation (SLG) aims to translate written texts into expressive sign motions, bridging communication barriers for the Deaf and Hard-of-Hearing communities. Recent studies formulate SLG within the language modeling framework using autoregressive language models, which suffer from unidirectional context modeling and slow token-by-token inference. To address these limitations, we present MaDiS, a masked-diffusion-based language model for SLG that captures bidirectional dependencies and supports efficient parallel multi-token generation. We further introduce a tri-level cross-modal pretraining scheme that jointly learns from token-, latent-, and 3D physical-space objectives, leading to richer and more grounded sign representations. To accelerate model convergence in the fine-tuning stage, we design a novel unmasking strategy with temporal checkpoints, reducing the combinatorial complexity of unmasking orders by over $10^{41}$ times. In addition, a mixture-of-parts embedding layer is developed to effectively fuse information stored in different part-wise sign tokens through learnable gates and well-optimized codebooks. Extensive experiments on CSL-Daily, Phoenix-2014T, and How2Sign demonstrate that MaDiS achieves superior performance across multiple metrics, including DTW error and two newly introduced metrics, SiBLEU and SiCLIP, while reducing inference latency by nearly 30%. Code and models will be released on our project page.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.19577" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.19577.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18260</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18260" target="_blank">Depth to Anatomy: Learning Internal Organ Locations from Surface Depth Images</a>
+      </h3>
+      <p class="paper-title-zh">从深度到解剖：基于体表深度图像学习内部器官定位</p>
+      <p class="paper-authors">Eytan Kats, Kai Geissler, Daniel Mensing, Jochen G. Hirsch, Stefan Heldman 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一个基于学习的框架，能够直接从单张体表二维深度图像预测多个内部器官的三维位置和形状，为自动化患者摆位提供新方法。</div>
+        <div class="summary-section"><strong>方法:</strong> 利用大规模全身MRI扫描数据集，合成与解剖分割结果配对的深度图像；采用统一的卷积神经网络架构进行训练，无需显式进行表面重建；该方法能够同时定位骨骼和软组织等多种解剖结构。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明，该方法能准确预测多种内部器官的位置与形状，验证了将深度传感器集成到放射学工作流程中以优化扫描程序、通过自动化患者摆位提升患者体验的潜力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Automated patient positioning plays an important role in optimizing scanning procedure and improving patient throughput. Leveraging depth information captured by RGB-D cameras presents a promising approach for estimating internal organ positions, thereby enabling more accurate and efficient positioning. In this work, we propose a learning-based framework that directly predicts the 3D locations and shapes of multiple internal organs from single 2D depth images of the body surface. Utilizing a large-scale dataset of full-body MRI scans, we synthesize depth images paired with corresponding anatomical segmentations to train a unified convolutional neural network architecture. Our method accurately localizes a diverse set of anatomical structures, including bones and soft tissues, without requiring explicit surface reconstruction. Experimental results demonstrate the potential of integrating depth sensors into radiology workflows to streamline scanning procedures and enhance patient experience through automated patient positioning.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18260" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18260.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.18168</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.18168" target="_blank">TempDiffReg: Temporal Diffusion Model for Non-Rigid 2D-3D Vascular Registration</a>
+      </h3>
+      <p class="paper-title-zh">TempDiffReg：用于非刚性2D-3D血管配准的时序扩散模型</p>
+      <p class="paper-authors">Zehua Liu, Shihao Zou, Jincai Huang, Yanfang Zhang, Chao Tong 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种从粗到细的血管配准策略，通过引入结构感知透视n点（SA-PnP）全局对齐模块和时序扩散模型（TempDiffReg），显著提升了经动脉化疗栓塞术（TACE）中2D-3D血管配准的准确性与解剖合理性。</div>
+        <div class="summary-section"><strong>方法:</strong> 方法采用从粗到细的两阶段策略：首先，使用结构感知透视n点（SA-PnP）模块进行全局对齐，建立2D与3D血管结构的对应关系；其次，提出时序扩散模型（TempDiffReg），该模型利用时序上下文信息迭代地进行血管形变，以捕捉复杂的解剖变异和局部结构变化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在包含23名患者、626个多帧配对样本的数据集上，该方法在配准精度和解剖合理性上均优于现有最优方法。具体而言，其均方误差（MSE）为0.63毫米，平均绝对误差（MAE）为0.51毫米，相比最具竞争力的现有方法，MSE降低了66.7%，MAE降低了17.7%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Transarterial chemoembolization (TACE) is a preferred treatment option for hepatocellular carcinoma and other liver malignancies, yet it remains a highly challenging procedure due to complex intra-operative vascular navigation and anatomical variability. Accurate and robust 2D-3D vessel registration is essential to guide microcatheter and instruments during TACE, enabling precise localization of vascular structures and optimal therapeutic targeting. To tackle this issue, we develop a coarse-to-fine registration strategy. First, we introduce a global alignment module, structure-aware perspective n-point (SA-PnP), to establish correspondence between 2D and 3D vessel structures. Second, we propose TempDiffReg, a temporal diffusion model that performs vessel deformation iteratively by leveraging temporal context to capture complex anatomical variations and local structural changes. We collected data from 23 patients and constructed 626 paired multi-frame samples for comprehensive evaluation. Experimental results demonstrate that the proposed method consistently outperforms state-of-the-art (SOTA) methods in both accuracy and anatomical plausibility. Specifically, our method achieves a mean squared error (MSE) of 0.63 mm and a mean absolute error (MAE) of 0.51 mm in registration accuracy, representing 66.7\% lower MSE and 17.7\% lower MAE compared to the most competitive existing approaches. It has the potential to assist less-experienced clinicians in safely and efficiently performing complex TACE procedures, ultimately enhancing both surgical outcomes and patient care. Code and data are available at: \textcolor{blue}{https://github.com/LZH970328/TempDiffReg.git}</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.18168" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.18168.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.17868</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.17868" target="_blank">VidLaDA: Bidirectional Diffusion Large Language Models for Efficient Video Understanding</a>
+      </h3>
+      <p class="paper-title-zh">VidLaDA：基于双向扩散大语言模型的高效视频理解方法</p>
+      <p class="paper-authors">Zhihao He, Tieyuan Chen, Kangyu Wang, Ziran Qin, Yang Shao 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个基于扩散语言模型的视频大语言模型（VidLaDA），通过双向注意力机制克服传统自回归模型中的因果掩码偏差；并设计了MARS-Cache推理加速框架，在保持精度的同时显著提升解码速度。</div>
+        <div class="summary-section"><strong>方法:</strong> 1. 采用扩散语言模型架构，利用双向注意力捕获视频时空序列中的全局依赖关系。2. 提出MARS-Cache框架，通过异步视觉缓存刷新机制动态更新关键特征。3. 结合帧级分块注意力与锚点令牌技术，在剪枝冗余信息的同时维持全局时空关联性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 1. VidLaDA在视频理解任务上超越现有扩散基线模型，性能媲美Qwen2.5-VL、LLaVA-Video等前沿自回归模型。2. MARS-Cache实现超过12倍的推理加速，且未损害模型推理精度。3. 开源代码与模型权重已发布。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Standard Autoregressive Video LLMs inevitably suffer from causal masking biases that hinder global spatiotemporal modeling, leading to suboptimal understanding efficiency. We propose VidLaDA, a Video LLM based on Diffusion Language Model utilizing bidirectional attention to capture bidirectional dependencies. To further tackle the inference bottleneck of diffusion decoding on massive video tokens, we introduce MARS-Cache. This framework accelerates inference by combining asynchronous visual cache refreshing with frame-wise chunk attention, effectively pruning redundancy while preserving global connectivity via anchor tokens. Extensive experiments show VidLaDA outperforms diffusion baselines and rivals state-of-the-art autoregressive models (e.g., Qwen2.5-VL and LLaVA-Video), with MARS-Cache delivering over 12x speedup without compromising reasoning accuracy. Code and checkpoints are open-sourced at https://github.com/ziHoHe/VidLaDA.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.17868" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.17868.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
     </main>
     
     <footer>

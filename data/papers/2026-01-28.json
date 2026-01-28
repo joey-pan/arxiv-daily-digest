@@ -23,91 +23,101 @@
     "title": "Inference-Time Loss-Guided Colour Preservation in Diffusion Sampling",
     "abstract": "Precise color control remains a persistent failure mode in text-to-image diffusion systems, particularly in design-oriented workflows where outputs must satisfy explicit, user-specified color targets. We present an inference-time, region-constrained color preservation method that steers a pretrained diffusion model without any additional training. Our approach combines (i) ROI-based inpainting for spatial selectivity, (ii) background-latent re-imposition to prevent color drift outside the ROI, and (iii) latent nudging via gradient guidance using a composite loss defined in CIE Lab and linear RGB. The loss is constructed to control not only the mean ROI color but also the tail of the pixelwise error distribution through CVaR-style and soft-maximum penalties, with a late-start gate and a time-dependent schedule to stabilize guidance across denoising steps. We show that mean-only baselines can satisfy average color constraints while producing perceptually salient local failures, motivating our distribution-aware objective. The resulting method provides a practical, training-free mechanism for targeted color adherence that can be integrated into standard Stable Diffusion inpainting pipelines.",
     "authors": [
-      "Angad Singh Ahuja",
-      "Aarush Ram Anandh"
+      "Fabian Bongratz",
+      "Yitong Li",
+      "Sama Elbaroudy",
+      "Christian Wachinger"
     ],
     "published": "2026-01-24",
     "updated": "2026-01-24",
     "categories": [
       "cs.CV",
-      "cs.GR",
+      "cs.AI",
       "cs.LG"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17259.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17259",
+    "pdf_url": "https://arxiv.org/pdf/2601.19498.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19498",
     "primary_category": "cs.CV",
-    "relevance_score": 7.0
+    "relevance_score": 10.0
   },
   {
-    "id": "2601.17124",
-    "title": "iFSQ: Improving FSQ for Image Generation with 1 Line of Code",
-    "abstract": "The field of image generation is currently bifurcated into autoregressive (AR) models operating on discrete tokens and diffusion models utilizing continuous latents. This divide, rooted in the distinction between VQ-VAEs and VAEs, hinders unified modeling and fair benchmarking. Finite Scalar Quantization (FSQ) offers a theoretical bridge, yet vanilla FSQ suffers from a critical flaw: its equal-interval quantization can cause activation collapse. This mismatch forces a trade-off between reconstruction fidelity and information efficiency. In this work, we resolve this dilemma by simply replacing the activation function in original FSQ with a distribution-matching mapping to enforce a uniform prior. Termed iFSQ, this simple strategy requires just one line of code yet mathematically guarantees both optimal bin utilization and reconstruction precision. Leveraging iFSQ as a controlled benchmark, we uncover two key insights: (1) The optimal equilibrium between discrete and continuous representations lies at approximately 4 bits per dimension. (2) Under identical reconstruction constraints, AR models exhibit rapid initial convergence, whereas diffusion models achieve a superior performance ceiling, suggesting that strict sequential ordering may limit the upper bounds of generation quality. Finally, we extend our analysis by adapting Representation Alignment (REPA) to AR models, yielding LlamaGen-REPA. Codes is available at https://github.com/Tencent-Hunyuan/iFSQ",
+    "id": "2601.18543",
+    "title": "GenAgent: Scaling Text-to-Image Generation via Agentic Multimodal Reasoning",
+    "abstract": "We introduce GenAgent, unifying visual understanding and generation through an agentic multimodal model. Unlike unified models that face expensive training costs and understanding-generation trade-offs, GenAgent decouples these capabilities through an agentic framework: understanding is handled by the multimodal model itself, while generation is achieved by treating image generation models as invokable tools. Crucially, unlike existing modular systems constrained by static pipelines, this design enables autonomous multi-turn interactions where the agent generates multimodal chains-of-thought encompassing reasoning, tool invocation, judgment, and reflection to iteratively refine outputs. We employ a two-stage training strategy: first, cold-start with supervised fine-tuning on high-quality tool invocation and reflection data to bootstrap agent behaviors; second, end-to-end agentic reinforcement learning combining pointwise rewards (final image quality) and pairwise rewards (reflection accuracy), with trajectory resampling for enhanced multi-turn exploration. GenAgent significantly boosts base generator(FLUX.1-dev) performance on GenEval++ (+23.6\\%) and WISE (+14\\%). Beyond performance gains, our framework demonstrates three key properties: 1) cross-tool generalization to generators with varying capabilities, 2) test-time scaling with consistent improvements across interaction rounds, and 3) task-adaptive reasoning that automatically adjusts to different tasks. Our code will be available at \\href{https://github.com/deep-kaixun/GenAgent}{this url}.",
     "authors": [
-      "Bin Lin",
-      "Zongjian Li",
-      "Yuwei Niu",
-      "Kaixiong Gong",
-      "Yunyang Ge",
-      "Yunlong Lin",
-      "Mingzhe Zheng",
-      "JianWei Zhang",
-      "Miles Yang",
-      "Zhao Zhong",
-      "Liefeng Bo",
-      "Li Yuan"
+      "Kaixun Jiang",
+      "Yuzheng Wang",
+      "Junjie Zhou",
+      "Pandeng Li",
+      "Zhihang Liu",
+      "Chen-Wei Xie",
+      "Zhaoyu Chen",
+      "Yun Zheng",
+      "Wenqiang Zhang"
     ],
     "published": "2026-01-23",
     "updated": "2026-01-27",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17124.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17124",
+    "pdf_url": "https://arxiv.org/pdf/2601.18543.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18543",
+    "primary_category": "cs.CV",
+    "relevance_score": 9.0
+  },
+  {
+    "id": "2601.19115",
+    "title": "FBSDiff++: Improved Frequency Band Substitution of Diffusion Features for Efficient and Highly Controllable Text-Driven Image-to-Image Translation",
+    "abstract": "With large-scale text-to-image (T2I) diffusion models achieving significant advancements in open-domain image creation, increasing attention has been focused on their natural extension to the realm of text-driven image-to-image (I2I) translation, where a source image acts as visual guidance to the generated image in addition to the textual guidance provided by the text prompt. We propose FBSDiff, a novel framework adapting off-the-shelf T2I diffusion model into the I2I paradigm from a fresh frequency-domain perspective. Through dynamic frequency band substitution of diffusion features, FBSDiff realizes versatile and highly controllable text-driven I2I in a plug-and-play manner (without need for model training, fine-tuning, or online optimization), allowing appearance-guided, layout-guided, and contour-guided I2I translation by progressively substituting low-frequency band, mid-frequency band, and high-frequency band of latent diffusion features, respectively. In addition, FBSDiff flexibly enables continuous control over I2I correlation intensity simply by tuning the bandwidth of the substituted frequency band. To further promote image translation efficiency, flexibility, and functionality, we propose FBSDiff++ which improves upon FBSDiff mainly in three aspects: (1) accelerate inference speed by a large margin (8.9$\\times$ speedup in inference) with refined model architecture; (2) improve the Frequency Band Substitution module to allow for input source images of arbitrary resolution and aspect ratio; (3) extend model functionality to enable localized image manipulation and style-specific content creation with only subtle adjustments to the core method. Extensive qualitative and quantitative experiments verify superiority of FBSDiff++ in I2I translation visual quality, efficiency, versatility, and controllability compared to related advanced approaches.",
+    "authors": [
+      "Xiang Gao",
+      "Yunpeng Jia"
+    ],
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.19115.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19115",
+    "primary_category": "cs.CV",
+    "relevance_score": 8.0
+  },
+  {
+    "id": "2601.17927",
+    "title": "RemEdit: Efficient Diffusion Editing with Riemannian Geometry",
+    "abstract": "Controllable image generation is fundamental to the success of modern generative AI, yet it faces a critical trade-off between semantic fidelity and inference speed. The RemEdit diffusion-based framework addresses this trade-off with two synergistic innovations. First, for editing fidelity, we navigate the latent space as a Riemannian manifold. A mamba-based module efficiently learns the manifold's structure, enabling direct and accurate geodesic path computation for smooth semantic edits. This control is further refined by a dual-SLERP blending technique and a goal-aware prompt enrichment pass from a Vision-Language Model. Second, for additional acceleration, we introduce a novel task-specific attention pruning mechanism. A lightweight pruning head learns to retain tokens essential to the edit, enabling effective optimization without the semantic degradation common in content-agnostic approaches. RemEdit surpasses prior state-of-the-art editing frameworks while maintaining real-time performance under 50% pruning. Consequently, RemEdit establishes a new benchmark for practical and powerful image editing. Source code: https://www.github.com/eashanadhikarla/RemEdit.",
+    "authors": [
+      "Eashan Adhikarla",
+      "Brian D. Davison"
+    ],
+    "published": "2026-01-25",
+    "updated": "2026-01-25",
+    "categories": [
+      "cs.CV",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.17927.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17927",
     "primary_category": "cs.CV",
     "relevance_score": 7.0
   },
   {
-    "id": "2601.19785",
-    "title": "GeoDiff3D: Self-Supervised 3D Scene Generation with Geometry-Constrained 2D Diffusion Guidance",
-    "abstract": "3D scene generation is a core technology for gaming, film/VFX, and VR/AR. Growing demand for rapid iteration, high-fidelity detail, and accessible content creation has further increased interest in this area. Existing methods broadly follow two paradigms - indirect 2D-to-3D reconstruction and direct 3D generation - but both are limited by weak structural modeling and heavy reliance on large-scale ground-truth supervision, often producing structural artifacts, geometric inconsistencies, and degraded high-frequency details in complex scenes. We propose GeoDiff3D, an efficient self-supervised framework that uses coarse geometry as a structural anchor and a geometry-constrained 2D diffusion model to provide texture-rich reference images. Importantly, GeoDiff3D does not require strict multi-view consistency of the diffusion-generated references and remains robust to the resulting noisy, inconsistent guidance. We further introduce voxel-aligned 3D feature aggregation and dual self-supervision to maintain scene coherence and fine details while substantially reducing dependence on labeled data. GeoDiff3D also trains with low computational cost and enables fast, high-quality 3D scene generation. Extensive experiments on challenging scenes show improved generalization and generation quality over existing baselines, offering a practical solution for accessible and efficient 3D scene construction.",
+    "id": "2601.19795",
+    "title": "Diffusion for De-Occlusion: Accessory-Aware Diffusion Inpainting for Robust Ear Biometric Recognition",
+    "abstract": "Ear occlusions (arising from the presence of ear accessories such as earrings and earphones) can negatively impact performance in ear-based biometric recognition systems, especially in unconstrained imaging circumstances. In this study, we assess the effectiveness of a diffusion-based ear inpainting technique as a pre-processing aid to mitigate the issues of ear accessory occlusions in transformer-based ear recognition systems. Given an input ear image and an automatically derived accessory mask, the inpainting model reconstructs clean and anatomically plausible ear regions by synthesizing missing pixels while preserving local geometric coherence along key ear structures, including the helix, antihelix, concha, and lobule. We evaluate the effectiveness of this pre-processing aid in transformer-based recognition systems for several vision transformer models and different patch sizes for a range of benchmark datasets. Experiments show that diffusion-based inpainting can be a useful pre-processing aid to alleviate ear accessory occlusions to improve overall recognition performance.",
     "authors": [
-      "Haozhi Zhu",
-      "Miaomiao Zhao",
-      "Dingyao Liu",
-      "Runze Tian",
-      "Yan Zhang",
-      "Jie Guo",
-      "Fenggen Yu"
+      "Deeksha Arun",
+      "Kevin W. Bowyer",
+      "Patrick Flynn"
     ],
     "published": "2026-01-27",
     "updated": "2026-01-27",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19785.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19785",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0
-  },
-  {
-    "id": "2601.19577",
-    "title": "MaDiS: Taming Masked Diffusion Language Models for Sign Language Generation",
-    "abstract": "Sign language generation (SLG) aims to translate written texts into expressive sign motions, bridging communication barriers for the Deaf and Hard-of-Hearing communities. Recent studies formulate SLG within the language modeling framework using autoregressive language models, which suffer from unidirectional context modeling and slow token-by-token inference. To address these limitations, we present MaDiS, a masked-diffusion-based language model for SLG that captures bidirectional dependencies and supports efficient parallel multi-token generation. We further introduce a tri-level cross-modal pretraining scheme that jointly learns from token-, latent-, and 3D physical-space objectives, leading to richer and more grounded sign representations. To accelerate model convergence in the fine-tuning stage, we design a novel unmasking strategy with temporal checkpoints, reducing the combinatorial complexity of unmasking orders by over $10^{41}$ times. In addition, a mixture-of-parts embedding layer is developed to effectively fuse information stored in different part-wise sign tokens through learnable gates and well-optimized codebooks. Extensive experiments on CSL-Daily, Phoenix-2014T, and How2Sign demonstrate that MaDiS achieves superior performance across multiple metrics, including DTW error and two newly introduced metrics, SiBLEU and SiCLIP, while reducing inference latency by nearly 30%. Code and models will be released on our project page.",
-    "authors": [
-      "Ronglai Zuo",
-      "Rolandos Alexandros Potamias",
-      "Qi Sun",
-      "Evangelos Ververas",
-      "Jiankang Deng",
-      "Stefanos Zafeiriou"
-    ],
-    "published": "2026-01-27",
-    "updated": "2026-01-27",
-    "categories": [
-      "cs.CV"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19577.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19577",
+    "pdf_url": "https://arxiv.org/pdf/2601.19795.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19795",
     "primary_category": "cs.CV",
     "relevance_score": 6.0
   }
