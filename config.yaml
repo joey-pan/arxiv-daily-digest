@@ -2,46 +2,36 @@
 # 修改此文件来自定义你的论文追踪偏好
 
 # arXiv 分类 (完整列表: https://arxiv.org/category_taxonomy)
+# 这里聚焦与图像/版式/视觉设计强相关的方向
 categories:
   - cs.CV    # 计算机视觉
-  - cs.CL    # 计算语言学 (NLP)
-  - cs.LG    # 机器学习
-  - cs.AI    # 人工智能
   - cs.GR    # 图形学
-  - cs.HC    # 人机交互
   - cs.MM    # 多媒体
 
 # 关键词过滤 (匹配标题或摘要，不区分大小写)
 # 论文需要匹配至少一个关键词才会被收录
 keywords:
-  # 设计智能相关
-  - design
-  - graphic
+  # 图形设计 / 版式 / 视觉设计
+  - graphic design
   - layout
+  - page layout
+  - document layout
+  - ui design
   - poster
   - typography
-  - visual
+  - font
+  - visual design
   - aesthetic
-  - creative
-  
-  # 生成式 AI
-  - generation
-  - generative
-  - diffusion
-  - gan
-  - transformer
-  
-  # 多模态
-  - multimodal
-  - vision-language
+  - composition
+
+  # 图像 / 版式生成相关
+  - image generation
   - text-to-image
   - image-to-text
-  
-  # 大模型
-  - large language model
-  - llm
-  - gpt
-  - foundation model
+  - diffusion
+  - gan
+  - controllable generation
+  - layout generation
 
 # 排除关键词 (包含这些词的论文会被过滤掉)
 exclude_keywords:
@@ -52,7 +42,7 @@ exclude_keywords:
   - tumor
 
 # 每日最大论文数量
-max_papers_per_day: 15
+max_papers_per_day: 10
 
 # 相关性评分权重 (用于排序)
 relevance_weights:
@@ -69,9 +59,9 @@ deepseek:
 # 站点配置
 site:
   title: "📚 ArXiv Daily Digest"
-  description: "每日 AI/CV/NLP/设计智能 论文精选"
+  description: "每日论文精选"
   author: "Graduate Student"
-  base_url: ""  # 部署后填写你的 GitHub Pages URL
+  base_url: "https://joey-pan.github.io/arxiv-daily-digest/"  # 部署后填写你的 GitHub Pages URL
   
 # 时区设置 (用于显示日期)
 timezone: Asia/Shanghai

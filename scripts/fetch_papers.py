@@ -115,8 +115,24 @@ def filter_papers(papers: list[dict], config: dict) -> list[dict]:
     exclude = [ex.lower() for ex in config.get("exclude_keywords", [])]
     target_cats = set(config.get("categories", []))
     
+    # 仅保留最近 24 小时内发布的论文
+    now = datetime.utcnow()
+    threshold = now - timedelta(days=1)
+    
     filtered = []
     for paper in papers:
+        # arXiv published 字段格式为 YYYY-MM-DD
+        pub_str = paper.get("published")
+        try:
+            pub_dt = datetime.strptime(pub_str, "%Y-%m-%d")
+        except Exception:
+            # 无法解析发布日期的论文直接跳过
+            continue
+
+        if pub_dt < threshold:
+            # 只看最近 24 小时
+            continue
+
         paper_cats = set(paper.get("categories", []))
         if not paper_cats.intersection(target_cats):
             continue
