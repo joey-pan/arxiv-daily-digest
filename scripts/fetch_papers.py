@@ -227,29 +227,22 @@ def save_scores(scores: dict[str, int]) -> None:
         json.dump(scores, f, ensure_ascii=False, indent=2)
 
 
-RANK_PROMPT_TEMPLATE = """你是一个论文筛选与打分助手，请基于以下信息判断论文是否"高度符合"用户的兴趣。
-
+RANK_PROMPT_TEMPLATE = """你是一个论文筛选与打分助手，请基于以下信息判断论文是否\"高度符合\"用户的兴趣。
 请严格遵循下面的兴趣画像：
-
 {profile}
-
 打分标准（0-100 分）：
 - 80-100：与图形/视觉设计、布局生成、text-to-image 等紧密相关，方法实用、可用于构建工具或系统。
 - 40-79：与图像生成、多模态、视觉美学等相关，但与图形设计/布局生成的直接联系较弱或不清晰。
 - 0-39：医学影像或与图形设计无关的方向（如纯医学、临床、MRI/CT、肿瘤等）应尽量给低分。
-
 请只根据标题和摘要进行判断。
-
 论文标题: {title}
-
 论文摘要:
 {abstract}
-
-请直接返回一个 JSON，对象结构如下（确保是有效 JSON）：
+现在请**只输出一个 JSON 对象**，不要输出任何解释文字、不要使用代码块、不要添加额外内容。
+JSON 格式严格如下（注意 score 必须是 0 到 100 之间的整数）：
 {{
   "score": 0-100
-}}
-"""
+}}"""
 
 
 def create_ds_client(config: dict):
@@ -282,11 +275,27 @@ def score_with_deepseek(client: OpenAI, paper: dict, config: dict):
             temperature=0.0,
         )
         content = resp.choices[0].message.content.strip()
+
+        # 处理可能的代码块包裹和多余说明文本，只保留第一个 JSON 对象
         if content.startswith("```"):
-            content = content.split("```", 1)[1]
-            if content.lstrip().startswith("json"):
-                content = content.split("\n", 1)[1]
-        data = json.loads(content)
+            # ```json ... ``` 或 ``` ... ```
+            parts = content.split("```", 2)
+            if len(parts) >= 2:
+                content = parts[1]
+            content = content.lstrip()
+            if content.lower().startswith("json"):
+                # 去掉前缀 json
+                content = content.split("\n", 1)[1] if "\n" in content else ""
+
+        # 抽取第一个 {...} 作为 JSON
+        start = content.find("{")
+        end = content.rfind("}")
+        if start != -1 and end != -1 and end > start:
+            json_str = content[start : end + 1]
+        else:
+            json_str = content
+
+        data = json.loads(json_str)
         score = int(data.get("score", 0))
         # clamp
         score = max(0, min(100, score))
