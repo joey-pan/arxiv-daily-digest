@@ -1,105 +1,147 @@
 [
   {
-    "id": "2601.19498",
-    "title": "Cortex-Grounded Diffusion Models for Brain Image Generation",
-    "abstract": "Synthetic neuroimaging data can mitigate critical limitations of real-world datasets, including the scarcity of rare phenotypes, domain shifts across scanners, and insufficient longitudinal coverage. However, existing generative models largely rely on weak conditioning signals, such as labels or text, which lack anatomical grounding and often produce biologically implausible outputs. To this end, we introduce Cor2Vox, a cortex-grounded generative framework for brain magnetic resonance image (MRI) synthesis that ties image generation to continuous structural priors of the cerebral cortex. It leverages high-resolution cortical surfaces to guide a 3D shape-to-image Brownian bridge diffusion process, enabling topologically faithful synthesis and precise control over underlying anatomies. To support the generation of new, realistic brain shapes, we developed a large-scale statistical shape model of cortical morphology derived from over 33,000 UK Biobank scans. We validated the fidelity of Cor2Vox based on traditional image quality metrics, advanced cortical surface reconstruction, and whole-brain segmentation quality, outperforming many baseline methods. Across three applications, namely (i) anatomically consistent synthesis, (ii) simulation of progressive gray matter atrophy, and (iii) harmonization of in-house frontotemporal dementia scans with public datasets, Cor2Vox preserved fine-grained cortical morphology at the sub-voxel level, exhibiting remarkable robustness to variations in cortical geometry and disease phenotype without retraining.",
+    "id": "2601.19785",
+    "title": "GeoDiff3D: Self-Supervised 3D Scene Generation with Geometry-Constrained 2D Diffusion Guidance",
+    "abstract": "3D scene generation is a core technology for gaming, film/VFX, and VR/AR. Growing demand for rapid iteration, high-fidelity detail, and accessible content creation has further increased interest in this area. Existing methods broadly follow two paradigms - indirect 2D-to-3D reconstruction and direct 3D generation - but both are limited by weak structural modeling and heavy reliance on large-scale ground-truth supervision, often producing structural artifacts, geometric inconsistencies, and degraded high-frequency details in complex scenes. We propose GeoDiff3D, an efficient self-supervised framework that uses coarse geometry as a structural anchor and a geometry-constrained 2D diffusion model to provide texture-rich reference images. Importantly, GeoDiff3D does not require strict multi-view consistency of the diffusion-generated references and remains robust to the resulting noisy, inconsistent guidance. We further introduce voxel-aligned 3D feature aggregation and dual self-supervision to maintain scene coherence and fine details while substantially reducing dependence on labeled data. GeoDiff3D also trains with low computational cost and enables fast, high-quality 3D scene generation. Extensive experiments on challenging scenes show improved generalization and generation quality over existing baselines, offering a practical solution for accessible and efficient 3D scene construction.",
     "authors": [
-      "Fabian Bongratz",
-      "Yitong Li",
-      "Sama Elbaroudy",
-      "Christian Wachinger"
+      "Haozhi Zhu",
+      "Miaomiao Zhao",
+      "Dingyao Liu",
+      "Runze Tian",
+      "Yan Zhang",
+      "Jie Guo",
+      "Fenggen Yu"
     ],
     "published": "2026-01-27",
     "updated": "2026-01-27",
     "categories": [
-      "cs.CV",
-      "cs.AI",
-      "cs.LG"
+      "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19498.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19498",
+    "pdf_url": "https://arxiv.org/pdf/2601.19785.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19785",
     "primary_category": "cs.CV",
-    "relevance_score": 10.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "GeoDiff3D：基于几何约束的2D扩散引导的自监督3D场景生成",
+      "core_contribution": "提出了一个高效的自监督框架GeoDiff3D，它利用粗糙几何作为结构锚点，并通过几何约束的2D扩散模型提供纹理丰富的参考图像，显著降低了对大规模真实标注数据的依赖。",
+      "method": "该方法首先使用粗糙几何体作为场景的结构基础；然后通过一个几何约束的2D扩散模型生成多视角的纹理参考图像，且不严格要求这些图像之间具有严格的一致性；最后通过体素对齐的3D特征聚合和双重自监督机制，整合多视角信息并保持场景的连贯性与细节。",
+      "findings": "在复杂场景上的大量实验表明，GeoDiff3D相比现有基线方法，在生成质量和泛化能力上均有提升，能有效减少结构伪影和几何不一致问题，同时以较低的计算成本实现快速、高质量的3D场景生成。"
+    }
   },
   {
-    "id": "2601.18543",
-    "title": "GenAgent: Scaling Text-to-Image Generation via Agentic Multimodal Reasoning",
-    "abstract": "We introduce GenAgent, unifying visual understanding and generation through an agentic multimodal model. Unlike unified models that face expensive training costs and understanding-generation trade-offs, GenAgent decouples these capabilities through an agentic framework: understanding is handled by the multimodal model itself, while generation is achieved by treating image generation models as invokable tools. Crucially, unlike existing modular systems constrained by static pipelines, this design enables autonomous multi-turn interactions where the agent generates multimodal chains-of-thought encompassing reasoning, tool invocation, judgment, and reflection to iteratively refine outputs. We employ a two-stage training strategy: first, cold-start with supervised fine-tuning on high-quality tool invocation and reflection data to bootstrap agent behaviors; second, end-to-end agentic reinforcement learning combining pointwise rewards (final image quality) and pairwise rewards (reflection accuracy), with trajectory resampling for enhanced multi-turn exploration. GenAgent significantly boosts base generator(FLUX.1-dev) performance on GenEval++ (+23.6\\%) and WISE (+14\\%). Beyond performance gains, our framework demonstrates three key properties: 1) cross-tool generalization to generators with varying capabilities, 2) test-time scaling with consistent improvements across interaction rounds, and 3) task-adaptive reasoning that automatically adjusts to different tasks. Our code will be available at \\href{https://github.com/deep-kaixun/GenAgent}{this url}.",
+    "id": "2601.19577",
+    "title": "MaDiS: Taming Masked Diffusion Language Models for Sign Language Generation",
+    "abstract": "Sign language generation (SLG) aims to translate written texts into expressive sign motions, bridging communication barriers for the Deaf and Hard-of-Hearing communities. Recent studies formulate SLG within the language modeling framework using autoregressive language models, which suffer from unidirectional context modeling and slow token-by-token inference. To address these limitations, we present MaDiS, a masked-diffusion-based language model for SLG that captures bidirectional dependencies and supports efficient parallel multi-token generation. We further introduce a tri-level cross-modal pretraining scheme that jointly learns from token-, latent-, and 3D physical-space objectives, leading to richer and more grounded sign representations. To accelerate model convergence in the fine-tuning stage, we design a novel unmasking strategy with temporal checkpoints, reducing the combinatorial complexity of unmasking orders by over $10^{41}$ times. In addition, a mixture-of-parts embedding layer is developed to effectively fuse information stored in different part-wise sign tokens through learnable gates and well-optimized codebooks. Extensive experiments on CSL-Daily, Phoenix-2014T, and How2Sign demonstrate that MaDiS achieves superior performance across multiple metrics, including DTW error and two newly introduced metrics, SiBLEU and SiCLIP, while reducing inference latency by nearly 30%. Code and models will be released on our project page.",
     "authors": [
-      "Kaixun Jiang",
-      "Yuzheng Wang",
-      "Junjie Zhou",
-      "Pandeng Li",
-      "Zhihang Liu",
-      "Chen-Wei Xie",
-      "Zhaoyu Chen",
-      "Yun Zheng",
-      "Wenqiang Zhang"
+      "Ronglai Zuo",
+      "Rolandos Alexandros Potamias",
+      "Qi Sun",
+      "Evangelos Ververas",
+      "Jiankang Deng",
+      "Stefanos Zafeiriou"
+    ],
+    "published": "2026-01-27",
+    "updated": "2026-01-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.19577.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.19577",
+    "primary_category": "cs.CV",
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "MaDiS：驾驭掩码扩散语言模型用于手语生成",
+      "core_contribution": "提出了一种基于掩码扩散的手语生成语言模型（MaDiS），通过双向依赖建模和并行多令牌生成，解决了自回归模型单向上下文建模和推理速度慢的问题，并引入了一种三层次跨模态预训练方案以学习更丰富的表示。",
+      "method": "MaDiS采用掩码扩散语言模型框架，通过预测被掩码的令牌来捕获双向上下文依赖，支持并行生成多个令牌以加速推理。模型设计了三层次跨模态预训练（令牌空间、潜在空间和3D物理空间），并提出了带时间检查点的去掩码策略以大幅降低训练复杂度，同时使用混合部件嵌入层通过可学习门控和优化码本融合不同身体部位的令牌信息。",
+      "findings": "在CSL-Daily、Phoenix-2014T和How2Sign数据集上的实验表明，MaDiS在DTW误差以及新提出的SiBLEU和SiCLIP等多个指标上均取得优越性能，同时将推理延迟降低了近30%。"
+    }
+  },
+  {
+    "id": "2601.18260",
+    "title": "Depth to Anatomy: Learning Internal Organ Locations from Surface Depth Images",
+    "abstract": "Automated patient positioning plays an important role in optimizing scanning procedure and improving patient throughput. Leveraging depth information captured by RGB-D cameras presents a promising approach for estimating internal organ positions, thereby enabling more accurate and efficient positioning. In this work, we propose a learning-based framework that directly predicts the 3D locations and shapes of multiple internal organs from single 2D depth images of the body surface. Utilizing a large-scale dataset of full-body MRI scans, we synthesize depth images paired with corresponding anatomical segmentations to train a unified convolutional neural network architecture. Our method accurately localizes a diverse set of anatomical structures, including bones and soft tissues, without requiring explicit surface reconstruction. Experimental results demonstrate the potential of integrating depth sensors into radiology workflows to streamline scanning procedures and enhance patient experience through automated patient positioning.",
+    "authors": [
+      "Eytan Kats",
+      "Kai Geissler",
+      "Daniel Mensing",
+      "Jochen G. Hirsch",
+      "Stefan Heldman",
+      "Mattias P. Heinrich"
     ],
     "published": "2026-01-26",
     "updated": "2026-01-26",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.18543.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.18543",
+    "pdf_url": "https://arxiv.org/pdf/2601.18260.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18260",
     "primary_category": "cs.CV",
-    "relevance_score": 9.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "从深度到解剖：基于体表深度图像学习内部器官定位",
+      "core_contribution": "提出一个基于学习的框架，能够直接从单张体表二维深度图像预测多个内部器官的三维位置和形状，为自动化患者摆位提供新方法。",
+      "method": "利用大规模全身MRI扫描数据集，合成与解剖分割结果配对的深度图像；采用统一的卷积神经网络架构进行训练，无需显式进行表面重建；该方法能够同时定位骨骼和软组织等多种解剖结构。",
+      "findings": "实验结果表明，该方法能准确预测多种内部器官的位置与形状，验证了将深度传感器集成到放射学工作流程中以优化扫描程序、通过自动化患者摆位提升患者体验的潜力。"
+    }
   },
   {
-    "id": "2601.19115",
-    "title": "FBSDiff++: Improved Frequency Band Substitution of Diffusion Features for Efficient and Highly Controllable Text-Driven Image-to-Image Translation",
-    "abstract": "With large-scale text-to-image (T2I) diffusion models achieving significant advancements in open-domain image creation, increasing attention has been focused on their natural extension to the realm of text-driven image-to-image (I2I) translation, where a source image acts as visual guidance to the generated image in addition to the textual guidance provided by the text prompt. We propose FBSDiff, a novel framework adapting off-the-shelf T2I diffusion model into the I2I paradigm from a fresh frequency-domain perspective. Through dynamic frequency band substitution of diffusion features, FBSDiff realizes versatile and highly controllable text-driven I2I in a plug-and-play manner (without need for model training, fine-tuning, or online optimization), allowing appearance-guided, layout-guided, and contour-guided I2I translation by progressively substituting low-frequency band, mid-frequency band, and high-frequency band of latent diffusion features, respectively. In addition, FBSDiff flexibly enables continuous control over I2I correlation intensity simply by tuning the bandwidth of the substituted frequency band. To further promote image translation efficiency, flexibility, and functionality, we propose FBSDiff++ which improves upon FBSDiff mainly in three aspects: (1) accelerate inference speed by a large margin (8.9$\\times$ speedup in inference) with refined model architecture; (2) improve the Frequency Band Substitution module to allow for input source images of arbitrary resolution and aspect ratio; (3) extend model functionality to enable localized image manipulation and style-specific content creation with only subtle adjustments to the core method. Extensive qualitative and quantitative experiments verify superiority of FBSDiff++ in I2I translation visual quality, efficiency, versatility, and controllability compared to related advanced approaches.",
+    "id": "2601.18168",
+    "title": "TempDiffReg: Temporal Diffusion Model for Non-Rigid 2D-3D Vascular Registration",
+    "abstract": "Transarterial chemoembolization (TACE) is a preferred treatment option for hepatocellular carcinoma and other liver malignancies, yet it remains a highly challenging procedure due to complex intra-operative vascular navigation and anatomical variability. Accurate and robust 2D-3D vessel registration is essential to guide microcatheter and instruments during TACE, enabling precise localization of vascular structures and optimal therapeutic targeting. To tackle this issue, we develop a coarse-to-fine registration strategy. First, we introduce a global alignment module, structure-aware perspective n-point (SA-PnP), to establish correspondence between 2D and 3D vessel structures. Second, we propose TempDiffReg, a temporal diffusion model that performs vessel deformation iteratively by leveraging temporal context to capture complex anatomical variations and local structural changes. We collected data from 23 patients and constructed 626 paired multi-frame samples for comprehensive evaluation. Experimental results demonstrate that the proposed method consistently outperforms state-of-the-art (SOTA) methods in both accuracy and anatomical plausibility. Specifically, our method achieves a mean squared error (MSE) of 0.63 mm and a mean absolute error (MAE) of 0.51 mm in registration accuracy, representing 66.7\\% lower MSE and 17.7\\% lower MAE compared to the most competitive existing approaches. It has the potential to assist less-experienced clinicians in safely and efficiently performing complex TACE procedures, ultimately enhancing both surgical outcomes and patient care. Code and data are available at: \\textcolor{blue}{https://github.com/LZH970328/TempDiffReg.git}",
     "authors": [
-      "Xiang Gao",
-      "Yunpeng Jia"
+      "Zehua Liu",
+      "Shihao Zou",
+      "Jincai Huang",
+      "Yanfang Zhang",
+      "Chao Tong",
+      "Weixin Si"
     ],
-    "published": "2026-01-27",
-    "updated": "2026-01-27",
+    "published": "2026-01-26",
+    "updated": "2026-01-26",
     "categories": [
       "cs.CV"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19115.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19115",
+    "pdf_url": "https://arxiv.org/pdf/2601.18168.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.18168",
     "primary_category": "cs.CV",
-    "relevance_score": 8.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "TempDiffReg：用于非刚性2D-3D血管配准的时序扩散模型",
+      "core_contribution": "本文提出了一种从粗到细的血管配准策略，通过引入结构感知透视n点（SA-PnP）全局对齐模块和时序扩散模型（TempDiffReg），显著提升了经动脉化疗栓塞术（TACE）中2D-3D血管配准的准确性与解剖合理性。",
+      "method": "方法采用从粗到细的两阶段策略：首先，使用结构感知透视n点（SA-PnP）模块进行全局对齐，建立2D与3D血管结构的对应关系；其次，提出时序扩散模型（TempDiffReg），该模型利用时序上下文信息迭代地进行血管形变，以捕捉复杂的解剖变异和局部结构变化。",
+      "findings": "在包含23名患者、626个多帧配对样本的数据集上，该方法在配准精度和解剖合理性上均优于现有最优方法。具体而言，其均方误差（MSE）为0.63毫米，平均绝对误差（MAE）为0.51毫米，相比最具竞争力的现有方法，MSE降低了66.7%，MAE降低了17.7%。"
+    }
   },
   {
-    "id": "2601.17927",
-    "title": "RemEdit: Efficient Diffusion Editing with Riemannian Geometry",
-    "abstract": "Controllable image generation is fundamental to the success of modern generative AI, yet it faces a critical trade-off between semantic fidelity and inference speed. The RemEdit diffusion-based framework addresses this trade-off with two synergistic innovations. First, for editing fidelity, we navigate the latent space as a Riemannian manifold. A mamba-based module efficiently learns the manifold's structure, enabling direct and accurate geodesic path computation for smooth semantic edits. This control is further refined by a dual-SLERP blending technique and a goal-aware prompt enrichment pass from a Vision-Language Model. Second, for additional acceleration, we introduce a novel task-specific attention pruning mechanism. A lightweight pruning head learns to retain tokens essential to the edit, enabling effective optimization without the semantic degradation common in content-agnostic approaches. RemEdit surpasses prior state-of-the-art editing frameworks while maintaining real-time performance under 50% pruning. Consequently, RemEdit establishes a new benchmark for practical and powerful image editing. Source code: https://www.github.com/eashanadhikarla/RemEdit.",
+    "id": "2601.17868",
+    "title": "VidLaDA: Bidirectional Diffusion Large Language Models for Efficient Video Understanding",
+    "abstract": "Standard Autoregressive Video LLMs inevitably suffer from causal masking biases that hinder global spatiotemporal modeling, leading to suboptimal understanding efficiency. We propose VidLaDA, a Video LLM based on Diffusion Language Model utilizing bidirectional attention to capture bidirectional dependencies. To further tackle the inference bottleneck of diffusion decoding on massive video tokens, we introduce MARS-Cache. This framework accelerates inference by combining asynchronous visual cache refreshing with frame-wise chunk attention, effectively pruning redundancy while preserving global connectivity via anchor tokens. Extensive experiments show VidLaDA outperforms diffusion baselines and rivals state-of-the-art autoregressive models (e.g., Qwen2.5-VL and LLaVA-Video), with MARS-Cache delivering over 12x speedup without compromising reasoning accuracy. Code and checkpoints are open-sourced at https://github.com/ziHoHe/VidLaDA.",
     "authors": [
-      "Eashan Adhikarla",
-      "Brian D. Davison"
+      "Zhihao He",
+      "Tieyuan Chen",
+      "Kangyu Wang",
+      "Ziran Qin",
+      "Yang Shao",
+      "Chaofan Gan",
+      "Shijie Li",
+      "Zuxuan Wu",
+      "Weiyao Lin"
     ],
     "published": "2026-01-25",
     "updated": "2026-01-25",
     "categories": [
       "cs.CV",
-      "cs.MM"
+      "cs.AI"
     ],
-    "pdf_url": "https://arxiv.org/pdf/2601.17927.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.17927",
+    "pdf_url": "https://arxiv.org/pdf/2601.17868.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.17868",
     "primary_category": "cs.CV",
-    "relevance_score": 7.0
-  },
-  {
-    "id": "2601.19795",
-    "title": "Diffusion for De-Occlusion: Accessory-Aware Diffusion Inpainting for Robust Ear Biometric Recognition",
-    "abstract": "Ear occlusions (arising from the presence of ear accessories such as earrings and earphones) can negatively impact performance in ear-based biometric recognition systems, especially in unconstrained imaging circumstances. In this study, we assess the effectiveness of a diffusion-based ear inpainting technique as a pre-processing aid to mitigate the issues of ear accessory occlusions in transformer-based ear recognition systems. Given an input ear image and an automatically derived accessory mask, the inpainting model reconstructs clean and anatomically plausible ear regions by synthesizing missing pixels while preserving local geometric coherence along key ear structures, including the helix, antihelix, concha, and lobule. We evaluate the effectiveness of this pre-processing aid in transformer-based recognition systems for several vision transformer models and different patch sizes for a range of benchmark datasets. Experiments show that diffusion-based inpainting can be a useful pre-processing aid to alleviate ear accessory occlusions to improve overall recognition performance.",
-    "authors": [
-      "Deeksha Arun",
-      "Kevin W. Bowyer",
-      "Patrick Flynn"
-    ],
-    "published": "2026-01-27",
-    "updated": "2026-01-27",
-    "categories": [
-      "cs.CV"
-    ],
-    "pdf_url": "https://arxiv.org/pdf/2601.19795.pdf",
-    "abs_url": "https://arxiv.org/abs/2601.19795",
-    "primary_category": "cs.CV",
-    "relevance_score": 6.0
+    "relevance_score": 6.0,
+    "summary": {
+      "title_zh": "VidLaDA：基于双向扩散大语言模型的高效视频理解方法",
+      "core_contribution": "提出了首个基于扩散语言模型的视频大语言模型（VidLaDA），通过双向注意力机制克服传统自回归模型中的因果掩码偏差；并设计了MARS-Cache推理加速框架，在保持精度的同时显著提升解码速度。",
+      "method": "1. 采用扩散语言模型架构，利用双向注意力捕获视频时空序列中的全局依赖关系。2. 提出MARS-Cache框架，通过异步视觉缓存刷新机制动态更新关键特征。3. 结合帧级分块注意力与锚点令牌技术，在剪枝冗余信息的同时维持全局时空关联性。",
+      "findings": "1. VidLaDA在视频理解任务上超越现有扩散基线模型，性能媲美Qwen2.5-VL、LLaVA-Video等前沿自回归模型。2. MARS-Cache实现超过12倍的推理加速，且未损害模型推理精度。3. 开源代码与模型权重已发布。"
+    }
   }
 ]
