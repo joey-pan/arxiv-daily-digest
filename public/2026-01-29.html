@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-01-29</p>
+        <p class="stats">共 5 篇论文 | cs.CR: 1 | 计算机视觉: 4</p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.20511</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.20511" target="_blank">Say Cheese! Detail-Preserving Portrait Collection Generation via Natural Language Edits</a>
+      </h3>
+      <p class="paper-title-zh">笑一个！通过自然语言编辑实现细节保持的人像集合生成</p>
+      <p class="paper-authors">Zelong Sun, Jiahui Wu, Ying Ba, Dong Jing, Zhiwu Lu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了人像集合生成（PCG）这一新任务，并构建了首个大规模数据集CHEESE，同时提出了SCheese框架，能够通过自然语言指令编辑参考人像，生成细节保持良好且身份一致的人像集合。</div>
+        <div class="summary-section"><strong>方法:</strong> 方法基于一个结合文本引导生成与分层身份及细节保持的框架。它采用自适应特征融合机制来维持身份一致性，并引入ConsistencyNet来注入细粒度特征以保持细节一致性。数据集的构建则利用了大视觉-语言模型流程，并辅以基于反转的验证来确保高质量的修改文本标注。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 综合实验验证了CHEESE数据集对推进PCG任务的有效性。所提出的SCheese框架在生成任务中取得了最先进的性能，能够成功处理复杂的多属性修改（如姿势、空间布局和相机视角），同时高保真地保留身份、服装和配饰等细节。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>As social media platforms proliferate, users increasingly demand intuitive ways to create diverse, high-quality portrait collections. In this work, we introduce Portrait Collection Generation (PCG), a novel task that generates coherent portrait collections by editing a reference portrait image through natural language instructions. This task poses two unique challenges to existing methods: (1) complex multi-attribute modifications such as pose, spatial layout, and camera viewpoint; and (2) high-fidelity detail preservation including identity, clothing, and accessories. To address these challenges, we propose CHEESE, the first large-scale PCG dataset containing 24K portrait collections and 573K samples with high-quality modification text annotations, constructed through an Large Vison-Language Model-based pipeline with inversion-based verification. We further propose SCheese, a framework that combines text-guided generation with hierarchical identity and detail preservation. SCheese employs adaptive feature fusion mechanism to maintain identity consistency, and ConsistencyNet to inject fine-grained features for detail consistency. Comprehensive experiments validate the effectiveness of CHEESE in advancing PCG, with SCheese achieving state-of-the-art performance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.20511" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.20511.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.20354</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.20354" target="_blank">Everything in Its Place: Benchmarking Spatial Intelligence of Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">各归其位：文本到图像模型空间智能的基准测试</p>
+      <p class="paper-authors">Zengbin Wang, Xuecai Hu, Yong Wang, Feng Xiong, Man Zhang 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个名为SpatialGenEval的新基准，用于系统评估文本到图像模型的空间智能；并构建了SpatialT2I数据集，通过微调证明了信息密集设计能有效提升模型的空间关系处理能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究设计了包含1,230个信息密集的长文本提示的基准，涵盖25个真实场景和10个空间子领域（如物体位置、遮挡、因果关系）。同时构建了包含15,400个文本-图像对的数据集，通过重写提示在保持信息密度的同时确保图像一致性，并用于微调主流基础模型。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 对21个先进模型的评估表明，高阶空间推理仍是当前文本到图像模型的主要瓶颈；使用SpatialT2I数据集微调模型（如Stable Diffusion-XL、Uniworld-V1等）能带来一致的性能提升（+4.2%至+5.7%），并生成空间关系更真实的图像。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-image (T2I) models have achieved remarkable success in generating high-fidelity images, but they often fail in handling complex spatial relationships, e.g., spatial perception, reasoning, or interaction. These critical aspects are largely overlooked by current benchmarks due to their short or information-sparse prompt design. In this paper, we introduce SpatialGenEval, a new benchmark designed to systematically evaluate the spatial intelligence of T2I models, covering two key aspects: (1) SpatialGenEval involves 1,230 long, information-dense prompts across 25 real-world scenes. Each prompt integrates 10 spatial sub-domains and corresponding 10 multi-choice question-answer pairs, ranging from object position and layout to occlusion and causality. Our extensive evaluation of 21 state-of-the-art models reveals that higher-order spatial reasoning remains a primary bottleneck. (2) To demonstrate that the utility of our information-dense design goes beyond simple evaluation, we also construct the SpatialT2I dataset. It contains 15,400 text-image pairs with rewritten prompts to ensure image consistency while preserving information density. Fine-tuned results on current foundation models (i.e., Stable Diffusion-XL, Uniworld-V1, OmniGen2) yield consistent performance gains (+4.2%, +5.7%, +4.4%) and more realistic effects in spatial relations, highlighting a data-centric paradigm to achieve spatial intelligence in T2I models.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.20354" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.20354.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">cs.CR</span>
+        <span class="paper-id">2601.20310</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.20310" target="_blank">SemBind: Binding Diffusion Watermarks to Semantics Against Black-Box Forgery Attacks</a>
+      </h3>
+      <p class="paper-title-zh">SemBind：将扩散水印与语义绑定以抵御黑盒伪造攻击</p>
+      <p class="paper-authors">Xin Zhang, Zijin Yang, Kejiang Chen, Linfeng Ma, Weiming Zhang 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个能抵抗黑盒伪造攻击的潜空间水印防御框架SemBind，通过将水印信号与图像语义绑定，显著降低了非授权图像被误识别为合法生成的风险。</div>
+        <div class="summary-section"><strong>方法:</strong> SemBind通过一个学习的语义掩码器将潜空间信号与图像语义绑定。该掩码器采用对比学习训练，对相同提示词生成近似不变的编码，对不同提示词生成近似正交的编码；这些编码经重塑和排列后，用于在标准潜空间水印嵌入前调制目标潜表示。该方法兼容现有潜空间水印方案，并通过掩码比例参数实现抗伪造强度与鲁棒性的可调节权衡。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在四种主流潜空间水印方法上的实验表明，集成SemBind的抗伪造变体显著降低了黑盒伪造攻击下的误接受率，同时保持了图像质量基本不变，并提供了可控的鲁棒性与安全性平衡。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Latent-based watermarks, integrated into the generation process of latent diffusion models (LDMs), simplify detection and attribution of generated images. However, recent black-box forgery attacks, where an attacker needs at least one watermarked image and black-box access to the provider's model, can embed the provider's watermark into images not produced by the provider, posing outsized risk to provenance and trust. We propose SemBind, the first defense framework for latent-based watermarks that resists black-box forgery by binding latent signals to image semantics via a learned semantic masker. Trained with contrastive learning, the masker yields near-invariant codes for the same prompt and near-orthogonal codes across prompts; these codes are reshaped and permuted to modulate the target latent before any standard latent-based watermark. SemBind is generally compatible with existing latent-based watermarking schemes and keeps image quality essentially unchanged, while a simple mask-ratio parameter offers a tunable trade-off between anti-forgery strength and robustness. Across four mainstream latent-based watermark methods, our SemBind-enabled anti-forgery variants markedly reduce false acceptance under black-box forgery while providing a controllable robustness-security balance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.20310" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.20310.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.17830</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.17830" target="_blank">VAE-REPA: Variational Autoencoder Representation Alignment for Efficient Diffusion Training</a>
+      </h3>
+      <p class="paper-title-zh">VAE-REPA：基于变分自编码器表征对齐的高效扩散模型训练方法</p>
+      <p class="paper-authors">Mengmeng Wang, Dengyang Jiang, Liuzhuozheng Li, Yucheng Lin, Guojiang Shen 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种轻量级的内在引导框架VAE-REPA，通过将扩散变换器的中间特征与预训练VAE特征对齐，显著加速训练收敛，且无需依赖外部表征编码器或双模型架构。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法利用现成预训练变分自编码器（VAE）的特征，其重建特性天然编码了丰富的纹理细节、结构模式和基础语义信息。通过一个轻量级投影层将扩散变换器的中间潜在特征与VAE特征对齐，并使用特征对齐损失进行监督。整个设计无需额外表征编码器或维护双模型，实现了简单高效的训练流程。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，VAE-REPA相比原始扩散变换器，在生成质量和训练收敛速度上均有提升；其性能匹配或优于现有加速方法，且仅增加约4%的计算开销（GFLOPs），无需为外部引导模型支付额外成本。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Denoising-based diffusion transformers, despite their strong generation performance, suffer from inefficient training convergence. Existing methods addressing this issue, such as REPA (relying on external representation encoders) or SRA (requiring dual-model setups), inevitably incur heavy computational overhead during training due to external dependencies. To tackle these challenges, this paper proposes \textbf{\namex}, a lightweight intrinsic guidance framework for efficient diffusion training. \name leverages off-the-shelf pre-trained Variational Autoencoder (VAE) features: their reconstruction property ensures inherent encoding of visual priors like rich texture details, structural patterns, and basic semantic information. Specifically, \name aligns the intermediate latent features of diffusion transformers with VAE features via a lightweight projection layer, supervised by a feature alignment loss. This design accelerates training without extra representation encoders or dual-model maintenance, resulting in a simple yet effective pipeline. Extensive experiments demonstrate that \name improves both generation quality and training convergence speed compared to vanilla diffusion transformers, matches or outperforms state-of-the-art acceleration methods, and incurs merely 4\% extra GFLOPs with zero additional cost for external guidance models.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.17830" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.17830.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <span class="category-badge">计算机视觉</span>
+        <span class="paper-id">2601.20742</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2601.20742" target="_blank">Compression Tells Intelligence: Visual Coding, Visual Token Technology, and the Unification</a>
+      </h3>
+      <p class="paper-title-zh">压缩揭示智能：视觉编码、视觉令牌技术与统一</p>
+      <p class="paper-authors">Xin Jin, Jinming Liu, Yuntao Wei, Junyan Lin, Zhicheng Wang 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文首次将经典视觉编码与新兴视觉令牌技术置于统一的优化框架下进行系统综述，揭示了二者在追求高语义保真度与低计算成本上的共同本质，并基于此提出了下一代视觉编解码与令牌技术的发展方向。</div>
+        <div class="summary-section"><strong>方法:</strong> 论文首先分别综述了基于传统信息论的视觉编码技术和生成式多模态大模型的视觉令牌技术。然后，从优化角度提出了一个统一的数学表述，将两者核心目标——在表示学习中最大化语义信息保真度同时最小化计算成本——联系起来。最后，基于该统一框架进行双向分析，并展望未来技术融合路径。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，面向任务的令牌技术在MLLMs、AIGC和具身AI等实际任务中潜力巨大。研究预测，未来可能催生出像传统编解码标准（如H.264/265）那样高效、通用，并能统一服务于广泛智能任务的标准化通用令牌技术。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>"Compression Tells Intelligence", is supported by research in artificial intelligence, particularly concerning (multimodal) large language models (LLMs/MLLMs), where compression efficiency often correlates with improved model performance and capabilities. For compression, classical visual coding based on traditional information theory has developed over decades, achieving great success with numerous international industrial standards widely applied in multimedia (e.g., image/video) systems. Except that, the recent emergingvisual token technology of generative multi-modal large models also shares a similar fundamental objective like visual coding: maximizing semantic information fidelity during the representation learning while minimizing computational cost. Therefore, this paper provides a comprehensive overview of two dominant technique families first -- Visual Coding and Vision Token Technology -- then we further unify them from the aspect of optimization, discussing the essence of compression efficiency and model performance trade-off behind. Next, based on the proposed unified formulation bridging visual coding andvisual token technology, we synthesize bidirectional insights of themselves and forecast the next-gen visual codec and token techniques. Last but not least, we experimentally show a large potential of the task-oriented token developments in the more practical tasks like multimodal LLMs (MLLMs), AI-generated content (AIGC), and embodied AI, as well as shedding light on the future possibility of standardizing a general token technology like the traditional codecs (e.g., H.264/265) with high efficiency for a wide range of intelligent tasks in a unified and effective manner.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2601.20742" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2601.20742.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2601.21694",
+    "title": "ChartE$^{3}$: A Comprehensive Benchmark for End-to-End Chart Editing",
+    "abstract": "Charts are a fundamental visualization format for structured data analysis. Enabling end-to-end chart editing according to user intent is of great practical value, yet remains challenging due to the need for both fine-grained control and global structural consistency. Most existing approaches adopt pipeline-based designs, where natural language or code serves as an intermediate representation, limiting their ability to faithfully execute complex edits. We introduce ChartE$^{3}$, an End-to-End Chart Editing benchmark that directly evaluates models without relying on intermediate natural language programs or code-level supervision. ChartE$^{3}$ focuses on two complementary editing dimensions: local editing, which involves fine-grained appearance changes such as font or color adjustments, and global editing, which requires holistic, data-centric transformations including data filtering and trend line addition. ChartE$^{3}$ contains over 1,200 high-quality samples constructed via a well-designed data pipeline with human curation. Each sample is provided as a triplet of a chart image, its underlying code, and a multimodal editing instruction, enabling evaluation from both objective and subjective perspectives. Extensive benchmarking of state-of-the-art multimodal large language models reveals substantial performance gaps, particularly on global editing tasks, highlighting critical limitations in current end-to-end chart editing capabilities.",
+    "authors": [
+      "Shuo Li",
+      "Jiajun Sun",
+      "Zhekai Wang",
+      "Xiaoran Fan",
+      "Hui Li",
+      "Dingwen Yang",
+      "Zhiheng Xi",
+      "Yijun Wang",
+      "Zifei Shan",
+      "Tao Gui",
+      "Qi Zhang",
+      "Xuanjing Huang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21694.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21694",
+    "primary_category": "cs.CV",
+    "summary": {
+      "title_zh": "ChartE³：一个用于端到端图表编辑的综合基准",
+      "core_contribution": "提出了首个不依赖中间自然语言或代码表示的端到端图表编辑基准ChartE³，用于直接评估模型根据用户意图执行细粒度与全局结构编辑的能力。",
+      "method": "该研究设计了一个包含局部编辑（如字体、颜色调整）和全局编辑（如数据筛选、趋势线添加）两个维度的评估框架。通过精心设计的数据流水线结合人工校验，构建了超过1200个高质量样本，每个样本包含图表图像、底层代码和多模态编辑指令三元组，支持从客观与主观角度进行评估。",
+      "findings": "对当前先进多模态大语言模型的广泛评测表明，它们在端到端图表编辑任务上存在显著性能差距，尤其在需要整体数据转换的全局编辑任务上表现不足，揭示了现有模型在复杂图表编辑能力上的关键局限。"
+    }
+  },
+  {
+    "id": "2601.21633",
+    "title": "A Tilted Seesaw: Revisiting Autoencoder Trade-off for Controllable Diffusion",
+    "abstract": "In latent diffusion models, the autoencoder (AE) is typically expected to balance two capabilities: faithful reconstruction and a generation-friendly latent space (e.g., low gFID). In recent ImageNet-scale AE studies, we observe a systematic bias toward generative metrics in handling this trade-off: reconstruction metrics are increasingly under-reported, and ablation-based AE selection often favors the best-gFID configuration even when reconstruction fidelity degrades. We theoretically analyze why this gFID-dominant preference can appear unproblematic for ImageNet generation, yet becomes risky when scaling to controllable diffusion: AEs can induce condition drift, which limits achievable condition alignment. Meanwhile, we find that reconstruction fidelity, especially instance-level measures, better indicates controllability. We empirically validate the impact of tilted autoencoder evaluation on controllability by studying several recent ImageNet AEs. Using a multi-dimensional condition-drift evaluation protocol reflecting controllable generation tasks, we find that gFID is only weakly predictive of condition preservation, whereas reconstruction-oriented metrics are substantially more aligned. ControlNet experiments further confirm that controllability tracks condition preservation rather than gFID. Overall, our results expose a gap between ImageNet-centric AE evaluation and the requirements of scalable controllable diffusion, offering practical guidance for more reliable benchmarking and model selection.",
+    "authors": [
+      "Pu Cao",
+      "Yiyang Ma",
+      "Feng Zhou",
+      "Xuedan Yin",
+      "Qing Song",
+      "Lu Yang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21633.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21633",
+    "primary_category": "cs.CV",
+    "summary": {
+      "title_zh": "倾斜的跷跷板：重新审视可控扩散中自编码器的权衡问题",
+      "core_contribution": "本文揭示了当前潜在扩散模型中自编码器评估存在系统性偏差——过度偏向生成友好性指标（如gFID），而忽视了重建保真度，并论证了这种偏差会损害可控生成任务的性能。",
+      "method": "作者首先通过理论分析指出，在ImageNet生成任务中，gFID主导的偏好看似无害，但在可控扩散场景下会导致条件漂移问题。随后，他们设计了一个多维度的条件漂移评估协议，用于反映可控生成任务的需求，并以此实证研究了多个近期ImageNet自编码器。最后，通过ControlNet实验进一步验证了可控性与条件保持能力的关系。",
+      "findings": "关键发现包括：1）gFID对条件保持能力的预测性很弱；2）面向重建的指标（尤其是实例级度量）与可控性更为一致；3）可控性主要跟踪条件保持能力，而非gFID。这些结果表明，以ImageNet为中心的AE评估与可扩展可控扩散的需求之间存在差距。"
+    }
+  },
+  {
+    "id": "2601.21542",
+    "title": "Bi-Anchor Interpolation Solver for Accelerating Generative Modeling",
+    "abstract": "Flow Matching (FM) models have emerged as a leading paradigm for high-fidelity synthesis. However, their reliance on iterative Ordinary Differential Equation (ODE) solving creates a significant latency bottleneck. Existing solutions face a dichotomy: training-free solvers suffer from significant performance degradation at low Neural Function Evaluations (NFEs), while training-based one- or few-steps generation methods incur prohibitive training costs and lack plug-and-play versatility. To bridge this gap, we propose the Bi-Anchor Interpolation Solver (BA-solver). BA-solver retains the versatility of standard training-free solvers while achieving significant acceleration by introducing a lightweight SideNet (1-2% backbone size) alongside the frozen backbone. Specifically, our method is founded on two synergistic components: \\textbf{1) Bidirectional Temporal Perception}, where the SideNet learns to approximate both future and historical velocities without retraining the heavy backbone; and 2) Bi-Anchor Velocity Integration, which utilizes the SideNet with two anchor velocities to efficiently approximate intermediate velocities for batched high-order integration. By utilizing the backbone to establish high-precision ``anchors'' and the SideNet to densify the trajectory, BA-solver enables large interval sizes with minimized error. Empirical results on ImageNet-256^2 demonstrate that BA-solver achieves generation quality comparable to 100+ NFEs Euler solver in just 10 NFEs and maintains high fidelity in as few as 5 NFEs, incurring negligible training costs. Furthermore, BA-solver ensures seamless integration with existing generative pipelines, facilitating downstream tasks such as image editing.",
+    "authors": [
+      "Hongxu Chen",
+      "Hongxiang Li",
+      "Zhen Wang",
+      "Long Chen"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21542.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21542",
+    "primary_category": "cs.CV",
+    "summary": {
+      "title_zh": "用于加速生成建模的双锚点插值求解器",
+      "core_contribution": "提出了一种无需重新训练主干模型的轻量级求解器（BA-solver），在极低训练成本下显著加速流匹配模型的推理速度，同时保持高生成质量与即插即用的通用性。",
+      "method": "该方法引入一个仅为主干网络1-2%大小的轻量级SideNet，并保持主干网络冻结。其核心包含两个协同组件：1）双向时间感知，使SideNet能够同时学习近似未来和历史的流速；2）双锚点速度积分，利用SideNet和两个锚点速度高效近似批处理高阶积分中的中间速度，通过主干网络提供高精度锚点，SideNet对轨迹进行稠密化。",
+      "findings": "在ImageNet-256²上的实验表明，BA-solver仅用10步神经函数评估（NFE）即可达到与100+步欧拉求解器相当的生成质量，在低至5步时仍能保持高保真度，且训练成本可忽略不计。该求解器能无缝集成到现有生成流程中，支持图像编辑等下游任务。"
+    }
+  },
+  {
+    "id": "2601.21498",
+    "title": "SimGraph: A Unified Framework for Scene Graph-Based Image Generation and Editing",
+    "abstract": "Recent advancements in Generative Artificial Intelligence (GenAI) have significantly enhanced the capabilities of both image generation and editing. However, current approaches often treat these tasks separately, leading to inefficiencies and challenges in maintaining spatial consistency and semantic coherence between generated content and edits. Moreover, a major obstacle is the lack of structured control over object relationships and spatial arrangements. Scene graph-based methods, which represent objects and their interrelationships in a structured format, offer a solution by providing greater control over composition and interactions in both image generation and editing. To address this, we introduce SimGraph, a unified framework that integrates scene graph-based image generation and editing, enabling precise control over object interactions, layouts, and spatial coherence. In particular, our framework integrates token-based generation and diffusion-based editing within a single scene graph-driven model, ensuring high-quality and consistent results. Through extensive experiments, we empirically demonstrate that our approach outperforms existing state-of-the-art methods.",
+    "authors": [
+      "Thanh-Nhan Vo",
+      "Trong-Thuan Nguyen",
+      "Tam V. Nguyen",
+      "Minh-Triet Tran"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21498.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21498",
+    "primary_category": "cs.CV",
+    "summary": {
+      "title_zh": "SimGraph：一个基于场景图进行图像生成与编辑的统一框架",
+      "core_contribution": "提出了一个统一的框架SimGraph，将基于场景图的图像生成与编辑任务整合在一起，解决了现有方法将两者分离导致的效率低下、空间一致性与语义连贯性不足的问题。",
+      "method": "该框架采用场景图作为结构化表示，以精确控制对象关系与空间布局。它在一个统一的场景图驱动模型中，集成了基于令牌的图像生成方法和基于扩散模型的图像编辑方法，从而确保生成与编辑结果的高质量与一致性。",
+      "findings": "通过大量实验验证，SimGraph在图像生成和编辑任务上的表现均优于现有的先进方法，能够有效维持对象间的交互关系、布局结构和空间连贯性。"
+    }
+  },
+  {
+    "id": "2601.21419",
+    "title": "Revisiting Diffusion Model Predictions Through Dimensionality",
+    "abstract": "Recent advances in diffusion and flow matching models have highlighted a shift in the preferred prediction target -- moving from noise ($\\varepsilon$) and velocity (v) to direct data (x) prediction -- particularly in high-dimensional settings. However, a formal explanation of why the optimal target depends on the specific properties of the data remains elusive. In this work, we provide a theoretical framework based on a generalized prediction formulation that accommodates arbitrary output targets, of which $\\varepsilon$-, v-, and x-prediction are special cases. We derive the analytical relationship between data's geometry and the optimal prediction target, offering a rigorous justification for why x-prediction becomes superior when the ambient dimension significantly exceeds the data's intrinsic dimension. Furthermore, while our theory identifies dimensionality as the governing factor for the optimal prediction target, the intrinsic dimension of manifold-bound data is typically intractable to estimate in practice. To bridge this gap, we propose k-Diff, a framework that employs a data-driven approach to learn the optimal prediction parameter k directly from data, bypassing the need for explicit dimension estimation. Extensive experiments in both latent-space and pixel-space image generation demonstrate that k-Diff consistently outperforms fixed-target baselines across varying architectures and data scales, providing a principled and automated approach to enhancing generative performance.",
+    "authors": [
+      "Qing Jin",
+      "Chaoyang Wang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21419.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21419",
+    "primary_category": "cs.LG",
+    "summary": {
+      "title_zh": "通过维度视角重新审视扩散模型的预测目标",
+      "core_contribution": "本文提出了一个理论框架，阐明了数据的内在维度如何决定扩散模型的最优预测目标（如噪声、速度或数据本身），并提出了一个无需显式估计维度的数据驱动方法k-Diff，以自动学习最优预测参数。",
+      "method": "作者首先建立了一个广义预测公式，将ε预测、v预测和x预测统一为特例。然后，理论推导了数据几何（特别是环境维度与内在维度的关系）与最优预测目标之间的解析关系。为解决内在维度难以估计的问题，提出了k-Diff框架，通过数据驱动的方式直接从数据中学习最优的预测参数k，绕过了显式的维度估计。",
+      "findings": "理论分析表明，当数据的环绕维度远高于其内在维度时，直接数据预测（x-prediction）成为最优选择。在潜空间和像素空间的图像生成实验中，k-Diff框架在不同架构和数据规模下均稳定优于固定预测目标的基线方法，验证了其作为提升生成性能的原则性自动化方法的有效性。"
+    }
+  }
+]
