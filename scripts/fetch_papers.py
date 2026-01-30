@@ -372,6 +372,12 @@ def main():
     today_papers, new_seen = select_unseen(ranked, seen, limit)
     print(f"Selected {len(today_papers)} unseen papers (limit={limit})")
 
+    # 将 DeepSeek 分数写入当日论文，方便页面展示
+    for p in today_papers:
+        pid = p.get("id")
+        if pid in scores:
+            p["score"] = scores[pid]
+
     today = datetime.now().strftime("%Y-%m-%d")
     output_file = save_papers(today_papers, today)
 

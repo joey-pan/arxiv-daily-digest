@@ -29,18 +29,24 @@ CATEGORY_NAMES = {
 def generate_paper_html(paper: dict) -> str:
     summary = paper.get("summary", {})
     title_zh = summary.get("title_zh", "")
-    
+
     authors_str = ", ".join(paper["authors"][:5])
     if len(paper["authors"]) > 5:
         authors_str += f" 等 ({len(paper['authors'])} 位作者)"
-    
+
     cat_name = CATEGORY_NAMES.get(paper.get("primary_category", ""), paper.get("primary_category", ""))
-    
+    score = paper.get("score")
+
+    score_html = f'<span class="score-badge">相关性 {int(score)}/100</span>' if isinstance(score, (int, float)) else ""
+
     return f'''
     <article class="paper-card">
       <div class="paper-header">
-        <span class="category-badge">{cat_name}</span>
-        <span class="paper-id">{paper["id"]}</span>
+        <div class="left-header">
+          <span class="category-badge">{cat_name}</span>
+          <span class="paper-id">{paper["id"]}</span>
+        </div>
+        {score_html}
       </div>
       <h3 class="paper-title">
         <a href="{paper["abs_url"]}" target="_blank">{paper["title"]}</a>
@@ -135,6 +141,16 @@ def generate_index_html(papers: list[dict], date_str: str, config: dict) -> str:
             font-size: 0.9rem;
             color: var(--text-muted);
         }}
+
+        .archive-link-top {{
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }}
+
+        .archive-link-top a {{
+            color: var(--accent);
+            text-decoration: none;
+        }}
         
         .paper-card {{
             background: var(--card-bg);
@@ -154,6 +170,13 @@ def generate_index_html(papers: list[dict], date_str: str, config: dict) -> str:
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }}
+
+        .left-header {{
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }}
         
         .category-badge {{
@@ -169,6 +192,15 @@ def generate_index_html(papers: list[dict], date_str: str, config: dict) -> str:
             color: var(--text-muted);
             font-size: 0.85rem;
             font-family: monospace;
+        }}
+
+        .score-badge {{
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
         }}
         
         .paper-title {{
@@ -282,6 +314,7 @@ def generate_index_html(papers: list[dict], date_str: str, config: dict) -> str:
         <p class="subtitle">{site_config.get("description", "每日论文精选")}</p>
         <p class="date">📅 {date_str}</p>
         <p class="stats">共 {len(papers)} 篇论文 | {stats_html}</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
     <main>
