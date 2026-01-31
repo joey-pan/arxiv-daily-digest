@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2601.22158",
+    "title": "One-step Latent-free Image Generation with Pixel Mean Flows",
+    "abstract": "Modern diffusion/flow-based models for image generation typically exhibit two core characteristics: (i) using multi-step sampling, and (ii) operating in a latent space. Recent advances have made encouraging progress on each aspect individually, paving the way toward one-step diffusion/flow without latents. In this work, we take a further step towards this goal and propose \"pixel MeanFlow\" (pMF). Our core guideline is to formulate the network output space and the loss space separately. The network target is designed to be on a presumed low-dimensional image manifold (i.e., x-prediction), while the loss is defined via MeanFlow in the velocity space. We introduce a simple transformation between the image manifold and the average velocity field. In experiments, pMF achieves strong results for one-step latent-free generation on ImageNet at 256x256 resolution (2.22 FID) and 512x512 resolution (2.48 FID), filling a key missing piece in this regime. We hope that our study will further advance the boundaries of diffusion/flow-based generative models.",
+    "authors": [
+      "Yiyang Lu",
+      "Susie Lu",
+      "Qiao Sun",
+      "Hanhong Zhao",
+      "Zhicheng Jiang",
+      "Xianbang Wang",
+      "Tianhong Li",
+      "Zhengyang Geng",
+      "Kaiming He"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22158.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22158",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于像素均值流的单步无潜变量图像生成",
+      "core_contribution": "提出像素均值流（pMF）方法，首次在无潜变量条件下实现了高质量的单步图像生成，填补了该领域的关键空白。",
+      "method": "该方法的核心设计是将网络输出空间与损失空间分离：网络输出目标被设计在预设的低维图像流形上（即x-prediction），而损失则通过速度空间中的均值流（MeanFlow）定义。通过引入图像流形与平均速度场之间的简单变换，实现了高效的单步生成。",
+      "findings": "在ImageNet数据集上，pMF在256×256分辨率下达到2.22 FID，在512×512分辨率下达到2.48 FID，证明了其在单步无潜变量生成任务中的强大性能。"
+    }
+  },
+  {
+    "id": "2601.22125",
+    "title": "Creative Image Generation with Diffusion Model",
+    "abstract": "Creative image generation has emerged as a compelling area of research, driven by the need to produce novel and high-quality images that expand the boundaries of imagination. In this work, we propose a novel framework for creative generation using diffusion models, where creativity is associated with the inverse probability of an image's existence in the CLIP embedding space. Unlike prior approaches that rely on a manual blending of concepts or exclusion of subcategories, our method calculates the probability distribution of generated images and drives it towards low-probability regions to produce rare, imaginative, and visually captivating outputs. We also introduce pullback mechanisms, achieving high creativity without sacrificing visual fidelity. Extensive experiments on text-to-image diffusion models demonstrate the effectiveness and efficiency of our creative generation framework, showcasing its ability to produce unique, novel, and thought-provoking images. This work provides a new perspective on creativity in generative models, offering a principled method to foster innovation in visual content synthesis.",
+    "authors": [
+      "Kunpeng Song",
+      "Ahmed Elgammal"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22125.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22125",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于扩散模型的创意图像生成",
+      "core_contribution": "本文提出了一种基于扩散模型的创意图像生成新框架，将创造力定义为图像在CLIP嵌入空间中存在的逆概率，并引入回拉机制，在保持视觉保真度的同时生成新颖独特的图像。",
+      "method": "该方法通过计算生成图像在CLIP嵌入空间中的概率分布，并驱动其向低概率区域移动，以产生罕见且富有想象力的输出。与以往依赖手动概念混合或排除子类别的方法不同，本方法采用了一种原则性的概率驱动机制。同时，框架引入了回拉机制，以平衡创意性与图像质量。",
+      "findings": "在文本到图像扩散模型上的大量实验表明，该框架能有效且高效地生成独特、新颖且引人深思的图像，为生成模型中的创造力研究提供了新视角。"
+    }
+  },
+  {
+    "id": "2601.22094",
+    "title": "RefAny3D: 3D Asset-Referenced Diffusion Models for Image Generation",
+    "abstract": "In this paper, we propose a 3D asset-referenced diffusion model for image generation, exploring how to integrate 3D assets into image diffusion models. Existing reference-based image generation methods leverage large-scale pretrained diffusion models and demonstrate strong capability in generating diverse images conditioned on a single reference image. However, these methods are limited to single-image references and cannot leverage 3D assets, constraining their practical versatility. To address this gap, we present a cross-domain diffusion model with dual-branch perception that leverages multi-view RGB images and point maps of 3D assets to jointly model their colors and canonical-space coordinates, achieving precise consistency between generated images and the 3D references. Our spatially aligned dual-branch generation architecture and domain-decoupled generation mechanism ensure the simultaneous generation of two spatially aligned but content-disentangled outputs, RGB images and point maps, linking 2D image attributes with 3D asset attributes. Experiments show that our approach effectively uses 3D assets as references to produce images consistent with the given assets, opening new possibilities for combining diffusion models with 3D content creation.",
+    "authors": [
+      "Hanzhuo Huang",
+      "Qingyang Bao",
+      "Zekai Gu",
+      "Zhongshuo Du",
+      "Cheng Lin",
+      "Yuan Liu",
+      "Sibei Yang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22094.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22094",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RefAny3D：用于图像生成的3D资产参考扩散模型",
+      "core_contribution": "提出首个能够以3D资产作为参考条件的图像生成扩散模型，通过联合建模颜色与空间坐标，实现了生成图像与3D参考之间的精确一致性。",
+      "method": "采用双分支感知的跨域扩散模型，同时输入3D资产的多视角RGB图像和点云图，以联合学习颜色和规范空间坐标。设计了空间对齐的双分支生成架构与域解耦生成机制，确保同时生成空间对齐但内容解耦的RGB图像和点云图，从而关联2D图像属性与3D资产属性。",
+      "findings": "实验表明，该方法能有效利用3D资产作为参考，生成与给定资产保持一致的图像，为扩散模型与3D内容创作的结合开辟了新可能性。"
+    }
+  },
+  {
+    "id": "2601.22057",
+    "title": "Unsupervised Decomposition and Recombination with Discriminator-Driven Diffusion Models",
+    "abstract": "Decomposing complex data into factorized representations can reveal reusable components and enable synthesizing new samples via component recombination. We investigate this in the context of diffusion-based models that learn factorized latent spaces without factor-level supervision. In images, factors can capture background, illumination, and object attributes; in robotic videos, they can capture reusable motion components. To improve both latent factor discovery and quality of compositional generation, we introduce an adversarial training signal via a discriminator trained to distinguish between single-source samples and those generated by recombining factors across sources. By optimizing the generator to fool this discriminator, we encourage physical and semantic consistency in the resulting recombinations. Our method outperforms implementations of prior baselines on CelebA-HQ, Virtual KITTI, CLEVR, and Falcor3D, achieving lower FID scores and better disentanglement as measured by MIG and MCC. Furthermore, we demonstrate a novel application to robotic video trajectories: by recombining learned action components, we generate diverse sequences that significantly increase state-space coverage for exploration on the LIBERO benchmark.",
+    "authors": [
+      "Archer Wang",
+      "Emile Anand",
+      "Yilun Du",
+      "Marin Soljačić"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22057.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22057",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于判别器驱动扩散模型的无监督分解与重组",
+      "core_contribution": "提出了一种通过对抗性训练信号来改进无监督因子化表示学习的方法，该方法能更好地发现潜在因子并提升组合生成的质量，同时在图像和机器人视频轨迹上展示了新颖的应用。",
+      "method": "该方法基于扩散模型学习无因子级别监督的因子化潜在空间。通过训练一个判别器来区分单一来源的样本与跨来源因子重组生成的样本，并优化生成器以欺骗该判别器，从而鼓励重组结果在物理和语义上的一致性。",
+      "findings": "在CelebA-HQ、Virtual KITTI、CLEVR和Falcor3D数据集上，本方法在FID分数以及MIG和MCC衡量的解纠缠度方面均优于先前基线。在机器人视频轨迹应用中，通过重组学习到的动作组件，能够生成显著增加状态空间覆盖范围的多样化序列，从而提升探索效率。"
+    }
+  },
+  {
+    "id": "2601.21892",
+    "title": "Improving Classifier-Free Guidance of Flow Matching via Manifold Projection",
+    "abstract": "Classifier-free guidance (CFG) is a widely used technique for controllable generation in diffusion and flow-based models. Despite its empirical success, CFG relies on a heuristic linear extrapolation that is often sensitive to the guidance scale. In this work, we provide a principled interpretation of CFG through the lens of optimization. We demonstrate that the velocity field in flow matching corresponds to the gradient of a sequence of smoothed distance functions, which guides latent variables toward the scaled target image set. This perspective reveals that the standard CFG formulation is an approximation of this gradient, where the prediction gap, the discrepancy between conditional and unconditional outputs, governs guidance sensitivity. Leveraging this insight, we reformulate the CFG sampling as a homotopy optimization with a manifold constraint. This formulation necessitates a manifold projection step, which we implement via an incremental gradient descent scheme during sampling. To improve computational efficiency and stability, we further enhance this iterative process with Anderson Acceleration without requiring additional model evaluations. Our proposed methods are training-free and consistently refine generation fidelity, prompt alignment, and robustness to the guidance scale. We validate their effectiveness across diverse benchmarks, demonstrating significant improvements on large-scale models such as DiT-XL-2-256, Flux, and Stable Diffusion 3.5.",
+    "authors": [
+      "Jian-Feng Cai",
+      "Haixia Liu",
+      "Zhengyi Su",
+      "Chao Wang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21892.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21892",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过流形投影改进基于流匹配的无分类器引导",
+      "core_contribution": "本文为无分类器引导（CFG）提供了一个基于优化的理论解释，并提出了一个包含流形约束的同伦优化采样框架，显著提升了生成质量、提示对齐和对引导尺度的鲁棒性。",
+      "method": "首先，论文从优化视角将流匹配中的速度场解释为一系列平滑距离函数的梯度。基于此，作者将标准CFG采样重新表述为一个带流形约束的同伦优化问题，这要求在采样过程中进行流形投影。该投影通过一种增量梯度下降方案实现，并进一步结合安德森加速法进行优化，以提高计算效率和稳定性，且无需额外的模型评估。",
+      "findings": "所提出的方法是免训练的，能在多个基准测试中一致地提升生成保真度、提示对齐能力和对引导尺度的鲁棒性。在DiT-XL-2-256、Flux和Stable Diffusion 3.5等大规模模型上的实验验证了其有效性，取得了显著改进。"
+    }
+  }
+]
