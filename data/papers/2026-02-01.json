@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2601.21857",
+    "title": "Trajectory-Guided Diffusion for Foreground-Preserving Background Generation in Multi-Layer Documents",
+    "abstract": "We present a diffusion-based framework for document-centric background generation that achieves foreground preservation and multi-page stylistic consistency through latent-space design rather than explicit constraints. Instead of suppressing diffusion updates or applying masking heuristics, our approach reinterprets diffusion as the evolution of stochastic trajectories through a structured latent space. By shaping the initial noise and its geometric alignment, background generation naturally avoids designated foreground regions, allowing readable content to remain intact without auxiliary mechanisms. To address the long-standing issue of stylistic drift across pages, we decouple style control from text conditioning and introduce cached style directions as persistent vectors in latent space. Once selected, these directions constrain diffusion trajectories to a shared stylistic subspace, ensuring consistent appearance across pages and editing iterations. This formulation eliminates the need for repeated prompt-based style specification and provides a more stable foundation for multi-page generation. Our framework admits a geometric and physical interpretation, where diffusion paths evolve on a latent manifold shaped by preferred directions, and foreground regions are rarely traversed as a consequence of trajectory initialization rather than explicit exclusion. The proposed method is training-free, compatible with existing diffusion backbones, and produces visually coherent, foreground-preserving results across complex documents. By reframing diffusion as trajectory design in latent space, we offer a principled approach to consistent and structured generative modeling.",
+    "authors": [
+      "Taewon Kang"
+    ],
+    "published": "2026-01-29",
+    "updated": "2026-01-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21857.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21857",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于轨迹引导扩散的多层文档前景保持背景生成",
+      "core_contribution": "提出了一种无需训练的扩散框架，通过在潜在空间中设计初始噪声的几何对齐和缓存的风格方向，实现了文档前景内容的自然保持与多页面风格一致性，无需依赖显式约束或掩码启发式方法。",
+      "method": "该方法将扩散过程重新解释为在结构化潜在空间中随机轨迹的演化。通过塑造初始噪声及其几何对齐，使背景生成自然地避开指定前景区域；同时，将风格控制与文本条件解耦，引入缓存的风格方向作为潜在空间中的持久向量，约束扩散轨迹共享同一风格子空间。",
+      "findings": "该方法无需训练，与现有扩散主干兼容，能够在复杂文档中生成视觉连贯且保持前景可读性的背景；通过轨迹初始化而非显式排除，使扩散路径很少穿越前景区域；缓存的风格方向有效解决了多页面生成中的风格漂移问题，无需重复基于提示的风格指定。"
+    }
+  },
+  {
+    "id": "2601.21081",
+    "title": "Shape of Thought: Progressive Object Assembly via Visual Chain-of-Thought",
+    "abstract": "Multimodal models for text-to-image generation have achieved strong visual fidelity, yet they remain brittle under compositional structural constraints-notably generative numeracy, attribute binding, and part-level relations. To address these challenges, we propose Shape-of-Thought (SoT), a visual CoT framework that enables progressive shape assembly via coherent 2D projections without external engines at inference time. SoT trains a unified multimodal autoregressive model to generate interleaved textual plans and rendered intermediate states, helping the model capture shape-assembly logic without producing explicit geometric representations. To support this paradigm, we introduce SoT-26K, a large-scale dataset of grounded assembly traces derived from part-based CAD hierarchies, and T2S-CompBench, a benchmark for evaluating structural integrity and trace faithfulness. Fine-tuning on SoT-26K achieves 88.4% on component numeracy and 84.8% on structural topology, outperforming text-only baselines by around 20%. SoT establishes a new paradigm for transparent, process-supervised compositional generation. The code is available at https://anonymous.4open.science/r/16FE/. The SoT-26K dataset will be released upon acceptance.",
+    "authors": [
+      "Yu Huo",
+      "Siyu Zhang",
+      "Kun Zeng",
+      "Haoyue Liu",
+      "Owen Lee",
+      "Junlin Chen",
+      "Yuquan Lu",
+      "Yifu Guo",
+      "Yaodong Liang",
+      "Xiaoying Tang"
+    ],
+    "published": "2026-01-28",
+    "updated": "2026-01-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.21081.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.21081",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "思维之形：通过视觉思维链进行渐进式物体组装",
+      "core_contribution": "提出了Shape-of-Thought（SoT）视觉思维链框架，通过渐进式2D投影实现结构化物体组装，无需依赖外部推理引擎；同时构建了大规模组装轨迹数据集SoT-26K和评估基准T2S-CompBench。",
+      "method": "1. 训练一个统一的多模态自回归模型，生成交错的文本计划和渲染的中间状态。\n2. 通过视觉思维链捕获形状组装逻辑，无需显式几何表示。\n3. 利用从基于部件的CAD层次结构衍生的组装轨迹数据进行训练。\n4. 在推理时仅通过连贯的2D投影序列实现渐进式组装。",
+      "findings": "1. 在SoT-26K上微调的模型在部件数量准确性上达到88.4%，在结构拓扑准确性上达到84.8%。\n2. 相比纯文本基线模型，性能提升约20%。\n3. 该框架为透明、过程监督的组合生成建立了新范式，显著提升了生成模型的组合结构约束能力。"
+    }
+  },
+  {
+    "id": "2601.20911",
+    "title": "Non-Markov Multi-Round Conversational Image Generation with History-Conditioned MLLMs",
+    "abstract": "Conversational image generation requires a model to follow user instructions across multiple rounds of interaction, grounded in interleaved text and images that accumulate as chat history. While recent multimodal large language models (MLLMs) can generate and edit images, most existing multi-turn benchmarks and training recipes are effectively Markov: the next output depends primarily on the most recent image, enabling shortcut solutions that ignore long-range history. In this work we formalize and target the more challenging non-Markov setting, where a user may refer back to earlier states, undo changes, or reference entities introduced several rounds ago. We present (i) non-Markov multi-round data construction strategies, including rollback-style editing that forces retrieval of earlier visual states and name-based multi-round personalization that binds names to appearances across rounds; (ii) a history-conditioned training and inference framework with token-level caching to prevent multi-round identity drift; and (iii) enabling improvements for high-fidelity image reconstruction and editable personalization, including a reconstruction-based DiT detokenizer and a multi-stage fine-tuning curriculum. We demonstrate that explicitly training for non-Markov interactions yields substantial improvements in multi-round consistency and instruction compliance, while maintaining strong single-round editing and personalization.",
+    "authors": [
+      "Haochen Zhang",
+      "Animesh Sinha",
+      "Felix Juefei-Xu",
+      "Haoyu Ma",
+      "Kunpeng Li",
+      "Zhipeng Fan",
+      "Meng Dong",
+      "Xiaoliang Dai",
+      "Tingbo Hou",
+      "Peizhao Zhang",
+      "Zecheng He"
+    ],
+    "published": "2026-01-28",
+    "updated": "2026-01-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.20911.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.20911",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于历史条件化多模态大语言模型的非马尔可夫多轮对话式图像生成",
+      "core_contribution": "本文正式定义并针对非马尔可夫多轮对话式图像生成这一更具挑战性的任务，提出了一套数据构建、训练与推理框架，显著提升了模型在多轮交互中对长程历史的一致性和指令遵循能力。",
+      "method": "首先，设计了非马尔可夫多轮数据构建策略，包括强制模型回溯早期视觉状态的“回滚式编辑”和跨轮次绑定名称与外观的“基于名称的多轮个性化”。其次，提出了一个历史条件化的训练与推理框架，采用令牌级缓存机制以防止多轮身份漂移。此外，引入基于重建的DiT解令牌器和多阶段微调课程，以提升高保真图像重建和可编辑个性化的能力。",
+      "findings": "实验表明，针对非马尔可夫交互进行显式训练，能显著提升模型在多轮对话中的一致性和指令遵循能力，同时保持强大的单轮图像编辑和个性化性能。所提出的方法在图像重建和可编辑个性化方面也取得了改进。"
+    }
+  },
+  {
+    "id": "2601.20273",
+    "title": "StreamFusion: Scalable Sequence Parallelism for Distributed Inference of Diffusion Transformers on GPUs",
+    "abstract": "Diffusion Transformers (DiTs) have gained increasing adoption in high-quality image and video generation. As demand for higher-resolution images and longer videos increases, single-GPU inference becomes inefficient due to increased latency and large activation sizes. Current frameworks employ sequence parallelism (SP) techniques such as Ulysses Attention and Ring Attention to scale inference. However, these implementations have three primary limitations: (1) suboptimal communication patterns for network topologies on modern GPU machines, (2) latency bottlenecks from all-to-all operations in inter-machine communication, and (3) GPU sender-receiver synchronization and computation overheads from using two-sided communication libraries. To address these issues, we present StreamFusion, a topology-aware efficient DiT serving engine. StreamFusion incorporates three key innovations: (1) a topology-aware sequence parallelism technique that accounts for inter- and intra-machine bandwidth differences, (2) Torus Attention, a novel SP technique enabling overlapping of inter-machine all-to-all operations with computation, and (3) a one-sided communication implementation that minimizes GPU sender-receiver synchronization and computation overheads. Our experiments demonstrate that StreamFusion outperforms the state-of-the-art approach by an average of $1.35\\times$ (up to $1.77\\times$).",
+    "authors": [
+      "Jiacheng Yang",
+      "Jun Wu",
+      "Yaoyao Ding",
+      "Zhiying Xu",
+      "Yida Wang",
+      "Gennady Pekhimenko"
+    ],
+    "published": "2026-01-28",
+    "updated": "2026-01-28",
+    "categories": [
+      "cs.DC",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.20273.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.20273",
+    "primary_category": "cs.DC",
+    "score": 85,
+    "summary": {
+      "title_zh": "StreamFusion：面向GPU上扩散变换器分布式推理的可扩展序列并行方法",
+      "core_contribution": "提出了StreamFusion，一个面向拓扑感知的高效扩散变换器（DiT）服务引擎，通过优化通信模式、重叠计算与通信以及采用单边通信，显著提升了分布式推理的效率和可扩展性。",
+      "method": "StreamFusion包含三项关键技术：1）一种考虑机器间与机器内带宽差异的拓扑感知序列并行技术；2）提出Torus Attention，一种新颖的序列并行技术，能够将机器间的all-to-all通信操作与计算重叠；3）采用单边通信实现，以最小化GPU发送端与接收端的同步和计算开销。",
+      "findings": "实验结果表明，StreamFusion在性能上平均优于现有最先进方法1.35倍，最高可达1.77倍，有效解决了现有序列并行方法在通信模式、延迟瓶颈和同步开销方面的局限性。"
+    }
+  },
+  {
+    "id": "2601.20218",
+    "title": "DenseGRPO: From Sparse to Dense Reward for Flow Matching Model Alignment",
+    "abstract": "Recent GRPO-based approaches built on flow matching models have shown remarkable improvements in human preference alignment for text-to-image generation. Nevertheless, they still suffer from the sparse reward problem: the terminal reward of the entire denoising trajectory is applied to all intermediate steps, resulting in a mismatch between the global feedback signals and the exact fine-grained contributions at intermediate denoising steps. To address this issue, we introduce \\textbf{DenseGRPO}, a novel framework that aligns human preference with dense rewards, which evaluates the fine-grained contribution of each denoising step. Specifically, our approach includes two key components: (1) we propose to predict the step-wise reward gain as dense reward of each denoising step, which applies a reward model on the intermediate clean images via an ODE-based approach. This manner ensures an alignment between feedback signals and the contributions of individual steps, facilitating effective training; and (2) based on the estimated dense rewards, a mismatch drawback between the uniform exploration setting and the time-varying noise intensity in existing GRPO-based methods is revealed, leading to an inappropriate exploration space. Thus, we propose a reward-aware scheme to calibrate the exploration space by adaptively adjusting a timestep-specific stochasticity injection in the SDE sampler, ensuring a suitable exploration space at all timesteps. Extensive experiments on multiple standard benchmarks demonstrate the effectiveness of the proposed DenseGRPO and highlight the critical role of the valid dense rewards in flow matching model alignment.",
+    "authors": [
+      "Haoyou Deng",
+      "Keyu Yan",
+      "Chaojie Mao",
+      "Xiang Wang",
+      "Yu Liu",
+      "Changxin Gao",
+      "Nong Sang"
+    ],
+    "published": "2026-01-28",
+    "updated": "2026-01-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.20218.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.20218",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DenseGRPO：从稀疏奖励到密集奖励的流匹配模型对齐方法",
+      "core_contribution": "本文提出了DenseGRPO框架，通过为去噪过程的每一步提供密集奖励信号，解决了现有基于GRPO的流匹配模型在人类偏好对齐中存在的稀疏奖励问题，并进一步提出了一种奖励感知的探索空间校准方案。",
+      "method": "方法主要包括两个关键部分：首先，提出通过基于ODE的方法在中间干净图像上应用奖励模型，预测每一步的去噪奖励增益作为密集奖励，使反馈信号与每一步的贡献精确对齐；其次，基于估计的密集奖励，揭示了现有方法中均匀探索设置与时变噪声强度不匹配的问题，进而提出一种奖励感知方案，通过自适应调整SDE采样器中特定时间步的随机性注入，来校准探索空间。",
+      "findings": "在多个标准基准上的实验表明，DenseGRPO能有效提升文本到图像生成任务中的人类偏好对齐性能，验证了密集奖励在流匹配模型对齐中的关键作用，并且所提出的奖励感知探索方案能够确保所有时间步都具有合适的探索空间。"
+    }
+  }
+]
