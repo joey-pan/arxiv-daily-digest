@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2601.22904",
+    "title": "DINO-SAE: DINO Spherical Autoencoder for High-Fidelity Image Reconstruction and Generation",
+    "abstract": "Recent studies have explored using pretrained Vision Foundation Models (VFMs) such as DINO for generative autoencoders, showing strong generative performance. Unfortunately, existing approaches often suffer from limited reconstruction fidelity due to the loss of high-frequency details. In this work, we present the DINO Spherical Autoencoder (DINO-SAE), a framework that bridges semantic representation and pixel-level reconstruction. Our key insight is that semantic information in contrastive representations is primarily encoded in the direction of feature vectors, while forcing strict magnitude matching can hinder the encoder from preserving fine-grained details. To address this, we introduce Hierarchical Convolutional Patch Embedding module that enhances local structure and texture preservation, and Cosine Similarity Alignment objective that enforces semantic consistency while allowing flexible feature magnitudes for detail retention. Furthermore, leveraging the observation that SSL-based foundation model representations intrinsically lie on a hypersphere, we employ Riemannian Flow Matching to train a Diffusion Transformer (DiT) directly on this spherical latent manifold. Experiments on ImageNet-1K demonstrate that our approach achieves state-of-the-art reconstruction quality, reaching 0.37 rFID and 26.2 dB PSNR, while maintaining strong semantic alignment to the pretrained VFM. Notably, our Riemannian Flow Matching-based DiT exhibits efficient convergence, achieving a gFID of 3.47 at 80 epochs.",
+    "authors": [
+      "Hun Chang",
+      "Byunghee Cha",
+      "Jong Chul Ye"
+    ],
+    "published": "2026-01-30",
+    "updated": "2026-01-30",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22904.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22904",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DINO-SAE：用于高保真图像重建与生成的DINO球形自编码器",
+      "core_contribution": "提出了DINO球形自编码器（DINO-SAE），通过解耦特征向量的方向与幅度，有效桥接了语义表示与像素级重建，显著提升了重建保真度；并首次在球形流形上训练扩散Transformer，实现了高效的生成建模。",
+      "method": "1. 设计了分层卷积块嵌入模块，增强对局部结构和纹理的保留；2. 提出余弦相似度对齐目标，在保持语义一致性的同时允许特征幅度灵活变化以保留细节；3. 基于对比学习基础模型的表示本质位于超球面的观察，采用黎曼流匹配直接在球形潜在流形上训练扩散Transformer。",
+      "findings": "在ImageNet-1K上的实验表明，该方法实现了最先进的重建质量（rFID为0.37，PSNR为26.2 dB），同时保持了与预训练视觉基础模型的强语义对齐；基于黎曼流匹配的扩散Transformer收敛高效，在80轮训练后gFID达到3.47。"
+    }
+  },
+  {
+    "id": "2601.22837",
+    "title": "NativeTok: Native Visual Tokenization for Improved Image Generation",
+    "abstract": "VQ-based image generation typically follows a two-stage pipeline: a tokenizer encodes images into discrete tokens, and a generative model learns their dependencies for reconstruction. However, improved tokenization in the first stage does not necessarily enhance the second-stage generation, as existing methods fail to constrain token dependencies. This mismatch forces the generative model to learn from unordered distributions, leading to bias and weak coherence. To address this, we propose native visual tokenization, which enforces causal dependencies during tokenization. Building on this idea, we introduce NativeTok, a framework that achieves efficient reconstruction while embedding relational constraints within token sequences. NativeTok consists of: (1) a Meta Image Transformer (MIT) for latent image modeling, and (2) a Mixture of Causal Expert Transformer (MoCET), where each lightweight expert block generates a single token conditioned on prior tokens and latent features. We further design a Hierarchical Native Training strategy that updates only new expert blocks, ensuring training efficiency. Extensive experiments demonstrate the effectiveness of NativeTok.",
+    "authors": [
+      "Bin Wu",
+      "Mengqi Huang",
+      "Weinan Jia",
+      "Zhendong Mao"
+    ],
+    "published": "2026-01-30",
+    "updated": "2026-01-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22837.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22837",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "NativeTok：用于改进图像生成的原生视觉分词方法",
+      "core_contribution": "提出了原生视觉分词（native visual tokenization）的概念，通过强制在分词阶段引入因果依赖关系，解决了传统VQ方法中分词与生成阶段不匹配的问题，从而提升了生成图像的一致性和质量。",
+      "method": "方法基于原生视觉分词思想，设计了NativeTok框架，包含两个核心组件：1）用于潜在图像建模的元图像变换器（MIT）；2）混合因果专家变换器（MoCET），其中每个轻量级专家块基于先前令牌和潜在特征生成单个令牌。此外，还设计了分层原生训练策略，仅更新新的专家块以保证训练效率。",
+      "findings": "大量实验表明，NativeTok在图像重建和生成任务中表现优异，能够有效嵌入关系约束到令牌序列中，生成具有更强一致性和更少偏差的图像，同时保持了较高的训练效率。"
+    }
+  },
+  {
+    "id": "2601.22680",
+    "title": "Visual Personalization Turing Test",
+    "abstract": "We introduce the Visual Personalization Turing Test (VPTT), a new paradigm for evaluating contextual visual personalization based on perceptual indistinguishability, rather than identity replication. A model passes the VPTT if its output (image, video, 3D asset, etc.) is indistinguishable to a human or calibrated VLM judge from content a given person might plausibly create or share. To operationalize VPTT, we present the VPTT Framework, integrating a 10k-persona benchmark (VPTT-Bench), a visual retrieval-augmented generator (VPRAG), and the VPTT Score, a text-only metric calibrated against human and VLM judgments. We show high correlation across human, VLM, and VPTT evaluations, validating the VPTT Score as a reliable perceptual proxy. Experiments demonstrate that VPRAG achieves the best alignment-originality balance, offering a scalable and privacy-safe foundation for personalized generative AI.",
+    "authors": [
+      "Rameen Abdal",
+      "James Burgess",
+      "Sergey Tulyakov",
+      "Kuan-Chieh Jackson Wang"
+    ],
+    "published": "2026-01-30",
+    "updated": "2026-01-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22680.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22680",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "视觉个性化图灵测试",
+      "core_contribution": "提出了基于感知不可区分性（而非身份复制）的视觉个性化评估新范式——视觉个性化图灵测试（VPTT），并开发了一个包含基准、生成器和自动化评估指标的完整框架。",
+      "method": "研究团队构建了包含1万个人物角色的基准数据集（VPTT-Bench），开发了视觉检索增强生成器（VPRAG）来生成个性化内容，并设计了纯文本评估指标VPTT Score，该指标通过人类和视觉语言模型的判断进行校准。",
+      "findings": "人类评估者、视觉语言模型和VPTT Score三者之间表现出高度相关性，验证了VPTT Score可作为可靠的感知代理指标；实验表明VPRAG在内容对齐性和原创性之间取得了最佳平衡，为可扩展且隐私安全的个性化生成AI提供了基础。"
+    }
+  },
+  {
+    "id": "2601.22630",
+    "title": "LINA: Linear Autoregressive Image Generative Models with Continuous Tokens",
+    "abstract": "Autoregressive models with continuous tokens form a promising paradigm for visual generation, especially for text-to-image (T2I) synthesis, but they suffer from high computational cost. We study how to design compute-efficient linear attention within this framework. Specifically, we conduct a systematic empirical analysis of scaling behavior with respect to parameter counts under different design choices, focusing on (1) normalization paradigms in linear attention (division-based vs. subtraction-based) and (2) depthwise convolution for locality augmentation. Our results show that although subtraction-based normalization is effective for image classification, division-based normalization scales better for linear generative transformers. In addition, incorporating convolution for locality modeling plays a crucial role in autoregressive generation, consistent with findings in diffusion models. We further extend gating mechanisms, commonly used in causal linear attention, to the bidirectional setting and propose a KV gate. By introducing data-independent learnable parameters to the key and value states, the KV gate assigns token-wise memory weights, enabling flexible memory management similar to forget gates in language models. Based on these findings, we present LINA, a simple and compute-efficient T2I model built entirely on linear attention, capable of generating high-fidelity 1024x1024 images from user instructions. LINA achieves competitive performance on both class-conditional and T2I benchmarks, obtaining 2.18 FID on ImageNet (about 1.4B parameters) and 0.74 on GenEval (about 1.5B parameters). A single linear attention module reduces FLOPs by about 61 percent compared to softmax attention. Code and models are available at: https://github.com/techmonsterwang/LINA.",
+    "authors": [
+      "Jiahao Wang",
+      "Ting Pan",
+      "Haoge Deng",
+      "Dongchen Han",
+      "Taiqiang Wu",
+      "Xinlong Wang",
+      "Ping Luo"
+    ],
+    "published": "2026-01-30",
+    "updated": "2026-01-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22630.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22630",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LINA：基于连续令牌的线性自回归图像生成模型",
+      "core_contribution": "本文提出了LINA，一个完全基于线性注意力的高效文本到图像生成模型，通过系统性的设计选择（如归一化方式和局部性增强）显著降低了计算成本，同时保持了高质量的图像生成能力。",
+      "method": "研究首先系统分析了线性注意力中不同设计选择（包括基于除法与基于减法的归一化范式，以及用于局部性增强的深度卷积）对模型缩放行为的影响。在此基础上，将因果线性注意力中常用的门控机制扩展到双向设置，提出了KV门控，通过为键和值状态引入可学习的参数来实现灵活的令牌级记忆管理。最终基于这些发现构建了LINA模型。",
+      "findings": "关键发现包括：1) 对于线性生成式Transformer，基于除法的归一化比基于减法的归一化具有更好的缩放性；2) 引入卷积进行局部性建模对自回归生成至关重要；3) 提出的KV门控能有效管理记忆。LINA在ImageNet上取得了2.18的FID分数，在GenEval上达到0.74，同时单个线性注意力模块比Softmax注意力减少了约61%的FLOPs。"
+    }
+  },
+  {
+    "id": "2601.22507",
+    "title": "DreamVAR: Taming Reinforced Visual Autoregressive Model for High-Fidelity Subject-Driven Image Generation",
+    "abstract": "Recent advances in subject-driven image generation using diffusion models have attracted considerable attention for their remarkable capabilities in producing high-quality images. Nevertheless, the potential of Visual Autoregressive (VAR) models, despite their unified architecture and efficient inference, remains underexplored. In this work, we present DreamVAR, a novel framework for subject-driven image synthesis built upon a VAR model that employs next-scale prediction. Technically, multi-scale features of the reference subject are first extracted by a visual tokenizer. Instead of interleaving these conditional features with target image tokens across scales, our DreamVAR pre-fills the full subject feature sequence prior to predicting target image tokens. This design simplifies autoregressive dependencies and mitigates the train-test discrepancy in multi-scale conditioning scenario within the VAR paradigm. DreamVAR further incorporates reinforcement learning to jointly enhance semantic alignment and subject consistency. Extensive experiments demonstrate that DreamVAR achieves superior appearance preservation compared to leading diffusion-based methods.",
+    "authors": [
+      "Xin Jiang",
+      "Jingwen Chen",
+      "Yehao Li",
+      "Yingwei Pan",
+      "Kezhou Chen",
+      "Zechao Li",
+      "Ting Yao",
+      "Tao Mei"
+    ],
+    "published": "2026-01-30",
+    "updated": "2026-01-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2601.22507.pdf",
+    "abs_url": "https://arxiv.org/abs/2601.22507",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DreamVAR：驯服强化视觉自回归模型以实现高保真主体驱动的图像生成",
+      "core_contribution": "提出了DreamVAR框架，首次将视觉自回归模型成功应用于主体驱动的图像生成任务，并通过预填充条件特征与强化学习的结合，显著提升了生成图像的语义对齐与主体一致性。",
+      "method": "首先使用视觉分词器提取参考主体的多尺度特征；然后，在预测目标图像序列之前，将完整的条件特征序列预填充到自回归过程中，简化了跨尺度的依赖关系并缓解了训练-测试差异；最后，引入强化学习来联合优化语义对齐和主体保真度。",
+      "findings": "大量实验表明，DreamVAR在主体外观保真度方面优于当前领先的基于扩散模型的方法，实现了更高质量的主体驱动图像生成。"
+    }
+  }
+]
