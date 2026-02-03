@@ -1,0 +1,157 @@
+[
+  {
+    "id": "2602.00883",
+    "title": "DIAMOND: Directed Inference for Artifact Mitigation in Flow Matching Models",
+    "abstract": "Despite impressive results from recent text-to-image models like FLUX, visual and anatomical artifacts remain a significant hurdle for practical and professional use. Existing methods for artifact reduction, typically work in a post-hoc manner, consequently failing to intervene effectively during the core image formation process. Notably, current techniques require problematic and invasive modifications to the model weights, or depend on a computationally expensive and time-consuming process of regional refinement. To address these limitations, we propose DIAMOND, a training-free method that applies trajectory correction to mitigate artifacts during inference. By reconstructing an estimate of the clean sample at every step of the generative trajectory, DIAMOND actively steers the generation process away from latent states that lead to artifacts. Furthermore, we extend the proposed method to standard Diffusion Models, demonstrating that DIAMOND provides a robust, zero-shot path to high-fidelity, artifact-free image synthesis without the need for additional training or weight modifications in modern generative architectures. Code is available at https://gmum.github.io/DIAMOND/",
+    "authors": [
+      "Alicja Polowczyk",
+      "Agnieszka Polowczyk",
+      "Piotr Borycki",
+      "Joanna Waczyńska",
+      "Jacek Tabor",
+      "Przemysław Spurek"
+    ],
+    "published": "2026-01-31",
+    "updated": "2026-01-31",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.00883.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.00883",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DIAMOND：流匹配模型中用于缓解伪影的定向推理方法",
+      "core_contribution": "提出了一种无需训练、在推理过程中通过轨迹校正来主动缓解图像伪影的方法DIAMOND，为现代生成架构提供了一条无需额外训练或修改权重的零样本高保真图像合成路径。",
+      "method": "该方法在生成轨迹的每一步重建对干净样本的估计，从而主动引导生成过程远离可能导致伪影的潜在状态。它无需对模型权重进行侵入式修改，也避免了计算昂贵的区域细化过程，是一种完全在推理阶段运行的训练免费方法。",
+      "findings": "实验表明，DIAMOND能有效减少FLUX等文本到图像模型中的视觉和解剖结构伪影，并且该方法可扩展至标准扩散模型，实现高保真、无伪影的图像合成，而无需额外的训练或模型权重修改。"
+    }
+  },
+  {
+    "id": "2602.00738",
+    "title": "Iconix: Controlling Semantics and Style in Progressive Icon Grids Generation",
+    "abstract": "Visual communication often needs stylistically consistent icons that span concrete and abstract meanings, for use in diverse contexts. We present Iconix, a human-AI co-creative system that organizes icon generation along two axes: semantic richness (what is depicted) and visual complexity (how much detail). Given a user-specified concept, Iconix constructs a semantic scaffold of related analytical perspectives and employs chained, image-conditioned generation to produce a coherent style of exemplars. Each exemplar is then automatically distilled into a progressive sequence, from detailed and elaborate to abstract and simple. The resulting two-dimensional grid exposes a navigable space, helping designers reason jointly about figurative content and visual abstraction. A within-subjects study (N = 32) found that compared to a baseline workflow, participants produced icon grids more creatively, reported lower workload, and explored a coherent range of design variations. We discuss implications for human-machine co-creative approaches that couple semantic scaffolding with progressive simplification to support visual abstraction.",
+    "authors": [
+      "Zhida Sun",
+      "Xiaodong Wang",
+      "Zhenyao Zhang",
+      "Min Lu",
+      "Dani Lischinski",
+      "Daniel Cohen-Or",
+      "Hui Huang"
+    ],
+    "published": "2026-01-31",
+    "updated": "2026-01-31",
+    "categories": [
+      "cs.HC",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.00738.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.00738",
+    "primary_category": "cs.HC",
+    "score": 85,
+    "summary": {
+      "title_zh": "Iconix：在渐进式图标网格生成中控制语义与风格",
+      "core_contribution": "提出了一个名为Iconix的人机协同创意系统，通过构建语义支架和渐进式简化，帮助设计师在语义丰富度和视觉复杂度两个维度上生成风格一致的图标网格。",
+      "method": "系统首先根据用户输入的概念构建一个包含相关分析视角的语义支架；然后采用链式、图像条件生成技术，生成风格一致的图标范例；最后将每个范例自动提炼为从详细到抽象的渐进序列，形成可导航的二维网格。",
+      "findings": "一项32人的受试者内实验表明，与基线工作流程相比，参与者使用Iconix能更具创意地生成图标网格，工作负荷更低，并能探索一系列连贯的设计变体。该系统通过语义支架与渐进式简化相结合，有效支持了视觉抽象化设计。"
+    }
+  },
+  {
+    "id": "2602.00627",
+    "title": "FaceSnap: Enhanced ID-fidelity Network for Tuning-free Portrait Customization",
+    "abstract": "Benefiting from the significant advancements in text-to-image diffusion models, research in personalized image generation, particularly customized portrait generation, has also made great strides recently. However, existing methods either require time-consuming fine-tuning and lack generalizability or fail to achieve high fidelity in facial details. To address these issues, we propose FaceSnap, a novel method based on Stable Diffusion (SD) that requires only a single reference image and produces extremely consistent results in a single inference stage. This method is plug-and-play and can be easily extended to different SD models. Specifically, we design a new Facial Attribute Mixer that can extract comprehensive fused information from both low-level specific features and high-level abstract features, providing better guidance for image generation. We also introduce a Landmark Predictor that maintains reference identity across landmarks with different poses, providing diverse yet detailed spatial control conditions for image generation. Then we use an ID-preserving module to inject these into the UNet. Experimental results demonstrate that our approach performs remarkably in personalized and customized portrait generation, surpassing other state-of-the-art methods in this domain.",
+    "authors": [
+      "Benxiang Zhai",
+      "Yifang Xu",
+      "Guofeng Zhang",
+      "Yang Li",
+      "Sidan Du"
+    ],
+    "published": "2026-01-31",
+    "updated": "2026-01-31",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.00627.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.00627",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FaceSnap：用于免调优肖像定制的增强身份保真网络",
+      "core_contribution": "提出一种基于Stable Diffusion的免调优肖像定制方法FaceSnap，仅需单张参考图像即可在单次推理中生成高度身份一致且细节保真的肖像，并具备即插即用与跨模型扩展能力。",
+      "method": "方法基于Stable Diffusion框架，设计了三个核心模块：1）面部属性混合器，融合低层具体特征与高层抽象特征以提供全面的生成指导；2）关键点预测器，通过不同姿态的关键点保持参考身份一致性，并提供多样化的空间控制条件；3）身份保持模块，将上述信息注入UNet中以驱动图像生成。",
+      "findings": "实验结果表明，FaceSnap在个性化肖像生成任务中表现优异，在身份保真度和细节一致性方面显著优于现有先进方法，且无需微调即可实现高质量输出。"
+    }
+  },
+  {
+    "id": "2602.00618",
+    "title": "Tune-Your-Style: Intensity-tunable 3D Style Transfer with Gaussian Splatting",
+    "abstract": "3D style transfer refers to the artistic stylization of 3D assets based on reference style images. Recently, 3DGS-based stylization methods have drawn considerable attention, primarily due to their markedly enhanced training and rendering speeds. However, a vital challenge for 3D style transfer is to strike a balance between the content and the patterns and colors of the style. Although the existing methods strive to achieve relatively balanced outcomes, the fixed-output paradigm struggles to adapt to the diverse content-style balance requirements from different users. In this work, we introduce a creative intensity-tunable 3D style transfer paradigm, dubbed \\textbf{Tune-Your-Style}, which allows users to flexibly adjust the style intensity injected into the scene to match their desired content-style balance, thus enhancing the customizability of 3D style transfer. To achieve this goal, we first introduce Gaussian neurons to explicitly model the style intensity and parameterize a learnable style tuner to achieve intensity-tunable style injection. To facilitate the learning of tunable stylization, we further propose the tunable stylization guidance, which obtains multi-view consistent stylized views from diffusion models through cross-view style alignment, and then employs a two-stage optimization strategy to provide stable and efficient guidance by modulating the balance between full-style guidance from the stylized views and zero-style guidance from the initial rendering. Extensive experiments demonstrate that our method not only delivers visually appealing results, but also exhibits flexible customizability for 3D style transfer. Project page is available at https://zhao-yian.github.io/TuneStyle.",
+    "authors": [
+      "Yian Zhao",
+      "Rushi Ye",
+      "Ruochong Zheng",
+      "Zesen Cheng",
+      "Chaoran Feng",
+      "Jiashu Yang",
+      "Pengchong Qiao",
+      "Chang Liu",
+      "Jie Chen"
+    ],
+    "published": "2026-01-31",
+    "updated": "2026-01-31",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.00618.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.00618",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Tune-Your-Style：基于高斯泼溅的可调强度三维风格迁移",
+      "core_contribution": "本文提出了一种创新的、强度可调的三维风格迁移范式，允许用户灵活调整注入场景的风格强度，以满足不同的内容-风格平衡需求，从而显著增强了三维风格迁移的可定制性。",
+      "method": "方法首先引入高斯神经元来显式建模风格强度，并参数化一个可学习的风格调节器以实现强度可控的风格注入。为了促进可调风格化的学习，进一步提出了可调风格化引导：通过跨视图风格对齐从扩散模型获得多视图一致的风格化视图，然后采用两阶段优化策略，通过调制来自风格化视图的“全风格引导”与来自初始渲染的“零风格引导”之间的平衡，来提供稳定高效的训练指导。",
+      "findings": "大量实验表明，该方法不仅能生成视觉上吸引人的结果，而且为三维风格迁移提供了灵活的可定制性。用户可以通过调节风格强度参数，在保持原始场景内容与完全应用参考风格之间实现连续、平滑的过渡。"
+    }
+  },
+  {
+    "id": "2602.00508",
+    "title": "DuoGen: Towards General Purpose Interleaved Multimodal Generation",
+    "abstract": "Interleaved multimodal generation enables capabilities beyond unimodal generation models, such as step-by-step instructional guides, visual planning, and generating visual drafts for reasoning. However, the quality of existing interleaved generation models under general instructions remains limited by insufficient training data and base model capacity. We present DuoGen, a general-purpose interleaved generation framework that systematically addresses data curation, architecture design, and evaluation. On the data side, we build a large-scale, high-quality instruction-tuning dataset by combining multimodal conversations rewritten from curated raw websites, and diverse synthetic examples covering everyday scenarios. Architecturally, DuoGen leverages the strong visual understanding of a pretrained multimodal LLM and the visual generation capabilities of a diffusion transformer (DiT) pretrained on video generation, avoiding costly unimodal pretraining and enabling flexible base model selection. A two-stage decoupled strategy first instruction-tunes the MLLM, then aligns DiT with it using curated interleaved image-text sequences. Across public and newly proposed benchmarks, DuoGen outperforms prior open-source models in text quality, image fidelity, and image-context alignment, and also achieves state-of-the-art performance on text-to-image and image editing among unified generation models. Data and code will be released at https://research.nvidia.com/labs/dir/duetgen/.",
+    "authors": [
+      "Min Shi",
+      "Xiaohui Zeng",
+      "Jiannan Huang",
+      "Yin Cui",
+      "Francesco Ferroni",
+      "Jialuo Li",
+      "Shubham Pachori",
+      "Zhaoshuo Li",
+      "Yogesh Balaji",
+      "Haoxiang Wang",
+      "Tsung-Yi Lin",
+      "Xiao Fu",
+      "Yue Zhao",
+      "Chieh-Yun Chen",
+      "Ming-Yu Liu",
+      "Humphrey Shi"
+    ],
+    "published": "2026-01-31",
+    "updated": "2026-01-31",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.00508.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.00508",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DuoGen：迈向通用交错多模态生成",
+      "core_contribution": "提出了一个通用交错多模态生成框架，通过系统化的数据构建与两阶段解耦训练策略，显著提升了交错生成任务中文本质量、图像保真度与图文对齐效果。",
+      "method": "1. 数据方面：结合从精选网站重写的多模态对话与覆盖日常场景的多样化合成数据，构建了大规模高质量指令微调数据集。2. 架构方面：利用预训练多模态大语言模型的视觉理解能力与视频生成预训练的扩散Transformer的视觉生成能力，避免昂贵的单模态预训练。3. 采用两阶段解耦策略：先对MLLM进行指令微调，再用精选的交错图文序列将DiT与其对齐。",
+      "findings": "在公开及新提出的基准测试中，DuoGen在文本质量、图像保真度和图文对齐方面优于现有开源模型；在统一生成模型中，其文本到图像生成和图像编辑任务达到最先进性能。"
+    }
+  }
+]
