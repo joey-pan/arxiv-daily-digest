@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2602.01046",
+    "title": "ReLayout: Versatile and Structure-Preserving Design Layout Editing via Relation-Aware Design Reconstruction",
+    "abstract": "Automated redesign without manual adjustments marks a key step forward in the design workflow. In this work, we focus on a foundational redesign task termed design layout editing, which seeks to autonomously modify the geometric composition of a design based on user intents. To overcome the ambiguity of user needs expressed in natural language, we introduce four basic and important editing actions and standardize the format of editing operations. The underexplored task presents a unique challenge: satisfying specified editing operations while simultaneously preserving the layout structure of unedited elements. Besides, the scarcity of triplet (original design, editing operation, edited design) samples poses another formidable challenge. To this end, we present ReLayout, a novel framework for versatile and structure-preserving design layout editing that operates without triplet data. Specifically, ReLayout first introduces the relation graph, which contains the position and size relationships among unedited elements, as the constraint for layout structure preservation. Then, relation-aware design reconstruction (RADR) is proposed to bypass the data challenge. By learning to reconstruct a design from its elements, a relation graph, and a synthesized editing operation, RADR effectively emulates the editing process in a self-supervised manner. A multi-modal large language model serves as the backbone for RADR, unifying multiple editing actions within a single model and thus achieving versatile editing after fine-tuning. Qualitative, quantitative results and user studies show that ReLayout significantly outperforms the baseline models in terms of editing quality, accuracy, and layout structure preservation.",
+    "authors": [
+      "Jiawei Lin",
+      "Shizhao Sun",
+      "Danqing Huang",
+      "Ting Liu",
+      "Ji Li",
+      "Jiang Bian"
+    ],
+    "published": "2026-02-01",
+    "updated": "2026-02-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.01046.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.01046",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "ReLayout：通过关系感知设计重构实现多功能且保持结构的设计布局编辑",
+      "core_contribution": "提出了ReLayout框架，首次实现了无需三元组训练数据的、多功能且能保持布局结构的设计自动编辑，并通过引入四种基本编辑操作标准化了编辑任务格式。",
+      "method": "首先构建描述未编辑元素间位置与尺寸关系的关系图，作为保持布局结构的约束；然后提出关系感知设计重构方法，通过让模型学习从元素、关系图及合成编辑操作中重建设计，以自监督方式模拟编辑过程；采用多模态大语言模型作为主干，统一处理多种编辑操作。",
+      "findings": "ReLayout在编辑质量、准确性和布局结构保持方面显著优于基线模型，定性、定量结果与用户研究均验证了其有效性，且单一模型即可实现多种编辑功能。"
+    }
+  },
+  {
+    "id": "2602.03448",
+    "title": "Hierarchical Concept-to-Appearance Guidance for Multi-Subject Image Generation",
+    "abstract": "Multi-subject image generation aims to synthesize images that faithfully preserve the identities of multiple reference subjects while following textual instructions. However, existing methods often suffer from identity inconsistency and limited compositional control, as they rely on diffusion models to implicitly associate text prompts with reference images. In this work, we propose Hierarchical Concept-to-Appearance Guidance (CAG), a framework that provides explicit, structured supervision from high-level concepts to fine-grained appearances. At the conceptual level, we introduce a VAE dropout training strategy that randomly omits reference VAE features, encouraging the model to rely more on robust semantic signals from a Visual Language Model (VLM) and thereby promoting consistent concept-level generation in the absence of complete appearance cues. At the appearance level, we integrate the VLM-derived correspondences into a correspondence-aware masked attention module within the Diffusion Transformer (DiT). This module restricts each text token to attend only to its matched reference regions, ensuring precise attribute binding and reliable multi-subject composition. Extensive experiments demonstrate that our method achieves state-of-the-art performance on the multi-subject image generation, substantially improving prompt following and subject consistency.",
+    "authors": [
+      "Yijia Xu",
+      "Zihao Wang",
+      "Jinshi Cui"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03448.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03448",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向多主体图像生成的分层概念-外观引导",
+      "core_contribution": "提出了分层概念-外观引导框架，通过显式的结构化监督，解决了多主体图像生成中的身份不一致和组合控制受限问题，显著提升了文本指令跟随和主体一致性。",
+      "method": "1. 在概念层面，采用VAE特征随机丢弃训练策略，迫使模型更依赖视觉语言模型提供的鲁棒语义信号，以增强概念一致性。2. 在外观层面，将视觉语言模型推导的对应关系集成到扩散Transformer中，构建对应感知的掩码注意力模块，使每个文本词仅关注其匹配的参考区域，实现精确属性绑定。",
+      "findings": "大量实验表明，该方法在多主体图像生成任务上达到了最先进的性能，在文本指令跟随和主体一致性方面均有显著提升。"
+    }
+  },
+  {
+    "id": "2602.03410",
+    "title": "UnHype: CLIP-Guided Hypernetworks for Dynamic LoRA Unlearning",
+    "abstract": "Recent advances in large-scale diffusion models have intensified concerns about their potential misuse, particularly in generating realistic yet harmful or socially disruptive content. This challenge has spurred growing interest in effective machine unlearning, the process of selectively removing specific knowledge or concepts from a model without compromising its overall generative capabilities. Among various approaches, Low-Rank Adaptation (LoRA) has emerged as an effective and efficient method for fine-tuning models toward targeted unlearning. However, LoRA-based methods often exhibit limited adaptability to concept semantics and struggle to balance removing closely related concepts with maintaining generalization across broader meanings. Moreover, these methods face scalability challenges when multiple concepts must be erased simultaneously. To address these limitations, we introduce UnHype, a framework that incorporates hypernetworks into single- and multi-concept LoRA training. The proposed architecture can be directly plugged into Stable Diffusion as well as modern flow-based text-to-image models, where it demonstrates stable training behavior and effective concept control. During inference, the hypernetwork dynamically generates adaptive LoRA weights based on the CLIP embedding, enabling more context-aware, scalable unlearning. We evaluate UnHype across several challenging tasks, including object erasure, celebrity erasure, and explicit content removal, demonstrating its effectiveness and versatility. Repository: https://github.com/gmum/UnHype.",
+    "authors": [
+      "Piotr Wójcik",
+      "Maksym Petrenko",
+      "Wojciech Gromski",
+      "Przemysław Spurek",
+      "Maciej Zieba"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03410.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03410",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UnHype：基于CLIP引导的超网络用于动态LoRA遗忘学习",
+      "core_contribution": "提出了UnHype框架，通过将超网络引入LoRA训练，实现了对扩散模型中特定概念（如有害内容）的动态、可扩展且语义感知的“遗忘”，同时保持了模型的整体生成能力。",
+      "method": "该方法将超网络集成到单概念和多概念的LoRA训练流程中。超网络以输入文本的CLIP嵌入为条件，动态生成自适应的LoRA权重，从而实现对不同概念的上下文感知控制。该架构可直接嵌入Stable Diffusion等现代基于流的文生图模型，并表现出稳定的训练行为。",
+      "findings": "在物体擦除、名人擦除和露骨内容移除等多个具有挑战性的任务上评估表明，UnHype能有效且灵活地移除目标概念，在擦除紧密相关概念与保持更广泛语义的泛化能力之间取得了更好的平衡，并解决了多概念同时擦除的可扩展性难题。"
+    }
+  },
+  {
+    "id": "2602.03339",
+    "title": "Composable Visual Tokenizers with Generator-Free Diagnostics of Learnability",
+    "abstract": "We introduce CompTok, a training framework for learning visual tokenizers whose tokens are enhanced for compositionality. CompTok uses a token-conditioned diffusion decoder. By employing an InfoGAN-style objective, where we train a recognition model to predict the tokens used to condition the diffusion decoder using the decoded images, we enforce the decoder to not ignore any of the tokens. To promote compositional control, besides the original images, CompTok also trains on tokens formed by swapping token subsets between images, enabling more compositional control of the token over the decoder. As the swapped tokens between images do not have ground truth image targets, we apply a manifold constraint via an adversarial flow regularizer to keep unpaired swap generations on the natural-image distribution. The resulting tokenizer not only achieves state-of-the-art performance on image class-conditioned generation, but also demonstrates properties such as swapping tokens between images to achieve high level semantic editing of an image. Additionally, we propose two metrics that measures the landscape of the token space that can be useful to describe not only the compositionality of the tokens, but also how easy to learn the landscape is for a generator to be trained on this space. We show in experiments that CompTok can improve on both of the metrics as well as supporting state-of-the-art generators for class conditioned generation.",
+    "authors": [
+      "Bingchen Zhao",
+      "Qiushan Guo",
+      "Ye Wang",
+      "Yixuan Huang",
+      "Zhonghua Zhai",
+      "Yu Tian"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03339.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03339",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "具有可学习性无生成器诊断的可组合视觉分词器",
+      "core_contribution": "提出了CompTok训练框架，用于学习具有增强组合性的视觉分词器，并设计了两种无需生成器的度量指标来诊断分词空间的组合性和可学习性。",
+      "method": "CompTok采用基于令牌条件的扩散解码器，通过InfoGAN风格的目标函数训练识别模型，迫使解码器不忽略任何令牌。为提升组合控制能力，框架在训练时对图像间令牌子集进行交换，并利用对抗流正则化器施加流形约束，确保交换生成的结果保持在自然图像分布上。",
+      "findings": "CompTok在图像类别条件生成任务上达到最先进性能，其令牌支持通过交换实现图像高层语义编辑。实验表明，该框架能有效提升所提出的组合性与可学习性度量指标，并支持最先进的类别条件生成器。"
+    }
+  },
+  {
+    "id": "2602.03220",
+    "title": "PokeFusion Attention: Enhancing Reference-Free Style-Conditioned Generation",
+    "abstract": "This paper studies reference-free style-conditioned character generation in text-to-image diffusion models, where high-quality synthesis requires both stable character structure and consistent, fine-grained style expression across diverse prompts. Existing approaches primarily rely on text-only prompting, which is often under-specified for visual style and tends to produce noticeable style drift and geometric inconsistency, or introduce reference-based adapters that depend on external images at inference time, increasing architectural complexity and limiting deployment flexibility.We propose PokeFusion Attention, a lightweight decoder-level cross-attention mechanism that fuses textual semantics with learned style embeddings directly inside the diffusion decoder. By decoupling text and style conditioning at the attention level, our method enables effective reference-free stylized generation while keeping the pretrained diffusion backbone fully frozen.PokeFusion Attention trains only decoder cross-attention layers together with a compact style projection module, resulting in a parameter-efficient and plug-and-play control component that can be easily integrated into existing diffusion pipelines and transferred across different backbones.Experiments on a stylized character generation benchmark (Pokemon-style) demonstrate that our method consistently improves style fidelity, semantic alignment, and character shape consistency compared with representative adapter-based baselines, while maintaining low parameter overhead and inference-time simplicity.",
+    "authors": [
+      "Jingbang Tang"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03220.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03220",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PokeFusion注意力：增强无参考的风格条件生成",
+      "core_contribution": "提出了一种轻量级的解码器级交叉注意力机制（PokeFusion Attention），能够在无需参考图像的情况下，实现高质量、风格一致且结构稳定的文本到图像生成，同时保持预训练扩散模型主干完全冻结。",
+      "method": "该方法在扩散解码器内部，通过一种解耦的交叉注意力机制，将文本语义与学习到的风格嵌入直接融合。它仅训练解码器的交叉注意力层和一个紧凑的风格投影模块，从而形成一个参数高效、即插即用的控制组件。该组件可以轻松集成到现有的扩散模型流程中，并迁移到不同的主干网络上。",
+      "findings": "在风格化角色生成基准（宝可梦风格）上的实验表明，与代表性的基于适配器的基线方法相比，该方法在风格保真度、语义对齐和角色形状一致性方面均有持续提升，同时保持了较低的参数量开销和简单的推理过程。"
+    }
+  }
+]
