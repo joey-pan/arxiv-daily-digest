@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2602.04361",
+    "title": "SparVAR: Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration",
+    "abstract": "Visual AutoRegressive (VAR) modeling has garnered significant attention for its innovative next-scale prediction paradigm. However, mainstream VAR paradigms attend to all tokens across historical scales at each autoregressive step. As the next scale resolution grows, the computational complexity of attention increases quartically with resolution, causing substantial latency. Prior accelerations often skip high-resolution scales, which speeds up inference but discards high-frequency details and harms image quality. To address these problems, we present SparVAR, a training-free acceleration framework that exploits three properties of VAR attention: (i) strong attention sinks, (ii) cross-scale activation similarity, and (iii) pronounced locality. Specifically, we dynamically predict the sparse attention pattern of later high-resolution scales from a sparse decision scale, and construct scale self-similar sparse attention via an efficient index-mapping mechanism, enabling high-efficiency sparse attention computation at large scales. Furthermore, we propose cross-scale local sparse attention and implement an efficient block-wise sparse kernel, which achieves $\\mathbf{> 5\\times}$ faster forward speed than FlashAttention. Extensive experiments demonstrate that the proposed SparseVAR can reduce the generation time of an 8B model producing $1024\\times1024$ high-resolution images to the 1s, without skipping the last scales. Compared with the VAR baseline accelerated by FlashAttention, our method achieves a $\\mathbf{1.57\\times}$ speed-up while preserving almost all high-frequency details. When combined with existing scale-skipping strategies, SparseVAR attains up to a $\\mathbf{2.28\\times}$ acceleration, while maintaining competitive visual generation quality. Code is available at https://github.com/CAS-CLab/SparVAR.",
+    "authors": [
+      "Zekun Li",
+      "Ning Wang",
+      "Tongxin Bai",
+      "Changwang Mei",
+      "Peisong Wang",
+      "Shuang Qiu",
+      "Jian Cheng"
+    ],
+    "published": "2026-02-04",
+    "updated": "2026-02-04",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.04361.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.04361",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SparVAR：探索视觉自回归建模中的稀疏性以实现免训练加速",
+      "core_contribution": "提出了SparVAR，一个免训练的加速框架，通过利用VAR注意力中的强注意力汇聚点、跨尺度激活相似性和显著局部性三个特性，在不跳过高分辨率尺度的前提下显著降低计算开销，同时保持图像质量。",
+      "method": "该方法首先从稀疏决策尺度动态预测后续高分辨率尺度的稀疏注意力模式；其次，通过高效的索引映射机制构建尺度自相似稀疏注意力，实现大规模下的高效稀疏注意力计算；最后，提出跨尺度局部稀疏注意力，并实现高效的块状稀疏内核，其前向速度比FlashAttention快5倍以上。",
+      "findings": "实验表明，SparVAR能将一个80亿参数模型生成1024×1024高分辨率图像的时间缩短至1秒，且不跳过最后的高分辨率尺度。与使用FlashAttention加速的VAR基线相比，本方法在几乎保留所有高频细节的同时实现了1.57倍的加速；若与现有的尺度跳过策略结合，加速比可达2.28倍，且视觉生成质量保持竞争力。"
+    }
+  },
+  {
+    "id": "2602.04167",
+    "title": "Point2Insert: Video Object Insertion via Sparse Point Guidance",
+    "abstract": "This paper introduces Point2Insert, a sparse-point-based framework for flexible and user-friendly object insertion in videos, motivated by the growing popularity of accurate, low-effort object placement. Existing approaches face two major challenges: mask-based insertion methods require labor-intensive mask annotations, while instruction-based methods struggle to place objects at precise locations. Point2Insert addresses these issues by requiring only a small number of sparse points instead of dense masks, eliminating the need for tedious mask drawing. Specifically, it supports both positive and negative points to indicate regions that are suitable or unsuitable for insertion, enabling fine-grained spatial control over object locations. The training of Point2Insert consists of two stages. In Stage 1, we train an insertion model that generates objects in given regions conditioned on either sparse-point prompts or a binary mask. In Stage 2, we further train the model on paired videos synthesized by an object removal model, adapting it to video insertion. Moreover, motivated by the higher insertion success rate of mask-guided editing, we leverage a mask-guided insertion model as a teacher to distill reliable insertion behavior into the point-guided model. Extensive experiments demonstrate that Point2Insert consistently outperforms strong baselines and even surpasses models with $\\times$10 more parameters.",
+    "authors": [
+      "Yu Zhou",
+      "Xiaoyan Yang",
+      "Bojia Zi",
+      "Lihan Zhang",
+      "Ruijie Sun",
+      "Weishi Zheng",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Xuelong Li"
+    ],
+    "published": "2026-02-04",
+    "updated": "2026-02-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.04167.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.04167",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Point2Insert：基于稀疏点引导的视频对象插入",
+      "core_contribution": "提出了一个仅需少量稀疏点（而非密集掩码）即可实现视频中对象精确、灵活插入的框架，解决了现有方法在标注成本与定位精度上的难题。",
+      "method": "方法采用两阶段训练：第一阶段训练一个基于稀疏点或二值掩码提示的插入模型；第二阶段利用对象移除模型合成的配对视频进行微调，使其适应视频插入任务。此外，通过知识蒸馏将掩码引导模型的可靠插入行为迁移到点引导模型中。",
+      "findings": "实验表明，Point2Insert在视频对象插入任务上 consistently 优于现有基线方法，其性能甚至超过了参数量大10倍的模型，验证了稀疏点引导在精度与效率上的优势。"
+    }
+  },
+  {
+    "id": "2602.03838",
+    "title": "PrevizWhiz: Combining Rough 3D Scenes and 2D Video to Guide Generative Video Previsualization",
+    "abstract": "In pre-production, filmmakers and 3D animation experts must rapidly prototype ideas to explore a film's possibilities before fullscale production, yet conventional approaches involve trade-offs in efficiency and expressiveness. Hand-drawn storyboards often lack spatial precision needed for complex cinematography, while 3D previsualization demands expertise and high-quality rigged assets. To address this gap, we present PrevizWhiz, a system that leverages rough 3D scenes in combination with generative image and video models to create stylized video previews. The workflow integrates frame-level image restyling with adjustable resemblance, time-based editing through motion paths or external video inputs, and refinement into high-fidelity video clips. A study with filmmakers demonstrates that our system lowers technical barriers for film-makers, accelerates creative iteration, and effectively bridges the communication gap, while also surfacing challenges of continuity, authorship, and ethical consideration in AI-assisted filmmaking.",
+    "authors": [
+      "Erzhen Hu",
+      "Frederik Brudy",
+      "David Ledo",
+      "George Fitzmaurice",
+      "Fraser Anderson"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.HC",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03838.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03838",
+    "primary_category": "cs.HC",
+    "score": 85,
+    "summary": {
+      "title_zh": "PrevizWhiz：结合粗略3D场景与2D视频引导生成式视频预可视化",
+      "core_contribution": "提出了PrevizWhiz系统，通过结合粗略3D场景与生成式图像/视频模型，为电影制作人提供了一种能快速创建风格化视频预览的新方法，有效降低了技术门槛并加速了创意迭代。",
+      "method": "该系统的工作流程首先将粗略3D场景与生成模型结合，进行帧级图像风格化并允许调整与原素材的相似度；其次支持通过运动路径或外部视频输入进行基于时间的编辑；最后将结果细化为高保真视频片段。",
+      "findings": "对电影制作人的研究表明，该系统降低了技术障碍、加快了创作迭代速度，并有效弥合了沟通差距；同时也揭示了AI辅助电影制作中连续性、作者身份和伦理考量等方面的挑战。"
+    }
+  },
+  {
+    "id": "2602.03828",
+    "title": "AutoFigure: Generating and Refining Publication-Ready Scientific Illustrations",
+    "abstract": "High-quality scientific illustrations are crucial for effectively communicating complex scientific and technical concepts, yet their manual creation remains a well-recognized bottleneck in both academia and industry. We present FigureBench, the first large-scale benchmark for generating scientific illustrations from long-form scientific texts. It contains 3,300 high-quality scientific text-figure pairs, covering diverse text-to-illustration tasks from scientific papers, surveys, blogs, and textbooks. Moreover, we propose AutoFigure, the first agentic framework that automatically generates high-quality scientific illustrations based on long-form scientific text. Specifically, before rendering the final result, AutoFigure engages in extensive thinking, recombination, and validation to produce a layout that is both structurally sound and aesthetically refined, outputting a scientific illustration that achieves both structural completeness and aesthetic appeal. Leveraging the high-quality data from FigureBench, we conduct extensive experiments to test the performance of AutoFigure against various baseline methods. The results demonstrate that AutoFigure consistently surpasses all baseline methods, producing publication-ready scientific illustrations. The code, dataset and huggingface space are released in https://github.com/ResearAI/AutoFigure.",
+    "authors": [
+      "Minjun Zhu",
+      "Zhen Lin",
+      "Yixuan Weng",
+      "Panzhong Lu",
+      "Qiujie Xie",
+      "Yifan Wei",
+      "Sifan Liu",
+      "Qiyao Sun",
+      "Yue Zhang"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.CV",
+      "cs.DL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03828.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03828",
+    "primary_category": "cs.AI",
+    "score": 85,
+    "summary": {
+      "title_zh": "AutoFigure：生成与精炼可用于发表的科学插图",
+      "core_contribution": "本文提出了首个用于从长篇科学文本生成科学插图的大规模基准数据集FigureBench，并设计了首个能够自动生成高质量科学插图的智能体框架AutoFigure。",
+      "method": "方法上，作者首先构建了包含3300个高质量文本-插图对的FigureBench基准数据集。在此基础上，提出了AutoFigure框架，该框架在渲染最终结果前，会进行深入的思考、重组和验证，以生成结构合理且美观的布局。其核心是通过一个智能体流程来确保插图的完整性与视觉吸引力。",
+      "findings": "关键实验结果表明，AutoFrame在广泛的测试中 consistently 超越了所有基线方法，能够生成达到发表质量要求的科学插图。相关代码、数据集和演示平台均已开源。"
+    }
+  },
+  {
+    "id": "2602.03826",
+    "title": "Continuous Control of Editing Models via Adaptive-Origin Guidance",
+    "abstract": "Diffusion-based editing models have emerged as a powerful tool for semantic image and video manipulation. However, existing models lack a mechanism for smoothly controlling the intensity of text-guided edits. In standard text-conditioned generation, Classifier-Free Guidance (CFG) impacts prompt adherence, suggesting it as a potential control for edit intensity in editing models. However, we show that scaling CFG in these models does not produce a smooth transition between the input and the edited result. We attribute this behavior to the unconditional prediction, which serves as the guidance origin and dominates the generation at low guidance scales, while representing an arbitrary manipulation of the input content. To enable continuous control, we introduce Adaptive-Origin Guidance (AdaOr), a method that adjusts this standard guidance origin with an identity-conditioned adaptive origin, using an identity instruction corresponding to the identity manipulation. By interpolating this identity prediction with the standard unconditional prediction according to the edit strength, we ensure a continuous transition from the input to the edited result. We evaluate our method on image and video editing tasks, demonstrating that it provides smoother and more consistent control compared to current slider-based editing approaches. Our method incorporates an identity instruction into the standard training framework, enabling fine-grained control at inference time without per-edit procedure or reliance on specialized datasets.",
+    "authors": [
+      "Alon Wolf",
+      "Chen Katzir",
+      "Kfir Aberman",
+      "Or Patashnik"
+    ],
+    "published": "2026-02-03",
+    "updated": "2026-02-03",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.03826.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.03826",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过自适应原点引导实现对编辑模型的连续控制",
+      "core_contribution": "提出了自适应原点引导方法，解决了现有扩散编辑模型无法平滑控制文本引导编辑强度的问题，实现了从原始输入到编辑结果的连续过渡。",
+      "method": "该方法通过引入与身份操作对应的身份指令，将标准的无条件预测原点替换为身份条件化的自适应原点。根据编辑强度，在身份预测与标准无条件预测之间进行插值，从而确保编辑过程的平滑性。该方法可集成到标准训练框架中，无需针对每次编辑进行特殊处理或依赖专用数据集。",
+      "findings": "在图像和视频编辑任务上的实验表明，相比现有的基于滑块的编辑方法，该方法能提供更平滑、更一致的控制效果，实现了对编辑强度的细粒度调控。"
+    }
+  }
+]
