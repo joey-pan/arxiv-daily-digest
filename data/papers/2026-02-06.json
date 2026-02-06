@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2602.05605",
+    "title": "Shiva-DiT: Residual-Based Differentiable Top-$k$ Selection for Efficient Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) incur prohibitive computational costs due to the quadratic scaling of self-attention. Existing pruning methods fail to simultaneously satisfy differentiability, efficiency, and the strict static budgets required for hardware overhead. To address this, we propose Shiva-DiT, which effectively reconciles these conflicting requirements via Residual-Based Differentiable Top-$k$ Selection. By leveraging a residual-aware straight-through estimator, our method enforces deterministic token counts for static compilation while preserving end-to-end learnability through residual gradient estimation. Furthermore, we introduce a Context-Aware Router and Adaptive Ratio Policy to autonomously learn an adaptive pruning schedule. Experiments on mainstream models, including SD3.5, demonstrate that Shiva-DiT establishes a new Pareto frontier, achieving a 1.54$\\times$ wall-clock speedup with superior fidelity compared to existing baselines, effectively eliminating ragged tensor overheads.",
+    "authors": [
+      "Jiaji Zhang",
+      "Hailiang Zhao",
+      "Guoxuan Zhu",
+      "Ruichao Sun",
+      "Jiaju Wu",
+      "Xinkui Zhao",
+      "Hanlin Tang",
+      "Weiyi Lu",
+      "Kan Liu",
+      "Tao Lan",
+      "Lin Qu",
+      "Shuiguang Deng"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05605.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05605",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "Shiva-DiT：基于残差的可微分Top-k选择用于高效扩散Transformer",
+      "core_contribution": "提出了一种名为Shiva-DiT的方法，通过基于残差的可微分Top-k选择，在满足硬件严格静态预算的同时，兼顾了可微性和计算效率，解决了扩散Transformer因自注意力二次复杂度导致的计算成本过高问题。",
+      "method": "该方法利用残差感知的直通估计器，在保持端到端可学习性的同时，强制实现确定性的令牌数量以支持静态编译。此外，引入了上下文感知路由器和自适应比率策略，以自主学习自适应的剪枝调度。",
+      "findings": "在包括SD3.5在内的主流模型上的实验表明，Shiva-DiT建立了新的帕累托前沿，相比现有基线实现了1.54倍的实时加速，并具有更优的保真度，同时有效消除了不规则张量的开销。"
+    }
+  },
+  {
+    "id": "2602.05534",
+    "title": "SSG: Scaled Spatial Guidance for Multi-Scale Visual Autoregressive Generation",
+    "abstract": "Visual autoregressive (VAR) models generate images through next-scale prediction, naturally achieving coarse-to-fine, fast, high-fidelity synthesis mirroring human perception. In practice, this hierarchy can drift at inference time, as limited capacity and accumulated error cause the model to deviate from its coarse-to-fine nature. We revisit this limitation from an information-theoretic perspective and deduce that ensuring each scale contributes high-frequency content not explained by earlier scales mitigates the train-inference discrepancy. With this insight, we propose Scaled Spatial Guidance (SSG), training-free, inference-time guidance that steers generation toward the intended hierarchy while maintaining global coherence. SSG emphasizes target high-frequency signals, defined as the semantic residual, isolated from a coarser prior. To obtain this prior, we leverage a principled frequency-domain procedure, Discrete Spatial Enhancement (DSE), which is devised to sharpen and better isolate the semantic residual through frequency-aware construction. SSG applies broadly across VAR models leveraging discrete visual tokens, regardless of tokenization design or conditioning modality. Experiments demonstrate SSG yields consistent gains in fidelity and diversity while preserving low latency, revealing untapped efficiency in coarse-to-fine image generation. Code is available at https://github.com/Youngwoo-git/SSG.",
+    "authors": [
+      "Youngwoo Shin",
+      "Jiwan Hur",
+      "Junmo Kim"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05534.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05534",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SSG：用于多尺度视觉自回归生成的比例化空间引导",
+      "core_contribution": "提出了一种无需训练、在推理时使用的比例化空间引导（SSG）方法，通过强调目标高频信号（语义残差）来纠正视觉自回归模型在推理时可能出现的层次结构漂移问题，从而提升生成质量与多样性。",
+      "method": "从信息论角度分析，提出确保每个尺度贡献先前尺度未解释的高频内容可缓解训练-推理差异。SSG通过离散空间增强（DSE）这一频域处理步骤，从粗粒度先验中分离出语义残差作为引导信号，在推理时动态引导生成过程保持由粗到细的层次结构。该方法适用于任何基于离散视觉标记的视觉自回归模型，与标记化设计或条件模态无关。",
+      "findings": "实验表明，SSG能一致地提升生成图像的保真度和多样性，同时保持低延迟，揭示了由粗到细图像生成中尚未开发的效率潜力。该方法无需额外训练，在多个VAR模型上均有效。"
+    }
+  },
+  {
+    "id": "2602.05435",
+    "title": "Stable Velocity: A Variance Perspective on Flow Matching",
+    "abstract": "While flow matching is elegant, its reliance on single-sample conditional velocities leads to high-variance training targets that destabilize optimization and slow convergence. By explicitly characterizing this variance, we identify 1) a high-variance regime near the prior, where optimization is challenging, and 2) a low-variance regime near the data distribution, where conditional and marginal velocities nearly coincide. Leveraging this insight, we propose Stable Velocity, a unified framework that improves both training and sampling. For training, we introduce Stable Velocity Matching (StableVM), an unbiased variance-reduction objective, along with Variance-Aware Representation Alignment (VA-REPA), which adaptively strengthen auxiliary supervision in the low-variance regime. For inference, we show that dynamics in the low-variance regime admit closed-form simplifications, enabling Stable Velocity Sampling (StableVS), a finetuning-free acceleration. Extensive experiments on ImageNet $256\\times256$ and large pretrained text-to-image and text-to-video models, including SD3.5, Flux, Qwen-Image, and Wan2.2, demonstrate consistent improvements in training efficiency and more than $2\\times$ faster sampling within the low-variance regime without degrading sample quality. Our code is available at https://github.com/linYDTHU/StableVelocity.",
+    "authors": [
+      "Donglin Yang",
+      "Yongxing Zhang",
+      "Xin Yu",
+      "Liang Hou",
+      "Xin Tao",
+      "Pengfei Wan",
+      "Xiaojuan Qi",
+      "Renjie Liao"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05435.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05435",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "稳定速度：从方差视角看流匹配",
+      "core_contribution": "本文通过显式分析流匹配训练目标的高方差问题，提出了一个统一的“稳定速度”框架，该框架同时改进了训练过程的稳定性和采样速度，且不牺牲样本质量。",
+      "method": "论文首先从理论上分析了条件速度的方差，识别出靠近先验分布的高方差区域和靠近数据分布的低方差区域。基于此，提出了两个核心方法：1) 用于训练的“稳定速度匹配”，这是一个无偏的方差缩减目标；2) “方差感知表示对齐”，它在低方差区域自适应地增强辅助监督。对于推理，则提出了“稳定速度采样”，利用低方差区域动力学可闭式简化的特性来加速采样。",
+      "findings": "在ImageNet 256×256以及SD3.5、Flux、Qwen-Image、Wan2.2等大型预训练文生图、文生视频模型上的大量实验表明，该方法能有效提升训练效率，并在低方差区域内实现超过2倍的采样加速，且样本质量没有下降。"
+    }
+  },
+  {
+    "id": "2602.05380",
+    "title": "SAIL: Self-Amplified Iterative Learning for Diffusion Model Alignment with Minimal Human Feedback",
+    "abstract": "Aligning diffusion models with human preferences remains challenging, particularly when reward models are unavailable or impractical to obtain, and collecting large-scale preference datasets is prohibitively expensive. \\textit{This raises a fundamental question: can we achieve effective alignment using only minimal human feedback, without auxiliary reward models, by unlocking the latent capabilities within diffusion models themselves?} In this paper, we propose \\textbf{SAIL} (\\textbf{S}elf-\\textbf{A}mplified \\textbf{I}terative \\textbf{L}earning), a novel framework that enables diffusion models to act as their own teachers through iterative self-improvement. Starting from a minimal seed set of human-annotated preference pairs, SAIL operates in a closed-loop manner where the model progressively generates diverse samples, self-annotates preferences based on its evolving understanding, and refines itself using this self-augmented dataset. To ensure robust learning and prevent catastrophic forgetting, we introduce a ranked preference mixup strategy that carefully balances exploration with adherence to initial human priors. Extensive experiments demonstrate that SAIL consistently outperforms state-of-the-art methods across multiple benchmarks while using merely 6\\% of the preference data required by existing approaches, revealing that diffusion models possess remarkable self-improvement capabilities that, when properly harnessed, can effectively replace both large-scale human annotation and external reward models.",
+    "authors": [
+      "Xiaoxuan He",
+      "Siming Fu",
+      "Wanli Li",
+      "Zhiyuan Li",
+      "Dacheng Yin",
+      "Kang Rong",
+      "Fengyun Rao",
+      "Bo Zhang"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05380.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05380",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SAIL：基于最少人类反馈的扩散模型对齐的自放大迭代学习",
+      "core_contribution": "提出SAIL框架，仅需极少人工标注偏好对，即可通过迭代自学习实现扩散模型与人类偏好的对齐，无需外部奖励模型或大规模标注数据。",
+      "method": "SAIL采用闭环自学习机制：从少量人工标注偏好对出发，模型迭代生成多样样本，基于自身演化出的理解进行自标注偏好，并利用自增强数据集进行微调。通过引入排序偏好混合策略，平衡探索与初始人类先验的遵循，防止灾难性遗忘。",
+      "findings": "实验表明，SAIL在多个基准测试中优于现有方法，且仅需现有方法约6%的偏好数据量，证明扩散模型具有显著的自改进能力，可有效替代大规模人工标注和外部奖励模型。"
+    }
+  },
+  {
+    "id": "2602.05362",
+    "title": "Imagine a City: CityGenAgent for Procedural 3D City Generation",
+    "abstract": "The automated generation of interactive 3D cities is a critical challenge with broad applications in autonomous driving, virtual reality, and embodied intelligence. While recent advances in generative models and procedural techniques have improved the realism of city generation, existing methods often struggle with high-fidelity asset creation, controllability, and manipulation. In this work, we introduce CityGenAgent, a natural language-driven framework for hierarchical procedural generation of high-quality 3D cities. Our approach decomposes city generation into two interpretable components, Block Program and Building Program. To ensure structural correctness and semantic alignment, we adopt a two-stage learning strategy: (1) Supervised Fine-Tuning (SFT). We train BlockGen and BuildingGen to generate valid programs that adhere to schema constraints, including non-self-intersecting polygons and complete fields; (2) Reinforcement Learning (RL). We design Spatial Alignment Reward to enhance spatial reasoning ability and Visual Consistency Reward to bridge the gap between textual descriptions and the visual modality. Benefiting from the programs and the models' generalization, CityGenAgent supports natural language editing and manipulation. Comprehensive evaluations demonstrate superior semantic alignment, visual quality, and controllability compared to existing methods, establishing a robust foundation for scalable 3D city generation.",
+    "authors": [
+      "Zishan Liu",
+      "Zecong Tang",
+      "RuoCheng Wu",
+      "Xinzhe Zheng",
+      "Jingyu Hu",
+      "Ka-Hei Hui",
+      "Haoran Xie",
+      "Bo Dai",
+      "Zhengzhe Liu"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05362.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05362",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "想象一座城市：用于程序化3D城市生成的CityGenAgent",
+      "core_contribution": "提出了CityGenAgent，一个由自然语言驱动的分层程序化生成框架，能够生成高质量、可交互的3D城市，显著提升了生成内容的语义对齐性、视觉质量和用户可控性。",
+      "method": "该方法将城市生成分解为两个可解释的组件：区块程序（Block Program）和建筑程序（Building Program）。采用两阶段学习策略：首先通过监督微调（SFT）训练模型生成符合模式约束的有效程序；然后利用强化学习（RL），通过设计空间对齐奖励和视觉一致性奖励，增强模型的空间推理能力并弥合文本描述与视觉模态之间的差距。",
+      "findings": "综合评估表明，CityGenAgent在语义对齐、视觉质量和可控性方面均优于现有方法。得益于程序化生成和模型的泛化能力，该框架支持通过自然语言对城市进行编辑和操作，为可扩展的3D城市生成奠定了坚实基础。"
+    }
+  }
+]
