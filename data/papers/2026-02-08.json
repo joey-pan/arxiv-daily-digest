@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2602.05998",
+    "title": "VisRefiner: Learning from Visual Differences for Screenshot-to-Code Generation",
+    "abstract": "Screenshot-to-code generation aims to translate user interface screenshots into executable frontend code that faithfully reproduces the target layout and style. Existing multimodal large language models perform this mapping directly from screenshots but are trained without observing the visual outcomes of their generated code. In contrast, human developers iteratively render their implementation, compare it with the design, and learn how visual differences relate to code changes. Inspired by this process, we propose VisRefiner, a training framework that enables models to learn from visual differences between rendered predictions and reference designs. We construct difference-aligned supervision that associates visual discrepancies with corresponding code edits, allowing the model to understand how appearance variations arise from implementation changes. Building on this, we introduce a reinforcement learning stage for self-refinement, where the model improves its generated code by observing both the rendered output and the target design, identifying their visual differences, and updating the code accordingly. Experiments show that VisRefiner substantially improves single-step generation quality and layout fidelity, while also endowing models with strong self-refinement ability. These results demonstrate the effectiveness of learning from visual differences for advancing screenshot-to-code generation.",
+    "authors": [
+      "Jie Deng",
+      "Kaichun Yao",
+      "Libo Zhang"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05998.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05998",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VisRefiner：从视觉差异中学习以进行截图到代码生成",
+      "core_contribution": "提出了VisRefiner训练框架，通过让模型学习渲染预测结果与参考设计之间的视觉差异来改进截图到代码的生成质量，并赋予模型强大的自我优化能力。",
+      "method": "1. 构建差异对齐监督，将视觉差异与对应的代码编辑关联起来，使模型理解外观变化如何由代码修改引起。2. 引入强化学习阶段进行自我优化，模型通过观察渲染输出与目标设计的视觉差异，识别并更新代码以实现迭代改进。",
+      "findings": "实验表明，VisRefiner显著提高了单步生成的代码质量和布局保真度，同时使模型具备了强大的自我优化能力，证明了从视觉差异中学习对推进截图到代码生成任务的有效性。"
+    }
+  },
+  {
+    "id": "2602.05951",
+    "title": "Better Source, Better Flow: Learning Condition-Dependent Source Distribution for Flow Matching",
+    "abstract": "Flow matching has recently emerged as a promising alternative to diffusion-based generative models, particularly for text-to-image generation. Despite its flexibility in allowing arbitrary source distributions, most existing approaches rely on a standard Gaussian distribution, a choice inherited from diffusion models, and rarely consider the source distribution itself as an optimization target in such settings. In this work, we show that principled design of the source distribution is not only feasible but also beneficial at the scale of modern text-to-image systems. Specifically, we propose learning a condition-dependent source distribution under flow matching objective that better exploit rich conditioning signals. We identify key failure modes that arise when directly incorporating conditioning into the source, including distributional collapse and instability, and show that appropriate variance regularization and directional alignment between source and target are critical for stable and effective learning. We further analyze how the choice of target representation space impacts flow matching with structured sources, revealing regimes in which such designs are most effective. Extensive experiments across multiple text-to-image benchmarks demonstrate consistent and robust improvements, including up to a 3x faster convergence in FID, highlighting the practical benefits of a principled source distribution design for conditional flow matching.",
+    "authors": [
+      "Junwan Kim",
+      "Jiho Park",
+      "Seonghu Jeon",
+      "Seungryong Kim"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05951.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05951",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "更好的源分布，更好的流：学习条件依赖的源分布以进行流匹配",
+      "core_contribution": "本文提出在流匹配框架中学习一个条件依赖的源分布，以更好地利用丰富的条件信号（如文本），从而提升条件生成模型的性能与稳定性。",
+      "method": "方法基于流匹配框架，将传统的固定高斯源分布替换为可学习的、依赖于条件（如文本）的源分布。通过引入方差正则化和确保源分布与目标分布之间的方向对齐，解决了直接引入条件时可能出现的分布坍缩和不稳定问题。此外，论文还分析了目标表示空间的选择如何影响结构化源分布的有效性。",
+      "findings": "实验表明，所提出的条件依赖源分布设计在多个文本到图像生成基准上带来了持续且稳健的性能提升，包括将FID指标的收敛速度最高提升3倍。研究还揭示了方差正则化和方向对齐对于稳定学习至关重要，并明确了此类设计在特定目标表示空间下最为有效。"
+    }
+  },
+  {
+    "id": "2602.05339",
+    "title": "Consistency-Preserving Concept Erasure via Unsafe-Safe Pairing and Directional Fisher-weighted Adaptation",
+    "abstract": "With the increasing versatility of text-to-image diffusion models, the ability to selectively erase undesirable concepts (e.g., harmful content) has become indispensable. However, existing concept erasure approaches primarily focus on removing unsafe concepts without providing guidance toward corresponding safe alternatives, which often leads to failure in preserving the structural and semantic consistency between the original and erased generations. In this paper, we propose a novel framework, PAIRed Erasing (PAIR), which reframes concept erasure from simple removal to consistency-preserving semantic realignment using unsafe-safe pairs. We first generate safe counterparts from unsafe inputs while preserving structural and semantic fidelity, forming paired unsafe-safe multimodal data. Leveraging these pairs, we introduce two key components: (1) Paired Semantic Realignment, a guided objective that uses unsafe-safe pairs to explicitly map target concepts to semantically aligned safe anchors; and (2) Fisher-weighted Initialization for DoRA, which initializes parameter-efficient low-rank adaptation matrices using unsafe-safe pairs, encouraging the generation of safe alternatives while selectively suppressing unsafe concepts. Together, these components enable fine-grained erasure that removes only the targeted concepts while maintaining overall semantic consistency. Extensive experiments demonstrate that our approach significantly outperforms state-of-the-art baselines, achieving effective concept erasure while preserving structural integrity, semantic coherence, and generation quality.",
+    "authors": [
+      "Yongwoo Kim",
+      "Sungmin Cha",
+      "Hyunsoo Kim",
+      "Jaewon Lee",
+      "Donghyun Kim"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05339.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05339",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过不安全-安全配对与方向性Fisher加权适配实现一致性保持的概念擦除",
+      "core_contribution": "本文提出了PAIR框架，将概念擦除从简单的移除重构为基于不安全-安全配对的一致性保持语义重对齐，实现了在移除不良概念的同时，引导模型生成语义一致的安全替代内容。",
+      "method": "方法首先通过保持结构和语义保真度，为不安全输入生成对应的安全样本，构建配对的多模态数据。在此基础上，提出了两个核心组件：一是“配对语义重对齐”目标，利用配对数据将目标概念显式映射到语义对齐的安全锚点；二是为DoRA初始化Fisher加权的参数高效低秩适配矩阵，鼓励生成安全替代内容并选择性抑制不安全概念。",
+      "findings": "大量实验表明，该方法在概念擦除效果上显著优于现有先进基线，能够有效移除目标概念，同时保持生成图像的结构完整性、语义连贯性和整体生成质量。"
+    }
+  },
+  {
+    "id": "2602.05305",
+    "title": "FlashBlock: Attention Caching for Efficient Long-Context Block Diffusion",
+    "abstract": "Generating long-form content, such as minute-long videos and extended texts, is increasingly important for modern generative models. Block diffusion improves inference efficiency via KV caching and block-wise causal inference and has been widely adopted in diffusion language models and video generation. However, in long-context settings, block diffusion still incurs substantial overhead from repeatedly computing attention over a growing KV cache. We identify an underexplored property of block diffusion: cross-step redundancy of attention within a block. Our analysis shows that attention outputs from tokens outside the current block remain largely stable across diffusion steps, while block-internal attention varies significantly. Based on this observation, we propose FlashBlock, a cached block-external attention mechanism that reuses stable attention output, reducing attention computation and KV cache access without modifying the diffusion process. Moreover, FlashBlock is orthogonal to sparse attention and can be combined as a complementary residual reuse strategy, substantially improving model accuracy under aggressive sparsification. Experiments on diffusion language models and video generation demonstrate up to 1.44$\\times$ higher token throughput and up to 1.6$\\times$ reduction in attention time, with negligible impact on generation quality. Project page: https://caesarhhh.github.io/FlashBlock/.",
+    "authors": [
+      "Zhuokun Chen",
+      "Jianfei Cai",
+      "Bohan Zhuang"
+    ],
+    "published": "2026-02-05",
+    "updated": "2026-02-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05305.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05305",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlashBlock：用于高效长上下文块扩散的注意力缓存机制",
+      "core_contribution": "本文提出了FlashBlock，一种用于块扩散模型的注意力缓存机制，通过重用块间稳定的注意力输出来显著减少长上下文生成中的计算开销和KV缓存访问，同时可与稀疏注意力正交结合以提升模型精度。",
+      "method": "方法基于对块扩散中注意力冗余的分析：发现当前块外部的token注意力输出在扩散步骤间保持稳定，而块内部注意力变化显著。FlashBlock通过缓存并重用这些稳定的块外部注意力输出，避免重复计算，且无需修改原有扩散过程。该机制还可与稀疏注意力结合，作为补充的残差重用策略。",
+      "findings": "实验在扩散语言模型和视频生成任务上进行，结果显示：FlashBlock最高可提升1.44倍的token吞吐量，减少高达1.6倍的注意力计算时间，且对生成质量影响可忽略；与稀疏注意力结合后，能显著提升在高稀疏化条件下的模型精度。"
+    }
+  },
+  {
+    "id": "2602.05013",
+    "title": "Untwisting RoPE: Frequency Control for Shared Attention in DiTs",
+    "abstract": "Positional encodings are essential to transformer-based generative models, yet their behavior in multimodal and attention-sharing settings is not fully understood. In this work, we present a principled analysis of Rotary Positional Embeddings (RoPE), showing that RoPE naturally decomposes into frequency components with distinct positional sensitivities. We demonstrate that this frequency structure explains why shared-attention mechanisms, where a target image is generated while attending to tokens from a reference image, can lead to reference copying, in which the model reproduces content from the reference instead of extracting only its stylistic cues. Our analysis reveals that the high-frequency components of RoPE dominate the attention computation, forcing queries to attend mainly to spatially aligned reference tokens and thereby inducing this unintended copying behavior. Building on these insights, we introduce a method for selectively modulating RoPE frequency bands so that attention reflects semantic similarity rather than strict positional alignment. Applied to modern transformer-based diffusion architectures, where all tokens share attention, this modulation restores stable and meaningful shared attention. As a result, it enables effective control over the degree of style transfer versus content copying, yielding a proper style-aligned generation process in which stylistic attributes are transferred without duplicating reference content.",
+    "authors": [
+      "Aryan Mikaeili",
+      "Or Patashnik",
+      "Andrea Tagliasacchi",
+      "Daniel Cohen-Or",
+      "Ali Mahdavi-Amiri"
+    ],
+    "published": "2026-02-04",
+    "updated": "2026-02-04",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.05013.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.05013",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "解开RoPE：DiTs中共享注意力的频率控制",
+      "core_contribution": "本文揭示了RoPE位置编码的频率结构是导致共享注意力机制中发生“参考复制”问题的根本原因，并提出了一种通过选择性调制RoPE频段来控制风格迁移与内容复制程度的方法。",
+      "method": "论文首先对RoPE进行了原理性分析，将其分解为具有不同位置敏感性的频率分量。基于分析发现的高频分量主导注意力计算的问题，作者提出了一种方法，通过选择性调制（抑制或增强）RoPE的特定频率波段，使注意力机制能够反映语义相似性，而非严格的位置对齐。该方法被应用于所有令牌共享注意力的现代基于Transformer的扩散模型架构中。",
+      "findings": "关键实验结果表明，所提出的频率调制方法能够有效稳定共享注意力机制，使其从意外的内容复制行为转变为有意义的风格对齐生成过程。该方法实现了对风格迁移与内容复制程度的精细控制，使得模型能够在不复制参考图像内容的前提下，成功提取并迁移其风格属性。"
+    }
+  }
+]
