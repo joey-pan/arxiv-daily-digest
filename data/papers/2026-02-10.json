@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2602.07645",
+    "title": "From Dead Pixels to Editable Slides: Infographic Reconstruction into Native Google Slides via Vision-Language Region Understanding",
+    "abstract": "Infographics are widely used to communicate information with a combination of text, icons, and data visualizations, but once exported as images their content is locked into pixels, making updates, localization, and reuse expensive. We describe \\textsc{Images2Slides}, an API-based pipeline that converts a static infographic (PNG/JPG) into a native, editable Google Slides slide by extracting a region-level specification with a vision-language model (VLM), mapping pixel geometry into slide coordinates, and recreating elements using the Google Slides batch update API. The system is model-agnostic and supports multiple VLM backends via a common JSON region schema and deterministic postprocessing. On a controlled benchmark of 29 programmatically generated infographic slides with known ground-truth regions, \\textsc{Images2Slides} achieves an overall element recovery rate of $0.989\\pm0.057$ (text: $0.985\\pm0.083$, images: $1.000\\pm0.000$), with mean text transcription error $\\mathrm{CER}=0.033\\pm0.149$ and mean layout fidelity $\\mathrm{IoU}=0.364\\pm0.161$ for text regions and $0.644\\pm0.131$ for image regions. We also highlight practical engineering challenges in reconstruction, including text size calibration and non-uniform backgrounds, and describe failure modes that guide future work.",
+    "authors": [
+      "Leonardo Gonzalez"
+    ],
+    "published": "2026-02-07",
+    "updated": "2026-02-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.07645.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.07645",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从死像素到可编辑幻灯片：通过视觉语言区域理解将信息图重建为原生Google幻灯片",
+      "core_contribution": "提出了一个名为Images2Slides的自动化流程，能够将静态信息图图像转换为可编辑的原生Google幻灯片格式，解决了信息图内容被锁定为像素后难以更新和复用的问题。",
+      "method": "该方法采用基于API的管道，首先利用视觉语言模型提取图像中区域级别的结构化描述，然后将像素几何坐标映射到幻灯片坐标系，最后通过Google Slides的批量更新API重新创建所有元素。系统是模型无关的，通过通用的JSON区域模式和确定性后处理支持多种VLM后端。",
+      "findings": "在包含29个程序生成信息图的基准测试中，系统整体元素恢复率达到0.989±0.057，文本转录错误率较低，布局保真度良好。研究同时识别了文本大小校准和非均匀背景等实际工程挑战，并分析了失败模式以指导未来工作。"
+    }
+  },
+  {
+    "id": "2602.07564",
+    "title": "SIGMA: Selective-Interleaved Generation with Multi-Attribute Tokens",
+    "abstract": "Recent unified models such as Bagel demonstrate that paired image-edit data can effectively align multiple visual tasks within a single diffusion transformer. However, these models remain limited to single-condition inputs and lack the flexibility needed to synthesize results from multiple heterogeneous sources. We present SIGMA (Selective-Interleaved Generation with Multi-Attribute Tokens), a unified post-training framework that enables interleaved multi-condition generation within diffusion transformers. SIGMA introduces selective multi-attribute tokens, including style, content, subject, and identity tokens, which allow the model to interpret and compose multiple visual conditions in an interleaved text-image sequence. Through post-training on the Bagel unified backbone with 700K interleaved examples, SIGMA supports compositional editing, selective attribute transfer, and fine-grained multimodal alignment. Extensive experiments show that SIGMA improves controllability, cross-condition consistency, and visual quality across diverse editing and generation tasks, with substantial gains over Bagel on compositional tasks.",
+    "authors": [
+      "Xiaoyan Zhang",
+      "Zechen Bai",
+      "Haofan Wang",
+      "Yiren Song"
+    ],
+    "published": "2026-02-07",
+    "updated": "2026-02-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.07564.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.07564",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SIGMA：基于多属性令牌的选择性交错生成",
+      "core_contribution": "提出了SIGMA，一个统一的后训练框架，首次在扩散Transformer中实现了交错多条件生成，解决了现有统一模型仅支持单条件输入、无法灵活合成多源异构信息的问题。",
+      "method": "方法基于Bagel统一骨干模型进行后训练，引入了选择性多属性令牌（如风格、内容、主体和身份令牌），使模型能够解析和组合交错排列的文本-图像序列中的多种视觉条件。通过在70万个交错示例上进行后训练，模型支持组合编辑、选择性属性迁移和细粒度多模态对齐。",
+      "findings": "大量实验表明，SIGMA在多种编辑和生成任务中显著提升了可控性、跨条件一致性和视觉质量，尤其在组合任务上相比Bagel取得了大幅性能提升。"
+    }
+  },
+  {
+    "id": "2602.07554",
+    "title": "FlexID: Training-Free Flexible Identity Injection via Intent-Aware Modulation for Text-to-Image Generation",
+    "abstract": "Personalized text-to-image generation aims to seamlessly integrate specific identities into textual descriptions. However, existing training-free methods often rely on rigid visual feature injection, creating a conflict between identity fidelity and textual adaptability. To address this, we propose FlexID, a novel training-free framework utilizing intent-aware modulation. FlexID orthogonally decouples identity into two dimensions: a Semantic Identity Projector (SIP) that injects high-level priors into the language space, and a Visual Feature Anchor (VFA) that ensures structural fidelity within the latent space. Crucially, we introduce a Context-Aware Adaptive Gating (CAG) mechanism that dynamically modulates the weights of these streams based on editing intent and diffusion timesteps. By automatically relaxing rigid visual constraints when strong editing intent is detected, CAG achieves synergy between identity preservation and semantic variation. Extensive experiments on IBench demonstrate that FlexID achieves a state-of-the-art balance between identity consistency and text adherence, offering an efficient solution for complex narrative generation.",
+    "authors": [
+      "Guandong Li",
+      "Yijun Ding"
+    ],
+    "published": "2026-02-07",
+    "updated": "2026-02-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.07554.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.07554",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlexID：通过意图感知调制实现无需训练的身份灵活注入用于文本到图像生成",
+      "core_contribution": "提出了FlexID，一个无需训练的新框架，通过意图感知调制正交地将身份解耦为语义和视觉两个维度，并引入自适应门控机制动态调节，从而在身份保真度和文本适应性之间实现了最优平衡。",
+      "method": "该方法将身份信息正交解耦为两个部分：语义身份投影器（SIP）将高层语义先验注入语言空间，视觉特征锚（VFA）在潜在空间中确保结构保真度。核心是上下文感知自适应门控（CAG）机制，它能根据编辑意图和扩散时间步动态调节两条路径的权重，在检测到强编辑意图时自动放松刚性视觉约束。",
+      "findings": "在IBench上的大量实验表明，FlexID在身份一致性和文本遵循性之间达到了最先进的平衡，为复杂的叙事生成提供了高效的解决方案。"
+    }
+  },
+  {
+    "id": "2602.07345",
+    "title": "Optimizing Few-Step Generation with Adaptive Matching Distillation",
+    "abstract": "Distribution Matching Distillation (DMD) is a powerful acceleration paradigm, yet its stability is often compromised in Forbidden Zone, regions where the real teacher provides unreliable guidance while the fake teacher exerts insufficient repulsive force. In this work, we propose a unified optimization framework that reinterprets prior art as implicit strategies to avoid these corrupted regions. Based on this insight, we introduce Adaptive Matching Distillation (AMD), a self-correcting mechanism that utilizes reward proxies to explicitly detect and escape Forbidden Zones. AMD dynamically prioritizes corrective gradients via structural signal decomposition and introduces Repulsive Landscape Sharpening to enforce steep energy barriers against failure mode collapse. Extensive experiments across image and video generation tasks (e.g., SDXL, Wan2.1) and rigorous benchmarks (e.g., VBench, GenEval) demonstrate that AMD significantly enhances sample fidelity and training robustness. For instance, AMD improves the HPSv2 score on SDXL from 30.64 to 31.25, outperforming state-of-the-art baselines. These findings validate that explicitly rectifying optimization trajectories within Forbidden Zones is essential for pushing the performance ceiling of few-step generative models.",
+    "authors": [
+      "Lichen Bai",
+      "Zikai Zhou",
+      "Shitong Shao",
+      "Wenliang Zhong",
+      "Shuo Yang",
+      "Shuo Chen",
+      "Bojun Chen",
+      "Zeke Xie"
+    ],
+    "published": "2026-02-07",
+    "updated": "2026-02-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.07345.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.07345",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过自适应匹配蒸馏优化少步生成",
+      "core_contribution": "本文提出了自适应匹配蒸馏（AMD），一种能够显式检测并逃离“禁区”的自校正机制，显著提升了少步生成模型的样本保真度和训练鲁棒性。",
+      "method": "论文首先将现有方法统一解释为规避“禁区”的隐式策略。在此基础上，AMD引入奖励代理来显式检测“禁区”，并通过结构信号分解动态优先校正梯度。此外，方法还提出了“排斥性景观锐化”技术，以构建陡峭的能量屏障来防止模型崩溃到失败模式。",
+      "findings": "在图像和视频生成任务（如SDXL、Wan2.1）上的大量实验表明，AMD显著提升了性能。例如，它将SDXL在HPSv2指标上的得分从30.64提升至31.25，超越了现有先进基线。这验证了在“禁区”内显式修正优化轨迹对于提升少步生成模型性能上限至关重要。"
+    }
+  },
+  {
+    "id": "2602.06959",
+    "title": "CineScene: Implicit 3D as Effective Scene Representation for Cinematic Video Generation",
+    "abstract": "Cinematic video production requires control over scene-subject composition and camera movement, but live-action shooting remains costly due to the need for constructing physical sets. To address this, we introduce the task of cinematic video generation with decoupled scene context: given multiple images of a static environment, the goal is to synthesize high-quality videos featuring dynamic subject while preserving the underlying scene consistency and following a user-specified camera trajectory. We present CineScene, a framework that leverages implicit 3D-aware scene representation for cinematic video generation. Our key innovation is a novel context conditioning mechanism that injects 3D-aware features in an implicit way: By encoding scene images into visual representations through VGGT, CineScene injects spatial priors into a pretrained text-to-video generation model by additional context concatenation, enabling camera-controlled video synthesis with consistent scenes and dynamic subjects. To further enhance the model's robustness, we introduce a simple yet effective random-shuffling strategy for the input scene images during training. To address the lack of training data, we construct a scene-decoupled dataset with Unreal Engine 5, containing paired videos of scenes with and without dynamic subjects, panoramic images representing the underlying static scene, along with their camera trajectories. Experiments show that CineScene achieves state-of-the-art performance in scene-consistent cinematic video generation, handling large camera movements and demonstrating generalization across diverse environments.",
+    "authors": [
+      "Kaiyi Huang",
+      "Yukun Huang",
+      "Yu Li",
+      "Jianhong Bai",
+      "Xintao Wang",
+      "Zinan Lin",
+      "Xuefei Ning",
+      "Jiwen Yu",
+      "Pengfei Wan",
+      "Yu Wang",
+      "Xihui Liu"
+    ],
+    "published": "2026-02-06",
+    "updated": "2026-02-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.06959.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.06959",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CineScene：将隐式3D作为电影视频生成的有效场景表示",
+      "core_contribution": "提出了CineScene框架，通过隐式3D感知的场景表示和创新的上下文条件机制，实现了场景与动态主体解耦的电影级视频生成，并构建了用于训练的场景解耦数据集。",
+      "method": "该方法首先通过VGGT将场景图像编码为视觉表示，然后通过额外的上下文拼接，以隐式方式将3D感知特征注入预训练的文本到视频生成模型中，从而支持相机轨迹控制且场景一致的视频合成。训练时采用随机打乱输入场景图像的策略以增强鲁棒性，并使用Unreal Engine 5构建了包含静态场景全景图、相机轨迹及有无动态主体的配对视频数据集。",
+      "findings": "实验表明，CineScene在场景一致的电影视频生成任务上达到了最先进的性能，能够处理大幅度的相机运动，并在多样化的环境中展现出良好的泛化能力。"
+    }
+  }
+]
