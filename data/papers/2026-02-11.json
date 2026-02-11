@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2602.09856",
+    "title": "Code2World: A GUI World Model via Renderable Code Generation",
+    "abstract": "Autonomous GUI agents interact with environments by perceiving interfaces and executing actions. As a virtual sandbox, the GUI World model empowers agents with human-like foresight by enabling action-conditioned prediction. However, existing text- and pixel-based approaches struggle to simultaneously achieve high visual fidelity and fine-grained structural controllability. To this end, we propose Code2World, a vision-language coder that simulates the next visual state via renderable code generation. Specifically, to address the data scarcity problem, we construct AndroidCode by translating GUI trajectories into high-fidelity HTML and refining synthesized code through a visual-feedback revision mechanism, yielding a corpus of over 80K high-quality screen-action pairs. To adapt existing VLMs into code prediction, we first perform SFT as a cold start for format layout following, then further apply Render-Aware Reinforcement Learning which uses rendered outcome as the reward signal by enforcing visual semantic fidelity and action consistency. Extensive experiments demonstrate that Code2World-8B achieves the top-performing next UI prediction, rivaling the competitive GPT-5 and Gemini-3-Pro-Image. Notably, Code2World significantly enhances downstream navigation success rates in a flexible manner, boosting Gemini-2.5-Flash by +9.5% on AndroidWorld navigation. The code is available at https://github.com/AMAP-ML/Code2World.",
+    "authors": [
+      "Yuhao Zheng",
+      "Li'an Zhong",
+      "Yi Wang",
+      "Rui Dai",
+      "Kaikui Liu",
+      "Xiangxiang Chu",
+      "Linyuan Lv",
+      "Philip Torr",
+      "Kevin Qinghong Lin"
+    ],
+    "published": "2026-02-10",
+    "updated": "2026-02-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL",
+      "cs.HC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.09856.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.09856",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Code2World：一种通过可渲染代码生成的GUI世界模型",
+      "core_contribution": "提出了Code2World，一个通过生成可渲染代码来预测图形用户界面（GUI）下一视觉状态的视觉-语言编码器，解决了现有方法在视觉保真度和细粒度结构可控性上难以兼顾的问题。",
+      "method": "首先，为解决数据稀缺问题，构建了AndroidCode数据集，将GUI交互轨迹转换为高保真HTML代码，并通过视觉反馈修订机制优化合成代码，获得了超过8万组高质量的屏幕-动作对。其次，为适配现有视觉语言模型（VLMs）进行代码预测，先进行监督微调（SFT）以学习格式布局，再应用渲染感知强化学习，将渲染结果作为奖励信号，以强制模型保持视觉语义保真度和动作一致性。",
+      "findings": "实验表明，Code2World-8B在下一UI预测任务上达到顶尖性能，可与GPT-5和Gemini-3-Pro-Image等竞争模型相媲美。更重要的是，它能以灵活的方式显著提升下游导航任务的成功率，在AndroidWorld导航任务上将Gemini-2.5-Flash的性能提升了9.5%。"
+    }
+  },
+  {
+    "id": "2602.09809",
+    "title": "SciFlow-Bench: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing",
+    "abstract": "Scientific diagrams convey explicit structural information, yet modern text-to-image models often produce visually plausible but structurally incorrect results. Existing benchmarks either rely on image-centric or subjective metrics insensitive to structure, or evaluate intermediate symbolic representations rather than final rendered images, leaving pixel-based diagram generation underexplored. We introduce SciFlow-Bench, a structure-first benchmark for evaluating scientific diagram generation directly from pixel-level outputs. Built from real scientific PDFs, SciFlow-Bench pairs each source framework figure with a canonical ground-truth graph and evaluates models as black-box image generators under a closed-loop, round-trip protocol that inverse-parses generated diagram images back into structured graphs for comparison. This design enforces evaluation by structural recoverability rather than visual similarity alone, and is enabled by a hierarchical multi-agent system that coordinates planning, perception, and structural reasoning. Experiments show that preserving structural correctness remains a fundamental challenge, particularly for diagrams with complex topology, underscoring the need for structure-aware evaluation.",
+    "authors": [
+      "Tong Zhang",
+      "Honglin Lin",
+      "Zhou Liu",
+      "Chong Chen",
+      "Wentao Zhang"
+    ],
+    "published": "2026-02-10",
+    "updated": "2026-02-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.09809.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.09809",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SciFlow-Bench：通过逆向解析评估结构感知的科学图表生成",
+      "core_contribution": "提出了首个以结构优先的基准测试SciFlow-Bench，用于直接从像素级输出评估科学图表生成；并设计了一种基于逆向解析的闭环评估协议，将生成的图表图像解析回结构化图以进行结构正确性比较。",
+      "method": "该研究从真实科学PDF中构建数据集，将原始图表与标准真实图配对。评估采用闭环往返协议：将模型作为黑盒图像生成器，生成的图表图像通过一个分层多智能体系统进行逆向解析，该系统协调规划、感知和结构推理，将图像重新转换为结构化图，再与真实图进行对比。",
+      "findings": "实验表明，保持结构正确性仍然是一个根本性挑战，现有模型生成的图表在视觉上可能合理但结构常出错，尤其对于拓扑结构复杂的图表。这凸显了仅靠视觉相似性评估的不足，以及进行结构感知评估的必要性。"
+    }
+  },
+  {
+    "id": "2602.09713",
+    "title": "Stroke3D: Lifting 2D strokes into rigged 3D model via latent diffusion models",
+    "abstract": "Rigged 3D assets are fundamental to 3D deformation and animation. However, existing 3D generation methods face challenges in generating animatable geometry, while rigging techniques lack fine-grained structural control over skeleton creation. To address these limitations, we introduce Stroke3D, a novel framework that directly generates rigged meshes from user inputs: 2D drawn strokes and a descriptive text prompt. Our approach pioneers a two-stage pipeline that separates the generation into: 1) Controllable Skeleton Generation, we employ the Skeletal Graph VAE (Sk-VAE) to encode the skeleton's graph structure into a latent space, where the Skeletal Graph DiT (Sk-DiT) generates a skeletal embedding. The generation process is conditioned on both the text for semantics and the 2D strokes for explicit structural control, with the VAE's decoder reconstructing the final high-quality 3D skeleton; and 2) Enhanced Mesh Synthesis via TextuRig and SKA-DPO, where we then synthesize a textured mesh conditioned on the generated skeleton. For this stage, we first enhance an existing skeleton-to-mesh model by augmenting its training data with TextuRig: a dataset of textured and rigged meshes with captions, curated from Objaverse-XL. Additionally, we employ a preference optimization strategy, SKA-DPO, guided by a skeleton-mesh alignment score, to further improve geometric fidelity. Together, our framework enables a more intuitive workflow for creating ready to animate 3D content. To the best of our knowledge, our work is the first to generate rigged 3D meshes conditioned on user-drawn 2D strokes. Extensive experiments demonstrate that Stroke3D produces plausible skeletons and high-quality meshes.",
+    "authors": [
+      "Ruisi Zhao",
+      "Haoren Zheng",
+      "Zongxin Yang",
+      "Hehe Fan",
+      "Yi Yang"
+    ],
+    "published": "2026-02-10",
+    "updated": "2026-02-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.09713.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.09713",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Stroke3D：通过潜在扩散模型将2D笔画提升为绑定骨骼的3D模型",
+      "core_contribution": "提出了首个能够根据用户绘制的2D笔画和文本描述直接生成可动画绑定的3D网格的框架，实现了从2D草图到可动画3D内容的直观创作流程。",
+      "method": "方法采用两阶段流程：1）可控骨骼生成阶段，使用骨骼图变分自编码器（Sk-VAE）编码骨骼图结构，并利用骨骼图扩散变换器（Sk-DiT）在文本语义和2D笔画结构控制下生成骨骼嵌入，再解码为高质量3D骨骼；2）增强网格合成阶段，基于生成的骨骼合成带纹理的网格，通过TextuRig数据集增强训练数据，并采用基于骨骼-网格对齐分数的偏好优化策略（SKA-DPO）提升几何保真度。",
+      "findings": "实验表明，Stroke3D能够生成合理的骨骼结构和高质量的3D网格，有效结合了文本语义控制与2D笔画的结构控制，为可动画3D内容的创建提供了更直观的工作流程。"
+    }
+  },
+  {
+    "id": "2602.09475",
+    "title": "ArtifactLens: Hundreds of Labels Are Enough for Artifact Detection with VLMs",
+    "abstract": "Modern image generators produce strikingly realistic images, where only artifacts like distorted hands or warped objects reveal their synthetic origin. Detecting these artifacts is essential: without detection, we cannot benchmark generators or train reward models to improve them. Current detectors fine-tune VLMs on tens of thousands of labeled images, but this is expensive to repeat whenever generators evolve or new artifact types emerge. We show that pretrained VLMs already encode the knowledge needed to detect artifacts - with the right scaffolding, this capability can be unlocked using only a few hundred labeled examples per artifact category. Our system, ArtifactLens, achieves state-of-the-art on five human artifact benchmarks (the first evaluation across multiple datasets) while requiring orders of magnitude less labeled data. The scaffolding consists of a multi-component architecture with in-context learning and text instruction optimization, with novel improvements to each. Our methods generalize to other artifact types - object morphology, animal anatomy, and entity interactions - and to the distinct task of AIGC detection.",
+    "authors": [
+      "James Burgess",
+      "Rameen Abdal",
+      "Dan Stoddart",
+      "Sergey Tulyakov",
+      "Serena Yeung-Levy",
+      "Kuan-Chieh Jackson Wang"
+    ],
+    "published": "2026-02-10",
+    "updated": "2026-02-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.09475.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.09475",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ArtifactLens：仅需数百标签即可利用视觉语言模型进行伪影检测",
+      "core_contribution": "本文提出ArtifactLens系统，证明了预训练的视觉语言模型（VLMs）已具备检测生成图像伪影的内在知识，仅需每个伪影类别数百个标注样本即可激活该能力，大幅降低数据标注需求。",
+      "method": "方法采用多组件架构，结合上下文学习与文本指令优化，并针对二者提出了新颖的改进。通过设计有效的提示框架，引导预训练VLM识别图像中的局部伪影（如扭曲的手部或物体），而无需进行大规模微调。",
+      "findings": "ArtifactLens在五个人工伪影检测基准测试中达到最先进性能（首次实现跨多数据集的统一评估），且所需标注数据量比现有方法少数个数量级。该方法可泛化至其他伪影类型（如物体形态、动物解剖结构、实体交互）以及AIGC检测任务。"
+    }
+  },
+  {
+    "id": "2602.09449",
+    "title": "Look-Ahead and Look-Back Flows: Training-Free Image Generation with Trajectory Smoothing",
+    "abstract": "Recent advances have reformulated diffusion models as deterministic ordinary differential equations (ODEs) through the framework of flow matching, providing a unified formulation for the noise-to-data generative process. Various training-free flow matching approaches have been developed to improve image generation through flow velocity field adjustment, eliminating the need for costly retraining. However, Modifying the velocity field $v$ introduces errors that propagate through the full generation path, whereas adjustments to the latent trajectory $z$ are naturally corrected by the pretrained velocity network, reducing error accumulation. In this paper, we propose two complementary training-free latent-trajectory adjustment approaches based on future and past velocity $v$ and latent trajectory $z$ information that refine the generative path directly in latent space. We propose two training-free trajectory smoothing schemes: \\emph{Look-Ahead}, which averages the current and next-step latents using a curvature-gated weight, and \\emph{Look-Back}, which smoothes latents using an exponential moving average with decay. We demonstrate through extensive experiments and comprehensive evaluation metrics that the proposed training-free trajectory smoothing models substantially outperform various state-of-the-art models across multiple datasets including COCO17, CUB-200, and Flickr30K.",
+    "authors": [
+      "Yan Luo",
+      "Henry Huang",
+      "Todd Y. Zhou",
+      "Mengyu Wang"
+    ],
+    "published": "2026-02-10",
+    "updated": "2026-02-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.09449.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.09449",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "前瞻与回溯流：基于轨迹平滑的无训练图像生成",
+      "core_contribution": "提出了两种无需训练、直接在潜在空间优化生成轨迹的互补方法（Look-Ahead 和 Look-Back），通过平滑潜在轨迹来减少误差累积，显著提升了图像生成质量。",
+      "method": "论文基于流匹配框架，将扩散模型重新表述为确定性常微分方程。所提出的方法不调整速度场，而是直接平滑潜在轨迹：Look-Ahead 方法通过曲率门控权重对当前和下一步潜在表示进行加权平均；Look-Back 方法则采用指数移动平均对潜在轨迹进行平滑。这两种方案均无需额外训练，仅利用预训练速度网络的信息。",
+      "findings": "在 COCO17、CUB-200 和 Flickr30K 等多个数据集上的实验表明，所提出的轨迹平滑方法在多种评估指标上均显著优于当前最先进的无训练生成模型，有效降低了误差传播，提高了生成图像的视觉质量。"
+    }
+  }
+]
