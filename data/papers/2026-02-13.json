@@ -1,0 +1,165 @@
+[
+  {
+    "id": "2602.12127",
+    "title": "PosterOmni: Generalized Artistic Poster Creation via Task Distillation and Unified Reward Feedback",
+    "abstract": "Image-to-poster generation is a high-demand task requiring not only local adjustments but also high-level design understanding. Models must generate text, layout, style, and visual elements while preserving semantic fidelity and aesthetic coherence. The process spans two regimes: local editing, where ID-driven generation, rescaling, filling, and extending must preserve concrete visual entities; and global creation, where layout- and style-driven tasks rely on understanding abstract design concepts. These intertwined demands make image-to-poster a multi-dimensional process coupling entity-preserving editing with concept-driven creation under image-prompt control. To address these challenges, we propose PosterOmni, a generalized artistic poster creation framework that unlocks the potential of a base edit model for multi-task image-to-poster generation. PosterOmni integrates the two regimes, namely local editing and global creation, within a single system through an efficient data-distillation-reward pipeline: (i) constructing multi-scenario image-to-poster datasets covering six task types across entity-based and concept-based creation; (ii) distilling knowledge between local and global experts for supervised fine-tuning; and (iii) applying unified PosterOmni Reward Feedback to jointly align visual entity-preserving and aesthetic preference across all tasks. Additionally, we establish PosterOmni-Bench, a unified benchmark for evaluating both local editing and global creation. Extensive experiments show that PosterOmni significantly enhances reference adherence, global composition quality, and aesthetic harmony, outperforming all open-source baselines and even surpassing several proprietary systems.",
+    "authors": [
+      "Sixiang Chen",
+      "Jianyu Lai",
+      "Jialin Gao",
+      "Hengyu Shi",
+      "Zhongying Liu",
+      "Tian Ye",
+      "Junfeng Luo",
+      "Xiaoming Wei",
+      "Lei Zhu"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12127.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12127",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "PosterOmni：通过任务蒸馏与统一奖励反馈的通用艺术海报创作",
+      "core_contribution": "提出了一个通用的艺术海报创作框架PosterOmni，通过整合局部编辑与全局创作两种模式，并设计统一的数据-蒸馏-奖励流程，实现了多任务图像到海报的高质量生成。",
+      "method": "首先构建了覆盖六种任务类型的多场景图像到海报数据集，涵盖基于实体的编辑和基于概念的创作。其次，通过知识蒸馏在局部与全局专家模型之间进行监督微调。最后，应用统一的PosterOmni奖励反馈机制，在所有任务中联合对齐视觉实体保持与美学偏好。",
+      "findings": "实验表明，PosterOmni在参考依从性、全局构图质量和美学和谐度方面显著提升，超越了所有开源基线模型，甚至优于多个专有系统。同时，研究还建立了统一的评估基准PosterOmni-Bench，用于全面评估局部编辑和全局创作任务。"
+    }
+  },
+  {
+    "id": "2602.12280",
+    "title": "Stroke of Surprise: Progressive Semantic Illusions in Vector Sketching",
+    "abstract": "Visual illusions traditionally rely on spatial manipulations such as multi-view consistency. In this work, we introduce Progressive Semantic Illusions, a novel vector sketching task where a single sketch undergoes a dramatic semantic transformation through the sequential addition of strokes. We present Stroke of Surprise, a generative framework that optimizes vector strokes to satisfy distinct semantic interpretations at different drawing stages. The core challenge lies in the \"dual-constraint\": initial prefix strokes must form a coherent object (e.g., a duck) while simultaneously serving as the structural foundation for a second concept (e.g., a sheep) upon adding delta strokes. To address this, we propose a sequence-aware joint optimization framework driven by a dual-branch Score Distillation Sampling (SDS) mechanism. Unlike sequential approaches that freeze the initial state, our method dynamically adjusts prefix strokes to discover a \"common structural subspace\" valid for both targets. Furthermore, we introduce a novel Overlay Loss that enforces spatial complementarity, ensuring structural integration rather than occlusion. Extensive experiments demonstrate that our method significantly outperforms state-of-the-art baselines in recognizability and illusion strength, successfully expanding visual anagrams from the spatial to the temporal dimension. Project page: https://stroke-of-surprise.github.io/",
+    "authors": [
+      "Huai-Hsun Cheng",
+      "Siang-Ling Zhang",
+      "Yu-Lun Liu"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12280.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12280",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "惊鸿一笔：矢量绘画中的渐进式语义错觉",
+      "core_contribution": "提出了一种新颖的渐进式语义错觉矢量绘画任务，并开发了“Stroke of Surprise”生成框架，能够通过顺序添加笔画使单一草图在不同绘制阶段呈现截然不同的语义解释，将视觉字谜从空间维度扩展到时间维度。",
+      "method": "该方法采用序列感知的联合优化框架，其核心是一个双分支分数蒸馏采样（SDS）机制。该框架动态优化初始笔画（前缀），使其既能构成第一个连贯物体，又能作为添加后续笔画（增量）后第二个概念的结构基础，从而发现适用于两个目标的“共同结构子空间”。此外，引入了一种新颖的叠加损失，强制空间互补性，确保结构整合而非简单遮挡。",
+      "findings": "大量实验表明，该方法在可识别性和错觉强度上显著优于现有基线方法。它成功实现了矢量草图的渐进式语义转换（例如从鸭子变为绵羊），验证了通过时间序列的笔画添加来创造语义错觉的有效性，突破了传统视觉错觉主要依赖空间操纵的局限。"
+    }
+  },
+  {
+    "id": "2602.12271",
+    "title": "MonarchRT: Efficient Attention for Real-Time Video Generation",
+    "abstract": "Real-time video generation with Diffusion Transformers is bottlenecked by the quadratic cost of 3D self-attention, especially in real-time regimes that are both few-step and autoregressive, where errors compound across time and each denoising step must carry substantially more information. In this setting, we find that prior sparse-attention approximations break down, despite showing strong results for bidirectional, many-step diffusion. Specifically, we observe that video attention is not reliably sparse, but instead combines pronounced periodic structure driven by spatiotemporal position with dynamic, sparse semantic correspondences and dense mixing, exceeding the representational capacity of even oracle top-k attention. Building on this insight, we propose Monarch-RT, a structured attention parameterization for video diffusion models that factorizes attention using Monarch matrices. Through appropriately aligned block structure and our extended tiled Monarch parameterization, we achieve high expressivity while preserving computational efficiency. We further overcome the overhead of parameterization through finetuning, with custom Triton kernels. We first validate the high efficacy of Monarch-RT over existing sparse baselines designed only for bidirectional models. We further observe that Monarch-RT attains up to 95% attention sparsity with no loss in quality when applied to the state-of-the-art model Self-Forcing, making Monarch-RT a pioneering work on highly-capable sparse attention parameterization for real-time video generation. Our optimized implementation outperforms FlashAttention-2, FlashAttention-3, and FlashAttention-4 kernels on Nvidia RTX 5090, H100, and B200 GPUs respectively, providing kernel speedups in the range of 1.4-11.8X. This enables us, for the first time, to achieve true real-time video generation with Self-Forcing at 16 FPS on a single RTX 5090.",
+    "authors": [
+      "Krish Agarwal",
+      "Zhuoming Chen",
+      "Cheng Luo",
+      "Yongqi Chen",
+      "Haizhong Zheng",
+      "Xun Huang",
+      "Atri Rudra",
+      "Beidi Chen"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12271.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12271",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MonarchRT：面向实时视频生成的高效注意力机制",
+      "core_contribution": "本文提出了Monarch-RT，一种用于视频扩散模型的结构化注意力参数化方法，首次在保持高质量的同时实现了高达95%的注意力稀疏度，从而在单张RTX 5090 GPU上实现了16 FPS的真正实时视频生成。",
+      "method": "该方法基于对视频注意力机制的分析，发现其结合了由时空位置驱动的周期性结构、动态稀疏语义对应关系以及密集混合。为此，作者提出使用Monarch矩阵对注意力进行因子分解，通过适当对齐的块结构和扩展的平铺Monarch参数化，在保持计算效率的同时实现高表达能力。此外，通过微调和定制的Triton内核克服了参数化的开销。",
+      "findings": "实验表明，Monarch-RT在专为双向模型设计的现有稀疏基线方法上表现出更高的效能。当应用于最先进的模型Self-Forcing时，Monarch-RT在质量无损的情况下实现了高达95%的注意力稀疏度。其优化实现在Nvidia RTX 5090、H100和B200 GPU上分别优于FlashAttention-2、FlashAttention-3和FlashAttention-4内核，内核加速比达到1.4-11.8倍。"
+    }
+  },
+  {
+    "id": "2602.12221",
+    "title": "Best of Both Worlds: Multimodal Reasoning and Generation via Unified Discrete Flow Matching",
+    "abstract": "We propose UniDFlow, a unified discrete flow-matching framework for multimodal understanding, generation, and editing. It decouples understanding and generation via task-specific low-rank adapters, avoiding objective interference and representation entanglement, while a novel reference-based multimodal preference alignment optimizes relative outcomes under identical conditioning, improving faithfulness and controllability without large-scale retraining. UniDFlpw achieves SOTA performance across eight benchmarks and exhibits strong zero-shot generalization to tasks including inpainting, in-context image generation, reference-based editing, and compositional generation, despite no explicit task-specific training.",
+    "authors": [
+      "Onkar Susladkar",
+      "Tushar Prakash",
+      "Gayatri Deshmukh",
+      "Kiet A. Nguyen",
+      "Jiaxun Zhang",
+      "Adheesh Juvekar",
+      "Tianshu Bao",
+      "Lin Chai",
+      "Sparsh Mittal",
+      "Inderjit S Dhillon",
+      "Ismini Lourentzou"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12221.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12221",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "两全其美：基于统一离散流匹配的多模态推理与生成",
+      "core_contribution": "提出了UniDFlow，一个统一的离散流匹配框架，通过任务特定的低秩适配器解耦多模态理解与生成，并引入基于参考的多模态偏好对齐方法，在无需大规模重训练的情况下提升了生成结果的忠实度与可控性。",
+      "method": "该方法采用统一的离散流匹配框架处理多模态任务。首先，通过任务特定的低秩适配器将理解与生成目标解耦，避免目标冲突和表示纠缠。其次，提出一种基于参考的多模态偏好对齐策略，在相同条件下优化相对输出结果，从而改善生成质量。",
+      "findings": "UniDFlow在八个基准测试中取得了最先进的性能，并在未经过显式任务特定训练的情况下，展现出强大的零样本泛化能力，能够有效完成图像修复、上下文图像生成、基于参考的编辑和组合生成等任务。"
+    }
+  },
+  {
+    "id": "2602.12205",
+    "title": "DeepGen 1.0: A Lightweight Unified Multimodal Model for Advancing Image Generation and Editing",
+    "abstract": "Current unified multimodal models for image generation and editing typically rely on massive parameter scales (e.g., >10B), entailing prohibitive training costs and deployment footprints. In this work, we present DeepGen 1.0, a lightweight 5B unified model that achieves comprehensive capabilities competitive with or surpassing much larger counterparts. To overcome the limitations of compact models in semantic understanding and fine-grained control, we introduce Stacked Channel Bridging (SCB), a deep alignment framework that extracts hierarchical features from multiple VLM layers and fuses them with learnable 'think tokens' to provide the generative backbone with structured, reasoning-rich guidance. We further design a data-centric training strategy spanning three progressive stages: (1) Alignment Pre-training on large-scale image-text pairs and editing triplets to synchronize VLM and DiT representations, (2) Joint Supervised Fine-tuning on a high-quality mixture of generation, editing, and reasoning tasks to foster omni-capabilities, and (3) Reinforcement Learning with MR-GRPO, which leverages a mixture of reward functions and supervision signals, resulting in substantial gains in generation quality and alignment with human preferences, while maintaining stable training progress and avoiding visual artifacts. Despite being trained on only ~50M samples, DeepGen 1.0 achieves leading performance across diverse benchmarks, surpassing the 80B HunyuanImage by 28% on WISE and the 27B Qwen-Image-Edit by 37% on UniREditBench. By open-sourcing our training code, weights, and datasets, we provide an efficient, high-performance alternative to democratize unified multimodal research.",
+    "authors": [
+      "Dianyi Wang",
+      "Ruihang Li",
+      "Feng Han",
+      "Chaofan Ma",
+      "Wei Song",
+      "Siyuan Wang",
+      "Yibin Wang",
+      "Yi Xin",
+      "Hongjian Liu",
+      "Zhixiong Zhang",
+      "Shengyuan Ding",
+      "Tianhang Wang",
+      "Zhenglin Cheng",
+      "Tao Lin",
+      "Cheng Jin",
+      "Kaicheng Yu",
+      "Jingjing Chen",
+      "Wenjie Wang",
+      "Zhongyu Wei",
+      "Jiaqi Wang"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12205.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12205",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DeepGen 1.0：一种用于推进图像生成与编辑的轻量级统一多模态模型",
+      "core_contribution": "提出了一个仅含50亿参数的轻量级统一多模态模型DeepGen 1.0，在多项基准测试中性能超越或媲美规模大得多的模型；同时开源了训练代码、权重与数据集，为统一多模态研究提供了高效、高性能的替代方案。",
+      "method": "1. 提出堆叠通道桥接（SCB）深度对齐框架，通过提取视觉语言模型的多层层次特征并与可学习的‘思考令牌’融合，为生成主干网络提供结构化、富含推理的引导。2. 设计了以数据为中心的三阶段渐进训练策略：首先在大规模图文对和编辑三元组上进行对齐预训练；随后在高质量混合任务上进行联合监督微调；最后采用混合奖励函数的强化学习（MR-GRPO）进一步提升生成质量与人类偏好对齐。",
+      "findings": "1. 尽管仅使用约5000万样本训练，DeepGen 1.0在多样化基准测试中取得领先性能：在WISE基准上超越800亿参数的HunyuanImage达28%，在UniREditBench上超越270亿参数的Qwen-Image-Edit达37%。2. 模型在生成质量、语义理解与细粒度控制方面表现优异，同时保持了稳定的训练进程并避免了视觉伪影。"
+    }
+  }
+]
