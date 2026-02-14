@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2602.12155",
+    "title": "FAIL: Flow Matching Adversarial Imitation Learning for Image Generation",
+    "abstract": "Post-training of flow matching models-aligning the output distribution with a high-quality target-is mathematically equivalent to imitation learning. While Supervised Fine-Tuning mimics expert demonstrations effectively, it cannot correct policy drift in unseen states. Preference optimization methods address this but require costly preference pairs or reward modeling. We propose Flow Matching Adversarial Imitation Learning (FAIL), which minimizes policy-expert divergence through adversarial training without explicit rewards or pairwise comparisons. We derive two algorithms: FAIL-PD exploits differentiable ODE solvers for low-variance pathwise gradients, while FAIL-PG provides a black-box alternative for discrete or computationally constrained settings. Fine-tuning FLUX with only 13,000 demonstrations from Nano Banana pro, FAIL achieves competitive performance on prompt following and aesthetic benchmarks. Furthermore, the framework generalizes effectively to discrete image and video generation, and functions as a robust regularizer to mitigate reward hacking in reward-based optimization. Code and data are available at https://github.com/HansPolo113/FAIL.",
+    "authors": [
+      "Yeyao Ma",
+      "Chen Li",
+      "Xiaosong Zhang",
+      "Han Hu",
+      "Weidi Xie"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12155.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12155",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FAIL：用于图像生成的流匹配对抗模仿学习",
+      "core_contribution": "本文提出了一种名为FAIL的流匹配对抗模仿学习框架，它通过对抗训练最小化生成策略与专家分布之间的差异，无需显式的奖励函数或成对偏好数据，从而实现了对扩散模型的高效后训练对齐。",
+      "method": "FAIL将流匹配模型的后训练问题形式化为模仿学习任务，通过对抗性训练直接对齐生成分布与高质量目标分布。论文推导了两种算法：FAIL-PD利用可微ODE求解器计算低方差的路径梯度；FAIL-PG则提供了一种适用于离散或计算受限场景的黑盒替代方案。该方法仅需少量专家演示即可对预训练模型进行微调。",
+      "findings": "实验表明，仅使用13,000个来自Nano Banana pro的演示对FLUX模型进行微调，FAIL在提示跟随和美学评估基准上取得了有竞争力的性能。该框架能有效推广到离散图像和视频生成任务，并可作为一种鲁棒的正则化方法，缓解基于奖励的优化中的奖励黑客问题。"
+    }
+  },
+  {
+    "id": "2602.11980",
+    "title": "Spatial Chain-of-Thought: Bridging Understanding and Generation Models for Spatial Reasoning Generation",
+    "abstract": "While diffusion models have shown exceptional capabilities in aesthetic image synthesis, they often struggle with complex spatial understanding and reasoning. Existing approaches resort to Multimodal Large Language Models (MLLMs) to enhance this capability. However, they either incur high computational costs through joint training or suffer from spatial information loss when relying solely on textual prompts. To alleviate these limitations, we propose a Spatial Chain-of-Thought (SCoT) framework, a plug-and-play approach that effectively bridges the reasoning capabilities of MLLMs with the generative power of diffusion models. Specifically, we first enhance the diffusion model's layout awareness by training it on an interleaved text-coordinate instruction format. We then leverage state-of-the-art MLLMs as planners to generate comprehensive layout plans, transferring their spatial planning capabilities directly to the generation process. Extensive experiments demonstrate that our method achieves state-of-the-art performance on image generation benchmarks and significantly outperforms baselines on complex reasoning tasks, while also showing strong efficacy in image editing scenarios.",
+    "authors": [
+      "Wei Chen",
+      "Yancheng Long",
+      "Mingqiao Liu",
+      "Haojie Ding",
+      "Yankai Yang",
+      "Hongyang Wei",
+      "Yi-Fan Zhang",
+      "Bin Wen",
+      "Fan Yang",
+      "Tingting Gao",
+      "Han Li",
+      "Long Chen"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11980.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11980",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "空间思维链：连接理解与生成模型以进行空间推理生成",
+      "core_contribution": "提出了一种即插即用的空间思维链框架，有效弥合了多模态大语言模型的空间推理能力与扩散模型的图像生成能力之间的鸿沟，解决了现有方法计算成本高或空间信息丢失的问题。",
+      "method": "首先，通过使用交错文本-坐标指令格式训练扩散模型，增强其对空间布局的理解能力。然后，利用先进的多模态大语言模型作为规划器，生成详细的布局规划，从而将其空间规划能力直接迁移到图像生成过程中。整个框架无需联合训练，实现了高效的模块化协作。",
+      "findings": "实验表明，该方法在图像生成基准测试中达到了最先进的性能，在复杂空间推理任务上显著优于基线模型，并且在图像编辑场景中也表现出强大的有效性。"
+    }
+  },
+  {
+    "id": "2602.11850",
+    "title": "Free Lunch for Stabilizing Rectified Flow Inversion",
+    "abstract": "Rectified-Flow (RF)-based generative models have recently emerged as strong alternatives to traditional diffusion models, demonstrating state-of-the-art performance across various tasks. By learning a continuous velocity field that transforms simple noise into complex data, RF-based models not only enable high-quality generation, but also support training-free inversion, which facilitates downstream tasks such as reconstruction and editing. However, existing inversion methods, such as vanilla RF-based inversion, suffer from approximation errors that accumulate across timesteps, leading to unstable velocity fields and degraded reconstruction and editing quality. To address this challenge, we propose Proximal-Mean Inversion (PMI), a training-free gradient correction method that stabilizes the velocity field by guiding it toward a running average of past velocities, constrained within a theoretically derived spherical Gaussian. Furthermore, we introduce mimic-CFG, a lightweight velocity correction scheme for editing tasks, which interpolates between the current velocity and its projection onto the historical average, balancing editing effectiveness and structural consistency. Extensive experiments on PIE-Bench demonstrate that our methods significantly improve inversion stability, image reconstruction quality, and editing fidelity, while reducing the required number of neural function evaluations. Our approach achieves state-of-the-art performance on the PIE-Bench with enhanced efficiency and theoretical soundness.",
+    "authors": [
+      "Chenru Wang",
+      "Beier Zhu",
+      "Chi Zhang"
+    ],
+    "published": "2026-02-12",
+    "updated": "2026-02-12",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11850.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11850",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "稳定整流流反演的免费午餐",
+      "core_contribution": "本文提出了两种无需训练的梯度校正方法——近端均值反演（PMI）和模仿-CFG，旨在解决整流流模型在反演过程中因误差累积导致的速度场不稳定问题，从而显著提升图像重建与编辑的质量与效率。",
+      "method概述": "首先，提出近端均值反演（PMI），该方法通过将当前速度场引导至历史速度的滑动平均方向，并将其约束在一个理论推导的球形高斯分布内，以稳定速度场。其次，针对编辑任务设计了轻量级的模仿-CFG方案，通过在当前速度与其在历史平均上的投影之间进行插值，以平衡编辑效果与结构一致性。两种方法均无需额外训练。",
+      "key_findings": "在PIE-Bench上的大量实验表明，所提方法显著提升了反演稳定性、图像重建质量和编辑保真度，同时减少了所需的神经网络评估次数。该方法在PIE-Bench上实现了最先进的性能，并兼具高效性与理论严谨性。"
+    }
+  },
+  {
+    "id": "2602.11440",
+    "title": "Ctrl&Shift: High-Quality Geometry-Aware Object Manipulation in Visual Generation",
+    "abstract": "Object-level manipulation, relocating or reorienting objects in images or videos while preserving scene realism, is central to film post-production, AR, and creative editing. Yet existing methods struggle to jointly achieve three core goals: background preservation, geometric consistency under viewpoint shifts, and user-controllable transformations. Geometry-based approaches offer precise control but require explicit 3D reconstruction and generalize poorly; diffusion-based methods generalize better but lack fine-grained geometric control. We present Ctrl&Shift, an end-to-end diffusion framework to achieve geometry-consistent object manipulation without explicit 3D representations. Our key insight is to decompose manipulation into two stages, object removal and reference-guided inpainting under explicit camera pose control, and encode both within a unified diffusion process. To enable precise, disentangled control, we design a multi-task, multi-stage training strategy that separates background, identity, and pose signals across tasks. To improve generalization, we introduce a scalable real-world dataset construction pipeline that generates paired image and video samples with estimated relative camera poses. Extensive experiments demonstrate that Ctrl&Shift achieves state-of-the-art results in fidelity, viewpoint consistency, and controllability. To our knowledge, this is the first framework to unify fine-grained geometric control and real-world generalization for object manipulation, without relying on any explicit 3D modeling.",
+    "authors": [
+      "Penghui Ruan",
+      "Bojia Zi",
+      "Xianbiao Qi",
+      "Youze Huang",
+      "Rong Xiao",
+      "Pichao Wang",
+      "Jiannong Cao",
+      "Yuhui Shi"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11440.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11440",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Ctrl&Shift：视觉生成中高质量、几何感知的物体操控",
+      "core_contribution": "提出了首个无需显式3D建模、能统一细粒度几何控制与现实世界泛化能力的物体操控框架，通过将操控分解为物体移除和相机姿态控制下的参考引导修复两阶段，实现了背景保持、视角几何一致与用户可控变换的联合优化。",
+      "method": "方法基于端到端扩散模型，核心是将物体操控分解为两个阶段：物体移除和显式相机姿态控制下的参考引导修复，并将二者编码到统一的扩散过程中。为了实现对背景、物体身份和姿态信号的解耦控制，设计了一种多任务、多阶段的训练策略。此外，引入了一个可扩展的真实世界数据集构建流程，用于生成带有估计相对相机姿态的配对图像和视频样本，以提升模型泛化能力。",
+      "findings": "大量实验表明，Ctrl&Shift在保真度、视角一致性和可控性方面均达到了最先进的性能。该框架首次在不依赖任何显式3D建模的情况下，实现了对物体操控的细粒度几何控制与现实世界泛化能力的统一。"
+    }
+  },
+  {
+    "id": "2602.11401",
+    "title": "Latent Forcing: Reordering the Diffusion Trajectory for Pixel-Space Image Generation",
+    "abstract": "Latent diffusion models excel at generating high-quality images but lose the benefits of end-to-end modeling. They discard information during image encoding, require a separately trained decoder, and model an auxiliary distribution to the raw data. In this paper, we propose Latent Forcing, a simple modification to existing architectures that achieves the efficiency of latent diffusion while operating on raw natural images. Our approach orders the denoising trajectory by jointly processing latents and pixels with separately tuned noise schedules. This allows the latents to act as a scratchpad for intermediate computation before high-frequency pixel features are generated. We find that the order of conditioning signals is critical, and we analyze this to explain differences between REPA distillation in the tokenizer and the diffusion model, conditional versus unconditional generation, and how tokenizer reconstruction quality relates to diffusability. Applied to ImageNet, Latent Forcing achieves a new state-of-the-art for diffusion transformer-based pixel generation at our compute scale.",
+    "authors": [
+      "Alan Baade",
+      "Eric Ryan Chan",
+      "Kyle Sargent",
+      "Changan Chen",
+      "Justin Johnson",
+      "Ehsan Adeli",
+      "Li Fei-Fei"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11401.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11401",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "潜在强制：重排序扩散轨迹以实现像素空间图像生成",
+      "core_contribution": "提出了一种名为“潜在强制”的架构改进方法，能够在原始像素空间进行高效图像生成的同时，保留潜在扩散模型的效率优势，并在基于扩散Transformer的像素生成任务上取得了新的最优性能。",
+      "method": "该方法通过联合处理潜在表示和原始像素，并分别为它们设计独立的噪声调度，来重新排序去噪轨迹。其核心思想是让潜在表示在生成高频像素特征之前充当中间计算的“草稿纸”，从而在像素空间实现端到端建模。作者特别研究了条件信号的顺序对模型性能的影响。",
+      "findings": "在ImageNet上的实验表明，该方法在同等计算规模下，为基于扩散Transformer的像素生成建立了新的最优结果。分析揭示了条件信号顺序的关键作用，并以此解释了分词器与扩散模型在REPA蒸馏中的差异、条件与非条件生成的区别，以及分词器重建质量与可扩散性之间的关系。"
+    }
+  }
+]
