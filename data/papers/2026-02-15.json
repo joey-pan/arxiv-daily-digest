@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2602.11146",
+    "title": "Beyond VLM-Based Rewards: Diffusion-Native Latent Reward Modeling",
+    "abstract": "Preference optimization for diffusion and flow-matching models relies on reward functions that are both discriminatively robust and computationally efficient. Vision-Language Models (VLMs) have emerged as the primary reward provider, leveraging their rich multimodal priors to guide alignment. However, their computation and memory cost can be substantial, and optimizing a latent diffusion generator through a pixel-space reward introduces a domain mismatch that complicates alignment. In this paper, we propose DiNa-LRM, a diffusion-native latent reward model that formulates preference learning directly on noisy diffusion states. Our method introduces a noise-calibrated Thurstone likelihood with diffusion-noise-dependent uncertainty. DiNa-LRM leverages a pretrained latent diffusion backbone with a timestep-conditioned reward head, and supports inference-time noise ensembling, providing a diffusion-native mechanism for test-time scaling and robust rewarding. Across image alignment benchmarks, DiNa-LRM substantially outperforms existing diffusion-based reward baselines and achieves performance competitive with state-of-the-art VLMs at a fraction of the computational cost. In preference optimization, we demonstrate that DiNa-LRM improves preference optimization dynamics, enabling faster and more resource-efficient model alignment.",
+    "authors": [
+      "Gongye Liu",
+      "Bo Yang",
+      "Yida Zhi",
+      "Zhizhou Zhong",
+      "Lei Ke",
+      "Didan Deng",
+      "Han Gao",
+      "Yongxiang Huang",
+      "Kaihao Zhang",
+      "Hongbo Fu",
+      "Wenhan Luo"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11146.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11146",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越基于视觉语言模型的奖励：扩散原生的潜在奖励建模",
+      "core_contribution": "提出了DiNa-LRM，一种直接在扩散模型的噪声状态上进行偏好学习的扩散原生潜在奖励模型，解决了传统基于视觉语言模型（VLM）的奖励函数存在的计算成本高和像素域不匹配问题。",
+      "method": "该方法基于预训练的潜在扩散模型主干，引入了一个时间步条件奖励头。其核心是提出了一个噪声校准的瑟斯顿似然函数，该函数具有依赖于扩散噪声的不确定性度量。此外，该方法支持推理时的噪声集成，提供了一种扩散原生的测试时缩放和鲁棒奖励机制。",
+      "findings": "在图像对齐基准测试中，DiNa-LRM显著优于现有的基于扩散的奖励基线方法，并且以极小的计算成本实现了与最先进的视觉语言模型（VLM）相竞争的性能。在偏好优化任务中，DiNa-LRM改善了优化动态，能够实现更快、更资源高效的模型对齐。"
+    }
+  },
+  {
+    "id": "2602.11105",
+    "title": "FastFlow: Accelerating The Generative Flow Matching Models with Bandit Inference",
+    "abstract": "Flow-matching models deliver state-of-the-art fidelity in image and video generation, but the inherent sequential denoising process renders them slower. Existing acceleration methods like distillation, trajectory truncation, and consistency approaches are static, require retraining, and often fail to generalize across tasks. We propose FastFlow, a plug-and-play adaptive inference framework that accelerates generation in flow matching models. FastFlow identifies denoising steps that produce only minor adjustments to the denoising path and approximates them without using the full neural network models used for velocity predictions. The approximation utilizes finite-difference velocity estimates from prior predictions to efficiently extrapolate future states, enabling faster advancements along the denoising path at zero compute cost. This enables skipping computation at intermediary steps. We model the decision of how many steps to safely skip before requiring a full model computation as a multi-armed bandit problem. The bandit learns the optimal skips to balance speed with performance. FastFlow integrates seamlessly with existing pipelines and generalizes across image generation, video generation, and editing tasks. Experiments demonstrate a speedup of over 2.6x while maintaining high-quality outputs. The source code for this work can be found at https://github.com/Div290/FastFlow.",
+    "authors": [
+      "Divya Jyoti Bajpai",
+      "Dhruv Bhardwaj",
+      "Soumya Roy",
+      "Tejas Duseja",
+      "Harsh Agarwal",
+      "Aashay Sandansing",
+      "Manjesh Kumar Hanawal"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.11105.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.11105",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FastFlow：利用多臂赌博机推理加速生成流匹配模型",
+      "core_contribution": "提出了FastFlow，一种即插即用的自适应推理框架，通过动态跳过冗余的去噪步骤来加速流匹配模型的生成过程，无需重新训练即可在多种任务上实现通用加速。",
+      "method": "FastFlow通过分析去噪路径，识别对路径调整影响较小的步骤，并利用先前预测的有限差分速度估计来近似这些步骤，从而跳过完整的神经网络计算。该方法将“安全跳过多少步”的决策建模为多臂赌博机问题，动态学习速度与性能平衡的最优跳过策略。",
+      "findings": "实验表明，FastFlow在图像生成、视频生成和编辑任务上均能实现超过2.6倍的加速，同时保持高质量输出，且无需针对不同任务重新训练或调整模型。"
+    }
+  },
+  {
+    "id": "2602.10764",
+    "title": "Dual-End Consistency Model",
+    "abstract": "The slow iterative sampling nature remains a major bottleneck for the practical deployment of diffusion and flow-based generative models. While consistency models (CMs) represent a state-of-the-art distillation-based approach for efficient generation, their large-scale application is still limited by two key issues: training instability and inflexible sampling. Existing methods seek to mitigate these problems through architectural adjustments or regularized objectives, yet overlook the critical reliance on trajectory selection. In this work, we first conduct an analysis on these two limitations: training instability originates from loss divergence induced by unstable self-supervised term, whereas sampling inflexibility arises from error accumulation. Based on these insights and analysis, we propose the Dual-End Consistency Model (DE-CM) that selects vital sub-trajectory clusters to achieve stable and effective training. DE-CM decomposes the PF-ODE trajectory and selects three critical sub-trajectories as optimization targets. Specifically, our approach leverages continuous-time CMs objectives to achieve few-step distillation and utilizes flow matching as a boundary regularizer to stabilize the training process. Furthermore, we propose a novel noise-to-noisy (N2N) mapping that can map noise to any point, thereby alleviating the error accumulation in the first step. Extensive experimental results show the effectiveness of our method: it achieves a state-of-the-art FID score of 1.70 in one-step generation on the ImageNet 256x256 dataset, outperforming existing CM-based one-step approaches.",
+    "authors": [
+      "Linwei Dong",
+      "Ruoyu Guo",
+      "Ge Bai",
+      "Zehuan Yuan",
+      "Yawei Luo",
+      "Changqing Zou"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.10764.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.10764",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "双端一致性模型",
+      "core_contribution": "本文提出双端一致性模型（DE-CM），通过选择关键子轨迹簇解决了现有一致性模型训练不稳定和采样不灵活两大瓶颈，实现了高效且稳定的单步生成。",
+      "method": "方法首先分析发现训练不稳定源于自监督项的发散，采样不灵活源于误差累积；进而将概率流ODE轨迹分解，选择三个关键子轨迹作为优化目标，结合连续时间一致性目标实现少步蒸馏，并利用流匹配作为边界正则化器稳定训练；此外提出噪声到含噪（N2N）映射，可将噪声映射至任意点以缓解首步误差累积。",
+      "findings": "在ImageNet 256×256数据集上，DE-CM在单步生成中取得了1.70的FID分数，优于现有基于一致性模型的单步生成方法，达到了当前最优性能。"
+    }
+  },
+  {
+    "id": "2602.10757",
+    "title": "Text-to-Vector Conversion for Residential Plan Design",
+    "abstract": "Computer graphics, comprising both raster and vector components, is a fundamental part of modern science, industry, and digital communication. While raster graphics offer ease of use, its pixel-based structure limits scalability. Vector graphics, defined by mathematical primitives, provides scalability without quality loss, however, it is more complex to produce. For design and architecture, the versatility of vector graphics is paramount, despite its computational demands. This paper introduces a novel method for generating vector residential plans from textual descriptions. Our approach surpasses existing solutions by approximately 5% in CLIPScore-based visual quality, benefiting from its inherent handling of right angles and flexible settings. Additionally, we present a new algorithm for vectorizing raster plans into structured vector images. Such images have a better CLIPscore compared to others by about 4%.",
+    "authors": [
+      "Egor Bazhenov",
+      "Stepan Kasai",
+      "Viacheslav Shalamov",
+      "Valeria Efimova"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.10757.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.10757",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于住宅平面设计的文本到矢量转换",
+      "core_contribution": "提出了一种从文本描述生成矢量住宅平面图的新方法，并开发了一种将栅格平面图矢量化成结构化矢量图像的新算法。",
+      "method": "该方法通过文本描述直接生成由数学图元定义的矢量图形，而非栅格图像。其设计特别考虑了建筑平面图中常见的直角特征和灵活布局需求，从而在生成过程中能更自然地处理这些结构。同时，论文提出的矢量化算法能将现有的栅格平面图转换为结构化的矢量格式。",
+      "findings": "实验表明，该方法生成的矢量住宅平面图在基于CLIPScore的视觉质量评估上比现有解决方案高出约5%。此外，所提出的矢量化算法生成的矢量图像，其CLIPScore也比其他方法的结果高出约4%。"
+    }
+  },
+  {
+    "id": "2602.10662",
+    "title": "Dynamic Frequency Modulation for Controllable Text-driven Image Generation",
+    "abstract": "The success of text-guided diffusion models has established a new image generation paradigm driven by the iterative refinement of text prompts. However, modifying the original text prompt to achieve the expected semantic adjustments often results in unintended global structure changes that disrupt user intent. Existing methods rely on empirical feature map selection for intervention, whose performance heavily depends on appropriate selection, leading to suboptimal stability. This paper tries to solve the aforementioned problem from a frequency perspective and analyzes the impact of the frequency spectrum of noisy latent variables on the hierarchical emergence of the structure framework and fine-grained textures during the generation process. We find that lower-frequency components are primarily responsible for establishing the structure framework in the early generation stage. Their influence diminishes over time, giving way to higher-frequency components that synthesize fine-grained textures. In light of this, we propose a training-free frequency modulation method utilizing a frequency-dependent weighting function with dynamic decay. This method maintains the structure framework consistency while permitting targeted semantic modifications. By directly manipulating the noisy latent variable, the proposed method avoids the empirical selection of internal feature maps. Extensive experiments demonstrate that the proposed method significantly outperforms current state-of-the-art methods, achieving an effective balance between preserving structure and enabling semantic updates.",
+    "authors": [
+      "Tiandong Shi",
+      "Ling Zhao",
+      "Ji Qi",
+      "Jiayi Ma",
+      "Chengli Peng"
+    ],
+    "published": "2026-02-11",
+    "updated": "2026-02-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.10662.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.10662",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于可控文本驱动图像生成的动态频率调制",
+      "core_contribution": "本文提出了一种无需训练的、基于动态衰减频率加权函数的调制方法，能够在保持图像整体结构框架一致性的同时，实现针对性的语义修改，避免了现有方法对内部特征图的经验性选择依赖。",
+      "method": "论文从频率视角分析生成过程中噪声潜在变量的频谱对结构框架和细粒度纹理分层生成的影响。基于此发现，设计了一种频率相关的动态衰减加权函数，直接对噪声潜在变量进行操作，从而在去噪过程中动态调控不同频率成分的贡献。该方法无需额外训练，通过调制频率成分即可实现语义控制。",
+      "findings": "实验发现，在生成早期，低频成分主要负责建立图像的结构框架，其影响力随时间衰减；而高频成分则在后期主导合成细粒度纹理。所提出的频率调制方法在保持原始结构的同时，能有效实现目标语义修改，在多个数据集和任务上的表现显著优于现有先进方法，在结构保持与语义更新之间取得了更好的平衡。"
+    }
+  }
+]
