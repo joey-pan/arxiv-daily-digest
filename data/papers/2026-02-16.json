@@ -1,0 +1,143 @@
+[
+  {
+    "id": "2602.13055",
+    "title": "Curriculum-DPO++: Direct Preference Optimization via Data and Model Curricula for Text-to-Image Generation",
+    "abstract": "Direct Preference Optimization (DPO) has been proposed as an effective and efficient alternative to reinforcement learning from human feedback (RLHF). However, neither RLHF nor DPO take into account the fact that learning certain preferences is more difficult than learning other preferences, rendering the optimization process suboptimal. To address this gap in text-to-image generation, we recently proposed Curriculum-DPO, a method that organizes image pairs by difficulty. In this paper, we introduce Curriculum-DPO++, an enhanced method that combines the original data-level curriculum with a novel model-level curriculum. More precisely, we propose to dynamically increase the learning capacity of the denoising network as training advances. We implement this capacity increase via two mechanisms. First, we initialize the model with only a subset of the trainable layers used in the original Curriculum-DPO. As training progresses, we sequentially unfreeze layers until the configuration matches the full baseline architecture. Second, as the fine-tuning is based on Low-Rank Adaptation (LoRA), we implement a progressive schedule for the dimension of the low-rank matrices. Instead of maintaining a fixed capacity, we initialize the low-rank matrices with a dimension significantly smaller than that of the baseline. As training proceeds, we incrementally increase their rank, allowing the capacity to grow until it converges to the same rank value as in Curriculum-DPO. Furthermore, we propose an alternative ranking strategy to the one employed by Curriculum-DPO. Finally, we compare Curriculum-DPO++ against Curriculum-DPO and other state-of-the-art preference optimization approaches on nine benchmarks, outperforming the competing methods in terms of text alignment, aesthetics and human preference. Our code is available at https://github.com/CroitoruAlin/Curriculum-DPO.",
+    "authors": [
+      "Florinel-Alin Croitoru",
+      "Vlad Hondru",
+      "Radu Tudor Ionescu",
+      "Nicu Sebe",
+      "Mubarak Shah"
+    ],
+    "published": "2026-02-13",
+    "updated": "2026-02-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.13055.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.13055",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "Curriculum-DPO++：通过数据和模型课程进行文本到图像生成的直接偏好优化",
+      "core_contribution": "本文提出了Curriculum-DPO++方法，通过结合数据级和模型级课程学习，改进了直接偏好优化（DPO）在文本到图像生成中的训练效率与效果。",
+      "method": "方法在原有数据级课程（按难度组织图像对）的基础上，引入了模型级课程：1）训练初期仅使用部分可训练层，随后逐步解冻层直至完整架构；2）基于LoRA微调时，动态增加低秩矩阵的维度，从较小容量开始逐步提升至基准水平。此外，还提出了一种替代的排序策略。",
+      "findings": "在九个基准测试中，Curriculum-DPO++在文本对齐度、图像美观度和人类偏好方面均优于Curriculum-DPO及其他先进偏好优化方法，证明了结合数据与模型课程的有效性。"
+    }
+  },
+  {
+    "id": "2602.12769",
+    "title": "PixelRush: Ultra-Fast, Training-Free High-Resolution Image Generation via One-step Diffusion",
+    "abstract": "Pre-trained diffusion models excel at generating high-quality images but remain inherently limited by their native training resolution. Recent training-free approaches have attempted to overcome this constraint by introducing interventions during the denoising process; however, these methods incur substantial computational overhead, often requiring more than five minutes to produce a single 4K image. In this paper, we present PixelRush, the first tuning-free framework for practical high-resolution text-to-image generation. Our method builds upon the established patch-based inference paradigm but eliminates the need for multiple inversion and regeneration cycles. Instead, PixelRush enables efficient patch-based denoising within a low-step regime. To address artifacts introduced by patch blending in few-step generation, we propose a seamless blending strategy. Furthermore, we mitigate over-smoothing effects through a noise injection mechanism. PixelRush delivers exceptional efficiency, generating 4K images in approximately 20 seconds representing a 10$\\times$ to 35$\\times$ speedup over state-of-the-art methods while maintaining superior visual fidelity. Extensive experiments validate both the performance gains and the quality of outputs achieved by our approach.",
+    "authors": [
+      "Hong-Phuc Lai",
+      "Phong Nguyen",
+      "Anh Tran"
+    ],
+    "published": "2026-02-13",
+    "updated": "2026-02-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12769.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12769",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PixelRush：通过一步扩散实现超快速、免训练的高分辨率图像生成",
+      "core_contribution": "提出了首个免调优的实用高分辨率文生图框架PixelRush，在保持卓越视觉保真度的同时，实现了比现有方法10至35倍的生成速度提升。",
+      "method": "该方法基于已有的分块推理范式，但消除了多次反转和再生循环的需求，实现了低步数下的高效分块去噪。针对少步生成中分块融合产生的伪影，提出了一种无缝融合策略，并通过噪声注入机制缓解过度平滑效应。",
+      "findings": "PixelRush具有极高的效率，生成单张4K图像仅需约20秒，相比现有先进方法大幅加速，同时通过大量实验验证了其性能优势与输出质量。"
+    }
+  },
+  {
+    "id": "2602.12675",
+    "title": "SLA2: Sparse-Linear Attention with Learnable Routing and QAT",
+    "abstract": "Sparse-Linear Attention (SLA) combines sparse and linear attention to accelerate diffusion models and has shown strong performance in video generation. However, (i) SLA relies on a heuristic split that assigns computations to the sparse or linear branch based on attention-weight magnitude, which can be suboptimal. Additionally, (ii) after formally analyzing the attention error in SLA, we identify a mismatch between SLA and a direct decomposition into sparse and linear attention. We propose SLA2, which introduces (I) a learnable router that dynamically selects whether each attention computation should use sparse or linear attention, (II) a more faithful and direct sparse-linear attention formulation that uses a learnable ratio to combine the sparse and linear attention branches, and (III) a sparse + low-bit attention design, where low-bit attention is introduced via quantization-aware fine-tuning to reduce quantization error. Experiments show that on video diffusion models, SLA2 can achieve 97% attention sparsity and deliver an 18.6x attention speedup while preserving generation quality.",
+    "authors": [
+      "Jintao Zhang",
+      "Haoxu Wang",
+      "Kai Jiang",
+      "Kaiwen Zheng",
+      "Youhe Jiang",
+      "Ion Stoica",
+      "Jianfei Chen",
+      "Jun Zhu",
+      "Joseph E. Gonzalez"
+    ],
+    "published": "2026-02-13",
+    "updated": "2026-02-13",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12675.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12675",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "SLA2：具有可学习路由和量化感知训练的稀疏-线性注意力机制",
+      "core_contribution": "本文提出了SLA2，通过引入可学习的路由机制和更精确的稀疏-线性注意力分解公式，改进了原有的稀疏-线性注意力方法，并引入了量化感知微调来降低量化误差，从而在保持生成质量的同时显著提升了注意力计算速度。",
+      "method": "SLA2包含三个关键设计：首先，使用一个可学习的路由器动态决定每个注意力计算应使用稀疏注意力还是线性注意力；其次，提出了一种更忠实、更直接的稀疏-线性注意力分解公式，通过可学习的比例系数结合两个分支；最后，设计了稀疏+低比特注意力架构，通过量化感知微调引入低比特注意力以减少量化误差。",
+      "findings": "实验表明，在视频扩散模型上，SLA2能够实现97%的注意力稀疏度，并将注意力计算速度提升18.6倍，同时保持了原有的生成质量。"
+    }
+  },
+  {
+    "id": "2602.12640",
+    "title": "ImageRAGTurbo: Towards One-step Text-to-Image Generation with Retrieval-Augmented Diffusion Models",
+    "abstract": "Diffusion models have emerged as the leading approach for text-to-image generation. However, their iterative sampling process, which gradually morphs random noise into coherent images, introduces significant latency that limits their applicability. While recent few-step diffusion models reduce the number of sampling steps to as few as one to four steps, they often compromise image quality and prompt alignment, especially in one-step generation. Additionally, these models require computationally expensive training procedures. To address these limitations, we propose ImageRAGTurbo, a novel approach to efficiently finetune few-step diffusion models via retrieval augmentation. Given a text prompt, we retrieve relevant text-image pairs from a database and use them to condition the generation process. We argue that such retrieved examples provide rich contextual information to the UNet denoiser that helps reduce the number of denoising steps without compromising image quality. Indeed, our initial investigations show that using the retrieved content to edit the denoiser's latent space ($\\mathcal{H}$-space) without additional finetuning already improves prompt fidelity. To further improve the quality of the generated images, we augment the UNet denoiser with a trainable adapter in the $\\mathcal{H}$-space, which efficiently blends the retrieved content with the target prompt using a cross-attention mechanism. Experimental results on fast text-to-image generation demonstrate that our approach produces high-fidelity images without compromising latency compared to existing methods.",
+    "authors": [
+      "Peijie Qiu",
+      "Hariharan Ramshankar",
+      "Arnau Ramisa",
+      "René Vidal",
+      "Amit Kumar K C",
+      "Vamsi Salaka",
+      "Rahul Bhagat"
+    ],
+    "published": "2026-02-13",
+    "updated": "2026-02-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12640.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12640",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ImageRAGTurbo：迈向基于检索增强扩散模型的一步式文本到图像生成",
+      "core_contribution": "提出ImageRAGTurbo，一种通过检索增强高效微调少步扩散模型的新方法，旨在实现高质量、低延迟的一步式文本到图像生成，同时避免昂贵的训练成本。",
+      "method": "该方法首先根据文本提示从数据库中检索相关的文本-图像对，用于辅助生成过程。通过将检索内容注入UNet去噪器的隐空间（H-space）来提升提示对齐度，无需微调即可改善生成效果。为进一步提升质量，在H-space中引入可训练的适配器，利用交叉注意力机制将检索内容与目标提示高效融合。整个方法专注于在极少的去噪步骤（如一步）内保持图像质量。",
+      "findings": "实验表明，该方法在快速文本到图像生成任务中，相比现有方法，能在不增加延迟的情况下生成高保真图像。即使仅通过检索内容编辑隐空间而不进行微调，也能有效提升提示对齐度；加入可训练适配器后，图像质量得到进一步改善。"
+    }
+  },
+  {
+    "id": "2602.12624",
+    "title": "Formalizing the Sampling Design Space of Diffusion-Based Generative Models via Adaptive Solvers and Wasserstein-Bounded Timesteps",
+    "abstract": "Diffusion-based generative models have achieved remarkable performance across various domains, yet their practical deployment is often limited by high sampling costs. While prior work focuses on training objectives or individual solvers, the holistic design of sampling, specifically solver selection and scheduling, remains dominated by static heuristics. In this work, we revisit this challenge through a geometric lens, proposing SDM, a principled framework that aligns the numerical solver with the intrinsic properties of the diffusion trajectory. By analyzing the ODE dynamics, we show that efficient low-order solvers suffice in early high-noise stages while higher-order solvers can be progressively deployed to handle the increasing non-linearity of later stages. Furthermore, we formalize the scheduling by introducing a Wasserstein-bounded optimization framework. This method systematically derives adaptive timesteps that explicitly bound the local discretization error, ensuring the sampling process remains faithful to the underlying continuous dynamics. Without requiring additional training or architectural modifications, SDM achieves state-of-the-art performance across standard benchmarks, including an FID of 1.93 on CIFAR-10, 2.41 on FFHQ, and 1.98 on AFHQv2, with a reduced number of function evaluations compared to existing samplers. Our code is available at https://github.com/aiimaginglab/sdm.",
+    "authors": [
+      "Sangwoo Jo",
+      "Sungjoon Choi"
+    ],
+    "published": "2026-02-13",
+    "updated": "2026-02-13",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.12624.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.12624",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过自适应求解器与Wasserstein有界时间步长形式化扩散生成模型的采样设计空间",
+      "core_contribution": "提出了一个名为SDM的原则性框架，通过几何视角将数值求解器与扩散轨迹的内在特性对齐，并引入Wasserstein有界的优化框架来形式化时间步长调度，从而在无需额外训练或架构修改的情况下显著降低采样成本。",
+      "method": "首先从分析扩散过程的常微分方程（ODE）动力学出发，发现早期高噪声阶段使用低阶求解器已足够，而后期非线性增强阶段可逐步采用高阶求解器。其次，通过引入Wasserstein有界的优化框架，系统推导出自适应时间步长，以显式地约束局部离散化误差，确保采样过程忠实于底层连续动力学。",
+      "findings": "SDM在多个标准基准测试中取得了最先进的性能，包括在CIFAR-10上FID为1.93、FFHQ上为2.41、AFHQv2上为1.98，且相比现有采样器减少了函数评估次数。这表明所提出的自适应求解器选择与时间步长调度方法能有效平衡采样效率与生成质量。"
+    }
+  }
+]
