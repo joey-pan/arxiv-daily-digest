@@ -1,0 +1,180 @@
+[
+  {
+    "id": "2602.14186",
+    "title": "UniRef-Image-Edit: Towards Scalable and Consistent Multi-Reference Image Editing",
+    "abstract": "We present UniRef-Image-Edit, a high-performance multi-modal generation system that unifies single-image editing and multi-image composition within a single framework. Existing diffusion-based editing methods often struggle to maintain consistency across multiple conditions due to limited interaction between reference inputs. To address this, we introduce Sequence-Extended Latent Fusion (SELF), a unified input representation that dynamically serializes multiple reference images into a coherent latent sequence. During a dedicated training stage, all reference images are jointly constrained to fit within a fixed-length sequence under a global pixel-budget constraint. Building upon SELF, we propose a two-stage training framework comprising supervised fine-tuning (SFT) and reinforcement learning (RL). In the SFT stage, we jointly train on single-image editing and multi-image composition tasks to establish a robust generative prior. We adopt a progressive sequence length training strategy, in which all input images are initially resized to a total pixel budget of $1024^2$, and are then gradually increased to $1536^2$ and $2048^2$ to improve visual fidelity and cross-reference consistency. This gradual relaxation of compression enables the model to incrementally capture finer visual details while maintaining stable alignment across references. For the RL stage, we introduce Multi-Source GRPO (MSGRPO), to our knowledge the first reinforcement learning framework tailored for multi-reference image generation. MSGRPO optimizes the model to reconcile conflicting visual constraints, significantly enhancing compositional consistency. We will open-source the code, models, training data, and reward data for community research purposes.",
+    "authors": [
+      "Hongyang Wei",
+      "Bin Wen",
+      "Yancheng Long",
+      "Yankai Yang",
+      "Yuhang Hu",
+      "Tianke Zhang",
+      "Wei Chen",
+      "Haonan Fan",
+      "Kaiyu Jiang",
+      "Jiankang Chen",
+      "Changyi Liu",
+      "Kaiyu Tang",
+      "Haojie Ding",
+      "Xiao Yang",
+      "Jia Sun",
+      "Huaiqing Wang",
+      "Zhenyu Yang",
+      "Xinyu Wei",
+      "Xianglong He",
+      "Yangguang Li",
+      "Fan Yang",
+      "Tingting Gao",
+      "Lei Zhang",
+      "Guorui Zhou",
+      "Han Li"
+    ],
+    "published": "2026-02-15",
+    "updated": "2026-02-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.14186.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.14186",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniRef-Image-Edit：迈向可扩展且一致的多参考图像编辑",
+      "core_contribution": "提出了一个统一的多模态生成系统UniRef-Image-Edit，它首次将单图像编辑和多图像合成任务整合到单一框架中，并通过创新的序列扩展潜在融合（SELF）表示和两阶段训练方法，显著提升了多参考条件下的生成一致性和视觉质量。",
+      "method": "方法的核心是提出了序列扩展潜在融合（SELF），它将多个参考图像动态序列化为一个连贯的潜在序列。采用两阶段训练框架：第一阶段是监督微调（SFT），联合训练单图编辑和多图合成任务，并采用渐进式序列长度训练策略，逐步提高总像素预算以增强细节和一致性；第二阶段是强化学习（RL），引入了专为多参考生成设计的MSGRPO框架，以优化模型对冲突视觉约束的协调能力。",
+      "findings": "实验表明，所提出的方法能够有效维持多参考图像之间的跨参考一致性，并生成具有高视觉保真度的结果。渐进式训练策略使模型能逐步捕获更精细的视觉细节，而MSGRPO强化学习框架则显著提升了组合一致性。系统在单图编辑和多图合成任务上均表现出高性能。"
+    }
+  },
+  {
+    "id": "2602.14178",
+    "title": "UniWeTok: An Unified Binary Tokenizer with Codebook Size $\\mathit{2^{128}}$ for Unified Multimodal Large Language Model",
+    "abstract": "Unified Multimodal Large Language Models (MLLMs) require a visual representation that simultaneously supports high-fidelity reconstruction, complex semantic extraction, and generative suitability. However, existing visual tokenizers typically struggle to satisfy these conflicting objectives within a single framework. In this paper, we introduce UniWeTok, a unified discrete tokenizer designed to bridge this gap using a massive binary codebook ($\\mathit{2^{128}}$). For training framework, we introduce Pre-Post Distillation and a Generative-Aware Prior to enhance the semantic extraction and generative prior of the discrete tokens. In terms of model architecture, we propose a convolution-attention hybrid architecture with the SigLu activation function. SigLu activation not only bounds the encoder output and stabilizes the semantic distillation process but also effectively addresses the optimization conflict between token entropy loss and commitment loss. We further propose a three-stage training framework designed to enhance UniWeTok's adaptability cross various image resolutions and perception-sensitive scenarios, such as those involving human faces and textual content. On ImageNet, UniWeTok achieves state-of-the-art image generation performance (FID: UniWeTok 1.38 vs. REPA 1.42) while requiring a remarkably low training compute (Training Tokens: UniWeTok 33B vs. REPA 262B). On general-domain, UniWeTok demonstrates highly competitive capabilities across a broad range of tasks, including multimodal understanding, image generation (DPG Score: UniWeTok 86.63 vs. FLUX.1 [Dev] 83.84), and editing (GEdit Overall Score: UniWeTok 5.09 vs. OmniGen 5.06). We release code and models to facilitate community exploration of unified tokenizer and MLLM.",
+    "authors": [
+      "Shaobin Zhuang",
+      "Yuang Ai",
+      "Jiaming Han",
+      "Weijia Mao",
+      "Xiaohui Li",
+      "Fangyikang Wang",
+      "Xiao Wang",
+      "Yan Li",
+      "Shanchuan Lin",
+      "Kun Xu",
+      "Zhenheng Yang",
+      "Huaibo Huang",
+      "Xiangyu Yue",
+      "Hao Chen",
+      "Yali Wang"
+    ],
+    "published": "2026-02-15",
+    "updated": "2026-02-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.14178.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.14178",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniWeTok：一种用于统一多模态大语言模型的、码本规模为$\\mathit{2^{128}}$的统一二进制分词器",
+      "core_contribution": "提出了UniWeTok，一个使用大规模二进制码本（$2^{128}$）的统一离散分词器，旨在同时满足高保真重建、复杂语义提取和生成适应性这三个通常相互冲突的目标，为统一多模态大语言模型提供视觉表示。",
+      "method": "方法采用卷积-注意力混合架构，并引入SigLu激活函数以稳定训练过程并解决优化冲突。训练框架上，提出了“前后蒸馏”和“生成感知先验”来增强语义提取和生成能力，并设计了三阶段训练策略以提高模型对不同图像分辨率及感知敏感场景的适应性。",
+      "findings": "在ImageNet上，UniWeTok以极低的训练计算量（33B tokens）取得了最先进的图像生成性能（FID 1.38）。在通用领域，它在多模态理解、图像生成（DPG Score 86.63）和编辑（GEdit Overall Score 5.09）等一系列任务上展现出高度竞争力，性能优于或媲美现有先进模型。"
+    }
+  },
+  {
+    "id": "2602.14157",
+    "title": "When Test-Time Guidance Is Enough: Fast Image and Video Editing with Diffusion Guidance",
+    "abstract": "Text-driven image and video editing can be naturally cast as inpainting problems, where masked regions are reconstructed to remain consistent with both the observed content and the editing prompt. Recent advances in test-time guidance for diffusion and flow models provide a principled framework for this task; however, existing methods rely on costly vector--Jacobian product (VJP) computations to approximate the intractable guidance term, limiting their practical applicability. Building upon the recent work of Moufad et al. (2025), we provide theoretical insights into their VJP-free approximation and substantially extend their empirical evaluation to large-scale image and video editing benchmarks. Our results demonstrate that test-time guidance alone can achieve performance comparable to, and in some cases surpass, training-based methods.",
+    "authors": [
+      "Ahmed Ghorbel",
+      "Badr Moufad",
+      "Navid Bagheri Shouraki",
+      "Alain Oliviero Durmus",
+      "Thomas Hirtz",
+      "Eric Moulines",
+      "Jimmy Olsson",
+      "Yazid Janati"
+    ],
+    "published": "2026-02-15",
+    "updated": "2026-02-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.14157.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.14157",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "当测试时引导足够时：基于扩散引导的快速图像与视频编辑",
+      "core_contribution": "本论文证明了仅使用测试时引导（无需训练）即可实现与基于训练的方法相媲美甚至更优的图像与视频编辑性能，并通过理论分析解释了其有效性。",
+      "method": "该方法将文本驱动的图像与视频编辑构建为修复问题，利用扩散或流模型的测试时引导框架，通过掩码区域重建来保持与原始内容及编辑提示的一致性。研究基于Moufad等人（2025）的工作，对其无需向量-雅可比积计算的近似方法提供了理论解释，并大幅扩展了其在大规模图像与视频编辑基准上的实证评估。",
+      "findings": "实验结果表明，仅依赖测试时引导的方法在性能上可达到与基于训练的方法相当的水平，部分情况下甚至更优，同时避免了昂贵的向量-雅可比积计算，提升了实际应用效率。"
+    }
+  },
+  {
+    "id": "2602.14068",
+    "title": "CoCoEdit: Content-Consistent Image Editing via Region Regularized Reinforcement Learning",
+    "abstract": "Image editing has achieved impressive results with the development of large-scale generative models. However, existing models mainly focus on the editing effects of intended objects and regions, often leading to unwanted changes in unintended regions. We present a post-training framework for Content-Consistent Editing (CoCoEdit) via region regularized reinforcement learning. We first augment existing editing datasets with refined instructions and masks, from which 40K diverse and high quality samples are curated as training set. We then introduce a pixel-level similarity reward to complement MLLM-based rewards, enabling models to ensure both editing quality and content consistency during the editing process. To overcome the spatial-agnostic nature of the rewards, we propose a region-based regularizer, aiming to preserve non-edited regions for high-reward samples while encouraging editing effects for low-reward samples. For evaluation, we annotate editing masks for GEdit-Bench and ImgEdit-Bench, introducing pixel-level similarity metrics to measure content consistency and editing quality. Applying CoCoEdit to Qwen-Image-Edit and FLUX-Kontext, we achieve not only competitive editing scores with state-of-the-art models, but also significantly better content consistency, measured by PSNR/SSIM metrics and human subjective ratings.",
+    "authors": [
+      "Yuhui Wu",
+      "Chenxi Xie",
+      "Ruibin Li",
+      "Liyi Chen",
+      "Qiaosi Yi",
+      "Lei Zhang"
+    ],
+    "published": "2026-02-15",
+    "updated": "2026-02-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.14068.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.14068",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CoCoEdit：通过区域正则化强化学习实现内容一致的图像编辑",
+      "core_contribution": "提出了一个后训练框架CoCoEdit，通过区域正则化强化学习解决图像编辑中非编辑区域内容一致性的问题，在保证编辑质量的同时显著减少了非目标区域的不必要改变。",
+      "method": "首先，通过精炼指令和掩码扩增现有编辑数据集，构建了包含4万个高质量样本的训练集。其次，引入像素级相似性奖励来补充基于多模态大语言模型的奖励，以同时优化编辑质量和内容一致性。最后，提出一种基于区域的正则化器，针对高奖励样本保护非编辑区域，针对低奖励样本鼓励编辑效果，以克服奖励空间不敏感的问题。",
+      "findings": "在Qwen-Image-Edit和FLUX-Kontext模型上应用CoCoEdit后，不仅获得了与最先进模型相当的编辑评分，而且在PSNR/SSIM指标和人类主观评分中均表现出显著更好的内容一致性。通过为GEdit-Bench和ImgEdit-Bench标注编辑掩码并引入像素级相似性指标，验证了该方法在保持非编辑区域内容一致性方面的有效性。"
+    }
+  },
+  {
+    "id": "2602.14041",
+    "title": "BitDance: Scaling Autoregressive Generative Models with Binary Tokens",
+    "abstract": "We present BitDance, a scalable autoregressive (AR) image generator that predicts binary visual tokens instead of codebook indices. With high-entropy binary latents, BitDance lets each token represent up to $2^{256}$ states, yielding a compact yet highly expressive discrete representation. Sampling from such a huge token space is difficult with standard classification. To resolve this, BitDance uses a binary diffusion head: instead of predicting an index with softmax, it employs continuous-space diffusion to generate the binary tokens. Furthermore, we propose next-patch diffusion, a new decoding method that predicts multiple tokens in parallel with high accuracy, greatly speeding up inference. On ImageNet 256x256, BitDance achieves an FID of 1.24, the best among AR models. With next-patch diffusion, BitDance beats state-of-the-art parallel AR models that use 1.4B parameters, while using 5.4x fewer parameters (260M) and achieving 8.7x speedup. For text-to-image generation, BitDance trains on large-scale multimodal tokens and generates high-resolution, photorealistic images efficiently, showing strong performance and favorable scaling. When generating 1024x1024 images, BitDance achieves a speedup of over 30x compared to prior AR models. We release code and models to facilitate further research on AR foundation models. Code and models are available at: https://github.com/shallowdream204/BitDance.",
+    "authors": [
+      "Yuang Ai",
+      "Jiaming Han",
+      "Shaobin Zhuang",
+      "Weijia Mao",
+      "Xuefeng Hu",
+      "Ziyan Yang",
+      "Zhenheng Yang",
+      "Huaibo Huang",
+      "Xiangyu Yue",
+      "Hao Chen"
+    ],
+    "published": "2026-02-15",
+    "updated": "2026-02-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.14041.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.14041",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "BitDance：使用二进制令牌扩展自回归生成模型",
+      "core_contribution": "提出BitDance，一种通过预测二进制视觉令牌而非码本索引的可扩展自回归图像生成器，并引入“下一块扩散”解码方法，在保持高图像质量的同时大幅提升了推理速度。",
+      "method": "该方法使用高熵二进制潜在表示，使每个令牌能编码多达2^256种状态。为从如此巨大的离散空间中采样，它采用二进制扩散头，以连续空间扩散生成二进制令牌，替代传统的softmax分类预测。此外，提出的下一块扩散解码方法能并行预测多个令牌，显著加速推理。",
+      "findings": "在ImageNet 256x256上，BitDance取得了FID 1.24的成绩，为自回归模型中的最佳结果；使用仅2.6亿参数，在性能上超越了14亿参数的并行自回归模型，推理速度提升8.7倍。在文本到图像生成中，生成1024x1024图像时相比先前自回归模型加速超过30倍，展示了强大的性能与可扩展性。"
+    }
+  }
+]
