@@ -1,0 +1,142 @@
+[
+  {
+    "id": "2602.15727",
+    "title": "Spanning the Visual Analogy Space with a Weight Basis of LoRAs",
+    "abstract": "Visual analogy learning enables image manipulation through demonstration rather than textual description, allowing users to specify complex transformations difficult to articulate in words. Given a triplet $\\{\\mathbf{a}$, $\\mathbf{a}'$, $\\mathbf{b}\\}$, the goal is to generate $\\mathbf{b}'$ such that $\\mathbf{a} : \\mathbf{a}' :: \\mathbf{b} : \\mathbf{b}'$. Recent methods adapt text-to-image models to this task using a single Low-Rank Adaptation (LoRA) module, but they face a fundamental limitation: attempting to capture the diverse space of visual transformations within a fixed adaptation module constrains generalization capabilities. Inspired by recent work showing that LoRAs in constrained domains span meaningful, interpolatable semantic spaces, we propose LoRWeB, a novel approach that specializes the model for each analogy task at inference time through dynamic composition of learned transformation primitives, informally, choosing a point in a \"space of LoRAs\". We introduce two key components: (1) a learnable basis of LoRA modules, to span the space of different visual transformations, and (2) a lightweight encoder that dynamically selects and weighs these basis LoRAs based on the input analogy pair. Comprehensive evaluations demonstrate our approach achieves state-of-the-art performance and significantly improves generalization to unseen visual transformations. Our findings suggest that LoRA basis decompositions are a promising direction for flexible visual manipulation. Code and data are in https://research.nvidia.com/labs/par/lorweb",
+    "authors": [
+      "Hila Manor",
+      "Rinon Gal",
+      "Haggai Maron",
+      "Tomer Michaeli",
+      "Gal Chechik"
+    ],
+    "published": "2026-02-17",
+    "updated": "2026-02-17",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR",
+      "cs.LG",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.15727.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.15727",
+    "primary_category": "cs.CV",
+    "score": 90,
+    "summary": {
+      "title_zh": "利用LoRA权重基张成视觉类比空间",
+      "core_contribution": "提出LoRWeB方法，通过动态组合学习到的变换基元来专门处理每个类比任务，突破了现有方法使用单一固定适配模块的泛化限制。",
+      "method": "方法包含两个核心组件：一是学习一组LoRA模块作为基，以覆盖不同的视觉变换空间；二是一个轻量级编码器，根据输入的类比对动态选择和加权这些基LoRA，实现推理时的动态组合。",
+      "findings": "综合评估表明，该方法取得了最先进的性能，并显著提升了对未见视觉变换的泛化能力；研究结果证明LoRA基分解是实现灵活视觉操控的有效方向。"
+    }
+  },
+  {
+    "id": "2602.16611",
+    "title": "Style-Aware Gloss Control for Generative Non-Photorealistic Rendering",
+    "abstract": "Humans can infer material characteristics of objects from their visual appearance, and this ability extends to artistic depictions, where similar perceptual strategies guide the interpretation of paintings or drawings. Among the factors that define material appearance, gloss, along with color, is widely regarded as one of the most important, and recent studies indicate that humans can perceive gloss independently of the artistic style used to depict an object. To investigate how gloss and artistic style are represented in learned models, we train an unsupervised generative model on a newly curated dataset of painterly objects designed to systematically vary such factors. Our analysis reveals a hierarchical latent space in which gloss is disentangled from other appearance factors, allowing for a detailed study of how gloss is represented and varies across artistic styles. Building on this representation, we introduce a lightweight adapter that connects our style- and gloss-aware latent space to a latent-diffusion model, enabling the synthesis of non-photorealistic images with fine-grained control of these factors. We compare our approach with previous models and observe improved disentanglement and controllability of the learned factors.",
+    "authors": [
+      "Santiago Jimenez-Navarro",
+      "Belen Masia",
+      "Ana Serrano"
+    ],
+    "published": "2026-02-18",
+    "updated": "2026-02-18",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.16611.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.16611",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向生成式非真实感渲染的、具备风格感知的光泽度控制",
+      "core_contribution": "本文提出了一种能够解耦艺术风格与物体光泽度表征的无监督生成模型，并设计了一个轻量级适配器，实现了在非真实感图像合成中对这两个因素进行细粒度控制。",
+      "method": "首先，作者构建了一个新的、系统性地包含不同艺术风格和光泽度变化的绘画对象数据集。基于此数据集，他们训练了一个无监督生成模型，其学习到的潜在空间具有层次化结构，能将光泽度与其他外观因素解耦。随后，他们引入一个轻量级适配器，将该解耦的潜在空间与一个潜在扩散模型连接起来。",
+      "findings": "分析表明，模型学习到的潜在空间是层次化的，其中光泽度与其他外观因素（如风格）成功解耦，这为研究不同艺术风格下光泽度的表征方式提供了基础。与先前模型相比，该方法在解耦性和对学习因素（风格与光泽度）的可控性方面均有提升，能够合成出具有指定风格和精确光泽度的非真实感图像。"
+    }
+  },
+  {
+    "id": "2602.15819",
+    "title": "VideoSketcher: Video Models Prior Enable Versatile Sequential Sketch Generation",
+    "abstract": "Sketching is inherently a sequential process, in which strokes are drawn in a meaningful order to explore and refine ideas. However, most generative models treat sketches as static images, overlooking the temporal structure that underlies creative drawing. We present a data-efficient approach for sequential sketch generation that adapts pretrained text-to-video diffusion models to generate sketching processes. Our key insight is that large language models and video diffusion models offer complementary strengths for this task: LLMs provide semantic planning and stroke ordering, while video diffusion models serve as strong renderers that produce high-quality, temporally coherent visuals. We leverage this by representing sketches as short videos in which strokes are progressively drawn on a blank canvas, guided by text-specified ordering instructions. We introduce a two-stage fine-tuning strategy that decouples the learning of stroke ordering from the learning of sketch appearance. Stroke ordering is learned using synthetic shape compositions with controlled temporal structure, while visual appearance is distilled from as few as seven manually authored sketching processes that capture both global drawing order and the continuous formation of individual strokes. Despite the extremely limited amount of human-drawn sketch data, our method generates high-quality sequential sketches that closely follow text-specified orderings while exhibiting rich visual detail. We further demonstrate the flexibility of our approach through extensions such as brush style conditioning and autoregressive sketch generation, enabling additional controllability and interactive, collaborative drawing.",
+    "authors": [
+      "Hui Ren",
+      "Yuval Alaluf",
+      "Omer Bar Tal",
+      "Alexander Schwing",
+      "Antonio Torralba",
+      "Yael Vinker"
+    ],
+    "published": "2026-02-17",
+    "updated": "2026-02-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.15819.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.15819",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VideoSketcher：利用视频模型先验实现多功能序列草图生成",
+      "core_contribution": "提出了一种数据高效的方法，通过微调预训练的文本到视频扩散模型来生成具有时序结构的草图绘制过程，实现了对绘制顺序的语义控制与高质量视觉呈现的结合。",
+      "method": "该方法将草图表示为在空白画布上逐步绘制笔划的短视频，并采用两阶段微调策略：首先利用具有可控时序结构的合成形状组合学习笔划顺序，然后仅用极少量（如7个）人工绘制的草图过程数据来学习草图的外观细节，从而解耦顺序学习与外观学习。",
+      "findings": "尽管使用的人类绘制草图数据极少，该方法能生成高质量、时序连贯的序列草图，能紧密遵循文本指定的绘制顺序，并展现丰富的视觉细节；此外，该方法可扩展支持笔刷风格条件控制与自回归草图生成，增强了可控性与交互协作绘图能力。"
+    }
+  },
+  {
+    "id": "2602.15539",
+    "title": "Dynamic Training-Free Fusion of Subject and Style LoRAs",
+    "abstract": "Recent studies have explored the combination of multiple LoRAs to simultaneously generate user-specified subjects and styles. However, most existing approaches fuse LoRA weights using static statistical heuristics that deviate from LoRA's original purpose of learning adaptive feature adjustments and ignore the randomness of sampled inputs. To address this, we propose a dynamic training-free fusion framework that operates throughout the generation process. During the forward pass, at each LoRA-applied layer, we dynamically compute the KL divergence between the base model's original features and those produced by subject and style LoRAs, respectively, and adaptively select the most appropriate weights for fusion. In the reverse denoising stage, we further refine the generation trajectory by dynamically applying gradient-based corrections derived from objective metrics such as CLIP and DINO scores, providing continuous semantic and stylistic guidance. By integrating these two complementary mechanisms-feature-level selection and metric-guided latent adjustment-across the entire diffusion timeline, our method dynamically achieves coherent subject-style synthesis without any retraining. Extensive experiments across diverse subject-style combinations demonstrate that our approach consistently outperforms state-of-the-art LoRA fusion methods both qualitatively and quantitatively.",
+    "authors": [
+      "Qinglong Cao",
+      "Yuntian Chen",
+      "Chao Ma",
+      "Xiaokang Yang"
+    ],
+    "published": "2026-02-17",
+    "updated": "2026-02-17",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.SC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.15539.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.15539",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于主题与风格LoRA的动态免训练融合方法",
+      "core_contribution": "提出了一种动态免训练的LoRA融合框架，能够在整个生成过程中自适应地融合主题与风格LoRA，实现连贯的主题-风格合成，无需重新训练。",
+      "method": "该方法包含两个互补机制：在前向传播阶段，通过动态计算基础模型与各LoRA输出特征间的KL散度，在每一层自适应选择最合适的权重进行融合；在反向去噪阶段，利用CLIP和DINO等客观度量导出的梯度校正，对生成轨迹进行持续语义与风格引导。",
+      "findings": "在多种主题-风格组合上的实验表明，该方法在定性和定量评估上均优于现有最先进的LoRA融合方法，能够更有效地合成符合预期主题与风格的图像。"
+    }
+  },
+  {
+    "id": "2602.15396",
+    "title": "Efficient Generative Modeling beyond Memoryless Diffusion via Adjoint Schrödinger Bridge Matching",
+    "abstract": "Diffusion models often yield highly curved trajectories and noisy score targets due to an uninformative, memoryless forward process that induces independent data-noise coupling. We propose Adjoint Schrödinger Bridge Matching (ASBM), a generative modeling framework that recovers optimal trajectories in high dimensions via two stages. First, we view the Schrödinger Bridge (SB) forward dynamic as a coupling construction problem and learn it through a data-to-energy sampling perspective that transports data to an energy-defined prior. Then, we learn the backward generative dynamic with a simple matching loss supervised by the induced optimal coupling. By operating in a non-memoryless regime, ASBM produces significantly straighter and more efficient sampling paths. Compared to prior works, ASBM scales to high-dimensional data with notably improved stability and efficiency. Extensive experiments on image generation show that ASBM improves fidelity with fewer sampling steps. We further showcase the effectiveness of our optimal trajectory via distillation to a one-step generator.",
+    "authors": [
+      "Jeongwoo Shin",
+      "Jinhwan Sul",
+      "Joonseok Lee",
+      "Jaewong Choi",
+      "Jaemoo Choi"
+    ],
+    "published": "2026-02-17",
+    "updated": "2026-02-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.15396.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.15396",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过伴随薛定谔桥匹配实现超越无记忆扩散的高效生成建模",
+      "core_contribution": "提出了伴随薛定谔桥匹配（ASBM）框架，通过构建数据与能量定义先验之间的最优耦合，实现了更直、更高效的高维生成采样轨迹。",
+      "method": "ASBM分为两个阶段：首先，将薛定谔桥的前向动态视为耦合构建问题，通过数据到能量采样的视角学习，将数据传输至能量定义的先验分布；然后，利用诱导出的最优耦合作为监督，通过简单的匹配损失学习反向生成动态。该方法摆脱了无记忆限制，直接学习最优传输路径。",
+      "findings": "实验表明，ASBM能生成显著更直、更高效的采样路径，在高维数据上具有更好的稳定性和效率；在图像生成任务中，能以更少的采样步骤提升生成保真度，并且其最优轨迹可有效蒸馏为一步生成器。"
+    }
+  }
+]
