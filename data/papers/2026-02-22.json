@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2602.17558",
+    "title": "RetouchIQ: MLLM Agents for Instruction-Based Image Retouching with Generalist Reward",
+    "abstract": "Recent advances in multimodal large language models (MLLMs) have shown great potential for extending vision-language reasoning to professional tool-based image editing, enabling intuitive and creative editing. A promising direction is to use reinforcement learning (RL) to enable MLLMs to reason about and execute optimal tool-use plans within professional image-editing software. However, training remains challenging due to the lack of reliable, verifiable reward signals that can reflect the inherently subjective nature of creative editing. In this work, we introduce RetouchIQ, a framework that performs instruction-based executable image editing through MLLM agents guided by a generalist reward model. RetouchIQ interprets user-specified editing intentions and generates corresponding, executable image adjustments, bridging high-level aesthetic goals with precise parameter control. To move beyond conventional, rule-based rewards that compute similarity against a fixed reference image using handcrafted metrics, we propose a generalist reward model, an RL fine-tuned MLLM that evaluates edited results through a set of generated metrics on a case-by-case basis. Then, the reward model provides scalar feedback through multimodal reasoning, enabling reinforcement learning with high-quality, instruction-consistent gradients. We curate an extended dataset with 190k instruction-reasoning pairs and establish a new benchmark for instruction-based image editing. Experiments show that RetouchIQ substantially improves both semantic consistency and perceptual quality over previous MLLM-based and diffusion-based editing systems. Our findings demonstrate the potential of generalist reward-driven MLLM agents as flexible, explainable, and executable assistants for professional image editing.",
+    "authors": [
+      "Qiucheng Wu",
+      "Jing Shi",
+      "Simon Jenni",
+      "Kushal Kafle",
+      "Tianyu Wang",
+      "Shiyu Chang",
+      "Handong Zhao"
+    ],
+    "published": "2026-02-19",
+    "updated": "2026-02-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.17558.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.17558",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RetouchIQ：基于通用奖励模型的多模态大语言模型代理用于指令驱动的图像润饰",
+      "core_contribution": "提出了RetouchIQ框架，通过一个通用奖励模型驱动的多模态大语言模型（MLLM）代理，将用户的高层次审美指令转化为专业图像编辑软件中的可执行操作，并构建了一个包含19万条指令-推理对的数据集及新基准。",
+      "method": "框架首先利用MLLM代理解析用户编辑意图并生成可执行的图像调整参数。为解决创意编辑中主观性导致的奖励信号难以定义的问题，提出了一个通用奖励模型——该模型是一个经过强化学习微调的MLLM，能够针对每个编辑案例生成一组评估指标，并通过多模态推理提供标量反馈，从而为强化学习提供高质量、与指令一致的梯度信号。",
+      "findings": "实验表明，RetouchIQ在语义一致性和感知质量上均显著优于以往基于MLLM和扩散模型的编辑系统。研究证明了通用奖励驱动的MLLM代理可作为灵活、可解释且可执行的助手，应用于专业图像编辑任务。"
+    }
+  },
+  {
+    "id": "2602.17270",
+    "title": "Unified Latents (UL): How to train your latents",
+    "abstract": "We present Unified Latents (UL), a framework for learning latent representations that are jointly regularized by a diffusion prior and decoded by a diffusion model. By linking the encoder's output noise to the prior's minimum noise level, we obtain a simple training objective that provides a tight upper bound on the latent bitrate. On ImageNet-512, our approach achieves competitive FID of 1.4, with high reconstruction quality (PSNR) while requiring fewer training FLOPs than models trained on Stable Diffusion latents. On Kinetics-600, we set a new state-of-the-art FVD of 1.3.",
+    "authors": [
+      "Jonathan Heek",
+      "Emiel Hoogeboom",
+      "Thomas Mensink",
+      "Tim Salimans"
+    ],
+    "published": "2026-02-19",
+    "updated": "2026-02-19",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.17270.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.17270",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "统一隐变量（UL）：如何训练你的隐变量",
+      "core_contribution": "提出了统一隐变量（UL）框架，通过将编码器输出噪声与先验模型的最小噪声水平关联，实现了在扩散先验约束下学习隐变量表示，并以简单的训练目标获得了隐变量比特率的紧致上界。",
+      "method": "该方法构建了一个联合优化框架：编码器学习的隐变量表示同时受到扩散先验的约束，并由扩散模型进行解码。通过将编码器输出的噪声与先验模型中的最小噪声水平直接关联，推导出一个简化的训练目标。该框架在训练过程中同时优化隐变量的正则化与重建质量，且计算效率较高。",
+      "findings": "在ImageNet-512数据集上，该方法取得了1.4的竞争性FID分数，同时保持较高的重建质量（PSNR），且训练所需的FLOPs低于基于Stable Diffusion隐变量训练的模型。在Kinetics-600视频数据集上，该方法以1.3的FVD分数创造了新的最优性能。"
+    }
+  },
+  {
+    "id": "2602.17200",
+    "title": "GASS: Geometry-Aware Spherical Sampling for Disentangled Diversity Enhancement in Text-to-Image Generation",
+    "abstract": "Despite high semantic alignment, modern text-to-image (T2I) generative models still struggle to synthesize diverse images from a given prompt. This lack of diversity not only restricts user choice, but also risks amplifying societal biases. In this work, we enhance the T2I diversity through a geometric lens. Unlike most existing methods that rely primarily on entropy-based guidance to increase sample dissimilarity, we introduce Geometry-Aware Spherical Sampling (GASS) to enhance diversity by explicitly controlling both prompt-dependent and prompt-independent sources of variation. Specifically, we decompose the diversity measure in CLIP embeddings using two orthogonal directions: the text embedding, which captures semantic variation related to the prompt, and an identified orthogonal direction that captures prompt-independent variation (e.g., backgrounds). Based on this decomposition, GASS increases the geometric projection spread of generated image embeddings along both axes and guides the T2I sampling process via expanded predictions along the generation trajectory. Our experiments on different frozen T2I backbones (U-Net and DiT, diffusion and flow) and benchmarks demonstrate the effectiveness of disentangled diversity enhancement with minimal impact on image fidelity and semantic alignment.",
+    "authors": [
+      "Ye Zhu",
+      "Kaleb S. Newman",
+      "Johannes F. Lutzeyer",
+      "Adriana Romero-Soriano",
+      "Michal Drozdzal",
+      "Olga Russakovsky"
+    ],
+    "published": "2026-02-19",
+    "updated": "2026-02-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.17200.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.17200",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GASS：面向文本到图像生成中解耦多样性增强的几何感知球面采样",
+      "core_contribution": "提出了一种几何感知球面采样方法，通过显式控制与提示相关和无关的两种变化来源，在保持图像质量和语义对齐的同时，有效增强文本到图像生成的多样性。",
+      "method": "该方法首先在CLIP嵌入空间中，将多样性度量分解为两个正交方向：文本嵌入方向（捕捉与提示相关的语义变化）和一个与之正交的方向（捕捉与提示无关的变化，如背景）。基于此分解，GASS通过扩大生成图像嵌入在这两个轴上的几何投影分布，并沿生成轨迹引导扩散采样过程，实现解耦的多样性增强。",
+      "findings": "实验表明，GASS在不同冻结的文本到图像生成骨干模型（包括U-Net和DiT架构，扩散与流模型）和多个基准测试上均能有效提升生成多样性，且对图像保真度和语义对齐的影响极小。"
+    }
+  },
+  {
+    "id": "2602.17047",
+    "title": "Amber-Image: Efficient Compression of Large-Scale Diffusion Transformers",
+    "abstract": "Diffusion Transformer (DiT) architectures have significantly advanced Text-to-Image (T2I) generation but suffer from prohibitive computational costs and deployment barriers. To address these challenges, we propose an efficient compression framework that transforms the 60-layer dual-stream MMDiT-based Qwen-Image into lightweight models without training from scratch. Leveraging this framework, we introduce Amber-Image, a series of streamlined T2I models. We first derive Amber-Image-10B using a timestep-sensitive depth pruning strategy, where retained layers are reinitialized via local weight averaging and optimized through layer-wise distillation and full-parameter fine-tuning. Building on this, we develop Amber-Image-6B by introducing a hybrid-stream architecture that converts deep-layer dual streams into a single stream initialized from the image branch, further refined via progressive distillation and lightweight fine-tuning. Our approach reduces parameters by 70% and eliminates the need for large-scale data engineering. Notably, the entire compression and training pipeline-from the 10B to the 6B variant-requires fewer than 2,000 GPU hours, demonstrating exceptional cost-efficiency compared to training from scratch. Extensive evaluations on benchmarks like DPG-Bench and LongText-Bench show that Amber-Image achieves high-fidelity synthesis and superior text rendering, matching much larger models.",
+    "authors": [
+      "Chaojie Yang",
+      "Tian Li",
+      "Yue Zhang",
+      "Jun Gao"
+    ],
+    "published": "2026-02-19",
+    "updated": "2026-02-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.17047.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.17047",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Amber-Image：大规模扩散Transformer的高效压缩",
+      "core_contribution": "提出了一个无需从头训练的高效压缩框架，将大规模双流MMDiT模型压缩为轻量化模型，显著降低了计算成本与部署门槛。",
+      "method": "首先采用时间步敏感的深度剪枝策略，保留关键层并通过局部权重平均重新初始化，再结合分层蒸馏与全参数微调进行优化；进一步引入混合流架构，将深层双流转换为单流（以图像分支初始化），并通过渐进蒸馏与轻量微调进行精炼。",
+      "findings": "压缩后的模型参数量减少70%，且整个从10B到6B的压缩训练流程仅需不到2000 GPU小时，在DPG-Bench和LongText-Bench等基准测试中实现了高保真合成与优越的文本渲染能力，性能媲美更大规模的原始模型。"
+    }
+  },
+  {
+    "id": "2602.16968",
+    "title": "DDiT: Dynamic Patch Scheduling for Efficient Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) have achieved state-of-the-art performance in image and video generation, but their success comes at the cost of heavy computation. This inefficiency is largely due to the fixed tokenization process, which uses constant-sized patches throughout the entire denoising phase, regardless of the content's complexity. We propose dynamic tokenization, an efficient test-time strategy that varies patch sizes based on content complexity and the denoising timestep. Our key insight is that early timesteps only require coarser patches to model global structure, while later iterations demand finer (smaller-sized) patches to refine local details. During inference, our method dynamically reallocates patch sizes across denoising steps for image and video generation and substantially reduces cost while preserving perceptual generation quality. Extensive experiments demonstrate the effectiveness of our approach: it achieves up to $3.52\\times$ and $3.2\\times$ speedup on FLUX-1.Dev and Wan $2.1$, respectively, without compromising the generation quality and prompt adherence.",
+    "authors": [
+      "Dahye Kim",
+      "Deepti Ghadiyaram",
+      "Raghudeep Gadde"
+    ],
+    "published": "2026-02-19",
+    "updated": "2026-02-19",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.16968.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.16968",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DDiT：面向高效扩散变换器的动态补丁调度",
+      "core_contribution": "提出了一种动态令牌化策略，通过在去噪过程中根据内容复杂度和时间步动态调整补丁大小，显著降低了扩散变换器的计算成本，同时保持了生成质量。",
+      "method": "该方法的核心思想是：在去噪早期使用较大的粗粒度补丁捕捉全局结构，在后期使用较小的细粒度补丁完善局部细节。具体实现中，在推理阶段根据时间步和内容复杂度动态调度不同大小的补丁，从而减少总体计算量。",
+      "findings": "实验表明，该方法在FLUX-1.Dev和Wan 2.1模型上分别实现了最高3.52倍和3.2倍的加速，且未损害生成图像的感知质量和对文本提示的遵循程度。"
+    }
+  }
+]
