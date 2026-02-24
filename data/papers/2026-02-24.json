@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2602.19254",
+    "title": "RegionRoute: Regional Style Transfer with Diffusion Model",
+    "abstract": "Precise spatial control in diffusion-based style transfer remains challenging. This challenge arises because diffusion models treat style as a global feature and lack explicit spatial grounding of style representations, making it difficult to restrict style application to specific objects or regions. To our knowledge, existing diffusion models are unable to perform true localized style transfer, typically relying on handcrafted masks or multi-stage post-processing that introduce boundary artifacts and limit generalization. To address this, we propose an attention-supervised diffusion framework that explicitly teaches the model where to apply a given style by aligning the attention scores of style tokens with object masks during training. Two complementary objectives, a Focus loss based on KL divergence and a Cover loss using binary cross-entropy, jointly encourage accurate localization and dense coverage. A modular LoRA-MoE design further enables efficient and scalable multi-style adaptation. To evaluate localized stylization, we introduce the Regional Style Editing Score, which measures Regional Style Matching through CLIP-based similarity within the target region and Identity Preservation via masked LPIPS and pixel-level consistency on unedited areas. Experiments show that our method achieves mask-free, single-object style transfer at inference, producing regionally accurate and visually coherent results that outperform existing diffusion-based editing approaches.",
+    "authors": [
+      "Bowen Chen",
+      "Jake Zuena",
+      "Alan C. Bovik",
+      "Divya Kothandaraman"
+    ],
+    "published": "2026-02-22",
+    "updated": "2026-02-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.19254.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.19254",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RegionRoute：基于扩散模型的区域风格迁移",
+      "core_contribution": "提出了一种基于注意力监督的扩散模型框架，首次实现了无需手工掩码的、真正意义上的局部风格迁移，并引入了区域风格编辑评分标准进行量化评估。",
+      "method": "该方法通过训练时对齐风格标记的注意力分数与目标物体掩码，显式地教导模型在何处应用给定风格。设计了基于KL散度的Focus损失和基于二元交叉熵的Cover损失，共同确保精准定位和密集覆盖。此外，采用模块化的LoRA-MoE设计，实现了高效、可扩展的多风格适配。",
+      "findings": "实验表明，该方法在推理时无需掩码即可实现单物体风格迁移，生成的结果在区域准确性、视觉连贯性上均优于现有的基于扩散模型的编辑方法。所提出的区域风格编辑评分能有效衡量目标区域的风格匹配度与未编辑区域的身份保持度。"
+    }
+  },
+  {
+    "id": "2602.19083",
+    "title": "ChordEdit: One-Step Low-Energy Transport for Image Editing",
+    "abstract": "The advent of one-step text-to-image (T2I) models offers unprecedented synthesis speed. However, their application to text-guided image editing remains severely hampered, as forcing existing training-free editors into a single inference step fails. This failure manifests as severe object distortion and a critical loss of consistency in non-edited regions, resulting from the high-energy, erratic trajectories produced by naive vector arithmetic on the models' structured fields. To address this problem, we introduce ChordEdit, a model agnostic, training-free, and inversion-free method that facilitates high-fidelity one-step editing. We recast editing as a transport problem between the source and target distributions defined by the source and target text prompts. Leveraging dynamic optimal transport theory, we derive a principled, low-energy control strategy. This strategy yields a smoothed, variance-reduced editing field that is inherently stable, facilitating the field to be traversed in a single, large integration step. A theoretically grounded and experimentally validated approach allows ChordEdit to deliver fast, lightweight and precise edits, finally achieving true real-time editing on these challenging models.",
+    "authors": [
+      "Liangsi Lu",
+      "Xuhang Chen",
+      "Minzhe Guo",
+      "Shichu Li",
+      "Jingchao Wang",
+      "Yang Shi"
+    ],
+    "published": "2026-02-22",
+    "updated": "2026-02-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.19083.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.19083",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ChordEdit：用于图像编辑的一步式低能量传输方法",
+      "core_contribution": "提出了一种无需训练、无需模型反演且与模型无关的ChordEdit方法，首次在一步式文本到图像模型上实现了高保真度的实时图像编辑，解决了现有方法因高能量轨迹导致的物体扭曲和未编辑区域失真的问题。",
+      "method": "将图像编辑重新定义为源提示词与目标提示词所定义分布之间的传输问题；基于动态最优传输理论，推导出一种原理性的低能量控制策略；该策略生成平滑、方差降低的编辑场，使其在单次大步长积分中保持稳定，从而实现一步式编辑。",
+      "findings": "ChordEdit能够生成稳定、低方差的编辑轨迹，在一步推理中实现高保真度的图像编辑，有效避免了物体扭曲和背景信息丢失；实验验证了该方法在保持编辑精度的同时，首次在一步式文本到图像模型上实现了真正的实时编辑。"
+    }
+  },
+  {
+    "id": "2602.19033",
+    "title": "A Markovian View of Iterative-Feedback Loops in Image Generative Models: Neural Resonance and Model Collapse",
+    "abstract": "AI training datasets will inevitably contain AI-generated examples, leading to ``feedback'' in which the output of one model impacts the training of another. It is known that such iterative feedback can lead to model collapse, yet the mechanisms underlying this degeneration remain poorly understood. Here we show that a broad class of feedback processes converges to a low-dimensional invariant structure in latent space, a phenomenon we call neural resonance. By modeling iterative feedback as a Markov Chain, we show that two conditions are needed for this resonance to occur: ergodicity of the feedback process and directional contraction of the latent representation. By studying diffusion models on MNIST and ImageNet, as well as CycleGAN and an audio feedback experiment, we map how local and global manifold geometry evolve, and we introduce an eight-pattern taxonomy of collapse behaviors. Neural resonance provides a unified explanation for long-term degenerate behavior in generative models and provides practical diagnostics for identifying, characterizing, and eventually mitigating collapse.",
+    "authors": [
+      "Vibhas Kumar Vats",
+      "David J. Crandall",
+      "Samuel Goree"
+    ],
+    "published": "2026-02-22",
+    "updated": "2026-02-22",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.19033.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.19033",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "图像生成模型中迭代反馈循环的马尔可夫视角：神经共振与模型崩溃",
+      "core_contribution": "本文提出了“神经共振”的概念，用以解释生成模型在迭代反馈训练中出现的长期退化行为，并建立了一个包含八种模式的模型崩溃分类体系，为理解和诊断模型崩溃提供了统一的理论框架。",
+      "method": "研究将迭代反馈过程建模为马尔可夫链，并分析了其收敛条件。通过研究MNIST和ImageNet上的扩散模型、CycleGAN以及一个音频反馈实验，追踪了潜在空间中局部和全局流形几何结构的演化过程。",
+      "findings": "研究发现，当反馈过程满足遍历性且潜在表示具有方向性收缩时，系统会收敛到一个低维不变结构，即发生“神经共振”，这最终导致模型崩溃。基于此，研究总结并分类了八种不同的模型崩溃行为模式。"
+    }
+  },
+  {
+    "id": "2602.19019",
+    "title": "TokenTrace: Multi-Concept Attribution through Watermarked Token Recovery",
+    "abstract": "Generative AI models pose a significant challenge to intellectual property (IP), as they can replicate unique artistic styles and concepts without attribution. While watermarking offers a potential solution, existing methods often fail in complex scenarios where multiple concepts (e.g., an object and an artistic style) are composed within a single image. These methods struggle to disentangle and attribute each concept individually. In this work, we introduce TokenTrace, a novel proactive watermarking framework for robust, multi-concept attribution. Our method embeds secret signatures into the semantic domain by simultaneously perturbing the text prompt embedding and the initial latent noise that guide the diffusion model's generation process. For retrieval, we propose a query-based TokenTrace module that takes the generated image and a textual query specifying which concepts need to be retrieved (e.g., a specific object or style) as inputs. This query-based mechanism allows the module to disentangle and independently verify the presence of multiple concepts from a single generated image. Extensive experiments show that our method achieves state-of-the-art performance on both single-concept (object and style) and multi-concept attribution tasks, significantly outperforming existing baselines while maintaining high visual quality and robustness to common transformations.",
+    "authors": [
+      "Li Zhang",
+      "Shruti Agarwal",
+      "John Collomosse",
+      "Pengtao Xie",
+      "Vishal Asnani"
+    ],
+    "published": "2026-02-22",
+    "updated": "2026-02-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.19019.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.19019",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TokenTrace：通过水印令牌恢复实现多概念溯源",
+      "core_contribution": "提出了TokenTrace，一种新颖的主动水印框架，能够对生成式AI图像中同时存在的多个概念（如物体和艺术风格）进行鲁棒的分离与溯源，解决了现有方法在多概念组合场景下难以独立归因的难题。",
+      "method": "该方法通过在语义域嵌入秘密签名，同时扰动引导扩散模型生成过程的文本提示嵌入和初始潜在噪声。在检索阶段，设计了一个基于查询的TokenTrace模块，该模块以生成的图像和指定需要检索概念的文本查询为输入，从而能够从单张图像中分离并独立验证多个概念的存在。",
+      "findings": "大量实验表明，该方法在单概念（物体和风格）和多概念溯源任务上均达到了最先进的性能，显著优于现有基线方法，同时保持了高视觉质量，并对常见的图像变换具有鲁棒性。"
+    }
+  },
+  {
+    "id": "2602.18993",
+    "title": "SeaCache: Spectral-Evolution-Aware Cache for Accelerating Diffusion Models",
+    "abstract": "Diffusion models are a strong backbone for visual generation, but their inherently sequential denoising process leads to slow inference. Previous methods accelerate sampling by caching and reusing intermediate outputs based on feature distances between adjacent timesteps. However, existing caching strategies typically rely on raw feature differences that entangle content and noise. This design overlooks spectral evolution, where low-frequency structure appears early and high-frequency detail is refined later. We introduce Spectral-Evolution-Aware Cache (SeaCache), a training-free cache schedule that bases reuse decisions on a spectrally aligned representation. Through theoretical and empirical analysis, we derive a Spectral-Evolution-Aware (SEA) filter that preserves content-relevant components while suppressing noise. Employing SEA-filtered input features to estimate redundancy leads to dynamic schedules that adapt to content while respecting the spectral priors underlying the diffusion model. Extensive experiments on diverse visual generative models and the baselines show that SeaCache achieves state-of-the-art latency-quality trade-offs.",
+    "authors": [
+      "Jiwoo Chung",
+      "Sangeek Hyun",
+      "MinKyu Lee",
+      "Byeongju Han",
+      "Geonho Cha",
+      "Dongyoon Wee",
+      "Youngjun Hong",
+      "Jae-Pil Heo"
+    ],
+    "published": "2026-02-22",
+    "updated": "2026-02-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.18993.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.18993",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SeaCache：用于加速扩散模型的光谱演化感知缓存",
+      "core_contribution": "提出了一种无需训练的光谱演化感知缓存调度方法（SeaCache），通过解耦内容与噪声，基于光谱对齐表示来决策中间特征的复用，显著改善了扩散模型推理速度与生成质量之间的权衡。",
+      "method": "首先通过理论与实证分析推导出光谱演化感知（SEA）滤波器，该滤波器能保留与内容相关的成分并抑制噪声；然后利用SEA滤波后的输入特征来估计相邻时间步之间的冗余度；最后基于此设计动态缓存调度策略，使其既能适应不同生成内容，又尊重扩散模型内在的光谱先验（低频结构先出现，高频细节后细化）。",
+      "findings": "在多种视觉生成模型和基线方法上的大量实验表明，SeaCache在保持生成质量的同时，实现了当前最优的延迟-质量权衡，显著加速了扩散模型的推理过程。"
+    }
+  }
+]
