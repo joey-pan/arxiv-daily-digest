@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2602.20672",
+    "title": "BBQ-to-Image: Numeric Bounding Box and Qolor Control in Large-Scale Text-to-Image Models",
+    "abstract": "Text-to-image models have rapidly advanced in realism and controllability, with recent approaches leveraging long, detailed captions to support fine-grained generation. However, a fundamental parametric gap remains: existing models rely on descriptive language, whereas professional workflows require precise numeric control over object location, size, and color. In this work, we introduce BBQ, a large-scale text-to-image model that directly conditions on numeric bounding boxes and RGB triplets within a unified structured-text framework. We obtain precise spatial and chromatic control by training on captions enriched with parametric annotations, without architectural modifications or inference-time optimization. This also enables intuitive user interfaces such as object dragging and color pickers, replacing ambiguous iterative prompting with precise, familiar controls. Across comprehensive evaluations, BBQ achieves strong box alignment and improves RGB color fidelity over state-of-the-art baselines. More broadly, our results support a new paradigm in which user intent is translated into an intermediate structured language, consumed by a flow-based transformer acting as a renderer and naturally accommodating numeric parameters.",
+    "authors": [
+      "Eliran Kachlon",
+      "Alexander Visheratin",
+      "Nimrod Sarid",
+      "Tal Hacham",
+      "Eyal Gutflaish",
+      "Saar Huberman",
+      "Hezi Zisman",
+      "David Ruppin",
+      "Ron Mokady"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.20672.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.20672",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "BBQ-to-Image：大规模文本到图像模型中的数值边界框与颜色控制",
+      "core_contribution": "提出了一种能够直接基于数值边界框和RGB三元组进行图像生成的大规模文本到图像模型，实现了对物体位置、尺寸和颜色的精确数值控制，弥合了描述性语言与专业工作流程之间的参数鸿沟。",
+      "method": "该方法在统一的结构化文本框架下，通过使用包含参数化标注（如边界框坐标和RGB值）的增强描述进行训练，使模型能够直接理解并响应数值参数。整个过程无需修改模型架构或进行推理时优化，同时支持通过直观的用户界面（如对象拖拽和颜色选择器）进行交互。",
+      "findings": "在全面评估中，BBQ模型在边界框对齐方面表现优异，并且在RGB颜色保真度上超越了现有先进基线模型。研究结果支持了一种新范式：将用户意图转化为中间结构化语言，再由一个基于流的Transformer作为渲染器进行消费，从而自然地容纳数值参数。"
+    }
+  },
+  {
+    "id": "2602.20989",
+    "title": "Cycle-Consistent Tuning for Layered Image Decomposition",
+    "abstract": "Disentangling visual layers in real-world images is a persistent challenge in vision and graphics, as such layers often involve non-linear and globally coupled interactions, including shading, reflection, and perspective distortion. In this work, we present an in-context image decomposition framework that leverages large diffusion foundation models for layered separation. We focus on the challenging case of logo-object decomposition, where the goal is to disentangle a logo from the surface on which it appears while faithfully preserving both layers. Our method fine-tunes a pretrained diffusion model via lightweight LoRA adaptation and introduces a cycle-consistent tuning strategy that jointly trains decomposition and composition models, enforcing reconstruction consistency between decomposed and recomposed images. This bidirectional supervision substantially enhances robustness in cases where the layers exhibit complex interactions. Furthermore, we introduce a progressive self-improving process, which iteratively augments the training set with high-quality model-generated examples to refine performance. Extensive experiments demonstrate that our approach achieves accurate and coherent decompositions and also generalizes effectively across other decomposition types, suggesting its potential as a unified framework for layered image decomposition.",
+    "authors": [
+      "Zheng Gu",
+      "Min Lu",
+      "Zhida Sun",
+      "Dani Lischinski",
+      "Daniel Cohen-O",
+      "Hui Huang"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.20989.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.20989",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于分层图像分解的循环一致性调优",
+      "core_contribution": "提出了一个基于上下文的分层图像分解框架，利用大型扩散基础模型实现视觉层的分离，并通过循环一致性调优策略和渐进式自我改进过程，显著提升了复杂交互场景下的分解鲁棒性与准确性。",
+      "method": "该方法基于预训练的扩散模型，通过轻量级的LoRA适配进行微调。核心是引入循环一致性调优策略，联合训练分解模型和合成模型，强制要求分解后重新合成的图像与原始图像保持一致。此外，采用渐进式自我改进过程，迭代地使用模型生成的高质量样本扩充训练集以优化性能。",
+      "findings": "大量实验表明，该方法在标志-物体分解等具有复杂非线性交互的任务中，能够实现准确且连贯的分解，并有效保留各层的完整性。同时，该方法能有效泛化至其他类型的图像分解任务，显示出其作为统一分层图像分解框架的潜力。"
+    }
+  },
+  {
+    "id": "2602.20951",
+    "title": "See and Fix the Flaws: Enabling VLMs and Diffusion Models to Comprehend Visual Artifacts via Agentic Data Synthesis",
+    "abstract": "Despite recent advances in diffusion models, AI generated images still often contain visual artifacts that compromise realism. Although more thorough pre-training and bigger models might reduce artifacts, there is no assurance that they can be completely eliminated, which makes artifact mitigation a highly crucial area of study. Previous artifact-aware methodologies depend on human-labeled artifact datasets, which are costly and difficult to scale, underscoring the need for an automated approach to reliably acquire artifact-annotated datasets. In this paper, we propose ArtiAgent, which efficiently creates pairs of real and artifact-injected images. It comprises three agents: a perception agent that recognizes and grounds entities and subentities from real images, a synthesis agent that introduces artifacts via artifact injection tools through novel patch-wise embedding manipulation within a diffusion transformer, and a curation agent that filters the synthesized artifacts and generates both local and global explanations for each instance. Using ArtiAgent, we synthesize 100K images with rich artifact annotations and demonstrate both efficacy and versatility across diverse applications. Code is available at link.",
+    "authors": [
+      "Jaehyun Park",
+      "Minyoung Ahn",
+      "Minkyu Kim",
+      "Jonghyun Lee",
+      "Jae-Gil Lee",
+      "Dongmin Park"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.20951.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.20951",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "观察与修复缺陷：通过智能体数据合成使视觉语言模型和扩散模型能够理解视觉伪影",
+      "core_contribution": "提出了ArtiAgent框架，能够自动合成包含丰富伪影标注的大规模图像数据集，解决了人工标注成本高、难以扩展的问题，为视觉伪影的识别与缓解研究提供了高效的数据基础。",
+      "method": "该方法构建了一个包含三个智能体的系统：1）感知智能体从真实图像中识别并定位实体和子实体；2）合成智能体通过在扩散变换器中进行新颖的块级嵌入操作，利用伪影注入工具向图像中引入伪影；3）策展智能体对合成的伪影进行筛选，并为每个实例生成局部和全局的解释说明。",
+      "findings": "利用ArtiAgent合成了10万张带有丰富伪影标注的图像，并在多种下游应用中验证了其有效性和通用性，表明该框架能够高效、自动地生成高质量的伪影-图像对数据。"
+    }
+  },
+  {
+    "id": "2602.20903",
+    "title": "TextPecker: Rewarding Structural Anomaly Quantification for Enhancing Visual Text Rendering",
+    "abstract": "Visual Text Rendering (VTR) remains a critical challenge in text-to-image generation, where even advanced models frequently produce text with structural anomalies such as distortion, blurriness, and misalignment. However, we find that leading MLLMs and specialist OCR models largely fail to perceive these structural anomalies, creating a critical bottleneck for both VTR evaluation and RL-based optimization. As a result, even state-of-the-art generators (e.g., SeedDream4.0, Qwen-Image) still struggle to render structurally faithful text. To address this, we propose TextPecker, a plug-and-play structural anomaly perceptive RL strategy that mitigates noisy reward signals and works with any textto-image generator. To enable this capability, we construct a recognition dataset with character-level structural-anomaly annotations and develop a stroke-editing synthesis engine to expand structural-error coverage. Experiments show that TextPecker consistently improves diverse text-to-image models; even on the well-optimized Qwen-Image, it significantly yields average gains of 4% in structural fidelity and 8.7% in semantic alignment for Chinese text rendering, establishing a new state-of-the-art in high-fidelity VTR. Our work fills a gap in VTR optimization, providing a foundational step towards reliable and structural faithful visual text generation.",
+    "authors": [
+      "Hanshen Zhu",
+      "Yuliang Liu",
+      "Xuecheng Wu",
+      "An-Lan Wang",
+      "Hao Feng",
+      "Dingkang Yang",
+      "Chao Feng",
+      "Can Huang",
+      "Jingqun Tang",
+      "Xiang Bai"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.20903.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.20903",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TextPecker：通过奖励结构异常量化来增强视觉文本渲染",
+      "core_contribution": "本文提出了TextPecker，一种即插即用的结构异常感知强化学习策略，解决了现有模型难以感知文本结构异常（如扭曲、模糊、错位）的关键瓶颈，从而显著提升了文本到图像生成中视觉文本渲染的结构保真度。",
+      "method": "方法主要包括：1）构建了一个带有字符级结构异常标注的识别数据集；2）开发了一个笔画编辑合成引擎，以扩展对结构错误的覆盖范围；3）基于此，设计了一种能够感知结构异常的强化学习奖励策略，该策略可减轻噪声奖励信号，并能与任何文本到图像生成器配合使用。",
+      "findings": "实验表明，TextPecker能持续提升多种文本到图像模型的性能。即使在已充分优化的Qwen-Image模型上，它也能在中文文本渲染中，将结构保真度平均提升4%，语义对齐度平均提升8.7%，从而在高保真视觉文本渲染领域确立了新的最优性能。"
+    }
+  },
+  {
+    "id": "2602.20880",
+    "title": "When Safety Collides: Resolving Multi-Category Harmful Conflicts in Text-to-Image Diffusion via Adaptive Safety Guidance",
+    "abstract": "Text-to-Image (T2I) diffusion models have demonstrated significant advancements in generating high-quality images, while raising potential safety concerns regarding harmful content generation. Safety-guidance-based methods have been proposed to mitigate harmful outputs by steering generation away from harmful zones, where the zones are averaged across multiple harmful categories based on predefined keywords. However, these approaches fail to capture the complex interplay among different harm categories, leading to \"harmful conflicts\" where mitigating one type of harm may inadvertently amplify another, thus increasing overall harmful rate. To address this issue, we propose Conflict-aware Adaptive Safety Guidance (CASG), a training-free framework that dynamically identifies and applies the category-aligned safety direction during generation. CASG is composed of two components: (i) Conflict-aware Category Identification (CaCI), which identifies the harmful category most aligned with the model's evolving generative state, and (ii) Conflict-resolving Guidance Application (CrGA), which applies safety steering solely along the identified category to avoid multi-category interference. CASG can be applied to both latent-space and text-space safeguards. Experiments on T2I safety benchmarks demonstrate CASG's state-of-the-art performance, reducing the harmful rate by up to 15.4% compared to existing methods.",
+    "authors": [
+      "Yongli Xiang",
+      "Ziming Hong",
+      "Zhaoqing Wang",
+      "Xiangyu Zhao",
+      "Bo Han",
+      "Tongliang Liu"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.20880.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.20880",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "当安全发生碰撞：通过自适应安全引导解决文生图扩散模型中的多类别有害冲突",
+      "core_contribution": "本文提出了冲突感知自适应安全引导（CASG）框架，首次系统性地识别并解决了文生图扩散模型中不同有害类别之间的“有害冲突”问题，即在抑制一类有害内容时可能无意间加剧另一类有害内容的生成。",
+      "method": "CASG是一个无需训练的两阶段框架：1）冲突感知类别识别（CaCI），根据模型在生成过程中的动态状态，识别出与之最相关的单一有害类别；2）冲突解决引导应用（CrGA），仅沿着识别出的单一有害类别方向施加安全引导，避免多类别引导间的相互干扰。该方法可同时应用于潜在空间和文本空间的安全防护机制。",
+      "findings": "在文生图安全基准测试上的实验表明，CASG取得了最先进的性能，与现有方法相比，能将有害内容生成率降低高达15.4%，有效解决了多类别有害冲突问题，显著提升了整体安全性。"
+    }
+  }
+]
