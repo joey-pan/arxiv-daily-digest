@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2602.21977",
+    "title": "When LoRA Betrays: Backdooring Text-to-Image Models by Masquerading as Benign Adapters",
+    "abstract": "Low-Rank Adaptation (LoRA) has emerged as a leading technique for efficiently fine-tuning text-to-image diffusion models, and its widespread adoption on open-source platforms has fostered a vibrant culture of model sharing and customization. However, the same modular and plug-and-play flexibility that makes LoRA appealing also introduces a broader attack surface. To highlight this risk, we propose Masquerade-LoRA (MasqLoRA), the first systematic attack framework that leverages an independent LoRA module as the attack vehicle to stealthily inject malicious behavior into text-to-image diffusion models. MasqLoRA operates by freezing the base model parameters and updating only the low-rank adapter weights using a small number of \"trigger word-target image\" pairs. This enables the attacker to train a standalone backdoor LoRA module that embeds a hidden cross-modal mapping: when the module is loaded and a specific textual trigger is provided, the model produces a predefined visual output; otherwise, it behaves indistinguishably from the benign model, ensuring the stealthiness of the attack. Experimental results demonstrate that MasqLoRA can be trained with minimal resource overhead and achieves a high attack success rate of 99.8%. MasqLoRA reveals a severe and unique threat in the AI supply chain, underscoring the urgent need for dedicated defense mechanisms for the LoRA-centric sharing ecosystem.",
+    "authors": [
+      "Liangwei Lyu",
+      "Jiaqi Xu",
+      "Jianwei Ding",
+      "Qiyao Deng"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21977.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21977",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "当LoRA背叛时：通过伪装成良性适配器对文生图模型进行后门攻击",
+      "core_contribution": "本文提出了首个系统性的攻击框架Masquerade-LoRA（MasqLoRA），揭示了利用独立LoRA模块作为攻击载体，可隐蔽地向文生图扩散模型中注入恶意行为的严重安全风险。",
+      "method": "该方法冻结基础模型参数，仅使用少量“触发词-目标图像”对来更新低秩适配器权重。通过训练一个独立的后门LoRA模块，在其中嵌入隐藏的跨模态映射：当加载该模块并输入特定文本触发词时，模型会生成预定义的视觉输出；否则其行为与良性模型无异，从而确保攻击的隐蔽性。",
+      "findings": "实验结果表明，MasqLoRA能以极小的资源开销进行训练，并实现高达99.8%的攻击成功率。这揭示了AI供应链中一个严重且独特的威胁，凸显了为以LoRA为中心的共享生态系统建立专门防御机制的紧迫性。"
+    }
+  },
+  {
+    "id": "2602.21929",
+    "title": "Geometry-as-context: Modulating Explicit 3D in Scene-consistent Video Generation to Geometry Context",
+    "abstract": "Scene-consistent video generation aims to create videos that explore 3D scenes based on a camera trajectory. Previous methods rely on video generation models with external memory for consistency, or iterative 3D reconstruction and inpainting, which accumulate errors during inference due to incorrect intermediary outputs, non-differentiable processes, and separate models. To overcome these limitations, we introduce ``geometry-as-context\". It iteratively completes the following steps using an autoregressive camera-controlled video generation model: (1) estimates the geometry of the current view necessary for 3D reconstruction, and (2) simulates and restores novel view images rendered by the 3D scene. Under this multi-task framework, we develop the camera gated attention module to enhance the model's capability to effectively leverage camera poses. During the training phase, text contexts are utilized to ascertain whether geometric or RGB images should be generated. To ensure that the model can generate RGB-only outputs during inference, the geometry context is randomly dropped from the interleaved text-image-geometry training sequence. The method has been tested on scene video generation with one-direction and forth-and-back trajectories. The results show its superiority over previous approaches in maintaining scene consistency and camera control.",
+    "authors": [
+      "JiaKui Hu",
+      "Jialun Liu",
+      "Liying Yang",
+      "Xinliang Zhang",
+      "Kaiwen Li",
+      "Shuang Zeng",
+      "Yuanwei Li",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Yanye Lu"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21929.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21929",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "几何即上下文：在场景一致视频生成中将显式3D调制为几何上下文",
+      "core_contribution": "提出了“几何即上下文”框架，通过将几何信息作为生成过程中的上下文条件，解决了现有方法在场景一致视频生成中因中间误差累积和非可微过程导致的一致性问题。",
+      "method": "采用自回归相机控制视频生成模型，迭代执行两个步骤：估计当前视角的几何信息以支持3D重建，并模拟与恢复由3D场景渲染的新视角图像。设计了相机门控注意力模块以增强模型对相机位姿的利用能力，并在训练中通过随机丢弃几何上下文的方式，使模型在推理时能仅生成RGB图像。",
+      "findings": "在单向和往返相机轨迹的场景视频生成任务上测试表明，该方法在保持场景一致性和相机控制方面优于先前方法，有效减少了推理过程中的误差累积。"
+    }
+  },
+  {
+    "id": "2602.21760",
+    "title": "Accelerating Diffusion via Hybrid Data-Pipeline Parallelism Based on Conditional Guidance Scheduling",
+    "abstract": "Diffusion models have achieved remarkable progress in high-fidelity image, video, and audio generation, yet inference remains computationally expensive. Nevertheless, current diffusion acceleration methods based on distributed parallelism suffer from noticeable generation artifacts and fail to achieve substantial acceleration proportional to the number of GPUs. Therefore, we propose a hybrid parallelism framework that combines a novel data parallel strategy, condition-based partitioning, with an optimal pipeline scheduling method, adaptive parallelism switching, to reduce generation latency and achieve high generation quality in conditional diffusion models. The key ideas are to (i) leverage the conditional and unconditional denoising paths as a new data-partitioning perspective and (ii) adaptively enable optimal pipeline parallelism according to the denoising discrepancy between these two paths. Our framework achieves $2.31\\times$ and $2.07\\times$ latency reductions on SDXL and SD3, respectively, using two NVIDIA RTX~3090 GPUs, while preserving image quality. This result confirms the generality of our approach across U-Net-based diffusion models and DiT-based flow-matching architectures. Our approach also outperforms existing methods in acceleration under high-resolution synthesis settings. Code is available at https://github.com/kaist-dmlab/Hybridiff.",
+    "authors": [
+      "Euisoo Jung",
+      "Byunghyun Kim",
+      "Hyunjin Kim",
+      "Seonghye Cho",
+      "Jae-Gil Lee"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21760.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21760",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于条件引导调度的混合数据-流水线并行加速扩散模型",
+      "core_contribution": "提出了一种结合新型数据并行策略（基于条件的分区）与最优流水线调度方法（自适应并行切换）的混合并行框架，在显著降低条件扩散模型生成延迟的同时，保持了高生成质量。",
+      "method": "该方法的核心思想是：1）利用条件去噪路径和无条件去噪路径作为新的数据分区视角；2）根据这两条路径之间的去噪差异，自适应地启用最优的流水线并行。通过这种混合并行策略，有效协调了计算资源。",
+      "findings": "使用两块NVIDIA RTX 3090 GPU，在SDXL和SD3模型上分别实现了2.31倍和2.07倍的延迟降低，且图像质量得以保持。该方法在基于U-Net的扩散模型和基于DiT的流匹配架构上均表现出通用性，并在高分辨率合成设置下的加速效果优于现有方法。"
+    }
+  },
+  {
+    "id": "2602.21698",
+    "title": "E-comIQ-ZH: A Human-Aligned Dataset and Benchmark for Fine-Grained Evaluation of E-commerce Posters with Chain-of-Thought",
+    "abstract": "Generative AI is widely used to create commercial posters. However, rapid advances in generation have outpaced automated quality assessment. Existing models emphasize generic esthetics or low level distortions and lack the functional criteria required for e-commerce design. It is especially challenging for Chinese content, where complex characters often produce subtle but critical textual artifacts that are overlooked by existing methods. To address this, we introduce E-comIQ-ZH, a framework for evaluating Chinese e-commerce posters. We build the first dataset E-comIQ-18k to feature multi dimensional scores and expert calibrated Chain of Thought (CoT) rationales. Using this dataset, we train E-comIQ-M, a specialized evaluation model that aligns with human expert judgment. Our framework enables E-comIQ-Bench, the first automated and scalable benchmark for the generation of Chinese e-commerce posters. Extensive experiments show our E-comIQ-M aligns more closely with expert standards and enables scalable automated assessment of e-commerce posters. All datasets, models, and evaluation tools will be released to support future research in this area.Code will be available at https://github.com/4mm7/E-comIQ-ZH.",
+    "authors": [
+      "Meiqi Sun",
+      "Mingyu Li",
+      "Junxiong Zhu"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21698.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21698",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "E-comIQ-ZH：一个用于电商海报细粒度评估的、符合人类认知的思维链数据集与基准",
+      "core_contribution": "本文提出了首个面向中文电商海报质量评估的框架E-comIQ-ZH，其核心贡献是构建了包含多维评分和专家校准思维链的数据集E-comIQ-18k，并基于此训练了与专家判断对齐的专用评估模型E-comIQ-M。",
+      "method": "研究首先构建了E-comIQ-18k数据集，该数据集不仅包含对海报的多维度质量评分，还提供了由专家标注的思维链推理依据。随后，利用该数据集训练了一个专门的评估模型E-comIQ-M，旨在使其判断与人类专家的标准对齐。最终，基于整个框架建立了首个自动化、可扩展的中文电商海报生成评估基准E-comIQ-Bench。",
+      "findings": "大量实验表明，所训练的评估模型E-comIQ-M在判断上与专家标准更为一致，能够实现电商海报质量的可扩展自动化评估。该框架有效解决了现有方法忽视中文复杂字符导致的细微但关键的文字瑕疵，以及缺乏电商设计功能标准的问题。"
+    }
+  },
+  {
+    "id": "2602.21596",
+    "title": "A Hidden Semantic Bottleneck in Conditional Embeddings of Diffusion Transformers",
+    "abstract": "Diffusion Transformers have achieved state-of-the-art performance in class-conditional and multimodal generation, yet the structure of their learned conditional embeddings remains poorly understood. In this work, we present the first systematic study of these embeddings and uncover a notable redundancy: class-conditioned embeddings exhibit extreme angular similarity, exceeding 99\\% on ImageNet-1K, while continuous-condition tasks such as pose-guided image generation and video-to-audio generation reach over 99.9\\%. We further find that semantic information is concentrated in a small subset of dimensions, with head dimensions carrying the dominant signal and tail dimensions contributing minimally. By pruning low-magnitude dimensions--removing up to two-thirds of the embedding space--we show that generation quality and fidelity remain largely unaffected, and in some cases improve. These results reveal a semantic bottleneck in Transformer-based diffusion models, providing new insights into how semantics are encoded and suggesting opportunities for more efficient conditioning mechanisms.",
+    "authors": [
+      "Trung X. Pham",
+      "Kang Zhang",
+      "Ji Woo Hong",
+      "Chang D. Yoo"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21596.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21596",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散变换器中条件嵌入的隐藏语义瓶颈",
+      "core_contribution": "首次系统性地揭示了扩散变换器（DiT）中条件嵌入存在严重的语义冗余，并发现语义信息仅集中在少数维度中，为设计更高效的条件机制提供了新见解。",
+      "method": "研究对ImageNet-1K类别条件生成以及姿态引导图像生成、视频到音频生成等连续条件任务中的嵌入向量进行了系统性分析。通过测量嵌入向量的角度相似性并分析各维度的语义贡献，识别出高冗余维度。进一步通过剪枝低幅值维度的实验，验证了嵌入空间的冗余性。",
+      "findings": "1. 条件嵌入存在极端角度相似性（ImageNet-1K >99%，连续任务 >99.9%），表明高度冗余。2. 语义信息集中在头部少数维度，尾部维度贡献极低。3. 剪除多达三分之二的低幅值维度后，生成质量和保真度基本不受影响甚至有所提升，证实了语义瓶颈的存在。"
+    }
+  }
+]
