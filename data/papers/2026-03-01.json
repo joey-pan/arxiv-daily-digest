@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2602.22570",
+    "title": "Guidance Matters: Rethinking the Evaluation Pitfall for Text-to-Image Generation",
+    "abstract": "Classifier-free guidance (CFG) has helped diffusion models achieve great conditional generation in various fields. Recently, more diffusion guidance methods have emerged with improved generation quality and human preference. However, can these emerging diffusion guidance methods really achieve solid and significant improvements? In this paper, we rethink recent progress on diffusion guidance. Our work mainly consists of four contributions. First, we reveal a critical evaluation pitfall that common human preference models exhibit a strong bias towards large guidance scales. Simply increasing the CFG scale can easily improve quantitative evaluation scores due to strong semantic alignment, even if image quality is severely damaged (e.g., oversaturation and artifacts). Second, we introduce a novel guidance-aware evaluation (GA-Eval) framework that employs effective guidance scale calibration to enable fair comparison between current guidance methods and CFG by identifying the effects orthogonal and parallel to CFG effects. Third, motivated by the evaluation pitfall, we design Transcendent Diffusion Guidance (TDG) method that can significantly improve human preference scores in the conventional evaluation framework but actually does not work in practice. Fourth, in extensive experiments, we empirically evaluate recent eight diffusion guidance methods within the conventional evaluation framework and the proposed GA-Eval framework. Notably, simply increasing the CFG scales can compete with most studied diffusion guidance methods, while all methods suffer severely from winning rate degradation over standard CFG. Our work would strongly motivate the community to rethink the evaluation paradigm and future directions of this field.",
+    "authors": [
+      "Dian Xie",
+      "Shitong Shao",
+      "Lichen Bai",
+      "Zikai Zhou",
+      "Bojun Cheng",
+      "Shuo Yang",
+      "Jun Wu",
+      "Zeke Xie"
+    ],
+    "published": "2026-02-26",
+    "updated": "2026-02-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.22570.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.22570",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "引导至关重要：重新思考文本到图像生成的评估陷阱",
+      "core_contribution": "本文揭示了当前文本到图像生成评估中存在的严重偏见——人类偏好模型对高引导尺度存在系统性偏好，并提出了一个新颖的引导感知评估框架（GA-Eval）以实现公平比较。",
+      "method": "首先，作者通过实验证明，仅增加无分类器引导（CFG）的尺度即可因语义对齐增强而显著提升量化评分，即使图像质量已严重受损。其次，他们提出了GA-Eval框架，通过引导尺度校准来分离与CFG正交和平行的效应，从而公平比较不同引导方法。此外，为验证评估陷阱，作者还设计了一种在实践中无效但能在传统评估中取得高分的“超越性扩散引导”（TDG）方法。",
+      "findings": "关键发现包括：1）传统评估框架存在严重偏见，过度偏好高引导尺度；2）在公平的GA-Eval评估下，仅增加CFG尺度即可与大多数新兴引导方法竞争；3）所有被研究的引导方法相对于标准CFG的胜率均显著下降。这些结果表明，当前许多声称的改进可能源于评估偏差而非实际性能提升。"
+    }
+  },
+  {
+    "id": "2602.22507",
+    "title": "Space Syntax-guided Post-training for Residential Floor Plan Generation",
+    "abstract": "Pre-trained generative models for residential floor plans are typically optimized to fit large-scale data distributions, which can under-emphasize critical architectural priors such as the configurational dominance and connectivity of domestic public spaces (e.g., living rooms and foyers). This paper proposes Space Syntax-guided Post-training (SSPT), a post-training paradigm that explicitly injects space syntax knowledge into floor plan generation via a non-differentiable oracle. The oracle converts RPLAN-style layouts into rectangle-space graphs through greedy maximal-rectangle decomposition and door-mediated adjacency construction, and then computes integration-based measurements to quantify public space dominance and functional hierarchy. To enable consistent evaluation and diagnosis, we further introduce SSPT-Bench (Eval-8), an out-of-distribution benchmark that post-trains models using conditions capped at $\\leq 7$ rooms while evaluating on 8-room programs, together with a unified metric suite for dominance, stability, and profile alignment. SSPT is instantiated with two strategies: (i) iterative retraining via space-syntax filtering and diffusion fine-tuning, and (ii) reinforcement learning via PPO with space-syntax rewards. Experiments show that both strategies improve public-space dominance and restore clearer functional hierarchy compared to distribution-fitted baselines, while PPO achieves stronger gains with substantially higher compute efficiency and reduced variance. SSPT provides a scalable pathway for integrating architectural theory into data-driven plan generation and is compatible with other generative backbones given a post-hoc evaluation oracle.",
+    "authors": [
+      "Zhuoyang Jiang",
+      "Dongqing Zhang"
+    ],
+    "published": "2026-02-26",
+    "updated": "2026-02-26",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.22507.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.22507",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "空间句法引导的后训练用于住宅平面图生成",
+      "core_contribution": "提出了一种空间句法引导的后训练范式，将建筑学中的空间配置与连接性先验知识显式注入生成模型，以改善住宅平面图中公共空间的主导性与功能层次结构。",
+      "method": "该方法通过一个不可微的“预言机”将平面布局转换为矩形空间图并计算空间整合度指标，以量化公共空间主导性。具体采用两种后训练策略：一是基于空间句法筛选的迭代重训练与扩散模型微调；二是使用近端策略优化算法，以空间句法指标作为奖励进行强化学习。",
+      "findings": "实验表明，两种策略均能有效提升生成平面中公共空间的主导性并恢复更清晰的功能层次，其中强化学习策略在计算效率和效果稳定性上表现更优。所提出的后训练范式为将建筑理论融入数据驱动的平面生成提供了可扩展的路径。"
+    }
+  },
+  {
+    "id": "2602.22150",
+    "title": "CoLoGen: Progressive Learning of Concept-Localization Duality for Unified Image Generation",
+    "abstract": "Unified conditional image generation remains difficult because different tasks depend on fundamentally different internal representations. Some require conceptual understanding for semantic synthesis, while others rely on localization cues for spatial precision. Forcing these heterogeneous tasks to share a single representation leads to concept-localization representational conflict. To address this issue, we propose CoLoGen, a unified diffusion framework that progressively learns and reconciles this concept-localization duality. CoLoGen uses a staged curriculum that first builds core conceptual and localization abilities, then adapts them to diverse visual conditions, and finally refines their synergy for complex instruction-driven tasks. Central to this process is the Progressive Representation Weaving (PRW) module, which dynamically routes features to specialized experts and stably integrates their outputs across stages. Experiments on editing, controllable generation, and customized generation show that CoLoGen achieves competitive or superior performance, offering a principled representational perspective for unified image generation.",
+    "authors": [
+      "YuXin Song",
+      "Yu Lu",
+      "Haoyuan Sun",
+      "Huanjin Yao",
+      "Fanglong Liu",
+      "Yifan Sun",
+      "Haocheng Feng",
+      "Hang Zhou",
+      "Jingdong Wang"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.22150.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.22150",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CoLoGen：渐进式学习概念-定位对偶性的统一图像生成方法",
+      "core_contribution": "本文提出了CoLoGen，一个统一的扩散模型框架，旨在解决统一条件图像生成中概念理解与空间定位之间的表征冲突问题。其主要贡献是通过渐进式学习策略，协调并融合这两种异质的表示能力，为统一图像生成提供了一个原则性的表征视角。",
+      "method": "CoLoGen采用分阶段的课程学习策略：首先分别构建核心的概念理解能力和空间定位能力；然后使这些能力适应多样的视觉条件；最后在复杂指令驱动任务中精细化它们的协同作用。其核心是渐进式表征编织（PRW）模块，该模块能动态地将特征路由到专门的专家网络，并在不同阶段稳定地整合它们的输出。",
+      "findings": "在图像编辑、可控生成和定制化生成等多个任务上的实验表明，CoLoGen取得了具有竞争力或更优的性能。这验证了通过渐进式协调概念与定位对偶性，能够有效缓解表征冲突，从而实现更强大、更统一的图像生成。"
+    }
+  },
+  {
+    "id": "2602.21591",
+    "title": "CADC: Content Adaptive Diffusion-Based Generative Image Compression",
+    "abstract": "Diffusion-based generative image compression has demonstrated remarkable potential for achieving realistic reconstruction at ultra-low bitrates. The key to unlocking this potential lies in making the entire compression process content-adaptive, ensuring that the encoder's representation and the decoder's generative prior are dynamically aligned with the semantic and structural characteristics of the input image. However, existing methods suffer from three critical limitations that prevent effective content adaptation. First, isotropic quantization applies a uniform quantization step, failing to adapt to the spatially varying complexity of image content and creating a misalignment with the diffusion model's noise-dependent prior. Second, the information concentration bottleneck -- arising from the dimensional mismatch between the high-dimensional noisy latent and the diffusion decoder's fixed input -- prevents the model from adaptively preserving essential semantic information in the primary channels. Third, existing textual conditioning strategies either need significant textual bitrate overhead or rely on generic, content-agnostic textual prompts, thereby failing to provide adaptive semantic guidance efficiently. To overcome these limitations, we propose a content-adaptive diffusion-based image codec with three technical innovations: 1) an Uncertainty-Guided Adaptive Quantization method that learns spatial uncertainty maps to adaptively align quantization distortion with content characteristics; 2) an Auxiliary Decoder-Guided Information Concentration method that uses a lightweight auxiliary decoder to enforce content-aware information preservation in the primary latent channels; and 3) a Bitrate-Free Adaptive Textual Conditioning method that derives content-aware textual descriptions from the auxiliary reconstructed image, enabling semantic guidance without bitrate cost.",
+    "authors": [
+      "Xihua Sheng",
+      "Lingyu Zhu",
+      "Tianyu Zhang",
+      "Dong Liu",
+      "Shiqi Wang",
+      "Jing Wang"
+    ],
+    "published": "2026-02-25",
+    "updated": "2026-02-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21591.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21591",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CADC：基于内容自适应扩散模型的生成式图像压缩",
+      "core_contribution": "提出了一种内容自适应的扩散模型图像编解码器，通过三项技术创新解决了现有方法在量化、信息集中和语义引导方面的适应性不足问题，实现了在极低码率下更高质量的重建。",
+      "method": "1) 提出不确定性引导的自适应量化方法，通过学习空间不确定性图使量化失真与图像内容特征自适应对齐；2) 设计辅助解码器引导的信息集中方法，利用轻量级辅助解码器确保主要潜在通道中内容感知的信息保留；3) 开发免码率自适应文本条件方法，从辅助重建图像中提取内容感知的文本描述，实现无需码率开销的语义引导。",
+      "findings": "该方法在极低码率下显著提升了重建图像的视觉质量和语义保真度，通过内容自适应机制有效克服了均匀量化、信息瓶颈和文本提示效率低下三大限制，实现了扩散先验与编码表示的动态对齐。"
+    }
+  },
+  {
+    "id": "2602.21416",
+    "title": "WildSVG: Towards Reliable SVG Generation Under Real-Word Conditions",
+    "abstract": "We introduce the task of SVG extraction, which consists in translating specific visual inputs from an image into scalable vector graphics. Existing multimodal models achieve strong results when generating SVGs from clean renderings or textual descriptions, but they fall short in real-world scenarios where natural images introduce noise, clutter, and domain shifts. A central challenge in this direction is the lack of suitable benchmarks. To address this need, we introduce the WildSVG Benchmark, formed by two complementary datasets: Natural WildSVG, built from real images containing company logos paired with their SVG annotations, and Synthetic WildSVG, which blends complex SVG renderings into real scenes to simulate difficult conditions. Together, these resources provide the first foundation for systematic benchmarking SVG extraction. We benchmark state-of-the-art multimodal models and find that current approaches perform well below what is needed for reliable SVG extraction in real scenarios. Nonetheless, iterative refinement methods point to a promising path forward, and model capabilities are steadily improving",
+    "authors": [
+      "Marco Terral",
+      "Haotian Zhang",
+      "Tianyang Zhang",
+      "Meng Lin",
+      "Xiaoqing Xie",
+      "Haoran Dai",
+      "Darsh Kaushik",
+      "Pai Peng",
+      "Nicklas Scharpff",
+      "David Vazquez",
+      "Joan Rodriguez"
+    ],
+    "published": "2026-02-24",
+    "updated": "2026-02-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.21416.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.21416",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "WildSVG：面向真实世界条件下的可靠SVG生成",
+      "core_contribution": "本文提出了SVG提取任务，并构建了首个用于系统评估真实场景下SVG生成性能的基准数据集WildSVG Benchmark，填补了该领域缺乏合适评估基准的空白。",
+      "method": "作者构建了由两个互补数据集组成的WildSVG Benchmark：一是基于真实图像（包含公司标志及其SVG标注）构建的Natural WildSVG；二是通过将复杂SVG渲染合成到真实场景中以模拟困难条件的Synthetic WildSVG。在此基础上，对当前先进的多模态模型进行了系统性基准测试。",
+      "findings": "实验表明，现有方法在真实场景（存在噪声、杂乱和领域偏移）下的SVG提取性能远未达到可靠应用的水平。然而，迭代优化方法显示出有前景的发展路径，且模型能力正在稳步提升。"
+    }
+  }
+]
