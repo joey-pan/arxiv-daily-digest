@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2602.23438",
+    "title": "DesignSense: A Human Preference Dataset and Reward Modeling Framework for Graphic Layout Generation",
+    "abstract": "Graphic layouts serve as an important and engaging medium for visual communication across different channels. While recent layout generation models have demonstrated impressive capabilities, they frequently fail to align with nuanced human aesthetic judgment. Existing preference datasets and reward models trained on text-to-image generation do not generalize to layout evaluation, where the spatial arrangement of identical elements determines quality. To address this critical gap, we introduce DesignSense-10k, a large-scale dataset of 10,235 human-annotated preference pairs for graphic layout evaluation. We propose a five-stage curation pipeline that generates visually coherent layout transformations across diverse aspect ratios, using semantic grouping, layout prediction, filtering, clustering, and VLM-based refinement to produce high-quality comparison pairs. Human preferences are annotated using a 4-class scheme (left, right, both good, both bad) to capture subjective ambiguity. Leveraging this dataset, we train DesignSense, a vision-language model-based classifier that substantially outperforms existing open-source and proprietary models across comprehensive evaluation metrics (54.6% improvement in Macro F1 over the strongest proprietary baseline). Our analysis shows that frontier VLMs remain unreliable overall and fail catastrophically on the full four-class task, underscoring the need for specialized, preference-aware models. Beyond the dataset, our reward model DesignSense yields tangible downstream gains in layout generation. Using our judge during RL based training improves generator win rate by about 3%, while inference-time scaling, which involves generating multiple candidates and selecting the best one, provides a 3.6% improvement. These results highlight the practical impact of specialized, layout-aware preference modeling on real-world layout generation quality.",
+    "authors": [
+      "Varun Gopal",
+      "Rishabh Jain",
+      "Aradhya Mathur",
+      "Nikitha SR",
+      "Sohan Patnaik",
+      "Sudhir Yarram",
+      "Mayur Hemani",
+      "Balaji Krishnamurthy",
+      "Mausoom Sarkar"
+    ],
+    "published": "2026-02-26",
+    "updated": "2026-02-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.23438.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.23438",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "DesignSense：用于平面布局生成的人类偏好数据集与奖励建模框架",
+      "core_contribution": "本文提出了一个大规模、高质量的人类偏好数据集DesignSense-10k，并基于此训练了一个专门用于评估平面布局质量的视觉-语言奖励模型，显著提升了布局生成与人类审美偏好的对齐能力。",
+      "method": "研究团队设计了一个五阶段数据构建流程：通过语义分组、布局预测、过滤、聚类和基于视觉-语言模型（VLM）的优化，生成了多样化的布局变换对。随后，采用四分类标注方案（左优、右优、均好、均差）收集人类偏好数据。最后，利用该数据集训练了一个基于视觉-语言架构的分类器作为奖励模型。",
+      "findings": "1. 训练出的奖励模型DesignSense在综合评估指标上大幅超越现有开源和专有模型（在Macro F1上比最强的专有基线提升54.6%）。2. 前沿的通用视觉-语言模型在布局偏好评估任务上整体不可靠，尤其在四分类任务上表现严重不足。3. 将该奖励模型用于强化学习训练，可将生成器的胜率提升约3%；用于推理时多候选排序选择，可带来3.6%的性能提升，证明了其在提升实际布局生成质量方面的实用价值。"
+    }
+  },
+  {
+    "id": "2602.24233",
+    "title": "Enhancing Spatial Understanding in Image Generation via Reward Modeling",
+    "abstract": "Recent progress in text-to-image generation has greatly advanced visual fidelity and creativity, but it has also imposed higher demands on prompt complexity-particularly in encoding intricate spatial relationships. In such cases, achieving satisfactory results often requires multiple sampling attempts. To address this challenge, we introduce a novel method that strengthens the spatial understanding of current image generation models. We first construct the SpatialReward-Dataset with over 80k preference pairs. Building on this dataset, we build SpatialScore, a reward model designed to evaluate the accuracy of spatial relationships in text-to-image generation, achieving performance that even surpasses leading proprietary models on spatial evaluation. We further demonstrate that this reward model effectively enables online reinforcement learning for the complex spatial generation. Extensive experiments across multiple benchmarks show that our specialized reward model yields significant and consistent gains in spatial understanding for image generation.",
+    "authors": [
+      "Zhenyu Tang",
+      "Chaoran Feng",
+      "Yufan Deng",
+      "Jie Wu",
+      "Xiaojie Li",
+      "Rui Wang",
+      "Yunpeng Chen",
+      "Daquan Zhou"
+    ],
+    "published": "2026-02-27",
+    "updated": "2026-02-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.24233.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.24233",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过奖励建模增强图像生成的空间理解能力",
+      "core_contribution": "本文提出了一种通过奖励建模来增强文本到图像生成模型空间理解能力的新方法，并构建了一个专门评估空间关系准确性的奖励模型SpatialScore。",
+      "method": "首先，作者构建了一个包含超过8万对偏好数据的数据集SpatialReward-Dataset。基于该数据集，训练了一个专门用于评估文本到图像生成中空间关系准确性的奖励模型SpatialScore。该模型进一步被用于在线强化学习，以优化图像生成模型在复杂空间关系上的表现。",
+      "findings": "实验表明，SpatialScore奖励模型在空间关系评估上的性能甚至超过了领先的专有模型。在多个基准测试上的广泛实验证明，该方法能显著且一致地提升图像生成模型的空间理解能力。"
+    }
+  },
+  {
+    "id": "2602.23996",
+    "title": "Accelerating Masked Image Generation by Learning Latent Controlled Dynamics",
+    "abstract": "Masked Image Generation Models (MIGMs) have achieved great success, yet their efficiency is hampered by the multiple steps of bi-directional attention. In fact, there exists notable redundancy in their computation: when sampling discrete tokens, the rich semantics contained in the continuous features are lost. Some existing works attempt to cache the features to approximate future features. However, they exhibit considerable approximation error under aggressive acceleration rates. We attribute this to their limited expressivity and the failure to account for sampling information. To fill this gap, we propose to learn a lightweight model that incorporates both previous features and sampled tokens, and regresses the average velocity field of feature evolution. The model has moderate complexity that suffices to capture the subtle dynamics while keeping lightweight compared to the original base model. We apply our method, MIGM-Shortcut, to two representative MIGM architectures and tasks. In particular, on the state-of-the-art Lumina-DiMOO, it achieves over 4x acceleration of text-to-image generation while maintaining quality, significantly pushing the Pareto frontier of masked image generation. The code and model weights are available at https://github.com/Kaiwen-Zhu/MIGM-Shortcut.",
+    "authors": [
+      "Kaiwen Zhu",
+      "Quansheng Zeng",
+      "Yuandong Pu",
+      "Shuo Cao",
+      "Xiaohui Li",
+      "Yi Xin",
+      "Qi Qin",
+      "Jiayang Li",
+      "Yu Qiao",
+      "Jinjin Gu",
+      "Yihao Liu"
+    ],
+    "published": "2026-02-27",
+    "updated": "2026-02-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.23996.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.23996",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过学习潜在控制动力学加速掩码图像生成",
+      "core_contribution": "提出了一种名为MIGM-Shortcut的轻量级模型，通过回归特征演化的平均速度场，在保持生成质量的同时显著加速掩码图像生成过程。",
+      "method": "该方法针对现有掩码图像生成模型在采样离散标记时丢失连续特征语义的问题，设计了一个结合先前特征和已采样标记的轻量模型。该模型具有适中的复杂度，既能捕捉细微的动力学特征，又比原始基础模型更轻量。它通过学习特征演化的平均速度场来预测未来特征，从而减少冗余计算。",
+      "findings": "在先进的Lumina-DiMOO等模型上应用MIGM-Shortcut后，文本到图像生成任务实现了超过4倍的加速，且生成质量得以保持，显著提升了掩码图像生成的帕累托前沿。"
+    }
+  },
+  {
+    "id": "2602.23980",
+    "title": "Venus: Benchmarking and Empowering Multimodal Large Language Models for Aesthetic Guidance and Cropping",
+    "abstract": "The widespread use of smartphones has made photography ubiquitous, yet a clear gap remains between ordinary users and professional photographers, who can identify aesthetic issues and provide actionable shooting guidance during capture. We define this capability as aesthetic guidance (AG) -- an essential but largely underexplored domain in computational aesthetics. Existing multimodal large language models (MLLMs) primarily offer overly positive feedback, failing to identify issues or provide actionable guidance. Without AG capability, they cannot effectively identify distracting regions or optimize compositional balance, thus also struggling in aesthetic cropping, which aims to refine photo composition through reframing after capture. To address this, we introduce AesGuide, the first large-scale AG dataset and benchmark with 10,748 photos annotated with aesthetic scores, analyses, and guidance. Building upon it, we propose Venus, a two-stage framework that first empowers MLLMs with AG capability through progressively complex aesthetic questions and then activates their aesthetic cropping power via CoT-based rationales. Extensive experiments show that Venus substantially improves AG capability and achieves state-of-the-art (SOTA) performance in aesthetic cropping, enabling interpretable and interactive aesthetic refinement across both stages of photo creation. Code is available at https://github.com/PKU-ICST-MIPL/Venus_CVPR2026.",
+    "authors": [
+      "Tianxiang Du",
+      "Hulingxiao He",
+      "Yuxin Peng"
+    ],
+    "published": "2026-02-27",
+    "updated": "2026-02-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.23980.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.23980",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Venus：为多模态大语言模型提供美学引导与裁剪的基准测试与能力增强",
+      "core_contribution": "本文提出了首个大规模美学引导数据集AesGuide及基准测试，并在此基础上开发了Venus框架，首次赋予多模态大语言模型识别美学问题、提供拍摄指导的能力，并显著提升了其在美学裁剪任务上的性能。",
+      "method": "方法分为两个阶段：首先，通过渐进式复杂的美学问题（从评分、分析到具体指导）对多模态大语言模型进行训练，赋予其美学引导能力；然后，利用基于思维链的推理机制，激活模型的美学裁剪能力，使其能够根据美学分析进行可解释的构图优化。整个框架建立在包含10,748张带有美学评分、分析和指导标注的AesGuide数据集之上。",
+      "findings": "实验表明，Venus框架显著提升了多模态大语言模型的美学引导能力，使其能够提供具体、可操作的建议，而非仅给出笼统的正面反馈。同时，该框架在美学裁剪任务上达到了最先进的性能，实现了在拍摄和后期裁剪两个阶段均可进行可解释、交互式美学优化的目标。"
+    }
+  },
+  {
+    "id": "2602.23783",
+    "title": "Diffusion Probe: Generated Image Result Prediction Using CNN Probes",
+    "abstract": "Text-to-image (T2I) diffusion models lack an efficient mechanism for early quality assessment, leading to costly trial-and-error in multi-generation scenarios such as prompt iteration, agent-based generation, and flow-grpo. We reveal a strong correlation between early diffusion cross-attention distributions and final image quality. Based on this finding, we introduce Diffusion Probe, a framework that leverages internal cross-attention maps as predictive signals. We design a lightweight predictor that maps statistical properties of early-stage cross-attention extracted from initial denoising steps to the final image's overall quality. This enables accurate forecasting of image quality across diverse evaluation metrics long before full synthesis is complete. We validate Diffusion Probe across a wide range of settings. On multiple T2I models, across early denoising windows, resolutions, and quality metrics, it achieves strong correlation (PCC > 0.7) and high classification performance (AUC-ROC > 0.9). Its reliability translates into practical gains. By enabling early quality-aware decisions in workflows such as prompt optimization, seed selection, and accelerated RL training, the probe supports more targeted sampling and avoids computation on low-potential generations. This reduces computational overhead while improving final output quality. Diffusion Probe is model-agnostic, efficient, and broadly applicable, offering a practical solution for improving T2I generation efficiency through early quality prediction.",
+    "authors": [
+      "Benlei Cui",
+      "Bukun Huang",
+      "Zhizeng Ye",
+      "Xuemei Dong",
+      "Tuo Chen",
+      "Hui Xue",
+      "Dingkang Yang",
+      "Longtao Huang",
+      "Jingqun Tang",
+      "Haiwen Hong"
+    ],
+    "published": "2026-02-27",
+    "updated": "2026-02-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.23783.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.23783",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散探针：使用CNN探针预测生成图像结果",
+      "core_contribution": "本文提出Diffusion Probe框架，首次揭示了早期扩散交叉注意力分布与最终图像质量之间的强相关性，并利用该相关性实现了在图像完全合成前对其质量的早期准确预测。",
+      "method": "该方法基于一个关键发现：文本到图像扩散模型在早期去噪步骤中的内部交叉注意力图与最终图像质量高度相关。研究者设计了一个轻量级预测器，该预测器从初始去噪步骤中提取交叉注意力图的统计特征，并将其映射到最终图像的整体质量评分上。该框架是模型无关的，无需修改底层扩散模型。",
+      "findings": "实验表明，Diffusion Probe在多种文本到图像模型、不同的早期去噪窗口、分辨率及质量评估指标下均表现优异，预测结果与最终质量呈现强相关性（PCC > 0.7），并具有高分类性能（AUC-ROC > 0.9）。该工具在实际工作流（如提示词优化、种子选择）中应用，能通过早期质量感知决策实现更有针对性的采样，避免对低潜力生成结果的计算浪费，从而在降低计算开销的同时提升最终输出质量。"
+    }
+  }
+]
