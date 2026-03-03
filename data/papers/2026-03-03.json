@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2603.00763",
+    "title": "Analyzing and Improving Fast Sampling of Text-to-Image Diffusion Models",
+    "abstract": "Text-to-image diffusion models have achieved unprecedented success but still struggle to produce high-quality results under limited sampling budgets. Existing training-free sampling acceleration methods are typically developed independently, leaving the overall performance and compatibility among these methods unexplored. In this paper, we bridge this gap by systematically elucidating the design space, and our comprehensive experiments identify the sampling time schedule as the most pivotal factor. Inspired by the geometric properties of diffusion models revealed through the Frenet-Serret formulas, we propose constant total rotation schedule (TORS), a scheduling strategy that ensures uniform geometric variation along the sampling trajectory. TORS outperforms previous training-free acceleration methods and produces high-quality images with 10 sampling steps on Flux.1-Dev and Stable Diffusion 3.5. Extensive experiments underscore the adaptability of our method to unseen models, hyperparameters, and downstream applications.",
+    "authors": [
+      "Zhenyu Zhou",
+      "Defang Chen",
+      "Siwei Lyu",
+      "Chun Chen",
+      "Can Wang"
+    ],
+    "published": "2026-02-28",
+    "updated": "2026-02-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.00763.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.00763",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "分析与改进文生图扩散模型的快速采样方法",
+      "core_contribution": "本文系统性地阐明了训练无关的采样加速方法的设计空间，并提出了一种基于几何特性的新型采样时间调度策略——恒定总旋转调度（TORS），显著提升了有限采样步数下的图像生成质量。",
+      "method": "研究首先通过全面实验分析，发现采样时间调度是影响性能的关键因素。随后，基于弗勒内-塞雷公式揭示的扩散模型轨迹几何特性，提出TORS调度策略。该方法通过确保采样轨迹上的几何变化均匀，优化采样过程，无需额外训练即可实现加速。",
+      "findings": "TORS在Flux.1-Dev和Stable Diffusion 3.5等模型上仅用10步采样即可生成高质量图像，性能优于以往训练无关的加速方法。大量实验证明该方法对未见过的模型、超参数及下游任务具有良好的适应性和泛化能力。"
+    }
+  },
+  {
+    "id": "2603.00607",
+    "title": "IdGlow: Dynamic Identity Modulation for Multi-Subject Generation",
+    "abstract": "Multi-subject image generation requires seamlessly harmonizing multiple reference identities within a coherent scene. However, existing methods relying on rigid spatial masks or localized attention often struggle with the \"stability-plasticity dilemma,\" particularly failing in tasks that require complex structural deformations, such as identity-preserving age transformation. To address this, we present IdGlow, a mask-free, progressive two-stage framework built upon Flow Matching diffusion models. In the supervised fine-tuning (SFT) stage, we introduce task-adaptive timestep scheduling aligned with diffusion generative dynamics: a linear decay schedule that progressively relaxes constraints for natural group composition, and a temporal gating mechanism that concentrates identity injection within a critical semantic window, successfully preserving adult facial semantics without overriding child-like anatomical structures. To resolve attribute leakage and semantic ambiguity without explicit layout inputs, we further integrate a badcase-driven Vision-Language Model (VLM) for precise, context-aware prompt synthesis. In the second stage, we design a Fine-Grained Group-Level Direct Preference Optimization (DPO) with a weighted margin formulation to simultaneously eliminate multi-subject artifacts, elevate texture harmony, and recalibrate identity fidelity towards real-world distributions. Extensive experiments on two challenging benchmarks -- direct multi-person fusion and age-transformed group generation -- demonstrate that IdGlow fundamentally mitigates the stability-plasticity conflict, achieving a superior Pareto balance between state-of-the-art facial fidelity and commercial-grade aesthetic quality.",
+    "authors": [
+      "Honghao Cai",
+      "Xiangyuan Wang",
+      "Yunhao Bai",
+      "Tianze Zhou",
+      "Sijie Xu",
+      "Yuyang Hao",
+      "Zezhou Cui",
+      "Yuyuan Yang",
+      "Wei Zhu",
+      "Yibo Chen",
+      "Xu Tang",
+      "Yao Hu",
+      "Zhen Li"
+    ],
+    "published": "2026-02-28",
+    "updated": "2026-02-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.00607.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.00607",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "IdGlow：面向多主体生成的动态身份调制方法",
+      "core_contribution": "提出了IdGlow框架，通过动态身份调制策略从根本上缓解了多主体图像生成中的“稳定性-可塑性困境”，在保持身份保真度与实现自然场景融合之间取得了优越的帕累托平衡。",
+      "method": "方法基于流匹配扩散模型构建了一个无掩码、渐进式的两阶段框架：1）在监督微调阶段，设计了与扩散生成动力学对齐的任务自适应时间步调度策略，包括逐步放松约束的线性衰减调度和集中于关键语义窗口的时间门控机制；2）引入基于坏例驱动的视觉语言模型进行精准的上下文感知提示合成；3）在第二阶段设计了细粒度组级直接偏好优化，采用加权边际公式来消除多主体伪影并提升纹理和谐度。",
+      "findings": "在直接多人融合和年龄变换群体生成两个挑战性基准测试上的实验表明，IdGlow能够有效解决属性泄漏和语义模糊问题，在保持成人面部语义的同时不覆盖儿童解剖结构，实现了最先进的面部保真度与商业级美学质量的统一。"
+    }
+  },
+  {
+    "id": "2603.00519",
+    "title": "Jano: Adaptive Diffusion Generation with Early-stage Convergence Awareness",
+    "abstract": "Diffusion models have achieved remarkable success in generative AI, yet their computational efficiency remains a significant challenge, particularly for Diffusion Transformers (DiTs) requiring intensive full-attention computation. While existing acceleration approaches focus on content-agnostic uniform optimization strategies, we observe that different regions in generated content exhibit heterogeneous convergence patterns during the denoising process. We present Jano, a training-free framework that leverages this insight for efficient region-aware generation. Jano introduces an early-stage complexity recognition algorithm that accurately identifies regional convergence requirements within initial denoising steps, coupled with an adaptive token scheduling runtime that optimizes computational resource allocation. Through comprehensive evaluation on state-of-the-art models, Jano achieves substantial acceleration (average 2.0 times speedup, up to 2.4 times) while preserving generation quality. Our work challenges conventional uniform processing assumptions and provides a practical solution for accelerating large-scale content generation. The source code of our implementation is available at https://github.com/chen-yy20/Jano.",
+    "authors": [
+      "Yuyang Chen",
+      "Linqian Zeng",
+      "Yijin ZHou",
+      "Hengjie Li",
+      "Jidong Zhai"
+    ],
+    "published": "2026-02-28",
+    "updated": "2026-02-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.00519.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.00519",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Jano：具有早期收敛感知的自适应扩散生成",
+      "core_contribution": "本文提出了Jano，一个无需训练的高效区域感知生成框架，通过观察去噪过程中不同区域具有异质收敛模式的特点，挑战了传统均匀处理假设，实现了在保持生成质量的同时显著加速扩散模型。",
+      "method": "Jano首先设计了一个早期复杂度识别算法，能够在初始去噪步骤中准确识别不同区域的收敛需求；然后结合一个自适应令牌调度运行时系统，根据区域收敛的难易程度动态优化计算资源的分配，避免对已收敛区域进行不必要的计算。",
+      "findings": "在多个先进模型上的综合评估表明，Jano实现了显著的加速效果（平均加速2.0倍，最高可达2.4倍），同时保持了与原始模型相当的生成质量。这为大规模内容生成提供了一个实用的高效解决方案。"
+    }
+  },
+  {
+    "id": "2603.00483",
+    "title": "RAISE: Requirement-Adaptive Evolutionary Refinement for Training-Free Text-to-Image Alignment",
+    "abstract": "Recent text-to-image (T2I) diffusion models achieve remarkable realism, yet faithful prompt-image alignment remains challenging, particularly for complex prompts with multiple objects, relations, and fine-grained attributes. Existing training-free inference-time scaling methods rely on fixed iteration budgets that cannot adapt to prompt difficulty, while reflection-tuned models require carefully curated reflection datasets and extensive joint fine-tuning of diffusion and vision-language models, often overfitting to reflection paths data and lacking transferability across models. We introduce RAISE (Requirement-Adaptive Self-Improving Evolution), a training-free, requirement-driven evolutionary framework for adaptive T2I generation. RAISE formulates image generation as a requirement-driven adaptive scaling process, evolving a population of candidates at inference time through a diverse set of refinement actions-including prompt rewriting, noise resampling, and instructional editing. Each generation is verified against a structured checklist of requirements, enabling the system to dynamically identify unsatisfied items and allocate further computation only where needed. This achieves adaptive test-time scaling that aligns computational effort with semantic query complexity. On GenEval and DrawBench, RAISE attains state-of-the-art alignment (0.94 overall GenEval) while incurring fewer generated samples (reduced by 30-40%) and VLM calls (reduced by 80%) than prior scaling and reflection-tuned baselines, demonstrating efficient, generalizable, and model-agnostic multi-round self-improvement. Code is available at https://github.com/LiyaoJiang1998/RAISE.",
+    "authors": [
+      "Liyao Jiang",
+      "Ruichen Chen",
+      "Chao Gao",
+      "Di Niu"
+    ],
+    "published": "2026-02-28",
+    "updated": "2026-02-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.00483.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.00483",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RAISE：面向免训练文图对齐的需求自适应进化优化方法",
+      "core_contribution": "提出了RAISE，一个免训练、需求驱动的进化框架，通过自适应推理时优化实现高效的文本-图像对齐，显著减少了生成样本和视觉语言模型调用次数。",
+      "method": "该方法将图像生成建模为需求驱动的自适应优化过程，在推理时通过提示词重写、噪声重采样和指令编辑等多种优化操作进化候选图像种群，并利用结构化需求清单进行验证，动态识别未满足的需求项并仅针对性地分配计算资源。",
+      "findings": "在GenEval和DrawBench基准测试中，RAISE取得了最先进的对齐效果（GenEval综合得分0.94），同时比先前的优化方法和反射调优基线减少了30-40%的生成样本和80%的视觉语言模型调用，实现了高效、可泛化且模型无关的多轮自我优化。"
+    }
+  },
+  {
+    "id": "2602.23697",
+    "title": "Towards Source-Aware Object Swapping with Initial Noise Perturbation",
+    "abstract": "Object swapping aims to replace a source object in a scene with a reference object while preserving object fidelity, scene fidelity, and object-scene harmony. Existing methods either require per-object finetuning and slow inference or rely on extra paired data that mostly depict the same object across contexts, forcing models to rely on background cues rather than learning cross-object alignment. We propose SourceSwap, a self-supervised and source-aware framework that learns cross-object alignment. Our key insight is to synthesize high-quality pseudo pairs from any image via a frequency-separated perturbation in the initial-noise space, which alters appearance while preserving pose, coarse shape, and scene layout, requiring no videos, multi-view data, or additional images. We then train a dual U-Net with full-source conditioning and a noise-free reference encoder, enabling direct inter-object alignment, zero-shot inference without per-object finetuning, and lightweight iterative refinement. We further introduce SourceBench, a high-quality benchmark with higher resolution, more categories, and richer interactions. Experiments demonstrate that SourceSwap achieves superior fidelity, stronger scene preservation, and more natural harmony, and it transfers well to edits such as subject-driven refinement and face swapping.",
+    "authors": [
+      "Jiahui Zhan",
+      "Xianbing Sun",
+      "Xiangnan Zhu",
+      "Yikun Ji",
+      "Ruitong Liu",
+      "Liqing Zhang",
+      "Jianfu Zhang"
+    ],
+    "published": "2026-02-27",
+    "updated": "2026-02-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2602.23697.pdf",
+    "abs_url": "https://arxiv.org/abs/2602.23697",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "迈向基于初始噪声扰动的源感知物体替换",
+      "core_contribution": "提出了SourceSwap，一个自监督、源感知的框架，能够学习跨物体对齐，无需逐物体微调即可实现零样本推理；并构建了高质量基准数据集SourceBench。",
+      "method": "该方法的核心是通过在初始噪声空间进行频率分离扰动，从单张图像合成高质量的伪配对数据，从而改变物体外观但保留姿态、粗粒度形状和场景布局。训练时采用具备完整源条件机制的双U-Net架构，并配备无噪声的参考编码器，以实现直接的物体间对齐和轻量级迭代优化。",
+      "findings": "实验表明，SourceSwap在物体保真度、场景保持度和物体-场景和谐度方面均优于现有方法，能够实现更自然的替换效果。该方法还具有良好的泛化能力，可迁移至主体驱动优化和人脸替换等编辑任务。"
+    }
+  }
+]
