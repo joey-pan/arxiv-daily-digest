@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2603.05315",
+    "title": "Frequency-Aware Error-Bounded Caching for Accelerating Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) have emerged as the dominant architecture for high-quality image and video generation, yet their iterative denoising process incurs substantial computational cost during inference. Existing caching methods accelerate DiTs by reusing intermediate computations across timesteps, but they share a common limitation: treating the denoising process as uniform across time,depth, and feature dimensions. In this work, we identify three orthogonal axes of non-uniformity in DiT denoising: (1) temporal -- sensitivity to caching errors varies dramatically across the denoising trajectory; (2) depth -- consecutive caching decisions lead to cascading approximation errors; and (3) feature -- different components of the hidden state exhibit heterogeneous temporal dynamics. Based on these observations, we propose SpectralCache, a unified caching framework comprising Timestep-Aware Dynamic Scheduling (TADS), Cumulative Error Budgets (CEB), and Frequency-Decomposed Caching (FDC). On FLUX.1-schnell at 512x512 resolution, SpectralCache achieves 2.46x speedup with LPIPS 0.217 and SSIM 0.727, outperforming TeaCache (2.12x, LPIPS 0.215, SSIM 0.734) by 16% in speed while maintaining comparable quality (LPIPS difference < 1%). Our approach is training-free, plug-and-play, and compatible with existing DiT architectures.",
+    "authors": [
+      "Guandong Li"
+    ],
+    "published": "2026-03-05",
+    "updated": "2026-03-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.05315.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.05315",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向加速扩散变换器的频率感知误差有界缓存方法",
+      "core_contribution": "本文提出了SpectralCache，一个统一的缓存框架，通过识别并利用扩散变换器去噪过程中在时间、深度和特征维度上的非均匀性，实现了在保证生成质量的同时显著提升推理速度。",
+      "method": "方法基于对去噪过程非均匀性的三个观察：时间轴（对缓存误差的敏感性随去噪轨迹剧烈变化）、深度轴（连续的缓存决策会导致级联近似误差）和特征轴（隐藏状态的不同成分表现出异质的时间动态）。据此，提出了由三个组件构成的SpectralCache框架：时间感知动态调度（TADS）、累积误差预算（CEB）和频率分解缓存（FDC）。",
+      "findings": "在FLUX.1-schnell模型512x512分辨率上的实验表明，SpectralCache实现了2.46倍的加速，图像质量指标为LPIPS 0.217和SSIM 0.727。其在速度上比TeaCache（2.12倍加速）提升了16%，同时保持了可比的图像质量（LPIPS差异<1%）。该方法无需训练、即插即用，且与现有扩散变换器架构兼容。"
+    }
+  },
+  {
+    "id": "2603.05105",
+    "title": "Diff-ES: Stage-wise Structural Diffusion Pruning via Evolutionary Search",
+    "abstract": "Diffusion models have achieved remarkable success in high-fidelity image generation but remain computationally demanding due to their multi-step denoising process and large model sizes. Although prior work improves efficiency either by reducing sampling steps or by compressing model parameters, existing structured pruning approaches still struggle to balance real acceleration and image quality preservation. In particular, prior methods such as MosaicDiff rely on heuristic, manually tuned stage-wise sparsity schedules and stitch multiple independently pruned models during inference, which increases memory overhead. However, the importance of diffusion steps is highly non-uniform and model-dependent. As a result, schedules derived from simple heuristics or empirical observations often fail to generalize and may lead to suboptimal performance. To this end, we introduce \\textbf{Diff-ES}, a stage-wise structural \\textbf{Diff}usion pruning framework via \\textbf{E}volutionary \\textbf{S}earch, which optimizes the stage-wise sparsity schedule and executes it through memory-efficient weight routing without model duplication. Diff-ES divides the diffusion trajectory into multiple stages, automatically discovers an optimal stage-wise sparsity schedule via evolutionary search, and activates stage-conditioned weights dynamically without duplicating model parameters. Our framework naturally integrates with existing structured pruning methods for diffusion models including depth and width pruning. Extensive experiments on DiT and SDXL demonstrate that Diff-ES consistently achieves wall-clock speedups while incurring minimal degradation in generation quality, establishing state-of-the-art performance for structured diffusion model pruning.",
+    "authors": [
+      "Zongfang Liu",
+      "Shengkun Tang",
+      "Zongliang Wu",
+      "Xin Yuan",
+      "Zhiqiang Shen"
+    ],
+    "published": "2026-03-05",
+    "updated": "2026-03-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.05105.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.05105",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Diff-ES：通过进化搜索进行分阶段结构化扩散剪枝",
+      "core_contribution": "提出了Diff-ES框架，通过进化搜索自动优化扩散模型各阶段的剪枝稀疏度调度，并采用内存高效的权重路由机制实现加速，在保证生成质量的同时显著提升推理速度。",
+      "method": "该方法将扩散过程划分为多个阶段，利用进化搜索自动发现最优的阶段化稀疏度调度方案，而非依赖人工启发式规则。通过动态激活阶段条件权重实现剪枝，无需复制模型参数，可与现有的深度和宽度结构化剪枝方法结合。",
+      "findings": "在DiT和SDXL模型上的实验表明，Diff-ES在实现实际推理加速的同时，仅引起极小的生成质量下降，在结构化扩散模型剪枝任务中达到了最先进的性能水平。"
+    }
+  },
+  {
+    "id": "2603.04696",
+    "title": "When Denoising Becomes Unsigning: Theoretical and Empirical Analysis of Watermark Fragility Under Diffusion-Based Image Editing",
+    "abstract": "Robust invisible watermarking systems aim to embed imperceptible payloads that remain decodable after common post-processing such as JPEG compression, cropping, and additive noise. In parallel, diffusion-based image editing has rapidly matured into a default transformation layer for modern content pipelines, enabling instruction-based editing, object insertion and composition, and interactive geometric manipulation. This paper studies a subtle but increasingly consequential interaction between these trends: diffusion-based editing procedures may unintentionally compromise, and in extreme cases practically bypass, robust watermarking mechanisms that were explicitly engineered to survive conventional distortions. We develop a unified view of diffusion editors that (i) inject substantial Gaussian noise in a latent space and (ii) project back to the natural image manifold via learned denoising dynamics. Under this view, watermark payloads behave as low-energy, high-frequency signals that are systematically attenuated by the forward diffusion step and then treated as nuisance variation by the reverse generative process. We formalize this degradation using information-theoretic tools, proving that for broad classes of pixel-level watermark encoders/decoders the mutual information between the watermark payload and the edited output decays toward zero as the editing strength increases, yielding decoding error close to random guessing. We complement the theory with a realistic hypothetical experimental protocol and tables spanning representative watermarking methods and representative diffusion editors. Finally, we discuss ethical implications, responsible disclosure norms, and concrete design guidelines for watermarking schemes that remain meaningful in the era of generative transformations.",
+    "authors": [
+      "Fai Gu",
+      "Qiyu Tang",
+      "Te Wen",
+      "Emily Davis",
+      "Finn Carter"
+    ],
+    "published": "2026-03-05",
+    "updated": "2026-03-05",
+    "categories": [
+      "cs.CR",
+      "cs.MM",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.04696.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.04696",
+    "primary_category": "cs.CR",
+    "score": 85,
+    "summary": {
+      "title_zh": "当去噪变为去签名：基于扩散的图像编辑下水印脆弱性的理论与实证分析",
+      "core_contribution": "本文揭示了基于扩散的图像编辑过程会无意中破坏甚至绕过传统鲁棒水印机制的核心问题，并从信息论角度证明了水印信息在强编辑下会衰减至无法解码。",
+      "method": "研究将扩散编辑器统一视为一个在潜空间注入高斯噪声、再通过学习到的去噪动态投影回自然图像流形的过程；利用信息论工具形式化分析了水印信号在正向扩散步骤中被衰减、在反向生成过程中被视为噪声干扰的机制；并通过设计涵盖代表性水印方法和扩散编辑器的实验协议进行实证验证。",
+      "findings": "理论证明，对于广泛的像素级水印编码/解码器，水印载荷与编辑后输出之间的互信息随编辑强度增加而趋近于零，导致解码错误率接近随机猜测；实验结果表明，扩散编辑能显著降低多种鲁棒水印的解码成功率，使其在生成式变换时代面临失效风险。"
+    }
+  },
+  {
+    "id": "2603.04337",
+    "title": "Pointer-CAD: Unifying B-Rep and Command Sequences via Pointer-based Edges & Faces Selection",
+    "abstract": "Constructing computer-aided design (CAD) models is labor-intensive but essential for engineering and manufacturing. Recent advances in Large Language Models (LLMs) have inspired the LLM-based CAD generation by representing CAD as command sequences. But these methods struggle in practical scenarios because command sequence representation does not support entity selection (e.g. faces or edges), limiting its ability to support complex editing operations such as chamfer or fillet. Further, the discretization of a continuous variable during sketch and extrude operations may result in topological errors. To address these limitations, we present Pointer-CAD, a novel LLM-based CAD generation framework that leverages a pointer-based command sequence representation to explicitly incorporate the geometric information of B-rep models into sequential modeling. In particular, Pointer-CAD decomposes CAD model generation into steps, conditioning the generation of each subsequent step on both the textual description and the B-rep generated from previous steps. Whenever an operation requires the selection of a specific geometric entity, the LLM predicts a Pointer that selects the most feature-consistent candidate from the available set. Such a selection operation also reduces the quantization error in the command sequence-based representation. To support the training of Pointer-CAD, we develop a data annotation pipeline that produces expert-level natural language descriptions and apply it to build a dataset of approximately 575K CAD models. Extensive experimental results demonstrate that Pointer-CAD effectively supports the generation of complex geometric structures and reduces segmentation error to an extremely low level, achieving a significant improvement over prior command sequence methods, thereby significantly mitigating the topological inaccuracies introduced by quantization error.",
+    "authors": [
+      "Dacheng Qi",
+      "Chenyu Wang",
+      "Jingwei Xu",
+      "Tianzhe Chu",
+      "Zibo Zhao",
+      "Wen Liu",
+      "Wenrui Ding",
+      "Yi Ma",
+      "Shenghua Gao"
+    ],
+    "published": "2026-03-04",
+    "updated": "2026-03-04",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.04337.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.04337",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Pointer-CAD：通过基于指针的边与面选择统一B-Rep与命令序列",
+      "core_contribution": "提出了一种新颖的基于大语言模型的CAD生成框架Pointer-CAD，通过引入基于指针的命令序列表示，将B-rep模型的几何信息显式地整合到序列建模中，有效解决了传统命令序列方法无法支持实体选择和存在量化误差的问题。",
+      "method": "Pointer-CAD将CAD模型生成分解为多步骤过程，每一步的生成都依赖于文本描述和上一步生成的B-rep模型。当操作需要选择特定几何实体（如边或面）时，大语言模型会预测一个指针，从可用集合中选择特征最一致的候选实体。该方法还开发了一个数据标注流程，用于生成专业级的自然语言描述，并构建了一个包含约57.5万个CAD模型的数据集以支持训练。",
+      "findings": "实验结果表明，Pointer-CAD能够有效支持复杂几何结构的生成，并将分割错误降至极低水平。相比先前的命令序列方法，它取得了显著改进，从而大幅减轻了由量化误差引起的拓扑不准确问题。"
+    }
+  },
+  {
+    "id": "2603.04307",
+    "title": "Dual Diffusion Models for Multi-modal Guided 3D Avatar Generation",
+    "abstract": "Generating high-fidelity 3D avatars from text or image prompts is highly sought after in virtual reality and human-computer interaction. However, existing text-driven methods often rely on iterative Score Distillation Sampling (SDS) or CLIP optimization, which struggle with fine-grained semantic control and suffer from excessively slow inference. Meanwhile, image-driven approaches are severely bottlenecked by the scarcity and high acquisition cost of high-quality 3D facial scans, limiting model generalization. To address these challenges, we first construct a novel, large-scale dataset comprising over 100,000 pairs across four modalities: fine-grained textual descriptions, in-the-wild face images, high-quality light-normalized texture UV maps, and 3D geometric shapes. Leveraging this comprehensive dataset, we propose PromptAvatar, a framework featuring dual diffusion models. Specifically, it integrates a Texture Diffusion Model (TDM) that supports flexible multi-condition guidance from text and/or image prompts, alongside a Geometry Diffusion Model (GDM) guided by text prompts. By learning the direct mapping from multi-modal prompts to 3D representations, PromptAvatar eliminates the need for time-consuming iterative optimization, successfully generating high-fidelity, shading-free 3D avatars in under 10 seconds. Extensive quantitative and qualitative experiments demonstrate that our method significantly outperforms existing state-of-the-art approaches in generation quality, fine-grained detail alignment, and computational efficiency.",
+    "authors": [
+      "Hong Li",
+      "Yutang Feng",
+      "Minqi Meng",
+      "Yichen Yang",
+      "Xuhui Liu",
+      "Baochang Zhang"
+    ],
+    "published": "2026-03-04",
+    "updated": "2026-03-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.04307.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.04307",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于多模态引导三维虚拟人生成的双重扩散模型",
+      "core_contribution": "提出了PromptAvatar框架，通过双重扩散模型实现了从文本或图像提示到高质量、无光照三维虚拟人的快速直接生成，解决了现有方法在细粒度语义控制和推理速度上的瓶颈。",
+      "method": "首先构建了一个包含细粒度文本描述、野外人脸图像、高质量归一化纹理UV贴图和三维几何形状四种模态的大规模数据集。基于此，设计了包含纹理扩散模型和几何扩散模型的双重扩散模型框架：纹理扩散模型支持文本和/或图像的多条件引导，几何扩散模型则由文本提示引导，共同学习从多模态提示到三维表示的端到端映射。",
+      "findings": "实验表明，该方法能在10秒内生成高保真、无光照的三维虚拟人，在生成质量、细粒度细节对齐和计算效率方面显著优于现有先进方法，无需耗时的迭代优化过程。"
+    }
+  }
+]
