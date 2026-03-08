@@ -1,0 +1,165 @@
+[
+  {
+    "id": "2603.04239",
+    "title": "DiverseDiT: Towards Diverse Representation Learning in Diffusion Transformers",
+    "abstract": "Recent breakthroughs in Diffusion Transformers (DiTs) have revolutionized the field of visual synthesis due to their superior scalability. To facilitate DiTs' capability of capturing meaningful internal representations, recent works such as REPA incorporate external pretrained encoders for representation alignment. However, the underlying mechanisms governing representation learning within DiTs are not well understood. To this end, we first systematically investigate the representation dynamics of DiTs. Through analyzing the evolution and influence of internal representations under various settings, we reveal that representation diversity across blocks is a crucial factor for effective learning. Based on this key insight, we propose DiverseDiT, a novel framework that explicitly promotes representation diversity. DiverseDiT incorporates long residual connections to diversify input representations across blocks and a representation diversity loss to encourage blocks to learn distinct features. Extensive experiments on ImageNet 256x256 and 512x512 demonstrate that our DiverseDiT yields consistent performance gains and convergence acceleration when applied to different backbones with various sizes, even when tested on the challenging one-step generation setting. Furthermore, we show that DiverseDiT is complementary to existing representation learning techniques, leading to further performance gains. Our work provides valuable insights into the representation learning dynamics of DiTs and offers a practical approach for enhancing their performance.",
+    "authors": [
+      "Mengping Yang",
+      "Zhiyu Tan",
+      "Binglei Li",
+      "Xiaomeng Yang",
+      "Hesen Chen",
+      "Hao Li"
+    ],
+    "published": "2026-03-04",
+    "updated": "2026-03-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.04239.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.04239",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DiverseDiT：迈向扩散变换器中的多样化表征学习",
+      "core_contribution": "本文揭示了扩散变换器（DiTs）中跨模块表征多样性是影响学习效果的关键因素，并提出了一个名为DiverseDiT的新框架，通过显式促进表征多样性来提升模型性能与收敛速度。",
+      "method": "首先，作者系统分析了DiTs内部表征的动态演变过程，发现不同模块间表征的多样性对有效学习至关重要。基于此，DiverseDiT引入了长残差连接，使各模块的输入表征多样化；同时设计了一个表征多样性损失函数，鼓励不同模块学习具有区分性的特征。该方法可灵活应用于不同规模和架构的DiT骨干网络。",
+      "findings": "在ImageNet 256×256和512×512上的实验表明，DiverseDiT在不同规模的骨干网络上均能带来一致的性能提升和收敛加速，即使在极具挑战性的一步生成设定下也有效。此外，DiverseDiT与现有的表征学习技术具有互补性，结合后可获得进一步的性能增益。"
+    }
+  },
+  {
+    "id": "2603.03281",
+    "title": "CFG-Ctrl: Control-Based Classifier-Free Diffusion Guidance",
+    "abstract": "Classifier-Free Guidance (CFG) has emerged as a central approach for enhancing semantic alignment in flow-based diffusion models. In this paper, we explore a unified framework called CFG-Ctrl, which reinterprets CFG as a control applied to the first-order continuous-time generative flow, using the conditional-unconditional discrepancy as an error signal to adjust the velocity field. From this perspective, we summarize vanilla CFG as a proportional controller (P-control) with fixed gain, and typical follow-up variants develop extended control-law designs derived from it. However, existing methods mainly rely on linear control, inherently leading to instability, overshooting, and degraded semantic fidelity especially on large guidance scales. To address this, we introduce Sliding Mode Control CFG (SMC-CFG), which enforces the generative flow toward a rapidly convergent sliding manifold. Specifically, we define an exponential sliding mode surface over the semantic prediction error and introduce a switching control term to establish nonlinear feedback-guided correction. Moreover, we provide a Lyapunov stability analysis to theoretically support finite-time convergence. Experiments across text-to-image generation models including Stable Diffusion 3.5, Flux, and Qwen-Image demonstrate that SMC-CFG outperforms standard CFG in semantic alignment and enhances robustness across a wide range of guidance scales. Project Page: https://hanyang-21.github.io/CFG-Ctrl",
+    "authors": [
+      "Hanyang Wang",
+      "Yiyang Liu",
+      "Jiawei Chi",
+      "Fangfu Liu",
+      "Ran Xue",
+      "Yueqi Duan"
+    ],
+    "published": "2026-03-03",
+    "updated": "2026-03-03",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.03281.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.03281",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CFG-Ctrl：基于控制理论的无分类器扩散引导",
+      "core_contribution": "本文提出了一个统一框架CFG-Ctrl，将无分类器引导（CFG）重新解释为对生成流的一阶控制问题，并基于此设计了具有非线性反馈的滑模控制方法（SMC-CFG），以解决现有线性控制方法的不稳定和语义保真度下降问题。",
+      "method": "该方法将传统CFG视为固定增益的比例控制器（P-control），并通过定义基于语义预测误差的指数滑模面，引入切换控制项来建立非线性反馈校正机制，从而强制生成流向快速收敛的滑模流形运动。此外，研究还提供了李雅普诺夫稳定性分析，从理论上证明了有限时间收敛性。",
+      "findings": "在Stable Diffusion 3.5、Flux和Qwen-Image等文本到图像生成模型上的实验表明，SMC-CFG在语义对齐方面优于标准CFG，并在大范围的引导尺度上表现出更强的鲁棒性，有效缓解了不稳定和过冲问题。"
+    }
+  },
+  {
+    "id": "2603.03276",
+    "title": "Beyond Language Modeling: An Exploration of Multimodal Pretraining",
+    "abstract": "The visual world offers a critical axis for advancing foundation models beyond language. Despite growing interest in this direction, the design space for native multimodal models remains opaque. We provide empirical clarity through controlled, from-scratch pretraining experiments, isolating the factors that govern multimodal pretraining without interference from language pretraining. We adopt the Transfusion framework, using next-token prediction for language and diffusion for vision, to train on diverse data including text, video, image-text pairs, and even action-conditioned video. Our experiments yield four key insights: (i) Representation Autoencoder (RAE) provides an optimal unified visual representation by excelling at both visual understanding and generation; (ii) visual and language data are complementary and yield synergy for downstream capabilities; (iii) unified multimodal pretraining leads naturally to world modeling, with capabilities emerging from general training; and (iv) Mixture-of-Experts (MoE) enables efficient and effective multimodal scaling while naturally inducing modality specialization. Through IsoFLOP analysis, we compute scaling laws for both modalities and uncover a scaling asymmetry: vision is significantly more data-hungry than language. We demonstrate that the MoE architecture harmonizes this scaling asymmetry by providing the high model capacity required by language while accommodating the data-intensive nature of vision, paving the way for truly unified multimodal models.",
+    "authors": [
+      "Shengbang Tong",
+      "David Fan",
+      "John Nguyen",
+      "Ellis Brown",
+      "Gaoyue Zhou",
+      "Shengyi Qian",
+      "Boyang Zheng",
+      "Théophane Vallaeys",
+      "Junlin Han",
+      "Rob Fergus",
+      "Naila Murray",
+      "Marjan Ghazvininejad",
+      "Mike Lewis",
+      "Nicolas Ballas",
+      "Amir Bar",
+      "Michael Rabbat",
+      "Jakob Verbeek",
+      "Luke Zettlemoyer",
+      "Koustuv Sinha",
+      "Yann LeCun",
+      "Saining Xie"
+    ],
+    "published": "2026-03-03",
+    "updated": "2026-03-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.03276.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.03276",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越语言建模：多模态预训练的探索",
+      "core_contribution": "本文通过受控的、从零开始的预训练实验，揭示了多模态预训练的关键设计原则，并发现视觉与语言在数据需求和扩展规律上存在显著不对称性，同时证明了混合专家（MoE）架构能有效协调这种不对称性。",
+      "method": "研究采用Transfusion框架，对语言使用下一词预测，对视觉使用扩散模型，在包括文本、视频、图文对甚至动作条件视频的多样化数据上进行从头预训练。通过控制变量实验，隔离了多模态预训练的关键因素，避免了语言预训练的干扰，并利用IsoFLOP分析计算了两种模态的扩展规律。",
+      "findings": "关键发现包括：（1）表示自编码器（RAE）在视觉理解与生成任务上均表现优异，是统一的视觉表示最优解；（2）视觉与语言数据具有互补性，能协同提升下游任务能力；（3）统一的多模态预训练自然导向世界建模，通用训练中涌现出相关能力；（4）MoE架构能高效实现多模态扩展，并自然诱导模态专业化，同时调和了视觉比语言更“数据饥渴”的扩展不对称性。"
+    }
+  },
+  {
+    "id": "2603.03163",
+    "title": "Conditioned Activation Transport for T2I Safety Steering",
+    "abstract": "Despite their impressive capabilities, current Text-to-Image (T2I) models remain prone to generating unsafe and toxic content. While activation steering offers a promising inference-time intervention, we observe that linear activation steering frequently degrades image quality when applied to benign prompts. To address this trade-off, we first construct SafeSteerDataset, a contrastive dataset containing 2300 safe and unsafe prompt pairs with high cosine similarity. Leveraging this data, we propose Conditioned Activation Transport (CAT), a framework that employs a geometry-based conditioning mechanism and nonlinear transport maps. By conditioning transport maps to activate only within unsafe activation regions, we minimize interference with benign queries. We validate our approach on two state-of-the-art architectures: Z-Image and Infinity. Experiments demonstrate that CAT generalizes effectively across these backbones, significantly reducing Attack Success Rate while maintaining image fidelity compared to unsteered generations. Warning: This paper contains potentially offensive text and images.",
+    "authors": [
+      "Maciej Chrabąszcz",
+      "Aleksander Szymczyk",
+      "Jan Dubiński",
+      "Tomasz Trzciński",
+      "Franziska Boenisch",
+      "Adam Dziedzic"
+    ],
+    "published": "2026-03-03",
+    "updated": "2026-03-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.03163.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.03163",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于条件激活传输的文本到图像模型安全引导",
+      "core_contribution": "提出了条件激活传输框架，通过几何条件机制和非线性传输映射，在推理时有效引导文本到图像模型生成安全内容，同时最小化对良性提示的图像质量影响。",
+      "method": "首先构建了包含2300个安全与不安全提示对的对比数据集SafeSteerDataset。基于此，设计了条件激活传输框架，该框架利用几何条件机制，使非线性传输映射仅在检测到不安全激活区域时被触发，从而避免对正常查询的干扰。",
+      "findings": "在Z-Image和Infinity两种先进架构上的实验表明，该方法能有效泛化，显著降低攻击成功率，同时相比未引导的生成结果，能更好地保持图像保真度。"
+    }
+  },
+  {
+    "id": "2603.03143",
+    "title": "Geometry-Guided Reinforcement Learning for Multi-view Consistent 3D Scene Editing",
+    "abstract": "Leveraging the priors of 2D diffusion models for 3D editing has emerged as a promising paradigm. However, maintaining multi-view consistency in edited results remains challenging, and the extreme scarcity of 3D-consistent editing paired data renders supervised fine-tuning (SFT), the most effective training strategy for editing tasks, infeasible. In this paper, we observe that, while generating multi-view consistent 3D content is highly challenging, verifying 3D consistency is tractable, naturally positioning reinforcement learning (RL) as a feasible solution. Motivated by this, we propose \\textbf{RL3DEdit}, a single-pass framework driven by RL optimization with novel rewards derived from the 3D foundation model, VGGT. Specifically, we leverage VGGT's robust priors learned from massive real-world data, feed the edited images, and utilize the output confidence maps and pose estimation errors as reward signals, effectively anchoring the 2D editing priors onto a 3D-consistent manifold via RL. Extensive experiments demonstrate that RL3DEdit achieves stable multi-view consistency and outperforms state-of-the-art methods in editing quality with high efficiency. To promote the development of 3D editing, we will release the code and model.",
+    "authors": [
+      "Jiyuan Wang",
+      "Chunyu Lin",
+      "Lei Sun",
+      "Zhi Cao",
+      "Yuyang Yin",
+      "Lang Nie",
+      "Zhenlong Yuan",
+      "Xiangxiang Chu",
+      "Yunchao Wei",
+      "Kang Liao",
+      "Guosheng Lin"
+    ],
+    "published": "2026-03-03",
+    "updated": "2026-03-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.03143.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.03143",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "几何引导的强化学习用于多视角一致的3D场景编辑",
+      "core_contribution": "本文提出了RL3DEdit框架，首次将强化学习引入3D场景编辑任务，通过3D基础模型VGGT提供的奖励信号，有效解决了因缺乏配对数据而无法使用监督微调的难题，实现了单次优化即可获得多视角一致的高质量编辑结果。",
+      "method": "该方法的核心是利用强化学习进行优化。首先，它观察到验证3D一致性比生成3D一致内容更为可行。因此，它引入3D基础模型VGGT，将编辑后的图像输入VGGT，并利用其输出的置信度图和姿态估计误差作为强化学习的奖励信号。这些几何感知的奖励引导2D扩散模型的编辑先验，使其收敛到一个3D一致的空间流形上，从而在单次优化过程中实现多视角一致性。",
+      "findings": "大量实验表明，RL3DEdit能够稳定地实现多视角一致性，并且在编辑质量上超越了现有的先进方法，同时保持了较高的效率。该方法证明了利用强化学习结合3D基础模型的几何先验，是解决缺乏配对数据下3D一致编辑问题的有效途径。"
+    }
+  }
+]
