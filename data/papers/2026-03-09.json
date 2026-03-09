@@ -1,0 +1,155 @@
+[
+  {
+    "id": "2603.05898",
+    "title": "InnoAds-Composer: Efficient Condition Composition for E-Commerce Poster Generation",
+    "abstract": "E-commerce product poster generation aims to automatically synthesize a single image that effectively conveys product information by presenting a subject, text, and a designed style. Recent diffusion models with fine-grained and efficient controllability have advanced product poster synthesis, yet they typically rely on multi-stage pipelines, and simultaneous control over subject, text, and style remains underexplored. Such naive multi-stage pipelines also show three issues: poor subject fidelity, inaccurate text, and inconsistent style. To address these issues, we propose InnoAds-Composer, a single-stage framework that enables efficient tri-conditional control tokens over subject, glyph, and style. To alleviate the quadratic overhead introduced by naive tri-conditional token concatenation, we perform importance analysis over layers and timesteps and route each condition only to the most responsive positions, thereby shortening the active token sequence. Besides, to improve the accuracy of Chinese text rendering, we design a Text Feature Enhancement Module (TFEM) that integrates features from both glyph images and glyph crops. To support training and evaluation, we also construct a high-quality e-commerce product poster dataset and benchmark, which is the first dataset that jointly contains subject, text, and style conditions. Extensive experiments demonstrate that InnoAds-Composer significantly outperforms existing product poster methods without obviously increasing inference latency.",
+    "authors": [
+      "Yuxin Qin",
+      "Ke Cao",
+      "Haowei Liu",
+      "Ao Ma",
+      "Fengheng Li",
+      "Honghe Zhu",
+      "Zheng Zhang",
+      "Run Ling",
+      "Wei Feng",
+      "Xuanhua He",
+      "Zhanjie Zhang",
+      "Zhen Guo",
+      "Haoyi Bian",
+      "Jingjing Lv",
+      "Junjie Shen",
+      "Ching Law"
+    ],
+    "published": "2026-03-06",
+    "updated": "2026-03-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.05898.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.05898",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "InnoAds-Composer：面向电商海报生成的高效条件组合方法",
+      "core_contribution": "提出了一个单阶段框架InnoAds-Composer，能够同时对主体、文字和风格进行高效的三重条件控制，并构建了首个同时包含主体、文字和风格条件的高质量电商海报数据集与基准。",
+      "method": "该方法通过分析不同网络层和扩散时间步对条件的响应程度，将每个条件仅路由到最敏感的位置，从而缩短有效标记序列以降低计算开销。此外，设计了一个文本特征增强模块，融合字形图像与局部裁剪特征，以提升中文文本渲染的准确性。",
+      "findings": "实验表明，InnoAds-Composer在显著优于现有电商海报生成方法的同时，未明显增加推理延迟，有效解决了多阶段方法中存在的主题保真度低、文字不准确和风格不一致的问题。"
+    }
+  },
+  {
+    "id": "2603.06577",
+    "title": "Omni-Diffusion: Unified Multimodal Understanding and Generation with Masked Discrete Diffusion",
+    "abstract": "While recent multimodal large language models (MLLMs) have made impressive strides, they predominantly employ a conventional autoregressive architecture as their backbone, leaving significant room to explore effective and efficient alternatives in architectural design. Concurrently, recent studies have successfully applied discrete diffusion models to various domains, such as visual understanding and image generation, revealing their considerable potential as a promising backbone for multimodal systems. Drawing inspiration from these pioneering research, we introduce Omni-Diffusion, the first any-to-any multimodal language model built entirely on mask-based discrete diffusion models, which unifies understanding and generation across text, speech, and images. Omni-Diffusion employs a unified mask-based discrete diffusion model to directly capture the joint distribution over discrete multimodal tokens. This approach supports not only bimodal tasks but also more complex scenarios involving multiple modalities. On a diverse set of benchmarks, our method outperforms or performs on par with existing multimodal systems that process two or more modalities, highlighting the significant promise of diffusion models in powering the next generation of multimodal foundation models. Project webpage: https://omni-diffusion.github.io.",
+    "authors": [
+      "Lijiang Li",
+      "Zuwei Long",
+      "Yunhang Shen",
+      "Heting Gao",
+      "Haoyu Cao",
+      "Xing Sun",
+      "Caifeng Shan",
+      "Ran He",
+      "Chaoyou Fu"
+    ],
+    "published": "2026-03-06",
+    "updated": "2026-03-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.06577.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.06577",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Omni-Diffusion：基于掩码离散扩散的统一多模态理解与生成",
+      "core_contribution": "提出了首个完全基于掩码离散扩散模型构建的“任意到任意”多模态语言模型，统一了文本、语音和图像的理解与生成任务。",
+      "method": "采用统一的掩码离散扩散模型直接建模离散多模态令牌的联合分布；通过掩码扩散过程统一处理不同模态的输入与输出；支持从双模态到多模态的复杂任务，无需依赖自回归架构。",
+      "findings": "在多种基准测试中，该方法优于或与现有处理两种及以上模态的多模态系统性能相当，证明了扩散模型作为下一代多模态基础模型核心架构的潜力。"
+    }
+  },
+  {
+    "id": "2603.06507",
+    "title": "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis",
+    "abstract": "Strong semantic representations improve the convergence and generation quality of diffusion and flow models. Existing approaches largely rely on external models, which require separate training, operate on misaligned objectives, and exhibit unexpected scaling behavior. We argue that this dependence arises from the model's training objective, which poses a denoising task with little incentive to learn semantic representations. We introduce Self-Flow: a self-supervised flow matching paradigm that integrates representation learning within the generative framework. Our key mechanism, Dual-Timestep Scheduling, applies heterogeneous noise levels across tokens, creating an information asymmetry that forces the model to infer missing information from corrupted inputs. This drives learning strong representations alongside generative capabilities without external supervision. Our method generalizes across modalities and enables multi-modal training while following expected scaling laws, achieving superior image, video, and audio generation.",
+    "authors": [
+      "Hila Chefer",
+      "Patrick Esser",
+      "Dominik Lorenz",
+      "Dustin Podell",
+      "Vikash Raja",
+      "Vinh Tong",
+      "Antonio Torralba",
+      "Robin Rombach"
+    ],
+    "published": "2026-03-06",
+    "updated": "2026-03-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.06507.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.06507",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于可扩展多模态合成的自监督流匹配方法",
+      "core_contribution": "提出Self-Flow，一种将表征学习集成到生成框架中的自监督流匹配范式，通过双时间步调度机制，无需外部监督即可同时学习强语义表征和生成能力。",
+      "method": "该方法的核心是双时间步调度机制，通过对不同令牌施加异构的噪声水平，创造信息不对称性，迫使模型从被破坏的输入中推断缺失信息。这种自监督方式将表征学习内嵌于流匹配的生成训练中，避免了依赖外部模型。该方法设计为跨模态通用，支持多模态联合训练。",
+      "findings": "Self-Flow在图像、视频和音频生成任务上均取得了优越的性能。该方法遵循预期的缩放定律，实现了可扩展的多模态合成，且在学习强语义表征的同时提升了生成模型的收敛速度和生成质量。"
+    }
+  },
+  {
+    "id": "2603.06453",
+    "title": "Pinterest Canvas: Large-Scale Image Generation at Pinterest",
+    "abstract": "While recent image generation models demonstrate a remarkable ability to handle a wide variety of image generation tasks, this flexibility makes them hard to control via prompting or simple inference adaptation alone, rendering them unsuitable for use cases with strict product requirements. In this paper, we introduce Pinterest Canvas, our large-scale image generation system built to support image editing and enhancement use cases at Pinterest. Canvas is first trained on a diverse, multimodal dataset to produce a foundational diffusion model with broad image-editing capabilities. However, rather than relying on one generic model to handle every downstream task, we instead rapidly fine-tune variants of this base model on task-specific datasets, producing specialized models for individual use cases. We describe key components of Canvas and summarize our best practices for dataset curation, training, and inference. We also showcase task-specific variants through case studies on background enhancement and aspect-ratio outpainting, highlighting how we tackle their specific product requirements. Online A/B experiments demonstrate that our enhanced images receive a significant 18.0% and 12.5% engagement lift, respectively, and comparisons with human raters further validate that our models outperform third-party models on these tasks. Finally, we showcase other Canvas variants, including multi-image scene synthesis and image-to-video generation, demonstrating that our approach can generalize to a wide variety of potential downstream tasks.",
+    "authors": [
+      "Yu Wang",
+      "Eric Tzeng",
+      "Raymond Shiau",
+      "Jie Yang",
+      "Dmitry Kislyuk",
+      "Charles Rosenberg"
+    ],
+    "published": "2026-03-06",
+    "updated": "2026-03-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.06453.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.06453",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Pinterest Canvas：Pinterest 的大规模图像生成系统",
+      "core_contribution": "提出了一个面向产品需求的大规模图像生成系统 Pinterest Canvas，通过基础模型与任务专用微调相结合的策略，解决了通用生成模型在严格产品要求下可控性不足的问题。",
+      "method": "首先在多样化的多模态数据集上训练一个基础扩散模型，使其具备广泛的图像编辑能力；随后针对不同下游任务，使用任务专用数据集对该基础模型进行快速微调，生成针对具体用例的专用模型。系统还包含数据筛选、训练与推理的最佳实践方案。",
+      "findings": "在线 A/B 实验表明，该系统生成的背景增强图像和宽高比外延图像的互动率分别显著提升 18.0% 和 12.5%；人工评估进一步证实，其模型在这些任务上优于第三方模型。此外，该方法可推广至多图像场景合成和图像到视频生成等多种下游任务。"
+    }
+  },
+  {
+    "id": "2603.06449",
+    "title": "CaTok: Taming Mean Flows for One-Dimensional Causal Image Tokenization",
+    "abstract": "Autoregressive (AR) language models rely on causal tokenization, but extending this paradigm to vision remains non-trivial. Current visual tokenizers either flatten 2D patches into non-causal sequences or enforce heuristic orderings that misalign with the \"next-token prediction\" pattern. Recent diffusion autoencoders similarly fall short: conditioning the decoder on all tokens lacks causality, while applying nested dropout mechanism introduces imbalance. To address these challenges, we present CaTok, a 1D causal image tokenizer with a MeanFlow decoder. By selecting tokens over time intervals and binding them to the MeanFlow objective, as illustrated in Fig. 1, CaTok learns causal 1D representations that support both fast one-step generation and high-fidelity multi-step sampling, while naturally capturing diverse visual concepts across token intervals. To further stabilize and accelerate training, we propose a straightforward regularization REPA-A, which aligns encoder features with Vision Foundation Models (VFMs). Experiments demonstrate that CaTok achieves state-of-the-art results on ImageNet reconstruction, reaching 0.75 FID, 22.53 PSNR and 0.674 SSIM with fewer training epochs, and the AR model attains performance comparable to leading approaches.",
+    "authors": [
+      "Yitong Chen",
+      "Zuxuan Wu",
+      "Xipeng Qiu",
+      "Yu-Gang Jiang"
+    ],
+    "published": "2026-03-06",
+    "updated": "2026-03-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.06449.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.06449",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CaTok：通过均值流驯服一维因果图像分词",
+      "core_contribution": "提出了一种名为CaTok的一维因果图像分词器，通过结合MeanFlow解码器，首次实现了视觉领域真正支持自回归“下一词预测”模式的因果表示，同时支持快速一步生成与高保真多步采样。",
+      "method": "CaTok通过选择时间间隔内的token并将其绑定到MeanFlow目标函数，学习因果的一维图像表示；同时提出了一种名为REPA-A的正则化方法，通过将编码器特征与视觉基础模型对齐，以稳定和加速训练过程。",
+      "findings": "在ImageNet重建任务上，CaTok取得了当前最优结果（FID 0.75，PSNR 22.53，SSIM 0.674），且训练周期更少；基于其构建的自回归模型性能与主流方法相当，并能自然地捕捉不同token间隔中的多样化视觉概念。"
+    }
+  }
+]
