@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2603.09657",
+    "title": "When to Lock Attention: Training-Free KV Control in Video Diffusion",
+    "abstract": "Maintaining background consistency while enhancing foreground quality remains a core challenge in video editing. Injecting full-image information often leads to background artifacts, whereas rigid background locking severely constrains the model's capacity for foreground generation. To address this issue, we propose KV-Lock, a training-free framework tailored for DiT-based video diffusion models. Our core insight is that the hallucination metric (variance of denoising prediction) directly quantifies generation diversity, which is inherently linked to the classifier-free guidance (CFG) scale. Building upon this, KV-Lock leverages diffusion hallucination detection to dynamically schedule two key components: the fusion ratio between cached background key-values (KVs) and newly generated KVs, and the CFG scale. When hallucination risk is detected, KV-Lock strengthens background KV locking and simultaneously amplifies conditional guidance for foreground generation, thereby mitigating artifacts and improving generation fidelity. As a training-free, plug-and-play module, KV-Lock can be easily integrated into any pre-trained DiT-based models. Extensive experiments validate that our method outperforms existing approaches in improved foreground quality with high background fidelity across various video editing tasks.",
+    "authors": [
+      "Tianyi Zeng",
+      "Jincheng Gao",
+      "Tianyi Wang",
+      "Zijie Meng",
+      "Miao Zhang",
+      "Jun Yin",
+      "Haoyuan Sun",
+      "Junfeng Jiao",
+      "Christian Claudel",
+      "Junbo Tan",
+      "Xueqian Wang"
+    ],
+    "published": "2026-03-10",
+    "updated": "2026-03-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.ET",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.09657.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.09657",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "何时锁定注意力：视频扩散模型中的免训练KV控制",
+      "core_contribution": "提出了KV-Lock，一种免训练的框架，通过动态调度背景KV融合比和条件引导强度，在视频编辑中同时实现高质量前景生成和高保真背景一致性。",
+      "method": "该方法基于一个核心发现：去噪预测的方差（幻觉度量）直接量化生成多样性，并与分类器无关引导（CFG）尺度相关。KV-Lock利用扩散幻觉检测动态调度两个关键参数：缓存的背景键值（KVs）与新生成KVs的融合比例，以及CFG尺度。当检测到幻觉风险时，系统会增强背景KV锁定并同时加强前景生成的条件引导。",
+      "findings": "实验表明，KV-Lock作为即插即用的免训练模块，能够轻松集成到任何基于DiT的预训练模型中，在多种视频编辑任务上均优于现有方法，在保持高背景保真度的同时显著提升了前景生成质量。"
+    }
+  },
+  {
+    "id": "2603.09582",
+    "title": "BinaryAttention: One-Bit QK-Attention for Vision and Diffusion Transformers",
+    "abstract": "Transformers have achieved widespread and remarkable success, while the computational complexity of their attention modules remains a major bottleneck for vision tasks. Existing methods mainly employ 8-bit or 4-bit quantization to balance efficiency and accuracy. In this paper, with theoretical justification, we indicate that binarization of attention preserves the essential similarity relationships, and propose BinaryAttention, an effective method for fast and accurate 1-bit qk-attention. Specifically, we retain only the sign of queries and keys in computing the attention, and replace the floating dot products with bit-wise operations, significantly reducing the computational cost. We mitigate the inherent information loss under 1-bit quantization by incorporating a learnable bias, and enable end-to-end acceleration. To maintain the accuracy of attention, we adopt quantization-aware training and self-distillation techniques, mitigating quantization errors while ensuring sign-aligned similarity. BinaryAttention is more than 2x faster than FlashAttention2 on A100 GPUs. Extensive experiments on vision transformer and diffusion transformer benchmarks demonstrate that BinaryAttention matches or even exceeds full-precision attention, validating its effectiveness. Our work provides a highly efficient and effective alternative to full-precision attention, pushing the frontier of low-bit vision and diffusion transformers. The codes and models can be found at https://github.com/EdwardChasel/BinaryAttention.",
+    "authors": [
+      "Chaodong Xiao",
+      "Zhengqiang Zhang",
+      "Lei Zhang"
+    ],
+    "published": "2026-03-10",
+    "updated": "2026-03-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.09582.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.09582",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "BinaryAttention：面向视觉与扩散Transformer的一比特QK注意力机制",
+      "core_contribution": "提出BinaryAttention，首次将注意力计算中的查询和键量化为1比特，在显著降低计算成本的同时，通过理论证明和优化设计保持了注意力机制的准确性。",
+      "method": "该方法仅保留查询和键的符号信息，用按位运算替代浮点点积计算以加速；通过引入可学习的偏置缓解1比特量化的信息损失，并采用量化感知训练和自蒸馏技术对齐量化前后的相似度关系，实现端到端加速。",
+      "findings": "在A100 GPU上，BinaryAttention比FlashAttention2快2倍以上；在视觉Transformer和扩散Transformer的多个基准测试中，其性能匹配甚至超过全精度注意力，验证了1比特注意力在效率和精度上的有效性。"
+    }
+  },
+  {
+    "id": "2603.09538",
+    "title": "Towards Unified Multimodal Interleaved Generation via Group Relative Policy Optimization",
+    "abstract": "Unified vision-language models have made significant progress in multimodal understanding and generation, yet they largely fall short in producing multimodal interleaved outputs, which is a crucial capability for tasks like visual storytelling and step-by-step visual reasoning. In this work, we propose a reinforcement learning-based post-training strategy to unlock this capability in existing unified models, without relying on large-scale multimodal interleaved datasets. We begin with a warm-up stage using a hybrid dataset comprising curated interleaved sequences and limited data for multimodal understanding and text-to-image generation, which exposes the model to interleaved generation patterns while preserving its pretrained capabilities. To further refine interleaved generation, we propose a unified policy optimization framework that extends Group Relative Policy Optimization (GRPO) to the multimodal setting. Our approach jointly models text and image generation within a single decoding trajectory and optimizes it with our novel hybrid rewards covering textual relevance, visual-text alignment, and structural fidelity. Additionally, we incorporate process-level rewards to provide step-wise guidance, enhancing training efficiency in complex multimodal tasks. Experiments on MMIE and InterleavedBench demonstrate that our approach significantly enhances the quality and coherence of multimodal interleaved generation.",
+    "authors": [
+      "Ming Nie",
+      "Chunwei Wang",
+      "Jianhua Han",
+      "Hang Xu",
+      "Li Zhang"
+    ],
+    "published": "2026-03-10",
+    "updated": "2026-03-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.09538.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.09538",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过分组相对策略优化实现统一的多模态交错生成",
+      "core_contribution": "提出一种基于强化学习的后训练策略，无需依赖大规模交错数据集，即可解锁现有统一视觉语言模型的多模态交错生成能力。",
+      "method": "方法首先通过包含交错序列、多模态理解和文生图的混合数据集进行预热训练，使模型熟悉交错生成模式。随后提出一个统一策略优化框架，将分组相对策略优化扩展至多模态场景，在单一解码轨迹中联合建模文本和图像生成，并使用覆盖文本相关性、图文对齐和结构保真度的混合奖励进行优化。此外，引入过程级奖励提供逐步指导，以提升复杂任务中的训练效率。",
+      "findings": "在MMIE和InterleavedBench基准上的实验表明，该方法显著提升了多模态交错生成的质量和连贯性。"
+    }
+  },
+  {
+    "id": "2603.09484",
+    "title": "Component-Aware Sketch-to-Image Generation Using Self-Attention Encoding and Coordinate-Preserving Fusion",
+    "abstract": "Translating freehand sketches into photorealistic images remains a fundamental challenge in image synthesis, particularly due to the abstract, sparse, and stylistically diverse nature of sketches. Existing approaches, including GAN-based and diffusion-based models, often struggle to reconstruct fine-grained details, maintain spatial alignment, or adapt across different sketch domains. In this paper, we propose a component-aware, self-refining framework for sketch-to-image generation that addresses these challenges through a novel two-stage architecture. A Self-Attention-based Autoencoder Network (SA2N) first captures localised semantic and structural features from component-wise sketch regions, while a Coordinate-Preserving Gated Fusion (CGF) module integrates these into a coherent spatial layout. Finally, a Spatially Adaptive Refinement Revisor (SARR), built on a modified StyleGAN2 backbone, enhances realism and consistency through iterative refinement guided by spatial context. Extensive experiments across both facial (CelebAMask-HQ, CUFSF) and non-facial (Sketchy, ChairsV2, ShoesV2) datasets demonstrate the robustness and generalizability of our method. The proposed framework consistently outperforms state-of-the-art GAN and diffusion models, achieving significant gains in image fidelity, semantic accuracy, and perceptual quality. On CelebAMask-HQ, our model improves over prior methods by 21% (FID), 58% (IS), 41% (KID), and 20% (SSIM). These results, along with higher efficiency and visual coherence across diverse domains, position our approach as a strong candidate for applications in forensics, digital art restoration, and general sketch-based image synthesis.",
+    "authors": [
+      "Ali Zia",
+      "Muhammad Umer Ramzan",
+      "Usman Ali",
+      "Muhammad Faheem",
+      "Abdelwahed Khamis",
+      "Shahnawaz Qureshi"
+    ],
+    "published": "2026-03-10",
+    "updated": "2026-03-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.09484.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.09484",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于自注意力编码与坐标保持融合的组件感知草图到图像生成",
+      "core_contribution": "提出了一种组件感知、自优化的草图到图像生成框架，通过新颖的两阶段架构解决了现有方法在细节重建、空间对齐和跨域适应性方面的难题。",
+      "method": "首先，基于自注意力的自动编码器网络（SA2N）从组件级草图区域提取局部语义和结构特征；其次，坐标保持门控融合模块（CGF）将这些特征整合为连贯的空间布局；最后，基于改进StyleGAN2构建的空间自适应细化修正器（SARR）通过空间上下文引导的迭代优化来增强真实感和一致性。",
+      "findings": "在人脸（CelebAMask-HQ, CUFSF）和非人脸（Sketchy, ChairsV2, ShoesV2）数据集上的实验表明，该方法在图像保真度、语义准确性和感知质量上显著优于当前最先进的GAN和扩散模型。在CelebAMask-HQ数据集上，FID提升21%，IS提升58%，KID提升41%，SSIM提升20%，并在跨域应用中展现出更高的效率和视觉连贯性。"
+    }
+  },
+  {
+    "id": "2603.09414",
+    "title": "PromptDLA: A Domain-aware Prompt Document Layout Analysis Framework with Descriptive Knowledge as a Cue",
+    "abstract": "Document Layout Analysis (DLA) is crucial for document artificial intelligence and has recently received increasing attention, resulting in an influx of large-scale public DLA datasets. Existing work often combines data from various domains in recent public DLA datasets to improve the generalization of DLA. However, directly merging these datasets for training often results in suboptimal model performance, as it overlooks the different layout structures inherent to various domains. These variations include different labeling styles, document types, and languages. This paper introduces PromptDLA, a domain-aware Prompter for Document Layout Analysis that effectively leverages descriptive knowledge as cues to integrate domain priors into DLA. The innovative PromptDLA features a unique domain-aware prompter that customizes prompts based on the specific attributes of the data domain. These prompts then serve as cues that direct the DLA toward critical features and structures within the data, enhancing the model's ability to generalize across varied domains. Extensive experiments show that our proposal achieves state-of-the-art performance among DocLayNet, PubLayNet, M6Doc, and D$^4$LA. Our code is available at https://github.com/Zirui00/PromptDLA.",
+    "authors": [
+      "Zirui Zhang",
+      "Yaping Zhang",
+      "Lu Xiang",
+      "Yang Zhao",
+      "Feifei Zhai",
+      "Yu Zhou",
+      "Chengqing Zong"
+    ],
+    "published": "2026-03-10",
+    "updated": "2026-03-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.09414.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.09414",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PromptDLA：一种以描述性知识为线索的领域感知提示文档版面分析框架",
+      "core_contribution": "本文提出了PromptDLA框架，通过引入领域感知提示器，将描述性知识作为线索来整合领域先验，从而有效解决多领域文档版面分析中因布局结构差异导致的性能下降问题。",
+      "method": "该方法设计了一个独特的领域感知提示器，能够根据数据域的具体属性（如标注风格、文档类型、语言等）生成定制化的提示。这些提示作为线索，引导模型关注数据中的关键特征和结构。通过将领域先验知识以提示的形式整合到训练过程中，增强了模型在不同领域间的泛化能力。",
+      "findings": "在DocLayNet、PubLayNet、M6Doc和D$^4$LA等多个公开数据集上的大量实验表明，PromptDLA取得了最先进的性能，显著优于直接合并多领域数据进行训练的基线方法，验证了其有效性和泛化优势。"
+    }
+  }
+]
