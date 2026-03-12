@@ -1,0 +1,136 @@
+[
+  {
+    "id": "2603.10990",
+    "title": "Too Vivid to Be Real? Benchmarking and Calibrating Generative Color Fidelity",
+    "abstract": "Recent advances in text-to-image (T2I) generation have greatly improved visual quality, yet producing images that appear visually authentic to real-world photography remains challenging. This is partly due to biases in existing evaluation paradigms: human ratings and preference-trained metrics often favor visually vivid images with exaggerated saturation and contrast, which make generations often too vivid to be real even when prompted for realistic-style images. To address this issue, we present Color Fidelity Dataset (CFD) and Color Fidelity Metric (CFM) for objective evaluation of color fidelity in realistic-style generations. CFD contains over 1.3M real and synthetic images with ordered levels of color realism, while CFM employs a multimodal encoder to learn perceptual color fidelity. In addition, we propose a training-free Color Fidelity Refinement (CFR) that adaptively modulates spatial-temporal guidance scale in generation, thereby enhancing color authenticity. Together, CFD supports CFM for assessment, whose learned attention further guides CFR to refine T2I fidelity, forming a progressive framework for assessing and improving color fidelity in realistic-style T2I generation. The dataset and code are available at https://github.com/ZhengyaoFang/CFM.",
+    "authors": [
+      "Zhengyao Fang",
+      "Zexi Jia",
+      "Yijia Zhong",
+      "Pengcheng Luo",
+      "Jinchao Zhang",
+      "Guangming Lu",
+      "Jun Yu",
+      "Wenjie Pei"
+    ],
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.10990.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.10990",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "过于鲜艳而不真实？生成式图像色彩保真度的基准测试与校准",
+      "core_contribution": "本文提出了一个用于客观评估写实风格生成图像色彩保真度的数据集（CFD）和度量标准（CFM），并设计了一种无需训练的色彩保真度优化方法（CFR），形成了一个评估与改进文本到图像生成色彩真实性的渐进式框架。",
+      "method": "方法主要包括：1）构建包含130多万张真实与合成图像、具有有序色彩真实度等级的色彩保真度数据集（CFD）；2）利用多模态编码器学习感知色彩保真度，建立色彩保真度度量标准（CFM）；3）提出一种无需训练的色彩保真度优化方法（CFR），通过自适应调制生成过程中的时空引导尺度来增强色彩真实性。",
+      "findings": "关键发现表明，现有的人类评分和偏好训练的度量标准存在偏见，倾向于饱和度与对比度夸张的鲜艳图像，这导致即使提示生成写实风格图像，结果也常常“过于鲜艳而不真实”。本文提出的CFM能更客观地评估色彩保真度，而CFR能有效提升生成图像的色彩真实性，整套框架为写实风格文本到图像生成的色彩评估与改进提供了系统化方案。"
+    }
+  },
+  {
+    "id": "2603.10785",
+    "title": "The Quadratic Geometry of Flow Matching: Semantic Granularity Alignment for Text-to-Image Synthesis",
+    "abstract": "In this work, we analyze the optimization dynamics of generative fine-tuning. We observe that under the Flow Matching framework, the standard MSE objective can be formulated as a Quadratic Form governed by a dynamically evolving Neural Tangent Kernel (NTK). This geometric perspective reveals a latent Data Interaction Matrix, where diagonal terms represent independent sample learning and off-diagonal terms encode residual correlation between heterogeneous features. Although standard training implicitly optimizes these cross-term interferences, it does so without explicit control; moreover, the prevailing data-homogeneity assumption may constrain the model's effective capacity. Motivated by this insight, we propose Semantic Granularity Alignment (SGA), using Text-to-Image synthesis as a testbed. SGA engineers targeted interventions in the vector residual field to mitigate gradient conflicts. Evaluations across DiT and U-Net architectures confirm that SGA advances the efficiency-quality trade-off by accelerating convergence and improving structural integrity.",
+    "authors": [
+      "Zhinan Xiong",
+      "Shunqi Yuan"
+    ],
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.10785.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.10785",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "流匹配的二次几何：面向文本到图像生成的语义粒度对齐",
+      "core_contribution": "本文揭示了流匹配框架下生成式微调的优化动态具有二次几何形式，并据此提出了语义粒度对齐方法，通过干预向量残差场来缓解梯度冲突，从而提升文本到图像合成的效率与质量。",
+      "method": "论文首先在流匹配框架下将标准均方误差目标重新表述为由动态演化的神经正切核控制的二次型，从而显式地揭示了数据交互矩阵的结构。基于此几何视角，作者提出了语义粒度对齐方法，通过设计针对向量残差场的干预机制，显式地控制异构特征间的残差相关性，以缓解训练中的梯度冲突问题。该方法以文本到图像合成作为验证平台实施。",
+      "findings": "实验结果表明，语义粒度对齐方法在DiT和U-Net等多种架构上均能有效工作。该方法通过加速模型收敛和改善生成图像的结构完整性，推进了生成效率与质量之间的权衡，优于仅隐式优化特征间干扰的标准训练方法。"
+    }
+  },
+  {
+    "id": "2603.10780",
+    "title": "Guiding Diffusion Models with Semantically Degraded Conditions",
+    "abstract": "Classifier-Free Guidance (CFG) is a cornerstone of modern text-to-image models, yet its reliance on a semantically vacuous null prompt ($\\varnothing$) generates a guidance signal prone to geometric entanglement. This is a key factor limiting its precision, leading to well-documented failures in complex compositional tasks. We propose Condition-Degradation Guidance (CDG), a novel paradigm that replaces the null prompt with a strategically degraded condition, $\\boldsymbol{c}_{\\text{deg}}$. This reframes guidance from a coarse \"good vs. null\" contrast to a more refined \"good vs. almost good\" discrimination, thereby compelling the model to capture fine-grained semantic distinctions. We find that tokens in transformer text encoders split into two functional roles: content tokens encoding object semantics, and context-aggregating tokens capturing global context. By selectively degrading only the former, CDG constructs $\\boldsymbol{c}_{\\text{deg}}$ without external models or training. Validated across diverse architectures including Stable Diffusion 3, FLUX, and Qwen-Image, CDG markedly improves compositional accuracy and text-image alignment. As a lightweight, plug-and-play module, it achieves this with negligible computational overhead. Our work challenges the reliance on static, information-sparse negative samples and establishes a new principle for diffusion guidance: the construction of adaptive, semantically-aware negative samples is critical to achieving precise semantic control. Code is available at https://github.com/Ming-321/Classifier-Degradation-Guidance.",
+    "authors": [
+      "Shilong Han",
+      "Yuming Zhang",
+      "Hongxia Wang"
+    ],
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.10780.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.10780",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "使用语义退化条件引导扩散模型",
+      "core_contribution": "提出了条件退化引导（CDG）新范式，通过用语义退化的条件替代传统分类器自由引导（CFG）中的空提示，将引导信号从“好与空”的对比转变为“好与接近好”的精细区分，显著提升了扩散模型在复杂组合任务中的精确度。",
+      "method": "该方法基于对Transformer文本编码器中令牌功能的分析，发现令牌可分为编码对象语义的“内容令牌”和捕获全局上下文的“上下文聚合令牌”。CDG通过仅选择性退化内容令牌来构造语义退化条件，无需外部模型或额外训练，实现了轻量级的即插即用引导模块。",
+      "findings": "在Stable Diffusion 3、FLUX、Qwen-Image等多种架构上的实验表明，CDG能显著提升组合准确性和文本-图像对齐度，且计算开销可忽略。研究挑战了传统依赖静态、信息稀疏负样本的引导范式，确立了构建自适应、语义感知的负样本是实现精确语义控制的关键新原则。"
+    }
+  },
+  {
+    "id": "2603.10744",
+    "title": "Just-in-Time: Training-Free Spatial Acceleration for Diffusion Transformers",
+    "abstract": "Diffusion Transformers have established a new state-of-the-art in image synthesis, but the high computational cost of iterative sampling severely hampers their practical deployment. While existing acceleration methods often focus on the temporal domain, they overlook the substantial spatial redundancy inherent in the generative process, where global structures emerge long before fine-grained details are formed. The uniform computational treatment of all spatial regions represents a critical inefficiency. In this paper, we introduce Just-in-Time (JiT), a novel training-free framework that addresses this challenge by acceleration in the spatial domain. JiT formulates a spatially approximated generative ordinary differential equation (ODE) that drives the full latent state evolution based on computations from a dynamically selected, sparse subset of anchor tokens. To ensure seamless transitions as new tokens are incorporated to expand the dimensions of the latent state, we propose a deterministic micro-flow, a simple and effective finite-time ODE that maintains both structural coherence and statistical correctness. Extensive experiments on the state-of-the-art FLUX.1-dev model demonstrate that JiT achieves up to a 7x speedup with nearly lossless performance, significantly outperforming existing acceleration methods and establishing a new and superior trade-off between inference speed and generation fidelity.",
+    "authors": [
+      "Wenhao Sun",
+      "Ji Li",
+      "Zhaoqiang Liu"
+    ],
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.10744.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.10744",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "即时生成：面向扩散Transformer的无训练空间加速方法",
+      "core_contribution": "提出了一种无需训练的空间加速框架（JiT），通过动态选择稀疏的锚点令牌进行计算，显著降低了扩散Transformer在迭代采样过程中的计算冗余，实现了近乎无损的生成加速。",
+      "method": "JiT框架构建了一个空间近似的生成常微分方程（ODE），该方程仅基于动态选出的稀疏锚点令牌进行计算，来驱动完整潜在状态的演化。为了在逐步引入新令牌以扩展潜在状态维度时实现平滑过渡，论文提出了一种确定性微流方法，这是一种简单有效的有限时间ODE，能同时保持结构连贯性和统计正确性。整个方法完全无需额外训练，直接应用于预训练模型。",
+      "findings": "在先进的FLUX.1-dev模型上进行的大量实验表明，JiT能够实现高达7倍的加速，同时保持近乎无损的生成性能。其性能显著优于现有的加速方法，在推理速度与生成保真度之间建立了新的、更优的权衡。"
+    }
+  },
+  {
+    "id": "2603.10702",
+    "title": "UniCom: Unified Multimodal Modeling via Compressed Continuous Semantic Representations",
+    "abstract": "Current unified multimodal models typically rely on discrete visual tokenizers to bridge the modality gap. However, discretization inevitably discards fine-grained semantic information, leading to suboptimal performance in visual understanding tasks. Conversely, directly modeling continuous semantic representations (e.g., CLIP, SigLIP) poses significant challenges in high-dimensional generative modeling, resulting in slow convergence and training instability. To resolve this dilemma, we introduce UniCom, a unified framework that harmonizes multimodal understanding and generation via compressed continuous representation. We empirically demonstrate that reducing channel dimension is significantly more effective than spatial downsampling for both reconstruction and generation. Accordingly, we design an attention-based semantic compressor to distill dense features into a compact unified representation. Furthermore, we validate that the transfusion architecture surpasses query-based designs in convergence and consistency. Experiments demonstrate that UniCom achieves state-of-the-art generation performance among unified models. Notably, by preserving rich semantic priors, it delivers exceptional controllability in image editing and maintains image consistency even without relying on VAE.",
+    "authors": [
+      "Yaqi Zhao",
+      "Wang Lin",
+      "Zijian Zhang",
+      "Miles Yang",
+      "Jingyuan Chen",
+      "Wentao Zhang",
+      "Zhao Zhong",
+      "Liefeng Bo"
+    ],
+    "published": "2026-03-11",
+    "updated": "2026-03-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.10702.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.10702",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniCom：基于压缩连续语义表征的统一多模态建模",
+      "core_contribution": "提出了UniCom框架，通过压缩的连续语义表征来统一多模态理解与生成任务，解决了离散表征丢失细粒度信息与连续表征训练困难之间的矛盾。",
+      "method": "首先通过实证分析发现，相较于空间下采样，降低通道维度对重建和生成任务更有效。基于此，设计了一个基于注意力的语义压缩器，将密集特征提炼为紧凑的统一表征。此外，验证了transfusion架构在收敛性和一致性上优于基于查询的设计。",
+      "findings": "UniCom在统一模型中实现了最先进的生成性能；由于保留了丰富的语义先验，它在图像编辑中表现出卓越的可控性，并且即使不依赖VAE也能保持图像一致性。"
+    }
+  }
+]
