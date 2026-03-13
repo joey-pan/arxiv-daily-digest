@@ -1,0 +1,159 @@
+[
+  {
+    "id": "2603.12261",
+    "title": "The Latent Color Subspace: Emergent Order in High-Dimensional Chaos",
+    "abstract": "Text-to-image generation models have advanced rapidly, yet achieving fine-grained control over generated images remains difficult, largely due to limited understanding of how semantic information is encoded. We develop an interpretation of the color representation in the Variational Autoencoder latent space of FLUX.1 [Dev], revealing a structure reflecting Hue, Saturation, and Lightness. We verify our Latent Color Subspace (LCS) interpretation by demonstrating that it can both predict and explicitly control color, introducing a fully training-free method in FLUX based solely on closed-form latent-space manipulation. Code is available at https://github.com/ExplainableML/LCS.",
+    "authors": [
+      "Mateusz Pach",
+      "Jessica Bader",
+      "Quentin Bouniot",
+      "Serge Belongie",
+      "Zeynep Akata"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12261.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12261",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "潜在颜色子空间：高维混沌中的涌现秩序",
+      "core_contribution": "本文揭示了FLUX.1文本到图像生成模型中变分自编码器潜在空间内颜色表示的结构化规律，并提出了一种无需训练、仅通过闭式潜在空间操作即可精确预测与控制生成图像颜色的方法。",
+      "method": "作者通过分析FLUX.1的变分自编码器潜在空间，发现其颜色表示隐含着与色调、饱和度和明度对应的结构化子空间。基于此发现，提出了一种完全无需训练的“潜在颜色子空间”解释框架，仅通过数学闭式运算在潜在空间中进行定向操作，即可实现对生成图像颜色的显式控制。",
+      "findings": "实验验证了潜在颜色子空间能够准确预测生成图像的颜色属性，并可通过在潜在空间中沿特定方向移动来精确调整图像的色调、饱和度与明度。该方法为理解生成模型中语义编码机制提供了新视角，并为实现细粒度图像控制提供了一种高效、可解释的工具。"
+    }
+  },
+  {
+    "id": "2603.12257",
+    "title": "DreamVideo-Omni: Omni-Motion Controlled Multi-Subject Video Customization with Latent Identity Reinforcement Learning",
+    "abstract": "While large-scale diffusion models have revolutionized video synthesis, achieving precise control over both multi-subject identity and multi-granularity motion remains a significant challenge. Recent attempts to bridge this gap often suffer from limited motion granularity, control ambiguity, and identity degradation, leading to suboptimal performance on identity preservation and motion control. In this work, we present DreamVideo-Omni, a unified framework enabling harmonious multi-subject customization with omni-motion control via a progressive two-stage training paradigm. In the first stage, we integrate comprehensive control signals for joint training, encompassing subject appearances, global motion, local dynamics, and camera movements. To ensure robust and precise controllability, we introduce a condition-aware 3D rotary positional embedding to coordinate heterogeneous inputs and a hierarchical motion injection strategy to enhance global motion guidance. Furthermore, to resolve multi-subject ambiguity, we introduce group and role embeddings to explicitly anchor motion signals to specific identities, effectively disentangling complex scenes into independent controllable instances. In the second stage, to mitigate identity degradation, we design a latent identity reward feedback learning paradigm by training a latent identity reward model upon a pretrained video diffusion backbone. This provides motion-aware identity rewards in the latent space, prioritizing identity preservation aligned with human preferences. Supported by our curated large-scale dataset and the comprehensive DreamOmni Bench for multi-subject and omni-motion control evaluation, DreamVideo-Omni demonstrates superior performance in generating high-quality videos with precise controllability.",
+    "authors": [
+      "Yujie Wei",
+      "Xinyu Liu",
+      "Shiwei Zhang",
+      "Hangjie Yuan",
+      "Jinbo Xing",
+      "Zhekai Chen",
+      "Xiang Wang",
+      "Haonan Qiu",
+      "Rui Zhao",
+      "Yutong Feng",
+      "Ruihang Chu",
+      "Yingya Zhang",
+      "Yike Guo",
+      "Xihui Liu",
+      "Hongming Shan"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12257.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12257",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DreamVideo-Omni：基于潜在身份强化学习的全运动控制多主体视频定制",
+      "core_contribution": "提出了一个统一的框架DreamVideo-Omni，通过渐进式两阶段训练范式，实现了对多主体身份和多粒度运动的精确协同控制，并设计了潜在身份奖励反馈学习机制以缓解身份退化问题。",
+      "method": "方法采用两阶段训练范式。第一阶段整合了主体外观、全局运动、局部动态和摄像机运动等多种控制信号进行联合训练，引入了条件感知的3D旋转位置编码来协调异构输入，并使用分层运动注入策略增强全局运动引导。同时，通过组别和角色嵌入将运动信号显式锚定到特定身份，以解决多主体歧义。第二阶段，在预训练的视频扩散骨干网络上训练一个潜在身份奖励模型，构建潜在身份奖励反馈学习范式，在潜在空间提供运动感知的身份奖励，以优先保持符合人类偏好的身份特征。",
+      "findings": "基于构建的大规模数据集和全面的DreamOmni评估基准，DreamVideo-Omni在生成具有精确可控性的高质量视频方面表现出优越性能，能够有效协调多主体身份与全粒度运动控制，显著优于现有方法。"
+    }
+  },
+  {
+    "id": "2603.12247",
+    "title": "Trust Your Critic: Robust Reward Modeling and Reinforcement Learning for Faithful Image Editing and Generation",
+    "abstract": "Reinforcement learning (RL) has emerged as a promising paradigm for enhancing image editing and text-to-image (T2I) generation. However, current reward models, which act as critics during RL, often suffer from hallucinations and assign noisy scores, inherently misguiding the optimization process. In this paper, we present FIRM (Faithful Image Reward Modeling), a comprehensive framework that develops robust reward models to provide accurate and reliable guidance for faithful image generation and editing. First, we design tailored data curation pipelines to construct high-quality scoring datasets. Specifically, we evaluate editing using both execution and consistency, while generation is primarily assessed via instruction following. Using these pipelines, we collect the FIRM-Edit-370K and FIRM-Gen-293K datasets, and train specialized reward models (FIRM-Edit-8B and FIRM-Gen-8B) that accurately reflect these criteria. Second, we introduce FIRM-Bench, a comprehensive benchmark specifically designed for editing and generation critics. Evaluations demonstrate that our models achieve superior alignment with human judgment compared to existing metrics. Furthermore, to seamlessly integrate these critics into the RL pipeline, we formulate a novel \"Base-and-Bonus\" reward strategy that balances competing objectives: Consistency-Modulated Execution (CME) for editing and Quality-Modulated Alignment (QMA) for generation. Empowered by this framework, our resulting models FIRM-Qwen-Edit and FIRM-SD3.5 achieve substantial performance breakthroughs. Comprehensive experiments demonstrate that FIRM mitigates hallucinations, establishing a new standard for fidelity and instruction adherence over existing general models. All of our datasets, models, and code have been publicly available at https://firm-reward.github.io.",
+    "authors": [
+      "Xiangyu Zhao",
+      "Peiyuan Zhang",
+      "Junming Lin",
+      "Tianhao Liang",
+      "Yuchen Duan",
+      "Shengyuan Ding",
+      "Changyao Tian",
+      "Yuhang Zang",
+      "Junchi Yan",
+      "Xue Yang"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12247.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12247",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "信任你的评判者：用于忠实图像编辑与生成的鲁棒奖励建模与强化学习",
+      "core_contribution": "提出了FIRM框架，通过构建高质量评分数据集和训练专用奖励模型，解决了现有奖励模型在图像编辑与生成任务中因幻觉和噪声评分误导优化过程的问题，并设计了新的奖励策略以平衡不同目标。",
+      "method": "首先，设计了针对编辑任务（评估执行度与一致性）和生成任务（评估指令遵循）的数据收集流程，构建了FIRM-Edit-370K和FIRM-Gen-293K数据集，并训练了专用奖励模型（FIRM-Edit-8B和FIRM-Gen-8B）。其次，提出了“基础与奖励”策略，针对编辑任务使用一致性调节执行度奖励，针对生成任务使用质量调节对齐奖励，以平衡竞争目标。",
+      "findings": "实验表明，FIRM训练的奖励模型在FIRM-Bench基准测试中比现有指标更符合人类判断；基于该框架训练的最终模型（FIRM-Qwen-Edit和FIRM-SD3.5）在忠实度和指令遵循方面显著优于现有通用模型，有效缓解了幻觉问题，实现了性能突破。"
+    }
+  },
+  {
+    "id": "2603.12245",
+    "title": "One Model, Many Budgets: Elastic Latent Interfaces for Diffusion Transformers",
+    "abstract": "Diffusion transformers (DiTs) achieve high generative quality but lock FLOPs to image resolution, limiting principled latency-quality trade-offs, and allocate computation uniformly across input spatial tokens, wasting resource allocation to unimportant regions. We introduce Elastic Latent Interface Transformer (ELIT), a drop-in, DiT-compatible mechanism that decouples input image size from compute. Our approach inserts a latent interface, a learnable variable-length token sequence on which standard transformer blocks can operate. Lightweight Read and Write cross-attention layers move information between spatial tokens and latents and prioritize important input regions. By training with random dropping of tail latents, ELIT learns to produce importance-ordered representations with earlier latents capturing global structure while later ones contain information to refine details. At inference, the number of latents can be dynamically adjusted to match compute constraints. ELIT is deliberately minimal, adding two cross-attention layers while leaving the rectified flow objective and the DiT stack unchanged. Across datasets and architectures (DiT, U-ViT, HDiT, MM-DiT), ELIT delivers consistent gains. On ImageNet-1K 512px, ELIT delivers an average gain of $35.3\\%$ and $39.6\\%$ in FID and FDD scores. Project page: https://snap-research.github.io/elit/",
+    "authors": [
+      "Moayed Haji-Ali",
+      "Willi Menapace",
+      "Ivan Skorokhodov",
+      "Dogyun Park",
+      "Anil Kag",
+      "Michael Vasilkovsky",
+      "Sergey Tulyakov",
+      "Vicente Ordonez",
+      "Aliaksandr Siarohin"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12245.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12245",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "一个模型，多种算力：面向扩散变换器的弹性潜在接口",
+      "core_contribution": "提出了弹性潜在接口变换器（ELIT），一种即插即用、与扩散变换器兼容的机制，将输入图像大小与计算量解耦，实现了动态的计算-质量权衡，并通过重要性排序的潜在表示优化了计算资源分配。",
+      "method": "方法在标准变换器块中插入一个可学习的、可变长度的潜在接口序列。通过轻量级的读/写交叉注意力层在空间令牌和潜在令牌之间移动信息，并优先处理重要的输入区域。在训练时，随机丢弃尾部潜在令牌，使模型学会生成重要性排序的表示：靠前的潜在令牌捕获全局结构，靠后的则用于细化细节。推理时，潜在令牌的数量可根据计算约束动态调整。",
+      "findings": "在多个数据集和架构（DiT, U-ViT, HDiT, MM-DiT）上，ELIT均带来了一致的性能提升。在ImageNet-1K 512px图像生成任务上，ELIT在FID和FDD指标上分别平均提升了35.3%和39.6%，证明了其有效性和通用性。"
+    }
+  },
+  {
+    "id": "2603.12240",
+    "title": "BiGain: Unified Token Compression for Joint Generation and Classification",
+    "abstract": "Acceleration methods for diffusion models (e.g., token merging or downsampling) typically optimize synthesis quality under reduced compute, yet often ignore discriminative capacity. We revisit token compression with a joint objective and present BiGain, a training-free, plug-and-play framework that preserves generation quality while improving classification in accelerated diffusion models. Our key insight is frequency separation: mapping feature-space signals into a frequency-aware representation disentangles fine detail from global semantics, enabling compression that respects both generative fidelity and discriminative utility. BiGain reflects this principle with two frequency-aware operators: (1) Laplacian-gated token merging, which encourages merges among spectrally smooth tokens while discouraging merges of high-contrast tokens, thereby retaining edges and textures; and (2) Interpolate-Extrapolate KV Downsampling, which downsamples keys/values via a controllable interextrapolation between nearest and average pooling while keeping queries intact, thereby conserving attention precision. Across DiT- and U-Net-based backbones and ImageNet-1K, ImageNet-100, Oxford-IIIT Pets, and COCO-2017, our operators consistently improve the speed-accuracy trade-off for diffusion-based classification, while maintaining or enhancing generation quality under comparable acceleration. For instance, on ImageNet-1K, with 70% token merging on Stable Diffusion 2.0, BiGain increases classification accuracy by 7.15% while improving FID by 0.34 (1.85%). Our analyses indicate that balanced spectral retention, preserving high-frequency detail and low/mid-frequency semantics, is a reliable design rule for token compression in diffusion models. To our knowledge, BiGain is the first framework to jointly study and advance both generation and classification under accelerated diffusion, supporting lower-cost deployment.",
+    "authors": [
+      "Jiacheng Liu",
+      "Shengkun Tang",
+      "Jiacheng Cui",
+      "Dongkuan Xu",
+      "Zhiqiang Shen"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12240.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12240",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "BiGain：面向联合生成与分类的统一令牌压缩方法",
+      "core_contribution": "提出了首个在加速扩散模型中同时优化生成质量与分类性能的训练即插即用框架BiGain，通过频率分离原理实现了生成保真度与判别效用的平衡。",
+      "method": "基于频率分离思想设计两种频率感知算子：1）拉普拉斯门控令牌合并，通过频谱平滑度控制令牌合并，保留边缘与纹理细节；2）插值-外推KV下采样，在最近邻池化与平均池化间可控插值以保持注意力精度，同时保持查询完整。",
+      "findings": "在多种骨干网络与数据集上，BiGain在相同加速条件下显著提升分类准确率（如在ImageNet-1K上提升7.15%）并保持或改善生成质量（FID提升0.34）。分析表明平衡保留高频细节与中低频语义是扩散模型令牌压缩的有效设计准则。"
+    }
+  }
+]
