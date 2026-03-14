@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2603.12238",
+    "title": "SceneAssistant: A Visual Feedback Agent for Open-Vocabulary 3D Scene Generation",
+    "abstract": "Text-to-3D scene generation from natural language is highly desirable for digital content creation. However, existing methods are largely domain-restricted or reliant on predefined spatial relationships, limiting their capacity for unconstrained, open-vocabulary 3D scene synthesis. In this paper, we introduce SceneAssistant, a visual-feedback-driven agent designed for open-vocabulary 3D scene generation. Our framework leverages modern 3D object generation model along with the spatial reasoning and planning capabilities of Vision-Language Models (VLMs). To enable open-vocabulary scene composition, we provide the VLMs with a comprehensive set of atomic operations (e.g., Scale, Rotate, FocusOn). At each interaction step, the VLM receives rendered visual feedback and takes actions accordingly, iteratively refining the scene to achieve more coherent spatial arrangements and better alignment with the input text. Experimental results demonstrate that our method can generate diverse, open-vocabulary, and high-quality 3D scenes. Both qualitative analysis and quantitative human evaluations demonstrate the superiority of our approach over existing methods. Furthermore, our method allows users to instruct the agent to edit existing scenes based on natural language commands. Our code is available at https://github.com/ROUJINN/SceneAssistant",
+    "authors": [
+      "Jun Luo",
+      "Jiaxiang Tang",
+      "Ruijie Lu",
+      "Gang Zeng"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12238.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12238",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SceneAssistant：一种用于开放词汇3D场景生成的可视化反馈智能体",
+      "core_contribution": "提出了一个基于视觉反馈驱动的智能体框架，能够实现开放词汇的文本到3D场景生成，并通过自然语言指令对现有场景进行编辑。",
+      "method": "该方法结合了现代3D物体生成模型与视觉语言模型（VLM）的空间推理和规划能力。通过为VLM提供一组原子操作（如缩放、旋转、聚焦等），使其能够在每个交互步骤中接收渲染后的视觉反馈，并据此采取行动，从而迭代地优化场景布局。",
+      "findings": "实验表明，该方法能够生成多样化、开放词汇且高质量的3D场景。定性分析和定量人工评估均证明其优于现有方法，同时支持用户通过自然语言指令对已有场景进行编辑。"
+    }
+  },
+  {
+    "id": "2603.12155",
+    "title": "GlyphBanana: Advancing Precise Text Rendering Through Agentic Workflows",
+    "abstract": "Despite recent advances in generative models driving significant progress in text rendering, accurately generating complex text and mathematical formulas remains a formidable challenge. This difficulty primarily stems from the limited instruction-following capabilities of current models when encountering out-of-distribution prompts. To address this, we introduce GlyphBanana, alongside a corresponding benchmark specifically designed for rendering complex characters and formulas. GlyphBanana employs an agentic workflow that integrates auxiliary tools to inject glyph templates into both the latent space and attention maps, facilitating the iterative refinement of generated images. Notably, our training-free approach can be seamlessly applied to various Text-to-Image (T2I) models, achieving superior precision compared to existing baselines. Extensive experiments demonstrate the effectiveness of our proposed workflow. Associated code is publicly available at https://github.com/yuriYanZeXuan/GlyphBanana.",
+    "authors": [
+      "Zexuan Yan",
+      "Jiarui Jin",
+      "Yue Ma",
+      "Shijian Wang",
+      "Jiahui Hu",
+      "Wenxiang Jiao",
+      "Yuan Lu",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12155.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12155",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GlyphBanana：通过智能体工作流推进精确文本渲染",
+      "core_contribution": "提出了GlyphBanana框架及配套基准，通过无需训练的智能体工作流，显著提升了生成模型在复杂字符和数学公式渲染上的精确度。",
+      "method": "该方法采用智能体工作流，整合辅助工具将字形模板注入到潜在空间和注意力图中，引导生成过程。通过迭代优化生成图像，实现精确的文本渲染。该框架无需额外训练，可灵活应用于多种文本到图像生成模型。",
+      "findings": "实验表明，GlyphBanana在复杂文本和公式渲染任务上优于现有基线方法，验证了其工作流的有效性。该方法具有通用性，能无缝适配不同T2I模型，显著提升生成精度。"
+    }
+  },
+  {
+    "id": "2603.12146",
+    "title": "FlashMotion: Few-Step Controllable Video Generation with Trajectory Guidance",
+    "abstract": "Recent advances in trajectory-controllable video generation have achieved remarkable progress. Previous methods mainly use adapter-based architectures for precise motion control along predefined trajectories. However, all these methods rely on a multi-step denoising process, leading to substantial time redundancy and computational overhead. While existing video distillation methods successfully distill multi-step generators into few-step, directly applying these approaches to trajectory-controllable video generation results in noticeable degradation in both video quality and trajectory accuracy. To bridge this gap, we introduce FlashMotion, a novel training framework designed for few-step trajectory-controllable video generation. We first train a trajectory adapter on a multi-step video generator for precise trajectory control. Then, we distill the generator into a few-step version to accelerate video generation. Finally, we finetune the adapter using a hybrid strategy that combines diffusion and adversarial objectives, aligning it with the few-step generator to produce high-quality, trajectory-accurate videos. For evaluation, we introduce FlashBench, a benchmark for long-sequence trajectory-controllable video generation that measures both video quality and trajectory accuracy across varying numbers of foreground objects. Experiments on two adapter architectures show that FlashMotion surpasses existing video distillation methods and previous multi-step models in both visual quality and trajectory consistency.",
+    "authors": [
+      "Quanhao Li",
+      "Zhen Xing",
+      "Rui Wang",
+      "Haidong Cao",
+      "Qi Dai",
+      "Daoguo Dong",
+      "Zuxuan Wu"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12146.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12146",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlashMotion：基于轨迹引导的少步可控视频生成",
+      "core_contribution": "提出了FlashMotion训练框架，首次实现了在少步（few-step）生成条件下高质量、高轨迹精度的可控视频生成，并构建了用于长序列轨迹可控视频生成的评测基准FlashBench。",
+      "method": "首先在多步视频生成器上训练一个轨迹适配器以实现精确的轨迹控制；随后将生成器蒸馏为少步版本以加速生成；最后采用结合扩散目标与对抗目标的混合策略对适配器进行微调，使其与少步生成器对齐，从而生成高质量且轨迹准确的视频。",
+      "findings": "实验表明，FlashMotion在视觉质量和轨迹一致性上均超越了现有的视频蒸馏方法及以往的多步生成模型；所提出的FlashBench基准能有效评估不同前景物体数量下的视频质量与轨迹精度。"
+    }
+  },
+  {
+    "id": "2603.12108",
+    "title": "EvoTok: A Unified Image Tokenizer via Residual Latent Evolution for Visual Understanding and Generation",
+    "abstract": "The development of unified multimodal large language models (MLLMs) is fundamentally challenged by the granularity gap between visual understanding and generation: understanding requires high-level semantic abstractions, while image generation demands fine-grained pixel-level representations. Existing approaches usually enforce the two supervision on the same set of representation or decouple these two supervision on separate feature spaces, leading to interference and inconsistency, respectively. In this work, we propose EvoTok, a unified image tokenizer that reconciles these requirements through a residual evolution process within a shared latent space. Instead of maintaining separate token spaces for pixels and semantics, EvoTok encodes an image into a cascaded sequence of residual tokens via residual vector quantization. This residual sequence forms an evolution trajectory where earlier stages capture low-level details and deeper stages progressively transition toward high-level semantic representations. Despite being trained on a relatively modest dataset of 13M images, far smaller than the billion-scale datasets used by many previous unified tokenizers, EvoTok achieves a strong reconstruction quality of 0.43 rFID on ImageNet-1K at 256x256 resolution. When integrated with a large language model, EvoTok shows promising performance across 7 out of 9 visual understanding benchmarks, and remarkable results on image generation benchmarks such as GenEval and GenAI-Bench. These results demonstrate that modeling visual representations as an evolving trajectory provides an effective and principled solution for unifying visual understanding and generation.",
+    "authors": [
+      "Yan Li",
+      "Ning Liao",
+      "Xiangyu Zhao",
+      "Shaofeng Zhang",
+      "Xiaoxing Wang",
+      "Yifan Yang",
+      "Junchi Yan",
+      "Xue Yang"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12108.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12108",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "EvoTok：一种通过残差潜在演化实现视觉理解与生成的统一图像分词器",
+      "core_contribution": "本文提出了EvoTok，一个统一的图像分词器，通过在共享潜在空间中引入残差演化过程，有效弥合了视觉理解（需要高层语义抽象）与图像生成（需要细粒度像素级表示）之间的粒度鸿沟。",
+      "method": "EvoTok采用残差向量量化方法，将图像编码为一个级联的残差标记序列。该序列构成一个演化轨迹：早期阶段捕获低级细节，更深阶段逐步过渡到高层语义表示。这种方法在单一共享潜在空间内协调了两种监督需求，避免了现有方法中因使用相同表示集导致的干扰或使用分离特征空间导致的不一致问题。",
+      "findings": "实验表明，EvoTok仅使用1300万张图像（远小于以往统一分词器使用的十亿级数据集）进行训练，便在ImageNet-1K 256x256分辨率上达到了0.43 rFID的强重建质量。当与大语言模型集成时，它在9个视觉理解基准中的7个上表现出色，并在GenEval和GenAI-Bench等图像生成基准上取得了显著成果，证明了将视觉表示建模为演化轨迹是统一视觉理解与生成的有效且原理性解决方案。"
+    }
+  },
+  {
+    "id": "2603.12057",
+    "title": "Coarse-Guided Visual Generation via Weighted h-Transform Sampling",
+    "abstract": "Coarse-guided visual generation, which synthesizes fine visual samples from degraded or low-fidelity coarse references, is essential for various real-world applications. While training-based approaches are effective, they are inherently limited by high training costs and restricted generalization due to paired data collection. Accordingly, recent training-free works propose to leverage pretrained diffusion models and incorporate guidance during the sampling process. However, these training-free methods either require knowing the forward (fine-to-coarse) transformation operator, e.g., bicubic downsampling, or are difficult to balance between guidance and synthetic quality. To address these challenges, we propose a novel guided method by using the h-transform, a tool that can constrain stochastic processes (e.g., sampling process) under desired conditions. Specifically, we modify the transition probability at each sampling timestep by adding to the original differential equation with a drift function, which approximately steers the generation toward the ideal fine sample. To address unavoidable approximation errors, we introduce a noise-level-aware schedule that gradually de-weights the term as the error increases, ensuring both guidance adherence and high-quality synthesis. Extensive experiments across diverse image and video generation tasks demonstrate the effectiveness and generalization of our method.",
+    "authors": [
+      "Yanghao Wang",
+      "Ziqi Jiang",
+      "Zhen Wang",
+      "Long Chen"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.12057.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.12057",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于加权h变换采样的粗粒度引导视觉生成",
+      "core_contribution": "提出一种无需训练、基于h变换的引导生成方法，通过修改采样过程的转移概率，在未知前向退化算子条件下实现高质量视觉样本合成，并设计了噪声感知权重调度机制以平衡引导强度与生成质量。",
+      "method": "该方法利用h变换工具约束扩散模型的随机采样过程，通过在原始微分方程中引入漂移函数来引导生成朝向理想样本；针对近似误差问题，设计了随噪声水平变化的权重调度策略，在误差增大时逐步降低引导项的权重，从而兼顾引导准确性与合成质量。",
+      "findings": "在多种图像和视频生成任务上的实验表明，该方法在未知具体退化算子（如模糊、下采样等）的情况下仍能有效实现粗到细的视觉生成，且相比现有训练免费方法在引导效果与生成质量之间取得了更好平衡，展现出优秀的泛化能力。"
+    }
+  }
+]
