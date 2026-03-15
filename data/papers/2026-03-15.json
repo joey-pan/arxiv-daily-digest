@@ -1,0 +1,158 @@
+[
+  {
+    "id": "2603.11911",
+    "title": "InSpatio-WorldFM: An Open-Source Real-Time Generative Frame Model",
+    "abstract": "We present InSpatio-WorldFM, an open-source real-time frame model for spatial intelligence. Unlike video-based world models that rely on sequential frame generation and incur substantial latency due to window-level processing, InSpatio-WorldFM adopts a frame-based paradigm that generates each frame independently, enabling low-latency real-time spatial inference. By enforcing multi-view spatial consistency through explicit 3D anchors and implicit spatial memory, the model preserves global scene geometry while maintaining fine-grained visual details across viewpoint changes. We further introduce a progressive three-stage training pipeline that transforms a pretrained image diffusion model into a controllable frame model and finally into a real-time generator through few-step distillation. Experimental results show that InSpatio-WorldFM achieves strong multi-view consistency while supporting interactive exploration on consumer-grade GPUs, providing an efficient alternative to traditional video-based world models for real-time world simulation.",
+    "authors": [
+      " InSpatio Team",
+      "Xiaoyu Zhang",
+      "Weihong Pan",
+      "Zhichao Ye",
+      "Jialin Liu",
+      "Yipeng Chen",
+      "Nan Wang",
+      "Xiaojun Xiang",
+      "Weijian Xie",
+      "Yifu Wang",
+      "Haoyu Ji",
+      "Siji Pan",
+      "Zhewen Le",
+      "Jing Guo",
+      "Xianbin Liu",
+      "Donghui Shen",
+      "Ziqiang Zhao",
+      "Haomin Liu",
+      "Guofeng Zhang"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.11911.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.11911",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InSpatio-WorldFM：一种开源实时生成式帧模型",
+      "core_contribution": "提出了一种开源、低延迟的实时空间智能帧模型，通过独立生成每一帧而非依赖序列帧生成，为实时世界模拟提供了高效替代传统视频世界模型的方案。",
+      "method": "采用基于帧的范式，通过显式3D锚点和隐式空间记忆强制多视角空间一致性，保持全局场景几何与细节；设计渐进式三阶段训练流程，将预训练图像扩散模型转化为可控帧模型，并通过少步蒸馏实现实时生成。",
+      "findings": "实验表明，InSpatio-WorldFM在保持强大多视角一致性的同时，支持在消费级GPU上进行交互式探索，实现了低延迟实时空间推理。"
+    }
+  },
+  {
+    "id": "2603.11795",
+    "title": "Intrinsic Concept Extraction Based on Compositional Interpretability",
+    "abstract": "Unsupervised Concept Extraction aims to extract concepts from a single image; however, existing methods suffer from the inability to extract composable intrinsic concepts. To address this, this paper introduces a new task called Compositional and Interpretable Intrinsic Concept Extraction (CI-ICE). The CI-ICE task aims to leverage diffusion-based text-to-image models to extract composable object-level and attribute-level concepts from a single image, such that the original concept can be reconstructed through the combination of these concepts. To achieve this goal, we propose a method called HyperExpress, which addresses the CI-ICE task through two core aspects. Specifically, first, we propose a concept learning approach that leverages the inherent hierarchical modeling capability of hyperbolic space to achieve accurate concept disentanglement while preserving the hierarchical structure and relational dependencies among concepts; second, we introduce a concept-wise optimization method that maps the concept embedding space to maintain complex inter-concept relationships while ensuring concept composability. Our method demonstrates outstanding performance in extracting compositionally interpretable intrinsic concepts from a single image.",
+    "authors": [
+      "Hanyu Shi",
+      "Hong Tao",
+      "Guoheng Huang",
+      "Jianbin Jiang",
+      "Xuhang Chen",
+      "Chi-Man Pun",
+      "Shanhu Wang",
+      "Pan Pan"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.11795.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.11795",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于组合可解释性的内在概念提取",
+      "core_contribution": "本文提出了一个名为“组合可解释内在概念提取（CI-ICE）”的新任务，并提出了HyperExpress方法，旨在从单张图像中提取可组合的对象级和属性级概念，以实现对原始概念的组合式重建。",
+      "method": "HyperExpress方法主要包括两个方面：首先，利用双曲空间固有的层次建模能力进行概念学习，在保持概念间层次结构和依赖关系的同时实现准确的概念解耦；其次，引入概念级优化方法，将概念嵌入空间映射到可组合的表示空间，以维持复杂的概念间关系并确保概念的可组合性。",
+      "findings": "实验表明，该方法在从单张图像中提取具有组合可解释性的内在概念方面表现出色，能够有效解耦并重建对象与属性概念，验证了其在概念提取任务中的优越性能。"
+    }
+  },
+  {
+    "id": "2603.11640",
+    "title": "Tokenization Allows Multimodal Large Language Models to Understand, Generate and Edit Architectural Floor Plans",
+    "abstract": "Architectural floor plan design demands joint reasoning over geometry, semantics, and spatial hierarchy, which remains a major challenge for current AI systems. Although recent diffusion and language models improve visual fidelity, they still struggle with coherent spatial reasoning and controllable generation. We present HouseMind, a multimodal large language model that unifies floor plan understanding, generation, and editing in one framework. We introduce discrete room-instance tokens to construct a unified vocabulary that bridges layouts and symbolic reasoning. With multimodal alignment and instruction tuning, the model synthesizes coherent, controllable layouts from text instructions. Experiments show how the framework achieves superior geometric validity and controllability while remaining efficient and locally deployable.",
+    "authors": [
+      "Sizhong Qin",
+      "Ramon Elias Weber",
+      "Xinzheng Lu"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.11640.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.11640",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "词元化使多模态大语言模型能够理解、生成与编辑建筑平面图",
+      "core_contribution": "提出了HouseMind模型，首次将建筑平面图的理解、生成与编辑统一在一个多模态大语言模型框架中，并通过引入离散的房间实例词元实现了布局与符号推理的桥梁。",
+      "method": "该方法首先引入离散的房间实例词元构建统一词汇表，将几何布局转化为符号序列；然后通过多模态对齐技术将视觉布局与文本语义进行关联；最后利用指令微调使模型能够根据文本指令生成和编辑平面图。",
+      "findings": "实验表明，该框架在保持高效和可本地部署的同时，生成的平面图在几何有效性、空间连贯性和可控性方面均优于现有方法，显著提升了AI系统对建筑平面图的复杂空间推理能力。"
+    }
+  },
+  {
+    "id": "2603.11633",
+    "title": "MV-SAM3D: Adaptive Multi-View Fusion for Layout-Aware 3D Generation",
+    "abstract": "Recent unified 3D generation models have made remarkable progress in producing high-quality 3D assets from a single image. Notably, layout-aware approaches such as SAM3D can reconstruct multiple objects while preserving their spatial arrangement, opening the door to practical scene-level 3D generation. However, current methods are limited to single-view input and cannot leverage complementary multi-view observations, while independently estimated object poses often lead to physically implausible layouts such as interpenetration and floating artifacts. We present MV-SAM3D, a training-free framework that extends layout-aware 3D generation with multi-view consistency and physical plausibility. We formulate multi-view fusion as a Multi-Diffusion process in 3D latent space and propose two adaptive weighting strategies -- attention-entropy weighting and visibility weighting -- that enable confidence-aware fusion, ensuring each viewpoint contributes according to its local observation reliability. For multi-object composition, we introduce physics-aware optimization that injects collision and contact constraints both during and after generation, yielding physically plausible object arrangements. Experiments on standard benchmarks and real-world multi-object scenes demonstrate significant improvements in reconstruction fidelity and layout plausibility, all without any additional training. Code is available at https://github.com/devinli123/MV-SAM3D.",
+    "authors": [
+      "Baicheng Li",
+      "Dong Wu",
+      "Jun Li",
+      "Shunkai Zhou",
+      "Zecui Zeng",
+      "Lusong Li",
+      "Hongbin Zha"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.11633.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.11633",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MV-SAM3D：面向布局感知三维生成的自适应多视角融合方法",
+      "core_contribution": "提出了一个无需训练的框架，将布局感知的三维生成扩展为具有多视角一致性与物理合理性的方法，并通过自适应融合策略与物理感知优化，显著提升了多物体场景的重建质量与布局合理性。",
+      "method": "该方法将多视角融合建模为三维隐空间中的多扩散过程，提出了两种自适应加权策略——注意力熵加权与可见性加权——以实现基于置信度的融合，确保每个视角根据其局部观测可靠性进行贡献。针对多物体组合，引入了物理感知优化，在生成过程中及生成后注入碰撞与接触约束，从而生成物理上合理的物体布局。",
+      "findings": "在标准基准和真实世界多物体场景上的实验表明，该方法在重建保真度和布局合理性方面均有显著提升，且无需任何额外训练。代码已开源。"
+    }
+  },
+  {
+    "id": "2603.11607",
+    "title": "DyWeight: Dynamic Gradient Weighting for Few-Step Diffusion Sampling",
+    "abstract": "Diffusion Models (DMs) have achieved state-of-the-art generative performance across multiple modalities, yet their sampling process remains prohibitively slow due to the need for hundreds of function evaluations. Recent progress in multi-step ODE solvers has greatly improved efficiency by reusing historical gradients, but existing methods rely on handcrafted coefficients that fail to adapt to the non-stationary dynamics of diffusion sampling. To address this limitation, we propose Dynamic Gradient Weighting (DyWeight), a lightweight, learning-based multi-step solver that introduces a streamlined implicit coupling paradigm. By relaxing classical numerical constraints, DyWeight learns unconstrained time-varying parameters that adaptively aggregate historical gradients while intrinsically scaling the effective step size. This implicit time calibration accurately aligns the solver's numerical trajectory with the model's internal denoising dynamics under large integration steps, avoiding complex decoupled parameterizations and optimizations. Extensive experiments on CIFAR-10, FFHQ, AFHQv2, ImageNet64, LSUN-Bedroom, Stable Diffusion and FLUX.1-dev demonstrate that DyWeight achieves superior visual fidelity and stability with significantly fewer function evaluations, establishing a new state-of-the-art among efficient diffusion solvers. Code is available at https://github.com/Westlake-AGI-Lab/DyWeight",
+    "authors": [
+      "Tong Zhao",
+      "Mingkun Lei",
+      "Liangyu Yuan",
+      "Yanming Yang",
+      "Chenxi Song",
+      "Yang Wang",
+      "Beier Zhu",
+      "Chi Zhang"
+    ],
+    "published": "2026-03-12",
+    "updated": "2026-03-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.11607.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.11607",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DyWeight：用于少步扩散采样的动态梯度加权",
+      "core_contribution": "提出了一种轻量级、基于学习的动态梯度加权（DyWeight）多步求解器，通过自适应聚合历史梯度并隐式校准时间步长，显著提升了扩散模型的采样效率与生成质量。",
+      "method": "DyWeight采用简化的隐式耦合范式，放宽了经典数值约束，通过学习无约束的时变参数来自适应地加权历史梯度。该方法通过隐式时间校准，使求解器的数值轨迹与模型在大步长下的去噪动态精确对齐，避免了复杂的解耦参数化和优化过程。",
+      "findings": "在CIFAR-10、FFHQ、AFHQv2、ImageNet64、LSUN-Bedroom、Stable Diffusion和FLUX.1-dev等多个数据集和模型上的实验表明，DyWeight能以显著更少的函数评估次数实现更优的视觉保真度和稳定性，在高效扩散求解器中达到了新的最优性能。"
+    }
+  }
+]
