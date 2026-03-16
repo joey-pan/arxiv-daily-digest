@@ -1,0 +1,164 @@
+[
+  {
+    "id": "2603.13224",
+    "title": "Visual-ERM: Reward Modeling for Visual Equivalence",
+    "abstract": "Vision-to-code tasks require models to reconstruct structured visual inputs, such as charts, tables, and SVGs, into executable or structured representations with high visual fidelity. While recent Large Vision Language Models (LVLMs) achieve strong results via supervised fine-tuning, reinforcement learning remains challenging due to misaligned reward signals. Existing rewards either rely on textual rules or coarse visual embedding similarity, both of which fail to capture fine-grained visual discrepancies and are vulnerable to reward hacking. We propose Visual Equivalence Reward Model (Visual-ERM), a multimodal generative reward model that provides fine-grained, interpretable, and task-agnostic feedback to evaluate vision-to-code quality directly in the rendered visual space. Integrated into RL, Visual-ERM improves Qwen3-VL-8B-Instruct by +8.4 on chart-to-code and yields consistent gains on table and SVG parsing (+2.7, +4.1 on average), and further strengthens test-time scaling via reflection and revision. We also introduce VisualCritic-RewardBench (VC-RewardBench), a benchmark for judging fine-grained image-to-image discrepancies on structured visual data, where Visual-ERM at 8B decisively outperforms Qwen3-VL-235B-Instruct and approaches leading closed-source models. Our results suggest that fine-grained visual reward supervision is both necessary and sufficient for vision-to-code RL, regardless of task specificity.",
+    "authors": [
+      "Ziyu Liu",
+      "Shengyuan Ding",
+      "Xinyu Fang",
+      "Xuanlang Dai",
+      "Penghui Yang",
+      "Jianze Liang",
+      "Jiaqi Wang",
+      "Kai Chen",
+      "Dahua Lin",
+      "Yuhang Zang"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13224.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13224",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Visual-ERM：面向视觉等价性的奖励建模",
+      "core_contribution": "提出了Visual-ERM，一种多模态生成式奖励模型，能够为视觉到代码任务提供细粒度、可解释且与任务无关的视觉质量反馈，解决了现有奖励信号错位和奖励攻击的问题。",
+      "method": "该方法直接在渲染的视觉空间中评估视觉到代码的生成质量。它通过一个多模态生成模型来比较原始视觉输入与代码渲染输出之间的细粒度视觉差异，从而提供更精确的奖励信号。该模型被集成到强化学习框架中，用于指导模型优化。此外，研究还引入了VisualCritic-RewardBench基准来评估模型在结构化视觉数据上的细粒度图像差异判断能力。",
+      "findings": "实验表明，在强化学习中集成Visual-ERM显著提升了模型性能：在图表到代码任务上将Qwen3-VL-8B-Instruct的性能提高了+8.4分，在表格和SVG解析任务上也分别平均提升了+2.7和+4.1分。Visual-ERM（8B参数）在VC-RewardBench基准上显著优于Qwen3-VL-235B-Instruct，并接近领先的闭源模型。结果表明，无论任务特异性如何，细粒度的视觉奖励监督对于视觉到代码的强化学习既是必要的也是充分的。"
+    }
+  },
+  {
+    "id": "2603.13162",
+    "title": "DiT-IC: Aligned Diffusion Transformer for Efficient Image Compression",
+    "abstract": "Diffusion-based image compression has recently shown outstanding perceptual fidelity, yet its practicality is hindered by prohibitive sampling overhead and high memory usage. Most existing diffusion codecs employ U-Net architectures, where hierarchical downsampling forces diffusion to operate in shallow latent spaces (typically with only 8x spatial downscaling), resulting in excessive computation. In contrast, conventional VAE-based codecs work in much deeper latent domains (16x - 64x downscaled), motivating a key question: Can diffusion operate effectively in such compact latent spaces without compromising reconstruction quality? To address this, we introduce DiT-IC, an Aligned Diffusion Transformer for Image Compression, which replaces the U-Net with a Diffusion Transformer capable of performing diffusion in latent space entirely at 32x downscaled resolution. DiT-IC adapts a pretrained text-to-image multi-step DiT into a single-step reconstruction model through three key alignment mechanisms: (1) a variance-guided reconstruction flow that adapts denoising strength to latent uncertainty for efficient reconstruction; (2) a self-distillation alignment that enforces consistency with encoder-defined latent geometry to enable one-step diffusion; and (3) a latent-conditioned guidance that replaces text prompts with semantically aligned latent conditions, enabling text-free inference. With these designs, DiT-IC achieves state-of-the-art perceptual quality while offering up to 30x faster decoding and drastically lower memory usage than existing diffusion-based codecs. Remarkably, it can reconstruct 2048x2048 images on a 16 GB laptop GPU.",
+    "authors": [
+      "Junqi Shi",
+      "Ming Lu",
+      "Xingchen Li",
+      "Anle Ke",
+      "Ruiqi Zhang",
+      "Zhan Ma"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "eess.IV",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13162.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13162",
+    "primary_category": "eess.IV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DiT-IC：用于高效图像压缩的对齐扩散Transformer",
+      "core_contribution": "提出了一种基于扩散Transformer的图像压缩方法DiT-IC，首次实现了在高度压缩的32倍下采样潜在空间中运行扩散过程，在保持卓越感知质量的同时，大幅提升了解码速度并降低了内存消耗。",
+      "method": "该方法使用扩散Transformer替代传统的U-Net架构，将预训练的多步文本到图像DiT模型适配为单步重建模型。其核心是三种对齐机制：1）方差引导重建流，根据潜在空间的不确定性自适应去噪强度；2）自蒸馏对齐，强制模型与编码器定义的潜在几何保持一致以实现单步扩散；3）潜在条件引导，用语义对齐的潜在条件替代文本提示，实现无需文本的推理。",
+      "findings": "DiT-IC在感知质量上达到了最先进水平，同时解码速度比现有基于扩散的编解码器快高达30倍，内存使用量大幅降低。实验表明，它能够在16GB显存的笔记本电脑GPU上重建2048x2048的高分辨率图像，证明了其高效性与实用性。"
+    }
+  },
+  {
+    "id": "2603.13070",
+    "title": "Mitigating Memorization in Text-to-Image Diffusion via Region-Aware Prompt Augmentation and Multimodal Copy Detection",
+    "abstract": "State-of-the-art text-to-image diffusion models can produce impressive visuals but may memorize and reproduce training images, creating copyright and privacy risks. Existing prompt perturbations applied at inference time, such as random token insertion or embedding noise, may lower copying but often harm image-prompt alignment and overall fidelity. To address this, we introduce two complementary methods. First, Region-Aware Prompt Augmentation (RAPTA) uses an object detector to find salient regions and turn them into semantically grounded prompt variants, which are randomly sampled during training to increase diversity, while maintaining semantic alignment. Second, Attention-Driven Multimodal Copy Detection (ADMCD) aggregates local patch, global semantic, and texture cues with a lightweight transformer to produce a fused representation, and applies simple thresholded decision rules to detect copying without training with large annotated datasets. Experiments show that RAPTA reduces overfitting while maintaining high synthesis quality, and that ADMCD reliably detects copying, outperforming single-modal metrics.",
+    "authors": [
+      "Yunzhuo Chen",
+      "Jordan Vice",
+      "Naveed Akhtar",
+      "Nur Al Hasan Haldar",
+      "Ajmal Mian"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13070.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13070",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过区域感知提示增强与多模态复制检测缓解文本到图像扩散模型中的记忆效应",
+      "core_contribution": "提出了两种互补方法：区域感知提示增强（RAPTA）和多模态复制检测（ADMCD），在降低扩散模型对训练数据记忆的同时，保持生成质量，并有效识别复制行为。",
+      "method": "1. RAPTA：使用目标检测器识别图像显著区域，将其转换为语义相关的提示变体，在训练中随机采样以增加数据多样性，同时保持语义对齐。2. ADMCD：通过轻量级Transformer聚合局部块、全局语义和纹理特征，生成融合表示，并应用简单的阈值决策规则检测复制，无需大规模标注数据集训练。",
+      "findings": "实验表明，RAPTA能有效减少过拟合且保持高合成质量；ADMCD在复制检测任务上表现可靠，优于单模态指标，为缓解扩散模型的版权与隐私风险提供了实用方案。"
+    }
+  },
+  {
+    "id": "2603.13069",
+    "title": "Fractals made Practical: Denoising Diffusion as Partitioned Iterated Function Systems",
+    "abstract": "What is a diffusion model actually doing when it turns noise into a photograph? We show that the deterministic DDIM reverse chain operates as a Partitioned Iterated Function System (PIFS) and that this framework serves as a unified design language for denoising diffusion model schedules, architectures, and training objectives. From the PIFS structure we derive three computable geometric quantities: a per-step contraction threshold $L^*_t$, a diagonal expansion function $f_t(λ)$ and a global expansion threshold $λ^{**}$. These quantities require no model evaluation and fully characterize the denoising dynamics. They structurally explain the two-regime behavior of diffusion models: global context assembly at high noise via diffuse cross-patch attention and fine-detail synthesis at low noise via patch-by-patch suppression release in strict variance order. Self-attention emerges as the natural primitive for PIFS contraction. The Kaplan-Yorke dimension of the PIFS attractor is determined analytically through a discrete Moran equation on the Lyapunov spectrum. Through the study of the fractal geometry of the PIFS, we derive three optimal design criteria and show that four prominent empirical design choices (the cosine schedule offset, resolution-dependent logSNR shift, Min-SNR loss weighting, and Align Your Steps sampling) each arise as approximate solutions to our explicit geometric optimization problems tuning theory into practice.",
+    "authors": [
+      "Ann Dooms"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "cs.LG",
+      "cs.CV",
+      "cs.IT",
+      "math.DS"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13069.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13069",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "实用化的分形：去噪扩散作为分区迭代函数系统",
+      "core_contribution": "本文揭示了确定性DDIM反向链本质上是一个分区迭代函数系统（PIFS），并以此框架统一解释了扩散模型的设计要素；同时推导出三个可计算的几何量来完全表征去噪动态，无需模型评估。",
+      "method": "论文将去噪扩散模型的形式化框架构建为分区迭代函数系统（PIFS），从中推导出每步收缩阈值、对角扩张函数和全局扩张阈值三个几何量。通过分析PIFS的分形几何与李雅普诺夫谱，利用离散Moran方程解析计算吸引子的Kaplan-Yorke维数，并基于几何优化提出设计准则。",
+      "findings": "研究从结构上解释了扩散模型的两阶段行为：高噪声时通过扩散的跨块注意力进行全局上下文整合，低噪声时按严格方差顺序逐块释放细节。自注意力被证明是PIFS收缩的自然原语。此外，论文推导的三个最优设计准则表明，余弦计划偏移、分辨率相关的logSNR平移、Min-SNR损失加权和Align Your Steps采样等现有经验性设计，均近似于该几何优化问题的解。"
+    }
+  },
+  {
+    "id": "2603.13032",
+    "title": "Multimodal OCR: Parse Anything from Documents",
+    "abstract": "We present Multimodal OCR (MOCR), a document parsing paradigm that jointly parses text and graphics into unified textual representations. Unlike conventional OCR systems that focus on text recognition and leave graphical regions as cropped pixels, our method, termed dots.mocr, treats visual elements such as charts, diagrams, tables, and icons as first-class parsing targets, enabling systems to parse documents while preserving semantic relationships across elements. It offers several advantages: (1) it reconstructs both text and graphics as structured outputs, enabling more faithful document reconstruction; (2) it supports end-to-end training over heterogeneous document elements, allowing models to exploit semantic relations between textual and visual components; and (3) it converts previously discarded graphics into reusable code-level supervision, unlocking multimodal supervision embedded in existing documents. To make this paradigm practical at scale, we build a comprehensive data engine from PDFs, rendered webpages, and native SVG assets, and train a compact 3B-parameter model through staged pretraining and supervised fine-tuning. We evaluate dots.mocr from two perspectives: document parsing and structured graphics parsing. On document parsing benchmarks, it ranks second only to Gemini 3 Pro on our OCR Arena Elo leaderboard, surpasses existing open-source document parsing systems, and sets a new state of the art of 83.9 on olmOCR Bench. On structured graphics parsing, dots.mocr achieves higher reconstruction quality than Gemini 3 Pro across image-to-SVG benchmarks, demonstrating strong performance on charts, UI layouts, scientific figures, and chemical diagrams. These results show a scalable path toward building large-scale image-to-code corpora for multimodal pretraining. Code and models are publicly available at https://github.com/rednote-hilab/dots.mocr.",
+    "authors": [
+      "Handong Zheng",
+      "Yumeng Li",
+      "Kaile Zhang",
+      "Liang Xin",
+      "Guangwei Zhao",
+      "Hao Liu",
+      "Jiayu Chen",
+      "Jie Lou",
+      "Jiyu Qiu",
+      "Qi Fu",
+      "Rui Yang",
+      "Shuo Jiang",
+      "Weijian Luo",
+      "Weijie Su",
+      "Weijun Zhang",
+      "Xingyu Zhu",
+      "Yabin Li",
+      "Yiwei ma",
+      "Yu Chen",
+      "Zhaohui Yu",
+      "Guang Yang",
+      "Colin Zhang",
+      "Lei Zhang",
+      "Yuliang Liu",
+      "Xiang Bai"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13032.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13032",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "多模态OCR：解析文档中的任意内容",
+      "core_contribution": "提出了多模态OCR（MOCR）这一文档解析新范式，将文本与图形（如图表、图标）统一解析为结构化文本表示，实现了对文档中异质元素的端到端联合解析与语义关系保留。",
+      "method": "该方法（dots.mocr）将视觉元素视为与文本同等的一类解析目标，通过从PDF、网页和SVG资源构建大规模数据引擎，并采用分阶段预训练与有监督微调的策略，训练了一个紧凑的30亿参数模型，以同时处理文本识别和图形结构化解析。",
+      "findings": "在文档解析评测中，dots.mocr在OCR Arena Elo排行榜上仅次于Gemini 3 Pro，在olmOCR Bench上以83.9分刷新了最优性能；在结构化图形解析任务中，其在图像转SVG的多个基准（如图表、科学图表、化学结构式）上重建质量优于Gemini 3 Pro，证明了利用现有文档构建大规模多模态代码监督数据的可行路径。"
+    }
+  }
+]
