@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2603.14209",
+    "title": "ChArtist: Generating Pictorial Charts with Unified Spatial and Subject Control",
+    "abstract": "A pictorial chart is an effective medium for visual storytelling, seamlessly integrating visual elements with data charts. However, creating such images is challenging because the flexibility of visual elements often conflicts with the rigidity of chart structures. This process thus requires a creative deformation that maintains both data faithfulness and visual aesthetics. Current methods that extract dense structural cues from natural images (e.g., edge or depth maps) are ill-suited as conditioning signals for pictorial chart generation. We present ChArtist, a domain-specific diffusion model for generating pictorial charts automatically, offering two distinct types of control: 1) spatial control that aligns well with the chart structure, and 2) subject-driven control that respects the visual characteristics of a reference image. To achieve this, we introduce a skeleton-based spatial control representation. This representation encodes only the data-encoding information of the chart, allowing for the easy incorporation of reference visuals without a rigid outline constraint. We implement our method based on the Diffusion Transformer (DiT) and leverage an adaptive position encoding mechanism to manage these two controls. We further introduce Spatially Gated Attention to modulate the interaction between spatial control and subject control. To support the fine-tuning of pre-trained models for this task, we created a large-scale dataset of 30,000 triplets (skeleton, reference image, pictorial chart). We also propose a unified data accuracy metric to evaluate the data faithfulness of the generated charts. We believe this work demonstrates that current generative models can achieve data-driven visual storytelling by moving beyond general-purpose conditions to task-specific representations. Project page: https://chartist-ai.github.io/.",
+    "authors": [
+      "Shishi Xiao",
+      "Tongyu Zhou",
+      "David Laidlaw",
+      "Gromit Yeuk-Yin Chan"
+    ],
+    "published": "2026-03-15",
+    "updated": "2026-03-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.14209.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.14209",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "ChArtist：通过统一的空间与主体控制生成图示化图表",
+      "core_contribution": "提出了首个面向图示化图表生成的领域专用扩散模型ChArtist，实现了对图表结构的精确空间控制和对参考图像视觉特征的主体驱动控制，解决了视觉元素灵活性与图表结构刚性之间的冲突。",
+      "method": "方法基于扩散Transformer（DiT）构建，引入了基于骨架的空间控制表示，仅编码图表的数据结构信息，避免了对视觉轮廓的刚性约束。通过自适应位置编码机制协调空间与主体两种控制信号，并采用空间门控注意力机制来调节两者间的交互。为训练模型，构建了一个包含3万组（骨架、参考图像、图示化图表）三元对的大规模数据集。",
+      "findings": "实验表明，ChArtist能够生成既保持数据准确性又具备视觉美感的图示化图表。提出的统一数据准确性度量指标可有效评估生成图表的数据忠实度。该研究证明了通过采用任务特定的控制表示（而非通用条件），当前生成模型能够实现数据驱动的视觉叙事。"
+    }
+  },
+  {
+    "id": "2603.13547",
+    "title": "NumColor: Precise Numeric Color Control in Text-to-Image Generation",
+    "abstract": "Text-to-image diffusion models excel at generating images from natural language descriptions, yet fail to interpret numerical colors such as hex codes (#FF5733) and RGB values (rgb(255,87,51)). This limitation stems from subword tokenization, which fragments color codes into semantically meaningless tokens that text encoders cannot map to coherent color representations. We present NumColor, that enables precise numerical color control across multiple diffusion architectures. NumColor comprises two components: a Color Token Aggregator that detects color specifications regardless of tokenization, and a ColorBook containing 6,707 learnable embeddings that map colors to embedding space of text encoder in perceptually uniform CIE Lab space. We introduce two auxiliary losses, directional alignment and interpolation consistency, to enforce geometric correspondence between Lab and embedding spaces, enabling smooth color interpolation. To train the ColorBook, we construct NumColor-Data, a synthetic dataset of 500K rendered images with unambiguous color-to-pixel correspondence, eliminating the annotation ambiguity inherent in photographic datasets. Although trained solely on FLUX, NumColor transfers zero-shot to SD3, SD3.5, PixArt-α, and PixArt-Σ without model-specific adaptation. NumColor improves numerical color accuracy by 4-9x across five models, while simultaneously improving color harmony scores by 10-30x on GenColorBench benchmark.",
+    "authors": [
+      "Muhammad Atif Butt",
+      "Diego Hernandez",
+      "Alexandra Gomez-Villa",
+      "Kai Wang",
+      "Javier Vazquez-Corral",
+      "Joost Van De Weijer"
+    ],
+    "published": "2026-03-13",
+    "updated": "2026-03-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.13547.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.13547",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "NumColor：文本到图像生成中的精确数值颜色控制",
+      "core_contribution": "提出NumColor方法，首次解决了文本到图像扩散模型无法准确理解并生成十六进制码和RGB值等数值颜色的问题，实现了跨多种模型架构的精确颜色控制。",
+      "method": "方法包含两个核心组件：1）颜色标记聚合器，用于检测并整合因分词而破碎的颜色数值标记；2）包含6,707个可学习嵌入向量的颜色词典，在感知均匀的CIE Lab色彩空间中学习颜色到文本编码器嵌入空间的映射。通过方向对齐和插值一致性两个辅助损失函数，确保Lab空间与嵌入空间的几何对应关系，实现平滑的颜色插值。",
+      "findings": "仅使用FLUX模型训练，NumColor即可零样本迁移到SD3、SD3.5、PixArt-α和PixArt-Σ等模型，无需额外适配。在GenColorBench基准测试中，将五种模型的数值颜色准确度提升了4-9倍，同时将色彩协调性分数提升了10-30倍。"
+    }
+  },
+  {
+    "id": "2603.14957",
+    "title": "CyCLeGen: Cycle-Consistent Layout Prediction and Image Generation in Vision Foundation Models",
+    "abstract": "We present CyCLeGen, a unified vision-language foundation model capable of both image understanding and image generation within a single autoregressive framework. Unlike existing vision models that depend on separate modules for perception and synthesis, CyCLeGen adopts a fully integrated architecture that enforces cycle-consistent learning through image->layout->image and layout->image->layout generation loops. This unified formulation introduces two key advantages: introspection, enabling the model to reason about its own generations, and data efficiency, allowing self-improvement via synthetic supervision under a reinforcement learning objective guided by cycle consistency. Extensive experiments show that CyCLeGen achieves significant gains across diverse image understanding and generation benchmarks, highlighting the potential of unified vision-language foundation models.",
+    "authors": [
+      "Xiaojun Shan",
+      "Haoyu Shen",
+      "Yucheng Mao",
+      "Xiang Zhang",
+      "Abhay Anand",
+      "Bingnan Li",
+      "Haiyang Xu",
+      "Zhuowen Tu"
+    ],
+    "published": "2026-03-16",
+    "updated": "2026-03-16",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.14957.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.14957",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CyCLeGen：视觉基础模型中的循环一致性布局预测与图像生成",
+      "core_contribution": "提出了一个统一的视觉-语言基础模型CyCLeGen，能够在单一自回归框架内同时完成图像理解和图像生成任务，并通过循环一致性学习实现了模型自省与数据高效利用。",
+      "method": "该方法采用完全集成的架构，通过“图像→布局→图像”和“布局→图像→布局”的生成循环实现循环一致性学习。模型在强化学习目标指导下，利用循环一致性作为监督信号进行自我改进，无需依赖独立的感知与合成模块。",
+      "findings": "实验表明，CyCLeGen在多种图像理解和生成基准测试中均取得显著性能提升，验证了统一视觉-语言基础模型在实现感知与生成协同优化方面的潜力。"
+    }
+  },
+  {
+    "id": "2603.14936",
+    "title": "Relevance Feedback in Text-to-Image Diffusion: A Training-Free And Model-Agnostic Interactive Framework",
+    "abstract": "Text-to-image generation using diffusion models has achieved remarkable success. However, users often possess clear visual intents but struggle to express them precisely in language, resulting in ambiguous prompts and misaligned images. Existing methods struggle to bridge this gap, typically relying on high-load textual dialogues, opaque black-box inferences, or expensive fine-tuning. They fail to simultaneously achieve low cognitive load, interpretable preference inference, and remain training-free and model-agnostic. To address this, we propose RFD, an interactive framework that adapts the relevance feedback mechanism from information retrieval to diffusion models. In RFD, users replace explicit textual dialogue with implicit, multi-select visual feedback to minimize cognitive load, easily expressing complex, multi-dimensional preferences. To translate feedback into precise generative guidance, we construct an expert-curated feature repository and introduce an information-theoretic weighted cumulative preference analysis. This white-box method calculates preferences from current-round feedback and incrementally accumulates them, avoiding the concatenation of historical interactions and preventing inference degradation caused by lengthy contexts. Furthermore, RFD employs a probabilistic sampling mechanism for prompt reconstruction to balance exploitation and exploration, preventing output homogenization. Crucially, RFD operates entirely within the external text space, making it strictly training-free and model-agnostic as a universal plug-and-play solution. Extensive experiments demonstrate that RFD effectively captures the user's true visual intent, significantly outperforming baselines in preference alignment.",
+    "authors": [
+      "Wenxi Wang",
+      "Hongbin Liu",
+      "Mingqian Li",
+      "Junyan Yuan",
+      "Junqi Zhang"
+    ],
+    "published": "2026-03-16",
+    "updated": "2026-03-16",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.14936.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.14936",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "文本到图像扩散模型中的相关性反馈：一种免训练且模型无关的交互式框架",
+      "core_contribution": "提出了RFD框架，将信息检索中的相关性反馈机制引入扩散模型，通过隐式视觉反馈和免训练、模型无关的方式，有效降低了用户认知负担并提升了生成图像与视觉意图的对齐度。",
+      "method": "RFD框架让用户通过多选视觉反馈（而非文本对话）表达偏好；构建专家特征库，并基于信息论设计加权累积偏好分析方法，以白盒方式将反馈转化为生成指导；采用概率采样机制进行提示词重构，以平衡利用与探索，避免输出同质化。整个框架仅在外部文本空间操作，无需训练且兼容不同模型。",
+      "findings": "实验表明，RFD能有效捕捉用户的真实视觉意图，在偏好对齐方面显著优于基线方法，同时保持了低认知负荷、可解释的偏好推断以及免训练和模型无关的特性。"
+    }
+  },
+  {
+    "id": "2603.14925",
+    "title": "Workflow-Aware Structured Layer Decomposition for Illustration Production",
+    "abstract": "Recent generative image editing methods adopt layered representations to mitigate the entangled nature of raster images and improve controllability, typically relying on object-based segmentation. However, such strategies may fail to capture the structural and stylized properties of human-created images, such as anime illustrations. To solve this issue, we propose a workflow-aware structured layer decomposition framework tailored to the illustration production of anime artwork. Inspired by the creation pipeline of anime production, our method decomposes the illustration into semantically meaningful production layers, including line art, flat color, shadow, and highlight. To decouple all these layers, we introduce lightweight layer semantic embeddings to provide specific task guidance for each layer. Furthermore, a set of layer-wise losses is incorporated to supervise the training process of individual layers. To overcome the lack of ground-truth layered data, we construct a high-quality illustration dataset that simulated the standard anime production workflow. Experiments demonstrate that the accurate and visually coherent layer decompositions were achieved by using our method. We believe that the resulting layered representation further enables downstream tasks such as recoloring and embedding texture, supporting content creation, and illustration editing. Code is available at: https://github.com/zty0304/Anime-layer-decomposition",
+    "authors": [
+      "Tianyu Zhang",
+      "Dongchi Li",
+      "Keiichi Sawada",
+      "Haoran Xie"
+    ],
+    "published": "2026-03-16",
+    "updated": "2026-03-16",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.14925.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.14925",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向插画制作的工作流感知结构化图层分解",
+      "core_contribution": "提出了一种专为动漫插画制作设计的工作流感知结构化图层分解框架，将图像分解为符合专业制作流程的语义图层（如线稿、平色、阴影、高光），显著提升了生成式图像编辑的可控性与视觉连贯性。",
+      "method": "方法受动漫创作流程启发，将插画分解为多个语义化的生产图层。通过引入轻量级的图层语义嵌入为每个图层提供特定的任务指导，并采用一组分层损失函数分别监督各图层的训练过程。为解决缺乏真实分层数据的问题，构建了一个模拟标准动漫制作流程的高质量插画数据集。",
+      "findings": "实验表明，该方法能够实现准确且视觉连贯的图层分解。所得的分层表示可有效支持重新着色、纹理嵌入等下游任务，为内容创作和插画编辑提供了实用工具。"
+    }
+  }
+]
