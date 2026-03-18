@@ -1,0 +1,139 @@
+[
+  {
+    "id": "2603.16098",
+    "title": "LICA: Layered Image Composition Annotations for Graphic Design Research",
+    "abstract": "We introduce LICA (Layered Image Composition Annotations), a large-scale dataset of 1,550,244 multi-layer graphic design compositions designed to advance structured understanding and generation of graphic layouts1. In addition to ren- dered PNG images, LICA represents each design as a hierarchical composition of typed components including text, image, vector, and group elements, each paired with rich per-element metadata such as spatial geometry, typographic attributes, opacity, and visibility. The dataset spans 20 design categories and 971,850 unique templates, providing broad coverage of real-world design structures. We further introduce graphic design video as a new and largely unexplored challenge for current vision-language models through 27,261 animated layouts annotated with per-component keyframes and motion parameters. Beyond scale, LICA establishes a new paradigm of research tasks for graphic design, enabling structured investiga- tions into problems such as layer-aware inpainting, structured layout generation, controlled design editing, and temporally-aware generative modeling. By repre- senting design as a system of compositional layers and relationships, the dataset supports research on models that operate directly on design structure rather than pixels alone.",
+    "authors": [
+      "Elad Hirsch",
+      "Shubham Yadav",
+      "Mohit Garg",
+      "Purvanshi Mehta"
+    ],
+    "published": "2026-03-17",
+    "updated": "2026-03-17",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.16098.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.16098",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "LICA：用于平面设计研究的层级化图像合成标注数据集",
+      "core_contribution": "本文提出了LICA大规模数据集，旨在推动平面布局的结构化理解与生成研究，并引入了平面设计视频作为视觉-语言模型的新挑战任务。",
+      "method": "LICA数据集包含155万多个多层平面设计合成样本，每个设计均以层级化结构表示，包含文本、图像、矢量、组等类型化组件，并附有丰富的元素级元数据（如空间几何、字体属性、透明度等）。数据集涵盖20个设计类别和97万个独特模板，同时包含2.7万个带有逐组件关键帧和运动参数标注的动画布局，以支持时序感知生成建模研究。",
+      "findings": "LICA不仅提供了大规模的结构化设计数据，还建立了一系列新的研究任务范式，包括图层感知修复、结构化布局生成、可控设计编辑等，支持模型直接基于设计结构而非像素进行操作，为平面设计领域的结构化分析与生成提供了重要基础。"
+    }
+  },
+  {
+    "id": "2603.16797",
+    "title": "Adaptive Moments are Surprisingly Effective for Plug-and-Play Diffusion Sampling",
+    "abstract": "Guided diffusion sampling relies on approximating often intractable likelihood scores, which introduces significant noise into the sampling dynamics. We propose using adaptive moment estimation to stabilize these noisy likelihood scores during sampling. Despite its simplicity, our approach achieves state-of-the-art results on image restoration and class-conditional generation tasks, outperforming more complicated methods, which are often computationally more expensive. We provide empirical analysis of our method on both synthetic and real data, demonstrating that mitigating gradient noise through adaptive moments offers an effective way to improve alignment.",
+    "authors": [
+      "Christian Belardi",
+      "Justin Lovelace",
+      "Kilian Q. Weinberger",
+      "Carla P. Gomes"
+    ],
+    "published": "2026-03-17",
+    "updated": "2026-03-17",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.16797.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.16797",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "自适应矩估计在即插即用扩散采样中出人意料地有效",
+      "core_contribution": "提出使用自适应矩估计来稳定扩散采样过程中噪声较大的似然分数，从而显著提升采样质量与效率。",
+      "method": "该方法在引导扩散采样过程中，对难以精确计算的似然分数梯度引入自适应矩估计（如类似Adam优化器的机制），动态调整梯度更新步长以抑制噪声。其核心是通过历史梯度信息平滑当前梯度估计，无需复杂计算或额外训练。该方法可直接嵌入现有采样框架，实现即插即用的稳定化改进。",
+      "findings": "在图像恢复和类条件生成任务上取得了最先进的性能，超越了计算更复杂的现有方法；在合成与真实数据上的实验表明，通过自适应矩减少梯度噪声能有效提升采样对齐质量。"
+    }
+  },
+  {
+    "id": "2603.16792",
+    "title": "V-Co: A Closer Look at Visual Representation Alignment via Co-Denoising",
+    "abstract": "Pixel-space diffusion has recently re-emerged as a strong alternative to latent diffusion, enabling high-quality generation without pretrained autoencoders. However, standard pixel-space diffusion models receive relatively weak semantic supervision and are not explicitly designed to capture high-level visual structure. Recent representation-alignment methods (e.g., REPA) suggest that pretrained visual features can substantially improve diffusion training, and visual co-denoising has emerged as a promising direction for incorporating such features into the generative process. However, existing co-denoising approaches often entangle multiple design choices, making it unclear which design choices are truly essential. Therefore, we present V-Co, a systematic study of visual co-denoising in a unified JiT-based framework. This controlled setting allows us to isolate the ingredients that make visual co-denoising effective. Our study reveals four key ingredients for effective visual co-denoising. First, preserving feature-specific computation while enabling flexible cross-stream interaction motivates a fully dual-stream architecture. Second, effective classifier-free guidance (CFG) requires a structurally defined unconditional prediction. Third, stronger semantic supervision is best provided by a perceptual-drifting hybrid loss. Fourth, stable co-denoising further requires proper cross-stream calibration, which we realize through RMS-based feature rescaling. Together, these findings yield a simple recipe for visual co-denoising. Experiments on ImageNet-256 show that, at comparable model sizes, V-Co outperforms the underlying pixel-space diffusion baseline and strong prior pixel-diffusion methods while using fewer training epochs, offering practical guidance for future representation-aligned generative models.",
+    "authors": [
+      "Han Lin",
+      "Xichen Pan",
+      "Zun Wang",
+      "Yue Zhang",
+      "Chu Wang",
+      "Jaemin Cho",
+      "Mohit Bansal"
+    ],
+    "published": "2026-03-17",
+    "updated": "2026-03-17",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.16792.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.16792",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "V-Co：通过协同去噪审视视觉表征对齐",
+      "core_contribution": "本文系统研究了视觉协同去噪方法，在统一的即时训练框架中分离出影响性能的关键设计要素，并提出了一套简单有效的视觉协同去噪实现方案。",
+      "method": "研究采用基于即时训练的统一框架进行控制实验，通过双流架构保留特征特异性计算并支持跨流交互；设计了结构化的无条件预测以实现有效的无分类器引导；结合感知漂移混合损失提供更强的语义监督；并利用基于RMS的特征重缩放实现跨流校准。",
+      "findings": "实验发现有效视觉协同去噪的四个关键要素：1）采用完全双流架构；2）需要结构化的无条件预测；3）使用感知漂移混合损失；4）基于RMS的特征重缩放。在ImageNet-256上，V-Co在相同模型规模下优于基线像素扩散方法，且训练周期更少。"
+    }
+  },
+  {
+    "id": "2603.16711",
+    "title": "Search2Motion: Training-Free Object-Level Motion Control via Attention-Consensus Search",
+    "abstract": "We present Search2Motion, a training-free framework for object-level motion editing in image-to-video generation. Unlike prior methods requiring trajectories, bounding boxes, masks, or motion fields, Search2Motion adopts target-frame-based control, leveraging first-last-frame motion priors to realize object relocation while preserving scene stability without fine-tuning. Reliable target-frame construction is achieved through semantic-guided object insertion and robust background inpainting. We further show that early-step self-attention maps predict object and camera dynamics, offering interpretable user feedback and motivating ACE-Seed (Attention Consensus for Early-step Seed selection), a lightweight search strategy that improves motion fidelity without look-ahead sampling or external evaluators. Noting that existing benchmarks conflate object and camera motion, we introduce S2M-DAVIS and S2M-OMB for stable-camera, object-only evaluation, alongside FLF2V-obj metrics that isolate object artifacts without requiring ground-truth trajectories. Search2Motion consistently outperforms baselines on FLF2V-obj and VBench.",
+    "authors": [
+      "Sainan Liu",
+      "Tz-Ying Wu",
+      "Hector A Valdez",
+      "Subarna Tripathi"
+    ],
+    "published": "2026-03-17",
+    "updated": "2026-03-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.16711.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.16711",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Search2Motion：通过注意力共识搜索实现免训练的对象级运动控制",
+      "core_contribution": "提出了一个免训练的图像到视频生成框架，仅需首尾帧即可实现对象重定位与场景稳定；并揭示了早期自注意力图可预测运动动态，进而设计了一种轻量搜索策略提升运动保真度。",
+      "method": "采用基于目标帧的控制方法，利用首尾帧运动先验实现对象运动编辑，无需微调。通过语义引导的对象插入和鲁棒的背景修复构建可靠目标帧；进一步提出ACE-Seed策略，通过搜索早期注意力共识选择最佳生成种子，避免前瞻采样或外部评估器。",
+      "findings": "在提出的稳定相机、仅对象运动的评测集S2M-DAVIS/S2M-OMB及FLF2V-obj指标上，Search2Motion均优于基线方法；早期注意力图能有效预测对象与相机动态，ACE-Seed策略显著提升了运动生成的忠实度。"
+    }
+  },
+  {
+    "id": "2603.16373",
+    "title": "Semantic One-Dimensional Tokenizer for Image Reconstruction and Generation",
+    "abstract": "Visual generative models based on latent space have achieved great success, underscoring the significance of visual tokenization. Mapping images to latents boosts efficiency and enables multimodal alignment for scaling up in downstream tasks. Existing visual tokenizers primarily map images into fixed 2D spatial grids and focus on pixel-level restoration, which hinders the capture of representations with compact global semantics. To address these issues, we propose \\textbf{SemTok}, a semantic one-dimensional tokenizer that compresses 2D images into 1D discrete tokens with high-level semantics. SemTok sets a new state-of-the-art in image reconstruction, achieving superior fidelity with a remarkably compact token representation. This is achieved via a synergistic framework with three key innovations: a 2D-to-1D tokenization scheme, a semantic alignment constraint, and a two-stage generative training strategy. Building on SemTok, we construct a masked autoregressive generation framework, which yields notable improvements in downstream image generation tasks. Experiments confirm the effectiveness of our semantic 1D tokenization. Our code will be open-sourced.",
+    "authors": [
+      "Yunpeng Qu",
+      "Kaidong Zhang",
+      "Yukang Ding",
+      "Ying Chen",
+      "Jian Wang"
+    ],
+    "published": "2026-03-17",
+    "updated": "2026-03-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.16373.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.16373",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于图像重建与生成的语义一维分词器",
+      "core_contribution": "提出了SemTok，一种将二维图像压缩为具有高级语义的一维离散标记的语义分词器，在图像重建任务上取得了新的最优性能，并显著提升了下游图像生成任务的效果。",
+      "method": "该方法通过一个协同框架实现，包含三个关键创新：1）一个将图像从2D空间映射到1D序列的标记化方案；2）一个语义对齐约束，以鼓励学习具有紧凑全局语义的表示；3）一个两阶段的生成式训练策略，以优化整个框架。基于此分词器，作者构建了一个掩码自回归生成框架。",
+      "findings": "实验表明，SemTok在图像重建上实现了卓越的保真度，同时使用了非常紧凑的标记表示。基于SemTok构建的生成框架，在下游图像生成任务中取得了显著的性能提升，验证了语义一维分词的有效性。"
+    }
+  }
+]
