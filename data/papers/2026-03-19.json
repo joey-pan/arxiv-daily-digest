@@ -1,0 +1,135 @@
+[
+  {
+    "id": "2603.18001",
+    "title": "EchoGen: Cycle-Consistent Learning for Unified Layout-Image Generation and Understanding",
+    "abstract": "In this work, we present EchoGen, a unified framework for layout-to-image generation and image grounding, capable of generating images with accurate layouts and high fidelity to text descriptions (e.g., spatial relationships), while grounding the image robustly at the same time. We believe that image grounding possesses strong text and layout understanding abilities, which can compensate for the corresponding limitations in layout-to-image generation. At the same time, images generated from layouts exhibit high diversity in content, thereby enhancing the robustness of image grounding. Jointly training both tasks within a unified model can promote performance improvements for each. However, we identify that this joint training paradigm encounters several optimization challenges and results in restricted performance. To address these issues, we propose progressive training strategies. First, the Parallel Multi-Task Pre-training (PMTP) stage equips the model with basic abilities for both tasks, leveraging shared tokens to accelerate training. Next, the Dual Joint Optimization (DJO) stage exploits task duality to sequentially integrate the two tasks, enabling unified optimization. Finally, the Cycle RL stage eliminates reliance on visual supervision by using consistency constraints as rewards, significantly enhancing the model's unified capabilities via the GRPO strategy. Extensive experiments demonstrate state-of-the-art results on both layout-to-image generation and image grounding benchmarks, and reveal clear synergistic gains from optimizing the two tasks together.",
+    "authors": [
+      "Kai Zou",
+      "Hongbo Liu",
+      "Dian Zheng",
+      "Jianxiong Gao",
+      "Zhiwei Zhao",
+      "Bin Liu"
+    ],
+    "published": "2026-03-18",
+    "updated": "2026-03-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.18001.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.18001",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "EchoGen：面向统一布局-图像生成与理解的循环一致性学习",
+      "core_contribution": "提出了一个统一的框架EchoGen，能够同时完成布局到图像的生成和图像定位任务，并通过联合训练使两个任务相互促进，实现性能的协同提升。",
+      "method": "该方法采用渐进式训练策略：首先通过并行多任务预训练使模型获得两项任务的基础能力；然后利用任务对偶性进行双联合优化，实现统一优化；最后通过循环强化学习阶段，以一致性约束作为奖励，利用GRPO策略显著增强模型的统一能力。",
+      "findings": "实验表明，EchoGen在布局到图像生成和图像定位基准测试中均取得了最先进的结果，并且验证了联合优化这两个任务能带来明显的协同增益，即图像定位任务增强了生成模型对文本和布局的理解，而布局生成任务则提升了图像定位的鲁棒性。"
+    }
+  },
+  {
+    "id": "2603.17965",
+    "title": "LaDe: Unified Multi-Layered Graphic Media Generation and Decomposition",
+    "abstract": "Media design layer generation enables the creation of fully editable, layered design documents such as posters, flyers, and logos using only natural language prompts. Existing methods either restrict outputs to a fixed number of layers or require each layer to contain only spatially continuous regions, causing the layer count to scale linearly with design complexity. We propose LaDe (Layered Media Design), a latent diffusion framework that generates a flexible number of semantically meaningful layers. LaDe combines three components: an LLM-based prompt expander that transforms a short user intent into structured per-layer descriptions that guide the generation, a Latent Diffusion Transformer with a 4D RoPE positional encoding mechanism that jointly generates the full media design and its constituent RGBA layers, and an RGBA VAE that decodes each layer with full alpha-channel support. By conditioning on layer samples during training, our unified framework supports three tasks: text-to-image generation, text-to-layers media design generation, and media design decomposition. We compare LaDe to Qwen-Image-Layered on text-to-layers and image-to-layers tasks on the Crello test set. LaDe outperforms Qwen-Image-Layered in text-to-layers generation by improving text-to-layer alignment, as validated by two VLM-as-a-judge evaluators (GPT-4o mini and Qwen3-VL).",
+    "authors": [
+      "Vlad-Constantin Lungu-Stan",
+      "Ionut Mironica",
+      "Mariana-Iuliana Georgescu"
+    ],
+    "published": "2026-03-18",
+    "updated": "2026-03-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.17965.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.17965",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "LaDe：统一的多层图形媒体生成与分解",
+      "core_contribution": "提出了一个统一的潜在扩散框架LaDe，能够生成语义清晰且数量灵活的多层设计文档，并同时支持文本到图像、文本到分层设计生成以及设计文档分解三项任务。",
+      "method": "方法结合了三个核心组件：1）基于大语言模型的提示扩展器，将简短用户意图转化为结构化的分层描述；2）采用4D RoPE位置编码机制的潜在扩散Transformer，联合生成完整媒体设计及其RGBA分层；3）支持完整Alpha通道的RGBA变分自编码器，用于解码每一层。",
+      "findings": "在Crello测试集上的实验表明，LaDe在文本到分层生成任务上优于Qwen-Image-Layered，通过GPT-4o mini和Qwen3-VL等视觉语言模型评估，其在文本与图层对齐方面表现更佳。"
+    }
+  },
+  {
+    "id": "2603.17895",
+    "title": "A Creative Agent is Worth a 64-Token Template",
+    "abstract": "Text-to-image (T2I) models have substantially improved image fidelity and prompt adherence, yet their creativity remains constrained by reliance on discrete natural language prompts. When presented with fuzzy prompts such as ``a creative vinyl record-inspired skyscraper'', these models often fail to infer the underlying creative intent, leaving creative ideation and prompt design largely to human users. Recent reasoning- or agent-driven approaches iteratively augment prompts but incur high computational and monetary costs, as their instance-specific generation makes ``creativity'' costly and non-reusable, requiring repeated queries or reasoning for subsequent generations. To address this, we introduce \\textbf{CAT}, a framework for \\textbf{C}reative \\textbf{A}gent \\textbf{T}okenization that encapsulates agents' intrinsic understanding of ``creativity'' through a \\textit{Creative Tokenizer}. Given the embeddings of fuzzy prompts, the tokenizer generates a reusable token template that can be directly concatenated with them to inject creative semantics into T2I models without repeated reasoning or prompt augmentation. To enable this, the tokenizer is trained via creative semantic disentanglement, leveraging relations among partially overlapping concept pairs to capture the agent's latent creative representations. Extensive experiments on \\textbf{\\textit{Architecture Design}}, \\textbf{\\textit{Furniture Design}}, and \\textbf{\\textit{Nature Mixture}} tasks demonstrate that CAT provides a scalable and effective paradigm for enhancing creativity in T2I generation, achieving a $3.7\\times$ speedup and a $4.8\\times$ reduction in computational cost, while producing images with superior human preference and text-image alignment compared to state-of-the-art T2I models and creative generation methods.",
+    "authors": [
+      "Ruixiao Shi",
+      "Fu Feng",
+      "Yucheng Xie",
+      "Xu Yang",
+      "Jing Wang",
+      "Xin Geng"
+    ],
+    "published": "2026-03-18",
+    "updated": "2026-03-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.17895.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.17895",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "一个创意智能体等价于一个64个标记的模板",
+      "core_contribution": "提出了一个名为CAT的创意智能体标记化框架，通过一个可复用的“创意标记”模板，将智能体对“创意”的内在理解注入文本到图像模型，从而低成本、可扩展地提升模型的创造性生成能力。",
+      "method": "该方法的核心是训练一个“创意标记器”。给定模糊提示的嵌入向量，该标记器能生成一个可复用的标记模板。该模板通过创意语义解耦进行训练，利用部分重叠概念对之间的关系，来捕获智能体潜在的创意表征。训练完成后，该模板可直接与模糊提示拼接，无需重复推理或提示增强。",
+      "findings": "在建筑设计、家具设计和自然混合三个任务上的实验表明，CAT方法在生成图像的创意性、人类偏好和图文对齐度上均优于现有先进的文本到图像模型和创意生成方法。同时，该方法实现了3.7倍的加速和4.8倍的计算成本降低，为提升T2I生成的创意性提供了一个高效、可扩展的范式。"
+    }
+  },
+  {
+    "id": "2603.17998",
+    "title": "The Unreasonable Effectiveness of Text Embedding Interpolation for Continuous Image Steering",
+    "abstract": "We present a training-free framework for continuous and controllable image editing at test time for text-conditioned generative models. In contrast to prior approaches that rely on additional training or manual user intervention, we find that a simple steering in the text-embedding space is sufficient to produce smooth edit control. Given a target concept (e.g., enhancing photorealism or changing facial expression), we use a large language model to automatically construct a small set of debiased contrastive prompt pairs, from which we compute a steering vector in the generator's text-encoder space. We then add this vector directly to the input prompt representation to control generation along the desired semantic axis. To obtain a continuous control, we propose an elastic range search procedure that automatically identifies an effective interval of steering magnitudes, avoiding both under-steering (no-edit) and over-steering (changing other attributes). Adding the scaled versions of the same vector within this interval yields smooth and continuous edits. Since our method modifies only textual representations, it naturally generalizes across text-conditioned modalities, including image and video generation. To quantify the steering continuity, we introduce a new evaluation metric that measures the uniformity of semantic change across edit strengths. We compare the continuous editing behavior across methods and find that, despite its simplicity and lightweight design, our approach is comparable to training-based alternatives, outperforming other training-free methods.",
+    "authors": [
+      "Yigit Ekin",
+      "Yossi Gandelsman"
+    ],
+    "published": "2026-03-18",
+    "updated": "2026-03-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.17998.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.17998",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "文本嵌入插值在连续图像控制中不合理的有效性",
+      "core_contribution": "本文提出了一种无需训练、基于文本嵌入空间插值的连续可控图像编辑框架，仅通过简单的文本嵌入向量偏移即可实现平滑的语义编辑，并自然泛化至图像和视频生成。",
+      "method": "方法首先利用大语言模型自动构建去偏的对比提示词对，从中计算生成器文本编码空间中的编辑方向向量；随后提出弹性范围搜索算法，自动确定有效的编辑强度区间，避免编辑不足或过度；最后通过在该区间内缩放并叠加同一方向向量，实现连续平滑的编辑效果。",
+      "findings": "实验表明，尽管方法轻量且无需训练，其在连续编辑行为上可与基于训练的方法相媲美，并优于其他免训练方法；新提出的评估指标验证了编辑过程中语义变化的均匀性，证实了方法的连续控制能力。"
+    }
+  },
+  {
+    "id": "2603.17989",
+    "title": "Versatile Editing of Video Content, Actions, and Dynamics without Training",
+    "abstract": "Controlled video generation has seen drastic improvements in recent years. However, editing actions and dynamic events, or inserting contents that should affect the behaviors of other objects in real-world videos, remains a major challenge. Existing trained models struggle with complex edits, likely due to the difficulty of collecting relevant training data. Similarly, existing training-free methods are inherently restricted to structure- and motion-preserving edits and do not support modification of motion or interactions. Here, we introduce DynaEdit, a training-free editing method that unlocks versatile video editing capabilities with pretrained text-to-video flow models. Our method relies on the recently introduced inversion-free approach, which does not intervene in the model internals, and is thus model-agnostic. We show that naively attempting to adapt this approach to general unconstrained editing results in severe low-frequency misalignment and high-frequency jitter. We explain the sources for these phenomena and introduce novel mechanisms for overcoming them. Through extensive experiments, we show that DynaEdit achieves state-of-the-art results on complex text-based video editing tasks, including modifying actions, inserting objects that interact with the scene, and introducing global effects.",
+    "authors": [
+      "Vladimir Kulikov",
+      "Roni Paiss",
+      "Andrey Voynov",
+      "Inbar Mosseri",
+      "Tali Dekel",
+      "Tomer Michaeli"
+    ],
+    "published": "2026-03-18",
+    "updated": "2026-03-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.17989.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.17989",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "无需训练即可对视频内容、动作与动态进行多样化编辑",
+      "core_contribution": "提出了一种无需训练的通用视频编辑方法DynaEdit，能够突破现有方法在动作修改和物体交互编辑上的限制，实现了对视频动作、动态及物体间交互行为的复杂编辑。",
+      "method": "该方法基于预训练的文本到视频流模型，采用无需模型内部干预的反演无关（inversion-free）框架，具有模型无关性。针对直接应用现有方法会导致低频错位和高频抖动的问题，作者分析了其产生原因，并提出了新的机制来克服这些缺陷。",
+      "findings": "大量实验表明，DynaEdit在基于文本的复杂视频编辑任务上取得了最先进的结果，包括成功修改视频动作、插入与场景交互的物体，以及引入全局视觉效果，显著提升了编辑的多样性和真实感。"
+    }
+  }
+]
