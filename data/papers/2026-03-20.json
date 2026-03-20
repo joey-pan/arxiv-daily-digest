@@ -1,0 +1,158 @@
+[
+  {
+    "id": "2603.19232",
+    "title": "Cubic Discrete Diffusion: Discrete Visual Generation on High-Dimensional Representation Tokens",
+    "abstract": "Visual generation with discrete tokens has gained significant attention as it enables a unified token prediction paradigm shared with language models, promising seamless multimodal architectures. However, current discrete generation methods remain limited to low-dimensional latent tokens (typically 8-32 dims), sacrificing the semantic richness essential for understanding. While high-dimensional pretrained representations (768-1024 dims) could bridge this gap, their discrete generation poses fundamental challenges. In this paper, we present Cubic Discrete Diffusion (CubiD), the first discrete generation model for high-dimensional representations. CubiD performs fine-grained masking throughout the high-dimensional discrete representation -- any dimension at any position can be masked and predicted from partial observations. This enables the model to learn rich correlations both within and across spatial positions, with the number of generation steps fixed at $T$ regardless of feature dimensionality, where $T \\ll hwd$. On ImageNet-256, CubiD achieves state-of-the-art discrete generation with strong scaling behavior from 900M to 3.7B parameters. Crucially, we validate that these discretized tokens preserve original representation capabilities, demonstrating that the same discrete tokens can effectively serve both understanding and generation tasks. We hope this work will inspire future research toward unified multimodal architectures. Code is available at: https://github.com/YuqingWang1029/CubiD.",
+    "authors": [
+      "Yuqing Wang",
+      "Chuofan Ma",
+      "Zhijie Lin",
+      "Yao Teng",
+      "Lijun Yu",
+      "Shuai Wang",
+      "Jiaming Han",
+      "Jiashi Feng",
+      "Yi Jiang",
+      "Xihui Liu"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19232.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19232",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "立方离散扩散：基于高维表示令牌的离散视觉生成",
+      "core_contribution": "提出了首个针对高维表示（768-1024维）的离散生成模型CubiD，实现了在统一离散令牌框架下同时保持语义理解能力与生成质量，为多模态统一架构奠定了基础。",
+      "method": "CubiD采用细粒度掩码策略，允许对高维离散表示中任意位置、任意维度的令牌进行掩码和预测。该方法通过部分观测学习空间位置内和位置间的丰富关联，且生成步骤数T固定（远小于总维度hwd），与特征维度无关。",
+      "findings": "在ImageNet-256上，CubiD在900M至3.7B参数规模下均取得当前最优的离散生成效果，并呈现良好的缩放性；实验证实其离散化令牌能保留原始表示的语义理解能力，同一套令牌可同时有效服务于理解与生成任务。"
+    }
+  },
+  {
+    "id": "2603.19228",
+    "title": "SAMA: Factorized Semantic Anchoring and Motion Alignment for Instruction-Guided Video Editing",
+    "abstract": "Current instruction-guided video editing models struggle to simultaneously balance precise semantic modifications with faithful motion preservation. While existing approaches rely on injecting explicit external priors (e.g., VLM features or structural conditions) to mitigate these issues, this reliance severely bottlenecks model robustness and generalization. To overcome this limitation, we present SAMA (factorized Semantic Anchoring and Motion Alignment), a framework that factorizes video editing into semantic anchoring and motion modeling. First, we introduce Semantic Anchoring, which establishes a reliable visual anchor by jointly predicting semantic tokens and video latents at sparse anchor frames, enabling purely instruction-aware structural planning. Second, Motion Alignment pre-trains the same backbone on motion-centric video restoration pretext tasks (cube inpainting, speed perturbation, and tube shuffle), enabling the model to internalize temporal dynamics directly from raw videos. SAMA is optimized with a two-stage pipeline: a factorized pre-training stage that learns inherent semantic-motion representations without paired video-instruction editing data, followed by supervised fine-tuning on paired editing data. Remarkably, the factorized pre-training alone already yields strong zero-shot video editing ability, validating the proposed factorization. SAMA achieves state-of-the-art performance among open-source models and is competitive with leading commercial systems (e.g., Kling-Omni). Code, models, and datasets will be released.",
+    "authors": [
+      "Xinyao Zhang",
+      "Wenkai Dong",
+      "Yuxin Song",
+      "Bo Fang",
+      "Qi Zhang",
+      "Jing Wang",
+      "Fan Chen",
+      "Hui Zhang",
+      "Haocheng Feng",
+      "Yu Lu",
+      "Hang Zhou",
+      "Chun Yuan",
+      "Jingdong Wang"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19228.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19228",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SAMA：面向指令引导视频编辑的分解式语义锚定与运动对齐",
+      "core_contribution": "提出了SAMA框架，通过将视频编辑分解为语义锚定和运动建模两个独立模块，解决了现有方法在语义修改精确性与运动保真度之间难以平衡的问题，且无需依赖外部先验知识。",
+      "method": "1. 语义锚定模块：在稀疏锚定帧上联合预测语义标记和视频潜在表示，建立可靠的视觉锚点，实现纯指令感知的结构规划。2. 运动对齐模块：通过以运动为中心的视频修复预训练任务（立方体修复、速度扰动、时序打乱）使模型直接从原始视频中学习时序动态。3. 采用两阶段优化流程：先进行分解式预训练学习内在语义-运动表示，再使用配对编辑数据进行监督微调。",
+      "findings": "1. 仅通过分解式预训练即展现出强大的零样本视频编辑能力，验证了分解框架的有效性。2. 在开源模型中达到最先进性能，并与领先的商业系统（如Kling-Omni）竞争力相当。3. 框架摆脱了对显式外部先验的依赖，提升了模型的鲁棒性和泛化能力。"
+    }
+  },
+  {
+    "id": "2603.19222",
+    "title": "Spectrally-Guided Diffusion Noise Schedules",
+    "abstract": "Denoising diffusion models are widely used for high-quality image and video generation. Their performance depends on noise schedules, which define the distribution of noise levels applied during training and the sequence of noise levels traversed during sampling. Noise schedules are typically handcrafted and require manual tuning across different resolutions. In this work, we propose a principled way to design per-instance noise schedules for pixel diffusion, based on the image's spectral properties. By deriving theoretical bounds on the efficacy of minimum and maximum noise levels, we design ``tight'' noise schedules that eliminate redundant steps. During inference, we propose to conditionally sample such noise schedules. Experiments show that our noise schedules improve generative quality of single-stage pixel diffusion models, particularly in the low-step regime.",
+    "authors": [
+      "Carlos Esteves",
+      "Ameesh Makadia"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19222.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19222",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于频谱引导的扩散噪声调度",
+      "core_contribution": "提出了一种基于图像频谱特性为像素扩散模型设计“紧致”噪声调度的原则性方法，并通过条件采样在推理阶段应用该调度，以消除冗余步骤并提升生成质量。",
+      "method": "该方法首先从理论上推导了最小和最大噪声水平有效性的边界，然后利用图像的频谱特性为每个实例设计个性化的噪声调度。在推理阶段，通过条件采样的方式应用这些定制化的噪声调度序列。",
+      "findings": "实验结果表明，所提出的噪声调度方法能够提升单阶段像素扩散模型的生成质量，尤其是在低步数采样场景下效果显著，且无需针对不同分辨率进行手动调优。"
+    }
+  },
+  {
+    "id": "2603.19216",
+    "title": "DreamPartGen: Semantically Grounded Part-Level 3D Generation via Collaborative Latent Denoising",
+    "abstract": "Understanding and generating 3D objects as compositions of meaningful parts is fundamental to human perception and reasoning. However, most text-to-3D methods overlook the semantic and functional structure of parts. While recent part-aware approaches introduce decomposition, they remain largely geometry-focused, lacking semantic grounding and failing to model how parts align with textual descriptions or their inter-part relations. We propose DreamPartGen, a framework for semantically grounded, part-aware text-to-3D generation. DreamPartGen introduces Duplex Part Latents (DPLs) that jointly model each part's geometry and appearance, and Relational Semantic Latents (RSLs) that capture inter-part dependencies derived from language. A synchronized co-denoising process enforces mutual geometric and semantic consistency, enabling coherent, interpretable, and text-aligned 3D synthesis. Across multiple benchmarks, DreamPartGen delivers state-of-the-art performance in geometric fidelity and text-shape alignment.",
+    "authors": [
+      "Tianjiao Yu",
+      "Xinzhuo Li",
+      "Muntasir Wahed",
+      "Jerry Xiong",
+      "Yifan Shen",
+      "Ying Shen",
+      "Ismini Lourentzou"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19216.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19216",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DreamPartGen：通过协同潜在去噪实现语义接地的部件级三维生成",
+      "core_contribution": "提出了一个语义接地的、部件感知的文本到三维生成框架，通过联合建模部件的几何与外观以及捕获基于语言的部件间依赖关系，实现了连贯、可解释且与文本对齐的三维合成。",
+      "method": "该方法引入了双工部件潜在表示（DPLs）来联合建模每个部件的几何和外观，并利用关系语义潜在表示（RSLs）来捕获从语言中推导出的部件间依赖关系。通过一个同步的协同去噪过程，强制实现几何和语义的一致性，从而生成整体协调的三维对象。",
+      "findings": "在多个基准测试中，DreamPartGen在几何保真度和文本-形状对齐方面均达到了最先进的性能，能够生成语义清晰、结构合理的部件级三维模型。"
+    }
+  },
+  {
+    "id": "2603.19206",
+    "title": "RPiAE: A Representation-Pivoted Autoencoder Enhancing Both Image Generation and Editing",
+    "abstract": "Diffusion models have become the dominant paradigm for image generation and editing, with latent diffusion models shifting denoising to a compact latent space for efficiency and scalability. Recent attempts to leverage pretrained visual representation models as tokenizer priors either align diffusion features to representation features or directly reuse representation encoders as frozen tokenizers. Although such approaches can improve generation metrics, they often suffer from limited reconstruction fidelity due to frozen encoders, which in turn degrades editing quality, as well as overly high-dimensional latents that make diffusion modeling difficult. To address these limitations, We propose Representation-Pivoted AutoEncoder, a representation-based tokenizer that improves both generation and editing. We introduce Representation-Pivot Regularization, a training strategy that enables a representation-initialized encoder to be fine-tuned for reconstruction while preserving the semantic structure of the pretrained representation space, followed by a variational bridge which compress latent space into a compact one for better diffusion modeling. We adopt an objective-decoupled stage-wise training strategy that sequentially optimizes generative tractability and reconstruction-fidelity objectives. Together, these components yield a tokenizer that preserves strong semantics, reconstructs faithfully, and produces latents with reduced diffusion modeling complexity. Experiments demonstrate that RPiAE outperforms other visual tokenizers on text-to-image generation and image editing, while delivering the best reconstruction fidelity among representation-based tokenizers.",
+    "authors": [
+      "Yue Gong",
+      "Hongyu Li",
+      "Shanyuan Liu",
+      "Bo Cheng",
+      "Yuhang Ma",
+      "Liebucha Wu",
+      "Xiaoyu Wu",
+      "Manyuan Zhang",
+      "Dawei Leng",
+      "Yuhui Yin",
+      "Lijun Zhang"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19206.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19206",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RPiAE：一种以表征为支点的自编码器，同时增强图像生成与编辑能力",
+      "core_contribution": "提出了一种基于预训练视觉表征的令牌化器（RPiAE），通过创新的训练策略，在保持语义结构的同时提升了重建保真度，并降低了潜在空间的维度，从而同时改进了文本到图像生成和图像编辑的质量。",
+      "method": "方法主要包括：1）提出表征支点正则化，对以预训练表征初始化的编码器进行微调以提升重建能力，同时保持其语义结构；2）引入变分桥将潜在空间压缩至更紧凑的维度，以降低扩散建模的复杂度；3）采用目标解耦的分阶段训练策略，依次优化生成可处理性和重建保真度目标。",
+      "findings": "实验表明，RPiAE在文本到图像生成和图像编辑任务上优于其他视觉令牌化器，并且在基于表征的令牌化器中实现了最佳的重建保真度。"
+    }
+  }
+]
