@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2603.19158",
+    "title": "Adaptive Auxiliary Prompt Blending for Target-Faithful Diffusion Generation",
+    "abstract": "Diffusion-based text-to-image (T2I) models have made remarkable progress in generating photorealistic and semantically rich images. However, when the target concepts lie in low-density regions of the training distribution, these models often produce semantically misaligned or structurally inconsistent results. This limitation arises from the long-tailed nature of text-image datasets, where rare concepts or editing instructions are underrepresented. To address this, we introduce Adaptive Auxiliary Prompt Blending (AAPB) - a unified framework that stabilizes the diffusion process in low-density regions. AAPB leverages auxiliary anchor prompts to provide semantic support in rare concept generation and structural support in image editing, ensuring faithful guidance toward the target prompt. Unlike prior heuristic prompt alternation methods, AAPB derives a closed-form adaptive coefficient that optimally balances the influence between the auxiliary anchor and the target prompt at each diffusion step. Grounded in Tweedie's identity, our formulation provides a principled and training-free framework for adaptive prompt blending, ensuring stable and target-faithful generation. We demonstrate the effectiveness of adaptive interpolation over fixed interpolation through controlled experiments and empirically show consistent improvements on the RareBench and FlowEdit datasets, achieving superior semantic accuracy and structural fidelity compared to prior training-free baselines.",
+    "authors": [
+      "Kwanyoung Lee",
+      "SeungJu Cha",
+      "Yebin Ahn",
+      "Hyunwoo Oh",
+      "Sungho Koh",
+      "Dong-Jin Kim"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19158.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19158",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向目标忠实扩散生成的自适应辅助提示融合",
+      "core_contribution": "提出了自适应辅助提示融合（AAPB）框架，通过自适应平衡辅助锚点提示与目标提示的影响，解决了扩散模型在生成训练分布中低密度区域（如罕见概念）时语义错位或结构不一致的问题。",
+      "method": "该方法基于Tweedie恒等式推导出一个闭式自适应系数，可在每个扩散步骤中动态且最优地融合辅助锚点提示与目标提示。辅助锚点提示为罕见概念生成提供语义支持，为图像编辑提供结构支持，整个框架无需训练即可实现自适应提示融合。",
+      "findings": "实验表明，自适应插值优于固定插值策略；在RareBench和FlowEdit数据集上，AAPB相比其他无需训练的基线方法，在语义准确性和结构保真度方面均取得了一致性提升，实现了更稳定、更忠实于目标的生成效果。"
+    }
+  },
+  {
+    "id": "2603.19157",
+    "title": "ADAPT: Attention Driven Adaptive Prompt Scheduling and InTerpolating Orthogonal Complements for Rare Concepts Generation",
+    "abstract": "Generating rare compositional concepts in text-to-image synthesis remains a challenge for diffusion models, particularly for attributes that are uncommon in the training data. While recent approaches, such as R2F, address this challenge by utilizing LLM for prompt scheduling, they suffer from inherent variance due to the randomness of language models and suboptimal guidance from iterative text embedding switching. To address these problems, we propose the ADAPT framework, a training-free framework that deterministically plans and semantically aligns prompt schedules, providing consistent guidance to enhance the composition of rare concepts. By leveraging attention scores and orthogonal components, ADAPT significantly enhances compositional generation of rare concepts in the RareBench benchmark without additional training or fine-tuning. Through comprehensive experiments, we demonstrate that ADAPT achieves superior performance in RareBench and accurately reflects the semantic information of rare attributes, providing deterministic and precise control over the generation of rare compositions without compromising visual integrity.",
+    "authors": [
+      "Kwanyoung Lee",
+      "Hyunwoo Oh",
+      "SeungJu Cha",
+      "Sungho Koh",
+      "Dong-Jin Kim"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19157.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19157",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ADAPT：面向稀有概念生成的注意力驱动自适应提示调度与正交补插值",
+      "core_contribution": "提出了一个无需训练的ADAPT框架，通过确定性规划和对齐提示调度，显著提升了扩散模型在生成稀有组合概念时的性能与可控性。",
+      "method": "该方法利用注意力分数和正交分量，确定性地规划提示调度顺序，并通过语义对齐确保生成过程的连贯性。它避免了依赖大语言模型带来的随机性，也改进了迭代文本嵌入切换中的引导不足问题。整个框架无需额外训练或微调即可应用。",
+      "findings": "在RareBench基准测试中，ADAPT在稀有概念组合生成上取得了优越性能，能准确反映稀有属性的语义信息，并在不损害视觉完整性的前提下实现对稀有组合生成的确定性和精确控制。"
+    }
+  },
+  {
+    "id": "2603.19121",
+    "title": "CustomTex: High-fidelity Indoor Scene Texturing via Multi-Reference Customization",
+    "abstract": "The creation of high-fidelity, customizable 3D indoor scene textures remains a significant challenge. While text-driven methods offer flexibility, they lack the precision for fine-grained, instance-level control, and often produce textures with insufficient quality, artifacts, and baked-in shading. To overcome these limitations, we introduce CustomTex, a novel framework for instance-level, high-fidelity scene texturing driven by reference images. CustomTex takes an untextured 3D scene and a set of reference images specifying the desired appearance for each object instance, and generates a unified, high-resolution texture map. The core of our method is a dual-distillation approach that separates semantic control from pixel-level enhancement. We employ semantic-level distillation, equipped with an instance cross-attention, to ensure semantic plausibility and ``reference-instance'' alignment, and pixel-level distillation to enforce high visual fidelity. Both are unified within a Variational Score Distillation (VSD) optimization framework. Experiments demonstrate that CustomTex achieves precise instance-level consistency with reference images and produces textures with superior sharpness, reduced artifacts, and minimal baked-in shading compared to state-of-the-art methods. Our work establishes a more direct and user-friendly path to high-quality, customizable 3D scene appearance editing.",
+    "authors": [
+      "Weilin Chen",
+      "Jiahao Rao",
+      "Wenhao Wang",
+      "Xinyang Li",
+      "Xuan Cheng",
+      "Liujuan Cao"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.19121.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.19121",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CustomTex：基于多参考定制的高保真室内场景纹理生成",
+      "core_contribution": "提出了CustomTex框架，通过参考图像驱动实现实例级、高保真的3D室内场景纹理生成，解决了现有方法在细粒度控制和纹理质量上的不足。",
+      "method": "该方法采用双蒸馏策略，将语义控制与像素级增强分离。通过配备实例交叉注意力的语义级蒸馏确保语义合理性与参考对齐，同时利用像素级蒸馏提升视觉保真度。两者统一在变分分数蒸馏（VSD）优化框架中进行。",
+      "findings": "实验表明，CustomTex能精确实现与参考图像的实例级一致性，生成的纹理在清晰度、伪影减少和避免固化阴影方面优于现有方法，为高质量、可定制的3D场景外观编辑提供了更直接、用户友好的路径。"
+    }
+  },
+  {
+    "id": "2603.18991",
+    "title": "CRAFT: Aligning Diffusion Models with Fine-Tuning Is Easier Than You Think",
+    "abstract": "Aligning Diffusion models has achieved remarkable breakthroughs in generating high-quality, human preference-aligned images. Existing techniques, such as supervised fine-tuning (SFT) and DPO-style preference optimization, have become principled tools for fine-tuning diffusion models. However, SFT relies on high-quality images that are costly to obtain, while DPO-style methods depend on large-scale preference datasets, which are often inconsistent in quality. Beyond data dependency, these methods are further constrained by computational inefficiency. To address these two challenges, we propose Composite Reward Assisted Fine-Tuning (CRAFT), a lightweight yet powerful fine-tuning paradigm that requires significantly reduced training data while maintaining computational efficiency. It first leverages a Composite Reward Filtering (CRF) technique to construct a high-quality and consistent training dataset and then perform an enhanced variant of SFT. We also theoretically prove that CRAFT actually optimizes the lower bound of group-based reinforcement learning, establishing a principled connection between SFT with selected data and reinforcement learning. Our extensive empirical results demonstrate that CRAFT with only 100 samples can easily outperform recent SOTA preference optimization methods with thousands of preference-paired samples. Moreover, CRAFT can even achieve 11-220$\\times$ faster convergences than the baseline preference optimization methods, highlighting its extremely high efficiency.",
+    "authors": [
+      "Zening Sun",
+      "Zhengpeng Xie",
+      "Lichen Bai",
+      "Shitong Shao",
+      "Shuo Yang",
+      "Zeke Xie"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.18991.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.18991",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CRAFT：通过微调对齐扩散模型比你想象的更容易",
+      "core_contribution": "提出了CRAFT（复合奖励辅助微调）这一轻量级且强大的微调范式，它仅需少量训练数据即可高效对齐扩散模型与人类偏好，并建立了基于数据选择的监督微调与强化学习之间的理论联系。",
+      "method": "首先，通过复合奖励过滤技术构建高质量且一致性的训练数据集；然后，对筛选后的数据执行一种增强版的监督微调。该方法在理论上被证明优化了基于分组的强化学习的下界。",
+      "findings": "实验表明，仅使用100个样本的CRAFT就能超越需要数千个偏好配对样本的现有最优偏好优化方法；同时，CRAFT的收敛速度比基线偏好优化方法快11到220倍，显示出极高的效率。"
+    }
+  },
+  {
+    "id": "2603.18636",
+    "title": "Training-Free Sparse Attention for Fast Video Generation via Offline Layer-Wise Sparsity Profiling and Online Bidirectional Co-Clustering",
+    "abstract": "Diffusion Transformers (DiTs) achieve strong video generation quality but suffer from high inference cost due to dense 3D attention, leading to the development of sparse attention technologies to improve efficiency. However, existing training-free sparse attention methods in video generation still face two unresolved limitations: ignoring layer heterogeneity in attention pruning and ignoring query-key coupling in block partitioning, which hinder a better quality-speedup trade-off. In this work, we uncover a critical insight that the attention sparsity of each layer is its intrinsic property, with minor effects across different inputs. Motivated by this, we propose SVOO, a training-free Sparse attention framework for fast Video generation via Offline layer-wise sparsity profiling and Online bidirectional co-clustering. Specifically, SVOO adopts a two-stage paradigm: (i) offline layer-wise sensitivity profiling to derive intrinsic per-layer pruning levels, and (ii) online block-wise sparse attention via a novel bidirectional co-clustering algorithm. Extensive experiments on seven widely used video generation models demonstrate that SVOO achieves a superior quality-speedup trade-off over state-of-the-art methods, delivering up to $1.93\\times$ speedup while maintaining a PSNR of up to 29 dB on Wan2.1.",
+    "authors": [
+      "Jiayi Luo",
+      "Jiayu Chen",
+      "Jiankun Wang",
+      "Cong Wang",
+      "Hanxin Zhu",
+      "Qingyun Sun",
+      "Chen Gao",
+      "Zhibo Chen",
+      "Jianxin Li"
+    ],
+    "published": "2026-03-19",
+    "updated": "2026-03-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.18636.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.18636",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过离线分层稀疏度分析与在线双向协同聚类的免训练稀疏注意力快速视频生成方法",
+      "core_contribution": "提出了SVOO框架，通过揭示注意力稀疏性是各层的固有属性这一关键洞察，设计了离线分层敏感度分析与在线双向协同聚类的两阶段方法，显著提升了视频生成中稀疏注意力在质量与加速之间的权衡。",
+      "method": "方法采用两阶段范式：1）离线阶段对每层进行敏感度分析，确定其固有的剪枝程度；2）在线阶段通过新颖的双向协同聚类算法实现块级稀疏注意力计算，同时考虑查询与键之间的耦合关系进行块划分。",
+      "findings": "在七个广泛使用的视频生成模型上的实验表明，SVOO在保持PSNR高达29 dB（Wan2.1数据集）的同时，实现了最高1.93倍的加速，其质量-加速权衡优于现有最先进方法。"
+    }
+  }
+]
