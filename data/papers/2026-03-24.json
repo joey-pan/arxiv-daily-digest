@@ -1,0 +1,135 @@
+[
+  {
+    "id": "2603.21937",
+    "title": "MultiBind: A Benchmark for Attribute Misbinding in Multi-Subject Generation",
+    "abstract": "Subject-driven image generation is increasingly expected to support fine-grained control over multiple entities within a single image. In multi-reference workflows, users may provide several subject images, a background reference, and long, entity-indexed prompts to control multiple people within one scene. In this setting, a key failure mode is cross-subject attribute misbinding: attributes are preserved, edited, or transferred to the wrong subject. Existing benchmarks and metrics largely emphasize holistic fidelity or per-subject self-similarity, making such failures hard to diagnose. We introduce MultiBind, a benchmark built from real multi-person photographs. Each instance provides slot-ordered subject crops with masks and bounding boxes, canonicalized subject references, an inpainted background reference, and a dense entity-indexed prompt derived from structured annotations. We also propose a dimension-wise confusion evaluation protocol that matches generated subjects to ground-truth slots and measures slot-to-slot similarity using specialists for face identity, appearance, pose, and expression. By subtracting the corresponding ground-truth similarity matrices, our method separates self-degradation from true cross-subject interference and exposes interpretable failure patterns such as drift, swap, dominance, and blending. Experiments on modern multi-reference generators show that MultiBind reveals binding failures that conventional reconstruction metrics miss.",
+    "authors": [
+      "Wenqing Tian",
+      "Hanyi Mao",
+      "Zhaocheng Liu",
+      "Lihua Zhang",
+      "Qiang Liu",
+      "Jian Wu",
+      "Liang Wang"
+    ],
+    "published": "2026-03-23",
+    "updated": "2026-03-23",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.21937.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.21937",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MultiBind：多主体生成中属性错误绑定的基准测试",
+      "core_contribution": "本文提出了MultiBind基准测试，用于诊断多主体图像生成中的跨主体属性错误绑定问题，并设计了一种维度混淆评估协议，能够分离主体自身质量下降与真实的跨主体干扰。",
+      "method": "方法基于真实多人照片构建基准数据，每个实例提供按位置顺序排列的主体裁剪图（含掩码和边界框）、规范化的主体参考、修复后的背景参考以及从结构化标注中提取的密集实体索引提示。评估时，通过将生成的主体与真实位置槽匹配，并利用针对人脸身份、外观、姿势和表情的专用模型计算槽间相似度矩阵，再减去对应的真实相似度矩阵，从而量化错误绑定。",
+      "findings": "实验表明，MultiBind能够揭示传统重建指标所遗漏的绑定失败模式，如属性漂移、交换、主导和混合等可解释的错误类型，突出现有多参考图像生成器在此类细粒度控制任务上仍存在显著缺陷。"
+    }
+  },
+  {
+    "id": "2603.21884",
+    "title": "Not All Layers Are Created Equal: Adaptive LoRA Ranks for Personalized Image Generation",
+    "abstract": "Low Rank Adaptation (LoRA) is the de facto fine-tuning strategy to generate personalized images from pre-trained diffusion models. Choosing a good rank is extremely critical, since it trades off performance and memory consumption, but today the decision is often left to the community's consensus, regardless of the personalized subject's complexity. The reason is evident: the cost of selecting a good rank for each LoRA component is combinatorial, so we opt for practical shortcuts such as fixing the same rank for all components. In this paper, we take a first step to overcome this challenge. Inspired by variational methods that learn an adaptive width of neural networks, we let the ranks of each layer freely adapt during fine-tuning on a subject. We achieve it by imposing an ordering of importance on the rank's positions, effectively encouraging the creation of higher ranks when strictly needed. Qualitatively and quantitatively, our approach, LoRA$^2$, achieves a competitive trade-off between DINO, CLIP-I, and CLIP-T across 29 subjects while requiring much less memory and lower rank than high rank LoRA versions. Code: https://github.com/donaldssh/NotAllLayersAreCreatedEqual.",
+    "authors": [
+      "Donald Shenaj",
+      "Federico Errica",
+      "Antonio Carta"
+    ],
+    "published": "2026-03-23",
+    "updated": "2026-03-23",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.21884.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.21884",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "并非所有层都生而平等：面向个性化图像生成的自适应LoRA秩选择",
+      "core_contribution": "本文提出了LoRA²方法，首次实现了在个性化图像生成中为LoRA的不同层自适应地选择最优秩，在保证生成质量的同时显著降低了内存消耗和总秩数。",
+      "method": "受变分方法中自适应网络宽度学习的启发，该方法允许在针对特定主题的微调过程中，各层的秩自由适应变化。通过对秩的重要性位置施加排序约束，有效鼓励仅在必要时才创建更高的秩，从而避免了传统方法中为所有层固定统一秩的局限性。",
+      "findings": "在29个不同主题上的定性与定量实验表明，LoRA²在DINO、CLIP-I和CLIP-T指标上取得了与高秩LoRA版本相竞争的效果，同时所需内存和总秩数显著更低，实现了性能与效率的更好权衡。"
+    }
+  },
+  {
+    "id": "2603.21786",
+    "title": "The Universal Normal Embedding",
+    "abstract": "Generative models and vision encoders have largely advanced on separate tracks, optimized for different goals and grounded in different mathematical principles. Yet, they share a fundamental property: latent space Gaussianity. Generative models map Gaussian noise to images, while encoders map images to semantic embeddings whose coordinates empirically behave as Gaussian. We hypothesize that both are views of a shared latent source, the Universal Normal Embedding (UNE): an approximately Gaussian latent space from which encoder embeddings and DDIM-inverted noise arise as noisy linear projections. To test our hypothesis, we introduce NoiseZoo, a dataset of per-image latents comprising DDIM-inverted diffusion noise and matching encoder representations (CLIP, DINO). On CelebA, linear probes in both spaces yield strong, aligned attribute predictions, indicating that generative noise encodes meaningful semantics along linear directions. These directions further enable faithful, controllable edits (e.g., smile, gender, age) without architectural changes, where simple orthogonalization mitigates spurious entanglements. Taken together, our results provide empirical support for the UNE hypothesis and reveal a shared Gaussian-like latent geometry that concretely links encoding and generation. Code and data are available https://rbetser.github.io/UNE/",
+    "authors": [
+      "Chen Tasker",
+      "Roy Betser",
+      "Eyal Gofer",
+      "Meir Yossef Levi",
+      "Guy Gilboa"
+    ],
+    "published": "2026-03-23",
+    "updated": "2026-03-23",
+    "categories": [
+      "cs.CV",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.21786.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.21786",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通用正态嵌入",
+      "core_contribution": "本文提出了“通用正态嵌入”假说，认为生成模型和视觉编码器共享一个近似高斯分布的潜在空间，并通过实验证明扩散模型的逆向噪声与编码器表征在语义上线性对齐，为编码与生成任务建立了统一的理论联系。",
+      "method": "研究首先提出假设：生成模型（如扩散模型）的噪声潜在空间与编码器（如CLIP、DINO）的语义嵌入空间均源于同一高斯潜在源（UNE）。为验证此假设，作者构建了NoiseZoo数据集，包含CelebA图像对应的DDIM逆向扩散噪声和编码器表征。通过在线性空间中进行属性探针分析，比较两者在语义方向上的对齐程度，并利用正交化方法解耦纠缠的语义属性。",
+      "findings": "实验表明：1）扩散噪声与编码器嵌入在语义属性预测上具有强对齐性，证明生成噪声包含可解释的线性语义方向；2）基于这些线性方向可直接实现可控图像编辑（如微笑、性别、年龄），无需修改模型结构；3）正交化能有效减少语义纠缠。结果支持UNE假说，揭示了编码与生成任务共享的高斯几何结构。"
+    }
+  },
+  {
+    "id": "2603.21615",
+    "title": "AdaEdit: Adaptive Temporal and Channel Modulation for Flow-Based Image Editing",
+    "abstract": "Inversion-based image editing in flow matching models has emerged as a powerful paradigm for training-free, text-guided image manipulation. A central challenge in this paradigm is the injection dilemma: injecting source features during denoising preserves the background of the original image but simultaneously suppresses the model's ability to synthesize edited content. Existing methods address this with fixed injection strategies -- binary on/off temporal schedules, uniform spatial mixing ratios, and channel-agnostic latent perturbation -- that ignore the inherently heterogeneous nature of injection demand across both the temporal and channel dimensions. In this paper, we present AdaEdit, a training-free adaptive editing framework that resolves this dilemma through two complementary innovations. First, we propose a Progressive Injection Schedule that replaces hard binary cutoffs with continuous decay functions (sigmoid, cosine, or linear), enabling a smooth transition from source-feature preservation to target-feature generation and eliminating feature discontinuity artifacts. Second, we introduce Channel-Selective Latent Perturbation, which estimates per-channel importance based on the distributional gap between the inverted and random latents and applies differentiated perturbation strengths accordingly -- strongly perturbing edit-relevant channels while preserving structure-encoding channels. Extensive experiments on the PIE-Bench benchmark (700 images, 10 editing types) demonstrate that AdaEdit achieves an 8.7% reduction in LPIPS, a 2.6% improvement in SSIM, and a 2.3% improvement in PSNR over strong baselines, while maintaining competitive CLIP similarity. AdaEdit is fully plug-and-play and compatible with multiple ODE solvers including Euler, RF-Solver, and FireFlow. Code is available at https://github.com/leeguandong/AdaEdit",
+    "authors": [
+      "Guandong Li",
+      "Zhaobin Chu"
+    ],
+    "published": "2026-03-23",
+    "updated": "2026-03-23",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.21615.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.21615",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AdaEdit：基于流匹配图像编辑的自适应时序与通道调制",
+      "core_contribution": "提出了一个无需训练的自适应编辑框架AdaEdit，通过渐进式注入调度和通道选择性潜在扰动，解决了流匹配模型中基于反转的图像编辑所面临的“注入困境”，在保持背景的同时更好地合成编辑内容。",
+      "method": "首先，设计了渐进式注入调度，用连续的衰减函数（如Sigmoid、余弦或线性）替代硬性的二进制开关时序，实现从源特征保留到目标特征生成的平滑过渡。其次，引入了通道选择性潜在扰动，通过比较反转潜在变量与随机潜在变量的分布差异来估计每个通道的重要性，并对编辑相关通道施加强扰动，同时保留结构编码通道。",
+      "findings": "在PIE-Bench基准测试（700张图像，10种编辑类型）上的大量实验表明，AdaEdit相比强基线方法，在LPIPS指标上降低了8.7%，在SSIM和PSNR上分别提升了2.6%和2.3%，同时保持了具有竞争力的CLIP相似度。该框架即插即用，兼容多种ODE求解器。"
+    }
+  },
+  {
+    "id": "2603.21348",
+    "title": "Efficient Coarse-to-Fine Diffusion Models with Time Step Sequence Redistribution",
+    "abstract": "Recently, diffusion models (DMs) have made significant strides in high-quality image generation. However, the multi-step denoising process often results in considerable computational overhead, impeding deployment on resource-constrained edge devices. Existing methods mitigate this issue by compressing models and adjusting the time step sequence. However, they overlook input redundancy and require lengthy search times. In this paper, we propose Coarse-to-Fine Diffusion Models with Time Step Sequence Redistribution. Recognizing indistinguishable early-stage generated images, we introduce Coarse-to-Fine Denoising (C2F) to reduce computation during coarse feature generation. Furthermore, we design Time Step Sequence Redistribution (TRD) for efficient sampling trajectory adjustment, requiring less than 10 minutes for search. Experimental results demonstrate that the proposed methods achieve near-lossless performance with an 80% to 90% reduction in computation on CIFAR10 and LSUN-Church.",
+    "authors": [
+      "Yu-Shan Tai",
+      " An-Yeu",
+      " Wu"
+    ],
+    "published": "2026-03-22",
+    "updated": "2026-03-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.21348.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.21348",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于时间步序列重分布的高效由粗到精扩散模型",
+      "core_contribution": "本文提出了一种由粗到精的去噪方法和一种高效的时间步序列重分布策略，旨在显著降低扩散模型的推理计算成本，同时保持近乎无损的生成性能。",
+      "method": "首先，针对早期生成阶段图像特征难以区分的特点，提出了由粗到精去噪方法，在生成粗略特征时减少计算量。其次，设计了一种时间步序列重分布策略，用于高效调整采样轨迹，该策略的搜索时间极短（少于10分钟）。",
+      "findings": "实验结果表明，在CIFAR10和LSUN-Church数据集上，所提方法能够将计算量减少80%至90%，同时实现近乎无损的生成性能。"
+    }
+  }
+]
