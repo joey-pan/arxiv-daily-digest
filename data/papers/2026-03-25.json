@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2603.23500",
+    "title": "UniGRPO: Unified Policy Optimization for Reasoning-Driven Visual Generation",
+    "abstract": "Unified models capable of interleaved generation have emerged as a promising paradigm, with the community increasingly converging on autoregressive modeling for text and flow matching for image generation. To advance this direction, we propose a unified reinforcement learning framework tailored for interleaved generation. We validate our approach on its fundamental unit: a single round of reasoning-driven image generation, where the model first expands the user prompt through reasoning, followed by image synthesis. Formulating this multimodal generation process as a Markov Decision Process with sparse terminal rewards, we introduce UniGRPO to jointly optimize text and image generation policies using GRPO. Adopting a minimalist methodology to avoid over-design, we leverage established training recipes for both modalities by seamlessly integrating standard GRPO for reasoning and FlowGRPO for visual synthesis. To ensure scalability to multi-round interleaved generation, we introduce two critical modifications to the original FlowGRPO: (1) eliminating classifier-free guidance to maintain linear, unbranched rollouts, which is essential for scaling to complex scenarios involving multi-turn interactions and multi-condition generation (e.g., editing); and (2) replacing the standard latent KL penalty with an MSE penalty directly on the velocity fields, providing a more robust and direct regularization signal to mitigate reward hacking effectively. Our experiments demonstrate that this unified training recipe significantly enhances image generation quality through reasoning, providing a robust and scalable baseline for the future post-training of fully interleaved models.",
+    "authors": [
+      "Jie Liu",
+      "Zilyu Ye",
+      "Linxiao Yuan",
+      "Shenhan Zhu",
+      "Yu Gao",
+      "Jie Wu",
+      "Kunchang Li",
+      "Xionghui Wang",
+      "Xiaonan Nie",
+      "Weilin Huang",
+      "Wanli Ouyang"
+    ],
+    "published": "2026-03-24",
+    "updated": "2026-03-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.23500.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.23500",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniGRPO：面向推理驱动视觉生成的统一策略优化",
+      "core_contribution": "提出了一个统一的强化学习框架（UniGRPO），用于联合优化推理驱动的文本生成和图像生成策略，为未来完全交错生成模型的训练提供了一个可扩展的基线。",
+      "method": "该方法将单轮推理驱动的图像生成过程建模为一个具有稀疏终端奖励的马尔可夫决策过程。它无缝集成了标准的GRPO用于文本推理和经过改进的FlowGRPO用于视觉合成。为了确保可扩展性，对FlowGRPO进行了两项关键修改：一是消除无分类器引导以保持线性、无分支的轨迹展开；二是将潜在KL惩罚替换为对速度场的直接MSE惩罚，以提供更鲁棒的正则化信号。",
+      "findings": "实验表明，这种统一的训练方法通过推理过程显著提升了图像生成的质量。所提出的改进（消除无分类器引导和使用MSE惩罚）有效缓解了奖励黑客问题，并确保了框架能够扩展到涉及多轮交互和多条件生成（如编辑）的复杂场景。"
+    }
+  },
+  {
+    "id": "2603.23491",
+    "title": "Foveated Diffusion: Efficient Spatially Adaptive Image and Video Generation",
+    "abstract": "Diffusion and flow matching models have unlocked unprecedented capabilities for creative content creation, such as interactive image and streaming video generation. The growing demand for higher resolutions, frame rates, and context lengths, however, makes efficient generation increasingly challenging, as computational complexity grows quadratically with the number of generated tokens. Our work seeks to optimize the efficiency of the generation process in settings where the user's gaze location is known or can be estimated, for example, by using eye tracking. In these settings, we leverage the eccentricity-dependent acuity of human vision: while a user perceives very high-resolution visual information in a small region around their gaze location (the foveal region), the ability to resolve detail quickly degrades in the periphery of the visual field. Our approach starts with a mask modeling the foveated resolution to allocate tokens non-uniformly, assigning higher token density to foveal regions and lower density to peripheral regions. An image or video is generated in a mixed-resolution token setting, yielding results perceptually indistinguishable from full-resolution generation, while drastically reducing the token count and generation time. To this end, we develop a principled mechanism for constructing mixed-resolution tokens directly from high-resolution data, allowing a foveated diffusion model to be post-trained from an existing base model while maintaining content consistency across resolutions. We validate our approach through extensive analysis and a carefully designed user study, demonstrating the efficacy of foveation as a practical and scalable axis for efficient generation.",
+    "authors": [
+      "Brian Chao",
+      "Lior Yariv",
+      "Howard Xiao",
+      "Gordon Wetzstein"
+    ],
+    "published": "2026-03-24",
+    "updated": "2026-03-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.23491.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.23491",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "中心凹扩散：高效的空间自适应图像与视频生成",
+      "core_contribution": "提出了一种基于人眼视觉特性的高效生成方法，通过非均匀分配计算资源（更多令牌用于注视中心区域，较少用于外围），在保持感知质量的同时显著减少生成所需的令牌数和时间。",
+      "method": "首先根据用户注视位置（可通过眼动追踪估计）构建一个模拟人眼分辨率分布的中心凹掩码，以此非均匀分配生成令牌的密度。随后，在混合分辨率令牌设置下生成图像或视频，并设计了一种从高分辨率数据直接构建混合分辨率令牌的原理性机制，支持对已有基础模型进行后训练以保持跨分辨率的内容一致性。",
+      "findings": "经大量分析和精心设计的用户研究验证，该方法生成的图像或视频在感知上与全分辨率生成结果难以区分，同时大幅降低了令牌数量和生成时间，证明了中心凹化是一种实用且可扩展的高效生成路径。"
+    }
+  },
+  {
+    "id": "2603.23463",
+    "title": "InverFill: One-Step Inversion for Enhanced Few-Step Diffusion Inpainting",
+    "abstract": "Recent diffusion-based models achieve photorealism in image inpainting but require many sampling steps, limiting practical use. Few-step text-to-image models offer faster generation, but naively applying them to inpainting yields poor harmonization and artifacts between the background and inpainted region. We trace this cause to random Gaussian noise initialization, which under low function evaluations causes semantic misalignment and reduced fidelity. To overcome this, we propose InverFill, a one-step inversion method tailored for inpainting that injects semantic information from the input masked image into the initial noise, enabling high-fidelity few-step inpainting. Instead of training inpainting models, InverFill leverages few-step text-to-image models in a blended sampling pipeline with semantically aligned noise as input, significantly improving vanilla blended sampling and even matching specialized inpainting models at low NFEs. Moreover, InverFill does not require real-image supervision and only adds minimal inference overhead. Extensive experiments show that InverFill consistently boosts baseline few-step models, improving image quality and text coherence without costly retraining or heavy iterative optimization.",
+    "authors": [
+      "Duc Vu",
+      "Kien Nguyen",
+      "Trong-Tung Nguyen",
+      "Ngan Nguyen",
+      "Phong Nguyen",
+      "Khoi Nguyen",
+      "Cuong Pham",
+      "Anh Tran"
+    ],
+    "published": "2026-03-24",
+    "updated": "2026-03-24",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.23463.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.23463",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InverFill：面向增强型少步扩散图像修复的一步反演方法",
+      "core_contribution": "提出了一种专为图像修复设计的一步反演方法InverFill，通过将输入掩码图像的语义信息注入初始噪声，实现了高质量、高效率的少步扩散修复，无需训练专门的修复模型或真实图像监督。",
+      "method": "InverFill的核心是设计了一种语义对齐的噪声初始化策略，替代传统随机高斯噪声初始化。该方法通过一步反演过程，从掩码图像中提取语义信息并编码到初始噪声中，再将其输入到少步文本到图像扩散模型中，结合混合采样流程进行修复。该方法无需额外训练，仅增加极小的推理开销。",
+      "findings": "实验表明，InverFill能显著提升基线少步模型的修复效果，在低采样步数（NFEs）下改善图像质量与文本一致性，其效果甚至可与专用修复模型媲美。该方法有效解决了少步修复中的语义错位和伪影问题，且无需代价高昂的重新训练或复杂迭代优化。"
+    }
+  },
+  {
+    "id": "2603.23462",
+    "title": "RealMaster: Lifting Rendered Scenes into Photorealistic Video",
+    "abstract": "State-of-the-art video generation models produce remarkable photorealism, but they lack the precise control required to align generated content with specific scene requirements. Furthermore, without an underlying explicit geometry, these models cannot guarantee 3D consistency. Conversely, 3D engines offer granular control over every scene element and provide native 3D consistency by design, yet their output often remains trapped in the \"uncanny valley\". Bridging this sim-to-real gap requires both structural precision, where the output must exactly preserve the geometry and dynamics of the input, and global semantic transformation, where materials, lighting, and textures must be holistically transformed to achieve photorealism. We present RealMaster, a method that leverages video diffusion models to lift rendered video into photorealistic video while maintaining full alignment with the output of the 3D engine. To train this model, we generate a paired dataset via an anchor-based propagation strategy, where the first and last frames are enhanced for realism and propagated across the intermediate frames using geometric conditioning cues. We then train an IC-LoRA on these paired videos to distill the high-quality outputs of the pipeline into a model that generalizes beyond the pipeline's constraints, handling objects and characters that appear mid-sequence and enabling inference without requiring anchor frames. Evaluated on complex GTA-V sequences, RealMaster significantly outperforms existing video editing baselines, improving photorealism while preserving the geometry, dynamics, and identity specified by the original 3D control.",
+    "authors": [
+      "Dana Cohen-Bar",
+      "Ido Sobol",
+      "Raphael Bensadoun",
+      "Shelly Sheynin",
+      "Oran Gafni",
+      "Or Patashnik",
+      "Daniel Cohen-Or",
+      "Amit Zohar"
+    ],
+    "published": "2026-03-24",
+    "updated": "2026-03-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.23462.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.23462",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RealMaster：将渲染场景提升为逼真视频",
+      "core_contribution": "提出RealMaster方法，利用视频扩散模型将3D引擎渲染的视频提升为逼真视频，在实现全局语义真实感的同时，严格保持输入视频的几何结构、动态和身份信息。",
+      "method": "首先通过基于锚点的传播策略构建配对数据集：对视频的首尾帧进行真实感增强，并利用几何条件线索将增强效果传播到中间帧。随后，在这些配对视频上训练一个IC-LoRA模型，将高质量输出蒸馏成一个泛化模型，使其能够处理序列中新出现的对象和角色，且推理时无需锚帧。",
+      "findings": "在复杂的GTA-V序列上评估，RealMaster显著优于现有视频编辑基线方法，在提升视频真实感的同时，成功保持了原始3D控制所指定的几何结构、动态和身份信息。"
+    }
+  },
+  {
+    "id": "2603.23326",
+    "title": "ViBe: Ultra-High-Resolution Video Synthesis Born from Pure Images",
+    "abstract": "Transformer-based video diffusion models rely on 3D attention over spatial and temporal tokens, which incurs quadratic time and memory complexity and makes end-to-end training for ultra-high-resolution videos prohibitively expensive. To overcome this bottleneck, we propose a pure image adaptation framework that upgrades a video Diffusion Transformer pre-trained at its native scale to synthesize higher-resolution videos. Unfortunately, naively fine-tuning with high-resolution images alone often introduces noticeable noise due to the image-video modality gap. To address this, we decouple the learning objective to separately handle modality alignment and spatial extrapolation. At the core of our approach is Relay LoRA, a two-stage adaptation strategy. In the first stage, the video diffusion model is adapted to the image domain using low-resolution images to bridge the modality gap. In the second stage, the model is further adapted with high-resolution images to acquire spatial extrapolation capability. During inference, only the high-resolution adaptation is retained to preserve the video generation modality while enabling high-resolution video synthesis. To enhance fine-grained detail synthesis, we further propose a High-Frequency-Awareness-Training-Objective, which explicitly encourages the model to recover high-frequency components from degraded latent representations via a dedicated reconstruction loss. Extensive experiments demonstrate that our method produces ultra-high-resolution videos with rich visual details without requiring any video training data, even outperforming previous state-of-the-art models trained on high-resolution videos by 0.8 on the VBench benchmark. Code will be available at https://github.com/WillWu111/ViBe.",
+    "authors": [
+      "Yunfeng Wu",
+      "Hongying Cheng",
+      "Zihao He",
+      "Songhua Liu"
+    ],
+    "published": "2026-03-24",
+    "updated": "2026-03-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.23326.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.23326",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ViBe：诞生于纯图像的超高分辨率视频合成",
+      "core_contribution": "提出了一种纯图像适应框架，无需任何高分辨率视频训练数据，即可将预训练的视频扩散模型升级为能够合成超高分辨率视频的模型，并设计了Relay LoRA两阶段适应策略来弥合图像-视频模态差距。",
+      "method": "方法首先将视频扩散模型在低分辨率图像上进行适应，以弥合图像与视频的模态差距；随后在高分辨率图像上进行进一步适应，以获得空间外推能力。推理时仅保留高分辨率适应部分以保持视频生成特性。此外，还提出了高频感知训练目标，通过专门的重建损失鼓励模型从退化的潜在表示中恢复高频细节。",
+      "findings": "实验表明，该方法无需视频训练数据即可生成具有丰富视觉细节的超高分辨率视频，在VBench基准测试中甚至比之前使用高分辨率视频训练的最先进模型高出0.8分。"
+    }
+  }
+]
