@@ -1,0 +1,151 @@
+[
+  {
+    "id": "2603.24078",
+    "title": "PosterIQ: A Design Perspective Benchmark for Poster Understanding and Generation",
+    "abstract": "We present PosterIQ, a design-driven benchmark for poster understanding and generation, annotated across composition structure, typographic hierarchy, and semantic intent. It includes 7,765 image-annotation instances and 822 generation prompts spanning real, professional, and synthetic cases. To bridge visual design cognition and generative modeling, we define tasks for layout parsing, text-image correspondence, typography/readability and font perception, design quality assessment, and controllable, composition-aware generation with metaphor. We evaluate state-of-the-art MLLMs and diffusion-based generators, finding persistent gaps in visual hierarchy, typographic semantics, saliency control, and intention communication; commercial models lead on high-level reasoning but act as insensitive automatic raters, while generators render text well yet struggle with composition-aware synthesis. Extensive analyses show PosterIQ is both a quantitative benchmark and a diagnostic tool for design reasoning, offering reproducible, task-specific metrics. We aim to catalyze models' creativity and integrate human-centred design principles into generative vision-language systems.",
+    "authors": [
+      "Yuheng Feng",
+      "Wen Zhang",
+      "Haodong Duan",
+      "Xingxing Zou"
+    ],
+    "published": "2026-03-25",
+    "updated": "2026-03-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.24078.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.24078",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "PosterIQ：一个面向设计视角的海报理解与生成基准",
+      "core_contribution": "提出了一个以设计为中心的基准数据集PosterIQ，用于评估模型对海报的理解与生成能力，并定义了涵盖构图、排版和语义意图的多维度任务，旨在推动生成式视觉-语言系统融入以人为中心的设计原则。",
+      "method": "研究构建了一个包含7,765个图像-标注实例和822个生成提示的数据集，涵盖真实、专业和合成海报案例。通过定义布局解析、图文对应、排版/可读性与字体感知、设计质量评估以及可控的构图感知生成（含隐喻）等任务，系统评估了前沿的多模态大语言模型和基于扩散的生成模型。",
+      "findings": "评估发现，现有模型在视觉层次、排版语义、显著性控制和意图传达方面存在明显不足：商业模型在高层推理上领先，但对设计细节不敏感；生成模型能较好渲染文字，却难以实现构图感知的合成。PosterIQ既可作为量化基准，也可作为诊断设计推理能力的工具。"
+    }
+  },
+  {
+    "id": "2603.24575",
+    "title": "VFIG: Vectorizing Complex Figures in SVG with Vision-Language Models",
+    "abstract": "Scalable Vector Graphics (SVG) are an essential format for technical illustration and digital design, offering precise resolution independence and flexible semantic editability. In practice, however, original vector source files are frequently lost or inaccessible, leaving only \"flat\" rasterized versions (e.g., PNG or JPEG) that are difficult to modify or scale. Manually reconstructing these figures is a prohibitively labor-intensive process, requiring specialized expertise to recover the original geometric intent. To bridge this gap, we propose VFIG, a family of Vision-Language Models trained for complex and high-fidelity figure-to-SVG conversion. While this task is inherently data-driven, existing datasets are typically small-scale and lack the complexity of professional diagrams. We address this by introducing VFIG-DATA, a large-scale dataset of 66K high-quality figure-SVG pairs, curated from a diverse mix of real-world paper figures and procedurally generated diagrams. Recognizing that SVGs are composed of recurring primitives and hierarchical local structures, we introduce a coarse-to-fine training curriculum that begins with supervised fine-tuning (SFT) to learn atomic primitives and transitions to reinforcement learning (RL) refinement to optimize global diagram fidelity, layout consistency, and topological edge cases. Finally, we introduce VFIG-BENCH, a comprehensive evaluation suite with novel metrics designed to measure the structural integrity of complex figures. VFIG achieves state-of-the-art performance among open-source models and performs on par with GPT-5.2, achieving a VLM-Judge score of 0.829 on VFIG-BENCH.",
+    "authors": [
+      "Qijia He",
+      "Xunmei Liu",
+      "Hammaad Memon",
+      "Ziang Li",
+      "Zixian Ma",
+      "Jaemin Cho",
+      "Jason Ren",
+      "Daniel S Weld",
+      "Ranjay Krishna"
+    ],
+    "published": "2026-03-25",
+    "updated": "2026-03-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.24575.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.24575",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VFIG：利用视觉语言模型将复杂图形矢量化至SVG格式",
+      "core_contribution": "提出了VFIG模型系列，用于实现从复杂光栅图形到高质量可编辑SVG的自动转换，并构建了大规模数据集VFIG-DATA与综合评估基准VFIG-BENCH。",
+      "method": "首先构建了一个包含6.6万对高质量图形-SVG样本的大规模数据集VFIG-DATA，涵盖真实论文图表与程序生成图表。模型训练采用由粗到精的课程学习策略：先通过监督微调学习基本图形基元，再通过强化学习优化整体图表保真度、布局一致性与拓扑边缘情况。",
+      "findings": "VFIG在开源模型中达到最先进性能，与GPT-5.2表现相当，在VFIG-BENCH基准上获得0.829的VLM-Judge评分。该方法能有效恢复图形的几何意图、层次结构与可编辑性。"
+    }
+  },
+  {
+    "id": "2603.24571",
+    "title": "Towards Training-Free Scene Text Editing",
+    "abstract": "Scene text editing seeks to modify textual content in natural images while maintaining visual realism and semantic consistency. Existing methods often require task-specific training or paired data, limiting their scalability and adaptability. In this paper, we propose TextFlow, a training-free scene text editing framework that integrates the strengths of Attention Boost (AttnBoost) and Flow Manifold Steering (FMS) to enable flexible, high-fidelity text manipulation without additional training. Specifically, FMS preserves the structural and style consistency by modeling the visual flow of characters and background regions, while AttnBoost enhances the rendering of textual content through attention-based guidance. By jointly leveraging these complementary modules, our approach performs end-to-end text editing through semantic alignment and spatial refinement in a plug-and-play manner. Extensive experiments demonstrate that our framework achieves visual quality and text accuracy comparable to or superior to those of training-based counterparts, generalizing well across diverse scenes and languages. This study advances scene text editing toward a more efficient, generalizable, and training-free paradigm. Code is available at https://github.com/lyb18758/TextFlow",
+    "authors": [
+      "Yubo Li",
+      "Xugong Qin",
+      "Peng Zhang",
+      "Hailun Lin",
+      "Gangyan Zeng",
+      "Kexin Zhang"
+    ],
+    "published": "2026-03-25",
+    "updated": "2026-03-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.24571.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.24571",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "迈向免训练的场景文本编辑",
+      "core_contribution": "提出了一个名为TextFlow的免训练场景文本编辑框架，通过结合注意力增强与流形引导技术，实现了无需额外训练即可灵活、高保真地修改图像中文本内容的目标。",
+      "method": "该方法整合了注意力增强模块和流形引导模块：流形引导模块通过建模字符和背景区域的视觉流来保持结构和风格一致性；注意力增强模块则通过基于注意力的引导来增强文本内容的渲染效果。这两个互补模块以即插即用的方式，通过语义对齐和空间细化实现端到端的文本编辑。",
+      "findings": "大量实验表明，该框架在视觉质量和文本准确性上达到甚至超越了需要训练的同类方法，并且能够很好地泛化到不同场景和语言中，推动了场景文本编辑向更高效、通用和免训练的方向发展。"
+    }
+  },
+  {
+    "id": "2603.24533",
+    "title": "UI-Voyager: A Self-Evolving GUI Agent Learning via Failed Experience",
+    "abstract": "Autonomous mobile GUI agents have attracted increasing attention along with the advancement of Multimodal Large Language Models (MLLMs). However, existing methods still suffer from inefficient learning from failed trajectories and ambiguous credit assignment under sparse rewards for long-horizon GUI tasks. To that end, we propose UI-Voyager, a novel two-stage self-evolving mobile GUI agent. In the first stage, we employ Rejection Fine-Tuning (RFT), which enables the continuous co-evolution of data and models in a fully autonomous loop. The second stage introduces Group Relative Self-Distillation (GRSD), which identifies critical fork points in group rollouts and constructs dense step-level supervision from successful trajectories to correct failed ones. Extensive experiments on AndroidWorld show that our 4B model achieves an 81.0% Pass@1 success rate, outperforming numerous recent baselines and exceeding human-level performance. Ablation and case studies further verify the effectiveness of GRSD. Our method represents a significant leap toward efficient, self-evolving, and high-performance mobile GUI automation without expensive manual data annotation.",
+    "authors": [
+      "Zichuan Lin",
+      "Feiyu Liu",
+      "Yijun Yang",
+      "Jiafei Lyu",
+      "Yiming Gao",
+      "Yicheng Liu",
+      "Zhicong Lu",
+      "Yangbin Yu",
+      "Mingyu Yang",
+      "Junyou Li",
+      "Deheng Ye",
+      "Jie Jiang"
+    ],
+    "published": "2026-03-25",
+    "updated": "2026-03-25",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.24533.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.24533",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "UI-Voyager：一种通过失败经验进行学习的自演进图形用户界面代理",
+      "core_contribution": "提出了一个两阶段自演进移动GUI代理，通过拒绝微调和组相对自蒸馏技术，实现了在无需昂贵人工标注的情况下，从失败轨迹中高效学习并解决长视野任务中稀疏奖励的信用分配模糊问题。",
+      "method": "第一阶段采用拒绝微调，使数据和模型在完全自主的循环中持续协同进化。第二阶段引入组相对自蒸馏，通过分析组内执行轨迹，识别关键决策分叉点，并利用成功轨迹构建密集的步骤级监督信号来修正失败轨迹。",
+      "findings": "在AndroidWorld基准测试中，仅4B参数的模型达到了81.0%的Pass@1成功率，超越了多个近期基线方法并超过了人类水平。消融实验和案例研究进一步验证了组相对自蒸馏的有效性，表明该方法能显著提升移动GUI自动化的效率和性能。"
+    }
+  },
+  {
+    "id": "2603.24270",
+    "title": "ScrollScape: Unlocking 32K Image Generation With Video Diffusion Priors",
+    "abstract": "While diffusion models excel at generating images with conventional dimensions, pushing them to synthesize ultra-high-resolution imagery at extreme aspect ratios (EAR) often triggers catastrophic structural failures, such as object repetition and spatial fragmentation.This limitation fundamentally stems from a lack of robust spatial priors, as static text-to-image models are primarily trained on image distributions with conventional dimensions.To overcome this bottleneck, we present ScrollScape, a novel framework that reformulates EAR image synthesis into a continuous video generation process through two core innovations.By mapping the spatial expansion of a massive canvas to the temporal evolution of video frames, ScrollScape leverages the inherent temporal consistency of video models as a powerful global constraint to ensure long-range structural integrity.Specifically, Scanning Positional Encoding (ScanPE) distributes global coordinates across frames to act as a flexible moving camera, while Scrolling Super-Resolution (ScrollSR) leverages video super-resolution priors to circumvent memory bottlenecks, efficiently scaling outputs to an unprecedented 32K resolution. Fine-tuned on a curated 3K multi-ratio image dataset, ScrollScape effectively aligns pre-trained video priors with the EAR generation task. Extensive evaluations demonstrate that it significantly outperforms existing image-diffusion baselines by eliminating severe localized artifacts. Consequently, our method overcomes inherent structural bottlenecks to ensure exceptional global coherence and visual fidelity across diverse domains at extreme scales.",
+    "authors": [
+      "Haodong Yu",
+      "Yabo Zhang",
+      "Donglin Di",
+      "Ruyi Zhang",
+      "Wangmeng Zuo"
+    ],
+    "published": "2026-03-25",
+    "updated": "2026-03-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.24270.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.24270",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ScrollScape：利用视频扩散先验解锁32K图像生成",
+      "core_contribution": "提出ScrollScape框架，通过将极端长宽比图像生成重新定义为连续视频生成过程，有效解决了现有扩散模型生成超高清图像时出现的结构崩溃问题，实现了前所未有的32K分辨率生成。",
+      "method": "该方法的核心是将画布的空间扩展映射为视频帧的时间演化，从而利用视频模型固有的时序一致性作为全局约束来保证长程结构完整性。具体通过扫描位置编码将全局坐标分布到各帧以模拟灵活的移动摄像机视角，并利用滚动超分辨率技术借助视频超分辨率先验来规避内存瓶颈，实现高效的高分辨率输出。",
+      "findings": "实验表明，ScrollScape在消除严重的局部伪影方面显著优于现有的图像扩散基线方法，能够确保在极端尺度下跨不同领域生成具有卓越全局连贯性和视觉保真度的图像。"
+    }
+  }
+]
