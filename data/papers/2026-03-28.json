@@ -1,0 +1,167 @@
+[
+  {
+    "id": "2603.25738",
+    "title": "PSDesigner: Automated Graphic Design with a Human-Like Creative Workflow",
+    "abstract": "Graphic design is a creative and innovative process that plays a crucial role in applications such as e-commerce and advertising. However, developing an automated design system that can faithfully translate user intentions into editable design files remains an open challenge. Although recent studies have leveraged powerful text-to-image models and MLLMs to assist graphic design, they typically simplify professional workflows, resulting in limited flexibility and intuitiveness. To address these limitations, we propose PSDesigner, an automated graphic design system that emulates the creative workflow of human designers. Building upon multiple specialized components, PSDesigner collects theme-related assets based on user instructions, and autonomously infers and executes tool calls to manipulate design files, such as integrating new assets or refining inferior elements. To endow the system with strong tool-use capabilities, we construct a design dataset, CreativePSD, which contains a large amount of high-quality PSD design files annotated with operation traces across a wide range of design scenarios and artistic styles, enabling models to learn expert design procedures. Extensive experiments demonstrate that PSDesigner outperforms existing methods across diverse graphic design tasks, empowering non-specialists to conveniently create production-quality designs.",
+    "authors": [
+      "Xincheng Shuai",
+      "Song Tang",
+      "Yutong Huang",
+      "Henghui Ding",
+      "Dacheng Tao"
+    ],
+    "published": "2026-03-26",
+    "updated": "2026-03-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.25738.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.25738",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "PSDesigner：一种模拟人类创意工作流的自动化平面设计系统",
+      "core_contribution": "提出了PSDesigner系统，它通过模拟人类设计师的创意工作流，实现了将用户意图忠实转换为可编辑设计文件的自动化平面设计。",
+      "method": "系统基于多个专用组件构建，首先根据用户指令收集主题相关素材，然后自主推断并执行工具调用来操作设计文件（如整合新素材或优化劣质元素）。为了赋予系统强大的工具使用能力，研究团队构建了一个包含大量高质量PSD设计文件的数据集CreativePSD，这些文件标注了跨多种设计场景和艺术风格的操作轨迹，使模型能够学习专业设计流程。",
+      "findings": "大量实验表明，PSDesigner在多种平面设计任务上优于现有方法，能够帮助非专业人士便捷地创作出具有生产质量的设计作品。"
+    }
+  },
+  {
+    "id": "2603.25732",
+    "title": "BizGenEval: A Systematic Benchmark for Commercial Visual Content Generation",
+    "abstract": "Recent advances in image generation models have expanded their applications beyond aesthetic imagery toward practical visual content creation. However, existing benchmarks mainly focus on natural image synthesis and fail to systematically evaluate models under the structured and multi-constraint requirements of real-world commercial design tasks. In this work, we introduce BizGenEval, a systematic benchmark for commercial visual content generation. The benchmark spans five representative document types: slides, charts, webpages, posters, and scientific figures, and evaluates four key capability dimensions: text rendering, layout control, attribute binding, and knowledge-based reasoning, forming 20 diverse evaluation tasks. BizGenEval contains 400 carefully curated prompts and 8000 human-verified checklist questions to rigorously assess whether generated images satisfy complex visual and semantic constraints. We conduct large-scale benchmarking on 26 popular image generation systems, including state-of-the-art commercial APIs and leading open-source models. The results reveal substantial capability gaps between current generative models and the requirements of professional visual content creation. We hope BizGenEval serves as a standardized benchmark for real-world commercial visual content generation.",
+    "authors": [
+      "Yan Li",
+      "Zezi Zeng",
+      "Ziwei Zhou",
+      "Xin Gao",
+      "Muzhao Tian",
+      "Yifan Yang",
+      "Mingxi Cheng",
+      "Qi Dai",
+      "Yuqing Yang",
+      "Lili Qiu",
+      "Zhendong Wang",
+      "Zhengyuan Yang",
+      "Xue Yang",
+      "Lijuan Wang",
+      "Ji Li",
+      "Chong Luo"
+    ],
+    "published": "2026-03-26",
+    "updated": "2026-03-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.25732.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.25732",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "BizGenEval：商业视觉内容生成的系统性基准测试",
+      "core_contribution": "提出了首个针对商业视觉内容生成的系统性基准测试BizGenEval，涵盖五种典型文档类型和四项关键能力维度，并构建了包含400个提示词和8000个人工验证问题的评估数据集。",
+      "method": "该基准定义了幻灯片、图表、网页、海报和科学图表五种商业文档类型，并从文本渲染、布局控制、属性绑定和知识推理四个维度构建了20项评估任务。通过精心设计的提示词和基于检查表的人工验证问题，系统评估生成图像是否满足复杂的视觉与语义约束。研究对26个主流图像生成系统进行了大规模测试。",
+      "findings": "实验表明，当前先进的生成模型在专业商业视觉内容创作的要求下仍存在显著能力差距，尤其在处理结构化、多约束任务时表现不足。该基准揭示了现有模型在实用商业场景中的局限性，为相关研究提供了标准化评估工具。"
+    }
+  },
+  {
+    "id": "2603.25743",
+    "title": "RefAlign: Representation Alignment for Reference-to-Video Generation",
+    "abstract": "Reference-to-video (R2V) generation is a controllable video synthesis paradigm that constrains the generation process using both text prompts and reference images, enabling applications such as personalized advertising and virtual try-on. In practice, existing R2V methods typically introduce additional high-level semantic or cross-modal features alongside the VAE latent representation of the reference image and jointly feed them into the diffusion Transformer (DiT). These auxiliary representations provide semantic guidance and act as implicit alignment signals, which can partially alleviate pixel-level information leakage in the VAE latent space. However, they may still struggle to address copy--paste artifacts and multi-subject confusion caused by modality mismatch across heterogeneous encoder features. In this paper, we propose RefAlign, a representation alignment framework that explicitly aligns DiT reference-branch features to the semantic space of a visual foundation model (VFM). The core of RefAlign is a reference alignment loss that pulls the reference features and VFM features of the same subject closer to improve identity consistency, while pushing apart the corresponding features of different subjects to enhance semantic discriminability. This simple yet effective strategy is applied only during training, incurring no inference-time overhead, and achieves a better balance between text controllability and reference fidelity. Extensive experiments on the OpenS2V-Eval benchmark demonstrate that RefAlign outperforms current state-of-the-art methods in TotalScore, validating the effectiveness of explicit reference alignment for R2V tasks.",
+    "authors": [
+      "Lei Wang",
+      "YuXin Song",
+      "Ge Wu",
+      "Haocheng Feng",
+      "Hang Zhou",
+      "Jingdong Wang",
+      "Yaxing Wang",
+      "jian Yang"
+    ],
+    "published": "2026-03-26",
+    "updated": "2026-03-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.25743.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.25743",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RefAlign：面向参考图像到视频生成的表征对齐框架",
+      "core_contribution": "提出了一个显式的表征对齐框架RefAlign，通过将扩散Transformer中的参考分支特征与视觉基础模型的语义空间对齐，有效解决了参考图像到视频生成中的复制粘贴伪影和多主体混淆问题。",
+      "method": "该方法的核心是设计了一个参考对齐损失函数，在训练过程中拉近同一主体在参考特征和视觉基础模型特征空间中的距离以提升身份一致性，同时推远不同主体的对应特征以增强语义判别性。该策略仅在训练阶段应用，不增加推理开销，实现了文本控制性与参考保真度之间的更好平衡。",
+      "findings": "在OpenS2V-Eval基准测试上的大量实验表明，RefAlign在综合评分（TotalScore）上优于当前最先进的方法，验证了显式参考对齐策略在参考图像到视频生成任务中的有效性。"
+    }
+  },
+  {
+    "id": "2603.25706",
+    "title": "Wan-Weaver: Interleaved Multi-modal Generation via Decoupled Training",
+    "abstract": "Recent unified models have made unprecedented progress in both understanding and generation. However, while most of them accept multi-modal inputs, they typically produce only single-modality outputs. This challenge of producing interleaved content is mainly due to training data scarcity and the difficulty of modeling long-range cross-modal context. To address this issue, we decompose interleaved generation into textual planning and visual consistency modeling, and introduce a framework consisting of a planner and a visualizer. The planner produces dense textual descriptions for visual content, while the visualizer synthesizes images accordingly. Under this guidance, we construct large-scale textual-proxy interleaved data (where visual content is represented in text) to train the planner, and curate reference-guided image data to train the visualizer. These designs give rise to Wan-Weaver, which exhibits emergent interleaved generation ability with long-range textual coherence and visual consistency. Meanwhile, the integration of diverse understanding and generation data into planner training enables Wan-Weaver to achieve robust task reasoning and generation proficiency. To assess the model's capability in interleaved generation, we further construct a benchmark that spans a wide range of use cases across multiple dimensions. Extensive experiments demonstrate that, even without access to any real interleaved data, Wan-Weaver achieves superior performance over existing methods.",
+    "authors": [
+      "Jinbo Xing",
+      "Zeyinzi Jiang",
+      "Yuxiang Tuo",
+      "Chaojie Mao",
+      "Xiaotang Gai",
+      "Xi Chen",
+      "Jingfeng Zhang",
+      "Yulin Pan",
+      "Zhen Han",
+      "Jie Xiao",
+      "Keyu Yan",
+      "Chenwei Xie",
+      "Chongyang Zhong",
+      "Kai Zhu",
+      "Tong Shen",
+      "Lianghua Huang",
+      "Yu Liu",
+      "Yujiu Yang"
+    ],
+    "published": "2026-03-26",
+    "updated": "2026-03-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.25706.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.25706",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "万维编织者：通过解耦训练实现交错多模态生成",
+      "core_contribution": "提出了一种无需真实交错数据即可实现高质量交错多模态内容生成的新框架，通过解耦文本规划与视觉一致性建模，解决了现有统一模型只能输出单一模态的难题。",
+      "method": "将交错生成任务分解为文本规划与视觉一致性建模两个阶段，分别设计规划器和可视化器。规划器利用大规模文本代理交错数据（视觉内容用文本描述代替）进行训练，生成详细的视觉内容文本描述；可视化器则利用参考引导的图像数据训练，根据规划器的描述合成图像。两者协同实现长程文本连贯与视觉一致的交错生成。",
+      "findings": "实验表明，Wan-Weaver 在未使用任何真实交错数据的情况下，在构建的多维度评测基准上超越了现有方法，展现出强大的交错生成能力、任务推理鲁棒性以及生成熟练度。"
+    }
+  },
+  {
+    "id": "2603.25357",
+    "title": "InstanceAnimator: Multi-Instance Sketch Video Colorization",
+    "abstract": "We propose InstanceAnimator, a novel Diffusion Transformer framework for multi-instance sketch video colorization. Existing methods suffer from three core limitations: inflexible user control due to heavy reliance on single reference frames, poor instance controllability leading to misalignment in multi-character scenarios, and degraded detail fidelity in fine-grained regions. To address these challenges, we introduce three corresponding innovations. First, a Canvas Guidance Condition eliminates workflow fragmentation by allowing free placement of reference elements and background, enabling unprecedented user flexibility. Second, an Instance Matching Mechanism resolves misalignment by integrating instance features with the sketches, ensuring precise control over multiple characters. Third, an Adaptive Decoupled Control Module enhances detail fidelity by injecting semantic features from characters, backgrounds, and text conditions into the diffusion process. Extensive experiments demonstrate that InstanceAnimator achieves superior multi-instance colorization with enhanced user control, high visual quality, and strong instance consistency.",
+    "authors": [
+      "Yinhan Zhang",
+      "Yue Ma",
+      "Bingyuan Wang",
+      "Kunyu Feng",
+      "Yeying Jin",
+      "Qifeng Chen",
+      "Anyi Rao",
+      "Zeyu Wang"
+    ],
+    "published": "2026-03-26",
+    "updated": "2026-03-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.25357.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.25357",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InstanceAnimator：多实例素描视频着色",
+      "core_contribution": "提出了InstanceAnimator，一个新颖的扩散Transformer框架，用于解决多实例素描视频着色中用户控制不灵活、实例可控性差和细节保真度低三大核心问题。",
+      "method": "该方法首先引入画布引导条件，允许用户自由放置参考元素和背景，消除了工作流程碎片化。其次，通过实例匹配机制将实例特征与素描图整合，确保对多个角色的精确控制。最后，采用自适应解耦控制模块，将角色、背景和文本条件的语义特征注入扩散过程，以增强细节保真度。",
+      "findings": "大量实验表明，InstanceAnimator在多实例着色任务上取得了优越的性能，实现了增强的用户控制、高视觉质量以及强大的实例一致性。"
+    }
+  }
+]
