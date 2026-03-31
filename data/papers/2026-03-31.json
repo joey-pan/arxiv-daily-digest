@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2603.28493",
+    "title": "ConceptWeaver: Weaving Disentangled Concepts with Flow",
+    "abstract": "Pre-trained flow-based models excel at synthesizing complex scenes yet lack a direct mechanism for disentangling and customizing their underlying concepts from one-shot real-world sources. To demystify this process, we first introduce a novel differential probing technique to isolate and analyze the influence of individual concept tokens on the velocity field over time. This investigation yields a critical insight: the generative process is not monolithic but unfolds in three distinct stages. An initial \\textbf{Blueprint Stage} establishes low-frequency structure, followed by a pivotal \\textbf{Instantiation Stage} where content concepts emerge with peak intensity and become naturally disentangled, creating an optimal window for manipulation. A final concept-insensitive refinement stage then synthesizes fine-grained details. Guided by this discovery, we propose \\textbf{ConceptWeaver}, a framework for one-shot concept disentanglement. ConceptWeaver learns concept-specific semantic offsets from a single reference image using a stage-aware optimization strategy that aligns with the three-stage framework. These learned offsets are then deployed during inference via our novel ConceptWeaver Guidance (CWG) mechanism, which strategically injects them at the appropriate generative stage. Extensive experiments validate that ConceptWeaver enables high-fidelity, compositional synthesis and editing, demonstrating that understanding and leveraging the intrinsic, staged nature of flow models is key to unlocking precise, multi-granularity content manipulation.",
+    "authors": [
+      "Jintao Chen",
+      "Aiming Hao",
+      "Xiaoqing Chen",
+      "Chengyu Bai",
+      "Chubin Chen",
+      "Yanxun Li",
+      "Jiahong Wu",
+      "Xiangxiang Chu",
+      "Shanghang Zhang"
+    ],
+    "published": "2026-03-30",
+    "updated": "2026-03-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.28493.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.28493",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ConceptWeaver：利用流模型编织解耦的概念",
+      "core_contribution": "本文揭示了基于流的生成模型具有三阶段生成过程，并据此提出了ConceptWeaver框架，实现了从单张参考图像中进行概念解耦与组合编辑。",
+      "method": "首先，作者提出了一种新颖的差分探测技术，分析单个概念令牌对速度场的影响，从而发现生成过程包含蓝图、实例化和细化三个阶段。基于此发现，ConceptWeaver采用阶段感知优化策略，从单张参考图像中学习特定概念的语义偏移量，并在推理时通过提出的ConceptWeaver Guidance机制，在合适的生成阶段注入这些偏移量。",
+      "findings": "关键实验表明，生成过程确实存在三个不同阶段：蓝图阶段建立低频结构，实例化阶段是内容概念出现、强度达到峰值并自然解耦的关键窗口，最后是概念不敏感的细化阶段。ConceptWeaver框架能够实现高保真度的组合合成与编辑，验证了理解和利用流模型内在的阶段特性是实现精确、多粒度内容操控的关键。"
+    }
+  },
+  {
+    "id": "2603.28460",
+    "title": "$R_{dm}$: Re-conceptualizing Distribution Matching as a Reward for Diffusion Distillation",
+    "abstract": "Diffusion models achieve state-of-the-art generative performance but are fundamentally bottlenecked by their slow iterative sampling process. While diffusion distillation techniques enable high-fidelity few-step generation, traditional objectives often restrict the student's performance by anchoring it solely to the teacher. Recent approaches have attempted to break this ceiling by integrating Reinforcement Learning (RL), typically through a simple summation of distillation and RL objectives. In this work, we propose a novel paradigm by reconceptualizing distribution matching as a reward, denoted as $R_{dm}$. This unified perspective bridges the algorithmic gap between Diffusion Matching Distillation (DMD) and RL, providing several key benefits. (1) Enhanced optimization stability: we introduce Group Normalized Distribution Matching (GNDM), which adapts standard RL group normalization to stabilize $R_{dm}$ estimation. By leveraging group-mean statistics, GNDM establishes a more robust and effective optimization direction. (2) Seamless reward integration: our reward-centric formulation inherently supports adaptive weighting mechanisms, allowing flexible combination of DMD with external reward models. (3) Improved sampling efficiency: by aligning with RL principles, the framework readily incorporates importance sampling (IS), leading to a significant boost in sampling efficiency. Extensive experiments demonstrate that GNDM outperforms vanilla DMD, reducing the FID by 1.87. Furthermore, our multi-reward variant, GNDMR, surpasses existing baselines by achieving a strong balance between aesthetic quality and fidelity, reaching a peak HPS of 30.37 and a low FID-SD of 12.21. Overall, $R_{dm}$ provides a flexible, stable, and efficient framework for real-time high-fidelity synthesis. Code will be released upon publication.",
+    "authors": [
+      "Linqian Fan",
+      "Peiqin Sun",
+      "Tiancheng Wen",
+      "Shun Lu",
+      "Chengru Song"
+    ],
+    "published": "2026-03-30",
+    "updated": "2026-03-30",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.28460.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.28460",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "R_dm：将分布匹配重新概念化为扩散蒸馏的奖励",
+      "core_contribution": "本文提出了一种新范式，将分布匹配重新概念化为一种奖励信号（R_dm），从而统一了扩散匹配蒸馏（DMD）与强化学习（RL）的算法框架，实现了更稳定、灵活且高效的扩散模型蒸馏。",
+      "method": "该方法的核心是提出了组归一化分布匹配（GNDM），通过利用组均值统计量来稳定R_dm奖励的估计，从而确立更鲁棒的优化方向。该奖励中心的框架天然支持自适应权重机制，可灵活地将DMD与外部奖励模型结合。同时，该框架基于RL原理，能够方便地引入重要性采样（IS）以显著提升采样效率。",
+      "findings": "实验表明，GNDM优于原始DMD，将FID降低了1.87。其多奖励变体GNDMR在美学质量和保真度之间取得了最佳平衡，达到了30.37的峰值HPS和12.21的低FID-SD，超越了现有基线方法。总体而言，R_dm为实时高保真合成提供了一个灵活、稳定且高效的框架。"
+    }
+  },
+  {
+    "id": "2603.28405",
+    "title": "EdgeDiT: Hardware-Aware Diffusion Transformers for Efficient On-Device Image Generation",
+    "abstract": "Diffusion Transformers (DiT) have established a new state-of-the-art in high-fidelity image synthesis; however, their massive computational complexity and memory requirements hinder local deployment on resource-constrained edge devices. In this paper, we introduce EdgeDiT, a family of hardware-efficient generative transformers specifically engineered for mobile Neural Processing Units (NPUs), such as the Qualcomm Hexagon and Apple Neural Engine (ANE). By leveraging a hardware-aware optimization framework, we systematically identify and prune structural redundancies within the DiT backbone that are particularly taxing for mobile data-flows. Our approach yields a series of lightweight models that achieve a 20-30% reduction in parameters, a 36-46% decrease in FLOPs, and a 1.65-fold reduction in on-device latency without sacrificing the scaling advantages or the expressive capacity of the original transformer architecture. Extensive benchmarking demonstrates that EdgeDiT offers a superior Pareto-optimal trade-off between Frechet Inception Distance (FID) and inference latency compared to both optimized mobile U-Nets and vanilla DiT variants. By enabling responsive, private, and offline generative AI directly on-device, EdgeDiT provides a scalable blueprint for transitioning large-scale foundation models from high-end GPUs to the palm of the user.",
+    "authors": [
+      "Sravanth Kodavanti",
+      "Manjunath Arveti",
+      "Sowmya Vajrala",
+      "Srinivas Miriyala",
+      "Vikram N R"
+    ],
+    "published": "2026-03-30",
+    "updated": "2026-03-30",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.28405.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.28405",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "EdgeDiT：面向高效设备端图像生成的硬件感知扩散变换器",
+      "core_contribution": "本文提出了EdgeDiT，一个专为移动神经处理单元（NPU）优化的高效生成变换器家族，通过硬件感知的优化框架，在保持原始变换器架构扩展优势和表达能力的同时，显著降低了计算、存储和延迟开销。",
+      "method": "EdgeDiT采用硬件感知优化框架，系统性地识别并剪裁了DiT主干网络中对于移动端数据流特别耗时的结构冗余。该方法通过分析移动NPU（如高通Hexagon和苹果神经引擎）的数据流特性，针对性地设计轻量化模型结构，从而在保持性能的前提下实现效率提升。",
+      "findings": "实验表明，EdgeDiT系列模型在参数上减少了20-30%，计算量（FLOPs）降低了36-46%，设备端延迟降低了1.65倍，且未牺牲图像生成质量。在FID与推理延迟的帕累托权衡曲线上，EdgeDiT优于优化的移动U-Net和原始DiT变体，为将大规模基础模型从高端GPU部署到资源受限的边缘设备提供了可扩展的蓝图。"
+    }
+  },
+  {
+    "id": "2603.28367",
+    "title": "Rethinking Structure Preservation in Text-Guided Image Editing with Visual Autoregressive Models",
+    "abstract": "Visual autoregressive (VAR) models have recently emerged as a promising family of generative models, enabling a wide range of downstream vision tasks such as text-guided image editing. By shifting the editing paradigm from noise manipulation in diffusion-based methods to token-level operations, VAR-based approaches achieve better background preservation and significantly faster inference. However, existing VAR-based editing methods still face two key challenges: accurately localizing editable tokens and maintaining structural consistency in the edited results. In this work, we propose a novel text-guided image editing framework rooted in an analysis of intermediate feature distributions within VAR models. First, we introduce a coarse-to-fine token localization strategy that can refine editable regions, balancing editing fidelity and background preservation. Second, we analyze the intermediate representations of VAR models and identify structure-related features, by which we design a simple yet effective feature injection mechanism to enhance structural consistency between the edited and source images. Third, we develop a reinforcement learning-based adaptive feature injection scheme that automatically learns scale- and layer-specific injection ratios to jointly optimize editing fidelity and structure preservation. Extensive experiments demonstrate that our method achieves superior structural consistency and editing quality compared with state-of-the-art approaches, across both local and global editing scenarios.",
+    "authors": [
+      "Tao Xia",
+      "Jiawei Liu",
+      "Yukun Zhang",
+      "Ting Liu",
+      "Wei Wang",
+      "Lei Zhang"
+    ],
+    "published": "2026-03-30",
+    "updated": "2026-03-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.28367.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.28367",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于视觉自回归模型的文本引导图像编辑中结构保存的再思考",
+      "core_contribution": "提出了一种基于视觉自回归模型中间特征分析的新型文本引导图像编辑框架，通过粗到细的令牌定位策略和自适应特征注入机制，显著提升了编辑结果的结构一致性与背景保持能力。",
+      "method": "首先，设计了一种从粗到细的令牌定位策略，逐步细化可编辑区域以平衡编辑效果与背景保留。其次，通过分析视觉自回归模型的中间表示，识别出与结构相关的特征，并设计了一种简单有效的特征注入机制来增强编辑图像与源图像之间的结构一致性。最后，提出了一种基于强化学习的自适应特征注入方案，自动学习不同尺度与层级的注入比例，以联合优化编辑保真度与结构保存。",
+      "findings": "大量实验表明，该方法在局部和全局编辑场景中均优于现有先进方法，在保持结构一致性和编辑质量方面表现优异，同时实现了更准确的区域定位和更自然的编辑效果。"
+    }
+  },
+  {
+    "id": "2603.28152",
+    "title": "ObjectMorpher: 3D-Aware Image Editing via Deformable 3DGS Models",
+    "abstract": "Achieving precise, object-level control in image editing remains challenging: 2D methods lack 3D awareness and often yield ambiguous or implausible results, while existing 3D-aware approaches rely on heavy optimization or incomplete monocular reconstructions. We present ObjectMorpher, a unified, interactive framework that converts ambiguous 2D edits into geometry-grounded operations. ObjectMorpher lifts target instances with an image-to-3D generator into editable 3D Gaussian Splatting (3DGS), enabling fast, identity-preserving manipulation. Users drag control points; a graph-based non-rigid deformation with as-rigid-as-possible (ARAP) constraints ensures physically sensible shape and pose changes. A composite diffusion module harmonizes lighting, color, and boundaries for seamless reintegration. Across diverse categories, ObjectMorpher delivers fine-grained, photorealistic edits with superior controllability and efficiency, outperforming 2D drag and 3D-aware baselines on KID, LPIPS, SIFID, and user preference.",
+    "authors": [
+      "Yuhuan Xie",
+      "Aoxuan Pan",
+      "Yi-Hua Huang",
+      "Chirui Chang",
+      "Peng Dai",
+      "Xin Yu",
+      "Xiaojuan Qi"
+    ],
+    "published": "2026-03-30",
+    "updated": "2026-03-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2603.28152.pdf",
+    "abs_url": "https://arxiv.org/abs/2603.28152",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ObjectMorpher：通过可变形3D高斯溅射模型实现3D感知的图像编辑",
+      "core_contribution": "提出了ObjectMorpher框架，将模糊的2D编辑转化为基于几何的3D操作，实现了高效、保身份的对象级图像编辑。",
+      "method": "首先使用图像到3D生成器将目标实例提升为可编辑的3D高斯溅射模型；然后通过基于图结构的非刚性变形算法（采用尽可能刚性的约束）响应用户拖拽控制点；最后通过复合扩散模块协调光照、颜色和边界，实现无缝的图像合成。",
+      "findings": "在多种对象类别上，ObjectMorpher能够实现细粒度、逼真的编辑，在KID、LPIPS、SIFID指标和用户偏好评估中均优于现有的2D拖拽编辑和3D感知基线方法。"
+    }
+  }
+]
