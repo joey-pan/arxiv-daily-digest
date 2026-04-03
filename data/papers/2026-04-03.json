@@ -1,0 +1,139 @@
+[
+  {
+    "id": "2604.02329",
+    "title": "Generative World Renderer",
+    "abstract": "Scaling generative inverse and forward rendering to real-world scenarios is bottlenecked by the limited realism and temporal coherence of existing synthetic datasets. To bridge this persistent domain gap, we introduce a large-scale, dynamic dataset curated from visually complex AAA games. Using a novel dual-screen stitched capture method, we extracted 4M continuous frames (720p/30 FPS) of synchronized RGB and five G-buffer channels across diverse scenes, visual effects, and environments, including adverse weather and motion-blur variants. This dataset uniquely advances bidirectional rendering: enabling robust in-the-wild geometry and material decomposition, and facilitating high-fidelity G-buffer-guided video generation. Furthermore, to evaluate the real-world performance of inverse rendering without ground truth, we propose a novel VLM-based assessment protocol measuring semantic, spatial, and temporal consistency. Experiments demonstrate that inverse renderers fine-tuned on our data achieve superior cross-dataset generalization and controllable generation, while our VLM evaluation strongly correlates with human judgment. Combined with our toolkit, our forward renderer enables users to edit styles of AAA games from G-buffers using text prompts.",
+    "authors": [
+      "Zheng-Hui Huang",
+      "Zhixiang Wang",
+      "Jiaming Tan",
+      "Ruihan Yu",
+      "Yidan Zhang",
+      "Bo Zheng",
+      "Yu-Lun Liu",
+      "Yung-Yu Chuang",
+      "Kaipeng Zhang"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02329.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02329",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "生成式世界渲染器",
+      "core_contribution": "本文通过构建一个从AAA游戏中提取的大规模动态数据集，并引入一种基于视觉语言模型（VLM）的评估协议，显著提升了生成式逆向渲染与正向渲染在真实世界场景中的泛化能力与可控性。",
+      "method": "研究团队首先提出了一种新颖的双屏拼接捕获方法，从视觉复杂的AAA游戏中提取了包含400万连续帧（720p/30 FPS）的大规模动态数据集，数据包含同步的RGB图像和五个G-buffer通道，覆盖多样场景、视觉效果及恶劣天气、运动模糊等变体。其次，为了在没有真实标注的情况下评估逆向渲染性能，论文提出了一种基于VLM的评估协议，用于衡量语义、空间和时间一致性。",
+      "findings": "实验表明，基于该数据集微调的逆向渲染器在跨数据集泛化能力和可控生成方面表现优异；所提出的VLM评估协议与人类主观判断高度相关。结合配套工具包，该正向渲染器能够使用文本提示，基于G-buffer对AAA游戏的视觉风格进行编辑。"
+    }
+  },
+  {
+    "id": "2604.02265",
+    "title": "Modular Energy Steering for Safe Text-to-Image Generation with Foundation Models",
+    "abstract": "Controlling the behavior of text-to-image generative models is critical for safe and practical deployment. Existing safety approaches typically rely on model fine-tuning or curated datasets, which can degrade generation quality or limit scalability. We propose an inference-time steering framework that leverages gradient feedback from frozen pretrained foundation models to guide the generation process without modifying the underlying generator. Our key observation is that vision-language foundation models encode rich semantic representations that can be repurposed as off-the-shelf supervisory signals during generation. By injecting such feedback through clean latent estimates at each sampling step, our method formulates safety steering as an energy-based sampling problem. This design enables modular, training-free safety control that is compatible with both diffusion and flow-matching models and can generalize across diverse visual concepts. Experiments demonstrate state-of-the-art robustness against NSFW red-teaming benchmarks and effective multi-target steering, while preserving high generation quality on benign non-targeted prompts. Our framework provides a principled approach for utilizing foundation models as semantic energy estimators, enabling reliable and scalable safety control for text-to-image generation.",
+    "authors": [
+      "Yaoteng Tan",
+      "Zikui Cai",
+      "M. Salman Asif"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02265.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02265",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于基础模型的模块化能量引导用于安全文本到图像生成",
+      "core_contribution": "提出了一种无需微调、在推理时利用冻结的基础模型提供梯度反馈来引导生成过程的框架，将安全控制问题转化为基于能量的采样问题，实现了模块化、可扩展的安全控制。",
+      "method": "该方法的核心是利用预训练好的视觉-语言基础模型（如CLIP）作为现成的语义监督信号。在图像生成的每个采样步骤中，通过计算基础模型对潜在表示的梯度反馈，并将其作为能量函数引导生成过程。该方法将安全引导构建为一个基于能量的采样问题，通过向干净的潜在估计注入反馈来实现控制，兼容扩散模型和流匹配模型。",
+      "findings": "实验表明，该方法在NSFW（不适宜内容）红队测试基准上实现了最先进的鲁棒性，并能有效进行多目标引导。在保持对良性提示的高生成质量的同时，能够泛化到多样的视觉概念上，证明了其作为可扩展安全控制方案的有效性。"
+    }
+  },
+  {
+    "id": "2604.02168",
+    "title": "Reflection Generation for Composite Image Using Diffusion Model",
+    "abstract": "Image composition involves inserting a foreground object into the background while synthesizing environment-consistent effects such as shadows and reflections. Although shadow generation has been extensively studied, reflection generation remains largely underexplored. In this work, we focus on reflection generation. We inject the prior information of reflection placement and reflection appearance into foundation diffusion model. We also divide reflections into two types and adopt type-aware model design. To support training, we construct the first large-scale object reflection dataset DEROBA. Experiments demonstrate that our method generates reflections that are physically coherent and visually realistic, establishing a new benchmark for reflection generation.",
+    "authors": [
+      "Haonan Zhao",
+      "Qingyang Liu",
+      "Jiaxuan Chen",
+      "Li Niu"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02168.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02168",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于扩散模型的合成图像反射生成",
+      "core_contribution": "本文首次系统性地研究了图像合成中的反射生成问题，并构建了首个大规模物体反射数据集DEROBA，为反射生成任务建立了新的基准。",
+      "method": "方法基于基础扩散模型，向其注入了反射位置和外观的先验信息。同时，将反射分为两种类型，并采用了类型感知的模型设计，以针对性地处理不同类型的反射生成。",
+      "findings": "实验结果表明，该方法能够生成物理上连贯且视觉上逼真的反射效果，在反射生成任务上取得了优于现有方法的表现，验证了所提方法的有效性。"
+    }
+  },
+  {
+    "id": "2604.02097",
+    "title": "LatentUM: Unleashing the Potential of Interleaved Cross-Modal Reasoning via a Latent-Space Unified Model",
+    "abstract": "Unified models (UMs) hold promise for their ability to understand and generate content across heterogeneous modalities. Compared to merely generating visual content, the use of UMs for interleaved cross-modal reasoning is more promising and valuable, e.g., for solving understanding problems that require dense visual thinking, improving visual generation through self-reflection, or modeling visual dynamics of the physical world guided by stepwise action interventions. However, existing UMs necessitate pixel decoding as a bridge due to their disjoint visual representations for understanding and generation, which is both ineffective and inefficient. In this paper, we introduce LatentUM, a novel unified model that represents all modalities within a shared semantic latent space, eliminating the need for pixel-space mediation between visual understanding and generation. This design naturally enables flexible interleaved cross-modal reasoning and generation. Beyond improved computational efficiency, the shared representation substantially alleviates codec bias and strengthens cross-modal alignment, allowing LatentUM to achieve state-of-the-art performance on the Visual Spatial Planning benchmark, push the limits of visual generation through self-reflection, and support world modeling by predicting future visual states within the shared semantic latent space.",
+    "authors": [
+      "Jiachun Jin",
+      "Zetong Zhou",
+      "Xiao Yang",
+      "Hao Zhang",
+      "Pengfei Liu",
+      "Jun Zhu",
+      "Zhijie Deng"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02097.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02097",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LatentUM：通过潜在空间统一模型释放交错跨模态推理的潜力",
+      "core_contribution": "提出LatentUM，一种在共享语义潜在空间中表示所有模态的统一模型，消除了视觉理解与生成之间对像素空间中介的依赖，从而实现了高效灵活的交错跨模态推理与生成。",
+      "method": "该方法将所有模态（包括文本和视觉）映射到统一的语义潜在空间，而非依赖像素解码作为桥梁。通过共享的潜在表示，模型能直接在语义层面进行跨模态理解与生成，避免了传统统一模型中因视觉理解与生成表征分离而导致的效率低下问题。这种设计强化了跨模态对齐，并减少了编解码器偏差。",
+      "findings": "LatentUM在视觉空间规划基准上取得了最先进的性能；通过自反思机制提升了视觉生成的质量；能够在共享潜在空间中预测未来视觉状态，支持对物理世界的动态建模。实验表明，该方法在提升计算效率的同时，显著增强了跨模态推理与生成的灵活性。"
+    }
+  },
+  {
+    "id": "2604.02088",
+    "title": "FlowSlider: Training-Free Continuous Image Editing via Fidelity-Steering Decomposition",
+    "abstract": "Continuous image editing aims to provide slider-style control of edit strength while preserving source-image fidelity and maintaining a consistent edit direction. Existing learning-based slider methods typically rely on auxiliary modules trained with synthetic or proxy supervision. This introduces additional training overhead and couples slider behavior to the training distribution, which can reduce reliability under distribution shifts in edits or domains. We propose \\textit{FlowSlider}, a training-free method for continuous editing in Rectified Flow that requires no post-training. \\textit{FlowSlider} decomposes FlowEdit's update into (i) a fidelity term, which acts as a source-conditioned stabilizer that preserves identity and structure, and (ii) a steering term that drives semantic transition toward the target edit. Geometric analysis and empirical measurements show that these terms are approximately orthogonal, enabling stable strength control by scaling only the steering term while keeping the fidelity term unchanged. As a result, \\textit{FlowSlider} provides smooth and reliable control without post-training, improving continuous editing quality across diverse tasks.",
+    "authors": [
+      "Taichi Endo",
+      "Guoqing Hao",
+      "Kazuhiko Sumi"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02088.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02088",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlowSlider：通过保真度-导向分解实现无需训练的图像连续编辑",
+      "core_contribution": "提出了一种无需额外训练、基于Rectified Flow的连续图像编辑方法，通过将编辑更新分解为保真度项和导向项，实现了对编辑强度的平滑、可靠控制。",
+      "method": "该方法将FlowEdit的更新分解为两个部分：一是保真度项，作为源图像条件稳定器，用于保持原始图像的身份和结构；二是导向项，负责驱动语义向目标编辑方向转变。几何分析和实验表明这两项近似正交，因此仅通过缩放导向项即可稳定控制编辑强度，而无需改变保真度项。整个过程无需任何后训练或辅助模块。",
+      "findings": "实验表明，FlowSlider能够在多种编辑任务中实现平滑且可靠的连续编辑控制，在保持源图像保真度的同时，有效维持编辑方向的一致性，且不受训练数据分布偏移的影响，提升了连续编辑的质量。"
+    }
+  }
+]
