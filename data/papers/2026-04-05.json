@@ -1,0 +1,137 @@
+[
+  {
+    "id": "2604.01972",
+    "title": "SDesc3D: Towards Layout-Aware 3D Indoor Scene Generation from Short Descriptions",
+    "abstract": "3D indoor scene generation conditioned on short textual descriptions provides a promising avenue for interactive 3D environment construction without the need for labor-intensive layout specification. Despite recent progress in text-conditioned 3D scene generation, existing works suffer from poor physical plausibility and insufficient detail richness in such semantic condensation cases, largely due to their reliance on explicit semantic cues about compositional objects and their spatial relationships. This limitation highlights the need for enhanced 3D reasoning capabilities, particularly in terms of prior integration and spatial anchoring.Motivated by this, we propose SDesc3D, a short-text conditioned 3D indoor scene generation framework, that leverages multi-view structural priors and regional functionality implications to enable 3D layout reasoning under sparse textual guidance.Specifically, we introduce a Multi-view scene prior augmentation that enriches underspecified textual inputs with aggregated multi-view structural knowledge, shifting from inaccessible semantic relation cues to multi-view relational prior aggregation. Building on this, we design a Functionality-aware layout grounding, employing regional functionality grounding for implicit spatial anchors and conducting hierarchical layout reasoning to enhance scene organization and semantic plausibility.Furthermore, an Iterative reflection-rectification scheme is employed for progressive structural plausibility refinement via self-rectification.Extensive experiments show that our method outperforms existing approaches on short-text conditioned 3D indoor scene generation.Code will be publicly available.",
+    "authors": [
+      "Jie Feng",
+      "Jiawei Shen",
+      "Junjia Huang",
+      "Junpeng Zhang",
+      "Mingtao Feng",
+      "Weisheng Dong",
+      "Guanbin Li"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01972.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01972",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SDesc3D：面向基于简短描述的布局感知三维室内场景生成",
+      "core_contribution": "提出了一个基于简短文本描述生成三维室内场景的框架，通过引入多视角结构先验和区域功能感知，显著提升了在稀疏文本指导下的三维布局推理能力与场景物理合理性。",
+      "method": "方法主要包括：1）多视角场景先验增强，通过聚合多视角结构知识来丰富文本输入；2）功能感知的布局定位，利用区域功能进行隐式空间锚定，并执行分层布局推理以优化场景组织；3）采用迭代反射-校正方案，通过自校正逐步提升结构合理性。",
+      "findings": "实验表明，该方法在基于简短文本的三维室内场景生成任务上优于现有方法，能够生成更具物理合理性和语义丰富性的场景布局。"
+    }
+  },
+  {
+    "id": "2604.01864",
+    "title": "MAR-MAER: Metric-Aware and Ambiguity-Adaptive Autoregressive Image Generation",
+    "abstract": "Autoregressive (AR) models have demonstrated significant success in the realm of text-to-image generation. However, they usually face two major challenges. Firstly, the generated images may not always meet the quality standards expected by humans. Furthermore, these models face difficulty when dealing with ambiguous prompts that could be interpreted in several valid ways. To address these issues, we introduce MAR-MAER, an innovative hierarchical autoregressive framework. It combines two main components. It is a metric-aware embedding regularization method. The other one is a probabilistic latent model used for handling ambiguous semantics. Our method utilizes a lightweight projection head, which is trained with an adaptive kernel regression loss function. This aligns the model's internal representations with human-preferred quality metrics, such as CLIPScore and HPSv2. As a result, the embedding space that is learned more accurately reflects human judgment. We are also introducing a conditional variational module. This approach incorporates an aspect of controlled randomness within the hierarchical token generation process. This capability allows the model to produce a diverse array of coherent images based on ambiguous or open-ended prompts. We conducted extensive experiments using COCO and a newly developed Ambiguous-Prompt Benchmark. The results show that MAR-MAER achieves excellent performance in both metric consistency and semantic flexibility. It exceeds the baseline Hi-MAR model's performance, showing an improvement of +1.6 in CLIPScore and +5.3 in HPSv2. For unclear inputs, it produces a notably wider range of outputs. These findings have been confirmed through both human evaluation and automated metrics.",
+    "authors": [
+      "Kai Dong",
+      "Tingting Bai"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01864.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01864",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MAR-MAER：度量感知与模糊性自适应的自回归图像生成",
+      "core_contribution": "提出了一个创新的层次化自回归框架，通过度量感知嵌入正则化和概率潜变量模型，同时提升了生成图像的人类偏好对齐度与对模糊提示的语义适应能力。",
+      "method": "方法包含两个核心组件：一是使用轻量级投影头与自适应核回归损失函数，将模型内部表示与人类偏好的质量度量（如CLIPScore、HPSv2）对齐；二是引入条件变分模块，在层次化token生成过程中注入可控随机性，以处理模糊语义。",
+      "findings": "在COCO和新构建的模糊提示基准上的实验表明，MAR-MAER在度量一致性和语义灵活性上均表现优异，相比基线Hi-MAR模型，CLIPScore提升+1.6，HPSv2提升+5.3，并能针对模糊输入生成更广泛多样的连贯图像，结果通过了人工评估与自动指标的双重验证。"
+    }
+  },
+  {
+    "id": "2604.01826",
+    "title": "SafeRoPE: Risk-specific Head-wise Embedding Rotation for Safe Generation in Rectified Flow Transformers",
+    "abstract": "Recent Text-to-Image (T2I) models based on rectified-flow transformers (e.g., SD3, FLUX) achieve high generative fidelity but remain vulnerable to unsafe semantics, especially when triggered by multi-token interactions. Existing mitigation methods largely rely on fine-tuning or attention modulation for concept unlearning; however, their expensive computational overhead and design tailored to U-Net-based denoisers hinder direct adaptation to transformer-based diffusion models (e.g., MMDiT). In this paper, we conduct an in-depth analysis of the attention mechanism in MMDiT and find that unsafe semantics concentrate within interpretable, low-dimensional subspaces at head level, where a finite set of safety-critical heads is responsible for unsafe feature extraction. We further observe that perturbing the Rotary Positional Embedding (RoPE) applied to the query and key vectors can effectively modify some specific concepts in the generated images. Motivated by these insights, we propose SafeRoPE, a lightweight and fine-grained safe generation framework for MMDiT. Specifically, SafeRoPE first constructs head-wise unsafe subspaces by decomposing unsafe embeddings within safety-critical heads, and computes a Latent Risk Score (LRS) for each input vector via projection onto these subspaces. We then introduce head-wise RoPE perturbations that can suppress unsafe semantics without degrading benign content or image quality. SafeRoPE combines both head-wise LRS and RoPE perturbations to perform risk-specific head-wise rotation on query and key vector embeddings, enabling precise suppression of unsafe outputs while maintaining generation fidelity. Extensive experiments demonstrate that SafeRoPE achieves SOTA performance in balancing effective harmful content mitigation and utility preservation for safe generation of MMDiT. Codes are available at https://github.com/deng12yx/SafeRoPE.",
+    "authors": [
+      "Xiang Yang",
+      "Feifei Li",
+      "Mi Zhang",
+      "Geng Hong",
+      "Xiaoyu You",
+      "Min Yang"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01826.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01826",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SafeRoPE：用于整流流变换器中安全生成的风险特定、头级别的嵌入旋转方法",
+      "core_contribution": "本文提出了一种轻量级、细粒度的安全生成框架SafeRoPE，它通过识别并扰动关键注意力头中的不安全语义子空间，在基于变换器的扩散模型（如MMDiT）中有效抑制有害内容，同时保持生成质量和良性内容。",
+      "method": "方法首先分析MMDiT的注意力机制，发现不安全语义集中在特定注意力头的低维可解释子空间中。接着，通过分解不安全嵌入构建头级别的不安全子空间，并计算每个输入向量的潜在风险分数。然后，引入头级别的RoPE旋转扰动，结合风险分数对查询和键向量嵌入进行风险特定的旋转操作，以精确抑制不安全输出。",
+      "findings": "实验表明，SafeRoPE在平衡有害内容抑制与生成效用保护方面达到了最先进的性能，能够有效应对多令牌交互触发的安全风险，且无需昂贵的微调或针对U-Net架构的设计，可直接适用于基于变换器的扩散模型。"
+    }
+  },
+  {
+    "id": "2604.01777",
+    "title": "GardenDesigner: Encoding Aesthetic Principles into Jiangnan Garden Construction via a Chain of Agents",
+    "abstract": "Jiangnan gardens, a prominent style of Chinese classical gardens, hold great potential as digital assets for film and game production and digital tourism. However, manual modeling of Jiangnan gardens heavily relies on expert experience for layout design and asset creation, making the process time-consuming. To address this gap, we propose GardenDesigner, a novel framework that encodes aesthetic principles for Jiangnan garden construction and integrates a chain of agents based on procedural modeling. The water-centric terrain and explorative pathway rules are applied by terrain distribution and road generation agents. Selection and spatial layout of garden assets follow the aesthetic and cultural constraints. Consequently, we propose asset selection and layout optimization agents to select and arrange objects for each area in the garden. Additionally, we introduce GardenVerse for Jiangnan garden construction, including expert-annotated garden knowledge to enhance the asset arrangement process. To enable interaction and editing, we develop an interactive interface and tools in Unity, in which non-expert users can construct Jiangnan gardens via text input within one minute. Experiments and human evaluations demonstrate that GardenDesigner can generate diverse and aesthetically pleasing Jiangnan gardens. Project page is available at https://monad-cube.github.io/GardenDesigner.",
+    "authors": [
+      "Mengtian Li",
+      "Fan Yang",
+      "Ruixue Xiong",
+      "Yiyan Fan",
+      "Zhifeng Xie",
+      "Zeyu Wang"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01777.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01777",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GardenDesigner：通过智能体链将美学原则编码到江南园林构建中",
+      "core_contribution": "提出了一个名为GardenDesigner的创新框架，该框架将江南园林的美学原则编码为可计算的规则，并基于智能体链实现自动化生成，使非专业用户能够通过文本输入快速构建多样且美观的江南园林数字场景。",
+      "method": "该方法基于程序化建模，通过一系列分工协作的智能体链来构建园林：首先由地形分布和道路生成智能体应用以水为中心的地形和探索性路径规则；随后，资产选择和布局优化智能体根据美学与文化约束，为园林的每个区域选择和布置物体。此外，还引入了包含专家标注园林知识的GardenVerse数据库来增强资产布置过程。",
+      "findings": "实验和人工评估表明，GardenDesigner能够在一分钟内生成多样且具有美学吸引力的江南园林。所开发的Unity交互界面和工具支持非专业用户通过文本输入进行交互和编辑，有效解决了传统手动建模依赖专家经验、耗时耗力的问题。"
+    }
+  },
+  {
+    "id": "2604.01761",
+    "title": "Control-DINO: Feature Space Conditioning for Controllable Image-to-Video Diffusion",
+    "abstract": "Video models have recently been applied with success to problems in content generation, novel view synthesis, and, more broadly, world simulation. Many applications in generation and transfer rely on conditioning these models, typically through perceptual, geometric, or simple semantic signals, fundamentally using them as generative renderers. At the same time, high-dimensional features obtained from large-scale self-supervised learning on images or point clouds are increasingly used as a general-purpose interface for vision models. The connection between the two has been explored for subject specific editing, aligning and training video diffusion models, but not in the role of a more general conditioning signal for pretrained video diffusion models. Features obtained through self-supervised learning like DINO, contain a lot of entangled information about style, lighting and semantics of the scene. This makes them great at reconstruction tasks but limits their generative capabilities. In this paper, we show how we can use the features for tasks such as video domain transfer and video-from-3D generation. We introduce a lightweight architecture and training strategy that decouples appearance from other features that we wish to preserve, enabling robust control for appearance changes such as stylization and relighting. Furthermore, we show that low spatial resolution can be compensated by higher feature dimensionality, improving controllability in generative rendering from explicit spatial representations.",
+    "authors": [
+      "Edoardo A. Dominici",
+      "Thomas Deixelberger",
+      "Konstantinos Vardis",
+      "Markus Steinberger"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01761.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01761",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Control-DINO：面向可控图像到视频扩散的特征空间条件化",
+      "core_contribution": "提出了一种利用自监督学习特征（如DINO）作为预训练视频扩散模型通用条件信号的方法，并设计了一个轻量级架构来解耦外观特征，实现了对视频风格化、重光照等外观变化的鲁棒控制。",
+      "method": "论文引入了一个轻量级的架构和训练策略，将外观特征（如风格、光照）与希望保留的其他场景特征（如语义、几何）进行解耦。该方法利用自监督学习获得的高维特征作为条件信号，并通过补偿低空间分辨率来提高从显式空间表示中进行生成渲染的可控性。",
+      "findings": "实验表明，该方法能有效用于视频域迁移和从3D生成视频等任务。通过特征解耦，模型能够在不改变场景结构和语义的前提下，灵活控制外观变化；同时，更高的特征维度可以补偿低空间分辨率的不足，提升生成质量与可控性。"
+    }
+  }
+]
