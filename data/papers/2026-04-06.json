@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2604.03156",
+    "title": "CAMEO: A Conditional and Quality-Aware Multi-Agent Image Editing Orchestrator",
+    "abstract": "Conditional image editing aims to modify a source image according to textual prompts and optional reference guidance. Such editing is crucial in scenarios requiring strict structural control (i.e., anomaly insertion in driving scenes and complex human pose transformation). Despite recent advances in large-scale editing models (i.e., Seedream, Nano Banana, etc), most approaches rely on single-step generation. This paradigm often lacks explicit quality control, may introduce excessive deviation from the original image, and frequently produces structural artifacts or environment-inconsistent modifications, typically requiring manual prompt tuning to achieve acceptable results. We propose \\textbf{CAMEO}, a structured multi-agent framework that reformulates conditional editing as a quality-aware, feedback-driven process rather than a one-shot generation task. CAMEO decomposes editing into coordinated stages of planning, structured prompting, hypothesis generation, and adaptive reference grounding, where external guidance is invoked only when task complexity requires it. To overcome the lack of intrinsic quality control in existing methods, evaluation is embedded directly within the editing loop. Intermediate results are iteratively refined through structured feedback, forming a closed-loop process that progressively corrects structural and contextual inconsistencies. We evaluate CAMEO on anomaly insertion and human pose switching tasks. Across multiple strong editing backbones and independent evaluation models, CAMEO consistently achieves 20\\% more win rate on average compared to multiple state-of-the-art models, demonstrating improved robustness, controllability, and structural reliability in conditional image editing.",
+    "authors": [
+      "Yuhan Pu",
+      "Hao Zheng",
+      "Ziqian Mo",
+      "Hill Zhang",
+      "Tianyi Fan",
+      "Shuhong Wu",
+      "Jiaheng Wei"
+    ],
+    "published": "2026-04-03",
+    "updated": "2026-04-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.03156.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.03156",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CAMEO：一种条件感知与质量感知的多智能体图像编辑编排器",
+      "core_contribution": "提出了一种结构化多智能体框架CAMEO，将条件图像编辑重构为一个质量感知、反馈驱动的迭代过程，而非单次生成任务，显著提升了编辑的鲁棒性、可控性和结构一致性。",
+      "method": "CAMEO将编辑任务分解为规划、结构化提示生成、假设生成和自适应参考 grounding 等协调阶段，仅在任务复杂度需要时调用外部参考指导。其核心创新在于将质量评估直接嵌入编辑循环中，通过结构化反馈对中间结果进行迭代优化，形成一个逐步纠正结构和上下文不一致性的闭环流程。",
+      "findings": "在异常插入和人体姿态切换任务上的实验表明，在多种强大的编辑骨干模型和独立评估模型下，CAMEO相比多个先进模型的平均胜率提升超过20%，在条件图像编辑中实现了更强的鲁棒性、可控性和结构可靠性。"
+    }
+  },
+  {
+    "id": "2604.02966",
+    "title": "Visual Prototype Conditioned Focal Region Generation for UAV-Based Object Detection",
+    "abstract": "Unmanned aerial vehicle (UAV) based object detection is a critical but challenging task, when applied in dynamically changing scenarios with limited annotated training data. Layout-to-image generation approaches have proved effective in promoting detection accuracy by synthesizing labeled images based on diffusion models. However, they suffer from frequently producing artifacts, especially near layout boundaries of tiny objects, thus substantially limiting their performance. To address these issues, we propose UAVGen, a novel layout-to-image generation framework tailored for UAV-based object detection. Specifically, UAVGen designs a Visual Prototype Conditioned Diffusion Model (VPC-DM) that constructs representative instances for each class and integrates them into latent embeddings for high-fidelity object generation. Moreover, a Focal Region Enhanced Data Pipeline (FRE-DP) is introduced to emphasize object-concentrated foreground regions in synthesis, combined with a label refinement to correct missing, extra and misaligned generations. Extensive experimental results demonstrate that our method significantly outperforms state-of-the-art approaches, and consistently promotes accuracy when integrated with distinct detectors. The source code is available at https://github.com/Sirius-Li/UAVGen.",
+    "authors": [
+      "Wenhao Li",
+      "Zimeng Wu",
+      "Yu Wu",
+      "Zehua Fu",
+      "Jiaxin Chen"
+    ],
+    "published": "2026-04-03",
+    "updated": "2026-04-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02966.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02966",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于视觉原型条件化聚焦区域生成的无人机目标检测方法",
+      "core_contribution": "提出了一个名为UAVGen的新型布局到图像生成框架，通过视觉原型条件化扩散模型和聚焦区域增强数据管道，显著提升了在有限标注数据下无人机目标检测的精度。",
+      "method": "方法首先设计了一个视觉原型条件化扩散模型（VPC-DM），为每个类别构建具有代表性的实例并将其整合到潜在嵌入中，以实现高保真度的目标生成。其次，引入了一个聚焦区域增强数据管道（FRE-DP），在合成过程中强调目标集中的前景区域，并结合标签精炼步骤来修正生成图像中缺失、多余或未对齐的目标。",
+      "findings": "大量实验结果表明，该方法显著优于现有最先进的方法，并且与不同的检测器集成时能持续提升检测精度。所提出的框架有效缓解了传统布局到图像生成方法在微小目标边界附近产生伪影的问题。"
+    }
+  },
+  {
+    "id": "2604.02752",
+    "title": "Differentiable Stroke Planning with Dual Parameterization for Efficient and High-Fidelity Painting Creation",
+    "abstract": "In stroke-based rendering, search methods often get trapped in local minima due to discrete stroke placement, while differentiable optimizers lack structural awareness and produce unstructured layouts. To bridge this gap, we propose a dual representation that couples discrete polylines with continuous Bézier control points via a bidirectional mapping mechanism. This enables collaborative optimization: local gradients refine global stroke structures, while content-aware stroke proposals help escape poor local optima. Our representation further supports Gaussian-splatting-inspired initialization, enabling highly parallel stroke optimization across the image. Experiments show that our approach reduces the number of strokes by 30-50%, achieves more structurally coherent layouts, and improves reconstruction quality, while cutting optimization time by 30-40% compared to existing differentiable vectorization methods.",
+    "authors": [
+      "Jinfan Liu",
+      "Wuze Zhang",
+      "Zhangli Hu",
+      "Zhehan Zhao",
+      "Ye Chen",
+      "Bingbing Ni"
+    ],
+    "published": "2026-04-03",
+    "updated": "2026-04-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02752.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02752",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于双重参数化的可微分笔划规划：用于高效且高保真的绘画创作",
+      "core_contribution": "提出了一种将离散折线与连续贝塞尔控制点耦合的双重表示方法，实现了结构感知的笔划优化，解决了传统方法易陷入局部最优或缺乏结构一致性的问题。",
+      "method": "通过双向映射机制将离散折线表示与连续贝塞尔控制点表示相结合，支持局部梯度优化全局笔划结构，并利用内容感知的笔划提议帮助跳出局部最优。该方法还引入了受高斯溅射启发的初始化策略，实现了图像范围内高度并行的笔划优化。",
+      "findings": "实验表明，该方法比现有可微分矢量化方法减少30-50%的笔划数量，获得更具结构一致性的布局，提升了重建质量，同时优化时间缩短了30-40%。"
+    }
+  },
+  {
+    "id": "2604.02467",
+    "title": "VERTIGO: Visual Preference Optimization for Cinematic Camera Trajectory Generation",
+    "abstract": "Cinematic camera control relies on a tight feedback loop between director and cinematographer, where camera motion and framing are continuously reviewed and refined. Recent generative camera systems can produce diverse, text-conditioned trajectories, but they lack this \"director in the loop\" and have no explicit supervision of whether a shot is visually desirable. This results in in-distribution camera motion but poor framing, off-screen characters, and undesirable visual aesthetics. In this paper, we introduce VERTIGO, the first framework for visual preference optimization of camera trajectory generators. Our framework leverages a real-time graphics engine (Unity) to render 2D visual previews from generated camera motion. A cinematically fine-tuned vision-language model then scores these previews using our proposed cyclic semantic similarity mechanism, which aligns renders with text prompts. This process provides the visual preference signals for Direct Preference Optimization (DPO) post-training. Both quantitative evaluations and user studies on Unity renders and diffusion-based Camera-to-Video pipelines show consistent gains in condition adherence, framing quality, and perceptual realism. Notably, VERTIGO reduces the character off-screen rate from 38% to nearly 0% while preserving the geometric fidelity of camera motion. User study participants further prefer VERTIGO over baselines across composition, consistency, prompt adherence, and aesthetic quality, confirming the perceptual benefits of our visual preference post-training.",
+    "authors": [
+      "Mengtian Li",
+      "Yuwei Lu",
+      "Feifei Li",
+      "Chenqi Gan",
+      "Zhifeng Xie",
+      "Xi Wang"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.02467.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.02467",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VERTIGO：用于电影级摄像机轨迹生成的视觉偏好优化",
+      "core_contribution": "提出了首个针对摄像机轨迹生成器的视觉偏好优化框架VERTIGO，通过引入视觉反馈循环和偏好学习，显著提升了生成镜头的构图质量、提示符遵循度和视觉美感。",
+      "method": "该方法首先利用Unity实时图形引擎将生成的摄像机运动渲染为2D视觉预览；然后通过一个经电影领域微调的视觉语言模型，结合提出的循环语义相似度机制，对渲染画面与文本提示的匹配程度进行评分；最后利用这些视觉偏好信号对轨迹生成器进行直接偏好优化（DPO）后训练。",
+      "findings": "在Unity渲染和基于扩散的摄像机到视频流程上的定量评估与用户研究表明，VERTIGO在条件遵循、构图质量和感知真实感方面均优于基线方法，尤其将角色出画率从38%降至接近0%，同时保持了摄像机运动的几何保真度。用户研究进一步证实了其在构图、一致性、提示遵循和美学质量上的感知优势。"
+    }
+  },
+  {
+    "id": "2604.01715",
+    "title": "SteerFlow: Steering Rectified Flows for Faithful Inversion-Based Image Editing",
+    "abstract": "Recent advances in flow-based generative models have enabled training-free, text-guided image editing by inverting an image into its latent noise and regenerating it under a new target conditional guidance. However, existing methods struggle to preserve source fidelity: higher-order solvers incur additional model inferences, truncated inversion constrains editability, and feature injection methods lack architectural transferability. To address these limitations, we propose SteerFlow, a model-agnostic editing framework with strong theoretical guarantees on source fidelity. In the forward process, we introduce an Amortized Fixed-Point Solver that implicitly straightens the forward trajectory by enforcing velocity consistency across consecutive timesteps, yielding a high-fidelity inverted latent. In the backward process, we introduce Trajectory Interpolation, which adaptively blends target-editing and source-reconstruction velocities to keep the editing trajectory anchored to the source. To further improve background preservation, we introduce an Adaptive Masking mechanism that spatially constrains the editing signal with concept-guided segmentation and source-target velocity differences. Extensive experiments on FLUX.1-dev and Stable Diffusion 3.5 Medium demonstrate that SteerFlow consistently achieves better editing quality than existing methods. Finally, we show that SteerFlow extends naturally to a complex multi-turn editing paradigm without accumulating drift.",
+    "authors": [
+      "Thinh Dao",
+      "Zhen Wang",
+      "Kien T. Pham",
+      "Long Chen"
+    ],
+    "published": "2026-04-02",
+    "updated": "2026-04-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.01715.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.01715",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SteerFlow：通过引导整流流实现基于图像反演的可靠编辑",
+      "core_contribution": "提出了SteerFlow，一个模型无关的图像编辑框架，通过理论保证在保持源图像高保真度的同时实现文本引导的编辑，并支持多轮编辑而不产生累积漂移。",
+      "method": "1. 在前向过程中，提出摊销定点求解器，通过强制相邻时间步的速度一致性来隐式拉直前向轨迹，获得高保真度的反演潜在表示。2. 在后向过程中，引入轨迹插值方法，自适应混合目标编辑速度和源重建速度，使编辑轨迹锚定源图像。3. 进一步提出自适应掩码机制，利用概念引导的分割和源‑目标速度差在空间上约束编辑信号。",
+      "findings": "在FLUX.1-dev和Stable Diffusion 3.5 Medium上的大量实验表明，SteerFlow在编辑质量上持续优于现有方法，能更好地保持源图像保真度，并自然扩展到复杂的多轮编辑场景而不积累漂移。"
+    }
+  }
+]
