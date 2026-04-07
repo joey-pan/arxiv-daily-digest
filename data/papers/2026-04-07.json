@@ -1,0 +1,153 @@
+[
+  {
+    "id": "2604.04192",
+    "title": "Graphic-Design-Bench: A Comprehensive Benchmark for Evaluating AI on Graphic Design Tasks",
+    "abstract": "We introduce GraphicDesignBench (GDB), the first comprehensive benchmark suite designed specifically to evaluate AI models on the full breadth of professional graphic design tasks. Unlike existing benchmarks that focus on natural-image understanding or generic text-to-image synthesis, GDB targets the unique challenges of professional design work: translating communicative intent into structured layouts, rendering typographically faithful text, manipulating layered compositions, producing valid vector graphics, and reasoning about animation. The suite comprises 50 tasks organized along five axes: layout, typography, infographics, template & design semantics and animation, each evaluated under both understanding and generation settings, and grounded in real-world design templates drawn from the LICA layered-composition dataset. We evaluate a set of frontier closed-source models using a standardized metric taxonomy covering spatial accuracy, perceptual quality, text fidelity, semantic alignment, and structural validity. Our results reveal that current models fall short on the core challenges of professional design: spatial reasoning over complex layouts, faithful vector code generation, fine-grained typographic perception, and temporal decomposition of animations remain largely unsolved. While high-level semantic understanding is within reach, the gap widens sharply as tasks demand precision, structure, and compositional awareness. GDB provides a rigorous, reproducible testbed for tracking progress toward AI systems that can function as capable design collaborators. The full evaluation framework is publicly available.",
+    "authors": [
+      "Adrienne Deganutti",
+      "Elad Hirsch",
+      "Haonan Zhu",
+      "Jaejung Seol",
+      "Purvanshi Mehta"
+    ],
+    "published": "2026-04-05",
+    "updated": "2026-04-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.04192.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.04192",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "Graphic-Design-Bench：用于评估AI在平面设计任务上的综合基准",
+      "core_contribution": "本文提出了首个专门用于全面评估AI模型在专业平面设计任务上性能的基准套件GraphicDesignBench (GDB)，填补了现有基准在专业设计领域评估的空白。",
+      "method": "该基准套件包含50个任务，沿布局、排版、信息图表、模板与设计语义以及动画五个维度组织，每个任务均在理解和生成两种设置下进行评估。评估基于从LICA分层构图数据集中提取的真实设计模板，并采用一套标准化的指标分类法，涵盖空间准确性、感知质量、文本保真度、语义对齐和结构有效性。",
+      "findings": "评估结果表明，当前最先进的模型在专业设计的核心挑战上表现不足：对复杂布局的空间推理、准确的矢量代码生成、细粒度的排版感知以及动画的时间分解等问题在很大程度上仍未解决。虽然模型已具备高层次的语义理解能力，但当任务要求精确性、结构性和构图意识时，性能差距急剧扩大。"
+    }
+  },
+  {
+    "id": "2604.04911",
+    "title": "SpatialEdit: Benchmarking Fine-Grained Image Spatial Editing",
+    "abstract": "Image spatial editing performs geometry-driven transformations, allowing precise control over object layout and camera viewpoints. Current models are insufficient for fine-grained spatial manipulations, motivating a dedicated assessment suite. Our contributions are listed: (i) We introduce SpatialEdit-Bench, a complete benchmark that evaluates spatial editing by jointly measuring perceptual plausibility and geometric fidelity via viewpoint reconstruction and framing analysis. (ii) To address the data bottleneck for scalable training, we construct SpatialEdit-500k, a synthetic dataset generated with a controllable Blender pipeline that renders objects across diverse backgrounds and systematic camera trajectories, providing precise ground-truth transformations for both object- and camera-centric operations. (iii) Building on this data, we develop SpatialEdit-16B, a baseline model for fine-grained spatial editing. Our method achieves competitive performance on general editing while substantially outperforming prior methods on spatial manipulation tasks. All resources will be made public at https://github.com/EasonXiao-888/SpatialEdit.",
+    "authors": [
+      "Yicheng Xiao",
+      "Wenhu Zhang",
+      "Lin Song",
+      "Yukang Chen",
+      "Wenbo Li",
+      "Nan Jiang",
+      "Tianhe Ren",
+      "Haokun Lin",
+      "Wei Huang",
+      "Haoyang Huang",
+      "Xiu Li",
+      "Nan Duan",
+      "Xiaojuan Qi"
+    ],
+    "published": "2026-04-06",
+    "updated": "2026-04-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.04911.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.04911",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SpatialEdit：细粒度图像空间编辑基准评测",
+      "core_contribution": "本文提出了一个用于评估细粒度图像空间编辑能力的完整基准测试套件（SpatialEdit-Bench），并构建了一个大规模合成数据集（SpatialEdit-500k）以解决训练数据瓶颈，进而基于此数据开发了一个高性能的基线模型（SpatialEdit-16B）。",
+      "method": "研究团队首先构建了一个可控的Blender渲染管线，用于生成包含多样化背景和系统化相机轨迹的合成数据集（SpatialEdit-500k），为物体中心和相机中心的操作提供了精确的真值变换。基于此数据，他们开发了SpatialEdit-16B模型。评估方法上，他们通过联合测量感知合理性和几何保真度（具体通过视角重建和构图分析）来综合评价空间编辑效果。",
+      "findings": "实验结果表明，所提出的SpatialEdit-16B基线模型在通用图像编辑任务上具有竞争力，并且在空间操控任务上显著优于先前的方法。所有资源（包括基准、数据集和模型）都将公开，以促进该领域的研究。"
+    }
+  },
+  {
+    "id": "2604.04859",
+    "title": "Unified Vector Floorplan Generation via Markup Representation",
+    "abstract": "Automatic residential floorplan generation has long been a central challenge bridging architecture and computer graphics, aiming to make spatial design more efficient and accessible. While early methods based on constraint satisfaction or combinatorial optimization ensure feasibility, they lack diversity and flexibility. Recent generative models achieve promising results but struggle to generalize across heterogeneous conditional tasks, such as generation from site boundaries, room adjacency graphs, or partial layouts, due to their suboptimal representations. To address this gap, we introduce Floorplan Markup Language (FML), a general representation that encodes floorplan information within a single structured grammar, which casts the entire floorplan generation problem into a next token prediction task. Leveraging FML, we develop a transformer-based generative model, FMLM, capable of producing high-fidelity and functional floorplans under diverse conditions. Comprehensive experiments on the RPLAN dataset demonstrate that FMLM, despite being a single model, surpasses the previous task-specific state-of-the-art methods.",
+    "authors": [
+      "Kaede Shiohara",
+      "Toshihiko Yamasaki"
+    ],
+    "published": "2026-04-06",
+    "updated": "2026-04-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.04859.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.04859",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于标记表示的通用矢量户型图生成",
+      "core_contribution": "本文提出了通用的户型图标记语言（FML）表示法，并基于此构建了一个统一的Transformer生成模型（FMLM），能够以单一模型处理多种异构条件（如边界、邻接图、局部布局）下的户型图生成任务。",
+      "method": "方法首先设计了一种结构化语法——户型图标记语言（FML），将户型图信息编码为统一的序列表示，从而将整个生成问题转化为下一个标记预测任务。随后，基于FML构建了一个Transformer生成模型FMLM，通过自回归方式生成符合不同条件约束的高质量户型图序列。",
+      "findings": "在RPLAN数据集上的实验表明，FMLM作为一个单一模型，在生成保真度和功能性方面均超越了以往针对特定任务设计的先进方法，实现了跨多种条件任务的统一高效生成。"
+    }
+  },
+  {
+    "id": "2604.04746",
+    "title": "Think in Strokes, Not Pixels: Process-Driven Image Generation via Interleaved Reasoning",
+    "abstract": "Humans paint images incrementally: they plan a global layout, sketch a coarse draft, inspect, and refine details, and most importantly, each step is grounded in the evolving visual states. However, can unified multimodal models trained on text-image interleaved datasets also imagine the chain of intermediate states? In this paper, we introduce process-driven image generation, a multi-step paradigm that decomposes synthesis into an interleaved reasoning trajectory of thoughts and actions. Rather than generating images in a single step, our approach unfolds across multiple iterations, each consisting of 4 stages: textual planning, visual drafting, textual reflection, and visual refinement. The textual reasoning explicitly conditions how the visual state should evolve, while the generated visual intermediate in turn constrains and grounds the next round of textual reasoning. A core challenge of process-driven generation stems from the ambiguity of intermediate states: how can models evaluate each partially-complete image? We address this through dense, step-wise supervision that maintains two complementary constraints: for the visual intermediate states, we enforce the spatial and semantic consistency; for the textual intermediate states, we preserve the prior visual knowledge while enabling the model to identify and correct prompt-violating elements. This makes the generation process explicit, interpretable, and directly supervisable. To validate proposed method, we conduct experiments under various text-to-image generation benchmarks.",
+    "authors": [
+      "Lei Zhang",
+      "Junjiao Tian",
+      "Zhipeng Fan",
+      "Kunpeng Li",
+      "Jialiang Wang",
+      "Weifeng Chen",
+      "Markos Georgopoulos",
+      "Felix Juefei-Xu",
+      "Yuxiang Bao",
+      "Julian McAuley",
+      "Manling Li",
+      "Zecheng He"
+    ],
+    "published": "2026-04-06",
+    "updated": "2026-04-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.04746.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.04746",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "以笔触而非像素思考：通过交错推理实现过程驱动的图像生成",
+      "core_contribution": "本文提出了“过程驱动的图像生成”新范式，将单步图像合成分解为多步交错进行的思维与行动轨迹，使生成过程变得显式化、可解释且可直接监督。",
+      "method": "该方法采用多轮迭代生成，每轮包含四个阶段：文本规划、视觉草图绘制、文本反思和视觉细化。文本推理显式地指导视觉状态的演进，而生成的视觉中间结果又反过来约束并锚定下一轮文本推理。为解决中间状态模糊性问题，作者引入了密集的逐步监督机制，对视觉中间状态施加空间与语义一致性约束，对文本中间状态则要求其保留先验视觉知识并识别纠正与提示不符的元素。",
+      "findings": "通过在多种文本到图像生成基准上的实验验证，该方法能够生成更符合文本描述、细节更丰富的图像，并使得图像生成过程具有可解释性和可控性。"
+    }
+  },
+  {
+    "id": "2604.04646",
+    "title": "Training-Free Refinement of Flow Matching with Divergence-based Sampling",
+    "abstract": "Flow-based models learn a target distribution by modeling a marginal velocity field, defined as the average of sample-wise velocities connecting each sample from a simple prior to the target data. When sample-wise velocities conflict at the same intermediate state, however, this averaged velocity can misguide samples toward low-density regions, degrading generation quality. To address this issue, we propose the Flow Divergence Sampler (FDS), a training-free framework that refines intermediate states before each solver step. Our key finding reveals that the severity of this misguidance is quantified by the divergence of the marginal velocity field that is readily computable during inference with a well-optimized model. FDS exploits this signal to steer states toward less ambiguous regions. As a plug-and-play framework compatible with standard solvers and off-the-shelf flow backbones, FDS consistently improves fidelity across various generation tasks including text-to-image synthesis, and inverse problems.",
+    "authors": [
+      "Yeonwoo Cha",
+      "Jaehoon Yoo",
+      "Semin Kim",
+      "Yunseo Park",
+      "Jinhyeon Kwon",
+      "Seunghoon Hong"
+    ],
+    "published": "2026-04-06",
+    "updated": "2026-04-06",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.04646.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.04646",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于散度的采样实现无需训练的流匹配精炼",
+      "core_contribution": "提出了无需训练的流散度采样器（FDS），通过量化并利用边际速度场的散度来修正推理过程中的中间状态，从而缓解样本间速度冲突导致的生成质量下降问题。",
+      "method": "该方法的核心是在每个求解器步骤前对中间状态进行精炼。它利用训练好的流模型中可计算的边际速度场散度作为引导信号，该散度量化了速度冲突的严重程度。FDS根据散度信号将状态引导至不确定性更低的区域，且作为一个即插即用的框架，可与标准求解器和现成的流模型主干兼容。",
+      "findings": "实验表明，FDS能一致地提升包括文本到图像合成和逆问题在内的多种生成任务的保真度，验证了散度作为引导信号的有效性以及该框架的通用性。"
+    }
+  }
+]
