@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2604.06079",
+    "title": "Scientific Graphics Program Synthesis via Dual Self-Consistency Reinforcement Learning",
+    "abstract": "Graphics Program Synthesis is pivotal for interpreting and editing visual data, effectively facilitating the reverse-engineering of static visuals into editable TikZ code. While TikZ is the de facto standard for scientific schematics due to its programmatic flexibility, its requirement for rigorous spatial precision presents a significant challenge for Multimodal Large Language Models. Progress is currently stifled by two primary gaps: (1) Data Quality Gap: existing image-TikZ corpora often lack strict executability and reliable visual alignment; (2) Evaluation Gap: a lack of benchmarks for both structural and visual fidelity. To address these, we present a closed-loop framework featuring: SciTikZ-230K, a large-scale, high-quality dataset from our Execution-Centric Data Engine covering 11 diverse scientific disciplines; SciTikZ-Bench, a multifaceted benchmark spanning from basic geometric constructs to intricate hierarchical schematics to evaluate both visual fidelity and structural logic. To further broaden the scope of visual-code optimization methodology, we introduce a novel Dual Self-Consistency Reinforcement Learning optimization paradigm, which utilizes Round-Trip Verification to penalize degenerate code and boost overall self-consistency. Empowered by these, our trained model SciTikZer-8B achieves state-of-the-art performance, consistently outperforming proprietary giants like Gemini-2.5-Pro and massive models like Qwen3-VL-235B-A22B-Instruct.",
+    "authors": [
+      "Juekai Lin",
+      "Yun Zhu",
+      "Honglin Lin",
+      "Sijing Li",
+      "Tianwei Lin",
+      "Zheng Liu",
+      "Xiaoyang Wang",
+      "Wenqiao Zhang",
+      "Lijun Wu"
+    ],
+    "published": "2026-04-07",
+    "updated": "2026-04-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.06079.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.06079",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过双重自一致性强化学习进行科学图形程序合成",
+      "core_contribution": "本文提出了一个用于科学图形程序合成的闭环框架，包括一个高质量、大规模的数据集SciTikZ-230K和一个多方面的基准测试SciTikZ-Bench，并引入了一种新颖的双重自一致性强化学习优化范式，显著提升了从科学示意图生成可执行TikZ代码的性能。",
+      "method": "方法主要包括：1）构建了一个执行中心的数据引擎，生成了涵盖11个科学学科的大规模、高质量图像-TikZ代码对数据集SciTikZ-230K；2）创建了一个评估视觉保真度和结构逻辑的多层面基准SciTikZ-Bench；3）提出了一种双重自一致性强化学习优化范式，利用往返验证来惩罚退化代码并提升整体自一致性。",
+      "findings": "关键实验结果表明，基于该框架训练的模型SciTikZer-8B取得了最先进的性能，在科学图形程序合成任务上，持续超越了Gemini-2.5-Pro等专有大型模型和Qwen3-VL-235B-A22B-Instruct等超大规模模型。"
+    }
+  },
+  {
+    "id": "2604.06074",
+    "title": "Graph-PiT: Enhancing Structural Coherence in Part-Based Image Synthesis via Graph Priors",
+    "abstract": "Achieving fine-grained and structurally sound controllability is a cornerstone of advanced visual generation. Existing part-based frameworks treat user-provided parts as an unordered set and therefore ignore their intrinsic spatial and semantic relationships, which often results in compositions that lack structural integrity. To bridge this gap, we propose Graph-PiT, a framework that explicitly models the structural dependencies of visual components using a graph prior. Specifically, we represent visual parts as nodes and their spatial-semantic relationships as edges. At the heart of our method is a Hierarchical Graph Neural Network (HGNN) module that performs bidirectional message passing between coarse-grained part-level super-nodes and fine-grained IP+ token sub-nodes, refining part embeddings before they enter the generative pipeline. We also introduce a graph Laplacian smoothness loss and an edge-reconstruction loss so that adjacent parts acquire compatible, relation-aware embeddings. Quantitative experiments on controlled synthetic domains (character, product, indoor layout, and jigsaw), together with qualitative transfer to real web images, show that Graph-PiT improves structural coherence over vanilla PiT while remaining compatible with the original IP-Prior pipeline. Ablation experiments confirm that explicit relational reasoning is crucial for enforcing user-specified adjacency constraints. Our approach not only enhances the plausibility of generated concepts but also offers a scalable and interpretable mechanism for complex, multi-part image synthesis. The code is available at https://github.com/wolf-bailang/Graph-PiT.",
+    "authors": [
+      "Junbin Zhang",
+      "Meng Cao",
+      "Feng Tan",
+      "Yikai Lin",
+      "Yuexian Zou"
+    ],
+    "published": "2026-04-07",
+    "updated": "2026-04-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.06074.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.06074",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Graph-PiT：通过图先验增强基于部件的图像合成的结构连贯性",
+      "core_contribution": "提出Graph-PiT框架，首次在图先验中显式建模视觉部件的结构依赖关系，解决了现有部件合成方法因忽略部件间空间语义关系而导致结构不完整的问题。",
+      "method": "该方法将视觉部件表示为图节点，部件间的空间语义关系表示为边。核心是一个分层图神经网络模块，在粗粒度部件级超节点与细粒度IP+令牌子节点之间进行双向消息传递，以优化部件嵌入。此外，引入了图拉普拉斯平滑损失和边重建损失，使相邻部件获得兼容且关系感知的嵌入表示。",
+      "findings": "在受控合成领域（字符、产品、室内布局、拼图）的定量实验及对真实网络图像的定性迁移表明，Graph-PiT在保持与原IP-Prior流程兼容的同时，显著提升了结构连贯性。消融实验证实显式关系推理对于强制执行用户指定的邻接约束至关重要，该方法增强了生成概念的合理性，并为复杂多部件图像合成提供了可扩展且可解释的机制。"
+    }
+  },
+  {
+    "id": "2604.05906",
+    "title": "Selective Aggregation of Attention Maps Improves Diffusion-Based Visual Interpretation",
+    "abstract": "Numerous studies on text-to-image (T2I) generative models have utilized cross-attention maps to boost application performance and interpret model behavior. However, the distinct characteristics of attention maps from different attention heads remain relatively underexplored. In this study, we show that selectively aggregating cross-attention maps from heads most relevant to a target concept can improve visual interpretability. Compared to the diffusion-based segmentation method DAAM, our approach achieves higher mean IoU scores. We also find that the most relevant heads capture concept-specific features more accurately than the least relevant ones, and that selective aggregation helps diagnose prompt misinterpretations. These findings suggest that attention head selection offers a promising direction for improving the interpretability and controllability of T2I generation.",
+    "authors": [
+      "Jungwon Park",
+      "Jungmin Ko",
+      "Dongnam Byun",
+      "Wonjong Rhee"
+    ],
+    "published": "2026-04-07",
+    "updated": "2026-04-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.05906.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.05906",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "选择性聚合注意力图改进基于扩散模型的视觉解释",
+      "core_contribution": "本文提出通过选择性地聚合与目标概念最相关的注意力头生成的交叉注意力图，能够显著提升文本到图像生成模型的视觉可解释性。",
+      "method": "该方法首先分析扩散模型中不同注意力头生成的交叉注意力图，识别出与特定语义概念（如物体）最相关的注意力头。然后，仅聚合这些被选中的、高相关性的注意力头所生成的注意力图，而非使用所有注意力头的平均或总和。",
+      "findings": "1. 与基线方法DAAM相比，该方法在图像分割任务上获得了更高的平均交并比（mIoU）分数。2. 最相关的注意力头比最不相关的注意力头能更准确地捕捉概念特定的特征。3. 选择性聚合有助于诊断提示词被模型误解的情况，为提升模型的可控性提供了方向。"
+    }
+  },
+  {
+    "id": "2604.05853",
+    "title": "Reading Between the Pixels: An Inscriptive Jailbreak Attack on Text-to-Image Models",
+    "abstract": "Modern text-to-image (T2I) models can now render legible, paragraph-length text, enabling a fundamentally new class of misuse. We identify and formalize the inscriptive jailbreak, where an adversary coerces a T2I system into generating images containing harmful textual payloads (e.g., fraudulent documents) embedded within visually benign scenes. Unlike traditional depictive jailbreaks that elicit visually objectionable imagery, inscriptive attacks weaponize the text-rendering capability itself. Because existing jailbreak techniques are designed for coarse visual manipulation, they struggle to bypass multi-stage safety filters while maintaining character-level fidelity. To expose this vulnerability, we propose Etch, a black-box attack framework that decomposes the adversarial prompt into three functionally orthogonal layers: semantic camouflage, visual-spatial anchoring, and typographic encoding. This decomposition reduces joint optimization over the full prompt space to tractable sub-problems, which are iteratively refined through a zero-order loop. In this process, a vision-language model critiques each generated image, localizes failures to specific layers, and prescribes targeted revisions. Extensive evaluations across 7 models on the 2 benchmarks demonstrate that Etch achieves an average attack success rate of 65.57% (peaking at 91.00%), significantly outperforming existing baselines. Our results reveal a critical blind spot in current T2I safety alignments and underscore the urgent need for typography-aware defense multimodal mechanisms.",
+    "authors": [
+      "Zonghao Ying",
+      "Haowen Dai",
+      "Lianyu Hu",
+      "Zonglei Jing",
+      "Quanchen Zou",
+      "Yaodong Yang",
+      "Aishan Liu",
+      "Xianglong Liu"
+    ],
+    "published": "2026-04-07",
+    "updated": "2026-04-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.05853.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.05853",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "像素之间：针对文生图模型的铭文式越狱攻击",
+      "core_contribution": "本文提出并形式化了“铭文式越狱”这一新型攻击范式，即通过生成视觉无害但内含有害文本（如伪造文件）的图像来绕过模型安全机制，并开发了首个针对该攻击的黑盒框架Etch。",
+      "method": "方法将对抗性提示分解为三个功能正交的层次：语义伪装、视觉空间锚定和字体编码，从而将复杂的联合优化问题转化为可处理的子问题。通过零阶优化循环迭代精炼，并利用视觉语言模型对生成图像进行批判、定位故障层次并指导针对性修订。",
+      "findings": "在7个模型和2个基准测试上的广泛评估表明，Etch的平均攻击成功率达到65.57%（最高91.00%），显著优于现有基线。这揭示了当前文生图模型安全对齐机制中存在对文本渲染能力防护的盲区，亟需开发具备字体感知能力的多模态防御机制。"
+    }
+  },
+  {
+    "id": "2604.05761",
+    "title": "Improving Controllable Generation: Faster Training and Better Performance via $x_0$-Supervision",
+    "abstract": "Text-to-Image (T2I) diffusion/flow models have recently achieved remarkable progress in visual fidelity and text alignment. However, they remain limited when users need to precisely control image layouts, something that natural language alone cannot reliably express. Controllable generation methods augment the initial T2I model with additional conditions that more easily describe the scene. Prior works straightforwardly train the augmented network with the same loss as the initial network. Although natural at first glance, this can lead to very long training times in some cases before convergence. In this work, we revisit the training objective of controllable diffusion models through a detailed analysis of their denoising dynamics. We show that direct supervision on the clean target image, dubbed $x_0$-supervision, or an equivalent re-weighting of the diffusion loss, yields faster convergence. Experiments on multiple control settings demonstrate that our formulation accelerates convergence by up to 2$\\times$ according to our novel metric (mean Area Under the Convergence Curve - mAUCC), while also improving both visual quality and conditioning accuracy. Our code is available at https://github.com/CEA-LIST/x0-supervision",
+    "authors": [
+      "Amadou S. Sangare",
+      "Adrien Maglo",
+      "Mohamed Chaouch",
+      "Bertrand Luvison"
+    ],
+    "published": "2026-04-07",
+    "updated": "2026-04-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.05761.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.05761",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "改进可控生成：通过$x_0$监督实现更快的训练与更好的性能",
+      "core_contribution": "本文提出了一种名为$x_0$-supervision的新训练目标，通过直接对干净目标图像进行监督或对扩散损失进行等效重加权，显著加速了可控扩散模型的训练收敛速度，并同时提升了生成图像的视觉质量和条件控制精度。",
+      "method": "论文首先对可控扩散模型的去噪动态进行了详细分析，揭示了传统训练目标在收敛速度上的局限性。基于此，作者提出了一种新的训练目标——$x_0$-监督，即直接对模型预测的干净图像（$x_0$）施加监督信号。该方法在数学上等价于对原始扩散损失函数进行重新加权，从而更有效地引导模型学习条件控制信息。",
+      "findings": "在多种控制条件（如布局、边缘、深度等）下的实验表明，所提出的方法能够将模型收敛速度提升高达2倍（根据新提出的评估指标mAUCC衡量）。同时，该方法不仅加速了训练，还一致地提高了生成图像的视觉保真度和对控制条件的遵循准确性。"
+    }
+  }
+]
