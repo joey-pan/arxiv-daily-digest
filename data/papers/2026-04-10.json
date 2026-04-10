@@ -1,0 +1,156 @@
+[
+  {
+    "id": "2604.08536",
+    "title": "RewardFlow: Generate Images by Optimizing What You Reward",
+    "abstract": "We introduce RewardFlow, an inversion-free framework that steers pretrained diffusion and flow-matching models at inference time through multi-reward Langevin dynamics. RewardFlow unifies complementary differentiable rewards for semantic alignment, perceptual fidelity, localized grounding, object consistency, and human preference, and further introduces a differentiable VQA-based reward that provides fine-grained semantic supervision through language-vision reasoning. To coordinate these heterogeneous objectives, we design a prompt-aware adaptive policy that extracts semantic primitives from the instruction, infers edit intent, and dynamically modulates reward weights and step sizes throughout sampling. Across several image editing and compositional generation benchmarks, RewardFlow delivers state-of-the-art edit fidelity and compositional alignment.",
+    "authors": [
+      "Onkar Susladkar",
+      "Dong-Hwan Jang",
+      "Tushar Prakash",
+      "Adheesh Juvekar",
+      "Vedant Shah",
+      "Ayush Barik",
+      "Nabeel Bashir",
+      "Muntasir Wahed",
+      "Ritish Shrirao",
+      "Ismini Lourentzou"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08536.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08536",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RewardFlow：通过优化奖励生成图像",
+      "core_contribution": "提出了RewardFlow，一个无需反演、在推理时通过多奖励朗之万动力学引导预训练扩散与流匹配模型的框架，并引入了基于可微VQA的奖励以实现细粒度语义监督。",
+      "method": "该方法通过多奖励朗之万动力学，在推理时直接优化一系列互补的可微奖励（如语义对齐、感知保真度、局部定位等），并设计了一个提示感知的自适应策略，该策略从指令中提取语义基元、推断编辑意图，并在整个采样过程中动态调整奖励权重和步长。",
+      "findings": "在多个图像编辑和组合生成基准测试中，RewardFlow在编辑保真度和组合对齐方面达到了最先进的性能。"
+    }
+  },
+  {
+    "id": "2604.08411",
+    "title": "What a Comfortable World: Ergonomic Principles Guided Apartment Layout Generation",
+    "abstract": "Current data-driven floor plan generation methods often reproduce the ergonomic inefficiencies found in real-world training datasets. To address this, we propose a novel approach that integrates architectural design principles directly into a transformer-based generative process. We formulate differentiable loss functions based on established architectural standards from literature to optimize room adjacency and proximity. By guiding the model with these ergonomic priors during training, our method produces layouts with significantly improved livability metrics. Comparative evaluations show that our approach outperforms baselines in ergonomic compliance while maintaining high structural validity.",
+    "authors": [
+      "Piotr Nieciecki",
+      "Aleksander Plocharski",
+      "Przemyslaw Musialski"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.GR",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08411.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08411",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "一个舒适的世界：基于人机工程学原理的公寓布局生成",
+      "core_contribution": "提出了一种将建筑学设计原则直接融入基于Transformer的生成过程的新方法，解决了现有数据驱动方法在生成平面布局时复制训练数据中人机工程学缺陷的问题。",
+      "method": "该方法基于文献中成熟的建筑标准，构建了可微分的损失函数来优化房间的相邻性和邻近性。通过在训练过程中使用这些人机工程学先验知识引导模型，使其生成符合人体工学的布局。整个生成过程以Transformer架构为基础，将设计原则作为约束直接整合到生成流程中。",
+      "findings": "比较评估表明，该方法在生成布局的人机工程学合规性方面显著优于基线模型，同时保持了高度的结构有效性。所生成的布局在宜居性指标上得到了实质性改善。"
+    }
+  },
+  {
+    "id": "2604.08364",
+    "title": "MegaStyle: Constructing Diverse and Scalable Style Dataset via Consistent Text-to-Image Style Mapping",
+    "abstract": "In this paper, we introduce MegaStyle, a novel and scalable data curation pipeline that constructs an intra-style consistent, inter-style diverse and high-quality style dataset. We achieve this by leveraging the consistent text-to-image style mapping capability of current large generative models, which can generate images in the same style from a given style description. Building on this foundation, we curate a diverse and balanced prompt gallery with 170K style prompts and 400K content prompts, and generate a large-scale style dataset MegaStyle-1.4M via content-style prompt combinations. With MegaStyle-1.4M, we propose style-supervised contrastive learning to fine-tune a style encoder MegaStyle-Encoder for extracting expressive, style-specific representations, and we also train a FLUX-based style transfer model MegaStyle-FLUX. Extensive experiments demonstrate the importance of maintaining intra-style consistency, inter-style diversity and high-quality for style dataset, as well as the effectiveness of the proposed MegaStyle-1.4M. Moreover, when trained on MegaStyle-1.4M, MegaStyle-Encoder and MegaStyle-FLUX provide reliable style similarity measurement and generalizable style transfer, making a significant contribution to the style transfer community. More results are available at our project website https://jeoyal.github.io/MegaStyle/.",
+    "authors": [
+      "Junyao Gao",
+      "Sibo Liu",
+      "Jiaxing Li",
+      "Yanan Sun",
+      "Yuanpeng Tu",
+      "Fei Shen",
+      "Weidong Zhang",
+      "Cairong Zhao",
+      "Jun Zhang"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08364.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08364",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MegaStyle：通过一致的文本到图像风格映射构建多样且可扩展的风格数据集",
+      "core_contribution": "提出了一个新颖、可扩展的数据构建流程MegaStyle，能够创建具有风格内一致性、风格间多样性和高质量的大规模风格数据集，并基于该数据集训练了高效的风格编码器和风格迁移模型。",
+      "method": "利用现有大型生成模型在文本到图像风格映射上的一致性能力，通过给定的风格描述生成同一风格的不同图像。首先构建了一个包含17万风格提示词和40万内容提示词的多样化提示词库，然后通过内容-风格提示词组合生成了大规模风格数据集MegaStyle-1.4M。基于该数据集，采用风格监督对比学习微调风格编码器，并训练了一个基于FLUX架构的风格迁移模型。",
+      "findings": "实验证明，保持风格内一致性、风格间多样性和高质量对于风格数据集至关重要，所构建的MegaStyle-1.4M数据集非常有效。基于该数据集训练的MegaStyle-Encoder能够提取具有表现力且风格特定的表示，MegaStyle-FLUX模型能够实现可泛化的风格迁移，两者为风格迁移领域提供了可靠的风格相似度度量和高质量的迁移效果。"
+    }
+  },
+  {
+    "id": "2604.08213",
+    "title": "EditCaption: Human-Aligned Instruction Synthesis for Image Editing via Supervised Fine-Tuning and Direct Preference Optimization",
+    "abstract": "High-quality training triplets (source-target image pairs with precise editing instructions) are a critical bottleneck for scaling instruction-guided image editing models. Vision-language models (VLMs) are widely used for automated instruction synthesis, but we identify three systematic failure modes in image-pair settings: orientation inconsistency (e.g., left/right confusion), viewpoint ambiguity, and insufficient fine-grained attribute description. Human evaluation shows that over 47% of instructions from strong baseline VLMs contain critical errors unusable for downstream training. We propose EditCaption, a scalable two-stage post-training pipeline for VLM-based instruction synthesis. Stage 1 builds a 100K supervised fine-tuning (SFT) dataset by combining GLM automatic annotation, EditScore-based filtering, and human refinement for spatial, directional, and attribute-level accuracy. Stage 2 collects 10K human preference pairs targeting the three failure modes and applies direct preference optimization (DPO) for alignment beyond SFT alone. On Eval-400, ByteMorph-Bench, and HQ-Edit, fine-tuned Qwen3-VL models outperform open-source baselines; the 235B model reaches 4.712 on Eval-400 (vs. Gemini-3-Pro 4.706, GPT-4.1 4.220, Kimi-K2.5 4.111) and 4.588 on ByteMorph-Bench (vs. Gemini-3-Pro 4.522, GPT-4.1 3.412). Human evaluation shows critical errors falling from 47.75% to 23% and correctness rising from 41.75% to 66%. The work offers a practical path to scalable, human-aligned instruction synthesis for image editing data.",
+    "authors": [
+      "Xiangyuan Wang",
+      "Honghao Cai",
+      "Yunhao Bai",
+      "Tianze Zhou",
+      "Haohua Chen",
+      "Yao Hu",
+      "Xu Tang",
+      "Yibo Chen",
+      "Wei Zhu"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08213.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08213",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "EditCaption：通过监督微调与直接偏好优化实现图像编辑的人类对齐指令合成",
+      "core_contribution": "本文提出了EditCaption，一个可扩展的两阶段后训练流程，用于解决视觉语言模型在图像编辑指令合成中存在的系统性错误，显著提升了合成指令的质量与人类对齐程度。",
+      "method": "方法分为两个阶段：第一阶段通过结合GLM自动标注、基于EditScore的过滤和人工精修，构建了一个10万规模的监督微调数据集，确保空间、方向和属性描述的准确性。第二阶段收集了1万个人类偏好对，针对模型的三大失败模式，并应用直接偏好优化进行超越监督微调的对齐训练。",
+      "findings": "实验表明，经过微调的Qwen3-VL模型在多个基准测试上超越了开源基线，其235B版本在Eval-400上得分4.712，优于Gemini-3-Pro和GPT-4.1等模型。人类评估显示，合成指令中的关键错误率从47.75%降至23%，正确率从41.75%提升至66%，证明了该方法能有效生成可扩展且人类对齐的图像编辑指令数据。"
+    }
+  },
+  {
+    "id": "2604.08121",
+    "title": "Uni-ViGU: Towards Unified Video Generation and Understanding via A Diffusion-Based Video Generator",
+    "abstract": "Unified multimodal models integrating visual understanding and generation face a fundamental challenge: visual generation incurs substantially higher computational costs than understanding, particularly for video. This imbalance motivates us to invert the conventional paradigm: rather than extending understanding-centric MLLMs to support generation, we propose Uni-ViGU, a framework that unifies video generation and understanding by extending a video generator as the foundation. We introduce a unified flow method that performs continuous flow matching for video and discrete flow matching for text within a single process, enabling coherent multimodal generation. We further propose a modality-driven MoE-based framework that augments Transformer blocks with lightweight layers for text generation while preserving generative priors. To repurpose generation knowledge for understanding, we design a bidirectional training mechanism with two stages: Knowledge Recall reconstructs input prompts to leverage learned text-video correspondences, while Capability Refinement fine-tunes on detailed captions to establish discriminative shared representations. Experiments demonstrate that Uni-ViGU achieves competitive performance on both video generation and understanding, validating generation-centric architectures as a scalable path toward unified multimodal intelligence. Project Page and Code: https://fr0zencrane.github.io/uni-vigu-page/.",
+    "authors": [
+      "Luozheng Qin",
+      "Jia Gong",
+      "Qian Qiao",
+      "Tianjiao Li",
+      "Li Xu",
+      "Haoyu Pan",
+      "Chao Qu",
+      "Zhiyu Tan",
+      "Hao Li"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08121.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08121",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Uni-ViGU：通过基于扩散的视频生成器实现统一的视频生成与理解",
+      "core_contribution": "提出了一种以视频生成为基础模型来统一视频生成与理解任务的新范式，通过扩展视频生成器而非传统的理解模型，解决了生成任务计算成本远高于理解任务的失衡问题。",
+      "method": "提出统一流方法，在单一过程中对视频进行连续流匹配、对文本进行离散流匹配，实现连贯的多模态生成；采用模态驱动的混合专家框架，在Transformer块中增加轻量级文本生成层以保留生成先验；设计包含知识召回与能力精炼两阶段的双向训练机制，将生成知识迁移至理解任务。",
+      "findings": "实验表明，Uni-ViGU在视频生成和理解任务上均取得了有竞争力的性能，验证了以生成模型为中心的统一架构是实现可扩展多模态智能的有效路径。"
+    }
+  }
+]
