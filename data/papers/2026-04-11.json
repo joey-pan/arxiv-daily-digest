@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2604.08048",
+    "title": "Guiding a Diffusion Model by Swapping Its Tokens",
+    "abstract": "Classifier-Free Guidance (CFG) is a widely used inference-time technique to boost the image quality of diffusion models. Yet, its reliance on text conditions prevents its use in unconditional generation. We propose a simple method to enable CFG-like guidance for both conditional and unconditional generation. The key idea is to generate a perturbed prediction via simple token swap operations, and use the direction between it and the clean prediction to steer sampling towards higher-fidelity distributions. In practice, we swap pairs of most semantically dissimilar token latents in either spatial or channel dimensions. Unlike existing methods that apply perturbation in a global or less constrained manner, our approach selectively exchanges and recomposes token latents, allowing finer control over perturbation and its influence on generated samples. Experiments on MS-COCO 2014, MS-COCO 2017, and ImageNet datasets demonstrate that the proposed Self-Swap Guidance (SSG), when applied to popular diffusion models, outperforms previous condition-free methods in image fidelity and prompt alignment under different set-ups. Its fine-grained perturbation granularity also improves robustness, reducing side-effects across a wider range of perturbation strengths. Overall, SSG extends CFG to a broader scope of applications including both conditional and unconditional generation, and can be readily inserted into any diffusion model as a plug-in to gain immediate improvements.",
+    "authors": [
+      "Weijia Zhang",
+      "Yuehao Liu",
+      "Shanyan Guan",
+      "Wu Ran",
+      "Yanhao Ge",
+      "Wei Li",
+      "Chao Ma"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.08048.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.08048",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过交换标记来引导扩散模型",
+      "core_contribution": "提出了一种名为“自交换引导”的新方法，将“无分类器引导”技术的适用范围从条件生成扩展到了无条件生成，并能作为即插即用模块提升现有扩散模型的性能。",
+      "method": "该方法的核心思想是通过交换标记来生成一个受扰动的预测，并利用其与干净预测之间的方向来引导采样。具体而言，它在空间或通道维度上，选择性地交换语义差异最大的标记潜在表示对，从而实现对扰动的精细控制和重组。",
+      "findings": "在MS-COCO和ImageNet数据集上的实验表明，该方法在图像保真度和提示对齐方面优于之前的无条件引导方法。其细粒度的扰动策略提高了鲁棒性，能在更宽的扰动强度范围内减少副作用，有效提升了扩散模型的生成质量。"
+    }
+  },
+  {
+    "id": "2604.07966",
+    "title": "Lighting-grounded Video Generation with Renderer-based Agent Reasoning",
+    "abstract": "Diffusion models have achieved remarkable progress in video generation, but their controllability remains a major limitation. Key scene factors such as layout, lighting, and camera trajectory are often entangled or only weakly modeled, restricting their applicability in domains like filmmaking and virtual production where explicit scene control is essential. We present LiVER, a diffusion-based framework for scene-controllable video generation. To achieve this, we introduce a novel framework that conditions video synthesis on explicit 3D scene properties, supported by a new large-scale dataset with dense annotations of object layout, lighting, and camera parameters. Our method disentangles these properties by rendering control signals from a unified 3D representation. We propose a lightweight conditioning module and a progressive training strategy to integrate these signals into a foundational video diffusion model, ensuring stable convergence and high fidelity. Our framework enables a wide range of applications, including image-to-video and video-to-video synthesis where the underlying 3D scene is fully editable. To further enhance usability, we develop a scene agent that automatically translates high-level user instructions into the required 3D control signals. Experiments show that LiVER achieves state-of-the-art photorealism and temporal consistency while enabling precise, disentangled control over scene factors, setting a new standard for controllable video generation.",
+    "authors": [
+      "Ziqi Cai",
+      "Taoyu Yang",
+      "Zheng Chang",
+      "Si Li",
+      "Han Jiang",
+      "Shuchen Weng",
+      "Boxin Shi"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07966.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07966",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于渲染器智能体推理的光照接地视频生成",
+      "core_contribution": "提出了LiVER框架，首次在扩散模型中实现了对3D场景属性（如布局、光照、相机轨迹）的显式解耦与精确控制，并引入了能自动将高级用户指令转化为3D控制信号的场景智能体。",
+      "method": "方法首先构建了一个带有密集物体布局、光照和相机参数标注的大规模数据集。通过从统一的3D表示中渲染出控制信号来解耦场景属性，并设计了一个轻量级条件模块与渐进式训练策略，将这些信号集成到基础视频扩散模型中，确保稳定收敛和高保真度。",
+      "findings": "实验表明，LiVER在实现最先进的光照真实感和时间一致性的同时，能够对场景因素进行精确、解耦的控制。该框架支持广泛的图像到视频和视频到视频合成应用，其中底层3D场景可完全编辑，为可控视频生成设立了新标准。"
+    }
+  },
+  {
+    "id": "2604.07879",
+    "title": "FlowGuard: Towards Lightweight In-Generation Safety Detection for Diffusion Models via Linear Latent Decoding",
+    "abstract": "Diffusion-based image generation models have advanced rapidly but pose a safety risk due to their potential to generate Not-Safe-For-Work (NSFW) content. Existing NSFW detection methods mainly operate either before or after image generation. Pre-generation methods rely on text prompts and struggle with the gap between prompt safety and image safety. Post-generation methods apply classifiers to final outputs, but they are poorly suited to intermediate noisy images. To address this, we introduce FlowGuard, a cross-model in-generation detection framework that inspects intermediate denoising steps. This is particularly challenging in latent diffusion, where early-stage noise obscures visual signals. FlowGuard employs a novel linear approximation for latent decoding and leverages a curriculum learning approach to stabilize training. By detecting unsafe content early, FlowGuard reduces unnecessary diffusion steps to cut computational costs. Our cross-model benchmark spanning nine diffusion-based backbones shows the effectiveness of FlowGuard for in-generation NSFW detection in both in-distribution and out-of-distribution settings, outperforming existing methods by over 30% in F1 score while delivering transformative efficiency gains, including slashing peak GPU memory demand by over 97% and projection time from 8.1 seconds to 0.2 seconds compared to standard VAE decoding.",
+    "authors": [
+      "Jinghan Yang",
+      "Yihe Fan",
+      "Xudong Pan",
+      "Min Yang"
+    ],
+    "published": "2026-04-09",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07879.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07879",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlowGuard：通过线性潜在解码实现扩散模型的轻量级生成中安全检测",
+      "core_contribution": "提出了首个跨模型的生成中安全检测框架FlowGuard，能够在潜在扩散模型的去噪过程中早期识别不安全内容，显著提升检测效率与性能。",
+      "method": "FlowGuard通过一种新颖的线性近似方法对潜在空间进行解码，克服了早期噪声阶段视觉信号模糊的挑战；采用课程学习策略稳定训练过程；在多个扩散模型的去噪中间步骤进行跨模型检测，实现早期干预。",
+      "findings": "在涵盖九种扩散模型的基准测试中，FlowGuard在分布内和分布外场景下的NSFW检测F1分数均优于现有方法30%以上；同时大幅提升效率：峰值GPU内存需求降低97%以上，潜在解码时间从8.1秒缩短至0.2秒。"
+    }
+  },
+  {
+    "id": "2604.07348",
+    "title": "MoRight: Motion Control Done Right",
+    "abstract": "Generating motion-controlled videos--where user-specified actions drive physically plausible scene dynamics under freely chosen viewpoints--demands two capabilities: (1) disentangled motion control, allowing users to separately control the object motion and adjust camera viewpoint; and (2) motion causality, ensuring that user-driven actions trigger coherent reactions from other objects rather than merely displacing pixels. Existing methods fall short on both fronts: they entangle camera and object motion into a single tracking signal and treat motion as kinematic displacement without modeling causal relationships between object motion. We introduce MoRight, a unified framework that addresses both limitations through disentangled motion modeling. Object motion is specified in a canonical static-view and transferred to an arbitrary target camera viewpoint via temporal cross-view attention, enabling disentangled camera and object control. We further decompose motion into active (user-driven) and passive (consequence) components, training the model to learn motion causality from data. At inference, users can either supply active motion and MoRight predicts consequences (forward reasoning), or specify desired passive outcomes and MoRight recovers plausible driving actions (inverse reasoning), all while freely adjusting the camera viewpoint. Experiments on three benchmarks demonstrate state-of-the-art performance in generation quality, motion controllability, and interaction awareness.",
+    "authors": [
+      "Shaowei Liu",
+      "Xuanchi Ren",
+      "Tianchang Shen",
+      "Huan Ling",
+      "Saurabh Gupta",
+      "Shenlong Wang",
+      "Sanja Fidler",
+      "Jun Gao"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR",
+      "cs.LG",
+      "cs.RO"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07348.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07348",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MoRight：正确的运动控制",
+      "core_contribution": "提出了MoRight统一框架，实现了运动与视角的解耦控制，并首次在视频生成中建模了物体间的运动因果关系，支持正向与逆向推理。",
+      "method": "方法通过时域跨视角注意力，将物体运动在静态规范视角中定义并转移到任意目标相机视角，实现运动与视角的解耦。进一步将运动分解为主动（用户驱动）和被动（后果）两部分，从数据中学习运动因果关系。推理时支持用户指定主动运动预测后果（正向推理），或指定被动结果反推合理驱动动作（逆向推理）。",
+      "findings": "在三个基准测试上的实验表明，MoRight在生成质量、运动可控性和交互感知方面达到了最先进的性能，显著优于现有方法。"
+    }
+  },
+  {
+    "id": "2604.07427",
+    "title": "Personalizing Text-to-Image Generation to Individual Taste",
+    "abstract": "Modern text-to-image (T2I) models generate high-fidelity visuals but remain indifferent to individual user preferences. While existing reward models optimize for \"average\" human appeal, they fail to capture the inherent subjectivity of aesthetic judgment. In this work, we introduce a novel dataset and predictive framework, called PAMELA, designed to model personalized image evaluations. Our dataset comprises 70,000 ratings across 5,000 diverse images generated by state-of-the-art models (Flux 2 and Nano Banana). Each image is evaluated by 15 unique users, providing a rich distribution of subjective preferences across domains such as art, design, fashion, and cinematic photography. Leveraging this data, we propose a personalized reward model trained jointly on our high-quality annotations and existing aesthetic assessment subsets. We demonstrate that our model predicts individual liking with higher accuracy than the majority of current state-of-the-art methods predict population-level preferences. Using our personalized predictor, we demonstrate how simple prompt optimization methods can be used to steer generations towards individual user preferences. Our results highlight the importance of data quality and personalization to handle the subjectivity of user preferences. We release our dataset and model to facilitate standardized research in personalized T2I alignment and subjective visual quality assessment.",
+    "authors": [
+      "Anne-Sofie Maerten",
+      "Juliane Verwiebe",
+      "Shyamgopal Karthik",
+      "Ameya Prabhu",
+      "Johan Wagemans",
+      "Matthias Bethge"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07427.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07427",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "将文本到图像生成个性化以适应个体偏好",
+      "core_contribution": "本文提出了一个名为PAMELA的新数据集和预测框架，旨在建模个性化的图像评价，并通过个性化奖励模型和提示优化方法，使文本到图像生成能够更好地适应个体用户的审美偏好。",
+      "method": "研究团队首先构建了一个包含70,000个评分的大规模个性化评估数据集，涵盖5,000张由先进模型生成的多样化图像，每张图像由15位不同用户评分。基于此数据，他们训练了一个个性化奖励模型，该模型结合了高质量的新标注数据和现有的美学评估数据子集。最后，利用该模型通过简单的提示优化方法来引导图像生成符合个体用户偏好。",
+      "findings": "实验表明，该个性化模型在预测个体喜好方面的准确率，甚至超过了当前大多数最先进方法预测群体级偏好的水平。研究结果强调了数据质量和个性化处理对于应对用户偏好主观性的重要性，并证明了通过个性化奖励模型可以有效引导生成结果贴近个体品味。"
+    }
+  }
+]
