@@ -1,0 +1,144 @@
+[
+  {
+    "id": "2604.07230",
+    "title": "PhyEdit: Towards Real-World Object Manipulation via Physically-Grounded Image Editing",
+    "abstract": "Achieving physically accurate object manipulation in image editing is essential for its potential applications in interactive world models. However, existing visual generative models often fail at precise spatial manipulation, resulting in incorrect scaling and positioning of objects. This limitation primarily stems from the lack of explicit mechanisms to incorporate 3D geometry and perspective projection. To achieve accurate manipulation, we develop PhyEdit, an image editing framework that leverages explicit geometric simulation as contextual 3D-aware visual guidance. By combining this plug-and-play 3D prior with joint 2D--3D supervision, our method effectively improves physical accuracy and manipulation consistency. To support this method and evaluate performance, we present a real-world dataset, RealManip-10K, for 3D-aware object manipulation featuring paired images and depth annotations. We also propose ManipEval, a benchmark with multi-dimensional metrics to evaluate 3D spatial control and geometric consistency. Extensive experiments show that our approach outperforms existing methods, including strong closed-source models, in both 3D geometric accuracy and manipulation consistency.",
+    "authors": [
+      "Ruihang Xu",
+      "Dewei Zhou",
+      "Xiaolong Shen",
+      "Fan Ma",
+      "Yi Yang"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07230.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07230",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PhyEdit：通过基于物理的图像编辑实现真实世界物体操控",
+      "core_contribution": "提出了PhyEdit框架，通过引入显式几何模拟作为3D感知的视觉引导，显著提升了图像编辑中物体操控的物理准确性；同时构建了包含配对图像与深度标注的真实世界数据集RealManip-10K及多维评估基准ManipEval。",
+      "method": "方法结合了可插拔的3D几何先验与联合的2D-3D监督。首先利用显式几何模拟生成具有物理合理性的3D上下文引导，再通过联合训练使模型同时学习2D视觉外观与3D几何约束，从而在编辑过程中保持物体的空间比例、位置及透视关系的一致性。",
+      "findings": "实验表明，PhyEdit在3D几何准确性和操控一致性上均优于现有方法（包括闭源模型）；所提出的RealManip-10K数据集和ManipEval基准能有效支持对3D空间控制与几何一致性的系统评估。"
+    }
+  },
+  {
+    "id": "2604.07210",
+    "title": "VersaVogue: Visual Expert Orchestration and Preference Alignment for Unified Fashion Synthesis",
+    "abstract": "Diffusion models have driven remarkable advancements in fashion image generation, yet prior works usually treat garment generation and virtual dressing as separate problems, limiting their flexibility in real-world fashion workflows. Moreover, fashion image synthesis under multi-source heterogeneous conditions remains challenging, as existing methods typically rely on simple feature concatenation or static layer-wise injection, which often causes attribute entanglement and semantic interference. To address these issues, we propose VersaVogue, a unified framework for multi-condition controllable fashion synthesis that jointly supports garment generation and virtual dressing, corresponding to the design and showcase stages of the fashion lifecycle. Specifically, we introduce a trait-routing attention (TA) module that leverages a mixture-of-experts mechanism to dynamically route condition features to the most compatible experts and generative layers, enabling disentangled injection of visual attributes such as texture, shape, and color. To further improve realism and controllability, we develop an automated multi-perspective preference optimization (MPO) pipeline that constructs preference data without human annotation or task-specific reward models. By combining evaluators of content fidelity, textual alignment, and perceptual quality, MPO identifies reliable preference pairs, which are then used to optimize the model via direct preference optimization (DPO). Extensive experiments on both garment generation and virtual dressing benchmarks demonstrate that VersaVogue consistently outperforms existing methods in visual fidelity, semantic consistency, and fine-grained controllability.",
+    "authors": [
+      "Jian Yu",
+      "Fei Shen",
+      "Cong Wang",
+      "Yi Xin",
+      "Si Shen",
+      "Xiaoyu Du",
+      "Jinhui Tang"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07210.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07210",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VersaVogue：面向统一时装合成的视觉专家编排与偏好对齐",
+      "core_contribution": "提出了一个统一的多条件可控时装合成框架VersaVogue，首次将服装生成与虚拟试穿两大任务整合于同一模型中，并通过创新的偏好优化流程提升了生成结果的真实感与可控性。",
+      "method": "首先，设计了一种基于专家混合机制的特征路由注意力模块，能动态地将不同视觉属性（如纹理、形状、颜色）路由至最兼容的专家和生成层，实现解耦的特征注入。其次，开发了一种无需人工标注或任务特定奖励模型的多视角偏好优化流程，通过综合内容保真度、文本对齐度和感知质量的评估器自动构建可靠偏好对，并利用直接偏好优化方法对模型进行微调。",
+      "findings": "在服装生成和虚拟试穿多个基准测试上的实验表明，VersaVogue在视觉保真度、语义一致性和细粒度可控性方面均持续优于现有方法，有效解决了多源异构条件下属性纠缠和语义干扰的问题。"
+    }
+  },
+  {
+    "id": "2604.07026",
+    "title": "Not all tokens contribute equally to diffusion learning",
+    "abstract": "With the rapid development of conditional diffusion models, significant progress has been made in text-to-video generation. However, we observe that these models often neglect semantically important tokens during inference, leading to biased or incomplete generations under classifier-free guidance. We attribute this issue to two key factors: distributional bias caused by the long-tailed token frequency in training data, and spatial misalignment in cross-attention where semantically important tokens are overshadowed by less informative ones. To address these issues, we propose Distribution-Aware Rectification and Spatial Ensemble (DARE), a unified framework that improves semantic guidance in diffusion models from the perspectives of distributional debiasing and spatial consistency. First, we introduce Distribution-Rectified Classifier-Free Guidance (DR-CFG), which regularizes the training process by dynamically suppressing dominant tokens with low semantic density, encouraging the model to better capture underrepresented semantic cues and learn a more balanced conditional distribution. This design mitigates the risk of the model distribution overfitting to tokens with low semantic density. Second, we propose Spatial Representation Alignment (SRA), which adaptively reweights cross-attention maps according to token importance and enforces representation consistency, enabling semantically important tokens to exert stronger spatial guidance during generation. This mechanism effectively prevents low semantic-density tokens from dominating the attention allocation, thereby avoiding the dilution of the spatial and distributional guidance provided by high semantic-density tokens. Extensive experiments on multiple benchmark datasets demonstrate that DARE consistently improves generation fidelity and semantic alignment, achieving significant gains over existing approaches.",
+    "authors": [
+      "Guoqing Zhang",
+      "Lu Shi",
+      "Wanru Xu",
+      "Linna Zhang",
+      "Sen Wang",
+      "Fangfang Wang",
+      "Yigang Cen"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.07026.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.07026",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "并非所有标记对扩散学习的贡献均等",
+      "core_contribution": "本文提出了一个统一的框架DARE，通过分布感知的校正和空间集成，解决了扩散模型中因训练数据的长尾标记分布和交叉注意力空间错位导致的语义重要标记被忽视的问题，从而提升了生成结果的保真度和语义对齐。",
+      "method": "方法主要包括两部分：首先，提出分布校正的无分类器引导（DR-CFG），在训练过程中动态抑制语义密度低的主导标记，鼓励模型学习更平衡的条件分布；其次，提出空间表示对齐（SRA），根据标记重要性自适应地重新加权交叉注意力图并强制表示一致性，使语义重要的标记在生成过程中能提供更强的空间引导。",
+      "findings": "在多个基准数据集上的实验表明，DARE框架能持续提升生成保真度和语义对齐，相比现有方法取得了显著增益，有效缓解了模型分布对低语义密度标记的过拟合，并防止了这些标记主导注意力分配。"
+    }
+  },
+  {
+    "id": "2604.06989",
+    "title": "Generative Phomosaic with Structure-Aligned and Personalized Diffusion",
+    "abstract": "We present the first generative approach to photomosaic creation. Traditional photomosaic methods rely on a large number of tile images and color-based matching, which limits both diversity and structural consistency. Our generative photomosaic framework synthesizes tile images using diffusion-based generation conditioned on reference images. A low-frequency conditioned diffusion mechanism aligns global structure while preserving prompt-driven details. This generative formulation enables photomosaic composition that is both semantically expressive and structurally coherent, effectively overcoming the fundamental limitations of matching-based approaches. By leveraging few-shot personalized diffusion, our model is able to produce user-specific or stylistically consistent tiles without requiring an extensive collection of images.",
+    "authors": [
+      "Jaeyoung Chung",
+      "Hyunjin Son",
+      "Kyoung Mu Lee"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.06989.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.06989",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于结构对齐与个性化扩散的生成式照片马赛克",
+      "core_contribution": "提出了首个生成式照片马赛克方法，通过扩散模型合成图块图像，克服了传统方法依赖大规模图库和颜色匹配的局限性，实现了语义表达与结构一致性的统一。",
+      "method": "该方法采用基于参考图像条件化的扩散生成框架，通过低频条件扩散机制对齐全局结构，同时保留提示驱动的细节；结合少样本个性化扩散技术，无需大量图像即可生成用户特定或风格一致的图块。",
+      "findings": "实验表明，该生成式框架能合成语义丰富且结构连贯的照片马赛克，有效解决了传统匹配方法在多样性和结构一致性上的根本缺陷，并支持通过少量样本实现个性化图块生成。"
+    }
+  },
+  {
+    "id": "2604.06966",
+    "title": "MAR-GRPO: Stabilized GRPO for AR-diffusion Hybrid Image Generation",
+    "abstract": "Reinforcement learning (RL) has been successfully applied to autoregressive (AR) and diffusion models. However, extending RL to hybrid AR-diffusion frameworks remains challenging due to interleaved inference and noisy log-probability estimation. In this work, we study masked autoregressive models (MAR) and show that the diffusion head plays a critical role in training dynamics, often introducing noisy gradients that lead to instability and early performance saturation. To address this issue, we propose a stabilized RL framework for MAR. We introduce multi-trajectory expectation (MTE), which estimates the optimization direction by averaging over multiple diffusion trajectories, thereby reducing diffusion-induced gradient noise. To avoid over-smoothing, we further estimate token-wise uncertainty from multiple trajectories and apply multi-trajectory optimization only to the top-k% uncertain tokens. In addition, we introduce a consistency-aware token selection strategy that filters out AR tokens that are less aligned with the final generated content. Extensive experiments across multiple benchmarks demonstrate that our method consistently improves visual quality, training stability, and spatial structure understanding over baseline GRPO and pre-RL models. Code is available at: https://github.com/AMAP-ML/mar-grpo.",
+    "authors": [
+      "Xiaoxiao Ma",
+      "Jiachen Lei",
+      "Tianfei Ren",
+      "Jie Huang",
+      "Siming Fu",
+      "Aiming Hao",
+      "Jiahong Wu",
+      "Xiangxiang Chu",
+      "Feng Zhao"
+    ],
+    "published": "2026-04-08",
+    "updated": "2026-04-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.06966.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.06966",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MAR-GRPO：用于AR-扩散混合图像生成的稳定化GRPO方法",
+      "core_contribution": "本文提出了一种针对混合自回归-扩散模型的稳定化强化学习框架，通过多轨迹期望估计和不确定性感知的优化策略，有效解决了扩散过程引入的梯度噪声问题，显著提升了训练稳定性和生成质量。",
+      "method": "该方法首先提出多轨迹期望（MTE），通过对多个扩散轨迹的优化方向进行平均来降低梯度噪声；其次，通过多轨迹估计每个token的不确定性，仅对不确定性最高的top-k% token应用多轨迹优化以避免过度平滑；此外，引入一致性感知的token选择策略，过滤掉与最终生成内容对齐度较低的自回归token。",
+      "findings": "在多个基准测试上的实验表明，该方法相比基线GRPO和预训练RL模型，能持续提升生成图像的视觉质量、训练稳定性以及对空间结构的理解能力，代码已开源。"
+    }
+  }
+]
