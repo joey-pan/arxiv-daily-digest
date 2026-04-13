@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2604.09405",
+    "title": "EGLOCE: Training-Free Energy-Guided Latent Optimization for Concept Erasure",
+    "abstract": "As text-to-image diffusion models grow increasingly prevalent, the ability to remove specific concepts-mostly explicit content and many copyrighted characters or styles-has become essential for safety and compliance. Existing unlearning approaches often require costly re-training, modify parameters at the cost of degradation of unrelated concept fidelity, or depend on indirect inference-time adjustment that compromise the effectiveness of concept erasure. Inspired by the success of energy-guided sampling for preservation of the condition of diffusion models, we introduce Energy-Guided Latent Optimization for Concept Erasure (EGLOCE), a training-free approach that removes unwanted concepts by re-directing noisy latent during inference. Our method employs a dual-objective framework: a repulsion energy that steers generation away from target concepts via gradient descent in latent space, and a retention energy that preserves semantic alignment to the original prompt. Combined with previous approaches that either require erroneous modified model weights or provide weak inference-time guidance, EGLOCE operates entirely at inference and enhances erasure performance, enabling plug-and-play integration. Extensive experiments demonstrate that EGLOCE improves concept removal while maintaining image quality and prompt alignment across baselines, even with adversarial attacks. To the best of our knowledge, our work is the first to establish a new paradigm for safe and controllable image generation through dual energy-based guidance during sampling.",
+    "authors": [
+      "Junyeong Ahn",
+      "Seojin Yoon",
+      "Sungyong Baik"
+    ],
+    "published": "2026-04-10",
+    "updated": "2026-04-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.09405.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.09405",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "EGLOCE：基于能量引导的免训练潜在优化概念擦除方法",
+      "core_contribution": "提出了一种免训练的推理阶段概念擦除方法EGLOCE，通过双重能量引导在潜在空间进行优化，实现了无需重新训练模型即可有效移除特定概念（如不当内容或受版权保护元素），同时保持图像质量和提示语义对齐。",
+      "method": "该方法在推理过程中对噪声潜在表示进行双重能量引导优化：1）排斥能量通过梯度下降将生成过程引导远离目标概念；2）保留能量确保生成结果与原始提示的语义对齐。整个过程无需修改模型权重，实现了即插即用的概念擦除。",
+      "findings": "实验表明，EGLOCE在多种基线方法上显著提升了概念擦除效果，即使面对对抗性攻击也能保持鲁棒性；同时能较好地维持图像质量和提示对齐度，为安全可控的图像生成提供了新的推理阶段解决方案。"
+    }
+  },
+  {
+    "id": "2604.09386",
+    "title": "Region-Constrained Group Relative Policy Optimization for Flow-Based Image Editing",
+    "abstract": "Instruction-guided image editing requires balancing target modification with non-target preservation. Recently, flow-based models have emerged as a strong and increasingly adopted backbone for instruction-guided image editing, thanks to their high fidelity and efficient deterministic ODE sampling. Building on this foundation, GRPO-based reward-driven post-training has been explored to directly optimize editing-specific rewards, improving instruction following and editing consistency. However, existing methods often suffer from noisy credit assignment: global exploration also perturbs non-target regions, inflating within-group reward variance and yielding noisy GRPO advantages. To address this, we propose RC-GRPO-Editing, a region-constrained GRPO post-training framework for flow-based image editing under deterministic ODE sampling. It suppresses background-induced nuisance variance to enable cleaner localized credit assignment, improving editing region instruction adherence while preserving non-target content. Concretely, we localize exploration via region-decoupled initial noise perturbations to reduce background-induced reward variance and stabilize GRPO advantages, and introduce an attention concentration reward that aligns cross-attention with the intended editing region throughout the rollout, reducing unintended changes in non-target regions. Experiments on CompBench show consistent improvements in editing region instruction adherence and non-target preservation.",
+    "authors": [
+      "Zhuohan Ouyang",
+      "Zhe Qian",
+      "Wenhuo Cui",
+      "Chaoqun Wang"
+    ],
+    "published": "2026-04-10",
+    "updated": "2026-04-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.09386.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.09386",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于区域约束的群体相对策略优化用于流式图像编辑",
+      "core_contribution": "提出了RC-GRPO-Editing框架，通过区域约束的奖励驱动后训练方法，解决了流式图像编辑中全局探索对非目标区域的干扰问题，实现了更精准的指令跟随与内容保持。",
+      "method": "该方法在确定性ODE采样的流式图像编辑模型基础上，通过区域解耦的初始噪声扰动将探索局部化，减少背景区域引起的奖励方差；同时引入注意力集中奖励，使交叉注意力在整个生成过程中对齐目标编辑区域，从而抑制非目标区域的意外修改。",
+      "findings": "在CompBench基准测试中，该方法在编辑区域指令遵循度和非目标区域内容保持方面均取得一致提升，有效降低了奖励方差并稳定了GRPO优势估计。"
+    }
+  },
+  {
+    "id": "2604.09304",
+    "title": "GeRM: A Generative Rendering Model From Physically Realistic to Photorealistic",
+    "abstract": "For decades, Physically-Based Rendering (PBR) is the fundation of synthesizing photorealisitic images, and therefore sometimes roughly referred as Photorealistic Rendering (PRR). While PBR is indeed a mathematical simulation of light transport that guarantees physical reality, photorealism has additional reliance on the realistic digital model of geometry and appearance of the real world, leaving a barely explored gap from PBR to PRR (P2P). Consequently, the path toward photorealism faces a critical dilemma: the explicit simulation of PRR encumbered by unreachable realistic digital models for real-world existence, while implicit generation models sacrifice controllability and geometric consistency. Based on this insight, this paper presents the problem, data, and approach of mitigating P2P gap, followed by the first multi-modal generative rendering model, dubbed GeRM, to unify PBR and PRR. GeRM integrates physical attributes like G-buffers with text prompts, and progressive incremental injection to generate controllable photorealistic images, allowing users to fluidly navigate the continuum between strict physical fidelity and perceptual photorealism. Technically, we model the transition between PBR and PRR images as a distribution transfer and aim to learn a distribution transfer vector field (DTV Field) to guide this process. To define the learning objective, we first leverage a multi-agent VLM framework to construct an expert-guided pairwise P2P transfer dataset, named P2P-50K, where each paired sample in the dataset corresponds to a transfer vector in the DTV Field. Subsequently, we propose a multi-condition ControlNet to learn the DTV Field, which synthesizes PBR images and progressively transitions them into PRR images, guided by G-buffers, text prompts, and cues for enhanced regions.",
+    "authors": [
+      "Jiayuan Lu",
+      "Rengan Xie",
+      "Xuancheng Jin",
+      "Zhizhen Wu",
+      "Qi Ye",
+      "Tian Xie",
+      "Hujun Bao",
+      "Rui Wang. Yuchi Huo"
+    ],
+    "published": "2026-04-10",
+    "updated": "2026-04-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.09304.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.09304",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GeRM：一种从物理真实到照片真实的生成式渲染模型",
+      "core_contribution": "本文首次提出了弥合物理真实渲染（PBR）与照片真实渲染（PRR）之间差距（P2P gap）的问题，并提出了首个多模态生成式渲染模型GeRM，实现了对图像在物理精确性与视觉真实感之间连续、可控的生成与编辑。",
+      "method": "方法首先将PBR到PRR的转换建模为一种分布迁移，并旨在学习一个分布迁移向量场（DTV Field）来引导此过程。为此，研究利用多智能体视觉语言模型框架构建了一个专家引导的成对P2P迁移数据集P2P-50K。随后，提出了一个多条件ControlNet来学习DTV Field，该网络以G-buffer、文本提示和增强区域线索为条件，合成PBR图像并逐步将其转换为PRR图像。",
+      "findings": "关键发现是，GeRM模型能够成功地将物理属性（如G-buffer）与文本提示相结合，通过渐进式增量注入生成可控的照片级真实感图像，使用户能够在严格的物理保真度与感知上的照片真实感之间流畅地导航。该方法在保持几何一致性和可控性的同时，显著提升了渲染结果的视觉真实感。"
+    }
+  },
+  {
+    "id": "2604.09227",
+    "title": "Training-free, Perceptually Consistent Low-Resolution Previews with High-Resolution Image for Efficient Workflows of Diffusion Models",
+    "abstract": "Image generative models have become indispensable tools to yield exquisite high-resolution (HR) images for everyone, ranging from general users to professional designers. However, a desired outcome often requires generating a large number of HR images with different prompts and seeds, resulting in high computational cost for both users and service providers. Generating low-resolution (LR) images first could alleviate computational burden, but it is not straightforward how to generate LR images that are perceptually consistent with their HR counterparts. Here, we consider the task of generating high-fidelity LR images, called Previews, that preserve perceptual similarity of their HR counterparts for an efficient workflow, allowing users to identify promising candidates before generating the final HR image. We propose the commutator-zero condition to ensure the LR-HR perceptual consistency for flow matching models, leading to the proposed training-free solution with downsampling matrix selection and commutator-zero guidance. Extensive experiments show that our method can generate LR images with up to 33\\% computation reduction while maintaining HR perceptual consistency. When combined with existing acceleration techniques, our method achieves up to 3$\\times$ speedup. Moreover, our formulation can be extended to image manipulations, such as warping and translation, demonstrating its generalizability.",
+    "authors": [
+      "Wongi Jeong",
+      "Hoigi Seo",
+      "Se Young Chun"
+    ],
+    "published": "2026-04-10",
+    "updated": "2026-04-10",
+    "categories": [
+      "eess.IV",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.09227.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.09227",
+    "primary_category": "eess.IV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向高效扩散模型工作流的、免训练且感知一致的低分辨率预览图生成方法",
+      "core_contribution": "提出了一种免训练的方法，能够生成与高分辨率图像感知一致的低分辨率预览图，从而显著降低扩散模型工作流的计算成本。",
+      "method": "该方法基于流匹配模型，提出了“对易子为零”的条件来保证低分辨率与高分辨率图像之间的感知一致性。通过选择合适的下采样矩阵并结合对易子为零引导，实现了无需额外训练即可生成高质量预览图的解决方案。",
+      "findings": "实验表明，该方法在保持高分辨率图像感知一致性的同时，可减少高达33%的计算量；与现有加速技术结合时，能实现最高3倍的加速。此外，该方法可扩展至图像变形和平移等编辑任务，展现了良好的通用性。"
+    }
+  },
+  {
+    "id": "2604.09213",
+    "title": "SHIFT: Steering Hidden Intermediates in Flow Transformers",
+    "abstract": "Diffusion models have become leading approaches for high-fidelity image generation. Recent DiT-based diffusion models, in particular, achieve strong prompt adherence while producing high-quality samples. We propose SHIFT, a simple but effective and lightweight framework for concept removal in DiT diffusion models via targeted manipulation of intermediate activations at inference time, inspired by activation steering in large language models. SHIFT learns steering vectors that are dynamically applied to selected layers and timesteps to suppress unwanted visual concepts while preserving the prompt's remaining content and overall image quality. Beyond suppression, the same mechanism can shift generations into a desired \\emph{style domain} or bias samples toward adding or changing target objects. We demonstrate that SHIFT provides effective and flexible control over DiT generation across diverse prompts and targets without time-consuming retraining.",
+    "authors": [
+      "Nina Konovalova",
+      "Andrey Kuznetsov",
+      "Aibek Alanov"
+    ],
+    "published": "2026-04-10",
+    "updated": "2026-04-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.09213.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.09213",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SHIFT：在流式Transformer中引导隐藏中间状态",
+      "core_contribution": "提出了SHIFT框架，一种在推理时通过针对性操纵DiT扩散模型中间激活来实现概念移除的轻量级方法，无需耗时重训练即可灵活控制生成内容。",
+      "method": "该方法受大语言模型中激活引导技术的启发，通过学习引导向量，在推理时动态应用于选定的网络层和时间步。这些向量能抑制不需要的视觉概念，同时保持提示词的其余内容和整体图像质量。该机制还可用于将生成结果转向特定风格域，或引导模型添加/修改目标对象。",
+      "findings": "实验表明，SHIFT能在多样化的提示词和目标概念上，对DiT生成过程实现有效且灵活的控制，在移除、修改或风格化特定概念的同时，保持了图像质量和内容一致性。"
+    }
+  }
+]
