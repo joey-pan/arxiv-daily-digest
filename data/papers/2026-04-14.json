@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2604.10675",
+    "title": "HiddenObjects: Scalable Diffusion-Distilled Spatial Priors for Object Placement",
+    "abstract": "We propose a method to learn explicit, class-conditioned spatial priors for object placement in natural scenes by distilling the implicit placement knowledge encoded in text-conditioned diffusion models. Prior work relies either on manually annotated data, which is inherently limited in scale, or on inpainting-based object-removal pipelines, whose artifacts promote shortcut learning. To address these limitations, we introduce a fully automated and scalable framework that evaluates dense object placements on high-quality real backgrounds using a diffusion-based inpainting pipeline. With this pipeline, we construct HiddenObjects, a large-scale dataset comprising 27M placement annotations, evaluated across 27k distinct scenes, with ranked bounding box insertions for different images and object categories. Experimental results show that our spatial priors outperform sparse human annotations on a downstream image editing task (3.90 vs. 2.68 VLM-Judge), and significantly surpass existing placement baselines and zero-shot Vision-Language Models for object placement. Furthermore, we distill these priors into a lightweight model for fast practical inference (230,000x faster).",
+    "authors": [
+      "Marco Schouten",
+      "Ioannis Siglidis",
+      "Serge Belongie",
+      "Dim P. Papadopoulos"
+    ],
+    "published": "2026-04-12",
+    "updated": "2026-04-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.10675.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.10675",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "HiddenObjects：用于物体放置的可扩展扩散蒸馏空间先验",
+      "core_contribution": "提出了一种通过蒸馏文本条件扩散模型中隐含的布局知识，来学习显式的、类别条件的空间先验的方法，用于在自然场景中放置物体；并构建了一个大规模自动化数据集，显著提升了物体放置任务的效果。",
+      "method": "方法采用了一个全自动、可扩展的框架，利用基于扩散模型的修复流程，在高质量真实背景上评估密集的物体放置位置。通过该流程，构建了包含2700万条放置标注的大规模数据集HiddenObjects，覆盖2.7万个不同场景，并为不同图像和物体类别提供了带排序的边界框插入建议。",
+      "findings": "实验表明，学到的空间先验在下游图像编辑任务中优于稀疏的人工标注（VLM-Judge评分3.90 vs. 2.68），并显著超越了现有的物体放置基线方法和零样本视觉语言模型。此外，这些先验知识被蒸馏到一个轻量级模型中，实现了极快的推理速度（提升230,000倍）。"
+    }
+  },
+  {
+    "id": "2604.10442",
+    "title": "ReContraster: Making Your Posters Stand Out with Regional Contrast",
+    "abstract": "Effective poster design requires rapidly capturing attention and clearly conveying messages. Inspired by the ``contrast effects'' principle, we propose ReContraster, the first training-free model to leverage regional contrast to make posters stand out. By emulating the cognitive behaviors of a poster designer, ReContraster introduces the compositional multi-agent system to identify elements, organize layout, and evaluate generated poster candidates. To further ensure harmonious transitions across region boundaries, ReContraster integrates the hybrid denoising strategy during the diffusion process. We additionally contribute a new benchmark dataset for comprehensive evaluation. Seven quantitative metrics and four user studies confirm its superiority over relevant state-of-the-art methods, producing visually striking and aesthetically appealing posters.",
+    "authors": [
+      "Peixuan Zhang",
+      "Zijian Jia",
+      "Ziqi Cai",
+      "Shuchen Weng",
+      "Si Li",
+      "Boxin Shi"
+    ],
+    "published": "2026-04-12",
+    "updated": "2026-04-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.10442.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.10442",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "ReContraster：利用区域对比使您的海报脱颖而出",
+      "core_contribution": "提出了首个无需训练的模型ReContraster，通过模拟海报设计师的认知行为，利用区域对比原理自动生成引人注目的海报。",
+      "method": "1. 引入组合式多智能体系统，分别负责识别元素、组织布局和评估生成的海报候选方案；2. 在扩散过程中集成混合去噪策略，确保区域边界间的和谐过渡；3. 构建了新的基准数据集用于全面评估。",
+      "findings": "通过七项量化指标和四项用户研究验证，ReContraster在视觉效果和美学吸引力上均优于现有先进方法，能生成视觉冲击力强且美观的海报。"
+    }
+  },
+  {
+    "id": "2604.11521",
+    "title": "Continuous Adversarial Flow Models",
+    "abstract": "We propose continuous adversarial flow models, a type of continuous-time flow model trained with an adversarial objective. Unlike flow matching, which uses a fixed mean-squared-error criterion, our approach introduces a learned discriminator to guide training. This change in objective induces a different generalized distribution, which empirically produces samples that are better aligned with the target data distribution. Our method is primarily proposed for post-training existing flow-matching models, although it can also train models from scratch. On the ImageNet 256px generation task, our post-training substantially improves the guidance-free FID of latent-space SiT from 8.26 to 3.63 and of pixel-space JiT from 7.17 to 3.57. It also improves guided generation, reducing FID from 2.06 to 1.53 for SiT and from 1.86 to 1.80 for JiT. We further evaluate our approach on text-to-image generation, where it achieves improved results on both the GenEval and DPG benchmarks.",
+    "authors": [
+      "Shanchuan Lin",
+      "Ceyuan Yang",
+      "Zhijie Lin",
+      "Hao Chen",
+      "Haoqi Fan"
+    ],
+    "published": "2026-04-13",
+    "updated": "2026-04-13",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.11521.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.11521",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "连续对抗流模型",
+      "core_contribution": "提出了一种采用对抗性目标训练的连续时间流模型，通过引入可学习的判别器来替代传统的固定均方误差准则，从而生成与目标数据分布更匹配的样本。",
+      "method": "该方法在连续时间流模型框架中，将原有的流匹配（flow matching）目标替换为对抗性训练目标。具体而言，它引入一个判别器来指导生成过程，通过对抗性损失优化模型参数。该方法既可用于从头训练新模型，也可作为后训练方法应用于已有的流匹配模型。",
+      "findings": "在ImageNet 256px生成任务中，后训练显著提升了无引导生成的性能：潜在空间SiT模型的FID从8.26降至3.63，像素空间JiT模型的FID从7.17降至3.57。在有引导生成中，SiT的FID从2.06降至1.53，JiT从1.86降至1.80。在文本到图像生成任务中，该方法在GenEval和DPG基准测试上也取得了更好的结果。"
+    }
+  },
+  {
+    "id": "2604.11089",
+    "title": "Structured State-Space Regularization for Compact and Generation-Friendly Image Tokenization",
+    "abstract": "Image tokenizers are central to modern vision models as they often operate in latent spaces. An ideal latent space must be simultaneously compact and generation-friendly: it should capture image's essential content compactly while remaining easy to model with generative approaches. In this work, we introduce a novel regularizer to align latent spaces with these two objectives. The key idea is to guide tokenizers to mimic the hidden state dynamics of state-space models (SSMs), thereby transferring their critical property, frequency awareness, to latent features. Grounded in a theoretical analysis of SSMs, our regularizer enforces encoding of fine spatial structures and frequency-domain cues into compact latent features; leading to more effective use of representation capacity and improved generative modelability. Experiments demonstrate that our method improves generation quality in diffusion models while incurring only minimal loss in reconstruction fidelity.",
+    "authors": [
+      "Jinsung Lee",
+      "Jaemin Oh",
+      "Namhun Kim",
+      "Dongwon Kim",
+      "Byung-Jun Yoon",
+      "Suha Kwak"
+    ],
+    "published": "2026-04-13",
+    "updated": "2026-04-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.11089.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.11089",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向紧凑且易于生成的图像分词的结构化状态空间正则化",
+      "core_contribution": "本文提出了一种新颖的正则化方法，通过引导图像分词器的潜在空间模仿状态空间模型的隐藏状态动态，使其同时具备紧凑性和易于生成性，从而优化了潜在空间的表示效率与生成模型的可建模性。",
+      "method": "该方法基于对状态空间模型的理论分析，设计了一种正则化器，强制图像分词器在编码过程中学习状态空间模型的关键特性——频率感知能力。具体而言，该正则化器促使潜在特征编码精细的空间结构和频域信息，从而更有效地利用表示容量，并提升生成模型（如扩散模型）对潜在空间的建模能力。",
+      "findings": "实验结果表明，该方法在仅导致重建保真度轻微下降的情况下，显著提升了扩散模型的生成质量。这验证了所提出的正则化方法能够有效引导图像分词器学习到同时满足紧凑和生成友好要求的潜在表示。"
+    }
+  },
+  {
+    "id": "2604.11042",
+    "title": "Improving Layout Representation Learning Across Inconsistently Annotated Datasets via Agentic Harmonization",
+    "abstract": "Fine-tuning object detection (OD) models on combined datasets assumes annotation compatibility, yet datasets often encode conflicting spatial definitions for semantically equivalent categories. We propose an agentic label harmonization workflow that uses a vision-language model to reconcile both category semantics and bounding box granularity across heterogeneous sources before training. We evaluate on document layout detection as a challenging case study, where annotation standards vary widely across corpora. Without harmonization, naïve mixed-dataset fine-tuning degrades a pretrained RT-DETRv2 detector: on SCORE-Bench, which measures how accurately the full document conversion pipeline reproduces ground-truth structure, table TEDS drops from 0.800 to 0.750. Applied to two corpora whose 16 and 10 category taxonomies share only 8 direct correspondences, harmonization yields consistent gains across content fidelity, table structure, and spatial consistency: detection F-score improves from 0.860 to 0.883, table TEDS improves to 0.814, and mean bounding box overlap drops from 0.043 to 0.016. Representation analysis further shows that harmonized training produces more compact and separable post-decoder embeddings, confirming that annotation inconsistency distorts the learned feature space and that resolving it before training restores representation structure.",
+    "authors": [
+      "Renyu Li",
+      "Vladimir Kirilenko",
+      "Yao You",
+      "Crag Wolfe"
+    ],
+    "published": "2026-04-13",
+    "updated": "2026-04-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.11042.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.11042",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过智能协调改进跨不一致标注数据集的布局表示学习",
+      "core_contribution": "提出了一种基于智能体的标签协调工作流，利用视觉-语言模型在训练前统一异构数据源的类别语义和边界框粒度，解决了多数据集联合微调中因标注标准不一致导致的性能下降问题。",
+      "method": "该方法首先利用视觉-语言模型分析不同数据集中语义相同但标注定义（如类别划分和边界框粒度）存在冲突的标签；然后通过智能协调流程，自动建立类别间的对应关系并统一空间标注标准；最后在协调后的标注数据上对预训练的目标检测模型进行微调。",
+      "findings": "在文档布局检测任务上的实验表明：未经协调的混合数据集训练会显著降低模型性能（如表结构TEDS分数从0.800降至0.750）；应用协调方法后，检测F分数从0.860提升至0.883，表TEDS恢复至0.814，边界框平均重叠误差从0.043降至0.016。表征分析进一步证实协调训练能产生更紧凑、可分离的解码器后嵌入，说明解决标注不一致性能有效恢复特征空间的结构。"
+    }
+  }
+]
