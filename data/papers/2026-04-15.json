@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2604.13036",
+    "title": "Lyra 2.0: Explorable Generative 3D Worlds",
+    "abstract": "Recent advances in video generation enable a new paradigm for 3D scene creation: generating camera-controlled videos that simulate scene walkthroughs, then lifting them to 3D via feed-forward reconstruction techniques. This generative reconstruction approach combines the visual fidelity and creative capacity of video models with 3D outputs ready for real-time rendering and simulation. Scaling to large, complex environments requires 3D-consistent video generation over long camera trajectories with large viewpoint changes and location revisits, a setting where current video models degrade quickly. Existing methods for long-horizon generation are fundamentally limited by two forms of degradation: spatial forgetting and temporal drifting. As exploration proceeds, previously observed regions fall outside the model's temporal context, forcing the model to hallucinate structures when revisited. Meanwhile, autoregressive generation accumulates small synthesis errors over time, gradually distorting scene appearance and geometry. We present Lyra 2.0, a framework for generating persistent, explorable 3D worlds at scale. To address spatial forgetting, we maintain per-frame 3D geometry and use it solely for information routing -- retrieving relevant past frames and establishing dense correspondences with the target viewpoints -- while relying on the generative prior for appearance synthesis. To address temporal drifting, we train with self-augmented histories that expose the model to its own degraded outputs, teaching it to correct drift rather than propagate it. Together, these enable substantially longer and 3D-consistent video trajectories, which we leverage to fine-tune feed-forward reconstruction models that reliably recover high-quality 3D scenes.",
+    "authors": [
+      "Tianchang Shen",
+      "Sherwin Bahmani",
+      "Kai He",
+      "Sangeetha Grama Srinivasan",
+      "Tianshi Cao",
+      "Jiawei Ren",
+      "Ruilong Li",
+      "Zian Wang",
+      "Nicholas Sharp",
+      "Zan Gojcic",
+      "Sanja Fidler",
+      "Jiahui Huang",
+      "Huan Ling",
+      "Jun Gao",
+      "Xuanchi Ren"
+    ],
+    "published": "2026-04-14",
+    "updated": "2026-04-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13036.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13036",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Lyra 2.0：可探索的生成式3D世界",
+      "core_contribution": "提出了一个能够生成大规模、持久且可探索的3D世界的框架，通过解决长序列视频生成中的空间遗忘和时间漂移问题，实现了高度3D一致的长镜头轨迹生成，并以此驱动前馈式3D重建模型获得高质量3D场景。",
+      "method": "1. 为应对空间遗忘，系统维护每帧的3D几何信息，仅将其用于信息路由——检索相关的历史帧并与目标视点建立密集对应关系，而外观合成仍依赖生成先验。\n2. 为应对时间漂移，采用自增强历史数据进行训练，使模型暴露于自身退化的输出中，从而学习纠正而非传播累积误差。\n3. 结合上述方法生成显著更长且3D一致的视频轨迹，并利用这些数据微调前馈式3D重建模型。",
+      "findings": "该方法能够生成比现有视频模型更长、3D一致性更高的相机轨迹，有效缓解了空间遗忘和时序漂移问题；基于这些生成视频，前馈重建模型能够可靠地恢复出高质量的3D场景，支持实时渲染与交互探索。"
+    }
+  },
+  {
+    "id": "2604.13035",
+    "title": "SceneCritic: A Symbolic Evaluator for 3D Indoor Scene Synthesis",
+    "abstract": "Large Language Models (LLMs) and Vision-Language Models (VLMs) increasingly generate indoor scenes through intermediate structures such as layouts and scene graphs, yet evaluation still relies on LLM or VLM judges that score rendered views, making judgments sensitive to viewpoint, prompt phrasing, and hallucination. When the evaluator is unstable, it becomes difficult to determine whether a model has produced a spatially plausible scene or whether the output score reflects the choice of viewpoint, rendering, or prompt. We introduce SceneCritic, a symbolic evaluator for floor-plan-level layouts. SceneCritic's constraints are grounded in SceneOnto, a structured spatial ontology we construct by aggregating indoor scene priors from 3D-FRONT, ScanNet, and Visual Genome. SceneOnto traverses this ontology to jointly verify semantic, orientation, and geometric coherence across object relationships, providing object-level and relationship-level assessments that identify specific violations and successful placements. Furthermore, we pair SceneCritic with an iterative refinement test bed that probes how models build and revise spatial structure under different critic modalities: a rule-based critic using collision constraints as feedback, an LLM critic operating on the layout as text, and a VLM critic operating on rendered observations. Through extensive experiments, we show that (a) SceneCritic aligns substantially better with human judgments than VLM-based evaluators, (b) text-only LLMs can outperform VLMs on semantic layout quality, and (c) image-based VLM refinement is the most effective critic modality for semantic and orientation correction.",
+    "authors": [
+      "Kathakoli Sengupta",
+      "Kai Ao",
+      "Paola Cascante-Bonilla"
+    ],
+    "published": "2026-04-14",
+    "updated": "2026-04-14",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13035.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13035",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SceneCritic：一种用于3D室内场景合成的符号化评估器",
+      "core_contribution": "提出了SceneCritic，一种基于符号规则的3D室内场景布局评估器，它通过构建的结构化空间本体SceneOnto来评估场景的语义、方向和几何一致性，显著提升了评估的稳定性和可解释性。",
+      "method": "首先，通过聚合3D-FRONT、ScanNet和Visual Genome等数据集的先验知识，构建了一个结构化的空间本体SceneOnto。然后，SceneCritic利用该本体遍历并联合验证物体关系的语义、方向和几何一致性，提供物体级和关系级的详细评估。此外，研究还设计了一个迭代优化测试平台，用于比较基于规则的碰撞约束、基于文本的LLM和基于渲染图像的VLM三种不同反馈模式对场景布局的修正效果。",
+      "findings": "实验表明：（1）SceneCritic在评估布局质量时比基于VLM的评估器更符合人类判断；（2）纯文本LLM在评估语义布局质量上可以优于VLM；（3）基于图像的VLM反馈在修正语义和方向错误时是最有效的优化模式。"
+    }
+  },
+  {
+    "id": "2604.13030",
+    "title": "Generative Refinement Networks for Visual Synthesis",
+    "abstract": "While diffusion models dominate the field of visual generation, they are computationally inefficient, applying a uniform computational effort regardless of different complexity. In contrast, autoregressive (AR) models are inherently complexity-aware, as evidenced by their variable likelihoods, but are often hindered by lossy discrete tokenization and error accumulation. In this work, we introduce Generative Refinement Networks (GRN), a next-generation visual synthesis paradigm to address these issues. At its core, GRN addresses the discrete tokenization bottleneck through a theoretically near-lossless Hierarchical Binary Quantization (HBQ), achieving a reconstruction quality comparable to continuous counterparts. Built upon HBQ's latent space, GRN fundamentally upgrades AR generation with a global refinement mechanism that progressively perfects and corrects artworks -- like a human artist painting. Besides, GRN integrates an entropy-guided sampling strategy, enabling complexity-aware, adaptive-step generation without compromising visual quality. On the ImageNet benchmark, GRN establishes new records in image reconstruction (0.56 rFID) and class-conditional image generation (1.81 gFID). We also scale GRN to more challenging text-to-image and text-to-video generation, delivering superior performance on an equivalent scale. We release all models and code to foster further research on GRN.",
+    "authors": [
+      "Jian Han",
+      "Jinlai Liu",
+      "Jiahuan Wang",
+      "Bingyue Peng",
+      "Zehuan Yuan"
+    ],
+    "published": "2026-04-14",
+    "updated": "2026-04-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13030.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13030",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于视觉合成的生成式精修网络",
+      "core_contribution": "提出了生成式精修网络（GRN），通过近乎无损的分层二值量化（HBQ）解决了自回归模型的离散化瓶颈，并引入全局精修机制和熵引导采样策略，实现了高质量、复杂度自适应的视觉生成。",
+      "method": "GRN首先采用分层二值量化（HBQ）方法，将连续视觉数据编码为近乎无损的离散潜在表示，以解决传统自回归模型中的离散化损失问题。在此基础上，构建了一个结合自回归生成与全局精修机制的框架，该机制能像人类艺术家作画一样逐步完善和修正生成内容。此外，通过熵引导的采样策略，模型能够根据生成内容的复杂度自适应调整计算步骤，实现效率与质量的平衡。",
+      "findings": "在ImageNet基准测试中，GRN在图像重建（rFID为0.56）和类别条件图像生成（gFID为1.81）上创造了新记录。该模型还可扩展至文本到图像和文本到视频生成任务，并在同等规模下表现出优越性能。"
+    }
+  },
+  {
+    "id": "2604.12652",
+    "title": "PromptEcho: Annotation-Free Reward from Vision-Language Models for Text-to-Image Reinforcement Learning",
+    "abstract": "Reinforcement learning (RL) can improve the prompt following capability of text-to-image (T2I) models, yet obtaining high-quality reward signals remains challenging: CLIP Score is too coarse-grained, while VLM-based reward models (e.g., RewardDance) require costly human-annotated preference data and additional fine-tuning. We propose PromptEcho, a reward construction method that requires \\emph{no} annotation and \\emph{no} reward model training. Given a generated image and a guiding query, PromptEcho computes the token-level cross-entropy loss of a frozen VLM with the original prompt as the label, directly extracting the image-text alignment knowledge encoded during VLM pretraining. The reward is deterministic, computationally efficient, and improves automatically as stronger open-source VLMs become available. For evaluation, we develop DenseAlignBench, a benchmark of concept-rich dense captions for rigorously testing prompt following capability. Experimental results on two state-of-the-art T2I models (Z-Image and QwenImage-2512) demonstrate that PromptEcho achieves substantial improvements on DenseAlignBench (+26.8pp / +16.2pp net win rate), along with consistent gains on GenEval, DPG-Bench, and TIIFBench without any task-specific training. Ablation studies confirm that PromptEcho comprehensively outperforms inference-based scoring with the same VLM, and that reward quality scales with VLM size. We will open-source the trained models and the DenseAlignBench.",
+    "authors": [
+      "Jinlong Liu",
+      "Wanggui He",
+      "Peng Zhang",
+      "Mushui Liu",
+      "Hao Jiang",
+      "Pipei Huang"
+    ],
+    "published": "2026-04-14",
+    "updated": "2026-04-14",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.12652.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.12652",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PromptEcho：基于视觉语言模型的无标注奖励机制用于文本到图像强化学习",
+      "core_contribution": "提出了一种无需人工标注和奖励模型训练的奖励构建方法PromptEcho，直接从预训练的视觉语言模型中提取图像-文本对齐知识，用于提升文本到图像模型的提示跟随能力。",
+      "method": "该方法利用冻结的视觉语言模型，以原始提示词作为标签，计算生成图像与指导查询之间的词元级交叉熵损失，从而构建奖励信号。该方法具有确定性、计算高效的特点，并能随着开源视觉语言模型的增强而自动提升性能。",
+      "findings": "实验表明，PromptEcho在密集对齐基准测试上显著提升了两种先进文本到图像模型的性能（净胜率分别提升26.8和16.2个百分点），并在多个基准测试上取得了一致的性能增益，无需任何任务特定训练。消融研究证实其全面优于基于相同视觉语言模型的推理评分方法，且奖励质量随模型规模提升而提高。"
+    }
+  },
+  {
+    "id": "2604.12575",
+    "title": "StructDiff: A Structure-Preserving and Spatially Controllable Diffusion Model for Single-Image Generation",
+    "abstract": "This paper introduces StructDiff, a generative framework based on a single-scale diffusion model for single-image generation. Single-image generation aims to synthesize diverse samples with similar visual content to the source image by capturing its internal statistics, without relying on external data. However, existing methods often struggle to preserve the structural layout, especially for images with large rigid objects or strict spatial constraints. Moreover, most approaches lack spatial controllability, making it difficult to guide the structure or placement of generated content. To address these challenges, StructDiff introduces an \\textit{adaptive receptive field} module to maintain both global and local distributions. Building on this foundation, StructDiff incorporates 3D positional encoding (PE) as a spatial prior, allowing flexible control over positions, scale, and local details of generated objects. To our knowledge, this spatial control capability represents the first exploration of PE-based manipulation in single-image generation. Furthermore, we propose a novel evaluation criterion for single-image generation based on large language models (LLMs). This criterion specifically addresses the limitations of existing objective metrics and the high labor costs associated with user studies. StructDiff also demonstrates broad applicability across downstream tasks, such as text-guided image generation, image editing, outpainting, and paint-to-image synthesis. Extensive experiments demonstrate that StructDiff outperforms existing methods in structural consistency, visual quality, and spatial controllability. The project page is available at https://butter-crab.github.io/StructDiff/.",
+    "authors": [
+      "Yinxi He",
+      "Kang Liao",
+      "Chunyu Lin",
+      "Tianyi Wei",
+      "Yao Zhao"
+    ],
+    "published": "2026-04-14",
+    "updated": "2026-04-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.12575.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.12575",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "StructDiff：一种用于单图像生成的结构保持与空间可控扩散模型",
+      "core_contribution": "本文提出了StructDiff，一个用于单图像生成的框架，其主要贡献在于通过自适应感受野模块和3D位置编码，有效保持了生成图像的结构布局并实现了灵活的空间控制，同时首次引入了基于大语言模型的评估标准。",
+      "method": "StructDiff基于单尺度扩散模型构建，首先引入自适应感受野模块来同时维持源图像的全局与局部统计分布。在此基础上，模型利用3D位置编码作为空间先验，使生成对象的位置、尺度和局部细节能够被灵活调控。该方法还提出了一种基于大语言模型的新评估准则，以克服现有客观指标的局限。",
+      "findings": "实验表明，StructDiff在结构一致性、视觉质量和空间可控性上均优于现有方法。该框架在文本引导图像生成、图像编辑、外绘和绘画到图像合成等多个下游任务中展现出广泛适用性。其空间控制能力是首次在单图像生成中探索基于位置编码的操控。"
+    }
+  }
+]
