@@ -1,0 +1,142 @@
+[
+  {
+    "id": "2604.13956",
+    "title": "Creo: From One-Shot Image Generation to Progressive, Co-Creative Ideation",
+    "abstract": "Text-to-image (T2I) systems enable rapid generation of high-fidelity imagery but are misaligned with how visual ideas develop. T2I systems generate outputs that make implicit visual decisions on behalf of the user, often introduce fine-grained details that can anchor users prematurely and limit their ability to keep options open early on, and cause unintended changes during editing that are difficult to correct and reduce users' sense of control. To address these concerns, we present Creo, a multi-stage T2I system that scaffolds image generation by progressing from rough sketches to high-resolution outputs, exposing intermediary abstractions where users can make incremental changes. Sketch-like abstractions invite user editing and allow users to keep design options open when ideas are still forming due to their provisional nature. Each stage in Creo can be modified with manual changes and AI-assisted operations, enabling fine-grained, step-wise control through a locking mechanism that preserves prior decisions so subsequent edits affect only specified regions or attributes. Users remain in the loop, making and verifying decisions across stages, while the system applies diffs instead of regenerating full images, reducing drift as fidelity increases. A comparative study with a one-shot baseline shows that participants felt stronger ownership over Creo outputs, as they were able to trace their decisions in building up the image. Furthermore, embedding-based analysis indicates that Creo outputs are less homogeneous than one-shot results. These findings suggest that multi-stage generation, combined with intermediate control and decision locking, is a key design principle for improving controllability, user agency, creativity, and output diversity in generative systems.",
+    "authors": [
+      "Zoe De Simone",
+      "Angie Boggust",
+      "Fredo Durand",
+      "Ashia Wilson",
+      "Arvind Satyanarayan"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.HC",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13956.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13956",
+    "primary_category": "cs.HC",
+    "score": 95,
+    "summary": {
+      "title_zh": "Creo：从单次图像生成到渐进式、协同创造的构思过程",
+      "core_contribution": "提出了一个多阶段的文本到图像生成系统Creo，通过从粗略草图到高分辨率输出的渐进式生成流程，解决了传统单次生成系统在用户控制力、创意开放性和编辑稳定性方面的不足。",
+      "method": "Creo采用分阶段生成方法，将图像创建过程分解为从抽象草图到细节完善的多个步骤。系统在每个阶段提供可编辑的中间抽象表示（如草图），允许用户进行手动修改或AI辅助操作。通过引入“锁定”机制，确保已确定的区域或属性在后续编辑中保持不变，从而实现对特定区域的精细化控制。系统采用差异更新而非全图重生成的方式，减少编辑过程中的图像漂移。",
+      "findings": "与单次生成基线相比，用户对Creo生成的图像表现出更强的所有权感，因为他们能够追溯图像构建过程中的决策轨迹。基于嵌入向量的分析表明，Creo生成的图像多样性更高，同质性低于单次生成结果。这表明多阶段生成结合中间控制与决策锁定，能有效提升生成系统的可控性、用户能动性、创造力和输出多样性。"
+    }
+  },
+  {
+    "id": "2604.14113",
+    "title": "UI-Zoomer: Uncertainty-Driven Adaptive Zoom-In for GUI Grounding",
+    "abstract": "GUI grounding, which localizes interface elements from screenshots given natural language queries, remains challenging for small icons and dense layouts. Test-time zoom-in methods improve localization by cropping and re-running inference at higher resolution, but apply cropping uniformly across all instances with fixed crop sizes, ignoring whether the model is actually uncertain on each case. We propose \\textbf{UI-Zoomer}, a training-free adaptive zoom-in framework that treats both the trigger and scale of zoom-in as a prediction uncertainty quantification problem. A confidence-aware gate fuses spatial consensus among stochastic candidates with token-level generation confidence to selectively trigger zoom-in only when localization is uncertain. When triggered, an uncertainty-driven crop sizing module decomposes prediction variance into inter-sample positional spread and intra-sample box extent, deriving a per-instance crop radius via the law of total variance. Extensive experiments on ScreenSpot-Pro, UI-Vision, and ScreenSpot-v2 demonstrate consistent improvements over strong baselines across multiple model architectures, achieving gains of up to +13.4\\%, +10.3\\%, and +4.2\\% respectively, with no additional training required.",
+    "authors": [
+      "Fei Tang",
+      "Bofan Chen",
+      "Zhengxi Lu",
+      "Tongbo Chen",
+      "Songqin Nong",
+      "Tao Jiang",
+      "Wenhao Xu",
+      "Weiming Lu",
+      "Jun Xiao",
+      "Yueting Zhuang",
+      "Yongliang Shen"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.14113.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.14113",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UI-Zoomer：基于不确定性的自适应局部放大用于GUI元素定位",
+      "core_contribution": "本文提出了UI-Zoomer，一个无需训练的自适应局部放大框架，其核心贡献在于将何时放大以及放大多少的问题，转化为对模型预测不确定性的量化问题，从而仅在定位不确定时进行智能放大。",
+      "method": "该方法包含两个关键模块：1）一个置信感知门控机制，通过融合随机候选框的空间一致性以及模型在词元级别的生成置信度，来选择性触发局部放大；2）一个不确定性驱动的裁剪尺寸模块，将预测方差分解为样本间的位置离散度和样本内的边界框范围，并利用全方差定律为每个实例计算自适应的裁剪半径。",
+      "findings": "在ScreenSpot-Pro、UI-Vision和ScreenSpot-v2三个基准数据集上的广泛实验表明，该方法在多种模型架构上均能稳定超越现有基线，分别取得了最高+13.4%、+10.3%和+4.2%的性能提升，且无需任何额外训练。"
+    }
+  },
+  {
+    "id": "2604.13938",
+    "title": "ASTRA: Enhancing Multi-Subject Generation with Retrieval-Augmented Pose Guidance and Disentangled Position Embedding",
+    "abstract": "Subject-driven image generation has shown great success in creating personalized content, but its capabilities are largely confined to single subjects in common poses. Current approaches face a fundamental conflict when handling multiple subjects with complex, distinct actions: preserving individual identities while enforcing precise pose structures. This challenge often leads to identity fusion and pose distortion, as appearance and structure signals become entangled within the model's architecture. To resolve this conflict, we introduce ASTRA(Adaptive Synthesis through Targeted Retrieval Augmentation), a novel framework that architecturally disentangles subject appearance from pose structure within a unified Diffusion Transformer. ASTRA achieves this through a dual-pronged strategy. It first employs a Retrieval-Augmented Pose (RAG-Pose) pipeline to provide a clean, explicit structural prior from a curated database. Then, its core generative model learns to process these dual visual conditions using our Enhanced Universal Rotary Position Embedding (EURoPE), an asymmetric encoding mechanism that decouples identity tokens from spatial locations while binding pose tokens to the canvas. Concurrently, a Disentangled Semantic Modulation (DSM) adapter offloads the identity preservation task into the text conditioning stream. Extensive experiments demonstrate that our integrated approach achieves superior disentanglement. On our designed COCO-based complex pose benchmark, ASTRA achieves a new state-of-the-art in pose adherence, while maintaining high identity fidelity and text alignment in DreamBench.",
+    "authors": [
+      "Tianze Xia",
+      "Zijian Ning",
+      "Zonglin Zhao",
+      "Mingjia Wang"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13938.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13938",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ASTRA：通过检索增强的姿态引导与解耦位置嵌入增强多主体生成",
+      "core_contribution": "提出了ASTRA框架，通过架构设计在统一的扩散Transformer中将主体外观与姿态结构解耦，解决了多主体生成中身份融合与姿态失真的核心冲突。",
+      "method": "1. 采用检索增强姿态（RAG-Pose）管道，从精选数据库中提供清晰、明确的结构先验；2. 核心生成模型使用增强通用旋转位置嵌入（EURoPE），以非对称编码机制将身份令牌与空间位置解耦，同时将姿态令牌绑定到画布；3. 引入解耦语义调制（DSM）适配器，将身份保持任务卸载到文本条件流中。",
+      "findings": "在基于COCO设计的复杂姿态基准测试中，ASTRA在姿态遵循方面达到了新的最优水平，同时在DreamBench基准上保持了高身份保真度和文本对齐度，证明了其解耦方法的优越性。"
+    }
+  },
+  {
+    "id": "2604.13797",
+    "title": "DRG-Font: Dynamic Reference-Guided Few-shot Font Generation via Contrastive Style-Content Disentanglement",
+    "abstract": "Few-shot Font Generation aims to generate stylistically consistent glyphs from a few reference glyphs. However, capturing complex font styles from a few exemplars remains challenging, and the existing methods often struggle to retain discernible local characteristics in generated samples. This paper introduces DRG-Font, a contrastive font generation strategy that learns complex glyph attributes by decomposing style and content embedding spaces. For optimal style supervision, the proposed architecture incorporates a Reference Selection (RS) Module to dynamically select the best style reference from an available pool of candidates. The network learns to decompose glyph attributes into style and shape priors through a Multi-scale Style Head Block (MSHB) and a Multi-scale Content Head Block (MCHB). For style adaptation, a Multi-Fusion Upsampling Block (MFUB) produces the target glyph by combining the reference style prior and target content prior. The proposed method demonstrates significant improvements over state-of-the-art approaches across multiple visual and analytical benchmarks.",
+    "authors": [
+      "Rejoy Chakraborty",
+      "Prasun Roy",
+      "Saumik Bhattacharya",
+      "Umapada Pal"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13797.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13797",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DRG-Font：通过对比式风格-内容解耦实现动态参考引导的少样本字体生成",
+      "core_contribution": "提出了一种基于对比学习的少样本字体生成框架，通过动态选择最佳风格参考并解耦风格与内容表示，显著提升了生成字体的风格一致性与局部特征保真度。",
+      "method": "该方法设计了参考选择模块动态筛选最优风格参考样本；通过多尺度风格头模块和多尺度内容头模块分别学习风格与形状先验；最后利用多融合上采样模块将参考风格先验与目标内容先验结合生成目标字形。",
+      "findings": "实验表明，该方法在视觉质量和量化指标上均优于现有先进方法，能更准确地捕捉复杂字体风格并保留清晰的局部字形特征。"
+    }
+  },
+  {
+    "id": "2604.13549",
+    "title": "Reconstruction of a 3D wireframe from a single line drawing via generative depth estimation",
+    "abstract": "The conversion of 2D freehand sketches into 3D models remains a pivotal challenge in computer vision, bridging the gap between human creativity and digital fabrication. Traditional line drawing reconstruction relies on brittle symbolic logic, while modern approaches are constrained by rigid parametric modeling, limiting users to predefined CAD primitives. We propose a generative approach by framing reconstruction as a conditional dense depth estimation task. To achieve this, we implement a Latent Diffusion Model (LDM) with a ControlNet-style conditioning framework to resolve the inherent ambiguities of orthographic projections. To support an iterative \"sketch-reconstruct-sketch\" workflow, we introduce a graph-based BFS masking strategy to simulate partial depth cues. We train and evaluate our approach using a massive dataset of over one million image-depth pairs derived from the ABC Dataset. Our framework demonstrates robust performance across varying shape complexities, providing a scalable pipeline for converting sparse 2D line drawings into dense 3D representations, effectively allowing users to \"draw in 3D\" without the rigid constraints of traditional CAD.",
+    "authors": [
+      "Elton Cao",
+      "Hod Lipson"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13549.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13549",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过生成式深度估计从单一线稿重建三维线框模型",
+      "core_contribution": "提出了一种生成式方法，将二维手绘线稿重建为三维模型的任务转化为条件密集深度估计问题，克服了传统方法对符号逻辑或参数化建模的依赖，使用户能够摆脱传统CAD的刚性约束进行“三维绘图”。",
+      "method": "采用基于潜在扩散模型（LDM）的生成框架，并结合类似ControlNet的条件控制机制来处理正交投影固有的歧义性。为了支持迭代式的“绘制-重建-绘制”工作流，引入了一种基于图的广度优先搜索掩码策略来模拟局部深度线索。模型使用从ABC数据集衍生出的超过一百万张图像-深度对进行训练。",
+      "findings": "该方法在不同复杂度的形状上均表现出鲁棒的性能，提供了一个可扩展的流程，能够将稀疏的二维线稿有效地转换为密集的三维表示，实现了从自由手绘到三维模型的流畅转换。"
+    }
+  }
+]
