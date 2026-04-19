@@ -1,0 +1,145 @@
+[
+  {
+    "id": "2604.14379",
+    "title": "Step-level Denoising-time Diffusion Alignment with Multiple Objectives",
+    "abstract": "Reinforcement learning (RL) has emerged as a powerful tool for aligning diffusion models with human preferences, typically by optimizing a single reward function under a KL regularization constraint. In practice, however, human preferences are inherently pluralistic, and aligned models must balance multiple downstream objectives, such as aesthetic quality and text-image consistency. Existing multi-objective approaches either rely on costly multi-objective RL fine-tuning or on fusing separately aligned models at denoising time, but they generally require access to reward values (or their gradients) and/or introduce approximation error in the resulting denoising objectives. In this paper, we revisit the problem of RL fine-tuning for diffusion models and address the intractability of identifying the optimal policy by introducing a step-level RL formulation. Building on this, we further propose Multi-objective Step-level Denoising-time Diffusion Alignment (MSDDA), a retraining-free framework for aligning diffusion models with multiple objectives, obtaining the optimal reverse denoising distribution in closed form, with mean and variance expressed directly in terms of single-objective base models. We prove that this denoising-time objective is exactly equivalent to the step-level RL fine-tuning, introducing no approximation error. Moreover, we provide numerical results, which indicate our method outperforms existing denoising-time approaches.",
+    "authors": [
+      "Qi Zhang",
+      "Dawei Wang",
+      "Shaofeng Zou"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.14379.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.14379",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于多目标的步级去噪时间扩散对齐",
+      "core_contribution": "提出了MSDDA框架，无需重新训练即可实现扩散模型与多目标的对齐，并通过理论证明其与步级强化学习微调完全等价，无近似误差。",
+      "method": "首先将扩散模型的强化学习对齐问题重新形式化为步级优化问题，以解决传统方法中策略最优解难以确定的问题。在此基础上，通过推导得到多目标下最优反向去噪分布的闭式解，其均值和方差可直接由多个单目标基础模型表达。该方法避免了传统多目标方法所需的昂贵多目标强化学习微调或模型融合过程。",
+      "findings": "理论证明该方法与步级强化学习微调完全等价，未引入近似误差。数值实验结果表明，该方法在平衡多个下游目标（如美学质量和图文一致性）方面优于现有的去噪时间对齐方法。"
+    }
+  },
+  {
+    "id": "2604.14302",
+    "title": "Geometrically Consistent Multi-View Scene Generation from Freehand Sketches",
+    "abstract": "We tackle a new problem: generating geometrically consistent multi-view scenes from a single freehand sketch. Freehand sketches are the most geometrically impoverished input one could offer a multi-view generator. They convey scene intent through abstract strokes while introducing spatial distortions that actively conflict with any consistent 3D interpretation. No prior method attempts this; existing multi-view approaches require photographs or text, while sketch-to-3D methods need multiple views or costly per-scene optimisation. We address three compounding challenges; absent training data, the need for geometric reasoning from distorted 2D input, and cross-view consistency, through three mutually reinforcing contributions: (i) a curated dataset of $\\sim$9k sketch-to-multiview samples, constructed via an automated generation and filtering pipeline; (ii) Parallel Camera-Aware Attention Adapters (CA3) that inject geometric inductive biases into the video transformer; and (iii) a Sparse Correspondence Supervision Loss (CSL) derived from Structure-from-Motion reconstructions. Our framework synthesizes all views in a single denoising process without requiring reference images, iterative refinement, or per-scene optimization. Our approach significantly outperforms state-of-the-art two-stage baselines, improving realism (FID) by over 60% and geometric consistency (Corr-Acc) by 23%, while providing up to a 3.7$\\times$ inference speedup.",
+    "authors": [
+      "Ahmed Bourouis",
+      "Savas Ozkan",
+      "Andrea Maracani",
+      "Yi-Zhe Song",
+      "Mete Ozay"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.14302.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.14302",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于手绘草图的几何一致多视角场景生成",
+      "core_contribution": "首次提出从单张手绘草图直接生成几何一致的多视角场景，解决了草图抽象性、空间扭曲与三维一致性之间的根本矛盾，无需参考图像、迭代优化或逐场景训练。",
+      "method": "研究通过三个相互支撑的技术贡献实现目标：首先构建了一个约9000个样本的草图-多视角数据集，采用自动化生成与过滤流程；其次设计了并行相机感知注意力适配器（CA3），将几何归纳偏置注入视频Transformer；最后提出基于运动恢复结构重建的稀疏对应监督损失（CSL）来增强跨视角一致性。",
+      "findings": "该方法在单次去噪过程中同步生成所有视角，在真实性指标（FID）上比现有两阶段基线提升超过60%，几何一致性指标（Corr-Acc）提升23%，同时推理速度最高加快3.7倍。"
+    }
+  },
+  {
+    "id": "2604.13540",
+    "title": "Free Lunch for Unified Multimodal Models: Enhancing Generation via Reflective Rectification with Inherent Understanding",
+    "abstract": "Unified Multimodal Models (UMMs) aim to integrate visual understanding and generation within a single structure. However, these models exhibit a notable capability mismatch, where their understanding capability significantly outperforms their generation. This mismatch indicates that the model's rich internal knowledge, while effective for understanding tasks, remains underactivated during generation. To address this, we draw inspiration from the human ``Thinking-While-Drawing'' paradigm, where humans continuously reflect to activate their knowledge and rectify intermediate results. In this paper, we propose UniRect-CoT, a training-free unified rectification chain-of-thought framework. Our approach unlocks the ``free lunch'' hidden in the UMM's powerful inherent understanding to continuously reflect, activating its internal knowledge and rectifying intermediate results during generation.We regard the diffusion denoising process in UMMs as an intrinsic visual reasoning process and align the intermediate results with the target instruction understood by the model, serving as a self-supervisory signal to rectify UMM generation.Extensive experiments demonstrate that UniRect-CoT can be easily integrated into existing UMMs, significantly enhancing generation quality across diverse complex tasks.",
+    "authors": [
+      "Yibo Jiang",
+      "Tao Wu",
+      "Rui Jiang",
+      "Yehao Lu",
+      "Chaoxiang Cai",
+      "Zequn Qin",
+      "Xi Li"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13540.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13540",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "统一多模态模型的“免费午餐”：通过基于内在理解的反思维修正增强生成能力",
+      "core_contribution": "提出了一种无需训练的通用反思维修正链框架（UniRect-CoT），通过激活模型内在的强大理解能力来修正生成过程中的中间结果，从而显著提升统一多模态模型的生成质量。",
+      "method": "受人类“边画边思考”范式启发，将扩散去噪过程视为内在的视觉推理过程；利用模型对目标指令的理解作为自监督信号，对齐并修正生成中的中间结果；该框架无需额外训练，可直接集成到现有统一多模态模型中。",
+      "findings": "实验表明，UniRect-CoT能有效缓解统一多模态模型中理解能力与生成能力不匹配的问题；在多种复杂任务上显著提升生成质量，且具有广泛的模型兼容性和任务适应性。"
+    }
+  },
+  {
+    "id": "2604.13509",
+    "title": "DiT as Real-Time Rerenderer: Streaming Video Stylization with Autoregressive Diffusion Transformer",
+    "abstract": "Recent advances in video generation models has significantly accelerated video generation and related downstream tasks. Among these, video stylization holds important research value in areas such as immersive applications and artistic creation, attracting widespread attention. However, existing diffusion-based video stylization methods struggle to maintain stability and consistency when processing long videos, and their high computational cost and multi-step denoising make them difficult to apply in practical scenarios. In this work, we propose RTR-DiT (DiT as Real-Time Rerenderer), a steaming video stylization framework built upon Diffusion Transformer. We first fine-tune a bidirectional teacher model on a curated video stylization dataset, supporting both text-guided and reference-guided video stylization tasks, and subsequently distill it into a few-step autoregressive model via post-training with Self Forcing and Distribution Matching Distillation. Furthermore, we propose a reference-preserving KV cache update strategy that not only enables stable and consistent processing of long videos, but also supports real-time switching between text prompts and reference images. Experimental results show that RTR-DiT outperforms existing methods in both text-guided and reference-guided video stylization tasks, in terms of quantitative metrics and visual quality, and demonstrates excellent performance in real-time long video stylization and interactive style-switching applications.",
+    "authors": [
+      "Hengye Lyu",
+      "Zisu Li",
+      "Yue Hong",
+      "Yueting Weng",
+      "Jiaxin Shi",
+      "Hanwang Zhang",
+      "Chen Liang"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13509.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13509",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DiT作为实时重渲染器：基于自回归扩散Transformer的流式视频风格化",
+      "core_contribution": "提出了RTR-DiT框架，首次将扩散Transformer应用于实时流式视频风格化，解决了长视频处理中的稳定性、一致性以及实时交互式风格切换难题。",
+      "method": "首先在精选的视频风格化数据集上微调一个双向教师模型，支持文本引导和参考图像引导的风格化任务；然后通过结合自强制和分布匹配蒸馏的后训练方法，将其蒸馏为少步数的自回归模型；此外，提出了一种保留参考信息的KV缓存更新策略，以支持长视频的稳定处理和实时风格切换。",
+      "findings": "实验结果表明，RTR-DiT在文本引导和参考图像引导的视频风格化任务上，在定量指标和视觉质量方面均优于现有方法，并在实时长视频风格化及交互式风格切换应用中表现出优异性能。"
+    }
+  },
+  {
+    "id": "2604.13491",
+    "title": "Enhanced Text-to-Image Generation by Fine-grained Multimodal Reasoning",
+    "abstract": "With the rapid progress of Multimodal Large Language Models (MLLMs), unified MLLMs that jointly perform image understanding and generation have advanced significantly. However, despite the inherent reasoning capabilities of unified MLLMs for self-reflection and self-refinement, their use in text-to-image generation remains largely underexplored. Meanwhile, existing multimodal reasoning-based image generation methods mostly rely on holistic image-text alignment judgments, without fine-grained reflection and refinement of detailed prompt attributes, leading to limited fine-grained control. Therefore, we propose Fine-grained Multimodal Reasoning (FiMR), a framework that leverages decomposed visual question answering (VQA) to break down an input prompt into minimal semantic units-such as entities and attributes-and verify each unit via VQA to generate explicit, fine-grained feedback. Based on this feedback, FiMR then applies targeted, localized refinements. This fine-grained self-reasoning and self-refinement enable MLLMs to achieve more precise improvements in image-prompt alignment and overall generation quality at test time. Extensive experiments demonstrate that FiMR consistently outperforms image generation baselines, including reasoning-based methods, particularly on compositional text-to-image benchmarks. The code and models are available at https://github.com/KU-AGI/FiMR",
+    "authors": [
+      "Yongjin Kim",
+      "Yoonjin Oh",
+      "Yerin Kim",
+      "Hyomin Kim",
+      "Jeeyoung Yun",
+      "Yujung Heo",
+      "Minjun Kim",
+      "Sungwoong Kim"
+    ],
+    "published": "2026-04-15",
+    "updated": "2026-04-16",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.13491.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.13491",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过细粒度多模态推理增强文本到图像生成",
+      "core_contribution": "提出了FiMR框架，首次将统一多模态大语言模型（MLLMs）的自我推理能力系统性地应用于文本到图像生成任务，实现了对生成图像的细粒度、基于语义单元的反馈与优化。",
+      "method": "该方法首先将输入提示词分解为最小的语义单元（如实体和属性），然后通过视觉问答（VQA）对每个单元进行验证，生成明确的细粒度反馈。基于此反馈，框架对图像进行有针对性的、局部化的迭代精修，从而实现细粒度的自我推理与自我优化。",
+      "findings": "大量实验表明，FiMR在图像生成质量上持续优于现有基线方法（包括基于推理的方法），尤其在组合式文本到图像生成基准测试中表现突出，显著提升了图像与提示词的对齐精度和整体生成质量。"
+    }
+  }
+]
