@@ -1,0 +1,151 @@
+[
+  {
+    "id": "2604.16299",
+    "title": "Repurposing 3D Generative Model for Autoregressive Layout Generation",
+    "abstract": "We introduce LaviGen, a framework that repurposes 3D generative models for 3D layout generation. Unlike previous methods that infer object layouts from textual descriptions, LaviGen operates directly in the native 3D space, formulating layout generation as an autoregressive process that explicitly models geometric relations and physical constraints among objects, producing coherent and physically plausible 3D scenes. To further enhance this process, we propose an adapted 3D diffusion model that integrates scene, object, and instruction information and employs a dual-guidance self-rollout distillation mechanism to improve efficiency and spatial accuracy. Extensive experiments on the LayoutVLM benchmark show LaviGen achieves superior 3D layout generation performance, with 19% higher physical plausibility than the state of the art and 65% faster computation. Our code is publicly available at https://github.com/fenghora/LaviGen.",
+    "authors": [
+      "Haoran Feng",
+      "Yifan Niu",
+      "Zehuan Huang",
+      "Yang-Tian Sun",
+      "Chunchao Guo",
+      "Yuxin Peng",
+      "Lu Sheng"
+    ],
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.16299.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.16299",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "利用三维生成模型实现自回归布局生成",
+      "core_contribution": "提出了LaviGen框架，将三维生成模型重新用于三维布局生成，通过自回归过程直接建模物体间的几何关系和物理约束，生成连贯且物理合理的三维场景。",
+      "method": "该方法直接在原生三维空间中操作，将布局生成构建为自回归过程。提出了一种改进的三维扩散模型，整合场景、物体和指令信息，并采用双引导自展开蒸馏机制，以提高生成效率和空间准确性。",
+      "findings": "在LayoutVLM基准测试上的实验表明，LaviGen在三维布局生成性能上优于现有方法，物理合理性比当前最优方法提高了19%，计算速度提升了65%。"
+    }
+  },
+  {
+    "id": "2604.15967",
+    "title": "TwoHamsters: Benchmarking Multi-Concept Compositional Unsafety in Text-to-Image Models",
+    "abstract": "Despite the remarkable synthesis capabilities of text-to-image (T2I) models, safeguarding them against content violations remains a persistent challenge. Existing safety alignments primarily focus on explicit malicious concepts, often overlooking the subtle yet critical risks of compositional semantics. To address this oversight, we identify and formalize a novel vulnerability: Multi-Concept Compositional Unsafety (MCCU), where unsafe semantics stem from the implicit associations of individually benign concepts. Based on this formulation, we introduce TwoHamsters, a comprehensive benchmark comprising 17.5k prompts curated to probe MCCU vulnerabilities. Through a rigorous evaluation of 10 state-of-the-art models and 16 defense mechanisms, our analysis yields 8 pivotal insights. In particular, we demonstrate that current T2I models and defense mechanisms face severe MCCU risks: on TwoHamsters, FLUX achieves an MCCU generation success rate of 99.52%, while LLaVA-Guard only attains a recall of 41.06%, highlighting a critical limitation of the current paradigm for managing hazardous compositional generation.",
+    "authors": [
+      "Chaoshuo Zhang",
+      "Yibo Liang",
+      "Mengke Tian",
+      "Chenhao Lin",
+      "Zhengyu Zhao",
+      "Le Yang",
+      "Chong Zhang",
+      "Yang Zhang",
+      "Chao Shen"
+    ],
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "categories": [
+      "cs.CR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.15967.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.15967",
+    "primary_category": "cs.CR",
+    "score": 85,
+    "summary": {
+      "title_zh": "TwoHamsters：评估文本到图像模型中的多概念组合不安全问题",
+      "core_contribution": "本文识别并形式化了一种新的安全漏洞——多概念组合不安全（MCCU），并为此构建了一个包含1.75万个提示词的综合性基准测试集TwoHamsters，用于系统评估文本到图像模型在此类风险上的表现。",
+      "method概述": "研究首先定义了MCCU，即不安全语义源于多个单独良性的概念在组合时产生的隐含关联。基于此，作者精心策划并构建了TwoHamsters基准数据集。随后，该研究对10个最先进的文本到图像模型和16种防御机制进行了严格评估，并从中总结出8项关键见解。",
+      "key_findings": "评估结果表明，当前主流文本到图像模型和防御机制在面对MCCU风险时存在严重缺陷。例如，在TwoHamsters基准上，FLUX模型的MCCU图像生成成功率高达99.52%，而作为防御机制的LLaVA-Guard仅实现了41.06%的召回率，这凸显出现有安全范式在管理危险组合生成方面存在重大局限。"
+    }
+  },
+  {
+    "id": "2604.15948",
+    "title": "From Competition to Coopetition: Coopetitive Training-Free Image Editing Based on Text Guidance",
+    "abstract": "Text-guided image editing, a pivotal task in modern multimedia content creation, has seen remarkable progress with training-free methods that eliminate the need for additional optimization. Despite recent progress, existing methods are typically constrained by a competitive paradigm in which the editing and reconstruction branches are independently driven by their respective objectives to maximize alignment with target and source prompts. The adversarial strategy causes semantic conflicts and unpredictable outcomes due to the lack of coordination between branches. To overcome these issues, we propose Coopetitive Training-Free Image Editing (CoEdit), a novel zero-shot framework that transforms attention control from competition to coopetitive negotiation, achieving editing harmony across spatial and temporal dimensions. Spatially, CoEdit introduces Dual-Entropy Attention Manipulation, which quantifies directional entropic interactions between branches to reformulate attention control as a harmony-maximization problem, eventually improving the localization of editable and preservable regions. Temporally, we present Entropic Latent Refinement mechanism to dynamically adjust latent representations over time, minimizing accumulated editing errors and ensuring consistent semantic transitions throughout the denoising trajectory. Additionally, we propose the Fidelity-Constrained Editing Score, a composite metric that jointly evaluates semantic editing and background fidelity. Extensive experiments on standard benchmarks demonstrate that CoEdit achieves superior performance in both editing quality and structural preservation, enhancing multimedia information utilization by enabling more effective interaction between visual and textual modalities. The code will be available at https://github.com/JinhaoShen/CoEdit.",
+    "authors": [
+      "Jinhao Shen",
+      "Haoqian Du",
+      "Xulu Zhang",
+      "Xiao-Yong Wei",
+      "Qing Li"
+    ],
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.15948.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.15948",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从竞争到合作竞争：基于文本引导的合作竞争式免训练图像编辑",
+      "core_contribution": "提出了一种名为CoEdit的新型零样本免训练图像编辑框架，其核心贡献是将注意力控制从传统的竞争范式转变为合作竞争式协商，从而在空间和时间维度上实现编辑的协调与和谐。",
+      "method": "该方法在空间维度上引入了双熵注意力操纵机制，通过量化编辑分支与重建分支之间的方向性熵交互，将注意力控制重新表述为一个和谐最大化问题，以更精准地定位可编辑和需保留的区域。在时间维度上，提出了熵潜在细化机制，在去噪过程中动态调整潜在表示，以最小化累积编辑误差并确保语义转换的一致性。此外，还设计了一个联合评估语义编辑和背景保真度的复合度量标准。",
+      "findings": "在标准基准上的大量实验表明，CoEdit在编辑质量和结构保真度方面均取得了优越的性能。它通过实现视觉与文本模态之间更有效的交互，提升了多媒体信息的利用效率，能够生成语义更准确、背景更一致、过渡更自然的编辑结果。"
+    }
+  },
+  {
+    "id": "2604.15917",
+    "title": "Making Image Editing Easier via Adaptive Task Reformulation with Agentic Executions",
+    "abstract": "Instruction guided image editing has advanced substantially with recent generative models, yet it still fails to produce reliable results across many seemingly simple cases. We observe that a large portion of these failures stem not from insufficient model capacity, but from poorly formulated editing tasks, such as those involving small targets, implicit spatial relations, or under-specified instructions. In this work, we frame image editing failures as a task formulation problem and propose an adaptive task reformulation framework that improves editing performance without modifying the underlying model. Our key idea is to transform the original image-instruction pair into a sequence of operations that are dynamically determined and executed by a MLLM agent through analysis, routing, reformulation, and feedback-driven refinement. Experiments on multiple benchmarks, including ImgEdit, PICA, and RePlan, across diverse editing backbones such as Qwen Image Edit and Nano Banana, show consistent improvements, with especially large gains on challenging cases. These results suggest that task reformulation is a critical but underexplored factor, and that substantial gains can be achieved by better matching editing tasks to the effective operating regime of existing models.",
+    "authors": [
+      "Bo Zhao",
+      "Kairui Guo",
+      "Runnan Du",
+      "Haiyang Sun",
+      "Pengshan Wang",
+      "Huan Yang",
+      "Kun Gai",
+      "Yixin Cao",
+      "Wei Ji"
+    ],
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.15917.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.15917",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过智能体执行的自适应任务重构使图像编辑更便捷",
+      "core_contribution": "本文提出了一种自适应任务重构框架，通过将图像编辑失败归因于任务表述不当，并利用多模态大语言模型智能体动态重构编辑指令，从而在不修改底层生成模型的情况下显著提升编辑性能。",
+      "method": "该方法将原始图像-指令对转化为一系列由智能体动态决定和执行的操作序列。其核心流程包括：分析编辑指令的难点（如目标过小、空间关系隐含或指令描述不足），通过路由机制选择适当的重构策略（如添加空间约束、分解步骤或细化描述），生成并执行新的编辑子任务，并利用反馈循环进行迭代优化。",
+      "findings": "在ImgEdit、PICA和RePlan等多个基准测试上，使用不同编辑模型（如Qwen Image Edit和Nano Banana）的实验表明，该框架能持续提升编辑效果，尤其在具有小目标、复杂空间关系或模糊指令的挑战性案例上改善显著。这证明任务重构是影响编辑性能的关键因素，通过使任务更适配现有模型的有效操作区间，可获得大幅性能增益。"
+    }
+  },
+  {
+    "id": "2604.15829",
+    "title": "Beyond Text Prompts: Precise Concept Erasure through Text-Image Collaboration",
+    "abstract": "Text-to-image generative models have achieved impressive fidelity and diversity, but can inadvertently produce unsafe or undesirable content due to implicit biases embedded in large-scale training datasets. Existing concept erasure methods, whether text-only or image-assisted, face trade-offs: textual approaches often fail to fully suppress concepts, while naive image-guided methods risk over-erasing unrelated content. We propose TICoE, a text-image Collaborative Erasing framework that achieves precise and faithful concept removal through a continuous convex concept manifold and hierarchical visual representation learning. TICoE precisely removes target concepts while preserving unrelated semantic and visual content. To objectively assess the quality of erasure, we further introduce a fidelity-oriented evaluation strategy that measures post-erasure usability. Experiments on multiple benchmarks show that TICoE surpasses prior methods in concept removal precision and content fidelity, enabling safer, more controllable text-to-image generation. Our code is available at https://github.com/OpenAscent-L/TICoE.git",
+    "authors": [
+      "Jun Li",
+      "Lizhi Xiong",
+      "Ziqiang Li",
+      "Weiwei Jiang",
+      "Zhangjie Fu",
+      "Yong Li",
+      "Guo-Sen Xie"
+    ],
+    "published": "2026-04-17",
+    "updated": "2026-04-17",
+    "categories": [
+      "cs.CV",
+      "cs.CR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.15829.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.15829",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越文本提示：通过文本-图像协作实现精确概念擦除",
+      "core_contribution": "提出了TICoE框架，通过文本与图像的协同实现了对生成模型中特定概念的精确擦除，在有效移除目标概念的同时，最大程度地保留了无关的语义和视觉内容。",
+      "method": "该方法构建了一个连续的凸概念流形，并结合分层视觉表示学习来实现精确的概念定位与擦除。它通过文本-图像协作机制，将文本引导的语义约束与图像引导的视觉约束相结合，避免了单一模态方法的不足。",
+      "findings": "在多个基准测试上的实验表明，TICoE在概念擦除的精确性和内容保真度上均优于现有方法。论文同时提出的以保真度为导向的评估策略也证实，该方法在实现安全、可控的文本到图像生成方面具有显著优势。"
+    }
+  }
+]
