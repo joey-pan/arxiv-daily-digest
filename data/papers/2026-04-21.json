@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2604.17850",
+    "title": "UniCSG: Unified High-Fidelity Content-Constrained Style-Driven Generation via Staged Semantic and Frequency Disentanglement",
+    "abstract": "Style transfer must match a target style while preserving content semantics. DiT-based diffusion models often suffer from content-style entanglement, leading to reference-content leakage and unstable generation. We present UniCSG, a unified framework for content-constrained, style-driven generation in both text-guided and reference-guided settings. UniCSG employs staged training: (i) a latent-space semantic disentanglement stage that combines low-frequency preprocessing with conditioning corruption to encourage content-style separation, and (ii) a latent-space frequency-aware detail reconstruction stage that refines details via multi-scale frequency supervision. We further incorporate pixel-space reward learning to align latent objectives with perceptual quality after decoding. Experiments demonstrate improved content faithfulness, style alignment, and robustness in both settings.",
+    "authors": [
+      "Jingwei Yang",
+      "Ruoxi Wu",
+      "Wei Shen",
+      "Meng Li",
+      "Yulong Liu",
+      "Huimin She",
+      "Lunxi Yuan"
+    ],
+    "published": "2026-04-20",
+    "updated": "2026-04-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.17850.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.17850",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniCSG：通过分阶段语义与频率解耦实现统一的高保真内容约束风格驱动生成",
+      "core_contribution": "提出了一个统一的框架UniCSG，用于解决基于扩散模型的风格迁移中内容与风格纠缠的问题，在文本引导和参考引导两种设定下均能实现高保真的内容保留与风格匹配。",
+      "method": "方法采用分阶段训练策略：第一阶段在潜在空间进行语义解耦，结合低频预处理和条件信息破坏以促进内容与风格分离；第二阶段进行频率感知的细节重建，通过多尺度频率监督细化生成细节；此外，引入像素空间的奖励学习，使潜在空间目标与解码后的感知质量对齐。",
+      "findings": "实验表明，UniCSG在文本引导和参考引导的风格生成任务中，均能显著提升内容忠实度、风格对齐质量和生成鲁棒性，有效缓解了参考内容泄漏和生成不稳定的问题。"
+    }
+  },
+  {
+    "id": "2604.17801",
+    "title": "View-Consistent 3D Scene Editing via Dual-Path Structural Correspondense and Semantic Continuity",
+    "abstract": "Text-driven 3D scene editing has recently attracted increasing attention. Most existing methods follow a render-edit-optimize pipeline, where multi-view images are rendered from a 3D scene, edited with 2D image editors, and then used to optimize the underlying 3D representation. However, cross-view inconsistency remains a major bottleneck. Although recent methods introduce geometric cues, cross-view interactions, or video priors to mitigate this issue, they still largely rely on inference-time synchronization and thus remain limited in robustness and generalization.In this work, we recast multi-view consistent 3D editing from a distributional perspective: 3D scene editing essentially requires a joint distribution modeling across viewpoints.Based on this insight, we propose a view-consistent 3D editing framework that explicitly introduces cross-view dependencies into the editing process. Furthermore, motivated by the observation that structural correspondence and semantic continuity rely on different cross-view cues, we introduce a dual-path consistency mechanism consisting of projection-guided structural guidance and patch-level semantic propagation for effective cross-view editing. Further, we construct a paired multi-view editing dataset that provides reliable supervision for learning cross-view consistency in edited scenes. Extensive experiments demonstrate that our method achieves superior editing performance with precise and consistent views for complex scenes.",
+    "authors": [
+      "Pufan Li",
+      "Bi'an Du",
+      "Shenghe Zheng",
+      "Junyi Yao",
+      "Wei Hu"
+    ],
+    "published": "2026-04-20",
+    "updated": "2026-04-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.17801.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.17801",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于双路径结构对应与语义连续性的视角一致三维场景编辑",
+      "core_contribution": "本文从分布建模的视角重新定义了多视角一致的三维场景编辑问题，并提出了一种通过显式引入跨视角依赖关系的编辑框架，有效解决了现有方法中视角不一致的瓶颈问题。",
+      "method": "方法基于“渲染-编辑-优化”流程，但创新性地提出了双路径一致性机制：一方面通过投影引导的结构指导保持几何对应，另一方面通过块级语义传播确保语义连续性。此外，作者构建了一个配对的、带可靠监督信号的多视角编辑数据集，以学习编辑场景中的跨视角一致性。",
+      "findings": "大量实验表明，该方法在复杂场景中实现了优越的编辑性能，能够生成精确且视角一致的编辑结果，在鲁棒性和泛化性上优于现有依赖推理时同步的方法。"
+    }
+  },
+  {
+    "id": "2604.17565",
+    "title": "UniGeo: Unifying Geometric Guidance for Camera-Controllable Image Editing via Video Models",
+    "abstract": "Camera-controllable image editing aims to synthesize novel views of a given scene under varying camera poses while strictly preserving cross-view geometric consistency. However, existing methods typically rely on fragmented geometric guidance, such as only injecting point clouds at the representation level despite models containing multiple levels, and are mainly based on image diffusion models that operate on discrete view mappings. These two limitations jointly lead to geometric drift and structural degradation under continuous camera motion. We observe that while leveraging video models provides continuous viewpoint priors for camera-controllable image editing, they still struggle to form stable geometric understanding if geometric guidance remains fragmented. To systematically address this, we inject unified geometric guidance across three levels that jointly determine the generative output: representation, architecture, and loss function. To this end, we propose UniGeo, a novel camera-controllable editing framework. Specifically, at the representation level, UniGeo incorporates a frame-decoupled geometric reference injection mechanism to provide robust cross-view geometry context. At the architecture level, it introduces geometric anchor attention to align multi-view features. At the loss function level, it proposes a trajectory-endpoint geometric supervision strategy to explicitly reinforce the structural fidelity of target views. Comprehensive experiments across multiple public benchmarks, encompassing both extensive and limited camera motion settings, demonstrate that UniGeo significantly outperforms existing methods in both visual quality and geometric consistency.",
+    "authors": [
+      "Hong Jiang",
+      "Wensong Song",
+      "Zongxing Yang",
+      "Ruijie Quan",
+      "Yi Yang"
+    ],
+    "published": "2026-04-19",
+    "updated": "2026-04-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.17565.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.17565",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniGeo：通过视频模型为相机可控图像编辑提供统一的几何引导",
+      "core_contribution": "提出了UniGeo框架，通过在多层级（表示、架构、损失函数）统一注入几何引导，解决了现有相机可控图像编辑方法中几何引导碎片化导致的几何漂移和结构退化问题。",
+      "method": "UniGeo在三个层级引入统一的几何引导：在表示层，采用帧解耦的几何参考注入机制，提供鲁棒的跨视图几何上下文；在架构层，引入几何锚点注意力来对齐多视图特征；在损失函数层，提出轨迹端点几何监督策略，显式增强目标视图的结构保真度。",
+      "findings": "在多个公开基准测试（包括广泛和有限的相机运动设置）上的综合实验表明，UniGeo在视觉质量和几何一致性方面均显著优于现有方法。"
+    }
+  },
+  {
+    "id": "2604.17500",
+    "title": "Edit Fidelity Field: Semantics-Aware Region Isolation for Training-Free Scene Text Editing",
+    "abstract": "Scene text editing (STE) has achieved remarkable progress in accurately rendering target text through diffusion-based methods. However, we identify a critical yet overlooked problem: edit spillover -- when editing a target text region, existing methods inadvertently modify non-target regions, particularly neighboring text. Through systematic evaluation on 50 real-world scenes across four categories, we reveal that state-of-the-art diffusion editing models exhibit a spillover rate of 94%, meaning nearly all non-target text regions are altered during editing. To address this, we propose the Edit Fidelity Field (EFF), a semantics-aware continuous field that controls per-pixel editing fidelity. Unlike binary masks, EFF leverages OCR-detected text regions to construct a four-zone field: Edit Core (fully editable), Transition Zone (smooth decay), Protected Zone (non-target text, explicitly locked), and Background (strictly preserved). EFF operates as a training-free, model-agnostic post-processing module applicable to any diffusion-based STE method. We further propose per-region spillover quantification, a novel evaluation protocol that measures edit leakage at each non-target text region individually. Experiments demonstrate that EFF reduces spillover rate from 94% to 25% while improving non-target region preservation by +91.4 dB PSNR.",
+    "authors": [
+      "Guandong Li",
+      "Mengxia Ye"
+    ],
+    "published": "2026-04-19",
+    "updated": "2026-04-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.17500.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.17500",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "编辑保真场：面向免训练场景文本编辑的语义感知区域隔离",
+      "core_contribution": "本文提出了编辑保真场（EFF），一种语义感知的连续场，用于解决场景文本编辑中的“编辑溢出”问题，即编辑目标文本时意外修改非目标区域（尤其是邻近文本）。",
+      "method": "EFF利用OCR检测的文本区域构建一个四区连续场：编辑核心区（完全可编辑）、过渡区（平滑衰减）、保护区（非目标文本，明确锁定）和背景区（严格保留）。该方法作为免训练、模型无关的后处理模块，可应用于任何基于扩散的场景文本编辑方法。",
+      "findings": "实验表明，EFF将现有先进扩散编辑模型的编辑溢出率从94%显著降低至25%，同时将非目标区域的保护效果提升了+91.4 dB PSNR。论文还提出了一种按区域量化编辑溢出的新评估协议。"
+    }
+  },
+  {
+    "id": "2604.17492",
+    "title": "Coevolving Representations in Joint Image-Feature Diffusion",
+    "abstract": "Joint image-feature generative modeling has recently emerged as an effective strategy for improving diffusion training by coupling low-level VAE latents with high-level semantic features extracted from pre-trained visual encoders. However, existing approaches rely on a fixed representation space, constructed independently of the generative objective and kept unchanged during training. We argue that the representation space guiding diffusion should itself adapt to the generative task. To this end, we propose Coevolving Representation Diffusion (CoReDi), a framework in which the semantic representation space evolves during training by learning a lightweight linear projection jointly with the diffusion model. While naively optimizing this projection leads to degenerate solutions, we show that stable coevolution can be achieved through a combination of stop-gradient targets, normalization, and targeted regularization that prevents feature collapse. This formulation enables the semantic space to progressively specialize to the needs of image synthesis, improving its complementarity with image latents. We apply CoReDi to both VAE latent diffusion and pixel-space diffusion, demonstrating that adaptive semantic representations improve generative modeling across both settings. Experiments show that CoReDi achieves faster convergence and higher sample quality compared to joint diffusion models operating in fixed representation spaces.",
+    "authors": [
+      "Theodoros Kouzelis",
+      "Spyros Gidaris",
+      "Nikos Komodakis"
+    ],
+    "published": "2026-04-19",
+    "updated": "2026-04-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.17492.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.17492",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "联合图像-特征扩散中的协同演化表征",
+      "core_contribution": "提出了协同演化表征扩散框架，首次实现了语义表征空间在扩散模型训练过程中的自适应演化，从而提升了生成建模的效果。",
+      "method": "该方法在训练扩散模型的同时，联合优化一个轻量级的线性投影层，使预训练视觉编码器提取的语义特征空间能够根据生成任务的需要进行演化。通过结合停止梯度目标、归一化和防止特征崩溃的正则化策略，确保了训练过程的稳定性。",
+      "findings": "实验表明，与使用固定表征空间的联合扩散模型相比，该方法在VAE潜在扩散和像素空间扩散两种设置下均实现了更快的收敛速度和更高的样本质量，证明了自适应语义表征对图像合成的有效性。"
+    }
+  }
+]
