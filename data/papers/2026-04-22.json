@@ -1,0 +1,160 @@
+[
+  {
+    "id": "2604.19632",
+    "title": "CreatiParser: Generative Image Parsing of Raster Graphic Designs into Editable Layers",
+    "abstract": "Graphic design images consist of multiple editable layers, such as text, background, and decorative elements, while most generative models produce rasterized outputs without explicit layer structures, limiting downstream editing. Existing graphic design parsing methods typically rely on multi-stage pipelines combining layout prediction, matting, and inpainting, which suffer from error accumulation and limited controllability. We propose a hybrid generative framework for raster-to-layer graphic design parsing that decomposes a design image into editable text, background, and sticker layers. Text regions are parsed using a vision-language model into a text rendering protocol, enabling faithful reconstruction and flexible re-editing, while background and sticker layers are generated using a multi-branch diffusion architecture with RGBA support. We further introduce ParserReward and integrate it with Group Relative Policy Optimization to align generation quality with human design preferences. Extensive experiments on two challenging datasets, \\emph{i.e.,} the Parser-40K and Crello datasets, demonstrate superior performance over existing methods, \\emph{eg.,} achieving an overall average improvement of 23.7\\% across all metrics.",
+    "authors": [
+      "Weidong Chen",
+      "Dexiang Hong",
+      "Zhendong Mao",
+      "Yutao Cheng",
+      "Xinyan Liu",
+      "Lei Zhang",
+      "Yongdong Zhang"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19632.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19632",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "CreatiParser：将栅格图形设计生成式解析为可编辑图层",
+      "core_contribution": "提出了一个混合生成式框架，能够将栅格图形设计图像直接解析为可编辑的文本、背景和贴纸图层，并引入了ParserReward与策略优化方法以更好地对齐人类设计偏好。",
+      "method": "该方法采用混合生成框架：利用视觉语言模型将文本区域解析为文本渲染协议，实现精确重建与灵活重编辑；同时使用支持RGBA的多分支扩散架构生成背景和贴纸图层。此外，通过ParserReward奖励模型与分组相对策略优化（Group Relative Policy Optimization）来提升生成质量与人类偏好的一致性。",
+      "findings": "在Parser-40K和Crello两个挑战性数据集上的实验表明，该方法显著优于现有方法，在所有评估指标上平均整体提升了23.7%，实现了更准确、可控的图形设计图层解析与编辑。"
+    }
+  },
+  {
+    "id": "2604.19587",
+    "title": "SmartPhotoCrafter: Unified Reasoning, Generation and Optimization for Automatic Photographic Image Editing",
+    "abstract": "Traditional photographic image editing typically requires users to possess sufficient aesthetic understanding to provide appropriate instructions for adjusting image quality and camera parameters. However, this paradigm relies on explicit human instruction of aesthetic intent, which is often ambiguous, incomplete, or inaccessible to non-expert users. In this work, we propose SmartPhotoCrafter, an automatic photographic image editing method which formulates image editing as a tightly coupled reasoning-to-generation process. The proposed model first performs image quality comprehension and identifies deficiencies by the Image Critic module, and then the Photographic Artist module realizes targeted edits to enhance image appeal, eliminating the need for explicit human instructions. A multi-stage training pipeline is adopted: (i) Foundation pretraining to establish basic aesthetic understanding and editing capabilities, (ii) Adaptation with reasoning-guided multi-edit supervision to incorporate rich semantic guidance, and (iii) Coordinated reasoning-to generation reinforcement learning to jointly optimize reasoning and generation. During training, SmartPhotoCrafter emphasizes photo-realistic image generation, while supporting both image restoration and retouching tasks with consistent adherence to color- and tone-related semantics. We also construct a stage-specific dataset, which progressively builds reasoning and controllable generation, effective cross-module collaboration, and ultimately high-quality photographic enhancement. Experiments demonstrate that SmartPhotoCrafter outperforms existing generative models on the task of automatic photographic enhancement, achieving photo-realistic results while exhibiting higher tonal sensitivity to retouching instructions. Project page: https://github.com/vivoCameraResearch/SmartPhotoCrafter.",
+    "authors": [
+      "Ying Zeng",
+      "Miaosen Luo",
+      "Guangyuan Li",
+      "Yang Yang",
+      "Ruiyang Fan",
+      "Linxiao Shi",
+      "Qirui Yang",
+      "Jian Zhang",
+      "Chengcheng Liu",
+      "Siming Zheng",
+      "Jinwei Chen",
+      "Bo Li",
+      "Peng-Tao Jiang"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19587.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19587",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SmartPhotoCrafter：面向自动摄影图像编辑的统一推理、生成与优化框架",
+      "core_contribution": "提出了一种无需显式人工指令的自动摄影图像编辑方法，将图像编辑建模为紧密耦合的“推理到生成”过程，通过联合优化推理与生成模块实现高质量的图像增强。",
+      "method": "该方法包含两个核心模块：Image Critic模块负责分析图像质量并识别缺陷，Photographic Artist模块则根据推理结果进行针对性编辑。采用三阶段训练流程：基础预训练建立美学理解与编辑能力；基于推理引导的多编辑监督适应阶段融入语义指导；协调式推理到生成强化学习阶段联合优化推理与生成过程。",
+      "findings": "实验表明，SmartPhotoCrafter在自动摄影增强任务上优于现有生成模型，能够生成更逼真的图像结果，并对调色指令表现出更高的色调敏感性，同时支持图像修复与润色任务，且始终遵循颜色与色调相关的语义约束。"
+    }
+  },
+  {
+    "id": "2604.19406",
+    "title": "HP-Edit: A Human-Preference Post-Training Framework for Image Editing",
+    "abstract": "Common image editing tasks typically adopt powerful generative diffusion models as the leading paradigm for real-world content editing. Meanwhile, although reinforcement learning (RL) methods such as Diffusion-DPO and Flow-GRPO have further improved generation quality, efficiently applying Reinforcement Learning from Human Feedback (RLHF) to diffusion-based editing remains largely unexplored, due to a lack of scalable human-preference datasets and frameworks tailored to diverse editing needs. To fill this gap, we propose HP-Edit, a post-training framework for Human Preference-aligned Editing, and introduce RealPref-50K, a real-world dataset across eight common tasks and balancing common object editing. Specifically, HP-Edit leverages a small amount of human-preference scoring data and a pretrained visual large language model (VLM) to develop HP-Scorer--an automatic, human preference-aligned evaluator. We then use HP-Scorer both to efficiently build a scalable preference dataset and to serve as the reward function for post-training the editing model. We also introduce RealPref-Bench, a benchmark for evaluating real-world editing performance. Extensive experiments demonstrate that our approach significantly enhances models such as Qwen-Image-Edit-2509, aligning their outputs more closely with human preference.",
+    "authors": [
+      "Fan Li",
+      "Chonghuinan Wang",
+      "Lina Lei",
+      "Yuping Qiu",
+      "Jiaqi Xu",
+      "Jiaxiu Jiang",
+      "Xinran Qin",
+      "Zhikai Chen",
+      "Fenglong Song",
+      "Zhixin Wang",
+      "Renjing Pei",
+      "Wangmeng Zuo"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19406.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19406",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "HP-Edit：一种基于人类偏好的图像编辑后训练框架",
+      "core_contribution": "提出了HP-Edit框架，通过构建真实世界人类偏好数据集RealPref-50K和自动化偏好评估器HP-Scorer，首次将人类反馈强化学习（RLHF）高效应用于扩散模型的图像编辑任务，显著提升了编辑结果与人类偏好的一致性。",
+      "method": "方法主要包括：1）构建了一个覆盖八种常见编辑任务、平衡常见对象编辑的大规模真实世界人类偏好数据集RealPref-50K；2）利用少量人类偏好评分数据和预训练视觉大语言模型（VLM）训练出自动化偏好评估器HP-Scorer；3）使用HP-Scorer高效扩展偏好数据集，并作为奖励函数对编辑模型进行后训练；4）建立了用于评估真实世界编辑性能的基准RealPref-Bench。",
+      "findings": "大量实验表明，HP-Edit框架能显著提升如Qwen-Image-Edit-2509等编辑模型的性能，使其输出结果更符合人类偏好。该方法为解决扩散模型编辑任务中缺乏可扩展的人类偏好数据与训练框架的问题提供了有效方案。"
+    }
+  },
+  {
+    "id": "2604.19234",
+    "title": "Learning to Credit the Right Steps: Objective-aware Process Optimization for Visual Generation",
+    "abstract": "Reinforcement learning, particularly Group Relative Policy Optimization (GRPO), has emerged as an effective framework for post-training visual generative models with human preference signals. However, its effectiveness is fundamentally limited by coarse reward credit assignment. In modern visual generation, multiple reward models are often used to capture heterogeneous objectives, such as visual quality, motion consistency, and text alignment. Existing GRPO pipelines typically collapse these rewards into a single static scalar and propagate it uniformly across the entire diffusion trajectory. This design ignores the stage-specific roles of different denoising steps and produces mistimed or incompatible optimization signals. To address this issue, we propose Objective-aware Trajectory Credit Assignment (OTCA), a structured framework for fine-grained GRPO training. OTCA consists of two key components. Trajectory-Level Credit Decomposition estimates the relative importance of different denoising steps. Multi-Objective Credit Allocation adaptively weights and combines multiple reward signals throughout the denoising process. By jointly modeling temporal credit and objective-level credit, OTCA converts coarse reward supervision into a structured, timestep-aware training signal that better matches the iterative nature of diffusion-based generation. Extensive experiments show that OTCA consistently improves both image and video generation quality across evaluation metrics.",
+    "authors": [
+      "Rui Li",
+      "Ke Hao",
+      "Yuanzhi Liang",
+      "Haibin Huang",
+      "Chi Zhang",
+      " YunGu",
+      "XueLong Li"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19234.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19234",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "学习为正确的步骤赋分：面向视觉生成的目标感知过程优化",
+      "core_contribution": "本文提出了目标感知轨迹赋分（OTCA）框架，解决了现有基于强化学习的视觉生成后训练方法中奖励信号粗粒度分配的问题，通过细粒度的时空奖励分配显著提升了生成质量。",
+      "method": "OTCA包含两个核心组件：轨迹级赋分分解，用于估计不同去噪步骤的相对重要性；多目标赋分分配，在去噪过程中自适应地加权和组合多个奖励信号。该方法联合建模时间维度和目标维度的赋分，将粗粒度的奖励监督转化为结构化的、感知时间步的训练信号。",
+      "findings": "大量实验表明，OTCA在图像和视频生成任务中，能持续提升多种评估指标下的生成质量，证明了细粒度、目标感知的奖励赋分对优化基于扩散的生成模型迭代过程的有效性。"
+    }
+  },
+  {
+    "id": "2604.19202",
+    "title": "SketchFaceGS: Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting",
+    "abstract": "3D Gaussian representations have emerged as a powerful paradigm for digital head modeling, achieving photorealistic quality with real-time rendering. However, intuitive and interactive creation or editing of 3D Gaussian head models remains challenging. Although 2D sketches provide an ideal interaction modality for fast, intuitive conceptual design, they are sparse, depth-ambiguous, and lack high-frequency appearance cues, making it difficult to infer dense, geometrically consistent 3D Gaussian structures from strokes - especially under real-time constraints. To address these challenges, we propose SketchFaceGS, the first sketch-driven framework for real-time generation and editing of photorealistic 3D Gaussian head models from 2D sketches. Our method uses a feed-forward, coarse-to-fine architecture. A Transformer-based UV feature-prediction module first reconstructs a coarse but geometrically consistent UV feature map from the input sketch, and then a 3D UV feature enhancement module refines it with high-frequency, photorealistic detail to produce a high-fidelity 3D head. For editing, we introduce a UV Mask Fusion technique combined with a layer-by-layer feature-fusion strategy, enabling precise, real-time, free-viewpoint modifications. Extensive experiments show that SketchFaceGS outperforms existing methods in both generation fidelity and editing flexibility, producing high-quality, editable 3D heads from sketches in a single forward pass.",
+    "authors": [
+      "Bo Li",
+      "Jiahao Kang",
+      "Yubo Ma",
+      "Feng-Lin Liu",
+      "Bin Liu",
+      "Fang-Lue Zhang",
+      "Lin Gao"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19202.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19202",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "SketchFaceGS：基于高斯泼溅的实时草图驱动人脸编辑与生成",
+      "core_contribution": "提出了首个从2D草图实时生成和编辑逼真3D高斯人头模型的框架，通过粗到细的架构解决了草图稀疏、深度模糊和缺乏高频细节的挑战。",
+      "method": "方法采用前馈式、由粗到精的架构：首先通过基于Transformer的UV特征预测模块从输入草图重建出几何一致的粗糙UV特征图；随后利用3D UV特征增强模块为其添加高频逼真细节，生成高保真3D头部模型。对于编辑任务，引入了UV掩码融合技术和分层特征融合策略，实现精确、实时、自由视角的修改。",
+      "findings": "大量实验表明，SketchFaceGS在生成保真度和编辑灵活性上均优于现有方法，能够通过单次前向传播从草图生成高质量、可编辑的3D头部模型。"
+    }
+  }
+]
