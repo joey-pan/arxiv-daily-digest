@@ -1,0 +1,212 @@
+[
+  {
+    "id": "2604.20730",
+    "title": "Render-in-the-Loop: Vector Graphics Generation via Visual Self-Feedback",
+    "abstract": "Multimodal Large Language Models (MLLMs) have shown promising capabilities in generating Scalable Vector Graphics (SVG) via direct code synthesis. However, existing paradigms typically adopt an open-loop \"blind drawing\" approach, where models generate symbolic code sequences without perceiving intermediate visual outcomes. This methodology severely underutilizes the powerful visual priors embedded in MLLMs vision encoders, treating SVG generation as a disjointed textual sequence modeling task rather than an integrated visuo-spatial one. Consequently, models struggle to reason about partial canvas states and implicit occlusion relationships, which are visually explicit but textually ambiguous. To bridge this gap, we propose Render-in-the-Loop, a novel generation paradigm that reformulates SVG synthesis as a step-wise, visual-context-aware process. By rendering intermediate code states into a cumulative canvas, the model explicitly observes the evolving visual context at each step, leveraging on-the-fly feedback to guide subsequent generation. However, we demonstrate that applying this visual loop naively to off-the-shelf models is suboptimal due to their inability to leverage incremental visual-code mappings. To address this, we first utilize fine-grained path decomposition to construct dense multi-step visual trajectories, and then introduce a Visual Self-Feedback (VSF) training strategy to condition the next primitive generation on intermediate visual states. Furthermore, a Render-and-Verify (RaV) inference mechanism is proposed to effectively filter degenerate and redundant primitives. Our framework, instantiated on a multimodal foundation model, outperforms strong open-weight baselines on the standard MMSVGBench. This result highlights the remarkable data efficiency and generalization capability of our Render-in-the-Loop paradigm for both Text-to-SVG and Image-to-SVG tasks.",
+    "authors": [
+      "Guotao Liang",
+      "Zhangcheng Wang",
+      "Juncheng Hu",
+      "Haitao Zhou",
+      "Ziteng Xue",
+      "Jing Zhang",
+      "Dong Xu",
+      "Qian Yu"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20730.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20730",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "渲染循环内嵌：基于视觉自反馈的矢量图形生成",
+      "core_contribution": "提出了“渲染循环内嵌”新范式，将SVG生成重构为基于视觉上下文感知的逐步生成过程，并设计了视觉自反馈训练策略与渲染验证推理机制，显著提升了生成质量与数据效率。",
+      "method": "首先通过细粒度路径分解构建密集的多步视觉轨迹；然后引入视觉自反馈训练策略，使模型能够基于中间视觉状态生成下一个图元；最后提出渲染验证推理机制，在推理时过滤退化或冗余的图元。",
+      "findings": "在标准MMSVGBench基准测试中，该方法优于现有的强开源基线模型，证明了其在文本到SVG和图像到SVG任务上具有出色的数据效率和泛化能力。"
+    }
+  },
+  {
+    "id": "2604.19858",
+    "title": "Wan-Image: Pushing the Boundaries of Generative Visual Intelligence",
+    "abstract": "We present Wan-Image, a unified visual generation system explicitly engineered to paradigm-shift image generation models from casual synthesizers into professional-grade productivity tools. While contemporary diffusion models excel at aesthetic generation, they frequently encounter critical bottlenecks in rigorous design workflows that demand absolute controllability, complex typography rendering, and strict identity preservation. To address these challenges, Wan-Image features a natively unified multi-modal architecture by synergizing the cognitive capabilities of large language models with the high-fidelity pixel synthesis of diffusion transformers, which seamlessly translates highly nuanced user intents into precise visual outputs. It is fundamentally powered by large-scale multi-modal data scaling, a systematic fine-grained annotation engine, and curated reinforcement learning data to surpass basic instruction following and unlock expert-level professional capabilities. These include ultra-long complex text rendering, hyper-diverse portrait generation, palette-guided generation, multi-subject identity preservation, coherent sequential visual generation, precise multi-modal interactive editing, native alpha-channel generation, and high-efficiency 4K synthesis. Across diverse human evaluations, Wan-Image exceeds Seedream 5.0 Lite and GPT Image 1.5 in overall performance, reaching parity with Nano Banana Pro in challenging tasks. Ultimately, Wan-Image revolutionizes visual content creation across e-commerce, entertainment, education, and personal productivity, redefining the boundaries of professional visual synthesis.",
+    "authors": [
+      "Chaojie Mao",
+      "Chen-Wei Xie",
+      "Chongyang Zhong",
+      "Haoyou Deng",
+      "Jiaxing Zhao",
+      "Jie Xiao",
+      "Jinbo Xing",
+      "Jingfeng Zhang",
+      "Jingren Zhou",
+      "Jingyi Zhang",
+      "Jun Dan",
+      "Kai Zhu",
+      "Kang Zhao",
+      "Keyu Yan",
+      "Minghui Chen",
+      "Pandeng Li",
+      "Shuangle Chen",
+      "Tong Shen",
+      "Yu Liu",
+      "Yue Jiang",
+      "Yulin Pan",
+      "Yuxiang Tuo",
+      "Zeyinzi Jiang",
+      "Zhen Han",
+      "Ang Wang",
+      "Bang Zhang",
+      "Baole Ai",
+      "Bin Wen",
+      "Boang Feng",
+      "Feiwu Yu",
+      "Gang Wang",
+      "Haiming Zhao",
+      "He Kang",
+      "Jianjing Xiang",
+      "Jianyuan Zeng",
+      "Jinkai Wang",
+      "Ke Sun",
+      "Linqian Wu",
+      "Pei Gong",
+      "Pingyu Wu",
+      "Ruiwen Wu",
+      "Tongtong Su",
+      "Wenmeng Zhou",
+      "Wenting Shen",
+      "Wenyuan Yu",
+      "Xianjun Xu",
+      "Xiaoming Huang",
+      "Xiejie Shen",
+      "Xin Xu",
+      "Yan Kou",
+      "Yangyu Lv",
+      "Yifan Zhai",
+      "Yitong Huang",
+      "Yun Zheng",
+      "Yuntao Hong",
+      "Zhicheng Zhang"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19858.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19858",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "万像：拓展生成式视觉智能的边界",
+      "core_contribution": "提出了Wan-Image，一个旨在将图像生成模型从休闲合成工具转变为专业级生产力工具的统一视觉生成系统，通过解决可控性、复杂排版和身份保持等关键瓶颈，重新定义了专业视觉合成的边界。",
+      "method": "该方法采用原生统一的多模态架构，将大语言模型的认知能力与扩散Transformer的高保真像素合成能力相结合。其核心驱动力包括大规模多模态数据扩展、系统化的细粒度标注引擎以及精心策划的强化学习数据，以超越基础的指令跟随并解锁专家级专业能力。",
+      "findings": "在多样化的人类评估中，Wan-Image在整体性能上超越了Seedream 5.0 Lite和GPT Image 1.5，并在具有挑战性的任务上与Nano Banana Pro达到同等水平。该系统在超长复杂文本渲染、超多样化人像生成、调色板引导生成、多主体身份保持、连贯序列视觉生成、精确多模态交互编辑、原生Alpha通道生成以及高效4K合成等专业能力上表现出色。"
+    }
+  },
+  {
+    "id": "2604.20816",
+    "title": "ParetoSlider: Diffusion Models Post-Training for Continuous Reward Control",
+    "abstract": "Reinforcement Learning (RL) post-training has become the standard for aligning generative models with human preferences, yet most methods rely on a single scalar reward. When multiple criteria matter, the prevailing practice of ``early scalarization'' collapses rewards into a fixed weighted sum. This commits the model to a single trade-off point at training time, providing no inference-time control over inherently conflicting goals -- such as prompt adherence versus source fidelity in image editing. We introduce ParetoSlider, a multi-objective RL (MORL) framework that trains a single diffusion model to approximate the entire Pareto front. By training the model with continuously varying preference weights as a conditioning signal, we enable users to navigate optimal trade-offs at inference time without retraining or maintaining multiple checkpoints. We evaluate ParetoSlider across three state-of-the-art flow-matching backbones: SD3.5, FluxKontext, and LTX-2. Our single preference-conditioned model matches or exceeds the performance of baselines trained separately for fixed reward trade-offs, while uniquely providing fine-grained control over competing generative goals.",
+    "authors": [
+      "Shelly Golan",
+      "Michael Finkelson",
+      "Ariel Bereslavsky",
+      "Yotam Nitzan",
+      "Or Patashnik"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20816.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20816",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "ParetoSlider：用于连续奖励控制的扩散模型后训练方法",
+      "core_contribution": "提出了一个多目标强化学习框架，能够训练单个扩散模型来近似整个帕累托前沿，从而在推理时无需重新训练即可让用户连续调节不同目标之间的权衡。",
+      "method": "该方法将连续变化的偏好权重作为条件信号输入模型进行训练，使模型能够学习在不同权重下优化多个冲突目标。它基于先进的流匹配骨干网络（如SD3.5、FluxKontext和LTX-2）实现，通过多目标强化学习后训练来替代传统的早期标量化方法。",
+      "findings": "实验表明，单个经过偏好条件训练的模型在性能上匹配或超过了为固定奖励权衡分别训练的基线模型，同时能够对相互冲突的生成目标（如图像编辑中的提示遵循与源保真度）提供细粒度的连续控制。"
+    }
+  },
+  {
+    "id": "2604.20796",
+    "title": "LLaDA2.0-Uni: Unifying Multimodal Understanding and Generation with Diffusion Large Language Model",
+    "abstract": "We present LLaDA2.0-Uni, a unified discrete diffusion large language model (dLLM) that supports multimodal understanding and generation within a natively integrated framework. Its architecture combines a fully semantic discrete tokenizer, a MoE-based dLLM backbone, and a diffusion decoder. By discretizing continuous visual inputs via SigLIP-VQ, the model enables block-level masked diffusion for both text and vision inputs within the backbone, while the decoder reconstructs visual tokens into high-fidelity images. Inference efficiency is enhanced beyond parallel decoding through prefix-aware optimizations in the backbone and few-step distillation in the decoder. Supported by carefully curated large-scale data and a tailored multi-stage training pipeline, LLaDA2.0-Uni matches specialized VLMs in multimodal understanding while delivering strong performance in image generation and editing. Its native support for interleaved generation and reasoning establishes a promising and scalable paradigm for next-generation unified foundation models. Codes and models are available at https://github.com/inclusionAI/LLaDA2.0-Uni.",
+    "authors": [
+      "Inclusion AI",
+      "Tiwei Bie",
+      "Haoxing Chen",
+      "Tieyuan Chen",
+      "Zhenglin Cheng",
+      "Long Cui",
+      "Kai Gan",
+      "Zhicheng Huang",
+      "Zhenzhong Lan",
+      "Haoquan Li",
+      "Jianguo Li",
+      "Tao Lin",
+      "Qi Qin",
+      "Hongjun Wang",
+      "Xiaomei Wang",
+      "Haoyuan Wu",
+      "Yi Xin",
+      "Junbo Zhao"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20796.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20796",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LLaDA2.0-Uni：基于扩散大语言模型的多模态理解与生成统一框架",
+      "core_contribution": "提出了一个统一的离散扩散大语言模型，首次在原生集成框架内同时支持多模态理解与生成，并通过高效的推理优化实现了交织生成与推理。",
+      "method": "模型架构包含三个核心组件：全语义离散分词器（SigLIP-VQ）将连续视觉输入离散化；基于混合专家（MoE）的离散扩散大语言模型主干，支持文本与视觉输入的块级掩码扩散；扩散解码器将视觉令牌重建为高保真图像。通过主干中的前缀感知优化和解码器的少步蒸馏，提升了推理效率。",
+      "findings": "实验表明，LLaDA2.0-Uni在多模态理解任务上达到专用视觉语言模型的水平，同时在图像生成与编辑任务中表现出强大性能；其原生支持交织生成与推理的能力，为下一代统一基础模型提供了可扩展的范式。"
+    }
+  },
+  {
+    "id": "2604.20570",
+    "title": "Exploring Spatial Intelligence from a Generative Perspective",
+    "abstract": "Spatial intelligence is essential for multimodal large language models, yet current benchmarks largely assess it only from an understanding perspective. We ask whether modern generative or unified multimodal models also possess generative spatial intelligence (GSI), the ability to respect and manipulate 3D spatial constraints during image generation, and whether such capability can be measured or improved. We introduce GSI-Bench, the first benchmark designed to quantify GSI through spatially grounded image editing. It consists of two complementary components: GSI-Real, a high-quality real-world dataset built via a 3D-prior-guided generation and filtering pipeline, and GSI-Syn, a large-scale synthetic benchmark with controllable spatial operations and fully automated labeling. Together with a unified evaluation protocol, GSI-Bench enables scalable, model-agnostic assessment of spatial compliance and editing fidelity. Experiments show that fine-tuning unified multimodal models on GSI-Syn yields substantial gains on both synthetic and real tasks and, strikingly, also improves downstream spatial understanding. This provides the first clear evidence that generative training can tangibly strengthen spatial reasoning, establishing a new pathway for advancing spatial intelligence in multimodal models.",
+    "authors": [
+      "Muzhi Zhu",
+      "Shunyao Jiang",
+      "Huanyi Zheng",
+      "Zekai Luo",
+      "Hao Zhong",
+      "Anzhou Li",
+      "Kaijun Wang",
+      "Jintao Rong",
+      "Yang Liu",
+      "Hao Chen",
+      "Tao Lin",
+      "Chunhua Shen"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20570.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20570",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从生成视角探索空间智能",
+      "core_contribution": "提出了首个用于量化生成式空间智能（GSI）的基准测试GSI-Bench，并首次通过实验证明，针对空间生成任务的微调能够显著提升多模态模型的空间推理与理解能力。",
+      "method": "方法主要包括：1）构建了包含真实世界数据（GSI-Real）与大规模合成数据（GSI-Syn）的GSI-Bench基准；2）GSI-Real通过3D先验引导的生成与过滤流程构建高质量数据集；3）GSI-Syn通过可控的空间操作和全自动标注生成；4）采用统一的评估协议，对模型的空间遵从性和编辑保真度进行可扩展的、与模型无关的评估。",
+      "findings": "关键发现是：在GSI-Syn上进行微调的统一多模态模型，不仅在合成和真实的空间编辑任务上表现大幅提升，而且显著改善了其下游的空间理解能力。这首次明确证明了生成式训练能够切实增强空间推理，为推进多模态模型的空间智能开辟了新途径。"
+    }
+  }
+]
