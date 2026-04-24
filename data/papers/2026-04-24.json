@@ -1,0 +1,158 @@
+[
+  {
+    "id": "2604.21052",
+    "title": "StyleVAR: Controllable Image Style Transfer via Visual Autoregressive Modeling",
+    "abstract": "We build on the Visual Autoregressive Modeling (VAR) framework and formulate style transfer as conditional discrete sequence modeling in a learned latent space. Images are decomposed into multi-scale representations and tokenized into discrete codes by a VQ-VAE; a transformer then autoregressively models the distribution of target tokens conditioned on style and content tokens. To inject style and content information, we introduce a blended cross-attention mechanism in which the evolving target representation attends to its own history, while style and content features act as queries that decide which aspects of this history to emphasize. A scale-dependent blending coefficient controls the relative influence of style and content at each stage, encouraging the synthesized representation to align with both the content structure and the style texture without breaking the autoregressive continuity of VAR. We train StyleVAR in two stages from a pretrained VAR checkpoint: supervised fine-tuning on a large triplet dataset of content--style--target images, followed by reinforcement fine-tuning with Group Relative Policy Optimization (GRPO) against a DreamSim-based perceptual reward, with per-action normalization weighting to rebalance credit across VAR's multi-scale hierarchy. Across three benchmarks spanning in-, near-, and out-of-distribution regimes, StyleVAR consistently outperforms an AdaIN baseline on Style Loss, Content Loss, LPIPS, SSIM, DreamSim, and CLIP similarity, and the GRPO stage yields further gains over the SFT checkpoint, most notably on the reward-aligned perceptual metrics. Qualitatively, the method transfers texture while maintaining semantic structure, especially for landscapes and architectural scenes, while a generalization gap on internet images and difficulty with human faces highlight the need for better content diversity and stronger structural priors.",
+    "authors": [
+      "Liqi Jing",
+      "Dingming Zhang",
+      "Peinian Li",
+      "Lichen Zhu"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21052.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21052",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "StyleVAR：基于视觉自回归建模的可控图像风格迁移",
+      "core_contribution": "提出了一种将图像风格迁移转化为条件离散序列建模的新框架，通过视觉自回归模型（VAR）结合混合交叉注意力机制，实现了对内容结构与风格纹理的精细控制，并首次在风格迁移中引入强化学习微调以优化感知质量。",
+      "method": "首先利用VQ-VAE将图像分解为多尺度表示并离散化为编码序列；然后使用Transformer在风格和内容编码的条件下，自回归地建模目标编码的分布。为了融合风格与内容信息，设计了混合交叉注意力机制，其中目标表示关注自身历史，而风格与内容特征作为查询决定历史中哪些部分被强调，并通过尺度依赖的混合系数控制各阶段风格与内容的相对影响。训练分为两阶段：先在内容-风格-目标三元组数据集上进行监督微调，再使用基于DreamSim感知奖励的组相对策略优化（GRPO）进行强化学习微调，并引入每动作归一化权重以平衡VAR多尺度层次上的贡献。",
+      "findings": "在涵盖分布内、近分布和分布外三个基准测试中，StyleVAR在风格损失、内容损失、LPIPS、SSIM、DreamSim和CLIP相似度指标上均一致优于AdaIN基线；GRPO阶段进一步提升了感知指标，尤其在奖励对齐的度量上效果显著。定性结果表明，该方法能有效迁移纹理并保持语义结构，尤其适用于风景和建筑场景，但在互联网图像上存在泛化差距，且对人脸处理仍有困难，提示需要更好的内容多样性和更强的结构先验。"
+    }
+  },
+  {
+    "id": "2604.21008",
+    "title": "Linear Image Generation by Synthesizing Exposure Brackets",
+    "abstract": "The life of a photo begins with photons striking the sensor, whose signals are passed through a sophisticated image signal processing (ISP) pipeline to produce a display-referred image. However, such images are no longer faithful to the incident light, being compressed in dynamic range and stylized by subjective preferences. In contrast, RAW images record direct sensor signals before non-linear tone mapping. After camera response curve correction and demosaicing, they can be converted into linear images, which are scene-referred representations that directly reflect true irradiance and are invariant to sensor-specific factors. Since image sensors have better dynamic range and bit depth, linear images contain richer information than display-referred ones, leaving users more room for editing during post-processing. Despite this advantage, current generative models mainly synthesize display-referred images, which inherently limits downstream editing. In this paper, we address the task of text-to-linear-image generation: synthesizing a high-quality, scene-referred linear image that preserves full dynamic range, conditioned on a text prompt, for professional post-processing. Generating linear images is challenging, as pre-trained VAEs in latent diffusion models struggle to simultaneously preserve extreme highlights and shadows due to the higher dynamic range and bit depth. To this end, we represent a linear image as a sequence of exposure brackets, each capturing a specific portion of the dynamic range, and propose a DiT-based flow-matching architecture for text-conditioned exposure bracket generation. We further demonstrate downstream applications including text-guided linear image editing and structure-conditioned generation via ControlNet.",
+    "authors": [
+      "Yuekun Dai",
+      "Zhoutong Zhang",
+      "Shangchen Zhou",
+      "Nanxuan Zhao"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21008.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21008",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过合成曝光包围生成线性图像",
+      "core_contribution": "本文首次提出文本到线性图像生成任务，通过将线性图像表示为曝光包围序列，并基于DiT的流匹配架构实现高质量场景参考图像合成，突破了传统生成模型仅能生成显示参考图像的限制。",
+      "method": "首先将线性图像表示为一系列曝光包围（exposure brackets），每个包围捕捉动态范围中的特定部分。然后提出基于扩散变换器（DiT）的流匹配（flow-matching）架构，以文本提示为条件生成这些曝光包围。最后通过组合包围生成完整的线性图像，并支持后续编辑任务。",
+      "findings": "实验表明，该方法能够有效保留线性图像的高动态范围和位深度，克服了预训练VAE在极端高光和阴影区域难以同时保持细节的问题。此外，该方法可扩展至文本引导的线性图像编辑和基于ControlNet的结构条件生成等下游应用。"
+    }
+  },
+  {
+    "id": "2604.20354",
+    "title": "Hallucination Early Detection in Diffusion Models",
+    "abstract": "Text-to-Image generation has seen significant advancements in output realism with the advent of diffusion models. However, diffusion models encounter difficulties when tasked with generating multiple objects, frequently resulting in hallucinations where certain entities are omitted. While existing solutions typically focus on optimizing latent representations within diffusion models, the relevance of the initial generation seed is typically underestimated. While using various seeds in multiple iterations can improve results, this method also significantly increases time and energy costs. To address this challenge, we introduce HEaD+ (Hallucination Early Detection +), a novel approach designed to identify incorrect generations early in the diffusion process. The HEaD+ framework integrates cross-attention maps and textual information with a novel input, the Predicted Final Image. The objective is to assess whether to proceed with the current generation or restart it with a different seed, thereby exploring multiple-generation seeds while conserving time. HEaD+ is trained on the newly created InsideGen dataset of 45,000 generated images, each containing prompts with up to seven objects. Our findings demonstrate a 6-8% increase in the likelihood of achieving a complete generation (i.e., an image accurately representing all specified subjects) with four objects when applying HEaD+ alongside existing models. Additionally, HEaD+ reduces generation times by up to 32% when aiming for a complete image, enhancing the efficiency of generating complete and accurate object representations relative to leading models. Moreover, we propose an integrated localization module that predicts object centroid positions and verifies pairwise spatial relations (if requested by the users) at an intermediate timestep, gating generation together with object presence to further improve relation-consistent outcomes.",
+    "authors": [
+      "Federico Betti",
+      "Lorenzo Baraldi",
+      "Lorenzo Baraldi",
+      "Rita Cucchiara",
+      "Nicu Sebe"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20354.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20354",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散模型中的幻觉早期检测",
+      "core_contribution": "提出HEaD+框架，通过在扩散过程早期检测并跳过会导致幻觉的生成种子，在保证生成完整性的同时显著降低时间和能耗成本。",
+      "method": "HEaD+结合交叉注意力图、文本信息以及一种新颖的输入——预测最终图像，在扩散过程的中间时间步评估当前生成是否可能完整。若检测到不完整，则立即重启并更换种子，从而在探索多个生成种子的同时节省时间。该方法基于新构建的包含45,000张生成图像的InsideGen数据集进行训练，并集成了一个定位模块，用于预测对象质心位置并验证空间关系。",
+      "findings": "在包含四个对象的提示词生成任务中，HEaD+使完整生成（所有指定对象均正确呈现）的概率提升6-8%，同时将生成时间最多减少32%。此外，其定位模块还能在用户要求时验证对象间的空间关系，进一步提升关系一致性生成效果。"
+    }
+  },
+  {
+    "id": "2604.20329",
+    "title": "Image Generators are Generalist Vision Learners",
+    "abstract": "Recent works show that image and video generators exhibit zero-shot visual understanding behaviors, in a way reminiscent of how LLMs develop emergent capabilities of language understanding and reasoning from generative pretraining. While it has long been conjectured that the ability to create visual content implies an ability to understand it, there has been limited evidence that generative vision models have developed strong understanding capabilities. In this work, we demonstrate that image generation training serves a role similar to LLM pretraining, and lets models learn powerful and general visual representations that enable SOTA performance on various vision tasks. We introduce Vision Banana, a generalist model built by instruction-tuning Nano Banana Pro (NBP) on a mixture of its original training data alongside a small amount of vision task data. By parameterizing the output space of vision tasks as RGB images, we seamlessly reframe perception as image generation. Our generalist model, Vision Banana, achieves SOTA results on a variety of vision tasks involving both 2D and 3D understanding, beating or rivaling zero-shot domain-specialists, including Segment Anything Model 3 on segmentation tasks, and the Depth Anything series on metric depth estimation. We show that these results can be achieved with lightweight instruction-tuning without sacrificing the base model's image generation capabilities. The superior results suggest that image generation pretraining is a generalist vision learner. It also shows that image generation serves as a unified and universal interface for vision tasks, similar to text generation's role in language understanding and reasoning. We could be witnessing a major paradigm shift for computer vision, where generative vision pretraining takes a central role in building Foundational Vision Models for both generation and understanding.",
+    "authors": [
+      "Valentin Gabeur",
+      "Shangbang Long",
+      "Songyou Peng",
+      "Paul Voigtlaender",
+      "Shuyang Sun",
+      "Yanan Bao",
+      "Karen Truong",
+      "Zhicheng Wang",
+      "Wenlei Zhou",
+      "Jonathan T. Barron",
+      "Kyle Genova",
+      "Nithish Kannen",
+      "Sherry Ben",
+      "Yandong Li",
+      "Mandy Guo",
+      "Suhas Yogin",
+      "Yiming Gu",
+      "Huizhong Chen",
+      "Oliver Wang",
+      "Saining Xie",
+      "Howard Zhou",
+      "Kaiming He",
+      "Thomas Funkhouser",
+      "Jean-Baptiste Alayrac",
+      "Radu Soricut"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20329.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20329",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "图像生成器是通用视觉学习者",
+      "core_contribution": "本文证明图像生成训练可以像大语言模型预训练一样，使模型学习到强大且通用的视觉表征，并通过轻量级指令微调构建出在多种2D和3D视觉任务上达到最先进性能的通用模型Vision Banana。",
+      "method": "作者基于Nano Banana Pro（NBP）模型，通过在其原始训练数据中混合少量视觉任务数据进行指令微调，构建了通用模型Vision Banana。他们将视觉任务的输出空间参数化为RGB图像，从而将感知任务无缝重构为图像生成问题。这种方法使得一个统一的生成式框架能够同时处理分割、深度估计等多种视觉任务。",
+      "findings": "Vision Banana在多种2D和3D视觉任务上取得了最先进的结果，击败或媲美了包括Segment Anything Model 3（分割）和Depth Anything系列（度量深度估计）在内的零样本领域专用模型。实验表明，仅通过轻量级指令微调即可实现这些结果，且不牺牲基础模型的图像生成能力，说明图像生成预训练是一种通用的视觉学习方法，并可作为视觉任务的统一接口。"
+    }
+  },
+  {
+    "id": "2604.20258",
+    "title": "Rethinking Where to Edit: Task-Aware Localization for Instruction-Based Image Editing",
+    "abstract": "Instruction-based image editing (IIE) aims to modify images according to textual instructions while preserving irrelevant content. Despite recent advances in diffusion transformers, existing methods often suffer from over-editing, introducing unintended changes to regions unrelated to the desired edit. We identify that this limitation arises from the lack of an explicit mechanism for edit localization. In particular, different editing operations (e.g., addition, removal and replacement) induce distinct spatial patterns, yet current IIE models typically treat localization in a task-agnostic manner. To address this limitation, we propose a training-free, task-aware edit localization framework that exploits the intrinsic source and target image streams within IIE models. For each image stream, We first obtain attention-based edit cues, and then construct feature centroids based on these attentive cues to partition tokens into edit and non-edit regions. Based on the observation that optimal localization is inherently task-dependent, we further introduce a unified mask construction strategy that selectively leverages source and target image streams for different editing tasks. We provide a systematic analysis for our proposed insights and approaches. Extensive experiments on EdiVal-Bench demonstrate our framework consistently improves non-edit region consistency while maintaining strong instruction-following performance on top of powerful recent image editing backbones, including Step1X-Edit and Qwen-Image-Edit.",
+    "authors": [
+      "Jingxuan He",
+      "Xiyu Wang",
+      "Mengyu Zheng",
+      "Xiangyu Zeng",
+      "Yunke Wang",
+      "Chang Xu"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20258.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20258",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "重新思考编辑位置：面向指令的图像编辑中的任务感知定位",
+      "core_contribution": "提出了一种无需训练、任务感知的编辑定位框架，通过利用模型内部源图像和目标图像流中的注意力线索，针对不同编辑操作（如添加、删除、替换）自适应地构建掩码，从而有效减少过度编辑问题。",
+      "method": "首先，从指令式图像编辑模型的双流（源图像流和目标图像流）中提取基于注意力的编辑线索；然后，根据这些注意力线索构建特征质心，将图像令牌划分为编辑区域和非编辑区域；最后，基于编辑任务类型（如添加、删除、替换）选择性地融合源流和目标流的掩码信息，生成统一的编辑掩码，实现任务感知的定位。",
+      "findings": "在EdiVal-Bench基准上的大量实验表明，该框架在保持强大指令跟随性能的同时，显著提升了非编辑区域的一致性，并能在Step1X-Edit和Qwen-Image-Edit等先进图像编辑骨干模型上稳定改进效果。"
+    }
+  }
+]
