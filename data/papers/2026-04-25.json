@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2604.20038",
+    "title": "FluSplat: Sparse-View 3D Editing without Test-Time Optimization",
+    "abstract": "Recent advances in text-guided image editing and 3D Gaussian Splatting (3DGS) have enabled high-quality 3D scene manipulation. However, existing pipelines rely on iterative edit-and-fit optimization at test time, alternating between 2D diffusion editing and 3D reconstruction. This process is computationally expensive, scene-specific, and prone to cross-view inconsistencies. We propose a feed-forward framework for cross-view consistent 3D scene editing from sparse views. Instead of enforcing consistency through iterative 3D refinement, we introduce a cross-view regularization scheme in the image domain during training. By jointly supervising multi-view edits with geometric alignment constraints, our model produces view-consistent results without per-scene optimization at inference. The edited views are then lifted into 3D via a feedforward 3DGS model, yielding a coherent 3DGS representation in a single forward pass. Experiments demonstrate competitive editing fidelity and substantially improved cross-view consistency compared to optimization-based methods, while reducing inference time by orders of magnitude.",
+    "authors": [
+      "Haitao Huang",
+      "Shin-Fang Chng",
+      "Huangying Zhan",
+      "Qingan Yan",
+      "Yi Xu"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20038.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20038",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FluSplat：无需测试时优化的稀疏视图3D编辑",
+      "core_contribution": "提出了一种前馈式框架，能够在稀疏视图下实现跨视图一致的3D场景编辑，无需测试时的逐场景优化，大幅降低计算成本并提升一致性。",
+      "method": "该方法在训练阶段引入图像域的跨视图正则化方案，通过联合监督多视图编辑并施加几何对齐约束，使模型在推理时无需逐场景优化即可生成视图一致的结果。编辑后的视图通过前馈式3D高斯泼溅（3DGS）模型一次性提升为连贯的3DGS表示。",
+      "findings": "实验表明，该方法在编辑保真度上与基于优化的方法相当，但跨视图一致性显著提升，同时推理时间降低了数个数量级。"
+    }
+  },
+  {
+    "id": "2604.19954",
+    "title": "Camera Control for Text-to-Image Generation via Learning Viewpoint Tokens",
+    "abstract": "Current text-to-image models struggle to provide precise camera control using natural language alone. In this work, we present a framework for precise camera control with global scene understanding in text-to-image generation by learning parametric camera tokens. We fine-tune image generation models for viewpoint-conditioned text-to-image generation on a curated dataset that combines 3D-rendered images for geometric supervision and photorealistic augmentations for appearance and background diversity. Qualitative and quantitative experiments demonstrate that our method achieves state-of-the-art accuracy while preserving image quality and prompt fidelity. Unlike prior methods that overfit to object-specific appearance correlations, our viewpoint tokens learn factorized geometric representations that transfer to unseen object categories. Our work shows that text-vision latent spaces can be endowed with explicit 3D camera structure, offering a pathway toward geometrically-aware prompts for text-to-image generation. Project page: https://randdl.github.io/viewtoken_control/",
+    "authors": [
+      "Xinxuan Lu",
+      "Charless Fowlkes",
+      "Alexander C. Berg"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19954.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19954",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过学习视角令牌实现文本到图像生成的相机控制",
+      "core_contribution": "提出了一种通过可学习的相机令牌（viewpoint tokens）在文本到图像生成中实现精确相机控制的方法，在保持图像质量和提示一致性的同时，达到了最先进的相机控制精度，并且能够泛化到未见过的物体类别。",
+      "method": "该方法通过微调文本到图像生成模型，使其能够根据视角条件生成图像。为此，构建了一个结合3D渲染图像（提供几何监督）和逼真增强图像（提供外观和背景多样性）的精选数据集。通过学习参数化的相机令牌，模型能够将相机视角信息编码到文本-视觉潜在空间中，从而实现全局场景理解下的精确相机控制。",
+      "findings": "定性和定量实验表明，该方法在相机控制精度上达到了最先进水平，同时保持了图像质量和提示忠实度。与先前方法不同，本方法学习的视角令牌能够分解出几何表示，并成功泛化到未见过的物体类别，证明了文本-视觉潜在空间可以被赋予显式的3D相机结构，从而实现几何感知的文本提示生成。"
+    }
+  },
+  {
+    "id": "2604.19902",
+    "title": "MMCORE: MultiModal COnnection with Representation Aligned Latent Embeddings",
+    "abstract": "We present MMCORE, a unified framework designed for multimodal image generation and editing. MMCORE leverages a pre-trained Vision-Language Model (VLM) to predict semantic visual embeddings via learnable query tokens, which subsequently serve as conditioning signals for a diffusion model. This streamlined design effectively transfers the rich understanding and reasoning capabilities of VLMs into the visual generation process. By obviating the need for deep fusion between autoregressive and diffusion models or training from scratch, MMCORE significantly reduces computational overhead while maintaining high-fidelity synthesis. MMCORE seamlessly integrates text-to-image synthesis with interleaved image generation, demonstrating robust multimodal comprehension in complex scenarios such as spatial reasoning and visual grounding. Comprehensive evaluations indicate that MMCORE consistently outperforms state-of-the-art baselines across a broad spectrum of text-to-image and single/multi-image editing benchmarks.",
+    "authors": [
+      "Zijie Li",
+      "Yichun Shi",
+      "Jingxiang Sun",
+      "Ye Wang",
+      "Yixuan Huang",
+      "Zhiyao Guo",
+      "Xiaochen Lian",
+      "Peihao Zhu",
+      "Yu Tian",
+      "Zhonghua Zhai",
+      "Peng Wang"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19902.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19902",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MMCORE：基于表示对齐的潜在嵌入的多模态连接",
+      "core_contribution": "提出了一种统一的框架MMCORE，通过将预训练视觉语言模型（VLM）的语义理解能力直接注入扩散模型，实现了高效的多模态图像生成与编辑，避免了深度融合或从头训练的高计算成本。",
+      "method": "MMCORE利用预训练的视觉语言模型（VLM）通过可学习的查询令牌预测语义视觉嵌入，这些嵌入随后作为条件信号输入扩散模型。该设计将VLM的丰富理解与推理能力直接迁移到视觉生成过程中，无需在自回归模型与扩散模型之间进行深度融合，也无需从头训练，从而显著降低计算开销。",
+      "findings": "在文本到图像生成以及单/多图像编辑任务上，MMCORE在空间推理、视觉定位等复杂场景中展现出强大的多模态理解能力，并在多个基准测试中持续优于现有最先进方法。"
+    }
+  },
+  {
+    "id": "2604.19141",
+    "title": "Denoising, Fast and Slow: Difficulty-Aware Adaptive Sampling for Image Generation",
+    "abstract": "Diffusion- and flow-based models usually allocate compute uniformly across space, updating all patches with the same timestep and number of function evaluations. While convenient, this ignores the heterogeneity of natural images: some regions are easy to denoise, whereas others benefit from more refinement or additional context. Motivated by this, we explore patch-level noise scales for image synthesis. We find that naively varying timesteps across image tokens performs poorly, as it exposes the model to overly informative training states that do not occur at inference. We therefore introduce a timestep sampler that explicitly controls the maximum patch-level information available during training, and show that moving from global to patch-level timesteps already improves image generation over standard baselines. By further augmenting the model with a lightweight per-patch difficulty head, we enable adaptive samplers that allocate compute dynamically where it is most needed. Combined with noise levels varying over both space and diffusion time, this yields Patch Forcing (PF), a framework that advances easier regions earlier so they can provide context for harder ones. PF achieves superior results on class-conditional ImageNet, remains orthogonal to representation alignment and guidance methods, and scales to text-to-image synthesis. Our results suggest that patch-level denoising schedules provide a promising foundation for adaptive image generation.",
+    "authors": [
+      "Johannes Schusterbauer",
+      "Ming Gui",
+      "Yusong Li",
+      "Pingchuan Ma",
+      "Felix Krause",
+      "Björn Ommer"
+    ],
+    "published": "2026-04-21",
+    "updated": "2026-04-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.19141.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.19141",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "去噪，快与慢：面向图像生成的难度感知自适应采样",
+      "core_contribution": "提出了一种基于图像块级别的自适应去噪调度框架Patch Forcing，通过为不同图像区域分配不同的噪声步长和计算资源，显著提升了图像生成质量，并兼容文本到图像等高级任务。",
+      "method": "首先，论文发现直接对图像块使用不同时间步长会导致训练与推理不匹配，因此引入了一个时间步采样器，在训练时显式控制每个图像块的最大信息量。其次，设计了一个轻量级的逐块难度预测头，用于在推理时动态分配计算资源。最后，结合空间和扩散时间上变化的噪声水平，形成Patch Forcing框架，使较易区域先完成去噪，为较难区域提供上下文信息。",
+      "findings": "在类别条件ImageNet上，Patch Forcing取得了优于标准基线的生成效果；该方法与表示对齐和引导方法正交，并能有效扩展到文本到图像合成任务。实验表明，基于图像块级别的去噪调度为自适应图像生成提供了有前景的基础。"
+    }
+  },
+  {
+    "id": "2604.21268",
+    "title": "Measure Twice, Click Once: Co-evolving Proposer and Visual Critic via Reinforcement Learning for GUI Grounding",
+    "abstract": "Graphical User Interface (GUI) grounding requires mapping natural language instructions to precise pixel coordinates. However, due to visually homogeneous elements and dense layouts, models typically grasp semantic intent yet struggle with achieving precise localization. While scaling sampling attempts (Pass@k) reveals potential gains, static self-consistency strategies derived from geometric clustering often yield limited improvements, as the model's predictions tend to be spatially dispersed. In this paper, we propose replacing static consistency strategies with a learnable selection mechanism that selects the optimal target by critiquing its own proposals rendered on the screenshot. Given the significant disparity between the model's grounding and critiquing capabilities, we propose a co-evolving Propose-then-Critic framework. To jointly optimize these, we introduce a maturity-aware adaptive co-evolutionary reinforcement learning paradigm. This approach dynamically balances the training objectives of proposer and critic, where the diversity of the proposer's outputs enhances critic robustness, while the critic's maturing discrimination capability conversely unlocks the proposer's potential for extensive spatial exploration, fostering the mutual reinforcement and co-evolution of both capabilities, thereby ensuring generalizability to adapt to diverse and complex interface layouts. Extensive experiments over 6 benchmarks show that our method significantly enhances both grounding accuracy and critic reliability.",
+    "authors": [
+      "Wenkai Wang",
+      "Xiyun Li",
+      "Hongcan Guo",
+      "Wenhao Yu",
+      "Tianqing Fang",
+      "Haitao Mi",
+      "Dong Yu",
+      "Shengyu Zhang"
+    ],
+    "published": "2026-04-23",
+    "updated": "2026-04-23",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21268.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21268",
+    "primary_category": "cs.LG",
+    "score": 75,
+    "summary": {
+      "title_zh": "两次测量，一次点击：通过强化学习共同进化提议者与视觉批评者以实现GUI定位",
+      "core_contribution": "提出了一种可学习的选择机制，通过让模型在截图上批评自身生成的提议来替代静态一致性策略，并引入共同进化框架，使提议者与批评者通过强化学习相互增强，显著提升GUI定位的准确性与鲁棒性。",
+      "method": "该方法构建了一个“提议-批评”框架，其中提议者生成候选坐标，批评者基于渲染截图评估并选择最佳目标。为联合优化两者，引入成熟度感知的自适应共同进化强化学习范式，动态平衡提议者与批评者的训练目标：提议者的输出多样性增强批评者的鲁棒性，而批评者逐渐成熟的判别能力反过来释放提议者的空间探索潜力，形成相互促进的协同进化过程。",
+      "findings": "在6个基准测试上的广泛实验表明，该方法显著提升了GUI定位的准确性和批评者的可靠性，尤其在处理视觉元素同质化与密集布局的复杂界面时，相比静态一致性策略取得了更优的泛化性能。"
+    }
+  }
+]
