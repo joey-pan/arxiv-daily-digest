@@ -1,0 +1,168 @@
+[
+  {
+    "id": "2604.21718",
+    "title": "Building a Precise Video Language with Human-AI Oversight",
+    "abstract": "Video-language models (VLMs) learn to reason about the dynamic visual world through natural language. We introduce a suite of open datasets, benchmarks, and recipes for scalable oversight that enable precise video captioning. First, we define a structured specification for describing subjects, scenes, motion, spatial, and camera dynamics, grounded by hundreds of carefully defined visual primitives developed with professional video creators such as filmmakers. Next, to curate high-quality captions, we introduce CHAI (Critique-based Human-AI Oversight), a framework where trained experts critique and revise model-generated pre-captions into improved post-captions. This division of labor improves annotation accuracy and efficiency by offloading text generation to models, allowing humans to better focus on verification. Additionally, these critiques and preferences between pre- and post-captions provide rich supervision for improving open-source models (Qwen3-VL) on caption generation, reward modeling, and critique generation through SFT, DPO, and inference-time scaling. Our ablations show that critique quality in precision, recall, and constructiveness, ensured by our oversight framework, directly governs downstream performance. With modest expert supervision, the resulting model outperforms closed-source models such as Gemini-3.1-Pro. Finally, we apply our approach to re-caption large-scale professional videos (e.g., films, commercials, games) and fine-tune video generation models such as Wan to better follow detailed prompts of up to 400 words, achieving finer control over cinematography including camera motion, angle, lens, focus, point of view, and framing. Our results show that precise specification and human-AI oversight are key to professional-level video understanding and generation. Data and code are available on our project page: https://linzhiqiu.github.io/papers/chai/",
+    "authors": [
+      "Zhiqiu Lin",
+      "Chancharik Mitra",
+      "Siyuan Cen",
+      "Isaac Li",
+      "Yuhan Huang",
+      "Yu Tong Tiffany Ling",
+      "Hewei Wang",
+      "Irene Pi",
+      "Shihang Zhu",
+      "Ryan Rao",
+      "George Liu",
+      "Jiaxi Li",
+      "Ruojin Li",
+      "Yili Han",
+      "Yilun Du",
+      "Deva Ramanan"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21718.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21718",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "构建精确视频语言：基于人类与人工智能的监督",
+      "core_contribution": "本文提出了一套开放数据集、基准和可扩展监督方法，通过结构化视频描述规范与人类-AI协作标注框架，显著提升了视频字幕的精确性，并证明了精确规范与人类-AI监督对专业级视频理解与生成的关键作用。",
+      "method": "首先，论文定义了一种结构化规范来描述主体、场景、运动、空间和摄像机动态，该规范基于与电影制作人等专业视频创作者共同开发的数百个视觉原语。其次，引入CHAI（基于批评的人类-AI监督）框架，由训练有素的专家对模型生成的预字幕进行批评和修订，生成改进后的后字幕，从而将文本生成任务交给模型，让人类专注于验证。此外，利用预字幕与后字幕之间的批评和偏好，通过SFT、DPO和推理时缩放等方法对开源模型（Qwen3-VL）进行监督，提升其字幕生成、奖励建模和批评生成能力。",
+      "findings": "实验表明，监督框架确保的批评质量（精确性、召回率和建设性）直接决定下游性能；在适度专家监督下，模型性能超越Gemini-3.1-Pro等闭源模型；将该方法应用于大规模专业视频（如电影、广告、游戏）的字幕重标注，并微调Wan等视频生成模型，使其能遵循长达400词的详细提示，实现对摄像机运动、角度、镜头、焦点、视角和构图等电影摄影要素的精细控制。"
+    }
+  },
+  {
+    "id": "2604.21450",
+    "title": "VARestorer: One-Step VAR Distillation for Real-World Image Super-Resolution",
+    "abstract": "Recent advancements in visual autoregressive models (VAR) have demonstrated their effectiveness in image generation, highlighting their potential for real-world image super-resolution (Real-ISR). However, adapting VAR for ISR presents critical challenges. The next-scale prediction mechanism, constrained by causal attention, fails to fully exploit global low-quality (LQ) context, resulting in blurry and inconsistent high-quality (HQ) outputs. Additionally, error accumulation in the iterative prediction severely degrades coherence in ISR task. To address these issues, we propose VARestorer, a simple yet effective distillation framework that transforms a pre-trained text-to-image VAR model into a one-step ISR model. By leveraging distribution matching, our method eliminates the need for iterative refinement, significantly reducing error propagation and inference time. Furthermore, we introduce pyramid image conditioning with cross-scale attention, which enables bidirectional scale-wise interactions and fully utilizes the input image information while adapting to the autoregressive mechanism. This prevents later LQ tokens from being overlooked in the transformer. By fine-tuning only 1.2\\% of the model parameters through parameter-efficient adapters, our method maintains the expressive power of the original VAR model while significantly enhancing efficiency. Extensive experiments show that VARestorer achieves state-of-the-art performance with 72.32 MUSIQ and 0.7669 CLIPIQA on DIV2K dataset, while accelerating inference by 10 times compared to conventional VAR inference.",
+    "authors": [
+      "Yixuan Zhu",
+      "Shilin Ma",
+      "Haolin Wang",
+      "Ao Li",
+      "Yanzhe Jing",
+      "Yansong Tang",
+      "Lei Chen",
+      "Jiwen Lu",
+      "Jie Zhou"
+    ],
+    "published": "2026-04-23",
+    "updated": "2026-04-23",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21450.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21450",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "VARestorer：用于真实世界图像超分辨率的一步式VAR蒸馏方法",
+      "core_contribution": "提出了一种将预训练文本到图像VAR模型转化为一步式真实世界图像超分辨率模型的蒸馏框架，通过分布匹配消除迭代预测中的误差累积，并引入金字塔图像条件与跨尺度注意力机制，仅微调1.2%参数即实现SOTA性能。",
+      "method": "首先，利用分布匹配蒸馏技术将预训练VAR模型的迭代生成过程压缩为单步前向推理，避免误差传播并大幅加速推理。其次，设计金字塔图像条件模块，通过跨尺度注意力机制实现双向尺度交互，使低质量图像信息在自回归过程中被充分利用，防止后续token被忽略。最后，仅通过参数高效适配器微调1.2%的模型参数，保留原始VAR模型的表达能力。",
+      "findings": "在DIV2K数据集上，VARestorer取得了72.32 MUSIQ和0.7669 CLIPIQA的SOTA性能，且推理速度相比传统VAR推理加速10倍。实验表明，该方法有效解决了VAR模型在超分辨率任务中因因果注意力导致的全局上下文利用不足和迭代误差累积问题。"
+    }
+  },
+  {
+    "id": "2604.21362",
+    "title": "KD-CVG: A Knowledge-Driven Approach for Creative Video Generation",
+    "abstract": "Creative Generation (CG) leverages generative models to automatically produce advertising content that highlights product features, and it has been a significant focus of recent research. However, while CG has advanced considerably, most efforts have concentrated on generating advertising text and images, leaving Creative Video Generation (CVG) relatively underexplored. This gap is largely due to two major challenges faced by Text-to-Video (T2V) models: (a) \\textbf{ambiguous semantic alignment}, where models struggle to accurately correlate product selling points with creative video content, and (b) \\textbf{inadequate motion adaptability}, resulting in unrealistic movements and distortions. To address these challenges, we develop a comprehensive Advertising Creative Knowledge Base (ACKB) as a foundational resource and propose a knowledge-driven approach (KD-CVG) to overcome the knowledge limitations of existing models. KD-CVG consists of two primary modules: Semantic-Aware Retrieval (SAR) and Multimodal Knowledge Reference (MKR). SAR utilizes the semantic awareness of graph attention networks and reinforcement learning feedback to enhance the model's comprehension of the connections between selling points and creative videos. Building on this, MKR incorporates semantic and motion priors into the T2V model to address existing knowledge gaps. Extensive experiments have demonstrated KD-CVG's superior performance in achieving semantic alignment and motion adaptability, validating its effectiveness over other state-of-the-art methods. The code and dataset will be open source at https://kdcvg.github.io/KDCVG/.",
+    "authors": [
+      "Linkai Liu",
+      "Wei Feng",
+      "Xi Zhao",
+      "Shen Zhang",
+      "Xingye Chen",
+      "Zheng Zhang",
+      "Jingjing Lv",
+      "Junjie Shen",
+      "Ching Law",
+      "Yuchen Zhou",
+      "Zipeng Guo",
+      "Chao Gou"
+    ],
+    "published": "2026-04-23",
+    "updated": "2026-04-23",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21362.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21362",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "KD-CVG：一种知识驱动的创意视频生成方法",
+      "core_contribution": "提出了一种知识驱动的创意视频生成方法KD-CVG，通过构建广告创意知识库并设计语义感知检索与多模态知识参考模块，有效解决了文本到视频模型在创意视频生成中语义对齐不准确和运动适应性不足的问题。",
+      "method": "首先构建了一个全面的广告创意知识库作为基础资源。然后提出KD-CVG方法，包含两个核心模块：语义感知检索模块利用图注意力网络和强化学习反馈增强模型对卖点与创意视频之间关联的理解；多模态知识参考模块将语义和运动先验知识融入文本到视频模型，弥补现有模型的知识缺失。",
+      "findings": "大量实验表明，KD-CVG在语义对齐和运动适应性方面均优于现有最先进方法，验证了其在创意视频生成任务中的有效性和优越性。"
+    }
+  },
+  {
+    "id": "2604.20715",
+    "title": "GeoRelight: Learning Joint Geometrical Relighting and Reconstruction with Flexible Multi-Modal Diffusion Transformers",
+    "abstract": "Relighting a person from a single photo is an attractive but ill-posed task, as a 2D image ambiguously entangles 3D geometry, intrinsic appearance, and illumination. Current methods either use sequential pipelines that suffer from error accumulation, or they do not explicitly leverage 3D geometry during relighting, which limits physical consistency. Since relighting and estimation of 3D geometry are mutually beneficial tasks, we propose a unified Multi-Modal Diffusion Transformer (DiT) that jointly solves for both: GeoRelight. We make this possible through two key technical contributions: isotropic NDC-Orthographic Depth (iNOD), a distortion-free 3D representation compatible with latent diffusion models; and a strategic mixed-data training method that combines synthetic and auto-labeled real data. By solving geometry and relighting jointly, GeoRelight achieves better performance than both sequential models and previous systems that ignored geometry.",
+    "authors": [
+      "Yuxuan Xue",
+      "Ruofan Liang",
+      "Egor Zakharov",
+      "Timur Bagautdinov",
+      "Chen Cao",
+      "Giljoo Nam",
+      "Shunsuke Saito",
+      "Gerard Pons-Moll",
+      "Javier Romero"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20715.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20715",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "GeoRelight：利用灵活的多模态扩散变换器实现联合几何重光照与重建",
+      "core_contribution": "提出了一种统一的多模态扩散变换器（DiT）框架GeoRelight，能够同时解决人物重光照和三维几何重建问题，避免了传统顺序流水线中的误差累积，并提升了光照与几何的物理一致性。",
+      "method": "该方法基于多模态扩散变换器（DiT），通过两个关键技术实现联合求解：一是提出各向同性NDC-正交深度（iNOD），这是一种无畸变的3D表示，兼容潜在扩散模型；二是采用混合数据训练策略，结合合成数据和自动标注的真实数据。模型在训练中同时学习几何重建与重光照，使两者相互促进。",
+      "findings": "实验表明，GeoRelight在重光照和几何重建任务上均优于顺序流水线模型以及忽略几何信息的先前系统，验证了联合求解的有效性。"
+    }
+  },
+  {
+    "id": "2604.20936",
+    "title": "AttentionBender: Manipulating Cross-Attention in Video Diffusion Transformers as a Creative Probe",
+    "abstract": "We present AttentionBender, a tool that manipulates cross-attention in Video Diffusion Transformers to help artists probe the internal mechanics of black-box video generation. While generative outputs are increasingly realistic, prompt-only control limits artists' ability to build intuition for the model's material process or to work beyond its default tendencies. Using an autobiographical research-through-design approach, we built on Network Bending to design AttentionBender, which applies 2D transforms (rotation, scaling, translation, etc.) to cross-attention maps to modulate generation. We assess AttentionBender by visualizing 4,500+ video generations across prompts, operations, and layer targets. Our results suggest that cross-attention is highly entangled: targeted manipulations often resist clean, localized control, producing distributed distortions and glitch aesthetics over linear edits. AttentionBender contributes a tool that functions both as an Explainable AI style probe of transformer attention mechanisms, and as a creative technique for producing novel aesthetics beyond the model's learned representational space.",
+    "authors": [
+      "Adam Cole",
+      "Mick Grierson"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.MM",
+      "cs.CV",
+      "cs.HC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20936.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20936",
+    "primary_category": "cs.MM",
+    "score": 65,
+    "summary": {
+      "title_zh": "AttentionBender：操控视频扩散Transformer中的交叉注意力作为创意探针",
+      "core_contribution": "提出一种名为AttentionBender的工具，通过操控视频扩散Transformer中的交叉注意力图，帮助艺术家探索黑盒视频生成模型的内部机制，并产生超越模型默认表征空间的新颖美学效果。",
+      "method": "基于自传式研究通过设计的方法，在Network Bending的基础上设计AttentionBender，对交叉注意力图应用二维变换（如旋转、缩放、平移等）以调节视频生成过程。通过可视化超过4500个视频生成样本，评估不同提示、操作和层目标下的效果。",
+      "findings": "交叉注意力高度纠缠：针对性的操作往往难以实现干净、局部的控制，反而产生分布式的扭曲和故障美学，而非线性的编辑效果。该工具既可作为可解释AI风格的探针来研究Transformer注意力机制，也可作为产生新颖美学的创意技术。"
+    }
+  }
+]
