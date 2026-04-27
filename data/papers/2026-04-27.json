@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2604.22302",
+    "title": "Knowledge Visualization: A Benchmark and Method for Knowledge-Intensive Text-to-Image Generation",
+    "abstract": "Recent text-to-image (T2I) models have demonstrated impressive capabilities in photorealistic synthesis and instruction following. However, their reliability in knowledge-intensive settings remains largely unexplored. Unlike natural image generation, knowledge visualization requires not only semantic alignment but also strict adherence to domain knowledge, structural constraints, and symbolic conventions, exposing a critical gap between visual plausibility and scientific correctness. To systematically study this problem, we introduce KVBench, a curriculum-grounded benchmark for evaluating knowledge-intensive T2I generation. KVBench covers six senior high-school subjects: Biology, Chemistry, Geography, History, Mathematics, and Physics. The benchmark consists of 1,800 expert-curated prompts derived from over 30 authoritative textbooks. Using this benchmark, we evaluate 14 state-of-the-art open- and closed-source models, revealing substantial deficiencies in logical reasoning, symbolic precision, and multilingual robustness, with open-source models consistently underperforming proprietary systems. To address these limitations, we further propose KE-Check, a two-stage framework that improves scientific fidelity via (1) Knowledge Elaboration for structured prompt enrichment, and (2) Checklist-Guided Refinement for explicit constraint enforcement through violation identification and constraint-guided editing. KE-Check effectively mitigates scientific hallucinations, narrowing the performance gap between open-source and leading closed-source models. Data and codes are publicly available at https://github.com/zhaoran66/KVBench.",
+    "authors": [
+      "Ran Zhao",
+      "Sheng Jin",
+      "Size Wu",
+      "Kang Liao",
+      "Zerui Gong",
+      "Zujin Guo",
+      "Yang Xiao",
+      "Wei Li"
+    ],
+    "published": "2026-04-24",
+    "updated": "2026-04-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.22302.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.22302",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "知识可视化：面向知识密集型文生图的基准与改进方法",
+      "core_contribution": "提出了首个面向知识密集型文生图任务的课程化基准KVBench，并设计了两阶段框架KE-Check，有效提升了模型在科学准确性上的表现。",
+      "method": "首先构建KVBench基准，涵盖六门高中学科（生物、化学、地理、历史、数学、物理），包含1800条来自30余本权威教材的专家筛选提示词。然后提出KE-Check两阶段框架：第一阶段通过知识细化（Knowledge Elaboration）对提示词进行结构化丰富；第二阶段通过清单引导的修正（Checklist-Guided Refinement）识别违规并执行约束导向的编辑，以强制遵守领域知识。",
+      "findings": "在14个主流开源与闭源模型上的评估显示，现有模型在逻辑推理、符号精度和多语言鲁棒性方面存在显著缺陷，开源模型整体落后于闭源系统；KE-Check能有效缓解科学幻觉，缩小开源模型与领先闭源模型之间的性能差距。"
+    }
+  },
+  {
+    "id": "2604.22192",
+    "title": "CharTide: Data-Centric Chart-to-Code Generation via Tri-Perspective Tuning and Inquiry-Driven Evolution",
+    "abstract": "Chart-to-code generation demands strict visual precision and syntactic correctness from Vision-Language Models (VLMs). However, existing approaches are fundamentally constrained by data-centric limitations: despite the availability of growing chart-to-code datasets, simply scaling homogeneous chart-code pairs conflates visual perception with program logic, preventing models from fully leveraging the richness of multimodal supervision. We present CharTide, a novel data-centric framework that systematically redesigns both training and alignment data for chart-to-code generation. First, we construct a 2M-sample dataset via a Tri-Perspective Tuning strategy, explicitly decoupling training into visual perception, pure-text code logic, and modality fusion streams, enabling a 7B model to surpass specialized baselines using only supervised data. Second, we reformulate alignment as a data verification problem rather than a heuristic scoring task. To this end, we introduce an Inquiry-Driven RL framework grounded in the principle of information invariance: a downstream model should yield consistent answers to identical visual queries across both original and generated charts. Moving beyond rigid rule matching or VLM scoring, we employ a frozen Inspector to objectively verify generated charts through atomic QA tasks, providing verifiable reward signals based on answer accuracy. Experiments on ChartMimic, Plot2Code, and ChartX show that CharTide-7B/8B significantly outperforms open-source baselines, surpasses GPT-4o, and is competitive with GPT-5.",
+    "authors": [
+      "Xiangxi Zheng",
+      "Kuang He",
+      "Jiayi Hu",
+      "Ping Yu",
+      "Rui Yan",
+      "Yuan Yao",
+      "Peng Hou",
+      "Anxiang Zeng",
+      "Alex Jinpeng Wang"
+    ],
+    "published": "2026-04-24",
+    "updated": "2026-04-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.22192.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.22192",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "CharTide：通过三视角微调与查询驱动演化的数据中心型图表到代码生成",
+      "core_contribution": "提出了一种数据中心的图表到代码生成框架CharTide，通过三视角微调策略解耦视觉感知与程序逻辑，并引入基于信息不变性的查询驱动强化学习，使7B/8B模型在多项基准上超越GPT-4o并接近GPT-5。",
+      "method": "首先，构建了一个200万样本的数据集，采用三视角微调策略将训练显式解耦为视觉感知、纯文本代码逻辑和模态融合三个流，使7B模型仅用监督数据即可超越专门基线。其次，将对齐问题重新定义为数据验证任务，提出查询驱动强化学习框架，基于信息不变性原则：下游模型对原始图表和生成图表的相同视觉查询应输出一致答案。使用冻结的Inspector通过原子QA任务客观验证生成图表，基于答案准确性提供可验证的奖励信号。",
+      "findings": "在ChartMimic、Plot2Code和ChartX基准上，CharTide-7B/8B显著优于开源基线，超越GPT-4o，并与GPT-5性能相当。"
+    }
+  },
+  {
+    "id": "2604.22379",
+    "title": "Efficient Diffusion Distillation via Embedding Loss",
+    "abstract": "Recent advances in distilling expensive diffusion models into efficient few-step generators show significant promise. However, these methods typically demand substantial computational resources and extended training periods, limiting accessibility for resource-constrained researchers, and existing supplementary loss functions have notable limitations. Regression loss requires pre-generating large datasets before training and limits the student model to the teacher's performance, while GAN-based losses suffer from training instability and require careful tuning. In this paper, we propose Embedding Loss (EL), a novel supplementary loss function that complements existing diffusion distillation methods to enhance generation quality and accelerate training with smaller batch sizes. Leveraging feature embeddings from a diverse set of randomly initialized networks, EL effectively aligns the feature distributions between the distilled few-step generator and the original data. By computing Maximum Mean Discrepancy (MMD) in the embedded feature space, EL ensures robust distribution matching, thereby preserving sample fidelity and diversity during distillation. Within distribution matching distillation frameworks, EL demonstrates strong empirical performance for one-step generators. On the CIFAR-10 dataset, our approach achieves state-of-the-art FID values of 1.475 for unconditional generation and 1.380 for conditional generation. Beyond CIFAR-10, we further validate EL across multiple benchmarks and distillation methods, including ImageNet, AFHQ-v2, and FFHQ datasets, using DMD, DI, and CM distillation frameworks, demonstrating consistent improvements over existing one-step distillation methods. Our method also reduces training iterations by up to 80%, offering a more practical and scalable solution for deploying diffusion-based generative models in resource-constrained environments.",
+    "authors": [
+      "Jincheng Ying",
+      "Yitao Chen",
+      "Li Wenlin",
+      "Minghui Xu",
+      "Yinhao Xiao"
+    ],
+    "published": "2026-04-24",
+    "updated": "2026-04-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.22379.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.22379",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "通过嵌入损失实现高效的扩散蒸馏",
+      "core_contribution": "提出了一种名为嵌入损失（Embedding Loss, EL）的新型辅助损失函数，能够显著提升扩散蒸馏方法的生成质量，并加速训练过程，同时支持更小的批量大小，降低计算资源需求。",
+      "method": "该方法利用一组随机初始化的网络提取特征嵌入，并在嵌入空间中计算最大均值差异（Maximum Mean Discrepancy, MMD），以对齐蒸馏后的少步生成器与原始数据的特征分布。通过将EL作为辅助损失函数，与现有的扩散蒸馏框架（如DMD、DI、CM）结合，实现稳健的分布匹配，从而保持样本的保真度和多样性。",
+      "findings": "在CIFAR-10数据集上，该方法在无条件生成和条件生成任务中分别取得了1.475和1.380的FID值，达到当前最优水平。在ImageNet、AFHQ-v2、FFHQ等多个基准数据集上，结合不同蒸馏框架均表现出持续改进，并且训练迭代次数最多减少80%，显著提升了资源受限环境下的实用性和可扩展性。"
+    }
+  },
+  {
+    "id": "2604.21984",
+    "title": "Soft Anisotropic Diagrams for Differentiable Image Representation",
+    "abstract": "We introduce Soft Anisotropic Diagrams (SAD), an explicit and differentiable image representation parameterized by a set of adaptive sites in the image plane. In SAD, each site specifies an anisotropic metric and an additively weighted distance score, and we compute pixel colors as a softmax blend over a small per-pixel top-K subset of sites. We induce a soft anisotropic additively weighted Voronoi partition (i.e., an Apollonius diagram) with learnable per-site temperatures, preserving informative gradients while allowing clear, content-aligned boundaries and explicit ownership. Such a formulation enables efficient rendering by maintaining a per-query top-K map that approximates nearest neighbors under the same shading score, allowing GPU-friendly, fixed-size local computation. We update this list using our top-K propagation scheme inspired by jump flooding, augmented with stochastic injection to provide probabilistic global coverage. Training follows a GPU-first pipeline with gradient-weighted initialization, Adam optimization, and adaptive budget control through densification and pruning. Across standard benchmarks, SAD consistently outperforms Image-GS and Instant-NGP at matched bitrate. On Kodak, SAD reaches 46.0 dB PSNR with 2.2 s encoding time (vs. 28 s for Image-GS), and delivers 4-19 times end-to-end training speedups over state-of-the-art baselines. We demonstrate the effectiveness of SAD by showcasing the seamless integration with differentiable pipelines for forward and inverse problems, efficiency of fast random access, and compact storage.",
+    "authors": [
+      "Laki Iinbor",
+      "Zhiyang Dou",
+      "Wojciech Matusik"
+    ],
+    "published": "2026-04-23",
+    "updated": "2026-04-23",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.21984.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.21984",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "软各向异性图：用于可微分图像表示的显式方法",
+      "core_contribution": "提出了一种名为软各向异性图（SAD）的显式且可微分的图像表示方法，通过自适应站点和软Voronoi分区实现高质量图像重建，同时支持高效渲染和快速随机访问。",
+      "method": "SAD在图像平面上定义一组自适应站点，每个站点指定一个各向异性度量和一个加权的距离分数，并通过每个像素的top-K子集的softmax混合计算像素颜色。通过可学习的每站点温度，诱导出软各向异性加权的Voronoi分区（即Apollonius图），在保持清晰边界的同时保留可微梯度。渲染时使用基于跳泛洪的top-K传播方案，结合随机注入实现概率全局覆盖，并采用GPU优先的梯度加权初始化、Adam优化以及通过致密化和剪枝实现的自适应预算控制。",
+      "findings": "在标准基准测试中，SAD在相同比特率下持续优于Image-GS和Instant-NGP。在Kodak数据集上，SAD达到46.0 dB PSNR，编码时间仅2.2秒（Image-GS为28秒），端到端训练速度比最先进基线快4-19倍。此外，SAD展示了与可微分流水线的无缝集成、高效的随机访问和紧凑存储能力。"
+    }
+  },
+  {
+    "id": "2604.20368",
+    "title": "LaplacianFormer:Rethinking Linear Attention with Laplacian Kernel",
+    "abstract": "The quadratic complexity of softmax attention presents a major obstacle for scaling Transformers to high-resolution vision tasks. Existing linear attention variants often replace the softmax with Gaussian kernels to reduce complexity, but such approximations lack theoretical grounding and tend to oversuppress mid-range token interactions. We propose LaplacianFormer, a Transformer variant that employs a Laplacian kernel as a principled alternative to softmax, motivated by empirical observations and theoretical analysis. To address expressiveness degradation under low-rank approximations, we introduce a provably injective feature map that retains fine-grained token information. For efficient computation, we adopt a Nyström approximation of the kernel matrix and solve the resulting system using Newton--Schulz iteration, avoiding costly matrix inversion and SVD. We further develop custom CUDA implementations for both the kernel and solver, enabling high-throughput forward and backward passes suitable for edge deployment. Experiments on ImageNet show that LaplacianFormer achieves strong performance-efficiency trade-offs while improving attention expressiveness.",
+    "authors": [
+      "Zhe Feng",
+      "Sen Lian",
+      "Changwei Wang",
+      "Muyang Zhang",
+      "Tianlong Tan",
+      "Rongtao Xu",
+      "Weiliang Meng",
+      "Xiaopeng Zhang"
+    ],
+    "published": "2026-04-22",
+    "updated": "2026-04-22",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.20368.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.20368",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "LaplacianFormer：用拉普拉斯核重新思考线性注意力机制",
+      "core_contribution": "提出了一种基于拉普拉斯核的线性注意力机制LaplacianFormer，在理论上为线性注意力提供了更坚实的数学基础，并通过可证明的单射特征映射和高效的Nyström近似，在保持计算效率的同时提升了注意力的表达能力。",
+      "method": "首先，受经验观察和理论分析启发，采用拉普拉斯核替代softmax函数作为注意力计算的核心，以更自然地建模token间的交互。其次，为解决低秩近似下表达能力下降的问题，设计了一种可证明为单射的特征映射，保留细粒度的token信息。最后，采用Nyström方法近似核矩阵，并利用Newton-Schulz迭代求解线性系统，避免昂贵的矩阵求逆和SVD分解；同时开发了自定义CUDA实现以支持高效的前向和反向传播。",
+      "findings": "在ImageNet上的实验表明，LaplacianFormer在性能与效率之间取得了良好的平衡，相比现有线性注意力方法，显著提升了注意力的表达能力，同时保持了适合边缘部署的高吞吐量。"
+    }
+  }
+]
