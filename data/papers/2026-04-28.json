@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2604.24459",
+    "title": "TextGround4M: A Prompt-Aligned Dataset for Layout-Aware Text Rendering",
+    "abstract": "Despite recent advances in text-to-image generation, models still struggle to accurately render prompt-specified text with correct spatial layout -- especially in multi-span, structured settings. This challenge is driven not only by the lack of datasets that align prompts with the exact text and layout expected in the image, but also by the absence of effective metrics for evaluating layout quality. To address these issues, we introduce TextGround4M, a large-scale dataset of over 4 million prompt-image pairs, each annotated with span-level text grounded in the prompt and corresponding bounding boxes. This enables fine-grained supervision for layout-aware, prompt-grounded text rendering. Building on this, we propose a lightweight training strategy for autoregressive T2I models that appends layout-aware span tokens during training, without altering model architecture or inference behavior. We further construct a benchmark with stratified layout complexity to evaluate both open-source and proprietary models in a zero-shot setting. In addition, we introduce two layout-aware metrics to address the long-standing lack of spatial evaluation in text rendering. Our results show that models trained on TextGround4M outperform strong baselines in text fidelity, spatial accuracy, and prompt consistency, highlighting the importance of fine-grained layout supervision for grounded T2I generation.",
+    "authors": [
+      "Dongxing Mao",
+      "Yilin Wang",
+      "Linjie Li",
+      "Zhengyuan Yang",
+      "Alex Jinpeng Wang"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24459.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24459",
+    "primary_category": "cs.CV",
+    "score": 92,
+    "summary": {
+      "title_zh": "TextGround4M：面向布局感知文本渲染的提示对齐数据集",
+      "core_contribution": "提出了一个包含超过400万对提示-图像的大规模数据集TextGround4M，并附带跨度级文本标注和边界框，解决了文本到图像生成中多跨度、结构化文本渲染的布局对齐问题；同时引入了两种布局感知评估指标，弥补了空间布局质量评估的缺失。",
+      "method": "首先构建了TextGround4M数据集，为每个提示-图像对提供跨度级文本与对应边界框的细粒度标注。然后提出一种轻量级训练策略，在自回归文本到图像模型中附加布局感知的跨度标记，无需改变模型架构或推理行为。最后构建了分层布局复杂度的基准测试，并设计了两种布局感知指标用于零样本评估。",
+      "findings": "在TextGround4M上训练的模型在文本保真度、空间准确性和提示一致性方面显著优于强基线模型，证明了细粒度布局监督对于基于提示的文本到图像生成的重要性。"
+    }
+  },
+  {
+    "id": "2604.24351",
+    "title": "Diffusion Templates: A Unified Plugin Framework for Controllable Diffusion",
+    "abstract": "Controllable diffusion methods have substantially expanded the practical utility of diffusion models, but they are typically developed as isolated, backbone-specific systems with incompatible training pipelines, parameter formats, and runtime hooks. This fragmentation makes it difficult to reuse infrastructure across tasks, transfer capabilities across backbones, or compose multiple controls within a single generation pipeline. We present Diffusion Templates, a unified and open plugin framework that decouples base-model inference from controllable capability injection. The framework is organized around three components: Template models that map arbitrary task-specific inputs to an intermediate capability representation, a Template cache that functions as a standardized interface for capability injection, and a Template pipeline that loads, merges, and injects one or more Template caches into the base diffusion runtime. Because the interface is defined at the systems level rather than tied to a specific control architecture, heterogeneous capability carriers such as KV-Cache and LoRA can be supported under the same abstraction. Based on this design, we build a diverse model zoo spanning structural control, brightness adjustment, color adjustment, image editing, super-resolution, sharpness enhancement, aesthetic alignment, content reference, local inpainting, and age control. These case studies show that Diffusion Templates can unify a broad range of controllable generation tasks while preserving modularity, composability, and practical extensibility across rapidly evolving diffusion backbones. All resources will be open sourced, including code, models, and datasets.",
+    "authors": [
+      "Zhongjie Duan",
+      "Hong Zhang",
+      "Yingda Chen"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV",
+      "cs.SE"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24351.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24351",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散模板：一种用于可控扩散的统一插件框架",
+      "core_contribution": "提出了一种名为Diffusion Templates的统一开源插件框架，将基础模型推理与可控能力注入解耦，支持多种控制任务（如结构控制、亮度调整、图像编辑等）在同一个生成管线中组合与复用，解决了现有方法因系统碎片化而难以跨任务、跨骨干网络迁移的问题。",
+      "method": "该框架围绕三个核心组件构建：Template模型将任意任务特定输入映射为中间能力表示；Template缓存作为标准化接口用于能力注入；Template管线负责加载、合并并将一个或多个Template缓存注入基础扩散运行时。由于接口在系统层面定义而非绑定特定控制架构，因此可以在同一抽象下支持异构能力载体（如KV-Cache和LoRA）。",
+      "findings": "通过在结构控制、亮度调整、颜色调整、图像编辑、超分辨率、锐度增强、美学对齐、内容参考、局部修复和年龄控制等十类任务上的案例研究，证明了Diffusion Templates能够统一广泛的可控生成任务，同时保持模块化、可组合性和跨快速演进的扩散骨干网络的实际可扩展性。"
+    }
+  },
+  {
+    "id": "2604.24171",
+    "title": "POCA: Pareto-Optimal Curriculum Alignment for Visual Text Generation",
+    "abstract": "Current visual text generation models struggle with the trade-off between text accuracy and overall image coherence. We find that achieving high text accuracy can reduce aesthetic quality and instruction-following capability. Although reinforcement learning approaches can alleviate the problem through aligning with multiple rewards, they are often unstable for text generation, as existing approaches normally optimize multiple rewards in a weighted-sum way. In addition, it is difficult to balance the weight of each reward. Moreover, reinforcement learning requires a set of training instructions. A large number of prompts require more training time and computing resources, while a small set leads to poor performance. Hence, how to select the prompts for efficient training is an unsolved problem. In this study, we propose Pareto-Optimal Curriculum Alignment (POCA), a framework that addresses this issue as a multi-objective problem by: 1) identifying the Pareto-optimal set to avoid simple scalarization and 2) designing an adaptive curriculum alignment strategy to manage a learning sequence of a multi-reward dataset using automatic difficulty assessment, which is crucial for optimal convergence as RL methods explore in a limited data environment. In synergy, POCA finds the Pareto-optimal set in a unified reward space, which eliminates inconsistent signals to find the best trade-off solution from different rewards under an easy-to-hard optimization landscape. The experimental results show that POCA significantly improves all metrics such as CLIP, HPS scores and sentence accuracy.",
+    "authors": [
+      "Yaohou Fan",
+      "Qingzhong Wang",
+      "Yongsong Huang",
+      "Junyi Liu",
+      "Tomo Miyazaki",
+      "Shinichiro Omachi"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24171.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24171",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "POCA：面向视觉文本生成的帕累托最优课程对齐",
+      "core_contribution": "提出了一种名为POCA的框架，通过将视觉文本生成中的多奖励对齐问题转化为多目标优化问题，同时解决了奖励权重难以平衡和训练提示选择效率低下的难题。",
+      "method": "首先，POCA识别帕累托最优集，避免简单的加权求和标量化，从而消除不一致的奖励信号；其次，设计了一种自适应课程对齐策略，利用自动难度评估管理多奖励数据集的学习顺序，使强化学习在有限数据环境下实现最优收敛。两者协同，在统一奖励空间中从易到难地寻找最佳折衷解。",
+      "findings": "实验结果表明，POCA在CLIP分数、HPS分数和句子准确率等所有指标上均取得了显著提升，有效改善了文本准确性与图像整体连贯性之间的权衡问题。"
+    }
+  },
+  {
+    "id": "2604.24023",
+    "title": "ServImage: An Image Generation and Editing Benchmark from Real-world Commercial Imaging Services",
+    "abstract": "Recent image generation and editing models demonstrate robust adherence to instructions and high visual quality on academic benchmarks. However, their performance on paid, real-world design projects remains uncertain. We introduce \\textbf{ServImage}, a benchmark that explicitly correlates model outputs with economic value in commercial design projects. ServImage consists of (i) \\textbf{\\textit{ServImageBench}}: a dataset of 1.07k paid commercial design tasks and 2.05k designer deliverables totaling over \\$295k, covering portrait, product, and digital content, along with 33k candidate images and 33k human annotations. (ii) \\textbf{\\textit{ServImageScore}}: an integrated scoring system that combines three quality dimensions: baseline requirements fulfilment, visual execution quality, and commercial necessity satisfaction. These three dimensions are designed to characterize the factors that drive human payment decisions and indicate whether an image is commercially acceptable. (iii) \\textbf{\\textit{ServImageModel}}: under this scoring system, we propose a payment prediction model trained on the human-annotated candidate images, achieving 82.00\\% accuracy in predicting human payment decisions and producing calibrated payment probabilities. ServImage provides a comprehensive foundation for assessing the commercial viability of image generation models and offers a scalable resource for future research on economically grounded vision systems \\href{https://github.com/FengxianJi/ServImage}{Github.}",
+    "authors": [
+      "Fengxian Ji",
+      "Jingpu Yang",
+      "Zirui Song",
+      "Lang Gao",
+      "Junhong Liang",
+      "Zhenhao Chen",
+      "Jinghui Zhang",
+      "Xiuying Chen"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24023.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24023",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ServImage：来自真实世界商业成像服务的图像生成与编辑基准",
+      "core_contribution": "提出了一个将图像生成与编辑模型输出与经济价值直接关联的基准ServImage，包含付费商业设计任务数据集、多维度评分系统以及支付预测模型，用于评估模型的商业可行性。",
+      "method": "首先构建ServImageBench数据集，包含1.07k个付费商业设计任务和2.05k个设计师交付物，总价值超过29.5万美元，并收集33k张候选图像和33k个人工标注。然后设计ServImageScore评分系统，从基线需求满足、视觉执行质量和商业必要性满意度三个维度评估图像。最后基于人工标注数据训练ServImageModel支付预测模型，输出校准后的支付概率。",
+      "findings": "该支付预测模型在预测人类支付决策上达到了82.00%的准确率，能够有效判断图像是否具有商业可接受性，为评估图像生成模型的商业价值提供了可靠基础。"
+    }
+  },
+  {
+    "id": "2604.23763",
+    "title": "Edit Where You Mean: Region-Aware Adapter Injection for Mask-Free Local Image Editing",
+    "abstract": "Large diffusion transformers (DiTs) follow global editing instructions well but consistently leak local edits into unrelated regions, because joint-attention architectures offer no explicit channel telling the network where to apply the edit. We introduce REDEdit, a co-trained, instruction- and region-aware adapter framework that retrofits a frozen DiT into a precise local editor without modifying its backbone weights. A lightweight Block Adapter at every transformer block injects a structured condition stream that factorizes what to edit (instruction semantics) from where to edit (spatial mask); a learned SpatialGate routes the adapter signal selectively into the edit region while keeping the rest of the image near-identical to the source; and a Region-Aware Loss focuses the training objective on the changing pixels. Because these components make the backbone's internal representation mask-aware end-to-end, a thin MaskPredictor head trained jointly with the editor can ground the edit region directly from the instruction and source image eliminating any user-mask requirement at deployment. We evaluate on two complementary benchmarks: MagicBrush (paired ground-truth targets) to measure pixel-level preservation and edit accuracy, and Emu-Edit Test (no ground-truth images, 9 diverse edit categories) to stress-test instruction following and generalization across edit types. On both, REDEdit achieves state-of-the-art results, simultaneously outperforming mask-free and oracle-mask baselines. A seven-variant ablation cleanly isolates the contribution of each component.",
+    "authors": [
+      "Honghao Cai",
+      "Xiangyuan Wang",
+      "Yunhao Bai",
+      "Haohua Chen",
+      "Tianze Zhou",
+      "Runqi Wang",
+      "Wei Zhu",
+      "Yibo Chen",
+      "Xu Tang",
+      "Yao Hu",
+      "Zhen Li"
+    ],
+    "published": "2026-04-26",
+    "updated": "2026-04-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.23763.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.23763",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "在你想要的地方编辑：面向无掩码局部图像编辑的区域感知适配器注入",
+      "core_contribution": "提出了一种名为REDEdit的、同时感知指令和区域的适配器框架，能够在无需用户提供掩码的情况下，将冻结的大型扩散变换器（DiT）改造为精确的局部图像编辑器，在保持未编辑区域不变的同时实现高精度局部编辑。",
+      "method": "REDEdit在每个Transformer块中插入轻量级Block Adapter，将编辑指令语义与空间掩码解耦为结构化条件流；通过可学习的SpatialGate将适配器信号选择性地路由到编辑区域，同时保持其余区域与源图像几乎一致；并引入Region-Aware Loss聚焦于变化像素的训练目标。此外，联合训练的MaskPredictor头能够直接从指令和源图像推断编辑区域，从而在部署时完全消除用户掩码需求。",
+      "findings": "在MagicBrush（像素级保留和编辑精度）和Emu-Edit Test（9种编辑类别，无真值图像）两个基准上，REDEdit均取得了最先进的结果，同时超越了无掩码和带掩码基线。七种消融实验清晰地分离了每个组件的贡献，验证了各模块的有效性。"
+    }
+  }
+]
