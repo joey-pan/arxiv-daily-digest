@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2604.25636",
+    "title": "Refinement via Regeneration: Enlarging Modification Space Boosts Image Refinement in Unified Multimodal Models",
+    "abstract": "Unified multimodal models (UMMs) integrate visual understanding and generation within a single framework. For text-to-image (T2I) tasks, this unified capability allows UMMs to refine outputs after their initial generation, potentially extending the performance upper bound. Current UMM-based refinement methods primarily follow a refinement-via-editing (RvE) paradigm, where UMMs produce editing instructions to modify misaligned regions while preserving aligned content. However, editing instructions often describe prompt-image misalignment only coarsely, leading to incomplete refinement. Moreover, pixel-level preservation, though necessary for editing, unnecessarily restricts the effective modification space for refinement. To address these limitations, we propose Refinement via Regeneration (RvR), a novel framework that reformulates refinement as conditional image regeneration rather than editing. Instead of relying on editing instructions and enforcing strict content preservation, RvR regenerates images conditioned on the target prompt and the semantic tokens of the initial image, enabling more complete semantic alignment with a larger modification space. Extensive experiments demonstrate the effectiveness of RvR, improving Geneval from 0.78 to 0.91, DPGBench from 84.02 to 87.21, and UniGenBench++ from 61.53 to 77.41.",
+    "authors": [
+      "Jiayi Guo",
+      "Linqing Wang",
+      "Jiangshan Wang",
+      "Yang Yue",
+      "Zeyu Liu",
+      "Zhiyuan Zhao",
+      "Qinglin Lu",
+      "Gao Huang",
+      "Chunyu Wang"
+    ],
+    "published": "2026-04-28",
+    "updated": "2026-04-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.25636.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.25636",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过再生进行精炼：扩大修改空间提升统一多模态模型中的图像精炼能力",
+      "core_contribution": "提出了一种名为“通过再生进行精炼”（RvR）的新框架，将图像精炼从基于编辑的范式转变为基于条件再生的范式，从而扩大修改空间，实现更完整的语义对齐。",
+      "method": "RvR摒弃了传统方法中依赖编辑指令和严格内容保留的策略，而是将精炼任务重新定义为条件图像再生：模型以目标提示词和初始图像的语义标记为条件，直接生成新图像。这种方法允许模型在更大范围内调整图像内容，而不仅限于局部编辑，从而更有效地修正提示与图像之间的语义不匹配。",
+      "findings": "实验结果表明，RvR在多个基准测试上显著提升了性能：Geneval从0.78提升至0.91，DPGBench从84.02提升至87.21，UniGenBench++从61.53提升至77.41，证明了该方法在统一多模态模型图像精炼任务中的有效性。"
+    }
+  },
+  {
+    "id": "2604.25358",
+    "title": "Benchmarking Layout-Guided Diffusion Models through Unified Semantic-Spatial Evaluation in Closed and Open Settings",
+    "abstract": "Evaluating layout-guided text-to-image generative models requires assessing both semantic alignment with textual prompts and spatial fidelity to prescribed layouts. Assessing layout alignment requires collecting fine-grained annotations, which is costly and labor-intensive. Consequently, current benchmarks rarely provide comprehensive layout evaluation and often remain limited in scale or coverage, making model comparison, ranking, and interpretation difficult. In this work, we introduce a closed-set benchmark (C-Bench) designed to isolate key generative capabilities while providing varying levels of complexity in both prompt structure and layout. To complement this controlled setting, we propose an open-set benchmark (O-Bench) that evaluates models using real-world prompts and layouts, offering a measure of semantic and spatial alignment in the wild. We further develop a unified evaluation protocol that combines semantic and spatial accuracy into a single score, ensuring consistent model ranking. Using our benchmarks, we conduct a large-scale evaluation of six state-of-the-art layout-guided diffusion models, totaling 319,086 generated and evaluated images. We establish a model ranking based on their overall performance and provide detailed breakdowns for text and layout alignment to enhance interpretability. Fine-grained analyses across scenarios and prompt complexities highlight the strengths and limitations of current models. Code is available at https://github.com/lparolari/cobench.",
+    "authors": [
+      "Luca Parolari",
+      "Nicla Faccioli",
+      "Lamberto Ballan"
+    ],
+    "published": "2026-04-28",
+    "updated": "2026-04-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.25358.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.25358",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过统一语义-空间评估在封闭与开放场景下对布局引导扩散模型的基准测试",
+      "core_contribution": "提出了一个统一的评估框架，包含封闭集基准（C-Bench）和开放集基准（O-Bench），能够全面评估布局引导扩散模型在语义对齐和空间保真度方面的性能，并基于大规模实验建立了可靠的模型排名。",
+      "method": "首先构建了封闭集基准C-Bench，通过控制提示结构和布局的复杂度来隔离关键生成能力；同时构建了开放集基准O-Bench，使用真实世界的提示和布局评估模型在野外的表现。然后开发了一个统一的评估协议，将语义准确性和空间准确性合并为单一分数，确保模型排名的一致性。最后对六种最先进的布局引导扩散模型进行了大规模评估，共生成和评估了319,086张图像。",
+      "findings": "通过大规模实验建立了基于整体性能的模型排名，并提供了文本和布局对齐的详细分解以增强可解释性。细粒度分析揭示了当前模型在不同场景和提示复杂度下的优势与局限性，为模型比较和解释提供了有力依据。"
+    }
+  },
+  {
+    "id": "2604.25314",
+    "title": "Golden RPG: Confidence-Adaptive Region-Aware Noise for Compositional Text-to-Image Generation",
+    "abstract": "Compositional text-to-image (T2I) generation requires a model to honour multiple sub-prompts that describe distinct image regions. Recent work shows that the \\emph{starting noise} of a diffusion model carries significant semantic information: ``golden'' noise predicted from text can substantially raise prompt fidelity. We observe that this noise prediction is, however, fundamentally global: the same network is asked to summarise a long, multi-region prompt with a single text embedding, which becomes the bottleneck whenever the prompt describes scenes with spatially-separated entities. We introduce \\textbf{Golden RPG}, a region-aware noise predictor that extends a frozen NPNet with two trainable additions: (i) a per-region \\textbf{FiLM adapter} that reshapes the predicted noise according to each sub-prompt; and (ii) a \\textbf{Region Cross-Attention} layer injected between two stages of the Swin backbone, allowing different spatial locations to attend to different sub-prompt tokens. To prevent the regional conditioning from degrading samples whose prompts are already easy, we further propose a \\textbf{Confidence-Adaptive Blending} head that dynamically predicts, per sample, how strongly the regional signal should override the global signal. We evaluate on the original RPG benchmark (20 prompts, 100 samples) and on four multi-region categories of T2I-CompBench (1{,}200 images, six competing methods). Golden RPG achieves the highest Cross-Region-Coherence score on every category, while matching the strongest baselines on absolute CLIP-Score and CLIP-IQA. A paired user study further shows a $\\boldsymbol{\\sim}$67\\% preference over the strongest baseline. The adapter contains $\\sim$2M trainable parameters and adds only $0.6$\\,s of inference overhead on top of SDXL.",
+    "authors": [
+      "Hao Li"
+    ],
+    "published": "2026-04-28",
+    "updated": "2026-04-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.25314.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.25314",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "黄金RPG：面向组合式文本到图像生成的置信度自适应区域感知噪声方法",
+      "core_contribution": "提出了一种区域感知的噪声预测器Golden RPG，通过引入区域FiLM适配器和区域交叉注意力层，解决了组合式文本到图像生成中全局文本嵌入难以处理多区域场景的瓶颈问题，并利用置信度自适应混合头动态平衡全局与区域信号，显著提升了跨区域一致性。",
+      "method": "该方法在冻结的NPNet基础上添加了两个可训练模块：一是每个子提示对应的区域FiLM适配器，用于根据子提示重塑预测噪声；二是在Swin骨干网络两阶段之间注入区域交叉注意力层，使不同空间位置能关注不同的子提示词。此外，还设计了一个置信度自适应混合头，动态预测每个样本中区域信号应覆盖全局信号的程度，以避免对简单提示的过度干预。",
+      "findings": "在RPG基准（20个提示，100个样本）和T2I-CompBench的四个多区域类别（1200张图像，六种对比方法）上，Golden RPG在所有类别中均取得了最高的跨区域一致性分数，同时匹配了最强的基线方法在绝对CLIP分数和CLIP-IQA上的表现。成对用户研究显示，用户对Golden RPG的偏好比最强基线高出约67%。该适配器仅包含约200万可训练参数，在SDXL基础上仅增加0.6秒推理开销。"
+    }
+  },
+  {
+    "id": "2604.24953",
+    "title": "ViPO: Visual Preference Optimization at Scale",
+    "abstract": "While preference optimization is crucial for improving visual generative models, how to effectively scale this paradigm remains largely unexplored. Current open-source preference datasets contain conflicting preference patterns, where winners excel in some dimensions but underperform in others. Naively optimizing on such noisy datasets fails to learn preferences, hindering effective scaling. To enhance robustness against noise, we propose Poly-DPO, which extends the DPO objective with an additional polynomial term that dynamically adjusts model confidence based on dataset characteristics, enabling effective learning across diverse data distributions. Beyond biased patterns, existing datasets suffer from low resolution, limited prompt diversity, and imbalanced distributions. To facilitate large-scale visual preference optimization by tackling data bottlenecks, we construct ViPO, a massive-scale preference dataset with 1M image pairs at 1024px across five categories and 300K video pairs at 720p+ across three categories. State-of-the-art generative models and diverse prompts ensure reliable preference signals with balanced distributions. Remarkably, when applying Poly-DPO to our high-quality dataset, the optimal configuration converges to standard DPO. This convergence validates dataset quality and Poly-DPO's adaptive nature: sophisticated optimization becomes unnecessary with sufficient data quality, yet remains valuable for imperfect datasets. We validate our approach across visual generation models. On noisy datasets like Pick-a-Pic V2, Poly-DPO achieves 6.87 and 2.32 gains over Diffusion-DPO on GenEval for SD1.5 and SDXL, respectively. For ViPO, models achieve performance far exceeding those trained on existing open-source preference datasets. These results confirm that addressing both algorithmic adaptability and data quality is essential for scaling visual preference optimization.",
+    "authors": [
+      "Ming Li",
+      "Jie Wu",
+      "Justin Cui",
+      "Xiaojie Li",
+      "Rui Wang",
+      "Chen Chen"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24953.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24953",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ViPO：大规模视觉偏好优化",
+      "core_contribution": "本文提出了Poly-DPO算法以增强偏好优化对噪声数据的鲁棒性，并构建了ViPO大规模高质量偏好数据集（包含100万图像对和30万视频对），从而有效推动了视觉生成模型中偏好优化的规模化应用。",
+      "method": "首先，针对现有开源偏好数据集中存在的冲突偏好模式（即同一图像在某些维度优秀但在其他维度较差），作者提出了Poly-DPO，通过在DPO目标函数中引入一个额外的多项式项，根据数据集特性动态调整模型置信度，从而在不同数据分布下实现有效学习。其次，为解决数据瓶颈，作者构建了ViPO数据集，使用最先进的生成模型和多样化提示生成高分辨率（1024px图像、720p+视频）、类别平衡且偏好信号可靠的图像和视频对。",
+      "findings": "在高质量ViPO数据集上应用Poly-DPO时，最优配置收敛为标准DPO，表明数据质量足够高时无需复杂优化算法；而在噪声数据集（如Pick-a-Pic V2）上，Poly-DPO在GenEval指标上分别比Diffusion-DPO提升了6.87（SD1.5）和2.32（SDXL）。使用ViPO训练的模型性能远超现有开源偏好数据集训练的模型，验证了算法适应性与数据质量对规模化视觉偏好优化的关键作用。"
+    }
+  },
+  {
+    "id": "2604.24885",
+    "title": "VibeToken: Scaling 1D Image Tokenizers and Autoregressive Models for Dynamic Resolution Generations",
+    "abstract": "We introduce an efficient, resolution-agnostic autoregressive (AR) image synthesis approach that generalizes to arbitrary resolutions and aspect ratios, narrowing the gap to diffusion models at scale. At its core is VibeToken, a novel resolution-agnostic 1D Transformer-based image tokenizer that encodes images into a dynamic, user-controllable sequence of 32-256 tokens, achieving a state-of-the-art efficiency and performance trade-off. Building on VibeToken, we present VibeToken-Gen, a class-conditioned AR generator with out-of-the-box support for arbitrary resolutions while requiring significantly fewer compute resources. Notably, VibeToken-Gen synthesizes 1024x1024 images using only 64 tokens and achieves 3.94 gFID; by comparison, a diffusion-based state-of-the-art alternative requires 1,024 tokens and attains 5.87 gFID. In contrast to fixed-resolution AR models such as LlamaGen -- whose inference FLOPs grow quadratically with resolution (11T FLOPs at 1024x1024) -- VibeToken-Gen maintains a constant 179G FLOPs (63.4x efficient) independent of resolution. We hope VibeToken can help unlock the wide adoption of AR visual generative models in production use cases.",
+    "authors": [
+      "Maitreya Patel",
+      "Jingtao Li",
+      "Weiming Zhuang",
+      "Yezhou Yang",
+      "Lingjuan Lv"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24885.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24885",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VibeToken：扩展一维图像分词器与自回归模型以实现动态分辨率生成",
+      "core_contribution": "提出了一种分辨率无关的自回归图像合成方法VibeToken，通过动态可变的1D token序列（32-256个token）实现任意分辨率和宽高比的图像生成，在计算效率上显著优于扩散模型和固定分辨率自回归模型。",
+      "method": "VibeToken是一种基于Transformer的1D图像分词器，能将图像编码为长度可动态控制的token序列（32-256个），支持用户自定义分辨率。在此基础上构建的VibeToken-Gen是类条件自回归生成器，无需额外调整即可生成任意分辨率的图像，且计算量恒定。",
+      "findings": "VibeToken-Gen生成1024x1024图像仅需64个token，gFID为3.94；而扩散模型基线需1024个token，gFID为5.87。与LlamaGen等固定分辨率模型相比，VibeToken-Gen的推理FLOPs恒定在179G（不随分辨率增长），而LlamaGen在1024x1024分辨率下需11T FLOPs，效率提升63.4倍。"
+    }
+  }
+]
