@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2604.26883",
+    "title": "SEAL: Semantic-aware Single-image Sticker Personalization with a Large-scale Sticker-tag Dataset",
+    "abstract": "Synthesizing a target concept from a single reference image is challenging in diffusion-based personalized text-to-image generation, particularly for sticker personalization where prompts often require explicit attribute edits. With only one reference, test-time fine-tuning (TTF) methods tend to overfit, producing \\textit{visual entanglement}, where background artifacts are absorbed into the learned concept, and \\textit{structural rigidity}, where the model memorizes reference-specific spatial configurations and loses contextual controllability. To address these issues, we introduce \\textbf{SE}mantic-aware single-image sticker person\\textbf{AL}ization (\\textbf{SEAL}), a plug-and-play, architecture-agnostic adaptation module that integrates into existing personalization pipelines without modifying their U-Net-based diffusion backbones. SEAL applies three components during embedding adaptation: (1) a Semantic-guided Spatial Attention Loss, (2) a Split-merge Token Strategy, and (3) Structure-aware Layer Restriction. To support sticker-domain personalization with attribute-level control, we present StickerBench, a large-scale sticker image dataset with structured tags under a six-attribute schema (Appearance, Emotion, Action, Camera Composition, Style, Background). These annotations provide a consistent interface for varying context while keeping target identity fixed, enabling systematic evaluation of identity disentanglement and contextual controllability. Experiments show that SEAL consistently improves identity preservation while maintaining contextual controllability, highlighting the importance of explicit spatial and structural constraints during test-time adaptation. The code, StickerBench, and project page will be publicly released.",
+    "authors": [
+      "Changhyun Roh",
+      "Yonghyun Jeong",
+      "Jonghyun Lee",
+      "Chanho Eom",
+      "Jihyong Oh"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26883.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26883",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SEAL：基于大规模贴纸-标签数据集的语义感知单图像贴纸个性化生成",
+      "core_contribution": "提出了一种即插即用的语义感知适配模块SEAL，解决了单图像贴纸个性化生成中视觉纠缠和结构刚性问题，并构建了大规模贴纸数据集StickerBench以支持属性级控制评估。",
+      "method": "SEAL是一个与架构无关的适配模块，可集成到现有个性化生成流程中而不修改U-Net扩散主干。它包含三个组件：语义引导的空间注意力损失、拆分合并令牌策略和结构感知层限制。同时，论文构建了StickerBench数据集，包含六属性标签（外观、情感、动作、镜头构图、风格、背景），为身份解耦和上下文可控性提供系统评估接口。",
+      "findings": "实验表明，SEAL在保持目标身份一致性的同时，显著提升了上下文可控性，验证了在测试时适配中引入显式空间和结构约束的重要性。"
+    }
+  },
+  {
+    "id": "2604.26503",
+    "title": "Delta Score Matters! Spatial Adaptive Multi Guidance in Diffusion Models",
+    "abstract": "Diffusion models have achieved remarkable success in synthesizing complex static and temporal visuals, a breakthrough largely driven by Classifier-Free Guidance (CFG). However, despite its pivotal role in aligning generated content with textual prompts, standard CFG relies on a globally uniform scalar. This homogeneous amplification traps models in a well-documented \"detail-artifact dilemma\": low guidance scales fail to inject intricate semantics, while high scales inevitably cause structural degradation, color over-saturation, and temporal inconsistencies in videos. In this paper, we expose the physical root of this flaw through the lens of differential geometry. By analyzing Tweedie's Formula, we reveal that CFG intrinsically performs a tangential linear extrapolation. Because the natural data manifold is highly curved, this uniform linear step introduces a severe orthogonal deviation. To keep the generation trajectory safely bounded, we formulate a theoretical upper bound for spatial and adaptive guidance. Based on these geometric insights, we propose Spatial Adaptive Multi Guidance (SAMG), a training-free and virtually zero-cost sampling algorithm. SAMG dynamically computes point-wise conditional guidance energy, applying a conservative minimum scale to high-energy boundary regions to preserve delicate micro-textures, while deploying an aggressive maximum scale in low-energy regions to maximize semantic injection. Extensive experiments across diverse image (SD 1.5, SDXL, SD3.5 Medium) and video (CogVideoX, ModelScope) architectures demonstrate that SAMG effectively resolves the detail-artifact dilemma, achieving superior semantic alignment, structural integrity, and temporal smoothness without any computational overhead.",
+    "authors": [
+      "Haosen Li",
+      "Wenshuo Chen",
+      "Lei Wang",
+      "Shaofeng Liang",
+      "Bowen Tian",
+      "Soning Lai",
+      "Yutao Yue"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26503.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26503",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Delta分数至关重要！扩散模型中的空间自适应多引导方法",
+      "core_contribution": "本文揭示了扩散模型中无分类器引导（CFG）导致“细节-伪影困境”的几何根源，并提出了一种无需训练、零计算开销的空间自适应多引导（SAMG）采样算法，有效解决了语义注入与结构保真度之间的权衡问题。",
+      "method": "通过微分几何视角分析Tweedie公式，作者发现CFG本质上是切向线性外推，而数据流形的高度弯曲会导致正交偏差。基于此，他们推导了空间自适应引导的理论上界，并设计了SAMG算法：对高能量边界区域使用保守的最小引导尺度以保留微观纹理，对低能量区域使用激进的最大引导尺度以增强语义注入，整个过程无需额外训练或计算成本。",
+      "findings": "在多种图像（SD 1.5、SDXL、SD3.5 Medium）和视频（CogVideoX、ModelScope）扩散模型上的实验表明，SAMG有效解决了细节-伪影困境，在语义对齐、结构完整性和时间平滑性上均优于标准CFG，且未引入任何计算开销。"
+    }
+  },
+  {
+    "id": "2604.26365",
+    "title": "Beyond Fixed Formulas: Data-Driven Linear Predictor for Efficient Diffusion Models",
+    "abstract": "To address the high sampling cost of Diffusion Transformers (DiTs), feature caching offers a training-free acceleration method. However, existing methods rely on hand-crafted forecasting formulas that fail under aggressive skipping. We propose L2P (Learnable Linear Predictor), a simple data-driven caching framework that replaces fixed coefficients with learnable per-timestep weights. Rapidly trained in ~20 seconds on a single GPU, L2P accurately reconstructs current features from past trajectories. L2P significantly outperforms existing baselines: it achieves a 4.55x FLOPs reduction and 4.15x latency speedup on FLUX.1-dev, and maintains high visual fidelity under up to 7.18x acceleration on Qwen-Image models, where prior methods show noticeable quality degradation. Our results show learning linear predictors is highly effective for efficient DiT inference. Code is available at https://github.com/Aredstone/L2P-Cache.",
+    "authors": [
+      "Zhirong Shen",
+      "Rui Huang",
+      "Jiacheng Liu",
+      "Chang Zou",
+      "Peiliang Cai",
+      "Shikang Zheng",
+      "Zhengyi Shi",
+      "Liang Feng",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26365.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26365",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越固定公式：面向高效扩散模型的数据驱动线性预测器",
+      "core_contribution": "提出一种简单且训练快速的数据驱动特征缓存框架L2P，用可学习的逐时间步权重替代传统手工设计的固定系数，显著提升扩散Transformer在激进跳跃步数下的推理加速效果与视觉保真度。",
+      "method": "L2P框架基于可学习线性预测器，在特征缓存过程中为每个时间步独立学习一组线性权重，用于从过去时间步的特征轨迹中重构当前特征。该预测器仅需在单GPU上训练约20秒，无需修改原始模型结构或引入额外推理开销。",
+      "findings": "在FLUX.1-dev模型上实现4.55倍FLOPs减少和4.15倍延迟加速；在Qwen-Image模型上支持高达7.18倍加速且保持高视觉保真度，而现有方法在激进加速下出现明显质量下降。实验表明，学习线性预测器对于高效扩散Transformer推理非常有效。"
+    }
+  },
+  {
+    "id": "2604.26348",
+    "title": "ACPO: Anchor-Constrained Perceptual Optimization for Diffusion Models with No-Reference Quality Guidance",
+    "abstract": "Diffusion models have achieved remarkable success in image generation, yet their training is predominantly driven by full-reference objectives that enforce pixel-wise similarity to ground-truth images.Such supervision, while effective for fidelity, may insufficient in terms of subjective visual perception quality and text-image semantic consistency. In this work, we investigate the problem of incorporating no-reference perceptual quality into diffusion training. A key challenge is that directly optimizing perceptual signals, such as those provided by no-reference image quality assessment (NR-IQA) models, introduces a mismatch with the original diffusion objective, leading to training instability and distributional drift during fine-tuning. To address this issue, we propose an anchor-constrained optimization framework that enables stable perceptual adaptation. Specifically, we leverage a learned NR-IQA model as a perceptual guidance signal, while introducing an anchor-based regularization that enforces consistency with the base diffusion model in terms of noise prediction. This design effectively balances perceptual quality improvement and generative fidelity, allowing controlled adaptation toward perceptually favorable outputs without compromising the original generative behavior. Extensive experiments demonstrate that our method consistently enhances perceptual quality while preserving generation diversity and training stability, highlighting the effectiveness of anchor-constrained perceptual optimization for diffusion models.",
+    "authors": [
+      "Yang Yang",
+      "Feifan Meng",
+      "Han Fang",
+      "Weiming Zhang"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26348.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26348",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ACPO：基于锚点约束的扩散模型感知优化与无参考质量引导",
+      "core_contribution": "提出了一种锚点约束的优化框架，首次将无参考图像质量评估（NR-IQA）信号稳定地引入扩散模型训练，在提升主观感知质量的同时保持生成保真度和训练稳定性。",
+      "method": "该方法利用预训练的NR-IQA模型提供感知引导信号，同时引入基于锚点的正则化项，强制微调后的模型在噪声预测上与原始基础扩散模型保持一致。通过这种锚点约束，平衡了感知质量优化与生成保真度，避免了直接优化感知信号导致的训练不稳定和分布偏移问题。",
+      "findings": "实验表明，该方法在保持生成多样性和训练稳定性的前提下，持续提升了图像的感知质量，验证了锚点约束感知优化在扩散模型中的有效性。"
+    }
+  },
+  {
+    "id": "2604.24763",
+    "title": "Tuna-2: Pixel Embeddings Beat Vision Encoders for Multimodal Understanding and Generation",
+    "abstract": "Unified multimodal models typically rely on pretrained vision encoders and use separate visual representations for understanding and generation, creating misalignment between the two tasks and preventing fully end-to-end optimization from raw pixels. We introduce Tuna-2, a native unified multimodal model that performs visual understanding and generation directly based on pixel embeddings. Tuna-2 drastically simplifies the model architecture by employing simple patch embedding layers to encode visual input, completely discarding the modular vision encoder designs such as the VAE or the representation encoder. Experiments show that Tuna-2 achieves state-of-the-art performance in multimodal benchmarks, demonstrating that unified pixel-space modelling can fully compete with latent-space approaches for high-quality image generation. Moreover, while the encoder-based variant converges faster in early pretraining, Tuna-2's encoder-free design achieves stronger multimodal understanding at scale, particularly on tasks requiring fine-grained visual perception. These results show that pretrained vision encoders are not necessary for multimodal modelling, and end-to-end pixel-space learning offers a scalable path toward stronger visual representations for both generation and perception.",
+    "authors": [
+      "Zhiheng Liu",
+      "Weiming Ren",
+      "Xiaoke Huang",
+      "Shoufa Chen",
+      "Tianhong Li",
+      "Mengzhao Chen",
+      "Yatai Ji",
+      "Sen He",
+      "Jonas Schult",
+      "Belinda Zeng",
+      "Tao Xiang",
+      "Wenhu Chen",
+      "Ping Luo",
+      "Luke Zettlemoyer",
+      "Yuren Cong"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24763.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24763",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Tuna-2：像素嵌入在多模态理解与生成中超越视觉编码器",
+      "core_contribution": "提出了一种无需预训练视觉编码器的原生统一多模态模型Tuna-2，通过像素嵌入直接进行视觉理解与生成，简化了模型架构并实现了端到端优化，在多项基准上达到最先进性能。",
+      "method": "Tuna-2采用简单的补丁嵌入层直接编码视觉输入，完全摒弃了VAE或表示编码器等模块化视觉编码器设计。模型基于像素空间进行统一建模，将视觉理解与生成任务整合在同一框架中，无需分离的视觉表示。训练过程从原始像素开始端到端优化，避免了传统方法中理解与生成之间的表示对齐问题。",
+      "findings": "实验表明，Tuna-2在多模态基准测试中取得了最先进性能，证明统一像素空间建模能够与潜在空间方法在高质量图像生成上完全竞争。尽管基于编码器的变体在早期预训练中收敛更快，但Tuna-2的无编码器设计在更大规模下实现了更强的多模态理解，尤其在需要细粒度视觉感知的任务上表现突出。结论是预训练视觉编码器并非多模态建模的必要条件，端到端像素空间学习为生成与感知任务提供了可扩展的视觉表示路径。"
+    }
+  }
+]
