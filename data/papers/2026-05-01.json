@@ -1,0 +1,165 @@
+[
+  {
+    "id": "2604.28190",
+    "title": "Representation Fréchet Loss for Visual Generation",
+    "abstract": "We show that Fréchet Distance (FD), long considered impractical as a training objective, can in fact be effectively optimized in the representation space. Our idea is simple: decouple the population size for FD estimation (e.g., 50k) from the batch size for gradient computation (e.g., 1024). We term this approach FD-loss. Optimizing FD-loss reveals several surprising findings. First, post-training a base generator with FD-loss in different representation spaces consistently improves visual quality. Under the Inception feature space, a one-step generator achieves0.72 FID on ImageNet 256x256. Second, the same FD-loss repurposes multi-step generators into strong one-step generators without teacher distillation, adversarial training or per-sample targets. Third, FID can misrank visual quality: modern representations can yield better samples despite worse Inception FID. This motivates FDr$^k$, a multi-representation metric. We hope this work will encourage further exploration of distributional distances in diverse representation spaces as both training objectives and evaluation metrics for generative models.",
+    "authors": [
+      "Jiawei Yang",
+      "Zhengyang Geng",
+      "Xuan Ju",
+      "Yonglong Tian",
+      "Yue Wang"
+    ],
+    "published": "2026-04-30",
+    "updated": "2026-04-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.28190.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.28190",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "表示空间的弗雷歇损失用于视觉生成",
+      "core_contribution": "本文证明了弗雷歇距离（FD）可以在表示空间中作为有效的训练目标进行优化，并提出了一种新的训练损失FD-loss，从而显著提升生成模型的视觉质量，同时揭示了FID指标在评估视觉质量时可能存在的误导性。",
+      "method": "作者提出将FD估计所需的总体样本数（如50k）与梯度计算所需的批大小（如1024）解耦，从而使得FD-loss可以在表示空间中通过反向传播进行优化。该方法不依赖教师蒸馏、对抗训练或逐样本目标，而是直接在表示空间中对生成分布与真实分布之间的弗雷歇距离进行最小化。",
+      "findings": "实验发现，在Inception特征空间下，使用FD-loss后训练的一步生成器在ImageNet 256x256上达到了0.72 FID；FD-loss还能将多步生成器转化为强一步生成器；此外，FID可能对视觉质量产生误判，现代表示空间下生成的样本虽具有更差的Inception FID，但视觉质量更好，因此作者提出了多表示空间评估指标FDr$^k$。"
+    }
+  },
+  {
+    "id": "2604.28185",
+    "title": "Visual Generation in the New Era: An Evolution from Atomic Mapping to Agentic World Modeling",
+    "abstract": "Recent visual generation models have made major progress in photorealism, typography, instruction following, and interactive editing, yet they still struggle with spatial reasoning, persistent state, long-horizon consistency, and causal understanding. We argue that the field should move beyond appearance synthesis toward intelligent visual generation: plausible visuals grounded in structure, dynamics, domain knowledge, and causal relations. To frame this shift, we introduce a five-level taxonomy: Atomic Generation, Conditional Generation, In-Context Generation, Agentic Generation, and World-Modeling Generation, progressing from passive renderers to interactive, agentic, world-aware generators. We analyze key technical drivers, including flow matching, unified understanding-and-generation models, improved visual representations, post-training, reward modeling, data curation, synthetic data distillation, and sampling acceleration. We further show that current evaluations often overestimate progress by emphasizing perceptual quality while missing structural, temporal, and causal failures. By combining benchmark review, in-the-wild stress tests, and expert-constrained case studies, this roadmap offers a capability-centered lens for understanding, evaluating, and advancing the next generation of intelligent visual generation systems.",
+    "authors": [
+      "Keming Wu",
+      "Zuhao Yang",
+      "Kaichen Zhang",
+      "Shizun Wang",
+      "Haowei Zhu",
+      "Sicong Leng",
+      "Zhongyu Yang",
+      "Qijie Wang",
+      "Sudong Wang",
+      "Ziting Wang",
+      "Zili Wang",
+      "Hui Zhang",
+      "Haonan Wang",
+      "Hang Zhou",
+      "Yifan Pu",
+      "Xingxuan Li",
+      "Fangneng Zhan",
+      "Bo Li",
+      "Lidong Bing",
+      "Yuxin Song",
+      "Ziwei Liu",
+      "Wenhu Chen",
+      "Jingdong Wang",
+      "Xinchao Wang",
+      "Xiaojuan Qi",
+      "Shijian Lu",
+      "Bin Wang"
+    ],
+    "published": "2026-04-30",
+    "updated": "2026-04-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.28185.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.28185",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "新时代的视觉生成：从原子映射到智能世界建模的演进",
+      "core_contribution": "本文提出一个五级分类法（原子生成、条件生成、上下文生成、智能体生成、世界建模生成），系统梳理了视觉生成从被动渲染到交互式、智能体化、世界感知的演进路径，并指出当前评估过度强调感知质量而忽视结构、时序和因果推理的缺陷。",
+      "method": "论文通过文献综述、基准测试回顾、野外压力测试和专家约束案例研究相结合的方法，构建了一个以能力为中心的评估框架。作者首先分析了流匹配、统一理解与生成模型、改进的视觉表征、后训练、奖励建模、数据整理、合成数据蒸馏和采样加速等关键技术驱动因素，然后对比不同层级生成模型在空间推理、状态持久性、长程一致性和因果理解上的表现差异。",
+      "findings": "主要发现包括：当前视觉生成模型在照片级真实感和指令遵循上进步显著，但在空间推理、持久状态、长程一致性和因果理解方面仍存在根本性缺陷；现有评估因侧重感知质量而高估了实际进展；未来应转向基于结构、动力学、领域知识和因果关系的智能视觉生成，即从外观合成升级为世界建模生成。"
+    }
+  },
+  {
+    "id": "2604.28126",
+    "title": "AdvDMD: Adversarial Reward Meets DMD For High-Quality Few-Step Generation",
+    "abstract": "Diffusion models offer superior generation quality at the expense of extensive sampling steps. Distillation methods, with Distribution Matching Distillation (DMD) as a popular example, can mitigate this issue, but performance degradation remains pronounced when sampling steps are limited. Reinforcement learning (RL) has been leveraged to improve the few-step generation quality during distillation, with the potential to even surpass the performance of the teacher model. However, existing approaches are combinatorial in nature, merely integrating an RL process with the distillation process, which introduces unnecessary complexities. To address this gap, we propose AdvDMD, a method that seamlessly unifies DMD distillation and RL. Specifically, AdvDMD employs the adversarially trained discriminator from DMD2 as the reward model, which assigns low scores to generated images and high scores to real ones. It is trained on both intermediate and final states of the denoising process and updated online with the distilled model, enabling a holistic supervision of the sampling trajectories and mitigating reward hacking. We adopt a unified SDE backward simulation and a different training schedule for DMD and RL to enable a more stable and efficient training. Experimental results demonstrate that the 4-step AdvDMD outperforms the original 40-step model for SD3.5 on DPG-Bench, while achieving significant performance gains for SD3 on the GenEval. On Qwen-Image, our 2-step AdvDMD achieves superior performance over TwinFlow.",
+    "authors": [
+      "Xu Wang",
+      "Zexian Li",
+      "Litong Gong",
+      "Tiezheng Ge",
+      "Zhijie Deng"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.28126.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.28126",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AdvDMD：对抗性奖励与DMD结合实现高质量少步生成",
+      "core_contribution": "提出AdvDMD方法，将分布匹配蒸馏（DMD）与强化学习（RL）无缝统一，利用DMD2中的对抗训练判别器作为奖励模型，在少步生成中实现超越教师模型的质量，同时避免现有组合方法的复杂性。",
+      "method": "AdvDMD使用DMD2中对抗训练的判别器作为奖励模型，该模型对生成图像给予低分、对真实图像给予高分，并在去噪过程的中间和最终状态上训练，与蒸馏模型在线更新以全面监督采样轨迹并防止奖励黑客攻击。采用统一的SDE反向模拟以及DMD和RL的不同训练计划，以实现更稳定高效的训练。",
+      "findings": "实验表明，4步AdvDMD在DPG-Bench上超越了原始40步SD3.5模型，在GenEval上对SD3实现了显著性能提升；2步AdvDMD在Qwen-Image上优于TwinFlow。"
+    }
+  },
+  {
+    "id": "2604.27505",
+    "title": "Leveraging Verifier-Based Reinforcement Learning in Image Editing",
+    "abstract": "While Reinforcement Learning from Human Feedback (RLHF) has become a pivotal paradigm for text-to-image generation, its application to image editing remains largely unexplored. A key bottleneck is the lack of a robust general reward model for all editing tasks. Existing edit reward models usually give overall scores without detailed checks, ignoring different instruction requirements and causing biased rewards. To address this, we argue that the key is to move from a simple scorer to a reasoning verifier. We introduce Edit-R1, a framework that builds a chain-of-thought (CoT) verifier-based reasoning reward model (RRM) and then leverages it for downstream image editing. The Edit-RRM breaks instructions into distinct principles, evaluates the edited image against each principle, and aggregates these checks into an interpretable, fine-grained reward. To build such an RRM, we first apply supervised fine-tuning (SFT) as a ``cold-start'' to generate CoT reward trajectories. Then, we introduce Group Contrastive Preference Optimization (GCPO), a reinforcement learning algorithm that leverages human pairwise preference data to reinforce our pointwise RRM. After building the RRM, we use GRPO to train editing models with this non-differentiable yet powerful reward model. Extensive experiments demonstrate that our Edit-RRM surpasses powerful VLMs such as Seed-1.5-VL and Seed-1.6-VL as an editing-specific reward model, and we observe a clear scaling trend, with performance consistently improving from 3B to 7B parameters. Moreover, Edit-R1 delivers gains to editing models like FLUX.1-kontext, highlighting its effectiveness in enhancing image editing.",
+    "authors": [
+      "Hanzhong Guo",
+      "Jie Wu",
+      "Jie Liu",
+      "Yu Gao",
+      "Zilyu Ye",
+      "Linxiao Yuan",
+      "Xionghui Wang",
+      "Yizhou Yu",
+      "Weilin Huang"
+    ],
+    "published": "2026-04-30",
+    "updated": "2026-04-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.27505.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.27505",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "基于验证器强化学习的图像编辑方法",
+      "core_contribution": "提出Edit-R1框架，通过构建基于思维链的推理奖励模型（RRM）替代传统简单评分器，实现了可解释、细粒度的图像编辑奖励评估，并利用该奖励模型通过强化学习提升下游图像编辑模型的性能。",
+      "method": "首先，通过监督微调（SFT）对模型进行冷启动，生成思维链奖励轨迹；然后，提出组对比偏好优化（GCPO）算法，利用人类成对偏好数据强化点式推理奖励模型（RRM）；最后，使用GRPO算法结合该不可微的奖励模型训练图像编辑模型。",
+      "findings": "Edit-RRM作为编辑专用奖励模型，超越了Seed-1.5-VL和Seed-1.6-VL等强大视觉语言模型；模型性能随参数规模（从3B到7B）一致提升；Edit-R1框架能有效增强FLUX.1-kontext等编辑模型的效果。"
+    }
+  },
+  {
+    "id": "2604.26341",
+    "title": "SpatialFusion: Endowing Unified Image Generation with Intrinsic 3D Geometric Awareness",
+    "abstract": "Recent unified image generation models have achieved remarkable success by employing MLLMs for semantic understanding and diffusion backbones for image generation. However, these models remain fundamentally limited in spatially-aware tasks due to a lack of intrinsic spatial understanding and the absence of explicit geometric guidance during generation. In this paper, we propose SpatialFusion, a novel framework that internalizes 3D geometric awareness into unified image generation models. Specifically, we first employ a Mixture-of-Transformers (MoT) architecture to augment the MLLM with a parallel spatial transformer to enhance 3D geometric modeling capability. By sharing self-attention with the MLLM, the spatial transformer learns to derive metric-depth maps of target images from rich semantic contexts. These explicit geometric scaffolds are then injected into the diffusion backbone through a specialized depth adapter, providing precise spatial constraints for spatially-coherent image generation. Through a progressive two-stage training strategy, SpatialFusion significantly enhances performance on spatially-aware benchmarks, notably outperforming leading models such as GPT-4o. Additionally, it achieves generalized performance gains across both text-to-image generation and image editing scenarios, all while maintaining negligible inference overhead.",
+    "authors": [
+      "Haiyi Qiu",
+      "Kaihang Pan",
+      "Jiacheng Li",
+      "Juncheng Li",
+      "Siliang Tang",
+      "Yueting Zhuang"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26341.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26341",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "空间融合：赋予统一图像生成模型内在的3D几何感知能力",
+      "core_contribution": "提出SpatialFusion框架，通过将3D几何感知内化到统一图像生成模型中，显著提升了空间感知任务的性能，并超越了GPT-4o等领先模型。",
+      "method": "首先采用混合变换器（MoT）架构，为多模态大语言模型（MLLM）增加并行空间变换器，以增强3D几何建模能力；通过共享自注意力机制，空间变换器从语义上下文中学习推导目标图像的度量深度图；然后通过专门的深度适配器将这些显式几何骨架注入扩散主干，为空间一致的图像生成提供精确的空间约束；最后采用渐进式两阶段训练策略优化整体模型。",
+      "findings": "SpatialFusion在空间感知基准上显著优于GPT-4o等领先模型，同时在文本到图像生成和图像编辑场景中均实现了泛化性能提升，且推理开销可忽略不计。"
+    }
+  }
+]
