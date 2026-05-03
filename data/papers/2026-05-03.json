@@ -1,0 +1,143 @@
+[
+  {
+    "id": "2604.26244",
+    "title": "MetaSR: Content-Adaptive Metadata Orchestration for Generative Super-Resolution",
+    "abstract": "We study generative super-resolution (SR) in real-world scenarios where content and degradations vary across domains, genres, and segments. For example, images and videos may alternate between text overlays, fast motion, smooth cartoons, and low-light faces, each benefiting from different forms of side information. Existing metadata-guided SR methods typically use a fixed conditioning design, which is suboptimal when useful cues are content dependent and transmission budgets are limited. We propose MetaSR, a Diffusion Transformer (DiT)-based framework that selects and injects task-relevant metadata to guide SR under resource constraints. Specifically, we use the DiT's own VAE and transformer backbone to fuse heterogeneous metadata, and adopt an efficient distillation strategy that enables one-step diffusion inference. Experiments across diverse content buckets and degradation regimes show that MetaSR outperforms reference solutions by up to 1.0~dB PSNR while achieving up to 50\\% transmission bitrate saving at matched quality. We assess these gains under a rate--distortion optimization (RDO) framework that jointly accounts for sender-side bitrate and receiver/display quality metrics (e.g., PSNR and SSIM).",
+    "authors": [
+      "Jiaqi Guo",
+      "Mingzhen Li",
+      "Haohong Wang",
+      "Aggelos K. Katsaggelos"
+    ],
+    "published": "2026-04-29",
+    "updated": "2026-04-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.26244.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.26244",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "MetaSR：面向生成式超分辨率的内容自适应元数据编排",
+      "core_contribution": "提出了一种基于扩散变换器（DiT）的生成式超分辨率框架MetaSR，能够根据图像内容自适应地选择和注入任务相关的元数据，在有限传输带宽下显著提升超分辨率质量，并实现高达50%的传输比特率节省。",
+      "method": "MetaSR利用DiT自身的VAE和变换器骨干网络融合异构元数据，避免了额外的编码器设计；同时采用高效的蒸馏策略，将多步扩散推理压缩为单步推理，大幅降低计算开销。在率失真优化（RDO）框架下，联合优化发送端比特率与接收端质量指标（如PSNR和SSIM），实现内容自适应的元数据选择与注入。",
+      "findings": "在多种内容类型（如文本叠加、快速运动、平滑卡通、低光人脸）和退化条件下，MetaSR相比参考方案在PSNR上提升高达1.0 dB，并在同等质量下节省最多50%的传输比特率。实验验证了其在不同内容域和退化场景下的泛化能力与效率优势。"
+    }
+  },
+  {
+    "id": "2604.25299",
+    "title": "The Thinking Pixel: Recursive Sparse Reasoning in Multimodal Diffusion Latents",
+    "abstract": "Diffusion models have achieved success in high-fidelity data synthesis, yet their capacity for more complex, structured reasoning like text following tasks remains constrained. While advances in language models have leveraged strategies such as latent reasoning and recursion to enhance text understanding capabilities, extending these to multimodal text-to-image generation tasks is challenging due to the continuous and non-discrete nature of visual tokens. To tackle this problem, we draw inspiration from modular human cognition and propose a recursive, sparse mixture-of-experts framework integrated into conventional diffusion models. Our approach introduces a recursive component within joint attention layers that iteratively refines visual tokens over multiple latent steps while efficiently sharing parameters via sparse selection of neural modules. At each step, a gating network is devised to dynamically select specialized neural modules, conditioned on the current visual tokens, the diffusion timestep, and the conditioning information. Comprehensive evaluation on class-conditioned ImageNet image generation tasks and additional studies on the GenEval and DPG benchmark demonstrate the superiority of the proposed method in enhancing model image generation performance.",
+    "authors": [
+      "Yuwei Sun",
+      "Yuxuan Yao",
+      "Hui Li",
+      "Siyu Zhu"
+    ],
+    "published": "2026-04-28",
+    "updated": "2026-04-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.25299.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.25299",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "思考像素：多模态扩散潜变量中的递归稀疏推理",
+      "core_contribution": "提出一种递归稀疏混合专家框架，将语言模型中的递归与稀疏推理思想引入多模态扩散模型，以增强其在文本到图像生成任务中的结构化推理能力。",
+      "method": "该方法在传统扩散模型的联合注意力层中引入递归组件，通过多个潜变量步骤迭代优化视觉令牌，并利用稀疏选择机制高效共享参数。每个递归步骤中，一个门控网络根据当前视觉令牌、扩散时间步和条件信息动态选择专门的神经模块，从而实现模块化、稀疏化的推理。",
+      "findings": "在类条件ImageNet图像生成任务以及GenEval和DPG基准测试上的全面评估表明，该方法显著提升了模型的图像生成性能，验证了递归稀疏推理在增强多模态生成模型能力方面的有效性。"
+    }
+  },
+  {
+    "id": "2604.25128",
+    "title": "ResetEdit: Precise Text-guided Editing of Generated Image via Resettable Starting Latent",
+    "abstract": "Recent advances in diffusion models have enabled high-quality image generation, leading to increasing demand for post-generation editing that modifies local regions while preserving global structure. Achieving such flexible and precise editing requires a high-quality starting point, a latent representation that provides both the freedom needed for diverse modifications and the precision required for fine-grained, region-specific control. However, existing inversion-based approaches such as DDIM inversion often yield unsatisfactory starting latents, resulting in degraded edit fidelity and structural inconsistency. Ideally, the most suitable editing anchor should be the original latent used during the generation process, as it inherently captures the scene's structure and semantics. Yet, storing this latent for every generated image is impractical due to massive storage and retrieval costs. To address this challenge, we propose ResetEdit, a proactive diffusion editing framework that embeds recoverable latent information directly into the generation process. By injecting the discrepancy between the clean and diffused latents into the diffusion trajectory and extracting it during inversion, ResetEdit reconstructs a resettable latent that closely approximates the true starting state. Additionally, a lightweight latent optimization module compensates for reconstruction bias caused by VAE asymmetry. Built upon Stable Diffusion, ResetEdit integrates seamlessly with existing tuning-free editing methods and consistently outperforms state-of-the-art baselines in both controllability and visual fidelity.",
+    "authors": [
+      "Hanyi Wang",
+      "Han Fang",
+      "Zheng Wang",
+      "Shilin Wang",
+      "Ee-Chien Chang"
+    ],
+    "published": "2026-04-28",
+    "updated": "2026-04-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.25128.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.25128",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "ResetEdit：通过可重置起始潜变量实现生成图像的精确文本引导编辑",
+      "core_contribution": "提出一种主动扩散编辑框架ResetEdit，通过将可恢复的潜变量信息嵌入生成过程，解决了现有反演方法起始潜变量质量差、编辑保真度低和结构不一致的问题，实现了高精度、高保真的局部编辑。",
+      "method": "该方法在扩散生成过程中，将干净潜变量与扩散后潜变量之间的差异注入扩散轨迹，并在反演时提取该差异，从而重建出接近真实起始状态的“可重置潜变量”。此外，引入一个轻量级潜变量优化模块，用于补偿因VAE非对称性导致的重建偏差。该方法基于Stable Diffusion，可无缝集成现有免调优编辑方法。",
+      "findings": "实验表明，ResetEdit在可控性和视觉保真度上持续优于现有最先进基线方法，能够实现更精确的局部编辑，同时保持全局结构一致性。"
+    }
+  },
+  {
+    "id": "2604.24877",
+    "title": "Learning Illumination Control in Diffusion Models",
+    "abstract": "Controlling illumination in images is essential for photography and visual content creation. While closed-source models have demonstrated impressive illumination control, open-source alternatives either require heavy control inputs like depth maps or do not release their data and code. We present a fully open-source and reproducible pipeline for learning illumination control in diffusion models. Our approach builds a data engine that transforms well-lit images into supervised training triplets consisting of a poorly-illuminated input image, a natural language lighting instruction, and a well-illuminated output image. We finetune a diffusion model on this data and demonstrate significant improvements over baseline SD 1.5, SDXL, and FLUX.1-dev models in perceptual similarity, structural similarity, and identity preservation. Our work provides a reproducible solution built entirely with open-source tools and publicly available data. We release all our code, data, and model weights publicly.",
+    "authors": [
+      "Nishit Anand",
+      "Manan Suri",
+      "Christopher Metzler",
+      "Dinesh Manocha",
+      "Ramani Duraiswami"
+    ],
+    "published": "2026-04-27",
+    "updated": "2026-04-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.24877.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.24877",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "扩散模型中的光照控制学习",
+      "core_contribution": "提出了一种完全开源、可复现的扩散模型光照控制方法，通过构建监督训练三元组数据集并微调扩散模型，显著提升了图像在感知相似性、结构相似性和身份保持方面的表现。",
+      "method": "首先构建一个数据引擎，将光照良好的图像转换为监督训练三元组，包括光照不足的输入图像、自然语言光照指令和光照良好的输出图像。然后基于该数据集对扩散模型（如SD 1.5、SDXL和FLUX.1-dev）进行微调，使其能够根据文本指令调整图像光照。整个流程完全使用开源工具和公开数据实现。",
+      "findings": "微调后的模型在感知相似性、结构相似性和身份保持方面显著优于基线模型（SD 1.5、SDXL和FLUX.1-dev），验证了所提数据引擎和训练方法的有效性。所有代码、数据和模型权重均已公开。"
+    }
+  },
+  {
+    "id": "2604.27375",
+    "title": "VeraRetouch: A Lightweight Fully Differentiable Framework for Multi-Task Reasoning Photo Retouching",
+    "abstract": "Reasoning photo retouching has gained significant traction, requiring models to analyze image defects, give reasoning processes, and execute precise retouching enhancements. However, existing approaches often rely on non-differentiable external software, creating optimization barriers and suffering from high parameter redundancy and limited generalization. To address these challenges, we propose VeraRetouch, a lightweight and fully differentiable framework for multi-task photo retouching. We employ a 0.5B Vision-Language Model (VLM) as the central intelligence to formulate retouching plans based on instructions and scene semantics. Furthermore, we develop a fully differentiable Retouch Renderer that replaces external tools, enabling direct end-to-end pixel-level training through decoupled control latents for lighting, global color, and specific color adjustments. To overcome data scarcity, we introduce AetherRetouch-1M+, the first million-scale dataset for professional retouching, constructed via a new inverse degradation workflow. Furthermore, we propose DAPO-AE, a reinforcement learning post-training strategy that enhances autonomous aesthetic cognition. Extensive experiments demonstrate that VeraRetouch achieves state-of-the-art performance across multiple benchmarks while maintaining a significantly smaller footprint, enabling mobile deployment. Our code and models are publicly available at https://github.com/OpenVeraTeam/VeraRetouch.",
+    "authors": [
+      "Yihong Guo",
+      "Youwei Lyu",
+      "Jiajun Tang",
+      "Yizhuo Zhou",
+      "Hongliang Wang",
+      "Jinwei Chen",
+      "Changqing Zou",
+      "Qingnan Fan"
+    ],
+    "published": "2026-04-30",
+    "updated": "2026-04-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2604.27375.pdf",
+    "abs_url": "https://arxiv.org/abs/2604.27375",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "VeraRetouch：一种用于多任务推理式照片修图的轻量级全可微分框架",
+      "core_contribution": "提出了一种轻量级、全可微分的多任务照片修图框架VeraRetouch，通过0.5B视觉语言模型和可微分渲染器替代传统非可微外部工具，实现了端到端优化，并构建了首个百万级专业修图数据集AetherRetouch-1M+。",
+      "method": "该方法采用0.5B参数量的视觉语言模型作为核心推理引擎，根据指令和场景语义生成修图方案；同时开发了全可微分的Retouch Renderer，通过解耦的亮度、全局色彩和特定色彩控制潜变量实现端到端像素级训练。为缓解数据稀缺，提出逆退化工作流构建了百万级数据集AetherRetouch-1M+，并采用DAPO-AE强化学习后训练策略增强自主审美认知。",
+      "findings": "实验表明，VeraRetouch在多个基准测试中达到最先进性能，同时模型体积显著更小，支持移动端部署。代码和模型已开源。"
+    }
+  }
+]
