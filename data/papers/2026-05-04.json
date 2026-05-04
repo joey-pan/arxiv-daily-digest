@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2605.00548",
+    "title": "Colorful-Noise: Training-Free Low-Frequency Noise Manipulation for Color-Based Conditional Image Generation",
+    "abstract": "Text-to-image diffusion models generate images by gradually converting white Gaussian noise into a natural image. White Gaussian noise is well suited for producing diverse outputs from a single text prompt due to its absence of structure. However, this very property limits control over, and predictability of, specific visual attributes, as the noise is not human-interpretable. In this work, we investigate the characteristics of the input noise in diffusion models. We show that, although all frequencies in white Gaussian noise have comparable statistical energy, low-frequency components primarily determine the images global structure and color composition, while high-frequency components control finer details. Building on this observation, we demonstrate that simple manipulations of the low-frequency noise using low-frequency image priors can effectively condition the generation process to reconstruct these low-frequency visual cues. This allows us to define a simple, training-free method with minimal overhead that steers overall image structure and color, while letting high-frequency components freely emerge as fine details, enabling variability across generated outputs.",
+    "authors": [
+      "Nadav Z. Cohen",
+      "Ofir Abramovich",
+      "Ariel Shamir"
+    ],
+    "published": "2026-05-01",
+    "updated": "2026-05-01",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.00548.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.00548",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "彩色噪声：基于颜色的条件图像生成中的无训练低频噪声操控",
+      "core_contribution": "提出了一种无需训练、计算开销极小的噪声操控方法，通过修改输入噪声的低频成分来引导扩散模型生成具有特定颜色和全局结构的图像，同时保留高频细节的多样性。",
+      "method": "首先分析扩散模型中输入白噪声的频率特性，发现低频成分主要决定图像的全局结构和颜色分布，而高频成分控制细节。基于此，通过将低频图像先验（如颜色分布）直接注入到噪声的低频部分，实现对生成过程的颜色和结构条件控制，而不需要重新训练模型或增加额外模块。",
+      "findings": "实验表明，仅通过简单修改输入噪声的低频分量，即可有效控制生成图像的整体颜色和结构，同时高频细节保持自由变化，从而在条件生成中实现可控性与多样性的平衡。"
+    }
+  },
+  {
+    "id": "2605.00503",
+    "title": "End-to-End Autoregressive Image Generation with 1D Semantic Tokenizer",
+    "abstract": "Autoregressive image modeling relies on visual tokenizers to compress images into compact latent representations. We design an end-to-end training pipeline that jointly optimizes reconstruction and generation, enabling direct supervision from generation results to the tokenizer. This contrasts with prior two-stage approaches that train tokenizers and generative models separately. We further investigate leveraging vision foundation models to improve 1D tokenizers for autoregressive modeling. Our autoregressive generative model achieves strong empirical results, including a state-of-the-art FID score of 1.48 without guidance on ImageNet 256x256 generation.",
+    "authors": [
+      "Wenda Chu",
+      "Bingliang Zhang",
+      "Jiaqi Han",
+      "Yizhuo Li",
+      "Linjie Yang",
+      "Yisong Yue",
+      "Qiushan Guo"
+    ],
+    "published": "2026-05-01",
+    "updated": "2026-05-01",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.00503.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.00503",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于一维语义分词器的端到端自回归图像生成",
+      "core_contribution": "提出了一种端到端的自回归图像生成训练流程，将重建与生成联合优化，使分词器能够直接接收生成结果的监督信号，从而克服了传统两阶段方法中分词器与生成模型分离训练的局限。",
+      "method": "该方法设计了一个端到端训练管道，同时优化图像重建和自回归生成任务，使得生成模型的梯度可以反向传播到分词器，实现联合学习。此外，研究还探索了利用视觉基础模型（如预训练特征）来改进一维分词器的语义表示能力，以更好地适配自回归建模。整个模型在ImageNet 256x256数据集上进行训练和评估。",
+      "findings": "在ImageNet 256x256图像生成任务上，该自回归生成模型在无引导条件下取得了1.48的FID分数，达到了当前最优水平，证明了端到端联合训练和语义分词器对生成质量的显著提升效果。"
+    }
+  },
+  {
+    "id": "2605.00605",
+    "title": "Faithful Extreme Image Rescaling with Learnable Reversible Transformation and Semantic Priors",
+    "abstract": "Most recent extreme rescaling methods struggle to preserve semantically consistent structures and produce realistic details, due to the severely ill-posed nature of low- to high-resolution mapping under scaling factors of $16\\times$ or higher. To alleviate the above problems, we propose FaithEIR, a diffusion-based framework for extreme image rescaling. Inspired by singular value decomposition, we develop learnable reversible transformation that enables invertible downscaling and upscaling in the latent space. To compensate for information loss due to quantization, we propose an adaptive detail prior, a high-frequency dictionary that captures the empirical average of commonly occurring structures in the training data. Finally, we design a lightweight pixel semantic embedder to provide semantic conditioning for the pretrained diffusion model. We present extensive experimental results demonstrating that our FaithEIR consistently outperforms state-of-the-art methods, achieving superior reconstruction fidelity and perceptual quality. Our code, model weights, and detailed results are released at https://github.com/cshw2021/FaithEIR.",
+    "authors": [
+      "Hao Wei",
+      "Yanhui Zhou",
+      "Chenyang Ge",
+      "Saeed Anwar",
+      "Ajmal Mian"
+    ],
+    "published": "2026-05-01",
+    "updated": "2026-05-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.00605.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.00605",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "基于可学习可逆变换与语义先验的忠实极端图像缩放",
+      "core_contribution": "提出了一种名为FaithEIR的扩散模型框架，通过可学习可逆变换和语义先验，在16倍或更高缩放因子下实现了高保真度的极端图像缩放，显著提升了重建保真度和感知质量。",
+      "method": "受奇异值分解启发，开发了可学习的可逆变换，在潜在空间中实现可逆的下采样和上采样。为补偿量化导致的信息损失，提出了自适应细节先验——一个高频字典，用于捕捉训练数据中常见结构的经验平均值。最后，设计了一个轻量级像素语义嵌入器，为预训练的扩散模型提供语义条件。",
+      "findings": "大量实验表明，FaithEIR在极端图像缩放任务上持续优于现有最先进方法，在重建保真度和感知质量两方面均取得了更优结果。"
+    }
+  },
+  {
+    "id": "2605.00825",
+    "title": "Posterior Augmented Flow Matching",
+    "abstract": "Flow matching (FM) trains a time-dependent vector field that transports samples from a simple prior to a complex data distribution. However, for high-dimensional images, each training sample supervises only a single trajectory and intermediate point, yielding an extremely sparse and high-variance training signal. This under-constrained supervision can cause flow collapse, where the learned dynamics memorize specific source-target pairings, mapping diverse inputs to overly similar outputs, failing to generalize. We introduce Posterior-Augmented Flow Matching (PAFM), a theoretically grounded generalization of FM that replaces single-target supervision with an expectation over an approximate posterior of valid target completions for a given intermediate state and condition. PAFM factorizes this intractable posterior into (i) the likelihood of the intermediate under a hypothesized endpoint and (ii) the prior probability of that endpoint under the condition, and uses an importance sampling scheme to construct a mixture over multiple candidate targets. We prove that PAFM yields an unbiased estimator of the original FM objective while substantially reducing gradient variance during training by aggregating information from many plausible continuation trajectories per intermediate. Finally, we show that PAFM improves over FM by up to 3.4 FID50K across different model scales (SiT-B/2 and SiT-XL/2), different architectures (SiT and MMDiT), and in both class and text conditioned benchmarks (ImageNet and CC12M), with a negligible increase in the compute overhead. Code: https://github.com/gstoica27/PAFM.git.",
+    "authors": [
+      "George Stoica",
+      "Sayak Paul",
+      "Matthew Wallingford",
+      "Vivek Ramanujan",
+      "Abhay Nori",
+      "Winson Han",
+      "Ali Farhadi",
+      "Ranjay Krishna",
+      "Judy Hoffman"
+    ],
+    "published": "2026-05-01",
+    "updated": "2026-05-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.00825.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.00825",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "后验增强流匹配",
+      "core_contribution": "提出了一种理论上严谨的流匹配泛化方法——后验增强流匹配（PAFM），通过引入近似后验期望替代单目标监督，显著降低了训练梯度方差，从而缓解了高维图像生成中的流坍塌问题。",
+      "method": "PAFM将原始流匹配中每个中间状态仅对应单一目标轨迹的监督方式，替换为对多个合理目标完成路径的期望。该方法将难以直接计算的后验分解为中间状态在假设终点下的似然与终点在条件下的先验概率的乘积，并利用重要性采样构建多个候选目标的混合分布，从而得到原始流匹配目标的无偏估计。",
+      "findings": "在不同模型规模（SiT-B/2和SiT-XL/2）、不同架构（SiT和MMDiT）以及类别条件（ImageNet）和文本条件（CC12M）基准上，PAFM相比标准流匹配在FID50K指标上提升了最多3.4，且计算开销增加极小。"
+    }
+  },
+  {
+    "id": "2605.00707",
+    "title": "PhysEdit: Physically-Consistent Region-Aware Image Editing via Adaptive Spatio-Temporal Reasoning",
+    "abstract": "Image editing instructions are heterogeneous: a color swap, an object insertion, and a physical-action edit all demand different spatial coverage and different reasoning depth, yet existing reasoning-based editors apply a single fixed inference recipe to every instruction. We argue that adaptivity along both the spatial and temporal axes is the missing degree of freedom, and we present PhysEdit, an editing framework built around this principle. PhysEdit introduces two inference-time modules that compose without retraining the backbone. At its core, (1) Complexity-Adaptive Reasoning Depth (CARD) predicts edit complexity directly from the instruction and reference image and allocates the reasoning step count N_r and reasoning-token length r per sample -- turning a previously fixed inference schedule into a conditional-computation problem. CARD is supported by (2) a Spatial Reasoning Mask (SRM) that extracts an instruction-conditioned spatial prior from cross-attention to confine reasoning to regions that semantically require it. On the full 737-case ImgEdit Basic-Edit Suite, PhysEdit delivers a 1.18x wall-clock speedup (64.3s vs. 76.1s per sample) over a strong reasoning baseline while slightly improving instruction adherence (CLIP-T 0.2283 vs. 0.2266, +0.7%) and matching identity preservation within noise (CLIP-I 0.8246 vs. 0.8280). The speedup is category-dependent and reaches 1.52x on appearance-level edits, validating CARD's adaptive allocation as the principal source of efficiency gain. A 30-sample pilot with full ablations isolates the contribution of each module.",
+    "authors": [
+      "Guandong Li",
+      "Mengxia Ye"
+    ],
+    "published": "2026-05-01",
+    "updated": "2026-05-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.00707.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.00707",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "PhysEdit：通过自适应时空推理实现物理一致的区域感知图像编辑",
+      "core_contribution": "提出了一种自适应推理深度的图像编辑框架PhysEdit，能够根据编辑指令的复杂度动态调整推理步数和推理令牌长度，从而在保持编辑质量的同时显著提升推理效率。",
+      "method": "PhysEdit包含两个无需重新训练模型的推理时模块：一是复杂度自适应推理深度模块（CARD），它直接从指令和参考图像预测编辑复杂度，并为每个样本分配推理步数N_r和推理令牌长度r；二是空间推理掩码模块（SRM），它从交叉注意力中提取指令相关的空间先验，将推理限制在语义上需要修改的区域。这两个模块协同工作，将原本固定的推理调度转化为条件计算问题。",
+      "findings": "在包含737个样本的ImgEdit Basic-Edit Suite上，PhysEdit相比强推理基线实现了1.18倍的实际加速（每样本64.3秒 vs 76.1秒），同时指令遵循度略有提升（CLIP-T从0.2266升至0.2283，+0.7%），身份保持能力在噪声范围内持平（CLIP-I 0.8246 vs 0.8280）。加速效果因编辑类别而异，在外观级编辑上达到1.52倍，验证了CARD自适应分配是效率提升的主要来源。"
+    }
+  }
+]
