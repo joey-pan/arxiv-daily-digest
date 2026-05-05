@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2605.02772",
+    "title": "Linearizing Vision Transformer with Test-Time Training",
+    "abstract": "While linear-complexity attention mechanisms offer a promising alternative to Softmax attention for overcoming the quadratic bottleneck, training such models from scratch remains prohibitively expensive. Inheriting weights from pretrained Transformers provides an appealing shortcut, yet the fundamental representational gap between Softmax and linear attention prevents effective weight transfer. In this work, we address this conversion challenge from two perspectives: architectural alignment and representational alignment. We identify Test-Time Training (TTT) as a linear-complexity architecture whose two-layer dynamic formulation is structurally aligned with Softmax attention, enabling direct inheritance of pretrained attention weights. To further align representational properties, including key shift-invariance and locality, we introduce key instance normalization and a lightweight locality enhancement module. We validate our approach by linearizing Stable Diffusion 3.5 and introduce SD3.5-T$^5$ (Transformer To Test Time Training). With only 1 hour of fine-tuning on 4$\\times$H20 GPUs, SD3.5-T$^5$ achieves comparable text-to-image quality to the fine-tuned Softmax model, while accelerating inference by 1.32$\\times$ and 1.47$\\times$ at 1K and 2K resolutions.",
+    "authors": [
+      "Yining Li",
+      "Dongchen Han",
+      "Zeyu Liu",
+      "Hanyi Wang",
+      "Yulin Wang",
+      "Gao Huang"
+    ],
+    "published": "2026-05-04",
+    "updated": "2026-05-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.02772.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.02772",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过测试时训练线性化视觉Transformer",
+      "core_contribution": "提出了一种将预训练Softmax注意力Transformer高效转换为线性复杂度模型的方法，通过结构对齐和表示对齐，仅需少量微调即可实现与原始模型相当的性能，同时显著加速推理。",
+      "method": "首先，识别出测试时训练（TTT）架构的两层动态公式与Softmax注意力在结构上对齐，从而可以直接继承预训练注意力权重。其次，引入关键实例归一化（Key Instance Normalization）和轻量级局部性增强模块，以对齐表示特性（如平移不变性和局部性）。最后，在Stable Diffusion 3.5上验证该方法，通过仅1小时的微调完成线性化转换。",
+      "findings": "在Stable Diffusion 3.5上，所提出的SD3.5-T⁵模型经过1小时微调后，文本到图像生成质量与微调后的Softmax模型相当，同时在1K和2K分辨率下分别实现了1.32倍和1.47倍的推理加速。"
+    }
+  },
+  {
+    "id": "2605.02583",
+    "title": "Stylistic Attribute Control in Latent Diffusion Models",
+    "abstract": "Text-to-image diffusion models have revolutionized image synthesis and editing, but precise control over stylistic attributes remains a challenge, often causing unintended content modifications. We propose an approach for fine-grained parametric control of stylistic attributes in latent diffusion models by learning disentangled editing directions from synthetic datasets. We use guidance composition to close the domain gap between stylistically finetuned and foundation models, preserving the original image semantics while applying stylistic adjustments. To ensure consistent edits, we introduce a training regularization loss and enhance DDIM inversion with optimized null-conditional embeddings for real image editing. We validate our approach by learning from stylistically filtered synthetic datasets varying a range of stylistic attributes, including outlines, local contrast, watercolorization effects, and geometric patterns. Our evaluations demonstrate that compared to current text-based editing techniques, our method offers well-integrated, more precise and continuously adjustable stylistic modifications.",
+    "authors": [
+      "Max Reimann",
+      "Benito Buchheim",
+      "Jürgen Döllner"
+    ],
+    "published": "2026-05-04",
+    "updated": "2026-05-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.02583.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.02583",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "潜在扩散模型中的风格属性控制",
+      "core_contribution": "提出了一种在潜在扩散模型中实现细粒度、参数化风格属性控制的方法，通过学习解耦的编辑方向，在不改变图像语义的前提下实现连续可调的风格修改。",
+      "method": "该方法首先从经过风格过滤的合成数据集中学习解耦的编辑方向，然后利用引导组合（guidance composition）缩小风格微调模型与基础模型之间的域差距，从而在保持原始语义的同时应用风格调整。为了确保编辑一致性，引入了训练正则化损失，并通过优化的空条件嵌入增强DDIM反演，以支持真实图像的编辑。",
+      "findings": "实验表明，与当前基于文本的编辑技术相比，该方法能够实现更精确、更连贯且连续可调的风格修改，涵盖轮廓、局部对比度、水彩化效果和几何图案等多种风格属性。"
+    }
+  },
+  {
+    "id": "2605.02417",
+    "title": "DirectEdit: Step-Level Accurate Inversion for Flow-Based Image Editing",
+    "abstract": "With recent advancements in large-scale pre-trained text-to-image (T2I) models, training-free image editing methods have demonstrated remarkable success. Typically, these methods involve adding noise to a clean image via an inversion process, followed by separate denoising steps for the reconstruction and editing paths during the forward process. However, since the reconstruction path is approximated using noisy latents from mismatched timesteps, existing methods inevitably suffer from accumulated drift, which fundamentally limits reconstruction fidelity. To address this challenge, we systematically analyze the inversion process within the flow transformer and propose DirectEdit, a simple yet effective editing method that eliminates the inherent reconstruction error without introducing additional neural function evaluations (NFEs). Unlike most prior works that attempt to rectify the inversion path, DirectEdit focuses on directly aligning the forward paths, enabling precise reconstruction and reliable feature sharing. Furthermore, we introduce a preservation mechanism based on attention feature injection and multi-branch mask-guided noise blending, which effectively balances fidelity and editability. Extensive experiments across diverse scenarios demonstrate that DirectEdit achieves efficient and accurate image editing, delivering superior performance that outperforms state-of-the-art methods. Code and examples are available at https://desongyang.github.io/Directedit.",
+    "authors": [
+      "Desong Yang",
+      "Mang Ye"
+    ],
+    "published": "2026-05-04",
+    "updated": "2026-05-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.02417.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.02417",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DirectEdit：基于流的图像编辑的逐步骤精确反演方法",
+      "core_contribution": "提出了一种无需额外神经函数评估的训练自由图像编辑方法DirectEdit，通过直接对齐前向路径而非修正反演路径，从根本上消除了现有方法中因时间步不匹配导致的累积漂移误差，实现了高保真重建与高效编辑。",
+      "method": "首先，系统分析了流变换器中的反演过程，指出传统方法因使用不匹配时间步的噪声潜变量导致重建误差累积。DirectEdit通过直接对齐重建路径与编辑路径的前向过程，避免了反演路径的修正需求。其次，引入基于注意力特征注入的保留机制，并结合多分支掩码引导的噪声混合策略，在保真度与可编辑性之间取得平衡。整个方法无需增加额外的神经函数评估次数。",
+      "findings": "在多种场景下的广泛实验表明，DirectEdit实现了高效且精确的图像编辑，其性能优于当前最先进的方法，尤其在重建保真度与编辑效果上表现突出。"
+    }
+  },
+  {
+    "id": "2605.02393",
+    "title": "FEAT: Fashion Editing and Try-On from Any Design",
+    "abstract": "Fashion design aims to express a designer's creative intent and to depict how garments interact with the human body. Recent methods condition on multimodal inputs to support garment editing and virtual try-on. However, existing methods still (i) confine design to garment-related images, excluding creative design sources such as artwork, abstract imagery, and natural photographs, and (ii) cannot support complete outfits, including accessories. We present FEAT (Fashion Editing And Try-On from Any Design), a method that enables editing and try-on across garments and accessories using diverse design sources. To achieve this, we introduce Disentangled Dual Injection (DDI). It takes both apparel and non-apparel design sources and selectively injects design cues via content and style disentanglement. Furthermore, we propose Orthogonal-Guided Noise Fusion (OGNF), a training-free mechanism that removes residual garments via orthogonal projection and applies region-specific noise strategies to enable virtual try-on for both garments and accessories. Extensive experiments demonstrate that FEAT achieves state-of-the-art performance in design flexibility, prompt consistency, and visual realism.",
+    "authors": [
+      "Soye Kwon",
+      "Keonyoung Lee",
+      "Dahuin Jung",
+      "Jaekoo Lee"
+    ],
+    "published": "2026-05-04",
+    "updated": "2026-05-04",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.02393.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.02393",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FEAT：基于任意设计的时尚编辑与虚拟试穿",
+      "core_contribution": "提出了一种名为FEAT的方法，首次支持利用任意设计源（包括艺术品、抽象图像和自然照片）对服装和配饰进行编辑与虚拟试穿，突破了传统方法仅依赖服装相关图像的限制。",
+      "method": "FEAT方法包含两个核心模块：一是解耦双注入（DDI），通过内容与风格解耦，从服装和非服装设计源中选择性注入设计线索；二是正交引导噪声融合（OGNF），一种无需训练的机制，利用正交投影去除残留衣物，并采用区域特定噪声策略实现服装和配饰的虚拟试穿。",
+      "findings": "大量实验表明，FEAT在设计灵活性、提示一致性和视觉真实感方面达到了最先进的性能，能够有效处理包括配饰在内的完整着装，并支持多样化的创意设计输入。"
+    }
+  },
+  {
+    "id": "2605.02152",
+    "title": "SpecEdit: Training-Free Acceleration for Diffusion based Image Editing via Semantic Locking",
+    "abstract": "Diffusion-based image editing offers strong semantic controllability, but remains computationally expensive due to iterative high-resolution denoising over all spatial tokens. Dynamic-resolution sampling reduces this cost by performing early steps at reduced resolution. However, existing approaches prioritize upsampling using low-level heuristics such as edge detection or channel variance, which are weakly aligned with editing semantics and may lead to structural inconsistency. Moreover, spatial regions are often upsampled without verifying whether semantic modification is actually required, resulting in redundant high-resolution computation and accumulated errors. Therefore, we propose SpecEdit, a training-free dynamic-resolution framework tailored for diffusion-based image editing. SpecEdit follows a draft-and-verify scheme: a low-resolution draft first estimates the semantic outcome, after which token-level discrepancies are used to identify edit-relevant tokens for high-resolution denoising, while the remaining tokens stay at a coarse resolution. Experiments on Qwen-Image-Edit and FLUX.1-Kontext-dev demonstrate up to 10x and 7x acceleration, while maintaining strong quality. SpecEdit is complementary to step distillation and other acceleration techniques, achieving up to 13x speedup when combined with existing methods. Our code is in supplementary material and will be released on GitHub.",
+    "authors": [
+      "Zhengan Yan",
+      "Shikang Zheng",
+      "Haoran Qin",
+      "Xiaobing Tu",
+      "Yinggui Wang",
+      "Jiacheng Liu",
+      "Jiaxuan Ren",
+      "Yuqi Lin",
+      "Peiliang Cai",
+      "Jinkui Ren",
+      "Xiantao Zhang",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-05-04",
+    "updated": "2026-05-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.02152.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.02152",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SpecEdit：基于语义锁定的无训练加速扩散图像编辑方法",
+      "core_contribution": "提出了一种无需额外训练的动态分辨率框架SpecEdit，通过低分辨率草稿与令牌级语义差异检测，实现扩散模型图像编辑的高效加速，同时保持编辑质量。",
+      "method": "SpecEdit采用“草稿-验证”两阶段方案：首先在低分辨率下生成编辑结果的粗略草稿，然后通过计算草稿与原始图像之间的令牌级语义差异，识别出需要高分辨率处理的编辑相关令牌；仅对这些令牌进行高分辨率去噪，其余令牌保持低分辨率计算，从而大幅减少计算开销。该方法无需重新训练模型，且可与步数蒸馏等现有加速技术互补。",
+      "findings": "在Qwen-Image-Edit和FLUX.1-Kontext-dev模型上，SpecEdit分别实现了最高10倍和7倍的加速，同时保持了良好的编辑质量；与现有加速方法结合时，最高可达13倍加速。"
+    }
+  }
+]
