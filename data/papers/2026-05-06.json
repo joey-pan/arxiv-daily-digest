@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2605.04040",
+    "title": "Large Language Models are Universal Reasoners for Visual Generation",
+    "abstract": "Text-to-image generation has advanced rapidly with diffusion models, progressing from CLIP and T5 conditioning to unified systems where a single LLM backbone handles both visual understanding and generation. Despite the architectural unification, these systems frequently fail to faithfully align complex prompts during synthesis, even though they remain highly accurate at verifying whether an image satisfies those same prompts. We formalize this as the \\emph{understanding-generation gap} and propose UniReasoner, a framework that leverages the LLM as a universal reasoner to convert its understanding strength into direct generation guidance. Given a prompt, the LLM first produces a coarse visual draft composed of discrete vision tokens. It then performs a self-critique by evaluating the draft for prompt consistency, producing a grounded textual evaluation that pinpoints what needs to be corrected. Finally, a diffusion model is conditioned jointly on the prompt, the visual draft, and the evaluation, ensuring that generation is guided by explicit corrective signals. Each signal addresses a limitation of the other: the draft provides a concrete, scene-level anchor that reduces under-specification in text-only conditioning, while the evaluation turns verification into grounded, actionable constraints that correct omissions, hallucinations, and relational errors. Experiments show that UniReasoner improves compositional alignment and semantic faithfulness under the same diffusion backbone while maintaining image quality, demonstrating a practical way to exploit LLM reasoning to close the understanding-generation gap.",
+    "authors": [
+      "Sucheng Ren",
+      "Chen Chen",
+      "Zhenbang Wang",
+      "Liangchen Song",
+      "Xiangxin Zhu",
+      "Alan Yuille",
+      "Liang-Chieh Chen",
+      "Jiasen Lu"
+    ],
+    "published": "2026-05-05",
+    "updated": "2026-05-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.04040.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.04040",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "大语言模型是视觉生成的通用推理器",
+      "core_contribution": "提出UniReasoner框架，利用大语言模型作为通用推理器，通过自我批判和视觉草稿生成，弥合了文本到图像生成中理解与生成之间的差距。",
+      "method": "首先，LLM根据文本提示生成由离散视觉标记组成的粗略视觉草稿；然后，LLM对草稿进行自我批判，评估其与提示的一致性，并生成具体的文本评价，指出需要修正的问题；最后，扩散模型同时以提示、视觉草稿和评价为条件进行生成，其中草稿提供场景级锚点减少文本条件的欠指定性，评价将验证转化为可操作的约束以纠正遗漏、幻觉和关系错误。",
+      "findings": "在相同扩散骨干网络下，UniReasoner显著提升了组合对齐和语义忠实度，同时保持了图像质量，证明了利用LLM推理能力缩小理解-生成差距的有效性。"
+    }
+  },
+  {
+    "id": "2605.03317",
+    "title": "AHPA: Adaptive Hierarchical Prior Alignment for Diffusion Transformers",
+    "abstract": "Representation alignment has recently emerged as an effective paradigm for accelerating Diffusion Transformer training. Despite their success, existing alignment methods typically impose a fixed supervision target or a fixed alignment granularity throughout the entire denoising trajectory, whether the guidance is provided by external vision encoders, internal self-representations, or VAE-derived features. We argue that such timestep-agnostic alignment is suboptimal because the useful granularity of representation supervision changes systematically with the signal-to-noise ratio. In high-noise regimes, diffusion models benefit more from coarse semantic and layout-level anchoring, whereas in low-noise regimes, the training signal should emphasize spatially detailed and structurally faithful refinement. This non-stationary alignment behavior creates a representational mismatch for static single-level supervisors. To address this issue, we propose Adaptive Hierarchical Prior Alignment (AHPA), a lightweight alignment framework that exploits the hierarchical representations naturally embedded in the frozen VAE encoder. Instead of using only a single compressed latent as the alignment target, AHPA extracts multi-level VAE features that provide complementary priors ranging from local geometry and spatial topology to coarse semantic layout. A timestep-conditioned Dynamic Router adaptively selects and weights these hierarchical priors along the denoising trajectory, thereby synchronizing the alignment granularity with the model's evolving training needs. Extensive experiments show that AHPA improves convergence and generation quality over baselines and incurs no additional inference cost while avoiding external encoder supervision during training.",
+    "authors": [
+      "Ruibin Min",
+      "Yexin Liu",
+      "Aimin Pan",
+      "Changsheng Lu",
+      "Jiafei Wu",
+      "Kelu Yao",
+      "Xiaogang Xu",
+      "Harry Yang"
+    ],
+    "published": "2026-05-05",
+    "updated": "2026-05-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.03317.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.03317",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AHPA：面向扩散Transformer的自适应分层先验对齐",
+      "core_contribution": "提出了一种自适应分层先验对齐框架（AHPA），通过利用冻结VAE编码器中自然嵌入的多层特征，并使用时序条件动态路由器自适应选择对齐粒度，解决了现有扩散Transformer训练中固定对齐目标与去噪过程非平稳需求之间的不匹配问题。",
+      "method": "AHPA从冻结的VAE编码器中提取多层特征，这些特征提供从局部几何、空间拓扑到粗粒度语义布局的互补先验。一个时序条件动态路由器（Dynamic Router）根据去噪时间步自适应地选择和加权这些分层先验，从而将对齐粒度与模型在不同噪声水平下的训练需求同步。该方法避免了外部编码器监督，仅在训练时引入轻量级路由模块，推理时无额外成本。",
+      "findings": "大量实验表明，AHPA相比基线方法提升了收敛速度和生成质量，且不增加推理开销，同时避免了训练期间使用外部编码器监督。"
+    }
+  },
+  {
+    "id": "2605.01653",
+    "title": "SteeringDiffusion: A Bottlenecked Activation Control Interface for Diffusion Models",
+    "abstract": "We introduce SteeringDiffusion, a bottlenecked activation-level control interface for diffusion models that exposes a smooth, monotonic, and runtime-adjustable control surface over the content--style trade-off. Our method keeps the U-Net backbone frozen and learns a small, prompt-conditioned latent code projected to FiLM/AdaGN-style modulation parameters. A zero-initialized design guarantees exact equivalence to the base model at zero scale, while timestep-aware gating restricts modulation to later denoising stages. A single scalar at inference continuously traverses the control surface without retraining. Across experiments on Stable Diffusion~1.5 and SDXL covering multiple artistic styles, we show that SteeringDiffusion produces smooth and monotonic content--style trade-offs. Under matched parameter budgets, it outperforms LoRA in controllability and stability, while ControlNet and rank-1 adapters do not expose a comparable control surface. We further introduce an inversion-stability diagnostic based on DDIM inversion, used as a post-hoc trajectory probe, which reveals strong correlations with intervention magnitude. These results position \\emph{Steering Bottlenecked Explicit Control (S-BEC)} as a practical, general-purpose control interface for frozen diffusion backbones.",
+    "authors": [
+      "Fangzheng Wu",
+      "Brian Summa"
+    ],
+    "published": "2026-05-03",
+    "updated": "2026-05-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.01653.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.01653",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SteeringDiffusion：扩散模型的瓶颈激活控制接口",
+      "core_contribution": "提出了一种名为SteeringDiffusion的瓶颈式激活级控制接口，能够在冻结的U-Net骨干网络上实现平滑、单调且运行时可调的内容-风格权衡控制，优于LoRA等现有方法。",
+      "method": "该方法保持U-Net骨干网络冻结，学习一个小的、由提示条件化的潜在编码，并将其投影为FiLM/AdaGN风格的调制参数。采用零初始化设计确保在零尺度下与基础模型完全等价，并通过时间步感知门控将调制限制在后期去噪阶段。推理时仅需一个标量即可连续遍历控制表面，无需重新训练。",
+      "findings": "在Stable Diffusion 1.5和SDXL上的多个艺术风格实验中，SteeringDiffusion实现了平滑且单调的内容-风格权衡。在相同参数预算下，其在可控性和稳定性上优于LoRA，而ControlNet和秩1适配器无法提供类似的控制表面。此外，基于DDIM逆推的稳定性诊断揭示了干预幅度与轨迹变化之间的强相关性。"
+    }
+  },
+  {
+    "id": "2605.01517",
+    "title": "VAnim: Rendering-Aware Sparse State Modeling for Structure-Preserving Vector Animation",
+    "abstract": "Scalable Vector Graphics (SVG) animation generation is pivotal for professional design due to their structural editability and resolution independence. However, this task remains challenging as it requires bridging discrete code representations with continuous visual dynamics. Existing optimization-based methods often destroy topological consistency, while general-purpose LLMs rely on rigid CSS/SMIL transformations, failing to model geometry-level non-rigid deformations. To address these limitations, we present VAnim, the first LLM-based framework for open-domain text-to-SVG animation. We reconceptualize animation not as sequence generation, but as Sparse State Updates (SSU) on a persistent SVG DOM tree. This paradigm compresses sequence length by over 9.8x while preserving the SVG DOM structure and non-participating elements by construction. To enable precise control, we propose an Identification-First Motion Planning mechanism that grounds textual instructions in explicit visual entities. Furthermore, to overcome the non-differentiable nature of SVG rendering, we employ Rendering-Aware Reinforcement Learning via Group Relative Policy Optimization (GRPO). By leveraging a hybrid reward from a state-of-the-art video perception encoder, we align discrete code updates with high-fidelity visual feedback. We also introduce SVGAnim-134k, the first benchmark for vector animation. Extensive experiments demonstrate that VAnim significantly outperforms state-of-the-art baselines in semantic alignment and structural validity, with additional appendix metrics further validating motion quality and identity preservation.",
+    "authors": [
+      "Guotao Liang",
+      "Zhangcheng Wang",
+      "Chuang Wang",
+      "Juncheng Hu",
+      "Haitao Zhou",
+      "Junhua Liu",
+      "Jing Zhang",
+      "Dong Xu",
+      "Qian Yu"
+    ],
+    "published": "2026-05-02",
+    "updated": "2026-05-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.01517.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.01517",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VAnim：面向结构保持的矢量动画的渲染感知稀疏状态建模",
+      "core_contribution": "VAnim是首个基于大语言模型（LLM）的开放域文本到SVG动画生成框架，通过将动画重新定义为对持久化SVG DOM树的稀疏状态更新（SSU），在保持拓扑结构的同时大幅压缩序列长度，并利用渲染感知强化学习实现离散代码更新与连续视觉动态的对齐。",
+      "method": "VAnim提出稀疏状态更新（SSU）范式，将动画生成视为对SVG DOM树的局部状态修改而非完整序列生成，从而压缩序列长度9.8倍以上。采用识别优先的运动规划机制，将文本指令显式映射到具体视觉实体。为解决SVG渲染不可微的问题，引入基于组相对策略优化（GRPO）的渲染感知强化学习，利用来自视频感知编码器的混合奖励信号对齐离散代码更新与高保真视觉反馈。",
+      "findings": "在自建基准SVGAnim-134k上的实验表明，VAnim在语义对齐和结构有效性上显著优于现有基线方法，附录指标进一步验证了其运动质量和身份保持能力。"
+    }
+  },
+  {
+    "id": "2605.01510",
+    "title": "SwiftPie: Lightning-fast Subject-driven Image Personalization via One step Diffusion",
+    "abstract": "Diffusion models have achieved remarkable success in high-quality image synthesis, sparking interest in image-guided generation tasks such as subject-driven image personalization. Despite their impressive personalization results, existing methods typically rely on computationally intensive fine-tuning, iterative optimization, or multi-step denoising processes, which significantly hinder their deployment and interactive capability in real-time applications. In this work, we present SwiftPie, the first one-step diffusion image personalization tool that enables lightning-fast generation of personalized images. SwiftPie introduces a novel dual-branch identity injection mechanism that effectively integrates subject identity into a one-step diffusion model. In addition, we incorporate a mask-guided rescaling strategy to further enhance subject contextualization within a single diffusion step. Extensive experiments demonstrate that SwiftPie not only delivers superior image personalization speed but also achieves comparable performance with multi-step approaches in both identity fidelity and prompt alignment. This work opens new opportunities for real-time, high-quality personalized image generation, paving the way for interactive visual synthesis.",
+    "authors": [
+      "Huy Duong",
+      "Trong-Tung Nguyen",
+      "Cuong Pham",
+      "Anh Tran",
+      "Khoi Nguyen",
+      "Minh Hoai"
+    ],
+    "published": "2026-05-02",
+    "updated": "2026-05-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.01510.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.01510",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SwiftPie：基于单步扩散的闪电般快速的主题驱动图像个性化生成",
+      "core_contribution": "SwiftPie首次实现了单步扩散模型下的主题驱动图像个性化生成，在保持与多步方法相当的图像质量和身份保真度的同时，大幅提升了生成速度，为实时交互式图像个性化应用开辟了新可能。",
+      "method": "SwiftPie提出了一种新颖的双分支身份注入机制，能够将主题身份信息有效整合到单步扩散模型中。此外，还引入了一种掩码引导的重缩放策略，在单步扩散过程中进一步增强主题的上下文融合。整个方法无需迭代优化或多步去噪，仅通过一次前向传播即可完成个性化图像生成。",
+      "findings": "大量实验表明，SwiftPie在图像个性化生成速度上显著优于现有方法，同时在身份保真度和提示对齐方面达到了与多步方法相当的性能。该工作证明了单步扩散模型在高质量实时个性化图像生成中的可行性。"
+    }
+  }
+]
