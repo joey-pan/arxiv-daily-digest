@@ -1,0 +1,164 @@
+[
+  {
+    "id": "2605.05206",
+    "title": "Taming Outlier Tokens in Diffusion Transformers",
+    "abstract": "We study outlier tokens in Diffusion Transformers (DiTs) for image generation. Prior work has shown that Vision Transformers (ViTs) can produce a small number of high-norm tokens that attract disproportionate attention while carrying limited local information, but their role in generative models remains underexplored. We show that this phenomenon appears in both the encoder and denoiser of modern Representation Autoencoder (RAE)-DiT pipelines: pretrained ViT encoders can produce outlier representations, and DiTs themselves can develop internal outlier tokens, especially in intermediate layers. Moreover, simply masking high-norm tokens does not improve performance, indicating that the problem is not only caused by a few extreme values, but is more closely related to corrupted local patch semantics. To address this issue, we introduce Dual-Stage Registers (DSR), a register-based intervention for both components: trained registers when available, recursive test-time registers otherwise, and diffusion registers for the denoiser. Across ImageNet and large-scale text-to-image generation, these interventions consistently reduce outlier artifacts and improve generation quality. Our results highlight outlier-token control as an important ingredient in building stronger DiTs.",
+    "authors": [
+      "Xiaoyu Wu",
+      "Yifei Wang",
+      "Tsu-Jui Fu",
+      "Liang-Chieh Chen",
+      "Zhe Gan",
+      "Chen Wei"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05206.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05206",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "驯服扩散变换器中的异常标记",
+      "core_contribution": "本文首次系统研究了扩散变换器（DiTs）中异常标记（outlier tokens）现象，并提出了一种名为双阶段寄存器（DSR）的干预方法，有效减少了异常标记伪影并提升了图像生成质量。",
+      "method": "作者首先分析了预训练ViT编码器和DiT去噪器中的异常标记分布，发现异常标记不仅源于极端值，更与局部补丁语义的破坏有关。随后提出了双阶段寄存器（DSR）方法：对于编码器，使用可训练的寄存器（若可用）或递归测试时寄存器；对于去噪器，引入扩散寄存器。这些寄存器作为额外的标记，用于吸收和分散异常注意力，从而抑制异常标记的产生。",
+      "findings": "在ImageNet和大规模文本到图像生成任务上，DSR方法一致地减少了异常标记伪影，并提升了生成质量。实验表明，简单掩蔽高范数标记无法改善性能，而DSR通过修正局部语义破坏有效解决了问题，凸显了异常标记控制对于构建更强DiTs的重要性。"
+    }
+  },
+  {
+    "id": "2605.05031",
+    "title": "Computer-Aided Design Generation by Cascaded Discrete Diffusion Model",
+    "abstract": "Recent deep learning approaches seek to automate CAD creation by representing a model as a sequence of discrete commands and parameters, and then generating them using autoregressive models or continuous diffusion operating in Euclidean embedding space. However, continuous diffusion perturbs representations in a continuous Euclidean domain that does not reflect the inherently discrete and heterogeneous nature of CAD tokens, often producing perturbed representations that map to semantically invalid symbols. To overcome this limitation, we propose a cascaded discrete diffusion framework for CAD generation, which consists of a command diffusion for generating CAD commands and a parameter diffusion conditioned on CAD commands. Unlike isotropic Gaussian perturbation, the forward process of our approach operates directly over categorical token distributions using delicate transition matrices. For commands, we adopt an absorbing-state transition matrix that progressively corrupts tokens to a designated symbol; for parameters, we introduce specific transition matrices tailored to heterogeneous attributes: a Gaussian kernel for coordinate continuity, a scale-invariant kernel for dimensional values, and a prior-preserving kernel for boolean attributes. The reverse process is achieved by two denoising networks: a Transformer-based encoder for command recovery, and a parameter network with extra local self-attention for command-level interaction and cross-attention for conditional injection. Experiments on the DeepCAD dataset show that the proposed approach surpasses existing autoregressive and continuous diffusion models on unconditional generation metrics, while qualitative results validate effective controllability in conditional generation tasks. Source codes will be released.",
+    "authors": [
+      "Honghu Pan",
+      "Xiaoling Luo",
+      "Yongyong Chen",
+      "Zhenyu He",
+      "Pengyang Wang"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05031.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05031",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于级联离散扩散模型的计算机辅助设计生成",
+      "core_contribution": "提出了一种级联离散扩散框架用于CAD生成，通过针对CAD命令和参数异质性的定制化转移矩阵，解决了连续扩散模型在离散CAD符号上产生语义无效输出的问题。",
+      "method": "该方法包含两个级联的扩散过程：命令扩散和参数扩散。命令扩散采用吸收态转移矩阵逐步将令牌腐蚀为指定符号；参数扩散则针对坐标连续性、尺寸值和布尔属性分别设计了高斯核、尺度不变核和先验保持核。反向去噪通过两个网络实现：基于Transformer的编码器恢复命令，以及带有局部自注意力和交叉注意力的参数网络进行条件生成。",
+      "findings": "在DeepCAD数据集上的实验表明，该方法在无条件生成指标上超越了现有的自回归和连续扩散模型，同时在条件生成任务中验证了有效的可控性。"
+    }
+  },
+  {
+    "id": "2605.04609",
+    "title": "Advancing Aesthetic Image Generation via Composition Transfer",
+    "abstract": "Composition is a cornerstone of visual aesthetics, influencing the appeal of an image. While its principles operate independently of specific content, in practice, composition is often coupled with semantics. As a result, existing methods often enhance composition either through implicit learning or by semantics-based layout control, rather than explicitly modeling composition itself. To address this gap, we introduce Composer, a framework rooted in aesthetic theory, designed to model composition in a semantic-agnostic manner. First, it supports composition transfer by extracting key composition-aware representations from a reference image and leveraging a tailored conditional guidance module to control composition based on pre-trained diffusion models. Second, when users specify only text themes without a composition reference, Composer supports theme-driven composition retrieval by leveraging the in-context learning capabilities of Large Vision-Language Models (LVLMs), achieving explicit composition planning. To enhance composition in a reference-free mode, we conduct text-to-composition fine-tuning on the trained control module to enable implicit composition planning. Furthermore, we curated a high-quality dataset comprising 2 million image-text pairs using state-of-the-art generative models to support model training. Experimental results demonstrate that Composer significantly enhances aesthetic quality in text-to-image tasks and facilitates personalized composition control and transfer, offering users precision and flexibility in the creative process.",
+    "authors": [
+      "Kai Zou",
+      "Zhiwei Zhao",
+      "Bin Liu",
+      "Nenghai Yu"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.04609.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.04609",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过构图迁移提升美学图像生成",
+      "core_contribution": "提出了一种名为Composer的框架，首次在语义无关的条件下显式建模图像构图，支持构图迁移、主题驱动的构图检索以及无参考构图增强，显著提升了文本到图像生成任务的美学质量。",
+      "method": "Composer首先从参考图像中提取构图感知表示，并通过定制的条件引导模块控制预训练扩散模型的生成过程，实现构图迁移。当用户仅提供文本主题时，利用大型视觉语言模型（LVLMs）的上下文学习能力进行主题驱动的构图检索，实现显式构图规划。此外，通过文本到构图的微调实现无参考模式下的隐式构图规划，并构建了一个包含200万图像-文本对的高质量数据集用于模型训练。",
+      "findings": "实验结果表明，Composer在文本到图像生成任务中显著提升了美学质量，并支持个性化的构图控制与迁移，为用户在创作过程中提供了精确性和灵活性。"
+    }
+  },
+  {
+    "id": "2605.04128",
+    "title": "Awaking Spatial Intelligence in Unified Multimodal Understanding and Generation",
+    "abstract": "We present JoyAI-Image, a unified multimodal foundation model for visual understanding, text-to-image generation, and instruction-guided image editing. JoyAI-Image couples a spatially enhanced Multimodal Large Language Model (MLLM) with a Multimodal Diffusion Transformer (MMDiT), allowing perception and generation to interact through a shared multimodal interface. Around this architecture, we build a scalable training recipe that combines unified instruction tuning, long-text rendering supervision, spatially grounded data, and both general and spatial editing signals. This design gives the model broad multimodal capability while strengthening geometry-aware reasoning and controllable visual synthesis. Experiments across understanding, generation, long-text rendering, and editing benchmarks show that JoyAI-Image achieves state-of-the-art or highly competitive performance. More importantly, the bidirectional loop between enhanced understanding, controllable spatial editing, and novel-view-assisted reasoning enables the model to move beyond general visual competence toward stronger spatial intelligence. These results suggest a promising path for unified visual models in downstream applications such as vision-language-action systems and world models.",
+    "authors": [
+      "Lin Song",
+      "Wenbo Li",
+      "Guoqing Ma",
+      "Wei Tang",
+      "Bo Wang",
+      "Yuan Zhang",
+      "Yijun Yang",
+      "Yicheng Xiao",
+      "Jianhui Liu",
+      "Yanbing Zhang",
+      "Guohui Zhang",
+      "Wenhu Zhang",
+      "Hang Xu",
+      "Nan Jiang",
+      "Xin Han",
+      "Haoze Sun",
+      "Maoquan Zhang",
+      "Haoyang Huang",
+      "Nan Duan"
+    ],
+    "published": "2026-05-05",
+    "updated": "2026-05-05",
+    "categories": [
+      "cs.GR",
+      "cs.AI",
+      "cs.CL",
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.04128.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.04128",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "唤醒统一多模态理解与生成中的空间智能",
+      "core_contribution": "提出JoyAI-Image统一多模态基础模型，通过耦合空间增强的多模态大语言模型与多模态扩散Transformer，首次在单一框架中实现视觉理解、文本到图像生成和指令引导图像编辑的协同，并显著提升了空间智能。",
+      "method": "模型采用空间增强的多模态大语言模型与多模态扩散Transformer的耦合架构，通过共享多模态接口实现感知与生成的交互。训练策略结合了统一指令微调、长文本渲染监督、空间接地数据以及通用与空间编辑信号，从而在保持广泛多模态能力的同时强化几何感知推理与可控视觉合成。",
+      "findings": "在理解、生成、长文本渲染和编辑基准测试中，JoyAI-Image达到了最先进或极具竞争力的性能。更重要的是，增强理解、可控空间编辑与新视角辅助推理之间的双向循环使模型超越了通用视觉能力，迈向更强的空间智能，为视觉-语言-动作系统和世界模型等下游应用提供了有前景的路径。"
+    }
+  },
+  {
+    "id": "2605.05204",
+    "title": "D-OPSD: On-Policy Self-Distillation for Continuously Tuning Step-Distilled Diffusion Models",
+    "abstract": "The landscape of high-performance image generation models is currently shifting from the inefficient multi-step ones to the efficient few-step counterparts (e.g, Z-Image-Turbo and FLUX.2-klein). However, these models present significant challenges for directly continuous supervised fine-tuning. For example, applying the commonly used fine-tuning technique would compromises their inherent few-step inference capability. To address this, we propose D-OPSD, a novel training paradigm for step-distilled diffusion models that enables on-policy learning during supervised fine-tuning. We first find that the modern diffusion model where the LLM/VLM serves as the encoder can inherit its encoder's in-context capabilities. This enables us to make the training as an on-policy self-distillation process. Specifically, during training, we make the model acts as both the teacher and the student with different contexts, where the student is conditioned only on the text feature, while the teacher is conditioned on the multimodal feature of both the text prompt and the target image. Training minimizes the two predicted distributions over the student's own roll-outs. By optimized on the model's own trajectory and under it's own supervision, D-OPSD enables the model to learn new concept, style, etc. without sacrificing the original few-step capacity.",
+    "authors": [
+      "Dengyang Jiang",
+      "Xin Jin",
+      "Dongyang Liu",
+      "Zanyi Wang",
+      "Mingzhe Zheng",
+      "Ruoyi Du",
+      "Xiangpeng Yang",
+      "Qilong Wu",
+      "Zhen Li",
+      "Peng Gao",
+      "Harry Yang",
+      "Steven Hoi"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05204.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05204",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "D-OPSD：基于策略的自蒸馏方法用于连续调优步蒸馏扩散模型",
+      "core_contribution": "提出了一种名为D-OPSD的训练范式，使得步蒸馏扩散模型在监督微调过程中能够进行基于策略的学习，从而在不牺牲原有少步推理能力的前提下，学习新概念、风格等。",
+      "method": "首先发现现代扩散模型（以LLM/VLM为编码器）能够继承其编码器的上下文能力，从而将训练过程转化为基于策略的自蒸馏过程。具体而言，在训练中，模型同时扮演教师和学生角色，但使用不同的上下文：学生仅以文本特征为条件，而教师则以文本提示和目标图像的多模态特征为条件。训练通过最小化学生自身轨迹上的两个预测分布来实现，从而在模型自身轨迹和自身监督下优化。",
+      "findings": "实验表明，D-OPSD能够使步蒸馏扩散模型在连续监督微调中有效学习新概念和风格，同时保持原有的少步推理能力，解决了传统微调方法会破坏少步推理能力的问题。"
+    }
+  }
+]
