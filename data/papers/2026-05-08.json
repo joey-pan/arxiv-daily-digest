@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2605.06421",
+    "title": "FREPix: Frequency-Heterogeneous Flow Matching for Pixel-Space Image Generation",
+    "abstract": "Pixel-space diffusion has re-emerged as a promising alternative to latent-space generation because it avoids the representation bottleneck introduced by VAEs. Yet most existing methods still treat image generation as a frequency-homogeneous process, overlooking the distinct roles and learning dynamics of low- and high-frequency components. To address this, we propose FREPix, a FREquency-heterogeneous flow matching framework for Pixel-space image generation. FREPix explicitly decomposes generation into low- and high-frequency components, assigns them separate transport paths, predicts them with a factorized network, and trains them with a frequency-aware objective. In this way, coarse-to-fine generation becomes an explicit design principle rather than an implicit behavior. On ImageNet class-to-image generation, FREPix achieves competitive results among pixel-space generation models, reaching 1.91 FID at $256\\times256$ and 2.38 FID at $512\\times512$, with particularly strong behavior in the low-NFE regime.",
+    "authors": [
+      "Mingfeng Lin",
+      "Jiakun Chen",
+      "Liang Han",
+      "Liqiang Nie"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06421.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06421",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FREPix：面向像素空间图像生成的频率异构流匹配方法",
+      "core_contribution": "提出了一种频率异构的流匹配框架FREPix，将像素空间图像生成显式分解为低频与高频分量的独立传输路径，从而将粗到细生成从隐式行为转变为显式设计原则，在保持竞争力的同时显著提升了低NFE（函数评估次数）下的生成质量。",
+      "method": "FREPix首先将图像生成过程分解为低频和高频两个分量，并为它们分配独立的传输路径；然后使用一个分解式网络分别预测这两个分量的流；最后通过一个频率感知的损失函数进行训练，使模型能够针对不同频率成分采用差异化的学习动态，从而实现显式的粗到细生成。",
+      "findings": "在ImageNet类别到图像生成任务上，FREPix在像素空间生成模型中取得了有竞争力的结果：256×256分辨率下FID为1.91，512×512分辨率下FID为2.38，尤其在低NFE（函数评估次数）条件下表现出色，验证了频率异构设计对生成效率与质量的提升效果。"
+    }
+  },
+  {
+    "id": "2605.06376",
+    "title": "Continuous-Time Distribution Matching for Few-Step Diffusion Distillation",
+    "abstract": "Step distillation has become a leading technique for accelerating diffusion models, among which Distribution Matching Distillation (DMD) and Consistency Distillation are two representative paradigms. While consistency methods enforce self-consistency along the full PF-ODE trajectory to steer it toward the clean data manifold, vanilla DMD relies on sparse supervision at a few predefined discrete timesteps. This restricted discrete-time formulation and mode-seeking nature of the reverse KL divergence tends to exhibit visual artifacts and over-smoothed outputs, often necessitating complex auxiliary modules -- such as GANs or reward models -- to restore visual fidelity. In this work, we introduce Continuous-Time Distribution Matching (CDM), migrating the DMD framework from discrete anchoring to continuous optimization for the first time. CDM achieves this through two continuous-time designs. First, we replace the fixed discrete schedule with a dynamic continuous schedule of random length, so that distribution matching is enforced at arbitrary points along sampling trajectories rather than only at a few fixed anchors. Second, we propose a continuous-time alignment objective that performs active off-trajectory matching on latents extrapolated via the student's velocity field, improving generalization and preserving fine visual details. Extensive experiments on different architectures, including SD3-Medium and Longcat-Image, demonstrate that CDM provides highly competitive visual fidelity for few-step image generation without relying on complex auxiliary objectives. Code is available at https://github.com/byliutao/cdm.",
+    "authors": [
+      "Tao Liu",
+      "Hao Yan",
+      "Mengting Chen",
+      "Taihang Hu",
+      "Zhengrong Yue",
+      "Zihao Pan",
+      "Jinsong Lan",
+      "Xiaoyong Zhu",
+      "Ming-Ming Cheng",
+      "Bo Zheng",
+      "Yaxing Wang"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06376.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06376",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "连续时间分布匹配：用于少步扩散蒸馏",
+      "core_contribution": "提出连续时间分布匹配（CDM）框架，首次将分布匹配蒸馏从离散锚定扩展为连续优化，在不依赖复杂辅助模块（如GAN或奖励模型）的情况下，显著提升少步图像生成的视觉保真度。",
+      "method": "CDM通过两项连续时间设计实现改进：一是用动态随机长度的连续时间调度替代固定离散调度，使分布匹配在采样轨迹的任意点而非仅固定锚点处生效；二是提出连续时间对齐目标，利用学生模型的速度场对潜在变量进行主动离轨匹配，增强泛化能力并保留精细视觉细节。",
+      "findings": "在SD3-Medium和Longcat-Image等不同架构上的实验表明，CDM在少步图像生成中取得了极具竞争力的视觉保真度，且无需依赖复杂的辅助目标函数。"
+    }
+  },
+  {
+    "id": "2605.06207",
+    "title": "Taming the Entropy Cliff: Variable Codebook Size Quantization for Autoregressive Visual Generation",
+    "abstract": "Most discrete visual tokenizers rely on a default design: every position in the sequence shares the same codebook. Researchers try to scale the codebook size $K$ to get better reconstruction performance. Such a constant-codebook design hits a fundamental information-theoretic limit. We observe that the per-position conditional entropy of the training set decays so quickly along the sequence that, after a few positions, the conditional distribution becomes essentially deterministic. On ImageNet with $K=16384$, this happens within only 2 out of 256 positions, turning the remaining 254 into a memorization problem. We call this phenomenon the Entropy Cliff and formalize it with a simple expression: $t^{*} = \\lceil \\log_2 N / \\log_2 K \\rceil$. Interestingly, this phenomenon is not observed in language, as its natural structure keeps the effective entropy per position well below the codebook capacity. To address this, we propose Variable Codebook Size Quantization (VCQ), where the codebook size $K_t$ grows monotonically along the sequence from $K_{\\min}=2$ to $K_{\\max}$, leaving the loss function, parameter count, and AR training procedure unchanged. With a vanilla autoregressive Transformer and standard next-token prediction, a base version of VCQ reduces gFID w/o CFG from 27.98 to 14.80 on ImageNet $256\\times256$ over the baseline. Scaled up, it reaches gFID 1.71 with 684M autoregressive parameters, without any extra training techniques such as semantic regularization or causal alignment. The extreme information bottleneck at $K_{\\min}=2$ naturally induces a coarse-to-fine semantic hierarchy: a linear probe on only the first 10 tokens reaches 43.8% top-1 accuracy on ImageNet, compared to 27.1% for uniform codebooks. Ultimately, these results show that what matters is not only the total capacity of the codebook, but also how that capacity is distributed and organized.",
+    "authors": [
+      "Bowen Zheng",
+      "Weijian Luo",
+      "Guang Yang",
+      "Colin Zhang",
+      "Tianyang Hu"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06207.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06207",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "驯服熵悬崖：面向自回归视觉生成的变码本大小量化方法",
+      "core_contribution": "本文揭示了视觉离散分词器中存在的“熵悬崖”现象，即序列中早期位置之后的条件熵迅速降至极低，导致后续位置退化为记忆问题；并提出变码本大小量化（VCQ）方法，通过沿序列单调递增码本大小，在不改变损失函数、参数数量和训练流程的情况下显著提升自回归视觉生成性能。",
+      "method": "VCQ方法的核心是让码本大小K_t沿序列位置单调增长，从K_min=2逐步增至K_max，从而在早期位置施加极端信息瓶颈以强制学习粗到细的语义层次，而在后期位置提供足够容量以保留细节。该方法直接替换标准量化模块，无需修改自回归Transformer的损失函数、参数数量或训练过程，仅使用标准的下一词元预测任务。通过理论分析，作者给出了熵悬崖发生的位置t* = ceil(log2 N / log2 K)，并验证了视觉数据中该现象显著而语言数据中不显著。",
+      "findings": "在ImageNet 256×256上，基础版VCQ将无CFG的gFID从27.98降至14.80；扩展至684M自回归参数后，gFID达到1.71，且无需语义正则化或因果对齐等额外技巧。此外，仅使用前10个词元的线性探针即可达到43.8%的ImageNet top-1准确率（均匀码本为27.1%），表明VCQ自然诱导了从粗到细的语义层次。这些结果证明，码本的总容量固然重要，但容量的分布与组织方式更为关键。"
+    }
+  },
+  {
+    "id": "2605.06170",
+    "title": "DynT2I-Eval: A Dynamic Evaluation Framework for Text-to-Image Models",
+    "abstract": "Existing text-to-image (T2I) benchmarks largely rely on fixed prompt sets, leaving them vulnerable to overfitting and benchmark contamination once publicly released and repeatedly reused. In this work, we propose DynT2I-Eval, a fully automated dynamic evaluation framework for T2I models. It constructs a structured visual semantic space from long-form descriptions, decomposing prompts into controllable dimensions (e.g., subject, logical constraint, environment, and composition). This enables the continuous generation of fresh prompts via task-specific spaces and difficulty-aware sampling. DynT2I-Eval evaluates model performance across text alignment, perceptual quality, and aesthetics. Heterogeneous outputs are unified into prompt-conditioned pairwise comparisons, allowing a dynamic scheduler, micro-batch aggregation, and weighted Bayesian updates to maintain a stable online leaderboard despite changing prompt distributions and model injection. Experiments with independently sampled prompt streams demonstrate that continually refreshed prompts provide a robust evaluation protocol, reducing the impact of prompt-set-specific tuning. Simulations and ablations further confirm that the proposed ranking framework achieves a strong balance among cold-start convergence, late-entry discovery, and long-run ranking fidelity.",
+    "authors": [
+      "Juntong Wang",
+      "Jiarui Wang",
+      "Huiyu Duan",
+      "Lewei Li",
+      "Guangtao Zhai",
+      "Xiongkuo Min"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06170.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06170",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DynT2I-Eval：面向文本到图像模型的动态评估框架",
+      "core_contribution": "提出了一种全自动的动态评估框架DynT2I-Eval，通过持续生成新提示来避免过拟合和基准污染，解决了传统固定提示集评估方法的根本缺陷。",
+      "method": "首先从长文本描述中构建结构化的视觉语义空间，将提示分解为可控维度（如主体、逻辑约束、环境和组合）。然后通过任务特定空间和难度感知采样持续生成新提示。评估时，将异构输出统一为提示条件化的成对比较，并利用动态调度器、微批聚合和加权贝叶斯更新来维护稳定的在线排行榜。",
+      "findings": "实验表明，持续刷新的提示流提供了稳健的评估协议，显著降低了针对特定提示集调优的影响。模拟和消融实验进一步证实，该排名框架在冷启动收敛、后期发现和长期排名保真度之间实现了良好平衡。"
+    }
+  },
+  {
+    "id": "2605.06137",
+    "title": "Autoregressive Visual Generation Needs a Prologue",
+    "abstract": "In this work, we propose Prologue, an approach to bridging the reconstruction-generation gap in autoregressive (AR) image generation. Instead of modifying visual tokens to satisfy both reconstruction and generation, Prologue generates a small set of prologue tokens prepended to the visual token sequence. These prologue tokens are trained exclusively with the AR cross-entropy (CE) loss, while visual tokens remain dedicated to reconstruction. This decoupled design lets us optimize generation through the AR model's true distribution without affecting reconstruction quality, which we further formalize from an ELBO perspective. On ImageNet 256x256, Prologue-Base reduces gFID from 21.01 to 10.75 without classifier-free guidance while keeping reconstruction almost unchanged; Prologue-Large reaches a competitive rFID of 0.99 and gFID of 1.46 using a standard AR model without auxiliary semantic supervision. Interestingly, driven only by AR gradients, prologue tokens exhibit emergent semantic structure: linear probing on 16 prologue tokens reaches 35.88% Top-1, far above the 23.71% of the first 16 tokens from a standard tokenizer; resampling with fixed prologue tokens preserves a similar high-level semantic layout. Our results suggest a new direction: generation quality can be improved by introducing a separate learned generative representation while leaving the original representation intact.",
+    "authors": [
+      "Bowen Zheng",
+      "Weijian Luo",
+      "Guang Yang",
+      "Colin Zhang",
+      "Tianyang Hu"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06137.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06137",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "自回归视觉生成需要一个序言",
+      "core_contribution": "提出Prologue方法，通过引入独立的序言令牌（prologue tokens）来弥合自回归图像生成中重建与生成之间的差距，在不影响重建质量的前提下显著提升生成性能。",
+      "method": "Prologue在视觉令牌序列前添加一组可学习的序言令牌，这些令牌仅通过自回归交叉熵损失进行训练，而视觉令牌则专注于重建任务。这种解耦设计使得生成过程能够基于自回归模型的真实分布进行优化，同时从ELBO角度进行了理论形式化。",
+      "findings": "在ImageNet 256x256上，Prologue-Base在无分类器引导下将gFID从21.01降至10.75，且重建质量几乎不变；Prologue-Large达到rFID 0.99和gFID 1.46的竞争性结果。序言令牌展现出涌现的语义结构，16个序言令牌的线性探测Top-1准确率达35.88%，远高于标准分词器前16个令牌的23.71%。"
+    }
+  }
+]
