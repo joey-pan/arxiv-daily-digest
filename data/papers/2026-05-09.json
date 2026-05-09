@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2605.06070",
+    "title": "Arena as Offline Reward: Efficient Fine-Grained Preference Optimization for Diffusion Models",
+    "abstract": "Reinforcement learning from human feedback (RLHF) effectively promotes preference alignment of text-to-image (T2I) diffusion models. To improve computational efficiency, direct preference optimization (DPO), which avoids explicit reward modeling, has been widely studied. However, its reliance on binary feedback limits it to coarse-grained modeling on chosen-rejected pairs, resulting in suboptimal optimization. In this paper, we propose ArenaPO, which leverages Arena scores as offline rewards to provide refined feedback, thus achieving efficient and fine-grained optimization without a reward model. This enables ArenaPO to benefit from both the rich rewards of traditional RLHF and the efficiency of DPO. Specifically, we first construct a model Arena in which each model's capability is represented as a Gaussian distribution, and infer these capabilities by traversing the annotated pairwise preferences. Each output image is treated as a sample from the corresponding capability distribution. Then, for a image pair, conditioned on the two capability distributions and the observed pairwise preference, the absolute quality gap is estimated using latent-variable inference based on truncated normal distribution, which serves as fine-grained feedback during training. It does not require a reward model and can be computed offline, thus introducing no additional training overhead. We conduct ArenaPO training on Pick-a-Pic v2 and HPD v3 datasets, showing that ArenaPO consistently outperforms existing baselines.",
+    "authors": [
+      "Zhikai Li",
+      "Yue Zhao",
+      "Edward Zhongwei Zhang",
+      "Xuewen Liu",
+      "Jing Zhang",
+      "Qingyi Gu",
+      "Zhen Dong"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06070.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06070",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "竞技场作为离线奖励：扩散模型的高效细粒度偏好优化",
+      "core_contribution": "提出ArenaPO方法，利用竞技场分数作为离线奖励，在不依赖奖励模型的情况下实现扩散模型的细粒度偏好优化，兼顾了传统RLHF的丰富奖励和DPO的高效性。",
+      "method": "首先构建一个模型竞技场，将每个模型的能力表示为高斯分布，并通过遍历标注的成对偏好推断这些能力分布，每个输出图像被视为对应能力分布的样本。然后，对于一对图像，基于两个能力分布和观察到的成对偏好，利用截断正态分布的潜变量推理估计绝对质量差距，作为训练中的细粒度反馈。该方法无需奖励模型且可离线计算，不引入额外训练开销。",
+      "findings": "在Pick-a-Pic v2和HPD v3数据集上进行的ArenaPO训练实验表明，该方法在性能上持续优于现有基线方法。"
+    }
+  },
+  {
+    "id": "2605.05646",
+    "title": "MUSE: Resolving Manifold Misalignment in Visual Tokenization via Topological Orthogonality",
+    "abstract": "Unified visual tokenization faces a fundamental trade-off between high-fidelity pixel reconstruction (spatial equivariance) and semantic abstraction (conceptual invariance). We attribute this conflict to Manifold Misalignment: naive joint optimization induces opposing gradients, creating a zero-sum game between reconstruction and perception. To address this, we propose MUSE, a framework based on Topological Orthogonality. By treating Structure as an orthogonal bridge, MUSE decouples optimization within Transformers: structural gradients refine attention topology, while semantic gradients update feature values. This turns destructive interference into Mutual Reinforcement. Experiments show that MUSE breaks the trade-off, achieving state-of-the-art generation quality (gFID 3.08) and surpassing its teacher InternViT-300M in linear probing (85.2\\% vs. 82.5\\%), demonstrating that structurally aligned reconstruction can enhance semantic perception. Code is available at https://github.com/PanqiYang1/MUSE.",
+    "authors": [
+      "Panqi Yang",
+      "Haodong Jing",
+      "Jiahao Chao",
+      "Tingyan Xiang",
+      "Li Lin",
+      "Yao Hu",
+      "Yang Luo",
+      "Yongqiang Ma"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05646.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05646",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MUSE：通过拓扑正交性解决视觉分词中的流形对齐问题",
+      "core_contribution": "提出MUSE框架，通过拓扑正交性解耦视觉分词中重建与感知的优化冲突，打破两者之间的零和博弈，实现高保真重建与语义抽象的双赢。",
+      "method": "MUSE基于拓扑正交性，将结构作为正交桥梁，在Transformer中解耦优化过程：结构梯度用于细化注意力拓扑，而语义梯度用于更新特征值。这种设计将破坏性干扰转化为相互增强，从而同时提升重建质量和语义感知能力。",
+      "findings": "实验表明，MUSE在图像生成质量上达到最优（gFID 3.08），并在线性探测任务中超越其教师模型InternViT-300M（85.2% vs. 82.5%），证明结构对齐的重建可以增强语义感知。"
+    }
+  },
+  {
+    "id": "2605.05331",
+    "title": "ViTok-v2: Scaling Native Resolution Auto-Encoders to 5 Billion Parameters",
+    "abstract": "Vision Transformer (ViT) autoencoders have emerged as compelling tokenizers for images, offering improved reconstruction over convolutional tokenizers. However, existing ViT tokenizers cannot explore this landscape as performance degrades outside training resolutions, and reliance on adversarial losses prevents stable scaling. ViTok (Hansen-Estruch et al., 2025) found that the compression ratio r mediates a reconstruction-generation trade-off where lower r means better reconstructions but harder generations, so improving tokenizer reconstruction is key to more Pareto-optimal tokenizers. We introduce ViTok-v2, which addresses these limitations with native resolution support via NaFlex for generalization across resolutions and aspect ratios, and a novel DINOv3 perceptual loss that replaces both LPIPS and GAN objectives for stable training at any scale. ViTok-v2 is trained on about 2B images and scaled to 5B parameters, the largest image autoencoder to date. ViTok-v2 matches or exceeds state-of-the-art reconstruction at 256p and outperforms all baselines at 512p and above. In joint scaling experiments with flow matching generators, we show that scaling both the autoencoder and the generator advances the Pareto frontier of this trade-off.",
+    "authors": [
+      "Philippe Hansen-Estruch",
+      "Jiahui Chen",
+      "Vivek Ramanujan",
+      "Orr Zohar",
+      "Yan Ping",
+      "Animesh Sinha",
+      "Markos Georgopoulos",
+      "Edgar Schoenfeld",
+      "Ji Hou",
+      "Felix Juefei-Xu",
+      "Sriram Vishwanath",
+      "Ali Thabet"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05331.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05331",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ViTok-v2：将原生分辨率自编码器扩展到50亿参数",
+      "core_contribution": "提出了ViTok-v2，这是迄今为止最大的图像自编码器（50亿参数），通过原生分辨率支持和新颖的感知损失函数，在重建质量和生成帕累托前沿上均取得了领先性能。",
+      "method": "ViTok-v2采用NaFlex模块实现跨分辨率和宽高比的泛化，从而支持原生分辨率输入；同时引入基于DINOv3的感知损失，替代了传统的LPIPS和GAN对抗损失，使得训练在任何规模下都能稳定进行。模型在约20亿张图像上训练，并扩展到50亿参数。",
+      "findings": "ViTok-v2在256p分辨率下匹配或超越当前最优重建性能，在512p及以上分辨率全面超越所有基线；与流匹配生成器联合缩放实验表明，同时扩大自编码器和生成器能够推动重建-生成权衡的帕累托前沿向前发展。"
+    }
+  },
+  {
+    "id": "2605.06512",
+    "title": "DCR: Counterfactual Attractor Guidance for Rare Compositional Generation",
+    "abstract": "Diffusion models generate realistic visual content, yet often fail to produce rare but plausible compositions. When prompted with combinations that are valid but underrepresented in training data, such as a snowy beach or a rainbow at night, the generation process frequently collapses toward more common alternatives. We identify this failure mode as default completion bias, where denoising trajectories are implicitly attracted toward high-frequency semantic configurations. Existing guidance mechanisms do not explicitly model this competing tendency and therefore struggle to prevent such collapse. We introduce Default Completion Repulsion (DCR), a training-free framework that explicitly models and suppresses default completion behavior. DCR constructs a counterfactual attractor by relaxing the rare compositional factor while preserving surrounding semantics, inducing an alternative denoising trajectory reflecting the model's preferred completion. We define the discrepancy between target and attractor trajectories as a counterfactual drift, and propose a projection-based repulsion mechanism that removes guidance components aligned with this drift direction. This suppresses undesired frequent completions while preserving other semantic components. DCR operates entirely within the standard diffusion sampling process without retraining or architectural modification. Experiments on rare compositional prompts show that DCR improves compositional fidelity while maintaining visual quality. Our analysis further shows that the framework exposes and counteracts intrinsic model biases, offering a new perspective on controllable generation beyond explicit constraint enforcement.",
+    "authors": [
+      "Taewon Kang",
+      "Matthias Zwicker"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06512.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06512",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "DCR：面向罕见组合生成的反事实吸引子引导",
+      "core_contribution": "提出了一种无需重新训练或修改模型架构的训练自由框架DCR，通过显式建模并抑制扩散模型中的“默认完成偏差”，有效提升了罕见但合理组合（如雪地海滩、夜间彩虹）的生成保真度。",
+      "method": "DCR通过构建一个反事实吸引子来模拟模型在放松罕见组合因子时的默认生成轨迹，并定义目标轨迹与吸引子轨迹之间的差异为“反事实漂移”。在此基础上，采用基于投影的排斥机制，从原始引导中移除与反事实漂移方向对齐的成分，从而抑制高频常见语义的干扰，同时保留其他语义信息。整个过程嵌入标准扩散采样流程，无需额外训练或架构改动。",
+      "findings": "在罕见组合提示的实验中，DCR显著提升了组合生成的保真度，同时保持了视觉质量。进一步分析表明，该框架能够揭示并抵消模型固有的语义偏差，为超越显式约束的可控生成提供了新视角。"
+    }
+  },
+  {
+    "id": "2605.06507",
+    "title": "MARBLE: Multi-Aspect Reward Balance for Diffusion RL",
+    "abstract": "Reinforcement learning fine-tuning has become the dominant approach for aligning diffusion models with human preferences. However, assessing images is intrinsically a multi-dimensional task, and multiple evaluation criteria need to be optimized simultaneously. Existing practice deal with multiple rewards by training one specialist model per reward, optimizing a weighted-sum reward $R(x)=\\sum_k w_k R_k(x)$, or sequentially fine-tuning with a hand-crafted stage schedule. These approaches either fail to produce a unified model that can be jointly trained on all rewards or necessitates heavy manually tuned sequential training. We find that the failure stems from using a naive weighted-sum reward aggregation. This approach suffers from a sample-level mismatch because most rollouts are specialist samples, highly informative for certain reward dimensions but irrelevant for others; consequently, weighted summation dilutes their supervision. To address this issue, we propose MARBLE (Multi-Aspect Reward BaLancE), a gradient-space optimization framework that maintains independent advantage estimators for each reward, computes per-reward policy gradients, and harmonizes them into a single update direction without manually-tuned reward weighting, by solving a Quadratic Programming problem. We further propose an amortized formulation that exploits the affine structure of the loss used in DiffusionNFT, to reduce the per-step cost from K+1 backward passes to near single-reward baseline cost, together with EMA smoothing on the balancing coefficients to stabilize updates against transient single-batch fluctuations. On SD3.5 Medium with five rewards, MARBLE improves all five reward dimensions simultaneously, turns the worst-aligned reward's gradient cosine from negative under weighted summation in 80% of mini-batches to consistently positive, and runs at 0.97X the training speed of baseline training.",
+    "authors": [
+      "Canyu Zhao",
+      "Hao Chen",
+      "Yunze Tong",
+      "Yu Qiao",
+      "Jiacheng Li",
+      "Chunhua Shen"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06507.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06507",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "MARBLE：面向扩散模型强化学习的多维度奖励平衡方法",
+      "core_contribution": "提出了一种名为MARBLE的梯度空间优化框架，解决了扩散模型强化学习微调中多奖励加权求和导致的样本级不匹配问题，无需手动调整奖励权重即可同时优化多个评价维度。",
+      "method": "MARBLE为每个奖励维度维护独立的优势估计器，并计算各自的策略梯度；然后通过求解一个二次规划问题，将这些梯度协调为统一的更新方向，从而避免使用简单的加权求和。为了降低计算开销，该方法利用DiffusionNFT中损失函数的仿射结构，将每步计算成本从K+1次反向传播降至接近单奖励基线水平，并采用指数移动平均平滑平衡系数以应对单批次波动。",
+      "findings": "在SD3.5 Medium模型上使用五个奖励进行实验，MARBLE同时提升了所有五个奖励维度的表现；它将加权求和下80%小批次中负梯度的最差对齐奖励的梯度余弦转为持续正值，且训练速度达到基线训练的0.97倍。"
+    }
+  }
+]
