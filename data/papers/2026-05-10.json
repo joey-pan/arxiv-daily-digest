@@ -1,0 +1,136 @@
+[
+  {
+    "id": "2605.05865",
+    "title": "InkDiffuser: High-Fidelity One-shot Chinese Calligraphy via Differentiable Morphological Optimization",
+    "abstract": "Current Chinese calligraphy generation methods suffer from poor stroke rendering and unrealistic ink morphology, resulting in outputs with limited visual fidelity and artistic fluidity. To address this problem, we propose \\textbf{InkDiffuser}, a diffusion-based generative framework for one-shot Chinese calligraphy synthesis. To guarantee high-fidelity rendering, we introduce two core contributions: a high-frequency enhancement mechanism and a Differentiable Ink Structure (DIS) loss that explicitly regularizes ink morphology. Inspired by the observation that high-frequency information in individual samples typically carries contour details, we enhance content extraction by explicitly fusing high-frequency representations for more accurate font structure. Furthermore, we propose a differentiable ink structure loss that integrates differentiable morphological operations into the diffusion process. By allowing the model to learn an explicit decomposition of ink-trace structures, DIS facilitates fine-grained refinement of stroke contours and delivers significantly improved visual realism in the generated calligraphy. Extensive experiments on various calligraphic styles and complex characters demonstrate that InkDiffuser can generate superior calligraphy fonts with realistic ink rendering effects from only a single reference glyph and outperform existing few-shot font generation approaches in structural consistency, detail fidelity, and visual authenticity. The code is available at the following address: https://github.com/JingVIPLab/InkDiffuser.",
+    "authors": [
+      "Kunchong Shi",
+      "Jing Zhang"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05865.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05865",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "InkDiffuser：基于可微分形态学优化的高保真单样本中国书法生成",
+      "core_contribution": "提出了一种基于扩散模型的单样本中国书法生成框架InkDiffuser，通过高频增强机制和可微分墨水结构损失（DIS），显著提升了书法字体的结构一致性、细节保真度和视觉真实性。",
+      "method": "该方法采用扩散模型作为基础生成框架，首先通过高频增强机制显式融合单个样本的高频信息，以提取更准确的字体轮廓细节；其次，引入可微分墨水结构损失（DIS），将可微分形态学操作集成到扩散过程中，使模型能够学习墨水轨迹结构的显式分解，从而实现笔画轮廓的细粒度优化。",
+      "findings": "在多种书法风格和复杂字符上的实验表明，InkDiffuser仅需单个参考字形即可生成具有真实墨水渲染效果的高质量书法字体，在结构一致性、细节保真度和视觉真实性方面均优于现有的少样本字体生成方法。"
+    }
+  },
+  {
+    "id": "2605.05781",
+    "title": "Steering Visual Generation in Unified Multimodal Models with Understanding Supervision",
+    "abstract": "Unified multimodal models are envisioned to bridge the gap between understanding and generation. Yet, to achieve competitive performance, state-of-the-art models adopt largely decoupled understanding and generation components. This design, while effective for individual tasks, weakens the connection required for mutual enhancement, leaving the potential synergy empirically uncertain. We propose to explicitly restore this synergy by introducing Understanding-Oriented Post-Training (UNO), a lightweight framework that treats understanding not only as a distinct task, but also a direct supervisory signal to steer generative representations. By incorporating objectives that encode semantic abstraction (captioning) and structural details (visual regression), we enable effective gradient flow from understanding to generation. Extensive experiments on image generation and editing demonstrate that understanding can serve as an effective catalyst for generation.",
+    "authors": [
+      "Zeyu Liu",
+      "Zanlin Ni",
+      "Yang Yue",
+      "Cheng Da",
+      "Huan Yang",
+      "Di Zhang",
+      "Kun Gai",
+      "Gao Huang"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.05781.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.05781",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "利用理解监督引导统一多模态模型中的视觉生成",
+      "core_contribution": "提出了一种轻量级框架UNO，通过将理解任务作为直接监督信号来引导生成表征，从而恢复统一多模态模型中理解与生成之间的协同作用。",
+      "method": "UNO框架在统一多模态模型的后训练阶段引入理解导向的目标函数，包括编码语义抽象的标题生成任务和编码结构细节的视觉回归任务。这些目标使得理解任务能够产生有效的梯度流向生成模块，从而优化生成表征。该方法无需重新设计模型架构，仅通过额外的监督信号即可实现理解与生成的协同。",
+      "findings": "在图像生成和编辑任务上的大量实验表明，理解任务可以作为生成任务的有效催化剂，显著提升生成质量。实验结果证实了理解监督能够增强生成表征，验证了理解与生成之间潜在协同效应的实际可行性。"
+    }
+  },
+  {
+    "id": "2605.04494",
+    "title": "Towards General Preference Alignment: Diffusion Models at Nash Equilibrium",
+    "abstract": "Reinforcement learning from human feedback (RLHF) has been popular for aligning text-to-image (T2I) diffusion models with human preferences. As a mainstream branch of RLHF, Direct Preference Optimization (DPO) offers a computationally efficient alternative that avoids explicit reward modeling and has been widely adopted in diffusion alignment. However, existing preference-based methods for diffusion alignment still rely on reward-induced preference signals and typically assume that human preferences can be adequately modeled by the Bradley--Terry (BT) model, which may fail to capture the full complexity of human preferences. In this paper, we formulate diffusion alignment from a game-theoretic perspective. We propose Diffusion Nash Preference Optimization (Diff.-NPO), an intuitive general preference framework for diffusion alignment. Diff.-NPO encourages the current policy to play against itself to achieve self improvement and lead to a better alignment. Empirically, we demonstrate the effectiveness of Diff.-NPO on the text-to-image generation task via various metrics. Diff.-NPO consistently outperforms existing preference-based diffusion alignment methods.",
+    "authors": [
+      "Jiaming Hu",
+      "Jiamu Bai",
+      "Haoyu Wang",
+      "Debarghya Mukherjee",
+      "Ioannis Ch. Paschalidis"
+    ],
+    "published": "2026-05-06",
+    "updated": "2026-05-06",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.04494.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.04494",
+    "primary_category": "cs.LG",
+    "score": 75,
+    "summary": {
+      "title_zh": "迈向通用偏好对齐：基于纳什均衡的扩散模型",
+      "core_contribution": "提出了一种基于博弈论视角的扩散模型偏好对齐框架Diff.-NPO，通过让当前策略与自身对抗实现自我改进，克服了传统Bradley-Terry模型无法捕捉人类偏好复杂性的局限。",
+      "method": "将扩散模型的对齐问题形式化为博弈论框架，提出扩散纳什偏好优化（Diff.-NPO）方法。该方法鼓励当前策略与自身进行对抗训练，通过自我博弈实现策略的持续改进，从而在无需显式奖励建模的情况下达到更优的偏好对齐。",
+      "findings": "在文本到图像生成任务上，Diff.-NPO在多种评估指标上均一致优于现有的基于偏好的扩散对齐方法，验证了其有效性和通用性。"
+    }
+  },
+  {
+    "id": "2605.03652",
+    "title": "AniMatrix: An Anime Video Generation Model that Thinks in Art, Not Physics",
+    "abstract": "Video generation models internalize physical realism as their prior. Anime deliberately violates physics: smears, impact frames, chibi shifts; and its thousands of coexisting artistic conventions yield no single \"physics of anime\" a model can absorb. Physics-biased models therefore flatten the artistry that defines the medium or collapse under its stylistic variance. We present AniMatrix, a video generation model that targets artistic rather than physical correctness through a dual-channel conditioning mechanism and a three-step transition: redefine correctness, override the physics prior, and distinguish art from failure. First, a Production Knowledge System encodes anime as a structured taxonomy of controllable production variables (Style, Motion, Camera, VFX), and AniCaption infers these variables from pixels as directorial directives. A trainable tag encoder preserves the field-value structure of this taxonomy while a frozen T5 encoder handles free-form narrative; dual-path injection (cross-attention for fine-grained control, AdaLN modulation for global enforcement) ensures categorical directives are never diluted by open-ended text. Second, a style-motion-deformation curriculum transitions the model from near-physical motion to full anime expressiveness. Third, deformation-aware preference optimization with a domain-specific reward model separates intentional artistry from pathological collapse. On an anime-specific human evaluation with five production dimensions scored by professional animators, AniMatrix ranks first on four of five, with the largest gains over Seedance-Pro 1.0 on Prompt Understanding (+0.70, +22.4 percent) and Artistic Motion (+0.55, +16.9 percent). We are preparing accompanying resources for public release to support reproducibility and follow-up research.",
+    "authors": [
+      " Tencent HY Team"
+    ],
+    "published": "2026-05-05",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.03652.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.03652",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "AniMatrix：一种以艺术而非物理逻辑思考的动漫视频生成模型",
+      "core_contribution": "提出了一种专门针对动漫艺术风格而非物理真实性的视频生成模型AniMatrix，通过双通道条件机制和三阶段训练策略，解决了现有物理偏置模型无法处理动漫中故意违反物理规律的艺术表现问题。",
+      "method": "首先构建了一个生产知识系统，将动漫编码为可控生产变量（风格、运动、镜头、特效）的结构化分类体系，并通过AniCaption从像素中推断这些变量作为导演指令。其次采用可训练的标签编码器保留分类体系的字段-值结构，同时使用冻结的T5编码器处理自由文本叙述，通过双路径注入（交叉注意力实现细粒度控制，AdaLN调制实现全局强制）确保分类指令不被开放文本稀释。最后通过风格-运动-变形课程学习使模型从接近物理运动过渡到完全动漫表现力，并利用领域特定的奖励模型进行变形感知偏好优化，区分有意艺术效果与病理变形。",
+      "findings": "在由专业动画师评分的五个生产维度的人类评估中，AniMatrix在五个维度中的四个上排名第一，其中在提示理解上比Seedance-Pro 1.0提升0.70（+22.4%），在艺术运动上提升0.55（+16.9%）。"
+    }
+  },
+  {
+    "id": "2605.06148",
+    "title": "Learning Discrete Autoregressive Priors with Wasserstein Gradient Flow",
+    "abstract": "Discrete image tokenizers are commonly trained in two stages: first for reconstruction, and then with a prior model fitted to the frozen token sequences. This decoupling leaves the tokenizer unaware of the model that will later generate its tokens. As a result, the learned tokens may preserve image information well but still be difficult for an autoregressive (AR) prior to predict from left to right. We analyze this mismatch using Tripartite Variational Consistency (TVC), which decomposes latent-variable learning into three consistency conditions: conditional-likelihood consistency, prior consistency, and posterior consistency. TVC shows that two-stage training preserves the reconstruction side but leaves prior consistency outside the tokenizer objective: the overall token distribution is fixed before the AR prior participates in training. Motivated by this view, we add a distribution-level prior-matching signal during tokenizer training, while keeping the reconstruction objective unchanged. We optimize this signal with a Wasserstein-gradient-flow update. For hard categorical tokens, the update reduces to a token-level contrast between an auxiliary AR model that tracks the tokenizer's current token distribution and the target AR prior. It requires only forward passes through the two AR models and does not backpropagate through either of them. The resulting tokenizer, wAR-Tok, reduces AR loss and improves generation FID on CIFAR-10 and ImageNet at comparable reconstruction quality.",
+    "authors": [
+      "Bowen Zheng",
+      "Yihong Luo",
+      "Tianyang Hu"
+    ],
+    "published": "2026-05-07",
+    "updated": "2026-05-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.06148.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.06148",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "基于Wasserstein梯度流学习离散自回归先验",
+      "core_contribution": "提出了一种在离散图像分词器训练过程中加入分布级先验匹配信号的方法，解决了传统两阶段训练中分词器与自回归先验模型不匹配的问题，从而在不降低重建质量的前提下提升生成性能。",
+      "method": "论文利用三变量变分一致性框架分析了两阶段训练的缺陷，指出分词器训练忽略了先验一致性。为此，在保持重建目标不变的同时，引入基于Wasserstein梯度流的先验匹配信号。对于硬类别离散分词，该更新简化为辅助自回归模型与目标自回归先验之间的词级对比，仅需前向传播，无需反向传播。",
+      "findings": "在CIFAR-10和ImageNet数据集上，所提出的wAR-Tok分词器在保持重建质量相当的情况下，有效降低了自回归损失，并显著改善了生成FID分数。"
+    }
+  }
+]
