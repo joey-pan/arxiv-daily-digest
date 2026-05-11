@@ -1,0 +1,167 @@
+[
+  {
+    "id": "2605.08078",
+    "title": "Normalizing Trajectory Models",
+    "abstract": "Diffusion-based models decompose sampling into many small Gaussian denoising steps -- an assumption that breaks down when generation is compressed to a few coarse transitions. Existing few-step methods address this through distillation, consistency training, or adversarial objectives, but sacrifice the likelihood framework in the process. We introduce Normalizing Trajectory Models (NTM), which models each reverse step as an expressive conditional normalizing flow with exact likelihood training. Architecturally, NTM combines shallow invertible blocks within each step with a deep parallel predictor across the trajectory, forming an end-to-end network trainable from scratch or initializable from pretrained flow-matching models. Its exact trajectory likelihood further enables self-distillation: a lightweight denoiser trained on the model's own score produces high-quality samples in four steps. On text-to-image benchmarks, NTM matches or outperforms strong image generation baselines in just four sampling steps while uniquely retaining exact likelihood over the generative trajectory.",
+    "authors": [
+      "Jiatao Gu",
+      "Tianrong Chen",
+      "Ying Shen",
+      "David Berthelot",
+      "Shuangfei Zhai",
+      "Josh Susskind"
+    ],
+    "published": "2026-05-08",
+    "updated": "2026-05-08",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.08078.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.08078",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "归一化轨迹模型",
+      "core_contribution": "提出了一种名为归一化轨迹模型（NTM）的新型生成框架，将扩散模型中的每个反向步骤建模为可逆的条件归一化流，从而在仅需四步采样的条件下实现高质量图像生成，同时保留精确的似然训练和轨迹似然计算能力。",
+      "method": "NTM在每个反向步骤中使用浅层可逆块构建条件归一化流，并通过跨轨迹的深层并行预测器连接各步骤，形成端到端可训练的网络。该模型可从零开始训练，也可利用预训练的流匹配模型进行初始化。此外，利用精确的轨迹似然，NTM支持自蒸馏：训练一个轻量级去噪器基于模型自身得分，在四步采样中生成高质量样本。",
+      "findings": "在文本到图像生成基准测试中，NTM仅用四步采样即可匹配或超越强基线模型（如扩散模型）的生成质量，同时独特地保留了生成轨迹上的精确似然计算能力，这在现有少步方法中难以实现。"
+    }
+  },
+  {
+    "id": "2605.08063",
+    "title": "Flow-OPD: On-Policy Distillation for Flow Matching Models",
+    "abstract": "Existing Flow Matching (FM) text-to-image models suffer from two critical bottlenecks under multi-task alignment: the reward sparsity induced by scalar-valued rewards, and the gradient interference arising from jointly optimizing heterogeneous objectives, which together give rise to a 'seesaw effect' of competing metrics and pervasive reward hacking. Inspired by the success of On-Policy Distillation (OPD) in the large language model community, we propose Flow-OPD, the first unified post-training framework that integrates on-policy distillation into Flow Matching models. Flow-OPD adopts a two-stage alignment strategy: it first cultivates domain-specialized teacher models via single-reward GRPO fine-tuning, allowing each expert to reach its performance ceiling in isolation; it then establishes a robust initial policy through a Flow-based Cold-Start scheme and seamlessly consolidates heterogeneous expertise into a single student via a three-step orchestration of on-policy sampling, task-routing labeling, and dense trajectory-level supervision. We further introduce Manifold Anchor Regularization (MAR), which leverages a task-agnostic teacher to provide full-data supervision that anchors generation to a high-quality manifold, effectively mitigating the aesthetic degradation commonly observed in purely RL-driven alignment. Built upon Stable Diffusion 3.5 Medium, Flow-OPD raises the GenEval score from 63 to 92 and the OCR accuracy from 59 to 94, yielding an overall improvement of roughly 10 points over vanilla GRPO, while preserving image fidelity and human-preference alignment and exhibiting an emergent 'teacher-surpassing' effect. These results establish Flow-OPD as a scalable alignment paradigm for building generalist text-to-image models.",
+    "authors": [
+      "Zhen Fang",
+      "Wenxuan Huang",
+      "Yu Zeng",
+      "Yiming Zhao",
+      "Shuang Chen",
+      "Kaituo Feng",
+      "Yunlong Lin",
+      "Lin Chen",
+      "Zehui Chen",
+      "Shaosheng Cao",
+      "Feng Zhao"
+    ],
+    "published": "2026-05-08",
+    "updated": "2026-05-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.08063.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.08063",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Flow-OPD：面向流匹配模型的在线策略蒸馏方法",
+      "core_contribution": "提出了首个将在线策略蒸馏（OPD）统一集成到流匹配（Flow Matching）模型中的后训练框架Flow-OPD，有效解决了多任务对齐中的奖励稀疏和梯度干扰问题，显著提升了文本到图像生成模型的综合性能。",
+      "method": "Flow-OPD采用两阶段对齐策略：首先通过单奖励GRPO微调培养领域专精的教师模型，使每个专家独立达到性能上限；然后通过基于流的冷启动方案建立稳健的初始策略，并利用在线策略采样、任务路由标注和密集轨迹级监督的三步编排，将异构专家知识无缝整合到单个学生模型中。此外，引入流形锚点正则化（MAR），利用任务无关教师提供全数据监督，将生成锚定到高质量流形上，缓解纯RL驱动对齐中的美学退化问题。",
+      "findings": "基于Stable Diffusion 3.5 Medium，Flow-OPD将GenEval分数从63提升至92，OCR准确率从59提升至94，整体性能比原始GRPO提升约10个百分点，同时保持图像保真度和人类偏好对齐，并展现出超越教师的涌现效应。"
+    }
+  },
+  {
+    "id": "2605.08043",
+    "title": "SCOPE: Structured Decomposition and Conditional Skill Orchestration for Complex Image Generation",
+    "abstract": "While text-to-image models have made strong progress in visual fidelity, faithfully realizing complex visual intents remains challenging because many requirements must be tracked across grounding, generation, and verification. We refer to these requirements as semantic commitments and formalize their lifecycle discontinuity as the Conceptual Rift, where commitments may be locally resolved or checked but fail to remain identifiable as the same operational units throughout the generation lifecycle. To address this, we propose SCOPE, a specification-guided skill orchestration framework that maintains semantic commitments in an evolving structured specification and conditionally invokes retrieval, reasoning, and repair skills around unresolved or violated commitments. To evaluate commitment-level intent realization, we introduce Gen-Arena, a human-annotated benchmark with entity- and constraint-level specifications, together with Entity-Gated Intent Pass Rate (EGIP), a strict entity-first pass criterion. SCOPE substantially outperforms all evaluated baselines on Gen-Arena, achieving 0.60 EGIP, and further achieves strong results on WISE-V (0.907) and MindBench (0.61), demonstrating the effectiveness of persistent commitment tracking for complex image generation.",
+    "authors": [
+      "Tianfei Ren",
+      "Zhipeng Yan",
+      "Yiming Zhao",
+      "Zhen Fang",
+      "Yu Zeng",
+      "Guohui Zhang",
+      "Hang Xu",
+      "Xiaoxiao Ma",
+      "Shiting Huang",
+      "Ke Xu",
+      "Wenxuan Huang",
+      "Lionel Z. Wang",
+      "Lin Chen",
+      "Zehui Chen",
+      "Jie Huang",
+      "Feng Zhao"
+    ],
+    "published": "2026-05-08",
+    "updated": "2026-05-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.08043.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.08043",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SCOPE：面向复杂图像生成的结构化解耦与条件性技能编排",
+      "core_contribution": "提出了一种基于结构化规范追踪与条件性技能编排的框架SCOPE，有效解决了文本到图像生成中语义承诺在生命周期中难以持续追踪的“概念鸿沟”问题，并构建了新的评估基准Gen-Arena与严格指标EGIP。",
+      "method": "SCOPE框架首先将用户复杂意图形式化为可演化的结构化规范，将语义承诺作为独立操作单元持续追踪。在生成过程中，框架根据规范中未解决或违反的承诺，条件性地调用检索、推理和修复等技能模块，实现动态编排。该方法通过将承诺的解析、验证与修复解耦，确保每个承诺在生成全生命周期中保持可识别性。",
+      "findings": "在Gen-Arena基准上，SCOPE的EGIP指标达到0.60，显著优于所有基线方法；同时在WISE-V（0.907）和MindBench（0.61）上也取得了领先结果，证明了持续承诺追踪对复杂图像生成的有效性。"
+    }
+  },
+  {
+    "id": "2605.07940",
+    "title": "Delta-Adapter: Scalable Exemplar-Based Image Editing with Single-Pair Supervision",
+    "abstract": "Exemplar-based image editing applies a transformation defined by a source-target image pair to a new query image. Existing methods rely on a pair-of-pairs supervision paradigm, requiring two image pairs sharing the same edit semantics to learn the target transformation. This constraint makes training data difficult to curate at scale and limits generalization across diverse edit types. We propose Delta-Adapter, a method that learns transferable editing semantics under single-pair supervision, requiring no textual guidance. Rather than directly exposing the exemplar pair to the model, we leverage a pre-trained vision encoder to extract a semantic delta that encodes the visual transformation between the two images. This semantic delta is injected into a pre-trained image editing model via a Perceiver-based adapter. Since the target image is never directly visible to the model, it can serve as the prediction target, enabling single-pair supervision without requiring additional exemplar pairs. This formulation allows us to leverage existing large-scale editing datasets for training. To further promote faithful transformation transfer, we introduce a semantic delta consistency loss that aligns the semantic change of the generated output with the ground-truth semantic delta extracted from the exemplar pair. Extensive experiments demonstrate that Delta-Adapter consistently improves both editing accuracy and content consistency over four strong baselines on seen editing tasks, while also generalizing more effectively to unseen editing tasks. Code will be available at https://delta-adapter.github.io.",
+    "authors": [
+      "Jiacheng Chen",
+      "Songze Li",
+      "Han Fu",
+      "Baoquan Zhao",
+      "Wei Liu",
+      "Yanyan Liang",
+      "Li Qing",
+      "Xudong Mao"
+    ],
+    "published": "2026-05-08",
+    "updated": "2026-05-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.07940.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.07940",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Delta-Adapter：基于单对监督的可扩展示例驱动图像编辑方法",
+      "core_contribution": "提出了一种仅需单对图像（源-目标对）即可学习编辑语义的示例驱动图像编辑方法，摆脱了传统方法对多对训练样本的依赖，显著提升了数据可扩展性和编辑泛化能力。",
+      "method": "该方法利用预训练视觉编码器从源-目标图像对中提取“语义增量”（semantic delta），即视觉变换的潜在表示；通过基于Perceiver的适配器将该语义增量注入预训练的图像编辑模型，使模型在未见目标图像的情况下预测编辑结果；同时引入语义增量一致性损失，确保生成图像的语义变化与真实示例对的语义增量对齐。",
+      "findings": "在多个强基线方法上，Delta-Adapter在已知编辑任务中一致提升了编辑准确性和内容一致性，并在未见过的编辑任务上展现出更强的泛化能力，验证了单对监督范式的有效性和可扩展性。"
+    }
+  },
+  {
+    "id": "2605.07915",
+    "title": "What Matters for Diffusion-Friendly Latent Manifold? Prior-Aligned Autoencoders for Latent Diffusion",
+    "abstract": "Tokenizers are a crucial component of latent diffusion models, as they define the latent space in which diffusion models operate. However, existing tokenizers are primarily designed to improve reconstruction fidelity or inherit pretrained representations, leaving unclear what kind of latent space is truly friendly for generative modeling. In this paper, we study this question from the perspective of latent manifold organization. By constructing controlled tokenizer variants, we identify three key properties of a diffusion-friendly latent manifold: coherent spatial structure, local manifold continuity, and global manifold semantics. We find that these properties are more consistent with downstream generation quality than reconstruction fidelity. Motivated by this finding, we propose the Prior-Aligned AutoEncoder (PAE), which explicitly shapes the latent manifold instead of leaving diffusion-friendly manifold to emerge indirectly from reconstruction or inheritance. Specifically, PAE leverages refined priors derived from VFMs and perturbation-based regularization to turn spatial structure, local continuity, and global semantics into explicit training objectives. On ImageNet 256x256, PAE improves both training efficiency and generation quality over existing tokenizers, reaching performance comparable to RAE with up to 13x faster convergence under the same training setup and achieving a new state-of-the-art gFID of 1.03. These results highlight the importance of organizing the latent manifold for latent diffusion models.",
+    "authors": [
+      "Zhengrong Yue",
+      "Taihang Hu",
+      "Mengting Chen",
+      "Haiyu Zhang",
+      "Zihao Pan",
+      "Tao Liu",
+      "Zikang Wang",
+      "Jinsong Lan",
+      "Xiaoyong Zhu",
+      "Bo Zheng",
+      "Yali Wang"
+    ],
+    "published": "2026-05-08",
+    "updated": "2026-05-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.07915.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.07915",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "什么造就了扩散友好的潜在流形？面向潜在扩散的先验对齐自编码器",
+      "core_contribution": "本文揭示了潜在扩散模型中潜在流形组织的三个关键特性（连贯空间结构、局部流形连续性和全局流形语义），并提出了先验对齐自编码器（PAE），通过显式塑造潜在流形来提升生成质量和训练效率，在ImageNet 256x256上取得了新的最优gFID 1.03。",
+      "method": "首先，通过构建受控的tokenizer变体，识别出扩散友好潜在流形的三个关键属性。然后，提出PAE，利用视觉基础模型（VFMs）导出的精炼先验和基于扰动的正则化，将空间结构、局部连续性和全局语义转化为显式训练目标，从而直接塑造潜在流形，而非依赖重建或继承间接获得。",
+      "findings": "实验表明，潜在流形的组织特性（而非重建保真度）与下游生成质量更一致。PAE在ImageNet 256x256上相比现有tokenizer，在相同训练设置下实现了高达13倍的收敛加速，并将gFID提升至1.03，达到新的最优水平。"
+    }
+  }
+]
