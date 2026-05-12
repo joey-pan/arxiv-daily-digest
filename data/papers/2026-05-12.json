@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2605.08784",
+    "title": "simpleposter: a simple baseline for product poster generation",
+    "abstract": "Product poster generation poses distinct challenges beyond general poster design, requiring both faithful preservation of product appearance and precise control over dense, multi-line text layouts. Prior methods typically adopt inpainting frameworks augmented with auxiliary modules such as ControlNet and OCR encoders. However, these approaches introduce architectural complexity and computational overhead while still suffering from text errors and subject extension artifacts. We present SimplePoster, a simple yet effective inpainting-based framework that achieves faithful subject preservation and accurate, position-controllable text rendering without external controllers. Our approach builds on two observations: (1) full-parameter fine-tuning of the base model effectively suppresses subject extension, outperforming ControlNet-based alternatives; and (2) a zero-cost character-level position encoding enables geometry-aware text generation without dedicated layout modules. Experiments show that SimplePoster achieves a $98.7\\%$ subject preservation rate, compared to $55.2\\%$ for SeedEdit 3.0 and $85.3\\%$ for PosterMaker, while also improving text rendering accuracy. Code, models, benchmark and a part of training data will be available at https://github.com/Alibaba-YuFeng/SIMPLEPOSTER",
+    "authors": [
+      "Benlei Cui",
+      "Fangao Zeng",
+      "Weitao Jiang",
+      "Yuwen Zhai",
+      "Haiwen Hong",
+      "Longtao Huang",
+      "Hui Xue",
+      "Wenxiang Shang",
+      "Pipei Huang"
+    ],
+    "published": "2026-05-09",
+    "updated": "2026-05-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.08784.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.08784",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "SimplePoster：产品海报生成的简单基线方法",
+      "core_contribution": "提出了一种简洁有效的基于修补框架的产品海报生成方法，无需外部控制器即可实现高保真主体保留和精确位置可控的文字渲染，显著降低了架构复杂性和计算开销。",
+      "method": "该方法基于两个关键观察：一是对基础模型进行全参数微调能有效抑制主体延伸伪影，优于基于ControlNet的方法；二是采用零成本的字符级位置编码实现几何感知的文字生成，无需专用布局模块。整体框架采用修补范式，直接生成包含产品与文字的海报图像。",
+      "findings": "实验表明，SimplePoster在主体保留率上达到98.7%，远高于SeedEdit 3.0的55.2%和PosterMaker的85.3%，同时文字渲染准确性也得到提升，证明了全参数微调与字符级位置编码的有效性。"
+    }
+  },
+  {
+    "id": "2605.10127",
+    "title": "Fashion130K: An E-commerce Fashion Dataset for Outfit Generation with Unified Multi-modal Condition",
+    "abstract": "Recent research work on fashion outfit generation focuses on promoting visual consistency of garments by leveraging key information from reference image and text prompt. However, the potential of outfit generation remains underexplored, requiring comprehensive e-commercial dataset and elaborative utilization of multi-modal condition. In this paper, we propose a brand-new e-commerce dataset, named Fashion130k, with various occasions, models, and garment types. For the consistent generation of garment, we design a framework with Unified Multi-modal Condition (UMC) to align and integrate the text and visual prompts into generation model. Specifically, we explore an embedding refiner to extract the unified embeddings of multi-modal prompts, within which a Fusion Transformer is proposed to align the multi-modal embeddings by adjusting the modality gap between text and image. Based on unified embeddings, the attention in generation model is redesigned to emphasis the correlations between prompts and noise image, inducing that the noise image can select the pivotal tokens of prompts for consistent outfit generation. Our dataset and proposed framework offer a general and nuanced exploration of multi-modal prompts for generation models. Extensive experiments on real-world applications and benchmark demonstrate the effectiveness of UMC in visual consistency, achieving promising result than that of SoTA methods.",
+    "authors": [
+      "Yu He",
+      "Ting Zhu",
+      "Yichun Liu",
+      "Lichen Ma",
+      "Xinyuan Shan",
+      "Jingling Fu",
+      "Yu Shi",
+      "Junshi Huang",
+      "Yan Li"
+    ],
+    "published": "2026-05-11",
+    "updated": "2026-05-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.10127.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.10127",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Fashion130K：面向统一多模态条件服装生成的电商时尚数据集",
+      "core_contribution": "提出了一个包含多种场景、模特和服装类型的新电商数据集Fashion130k，并设计了一个统一多模态条件（UMC）框架，通过嵌入精炼器和融合Transformer有效对齐文本与视觉提示，实现视觉一致的服装生成。",
+      "method": "首先构建了Fashion130k数据集，包含丰富的多模态条件（文本和图像）。然后设计嵌入精炼器提取多模态提示的统一嵌入，并引入融合Transformer调整文本与图像之间的模态差距以对齐嵌入。最后在生成模型中重新设计注意力机制，增强提示与噪声图像之间的相关性，使噪声图像能选择关键令牌进行一致的服装生成。",
+      "findings": "在真实应用和基准测试上的大量实验表明，UMC框架在视觉一致性方面优于当前最先进方法，验证了其有效性和泛化能力。"
+    }
+  },
+  {
+    "id": "2605.10045",
+    "title": "ExtraVAR: Stage-Aware RoPE Remapping for Resolution Extrapolation in Visual Autoregressive Models",
+    "abstract": "Visual Autoregressive (VAR) models have emerged as a strong alternative to diffusion for image synthesis, yet their fixed training resolution prevents direct generation at higher resolutions. Naively transferring training-free extrapolation methods from LLMs or diffusion models to VAR yields three characteristic failure modes: global repetition, local repetition, and detail degradation. We trace them to a unified band-stage mismatch: VAR generates images in a coarse-to-fine, scale-wise process where each stage is driven by a distinct dominant RoPE frequency band, and each failure mode emerges when the dominant band of a particular stage is disrupted. Building on this insight, we propose Stage-Aware RoPE Remapping, a training-free strategy that assigns each frequency band a stage-specific remapping rule, jointly suppressing all three failure modes. We further observe that attention becomes systematically dispersed as the image resolution increases. Existing methods typically depend on predefined attention scaling factors, which are neither adaptive to the target resolution nor capable of faithfully capturing the actual extent of attention dispersion. We therefore propose Entropy-Driven Adaptive Attention Calibration, which quantifies dispersion via a resolution-invariant normalized entropy and yields a closed-form per-head scaling factor that realigns the extrapolated-resolution attention entropy with its training-resolution counterpart. Extensive experiments show that our method consistently outperforms prior resolution-extrapolation methods in both structural coherence and fine-detail fidelity. Our code is available at https://github.com/feihongyan1/ExtraVAR.",
+    "authors": [
+      "Feihong Yan",
+      "Shaoyu Liu",
+      "Haixuan Wang",
+      "Shuai Lu",
+      "Linfeng Zhang",
+      "Huiqi Li",
+      "Xiangyang Ji"
+    ],
+    "published": "2026-05-11",
+    "updated": "2026-05-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.10045.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.10045",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ExtraVAR：面向视觉自回归模型分辨率外推的阶段感知RoPE重映射",
+      "core_contribution": "提出了一种无需训练的分辨率外推方法，通过阶段感知的RoPE重映射和熵驱动的自适应注意力校准，有效解决了视觉自回归模型在高分辨率生成中的全局重复、局部重复和细节退化三种失败模式。",
+      "method": "首先，基于对VAR模型粗到细生成过程中各阶段主导RoPE频带的分析，提出阶段感知RoPE重映射，为每个频带分配阶段特定的重映射规则，以联合抑制三种失败模式。其次，针对分辨率增大导致的注意力分散问题，提出熵驱动自适应注意力校准，利用分辨率不变的正则化熵量化分散程度，并推导出闭式逐头缩放因子，使外推分辨率下的注意力熵与训练分辨率对齐。",
+      "findings": "实验表明，该方法在结构连贯性和细节保真度上一致优于先前的分辨率外推方法，能够有效消除VAR模型在高分辨率生成中的全局重复、局部重复和细节退化问题。"
+    }
+  },
+  {
+    "id": "2605.09433",
+    "title": "Offline Preference Optimization for Rectified Flow with Noise-Tracked Pairs",
+    "abstract": "Existing preference datasets for text-to-image models typically store only the final winner/loser images. This representation is insufficient for rectified flow (RF) models, whose generation is naturally indexed by a specific prior noise sample and follows a nearly straight denoising trajectory. In contrast, prior DPO-style alignment for diffusion models commonly estimates trajectories using an independent forward noising process, which can be mismatched to the true reverse dynamics and introduces unnecessary variance. We propose Prior Noise-Aware Preference Optimization (PNAPO), an off-policy alignment framework specialized for rectified flow. PNAPO augments preference data by retaining the paired prior noises used to generate each winner/loser image, turning the standard (prompt, winner, loser) triplet into a sextuple. Leveraging the straight-line property of RF, we estimate intermediate states via noise-image interpolation, which constrains the trajectory estimation space and yields a tighter surrogate objective for preference optimization. In addition, we introduce a dynamic regularization strategy that adapts the DPO regularization based on (i) the reward gap between winner and loser and (ii) training progress, improving stability and sample efficiency. Experiments on state-of-the-art RF T2I backbones show that PNAPO consistently improves preference metrics while substantially reducing training compute.",
+    "authors": [
+      "Yunhong Lu",
+      "Qichao Wang",
+      "Hengyuan Cao",
+      "Xiaoyin Xu",
+      "Min Zhang"
+    ],
+    "published": "2026-05-10",
+    "updated": "2026-05-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.09433.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.09433",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于噪声追踪对的修正流离线偏好优化",
+      "core_contribution": "提出了一种专门针对修正流（Rectified Flow）模型的离线偏好优化框架PNAPO，通过保留生成图像时的配对先验噪声，并利用修正流的直线特性进行轨迹估计，从而更精确地实现偏好对齐，同时显著降低训练计算成本。",
+      "method": "PNAPO将标准的（提示词、胜者图像、败者图像）三元组扩展为包含配对先验噪声的六元组，利用修正流模型的直线去噪特性，通过噪声-图像插值直接估计中间状态，避免了传统扩散模型中独立前向加噪过程带来的轨迹估计偏差和方差。此外，引入动态正则化策略，根据胜者与败者之间的奖励差距及训练进度自适应调整DPO正则化强度，以提升训练稳定性和样本效率。",
+      "findings": "在多个最先进的修正流文生图骨干模型上的实验表明，PNAPO在一致提升偏好指标（如人类偏好评分）的同时，大幅减少了训练所需的计算资源，验证了其高效性和有效性。"
+    }
+  },
+  {
+    "id": "2605.09430",
+    "title": "FlashAR: Efficient Post-Training Acceleration for Autoregressive Image Generation",
+    "abstract": "Large-scale autoregressive models have demonstrated remarkable capabilities in image generation. However, their sequential raster-scan decoding relies on strictly next-token prediction, making inference prohibitively expensive. Existing acceleration methods typically either introduce entirely new generation paradigms that necessitate costly pre-training from scratch, or enable parallel generation at the expense of a training-inference gap or altered prediction objectives. In this paper, we introduce FlashAR, a lightweight post-training adaptation framework that efficiently adapts a pre-trained raster-scan autoregressive model into a highly parallel generator based on two-way next-token prediction. Our key insight is that effective adaptation should minimize modifications to the pre-trained model's original training objective to preserve its learned prior. Accordingly, we retain the original AR head as a horizontal head for row-wise prediction and introduce a complementary, lightweight vertical head for column-wise prediction. To facilitate efficient adaptation, we branch the vertical head from an intermediate layer rather than the final layer, bypassing the inherent horizontal head bias. Moreover, since horizontal and vertical predictions capture complementary dependencies whose relative importance varies across target positions, we employ a learnable fusion gate to dynamically combine the two predictions at each position. To further reduce adaptation cost, we propose a two-stage adaptation pipeline: the vertical head is first initialized through adaptation from the pre-trained autoregressive model before jointly fine-tuned with backbone to adapt to the new decoding paradigm. Extensive experiments on LlamaGen and Emu3.5 show that FlashAR achieves up to a 22.9x speedup for 512x512 image generation through a lightweight post-training with merely 0.05% of the original training data.",
+    "authors": [
+      "Junkang Zhou",
+      "Yefei He",
+      "Feng Chen",
+      "Weijie Wang",
+      "Bohan Zhuang"
+    ],
+    "published": "2026-05-10",
+    "updated": "2026-05-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.09430.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.09430",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "FlashAR：自回归图像生成的高效训练后加速方法",
+      "core_contribution": "提出一种轻量级训练后适配框架FlashAR，仅需原始训练数据的0.05%即可将预训练的逐行扫描自回归模型高效转化为高度并行的双向预测生成器，实现最高22.9倍的推理加速。",
+      "method": "FlashAR保留原始自回归模型的行预测头（水平头），并从中间层分支引入一个轻量级的垂直头用于列预测，从而避免最终层的水平头偏置。通过可学习的融合门动态结合水平和垂直预测结果，以捕捉不同位置互补的依赖关系。采用两阶段适配流程：先利用预训练模型初始化垂直头，再与骨干网络联合微调以适应新的并行解码范式。",
+      "findings": "在LlamaGen和Emu3.5上的实验表明，FlashAR在512×512图像生成任务中实现最高22.9倍加速，且仅需原始训练数据的0.05%进行轻量级训练后适配，显著降低了计算成本。"
+    }
+  }
+]
