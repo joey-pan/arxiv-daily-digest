@@ -1,0 +1,170 @@
+[
+  {
+    "id": "2605.13565",
+    "title": "Qwen-Image-VAE-2.0 Technical Report",
+    "abstract": "We present Qwen-Image-VAE-2.0, a suite of high-compression Variational Autoencoders (VAEs) that achieve significant advances in both reconstruction fidelity and diffusability. To address the reconstruction bottlenecks of high compression, we adopt an improved architecture featuring Global Skip Connections (GSC) and expanded latent channels. Moreover, we scale training to billions of images and incorporate a synthetic rendering engine to improve performance in text-rich scenarios. To tackle the convergence challenges of high-dimensional latent space, we implement an enhanced semantic alignment strategy to make the latent space highly amenable to diffusion modeling. To optimize computational efficiency, we leverage an asymmetric and attention-free encoder-decoder backbone to minimize encoding overhead. We present a comprehensive evaluation of Qwen-Image-VAE-2.0 on public reconstruction benchmarks. To evaluate performance in text-rich scenarios, we propose OmniDoc-TokenBench, a new benchmark comprising a diverse collection of real-world documents coupled with specialized OCR-based evaluation metrics. Qwen-Image-VAE-2.0 achieves state-of-the-art reconstruction performance, demonstrating exceptional capabilities in both general domains and text-rich scenarios at high compression ratio. Furthermore, downstream DiT experiments reveal our models possess superior diffusability, significantly accelerating convergence compared to existing high-compression baselines. These establish Qwen-Image-VAE-2.0 as a leading model with high compression, superior reconstruction, and exceptional diffusability.",
+    "authors": [
+      "Zekai Zhang",
+      "Deqing Li",
+      "Kuan Cao",
+      "Yujia Wu",
+      "Chenfei Wu",
+      "Yu Wu",
+      "Liang Peng",
+      "Hao Meng",
+      "Jiahao Li",
+      "Jie Zhang",
+      "Kaiyuan Gao",
+      "Kun Yan",
+      "Lihan Jiang",
+      "Ningyuan Tang",
+      "Shengming Yin",
+      "Tianhe Wu",
+      "Xiao Xu",
+      "Xiaoyue Chen",
+      "Yan Shu",
+      "Yanran Zhang",
+      "Yilei Chen",
+      "Yixian Xu",
+      "Yuxiang Chen",
+      "Zhendong Wang",
+      "Zihao Liu",
+      "Zikai Zhou",
+      "Yiliang Gu",
+      "Yi Wang",
+      "Xiaoxiao Xu",
+      "Lin Qu"
+    ],
+    "published": "2026-05-13",
+    "updated": "2026-05-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.13565.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.13565",
+    "primary_category": "cs.CV",
+    "score": 90,
+    "summary": {
+      "title_zh": "Qwen-图像-VAE-2.0 技术报告",
+      "core_contribution": "提出了一套高压缩变分自编码器（VAE）Qwen-Image-VAE-2.0，在重建保真度和扩散友好性上均取得显著进步，成为高压缩、高质量重建与优异扩散性能的领先模型。",
+      "method": "采用改进的架构，包括全局跳跃连接（GSC）和扩展的潜在通道以解决高压缩下的重建瓶颈；通过数十亿图像训练并结合合成渲染引擎提升文本丰富场景的性能。为应对高维潜在空间的收敛挑战，实施了增强的语义对齐策略使潜在空间更适于扩散建模；同时利用非对称且无注意力的编码器-解码器骨干网络最小化编码开销。",
+      "findings": "在公共重建基准上达到最先进性能，并在高压缩比下展现出在通用领域和文本丰富场景中的卓越能力；下游DiT实验表明模型具有优越的扩散友好性，显著加速了收敛速度。"
+    }
+  },
+  {
+    "id": "2605.13155",
+    "title": "Pareto-Guided Optimal Transport for Multi-Reward Alignment",
+    "abstract": "Text-to-image generation models have achieved remarkable progress in preference optimization, yet achieving robust alignment across diverse reward models remains a significant challenge. Existing multi-reward fusion approaches rely on weighted summation, which is costly to tune and insufficient for balancing conflicting objectives. More critically, optimization with reward models is highly susceptible to reward hacking, where reward scores increase while the perceived quality of generated images deteriorates. We demonstrate that optimizing against a unified global target under heterogeneous reward upper bounds can induce reward hacking, a risk further exacerbated by the inherent instability of weak reward models. To mitigate this, we propose a Pareto Frontier-Guided Optimal Transport (PG-OT) framework. Our method constructs a prompt-specific Pareto frontier and maps dominated samples toward it via distribution-aware optimal transport. Furthermore, we develop both online and offline optimization strategies tailored to diverse reward signal characteristics. To provide a more rigorous assessment, we introduce the Joint Domination Rate (JDR) and Joint Collapse Rate (JCR) as principled metrics to quantify multi-reward synergy and reward hacking. Experimental results show that our approach outperforms strong baselines with an 11% gain in JDR and achieves a near 80% win rate in human evaluations.",
+    "authors": [
+      "Ying Ba",
+      "Tianyu Zhang",
+      "Mohan Zhou",
+      "Yalong Bai",
+      "Wenyi Mo",
+      "Guiwei Zhang",
+      "Bing Su",
+      "Ji-Rong Wen"
+    ],
+    "published": "2026-05-13",
+    "updated": "2026-05-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.13155.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.13155",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "帕累托引导的最优传输用于多奖励对齐",
+      "core_contribution": "提出了一种帕累托前沿引导的最优传输框架（PG-OT），有效解决了文本到图像生成模型中多奖励对齐时的奖励破解问题，并引入了联合支配率（JDR）和联合崩溃率（JCR）作为量化多奖励协同与奖励破解的新指标。",
+      "method": "该方法首先为每个提示构建特定的帕累托前沿，然后通过分布感知的最优传输将受支配的样本映射到帕累托前沿上。此外，针对不同奖励信号的特征，分别设计了在线和离线两种优化策略，以平衡多个冲突的奖励目标并抑制奖励破解。",
+      "findings": "实验结果表明，PG-OT在联合支配率（JDR）上相比强基线提升了11%，并在人工评估中取得了接近80%的胜率，显著改善了多奖励对齐效果并减少了奖励破解现象。"
+    }
+  },
+  {
+    "id": "2605.12964",
+    "title": "Asymmetric Flow Models",
+    "abstract": "Flow-based generation in high-dimensional spaces is difficult because velocity prediction requires modeling high-dimensional noise, even when data has strong low-rank structure. We present Asymmetric Flow Modeling (AsymFlow), a rank-asymmetric velocity parameterization that restricts noise prediction to a low-rank subspace while keeping data prediction full-dimensional. From this asymmetric prediction, AsymFlow analytically recovers the full-dimensional velocity without changing the network architecture or training/sampling procedures. On ImageNet 256$\\times$256, AsymFlow achieves a leading 1.57 FID, outperforming prior DiT/JiT-like pixel diffusion models by a large margin. AsymFlow also provides the first-ever route for finetuning pretrained latent flow models into pixel-space models: aligning the low-rank pixel subspace to the latent space gives a seamless initialization that preserves the latent model's high-level semantics and structure, so finetuning mainly improves low-level mismatches rather than relearning pixel generation. We show that the pixel AsymFlow model finetuned from FLUX.2 klein 9B establishes a new state of the art for pixel-space text-to-image generation, beating its latent base on HPSv3, DPG-Bench, and GenEval while qualitatively showing substantially improved visual realism.",
+    "authors": [
+      "Hansheng Chen",
+      "Jan Ackermann",
+      "Minseo Kim",
+      "Gordon Wetzstein",
+      "Leonidas Guibas"
+    ],
+    "published": "2026-05-13",
+    "updated": "2026-05-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.12964.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.12964",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "非对称流模型",
+      "core_contribution": "提出了一种非对称流建模方法（AsymFlow），通过将噪声预测限制在低秩子空间而保持数据预测为全维度，在不改变网络架构或训练/采样流程的情况下，显著提升了高维空间中基于流的生成模型的性能。",
+      "method": "AsymFlow采用秩非对称的速度参数化方法：在速度预测中，噪声部分仅在一个低秩子空间中进行预测，而数据部分则保持全维度预测。通过这种非对称预测，该方法能够解析地恢复全维度的速度场，无需修改网络架构或训练/采样过程。此外，该方法还提供了一条将预训练潜在流模型微调为像素空间模型的路径，通过将低秩像素子空间与潜在空间对齐，实现无缝初始化。",
+      "findings": "在ImageNet 256×256上，AsymFlow取得了1.57 FID的领先结果，大幅优于先前的DiT/JiT类像素扩散模型。从FLUX.2 klein 9B微调得到的像素空间AsymFlow模型在文本到图像生成任务上达到了新的最优水平，在HPSv3、DPG-Bench和GenEval指标上超越了其潜在空间基础模型，并在视觉真实感上表现出显著提升。"
+    }
+  },
+  {
+    "id": "2605.12305",
+    "title": "Images in Sentences: Scaling Interleaved Instructions for Unified Visual Generation",
+    "abstract": "While recent advancements in multimodal language models have enabled image generation from expressive multi-image instructions, existing methods struggle to maintain performance under complex interleaved instructions. This limitation stems from the structural separation of images and text in current paradigms, which forces models to bridge difficult long-range dependencies to match descriptions with visual targets. To address these challenges, we propose \\texttt{I}mages i\\texttt{N} \\texttt{SE}n\\texttt{T}ences (\\textit{a.k.a}, INSET), a unified generation model that seamlessly embeds images as native vocabulary within textual instructions. By positioning visual features directly at their corresponding semantic slots, INSET leverages the contextual locality of transformers for precise object binding, effectively treating images as dense, expressive language tokens. Furthermore, we introduce a scalable data engine that synthesizes 15M high-quality interleaved samples from standard image and video datasets, utilizing VLMs and LLMs to construct rich, long-horizon sequences. Evaluation results on InterleaveBench demonstrate that INSET significantly outperforms state-of-the-art methods in multi-image consistency and text alignment, with performance gaps widening as input complexity increases. Beyond standard generation, our approach inherently extends to multimodal image editing, integrating visual content as part of the instruction to facilitate highly expressive and creative visual manipulations.",
+    "authors": [
+      "Yabo Zhang",
+      "Kunchang Li",
+      "Dewei Zhou",
+      "Xinyu Huang",
+      "Xun Wang"
+    ],
+    "published": "2026-05-12",
+    "updated": "2026-05-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.12305.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.12305",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "句子中的图像：扩展交错指令以实现统一视觉生成",
+      "core_contribution": "提出INSET模型，将图像作为原生词汇嵌入文本指令中，解决了现有方法在复杂交错指令下多图像生成时图像与文本结构分离导致的性能下降问题。",
+      "method": "INSET将图像特征直接放置在文本指令中对应的语义位置，利用Transformer的上下文局部性实现精确的对象绑定，从而将图像视为密集、表达性的语言标记。此外，作者设计了一个可扩展的数据引擎，从标准图像和视频数据集中合成了1500万个高质量交错样本，利用视觉语言模型和大型语言模型构建丰富的长序列数据。",
+      "findings": "在InterleaveBench基准测试中，INSET在多图像一致性和文本对齐方面显著优于现有最先进方法，且随着输入复杂度的增加，性能差距进一步扩大。该方法还自然地扩展到多模态图像编辑任务，将视觉内容作为指令的一部分，实现高度表达性和创造性的视觉操作。"
+    }
+  },
+  {
+    "id": "2605.12271",
+    "title": "Beyond Text Prompts: Visual-to-Visual Generation as A Unified Paradigm",
+    "abstract": "Humans often specify and create through visual artifacts: typography sheets, sketches, reference images, and annotated scenes. Yet modern visual generators still ask users to serialize this intent into text, a bottleneck that compresses signals like spatial structure, exact appearance, and glyph shape. We propose \\textbf{\\emph{visual-to-visual} (V2V)} generation, in which the user conditions a generative model with a visual specification page rather than a text prompt. The page is not an edit target, but a visual document that specifies the desired output. We introduce \\textbf{V2V-Zero}, a training-free framework that exposes this interface in existing vision-language model (VLM) conditioned generators by replacing text-only conditioning with final-layer hidden states extracted from visual pages, exploiting the fact that the frozen VLM already maps both text and images into the generator's conditioning space. On GenEval, V2V-Zero reaches 0.85 with a frozen Qwen-Image backbone, closely matching its optimized text-to-image performance without fine-tuning. To evaluate the broader V2V space, we introduce \\textbf{Simple-V2V Bench}, spanning seven visual-conditioning tasks and seven models, including GPT Image 2, Nano Banana 2, Seedream 5.0 Lite, open-weight baselines, and a video extension. V2V-Zero scores 32.7/100, outperforming evaluated open-weight image baselines and revealing a clear capability hierarchy: attribute binding is strong, content generation is unreliable, and structural control remains hard even for commercial systems. A HunyuanVideo-1.5 extension scores 20.2/100, showing the interface transfers beyond images. Mechanistic analysis shows the default reasoning path is primarily visually routed, with 95.0\\% of conditioning-token attention mass on visual-page hidden states.",
+    "authors": [
+      "Yaofang Liu",
+      "Kangning Cui",
+      "Meng Chu",
+      "Zhaoqing Li",
+      "Suiyun Zhang",
+      "Jean-Michel Morel",
+      "Xiaodong Cun",
+      "Haoxuan Che",
+      "Rui Liu",
+      "Raymond H. Chan"
+    ],
+    "published": "2026-05-12",
+    "updated": "2026-05-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.12271.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.12271",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越文本提示：视觉到视觉生成作为统一范式",
+      "core_contribution": "提出视觉到视觉（V2V）生成范式，用户通过视觉规格页面而非文本提示来条件化生成模型，并引入无需训练的V2V-Zero框架，在现有视觉语言模型生成器中实现该接口，显著扩展了条件生成的能力边界。",
+      "method": "V2V-Zero利用冻结的视觉语言模型（VLM）将文本和图像都映射到生成器的条件空间，通过替换文本条件为从视觉页面提取的最终层隐藏状态，实现无需微调的条件生成。该方法在GenEval上达到0.85的分数，与优化后的文本到图像性能相当。此外，作者构建了Simple-V2V Bench基准，涵盖七种视觉条件任务和七个模型，包括商业系统和开源基线，并扩展到视频生成。",
+      "findings": "V2V-Zero在GenEval上以冻结的Qwen-Image骨干网络达到0.85，无需微调即可匹配优化后的文本到图像性能；在Simple-V2V Bench上得分为32.7/100，优于所有评估的开源图像基线，并揭示能力层次：属性绑定强、内容生成不可靠、结构控制对商业系统仍具挑战；视频扩展（HunyuanVideo-1.5）得分为20.2/100，表明该接口可迁移到图像之外；机制分析显示默认推理路径主要依赖视觉路由，95.0%的条件令牌注意力集中在视觉页面隐藏状态上。"
+    }
+  }
+]
