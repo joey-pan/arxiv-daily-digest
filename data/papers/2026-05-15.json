@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2605.15181",
+    "title": "From Plans to Pixels: Learning to Plan and Orchestrate for Open-Ended Image Editing",
+    "abstract": "Modern image editing models produce realistic results but struggle with abstract, multi step instructions (e.g., ``make this advertisement more vegetarian-friendly''). Prior agent based methods decompose such tasks but rely on handcrafted pipelines or teacher imitation, limiting flexibility and decoupling learning from actual editing outcomes. We propose an experiential framework for long-horizon image editing, where a planner generates structured atomic decompositions and an orchestrator selects tools and regions to execute each step. A vision language judge provides outcome-based rewards for instruction adherence and visual quality. The orchestrator is trained to maximize these rewards, and successful trajectories are used to refine the planner. By tightly coupling planning with reward driven execution, our approach yields more coherent and reliable edits than single-step or rule-based multistep baselines.",
+    "authors": [
+      "Anirudh Sundara Rajan",
+      "Krishna Kumar Singh",
+      "Yong Jae Lee"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.15181.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.15181",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从规划到像素：学习规划与编排以实现开放式图像编辑",
+      "core_contribution": "提出了一种基于经验学习的长期图像编辑框架，通过规划器生成结构化原子分解、编排器选择工具和区域执行步骤，并利用视觉语言法官提供结果导向奖励，从而在无需手工流程或教师模仿的情况下实现更连贯可靠的开放式多步图像编辑。",
+      "method": "该方法包含三个核心组件：规划器将抽象指令分解为有序的原子编辑步骤，编排器为每一步选择适当的工具和编辑区域，视觉语言法官则根据指令遵循度和视觉质量提供奖励信号。编排器通过最大化奖励进行训练，而成功的执行轨迹被用于迭代优化规划器，从而将规划与奖励驱动的执行紧密耦合。",
+      "findings": "实验表明，该方法在处理抽象、多步指令（如“让这个广告更符合素食主义风格”）时，比单步基线或基于规则的基线方法生成更连贯、更可靠的编辑结果，验证了将规划与执行结果反馈相结合的有效性。"
+    }
+  },
+  {
+    "id": "2605.15167",
+    "title": "Does Synthetic Layered Design Data Benefit Layered Design Decomposition?",
+    "abstract": "Recent advances in image generation have made it easy to produce high-quality images. However, these outputs are inherently flattened, entangling foreground elements, background, and text within a fixed canvas. As a result, flexible post-generation editing remains challenging, revealing a clear last-mile gap toward practical usability. Existing approaches either rely on scarce proprietary layered assets or construct partially synthetic data from limited structural priors. However, both strategies face fundamental challenges in scalability. In this work, we investigate whether pure synthetic layered data can improve graphic design decomposition. We make the assumption that, in graphic design, effective decomposition does not require modeling inter-layer dependencies as precisely as in natural-image composition, since design elements are often intentionally arranged as modular and semantically separable components. Concretely, we conduct a data-centric study based on CLD baseline, which is a state-of-the-art layer decomposition framework. Based on the baseline, we construct our own synthetic dataset, SynLayers, generate textual supervision using vision language models, and automate inference inputs with VLM-predicted bounding boxes. Our study reveals three key findings: (1) even training with purely synthetic data can outperform non-scalable alternatives such as the widely used PrismLayersPro dataset, demonstrating its viability as a scalable and effective substitute; (2) performance consistently improves with increased training data scale, while gains begin to saturate at around 50K samples; and (3) synthetic data enables balanced control over layer-count distributions, avoiding the layer-count imbalance commonly observed in real-world datasets. We hope this data-centric study encourages broader adoption of synthetic data as a practical foundation for layered design editing systems.",
+    "authors": [
+      "Kam Man Wu",
+      "Haolin Yang",
+      "Qingyu Chen",
+      "Yihu Tang",
+      "Jingye Chen",
+      "Qifeng Chen"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.15167.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.15167",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "合成分层设计数据是否有助于分层设计分解？",
+      "core_contribution": "本文通过数据驱动的研究，证明了纯合成数据可以有效替代稀缺的真实分层数据，用于图形设计的分层分解任务，并揭示了合成数据在可扩展性和类别平衡方面的优势。",
+      "method": "基于最先进的分层分解框架CLD，作者构建了纯合成数据集SynLayers，利用视觉语言模型生成文本监督信息，并自动预测边界框作为推理输入。通过在不同规模和数据分布下训练模型，系统性地评估合成数据对分解性能的影响。",
+      "findings": "（1）纯合成数据训练的模型性能优于使用真实数据集PrismLayersPro的模型，表明合成数据是可行且可扩展的替代方案；（2）随着训练数据量增加，性能持续提升，但在约5万样本时趋于饱和；（3）合成数据能够实现层数分布的均衡控制，避免真实数据中常见的层数不平衡问题。"
+    }
+  },
+  {
+    "id": "2605.15055",
+    "title": "DiffusionOPD: A Unified Perspective of On-Policy Distillation in Diffusion Models",
+    "abstract": "Reinforcement learning has emerged as a powerful tool for improving diffusion-based text-to-image models, but existing methods are largely limited to single-task optimization. Extending RL to multiple tasks is challenging: joint optimization suffers from cross-task interference and imbalance, while cascade RL is cumbersome and prone to catastrophic forgetting. We propose DiffusionOPD, a new multi-task training paradigm for diffusion models based on Online Policy Distillation (OPD). DiffusionOPD first trains task-specific teachers independently, then distills their capabilities into a unified student along the student own rollout trajectories. This decouples single-task exploration from multi-task integration and avoids the optimization burden of solving all tasks jointly from scratch. Theoretically, we lift the OPD framework from discrete tokens to continuous-state Markov processes, deriving a closed-form per-step KL objective that unifies both stochastic SDE and deterministic ODE refinement via mean-matching. We formally and empirically demonstrate that this analytic gradient provides lower variance and better generality compared to conventional PPO-style policy gradients. Extensive experiments show that DiffusionOPD consistently surpasses both multi-reward RL and cascade RL baselines in training efficiency and final performance, while achieving state-of-the-art results on all evaluated benchmarks.",
+    "authors": [
+      "Quanhao Li",
+      "Junqiu Yu",
+      "Kaixun Jiang",
+      "Yujie Wei",
+      "Zhen Xing",
+      "Pandeng Li",
+      "Ruihang Chu",
+      "Shiwei Zhang",
+      "Yu Liu",
+      "Zuxuan Wu"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.15055.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.15055",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散模型在线策略蒸馏的统一视角",
+      "core_contribution": "提出了一种名为DiffusionOPD的多任务训练范式，通过在线策略蒸馏将多个任务特定教师模型的能力统一蒸馏到一个学生模型中，有效解决了多任务强化学习中的跨任务干扰和灾难性遗忘问题。",
+      "method": "首先独立训练多个任务特定的教师扩散模型，每个教师专注于单一奖励优化；然后沿着学生模型自身的轨迹进行在线策略蒸馏，将教师能力整合到统一的学生模型中。理论上将在线策略蒸馏从离散令牌扩展到连续状态马尔可夫过程，推导出闭式每步KL散度目标，通过均值匹配统一了随机SDE和确定性ODE的细化过程。",
+      "findings": "实验表明，DiffusionOPD在训练效率和最终性能上一致优于多奖励强化学习和级联强化学习基线，在所有评估基准上达到了最先进的结果。理论分析和实证结果均证明，所提出的解析梯度相比传统PPO策略梯度具有更低的方差和更好的泛化性。"
+    }
+  },
+  {
+    "id": "2605.14876",
+    "title": "Unlocking Complex Visual Generation via Closed-Loop Verified Reasoning",
+    "abstract": "Despite rapid advancements, current text-to-image (T2I) models predominantly rely on a single-step generation paradigm, which struggles with complex semantics and faces diminishing returns from parameter scaling. While recent multi-step reasoning approaches show promise, they are hindered by ungrounded planning hallucinations lacking verification, monolithic post-hoc reflection, long-context optimization instabilities, and prohibitive inference latency. To overcome these bottlenecks, we propose the Closed-Loop Visual Reasoning (CLVR) framework, a comprehensive system that deeply couples visual-language logical planning with pixel-level diffusion generation. CLVR introduces an automated data engine with step-level visual verification to synthesize reliable reasoning trajectories, and proposes Proxy Prompt Reinforcement Learning (PPRL) to resolve long-context optimization instabilities by distilling interleaved multimodal histories into explicit reward signals for accurate causal attribution. Furthermore, to mitigate the severe latency bottleneck caused by iterative denoising, we propose $Δ$-Space Weight Merge (DSWM), a theoretically grounded method that fuses alignment weights with off-the-shelf distillation priors, reducing the per-step inference cost to just 4 NFEs without requiring expensive re-distillation. Extensive experiments demonstrate that CLVR outperforms existing open-source baselines across multiple benchmarks and approaches the performance of proprietary commercial models, unlocking general test-time scaling capabilities for complex visual generation.",
+    "authors": [
+      "Hanbo Cheng",
+      "Limin Lin",
+      "Ruo Zhang",
+      "Yicheng Pan",
+      "Jun Du"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14876.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14876",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过闭环验证推理解锁复杂视觉生成",
+      "core_contribution": "提出了一种闭环视觉推理（CLVR）框架，将视觉-语言逻辑规划与像素级扩散生成深度耦合，通过自动数据引擎、代理提示强化学习和Δ-空间权重合并，显著提升了复杂文本到图像生成的质量和效率。",
+      "method": "CLVR框架包含三个关键组件：首先，引入自动数据引擎，通过步骤级视觉验证合成可靠的推理轨迹；其次，提出代理提示强化学习（PPRL），将交错的多模态历史蒸馏为显式奖励信号，解决长上下文优化不稳定性；最后，提出Δ-空间权重合并（DSWM），将对齐权重与现成的蒸馏先验融合，将每步推理成本降至仅4次神经函数评估，无需昂贵的重新蒸馏。",
+      "findings": "实验表明，CLVR在多个基准测试中优于现有开源基线，性能接近专有商业模型，实现了复杂视觉生成的通用测试时扩展能力，有效缓解了规划幻觉、后验反思单一、长上下文优化不稳定和推理延迟高等问题。"
+    }
+  },
+  {
+    "id": "2605.14709",
+    "title": "Breaking Dual Bottlenecks: Evolving Unified Multimodal Models into Self-Adaptive Interleaved Visual Reasoners",
+    "abstract": "Recent unified models integrate multimodal understanding and generation within a single framework. However, an \"understanding-generation gap\" persists, where models can capture user intent but often fail to translate this semantic knowledge into precise pixel-level manipulation. This gap results in two bottlenecks in anything-to-image task (X2I): the attention entanglement bottleneck, where blind planning struggles with complex prompts, and the visual refinement bottleneck, where unstructured feedback fails to correct imperfections efficiently. In this paper, we propose a novel framework that empowers unified models to autonomously switch between generation strategies based on instruction complexity and model capability. To achieve this, we construct a hierarchical data pipeline that constructs execution paths across three adaptive modes: direct generation for simple cases, self-reflection for quality refinement, and multi-step planning for decomposing complex scenarios. Building on this pipeline, we contribute a high-quality dataset with over 50,000 samples and implement a two-stage training strategy comprising SFT and RL. Specifically, we design step-wise reasoning rewards to ensure logical consistency and intra-group complexity penalty to prevent redundant computational overhead. Extensive experiments demonstrate that our method outperforms existing baselines on X2I, achieving superior generation fidelity among simple-to-complex instructions. The code is released at https://github.com/WeChatCV/Interleaved_Visual_Reasoner.",
+    "authors": [
+      "Qingyang Liu",
+      "Bingjie Gao",
+      "Canmiao Fu",
+      "Zhipeng Huang",
+      "Chen Li",
+      "Feng Wang",
+      "Shuochen Chang",
+      "Shaobo Wang",
+      "Yali Wang",
+      "Keming Ye",
+      "Jiangtong Li",
+      "Li Niu"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14709.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14709",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "打破双重瓶颈：将统一多模态模型进化为自适应交错视觉推理器",
+      "core_contribution": "提出一种新型框架，使统一多模态模型能够根据指令复杂度和自身能力自主切换生成策略，从而解决“理解-生成鸿沟”导致的注意力纠缠和视觉细化双重瓶颈。",
+      "method": "构建了一个分层数据管道，涵盖三种自适应模式：直接生成（简单情况）、自我反思（质量细化）和多步规划（复杂场景分解）。基于该管道，创建了包含5万多个样本的高质量数据集，并实施了两阶段训练策略（监督微调+强化学习），其中设计了逐步推理奖励以保证逻辑一致性，以及组内复杂度惩罚以防止冗余计算开销。",
+      "findings": "在任意到图像任务上，该方法在从简单到复杂的指令下均优于现有基线，实现了更高的生成保真度，有效弥合了理解与生成之间的差距。"
+    }
+  }
+]
