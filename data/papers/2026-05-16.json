@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2605.14708",
+    "title": "StyleTextGen: Style-Conditioned Multilingual Scene Text Generation",
+    "abstract": "Style-conditioned scene text generation faces unique challenges in extracting precise text styles from complex backgrounds and maintaining fine-grained style consistency across characters, especially for multilingual scripts. We propose StyleTextGen, a novel framework that learns to perceive and replicate visual text styles across different languages and writing systems. Our approach features three key contributions: First, we introduce a dual-branch style encoder dedicated to style modeling, yielding robust multilingual text style representations in complex real-world scenes. Second, we design a text style consistency loss that enhances style coherence and improves overall visual quality. Third, we develop a mask-guided inference strategy that ensures precise style alignment between generated and reference text. To facilitate systematic evaluation, we construct StyleText-CE, a bilingual scene text style benchmark covering both monolingual and cross-lingual settings. Extensive experiments demonstrate that StyleTextGen significantly outperforms existing methods in style consistency and cross-lingual generalization, establishing new state-of-the-art performance in multilingual style-conditioned text generation.",
+    "authors": [
+      "Zeyu Chen",
+      "Fangmin Zhao",
+      "Yan Shu",
+      "Yichao Liu",
+      "Liu Yu",
+      "Yu Zhou"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14708.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14708",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "StyleTextGen：风格条件的多语言场景文本生成",
+      "core_contribution": "提出了一种名为StyleTextGen的新型框架，能够从复杂背景中提取精确的文本风格，并在不同语言和书写系统间保持细粒度的风格一致性，显著优于现有方法。",
+      "method": "该方法包含三个关键组件：首先，设计了一个双分支风格编码器，专门用于从复杂真实场景中提取鲁棒的多语言文本风格表示；其次，引入了一种文本风格一致性损失函数，以增强生成文本的风格连贯性和视觉质量；最后，开发了一种掩码引导的推理策略，确保生成文本与参考文本之间的精确风格对齐。",
+      "findings": "在构建的双语场景文本风格基准StyleText-CE上的实验表明，StyleTextGen在风格一致性和跨语言泛化方面显著优于现有方法，在多语言风格条件文本生成中达到了新的最先进性能。"
+    }
+  },
+  {
+    "id": "2605.14333",
+    "title": "InsightTok: Improving Text and Face Fidelity in Discrete Tokenization for Autoregressive Image Generation",
+    "abstract": "Text and faces are among the most perceptually salient and practically important patterns in visual generation, yet they remain challenging for autoregressive generators built on discrete tokenization. A central bottleneck is the tokenizer: aggressive downsampling and quantization often discard the fine-grained structures needed to preserve readable glyphs and distinctive facial features. We attribute this gap to standard discrete-tokenizer objectives being weakly aligned with text legibility and facial fidelity, as these objectives typically optimize generic reconstruction while compressing diverse content uniformly. To address this, we propose InsightTok, a simple yet effective discrete visual tokenization framework that enhances text and face fidelity through localized, content-aware perceptual losses. With a compact 16k codebook and a 16x downsampling rate, InsightTok significantly outperforms prior tokenizers in text and face reconstruction without compromising general reconstruction quality. These gains consistently transfer to autoregressive image generation in InsightAR, producing images with clearer text and more faithful facial details. Overall, our results highlight the potential of specialized supervision in tokenizer training for advancing discrete image generation.",
+    "authors": [
+      "Yang Yue",
+      "Fangyun Wei",
+      "Tianyu He",
+      "Jinjing Zhao",
+      "Zanlin Ni",
+      "Zeyu Liu",
+      "Jiayi Guo",
+      "Lei Shi",
+      "Yue Dong",
+      "Li Chen",
+      "Ji Li",
+      "Gao Huang",
+      "Dong Chen"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14333.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14333",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InsightTok：提升自回归图像生成中离散标记化的文本与面部保真度",
+      "core_contribution": "提出InsightTok框架，通过局部化、内容感知的感知损失显著提升离散标记化在文本和面部重建上的保真度，同时不牺牲通用重建质量，并将改进迁移至自回归图像生成。",
+      "method": "InsightTok在标准离散标记化训练中引入针对文本和面部的局部化感知损失，这些损失基于内容感知的区域权重，使模型在压缩时更关注细粒度结构；采用紧凑的16k码本和16倍下采样率，在保持高效压缩的同时增强关键区域的保真度。",
+      "findings": "InsightTok在文本和面部重建上显著优于先前的标记化方法，且不降低通用重建质量；将其集成到自回归生成模型InsightAR中，生成的图像具有更清晰的文本和更忠实的面部细节，表明专用监督在标记化训练中能有效推进离散图像生成。"
+    }
+  },
+  {
+    "id": "2605.14270",
+    "title": "Diagnosing and Correcting Concept Omission in Multimodal Diffusion Transformers",
+    "abstract": "Multimodal Diffusion Transformers (MM-DiTs) have achieved remarkable progress in text-to-image generation, yet they frequently suffer from concept omission, where specified objects or attributes fail to emerge in the generated image. By performing linear probing on text tokens, we demonstrate that text embeddings can distinguish a characteristic `omission signal' representing the absence of target concepts. Leveraging this insight, we propose Omission Signal Intervention (OSI), which amplifies the omission signal to actively catalyze the generation of missing concepts. Comprehensive experiments on FLUX.1-Dev and SD3.5-Medium demonstrate that OSI significantly alleviates concept omission even in extreme scenarios.",
+    "authors": [
+      "Kanghyun Baek",
+      "Jaihyun Lew",
+      "Chaehun Shin",
+      "Jungbeom Lee",
+      "Sungroh Yoon"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14270.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14270",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "诊断与纠正多模态扩散Transformer中的概念遗漏问题",
+      "core_contribution": "本文首次通过线性探测发现多模态扩散Transformer中文本嵌入存在表征概念遗漏的“遗漏信号”，并提出遗漏信号干预方法（OSI）来主动增强该信号，从而有效缓解生成图像中对象或属性缺失的问题。",
+      "method": "首先，通过对文本token进行线性探测，分析文本嵌入中是否包含表征目标概念缺失的“遗漏信号”。然后，基于这一发现，提出OSI方法，在生成过程中放大该遗漏信号，从而主动催化缺失概念的生成。该方法无需重新训练模型，仅通过调整嵌入表示即可干预生成过程。",
+      "findings": "在FLUX.1-Dev和SD3.5-Medium上的大量实验表明，OSI能够显著缓解概念遗漏问题，即使在极端场景下（如多个指定对象或属性同时缺失）也能有效提升生成图像的完整性。"
+    }
+  },
+  {
+    "id": "2605.14191",
+    "title": "CoReDiT: Spatial Coherence-Guided Token Pruning and Reconstruction for Efficient Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) deliver remarkable image and video generation quality but incur high computational cost, limiting scalability and on-device deployment. We introduce CoReDiT, a structured token pruning framework for DiTs across vision tasks. CoReDiT uses a linear-time spatial coherence score to estimate local redundancy in the latent token lattice and skips high coherence (redundant) tokens in self-attention. To maintain a dense representation and avoid visual discontinuities, we reconstruct skipped attention outputs via coherence-guided aggregation of spatially neighboring retained tokens. We further introduce a progressive, block-adaptive pruning schedule that increases pruning gradually and allocates larger budgets to blocks and denoising steps with higher redundancy. Across state-of-the-art diffusion backbones including PixArt-α and MagicDrive-V2, CoReDiT achieves up to 55% self-attention FLOPs reduction and inference speedups of 1.33x on cloud GPUs and 1.72x on mobile NPUs, while maintaining high visual quality. Notably, CoReDiT also increases on-device memory head-room, enabling higher-resolution generation.",
+    "authors": [
+      "Zhuojin Li",
+      "Hsin-Pai Cheng",
+      "Hong Cai",
+      "Shizhong Han",
+      "Fatih Porikli"
+    ],
+    "published": "2026-05-13",
+    "updated": "2026-05-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14191.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14191",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CoReDiT：基于空间连贯性引导的令牌剪枝与重建以实现高效扩散变换器",
+      "core_contribution": "提出了一种名为CoReDiT的结构化令牌剪枝框架，通过空间连贯性评分和邻近令牌重建，在保持高视觉质量的同时显著降低扩散变换器的计算成本，并支持在云GPU和移动NPU上实现推理加速。",
+      "method": "CoReDiT首先利用线性时间空间连贯性评分估计潜在令牌网格中的局部冗余，并在自注意力中跳过高连贯性（冗余）令牌。为维持密集表示并避免视觉不连续，该方法通过连贯性引导的聚合，从空间相邻的保留令牌中重建被跳过令牌的注意力输出。此外，还引入了一种渐进式、块自适应的剪枝调度策略，逐步增加剪枝比例，并为冗余度更高的块和去噪步骤分配更大的剪枝预算。",
+      "findings": "在PixArt-α和MagicDrive-V2等最先进扩散骨干网络上，CoReDiT实现了高达55%的自注意力FLOPs减少，并在云GPU上获得1.33倍推理加速，在移动NPU上获得1.72倍加速，同时保持高视觉质量。此外，该方法还增加了设备上的内存余量，支持更高分辨率的生成。"
+    }
+  },
+  {
+    "id": "2605.13974",
+    "title": "Few Channels Draw The Whole Picture: Revealing Massive Activations in Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) and related flow-based architectures are now among the strongest text-to-image generators, yet the internal mechanisms through which prompts shape image semantics remain poorly understood. In this work, we study massive activations: a small subset of hidden-state channels whose responses are consistently much larger than the rest. We show that, despite their sparsity, these few channels effectively draw the whole picture, in three complementary senses. First, they are functionally critical: a controlled disruption probe that zeroes the massive channels causes a sharp collapse in generation quality, while disrupting an equally-sized set of low-statistic channels has marginal effect. Second, they are spatially organized: restricting image-stream tokens to massive channels and clustering them yields coherent partitions that closely align with the main subject and salient regions, exposing a structured spatial code hidden inside an apparently outlier-like subspace. Third, they are transferable: transporting massive activations from one prompt-conditioned trajectory into another, shifts the final image toward the source prompt while preserving substantial content from the target, producing localized semantic interpolation rather than unstructured pixel blending. We exploit this property in two use cases: text-conditioned and image-conditioned semantic transport, where massive activations transport enables prompt interpolation and subject-driven generation without any additional training. Together, these results recast massive activations not as activation anomalies, but as a sparse prompt-conditioned carrier subspace that organizes and controls semantic information in modern DiT models.",
+    "authors": [
+      "Evelyn Turri",
+      "Davide Bucciarelli",
+      "Sara Sarto",
+      "Lorenzo Baraldi",
+      "Marcella Cornia"
+    ],
+    "published": "2026-05-13",
+    "updated": "2026-05-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.13974.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.13974",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "少数通道勾勒全貌：揭示扩散Transformer中的大规模激活现象",
+      "core_contribution": "本文首次系统性地揭示了扩散Transformer（DiT）中少量隐藏状态通道（即大规模激活）在语义组织与控制中的关键作用，证明这些稀疏通道并非异常，而是承载提示语义的结构化子空间。",
+      "method": "作者首先通过统计隐藏状态通道的响应幅度，识别出那些响应显著大于其余通道的“大规模激活”子集。随后设计了三种互补的探针实验：1）将大规模激活置零以测试其功能关键性；2）仅保留图像流令牌中的大规模激活通道并进行聚类，观察其空间组织性；3）将源提示下的大规模激活迁移到目标提示的生成轨迹中，实现语义插值。",
+      "findings": "实验表明：1）大规模激活对生成质量至关重要，将其置零会导致生成质量急剧下降，而同等数量的低统计通道则影响甚微；2）这些通道在空间上组织良好，聚类后能清晰对应图像的主要主体和显著区域；3）大规模激活具有可迁移性，可在不同提示间传递语义，实现无需额外训练的提示插值和主体驱动生成。"
+    }
+  }
+]
