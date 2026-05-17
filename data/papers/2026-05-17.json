@@ -1,0 +1,145 @@
+[
+  {
+    "id": "2605.15193",
+    "title": "Aligning Latent Geometry for Spherical Flow Matching in Image Generation",
+    "abstract": "Latent flow matching for image generation usually transports Gaussian noise to variational autoencoder latents along linear paths. Both endpoints, however, concentrate in thin spherical shells, and a Euclidean chord leaves those shells even when preprocessing aligns their radii. By decomposing each latent token into radial and angular components, we show through component-swap probes that decoded perceptual and semantic content is carried predominantly by direction, with radius contributing much less. We therefore project data latents onto a fixed token radius, use the radial projection of Gaussian noise as the spherical prior, finetune the decoder with the encoder frozen, and replace linear interpolation with spherical linear interpolation. The resulting geodesic paths stay on the sphere at every timestep, and their velocity targets are purely angular by construction. Under matched training, the method consistently improves class-conditional ImageNet-256 FID across different image tokenizers, leaves the diffusion architecture unchanged, and requires no auxiliary encoder or representation-alignment objective.",
+    "authors": [
+      "Tuna Han Salih Meral",
+      "Kaan Oktay",
+      "Hidir Yesiltepe",
+      "Adil Kaan Akan",
+      "Pinar Yanardag"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.15193.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.15193",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "对齐潜在几何结构以实现图像生成中的球形流匹配",
+      "core_contribution": "提出了一种基于球形流匹配的图像生成方法，通过将潜在变量分解为径向和角度分量，并采用球面线性插值替代欧几里得线性路径，显著提升了类条件ImageNet-256的FID分数，且无需改变扩散架构或引入额外编码器。",
+      "method": "首先将每个潜在token分解为径向和角度分量，通过分量交换实验发现图像内容主要由角度方向承载，径向贡献较小。因此，将数据潜在变量投影到固定半径的球面上，并将高斯噪声的径向投影作为球形先验，冻结编码器微调解码器。最后用球面线性插值替代线性插值，确保路径始终位于球面上，速度目标仅为角度分量。",
+      "findings": "在匹配训练条件下，该方法在不同图像分词器上一致提升了类条件ImageNet-256的FID指标，且无需修改扩散架构或引入辅助编码器/表示对齐目标，验证了球形几何对齐的有效性。"
+    }
+  },
+  {
+    "id": "2605.14948",
+    "title": "ACE-LoRA: Adaptive Orthogonal Decoupling for Continual Image Editing",
+    "abstract": "State-of-the-art diffusion models often rely on parameter-efficient fine-tuning to perform specialized image editing tasks. However, real-world applications require continual adaptation to new tasks while preserving previously learned knowledge. Despite the practical necessity, continual learning for image editing remains largely underexplored. We propose ACE-LoRA, a dynamic regularization framework for continual image editing that effectively mitigates catastrophic forgetting. ACE-LoRA leverages Adaptive Orthogonal Decoupling to identify and orthogonalize task interference, and introduces a Rank-Invariant Historical Information Compression strategy to address scalability issues in continual updates. To facilitate continual learning in image editing and provide a standardized evaluation protocol, we introduce CIE-Bench, the first comprehensive benchmark in this domain. CIE-Bench encompasses diverse and practically relevant image editing scenarios with a balanced level of difficulty to effectively expose limitations of existing models while remaining compatible with parameter-efficient fine-tuning. Extensive experiments demonstrate that our method consistently outperforms existing baselines in terms of instruction fidelity, visual realism, and robustness to forgetting, establishing a strong foundation for continual learning in image editing.",
+    "authors": [
+      "Yuehao Liu",
+      "Weijia Zhang",
+      "Xuanming Shang",
+      "Zhizhou Chen",
+      "Yanhao Ge",
+      "Shanyan Guan",
+      "Chao Ma"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14948.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14948",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "ACE-LoRA：面向持续图像编辑的自适应正交解耦方法",
+      "core_contribution": "提出了ACE-LoRA框架，首次系统性地解决扩散模型在持续图像编辑中的灾难性遗忘问题，并构建了首个标准化基准数据集CIE-Bench。",
+      "method": "ACE-LoRA采用自适应正交解耦策略，通过识别任务间的干扰方向并强制正交化来缓解遗忘；同时引入秩不变历史信息压缩机制，在持续更新中高效保留关键知识，避免参数膨胀。整体框架基于参数高效微调（LoRA），兼容现有扩散模型。",
+      "findings": "在CIE-Bench及多个图像编辑任务上的实验表明，ACE-LoRA在指令遵循度、视觉真实感和抗遗忘能力上均显著优于现有基线方法，为持续图像编辑领域建立了强基线。"
+    }
+  },
+  {
+    "id": "2605.14819",
+    "title": "The Velocity Deficit: Initial Energy Injection for Flow Matching",
+    "abstract": "While Flow Matching theoretically guarantees constant-velocity trajectories, we identify a critical breakdown in high-dimensional practice: the Velocity Deficit. We show that the MSE objective systematically underestimates velocity magnitude, causing generated samples to fail to reach the data manifold-a phenomenon we term Integration Lag. To rectify this, we propose Initial Energy Injection, instantiated via two complementary methods: the training-based Magnitude-Aware Flow Matching (MAFM) and the training-free Scale Schedule Corrector (SSC). Both are grounded in our discovery of a crucial asymmetry: velocity contraction causes harmful kinetic stagnation at the trajectory's start, yet acts as a beneficial denoising mechanism at its end. Empirically, SSC yields significant efficiency gains with zero retraining and just one line of code. On ImageNet-1k (256x256), it improves FID by 44.6% (from 13.68 to 7.58) and achieves a 5x speedup, enabling a 50-step generator (FID 7.58) to beat a 250-step baseline (FID 8.65). Furthermore, our methods generalize to Text-to-Image tasks and high-resolution generation, improving FID on MS-COCO by ~22%.",
+    "authors": [
+      "Linze Li",
+      "Zong-Wei Hong",
+      "Shen Zhang",
+      "Bo Lin",
+      "Jinglun Li",
+      "Yao Tang",
+      "Jiajun Liang"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14819.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14819",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "速度赤字：流匹配的初始能量注入",
+      "core_contribution": "本文揭示了流匹配模型在高维实践中存在的“速度赤字”问题，即MSE目标函数系统性低估速度幅度，导致生成样本无法到达数据流形；并提出了两种互补的初始能量注入方法（MAFM和SSC）来纠正这一缺陷。",
+      "method": "首先，作者通过理论分析发现速度收缩在轨迹起点造成有害的动能停滞，而在终点则起到有益的降噪作用。基于这一不对称性，提出了两种方法：一是基于训练的幅度感知流匹配（MAFM），在训练中显式修正速度幅度；二是无需训练的尺度调度校正器（SSC），仅需一行代码即可在推理时调整初始能量注入。",
+      "findings": "在ImageNet-1k（256x256）上，SSC将FID从13.68提升至7.58（改进44.6%），并实现5倍加速，使50步生成器（FID 7.58）超越250步基线（FID 8.65）。该方法还能泛化到文本到图像任务和高分辨率生成，在MS-COCO上将FID改进约22%。"
+    }
+  },
+  {
+    "id": "2605.14552",
+    "title": "LiWi: Layering in the Wild",
+    "abstract": "Recent advances in generative models have empowered impressive layered image generation, yet their success is largely confined to graphic design domains. The layering of in-the-wild images remains an underexplored problem, limiting fine-grained editing and applications of images in real-world scenarios. Specifically, challenges remain in scalable layered data and the modeling of object interaction in natural images, such as illumination effects and structural boundary. To address these bottlenecks, we propose a novel framework for high-fidelity natural image decomposition. First, we introduce an Agent-driven Data Decomposition (ADD) pipeline that orchestrates agents and tools to synthesize layered data without manual intervention. Utilizing this pipeline, we construct a large-scale dataset, named LiWi-100k, with over 100,000 high-quality layered in-the-wild images. Second, we present a novel framework that jointly improves photometric fidelity and alpha boundary accuracy. Specifically, shadow-guided learning explicitly models the illumination effects, and degradation-restoration objective provides boundary-correction supervision by recovering clean foreground image from degraded one. Extensive experiments demonstrate that our framework achieves state-of-the-art (SoTA) performance in natural image decomposition, outperforming existing models in RGB L1 and Alpha IoU metrics. We will soon release our code and dataset.",
+    "authors": [
+      "Yu He",
+      "Fang Li",
+      "Haoyang Tong",
+      "Lichen Ma",
+      "Xinyuan Shan",
+      "Jingling Fu",
+      "Dong Chen",
+      "Luohang Liu",
+      "Junshi Huang",
+      "Yan Li"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14552.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14552",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "LiWi：野外场景中的图层分解",
+      "core_contribution": "提出了一种针对自然图像的高保真图层分解框架，解决了现有方法在真实场景中难以处理光照效应和结构边界等问题，并构建了首个大规模野外图层数据集LiWi-100k。",
+      "method": "首先，设计了一个智能体驱动的数据分解流水线（ADD），通过协调多个智能体和工具自动合成带图层标注的数据，无需人工干预。其次，提出联合优化光度保真度和Alpha边界准确性的框架：采用阴影引导学习显式建模光照效应，并通过退化-恢复目标提供边界校正监督，即从退化前景图像中恢复干净前景。",
+      "findings": "在自然图像分解任务上，该方法在RGB L1和Alpha IoU指标上均达到当前最优性能，显著优于现有模型，验证了框架在真实场景中的有效性和泛化能力。"
+    }
+  },
+  {
+    "id": "2605.14461",
+    "title": "ClickRemoval: An Interactive Open-Source Tool for Object Removal in Diffusion Models",
+    "abstract": "Existing object removal tools often rely on manual masks or text prompts, making precise removal difficult for non-expert users in complex scenes and often leading to incomplete removal or unnatural background completion. To address this issue, we present ClickRemoval, an open-source interactive object removal tool built on pretrained Stable Diffusion models and driven solely by user clicks. Without additional training, hand-drawn masks, or text descriptions, ClickRemoval localizes target objects and restores the background through self-attention modulation during denoising. Experiments show that ClickRemoval achieves competitive results across quantitative metrics and user studies. We release a complete software package at https://github.com/zld-make/ClickRemoval under the Apache-2.0 license.",
+    "authors": [
+      "Ledun Zhang",
+      "Yatu Ji",
+      "Xufei Zhuang",
+      "Xinying Yao"
+    ],
+    "published": "2026-05-14",
+    "updated": "2026-05-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.14461.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.14461",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "ClickRemoval：一种用于扩散模型中物体移除的交互式开源工具",
+      "core_contribution": "提出了一种基于点击驱动的交互式物体移除工具ClickRemoval，无需手动掩码、文本提示或额外训练，即可在扩散模型中实现精确的物体移除与背景修复。",
+      "method": "ClickRemoval基于预训练的Stable Diffusion模型，仅通过用户点击定位目标物体，在去噪过程中利用自注意力调制机制来移除物体并恢复背景。该方法无需额外训练或手工掩码，完全依赖模型自身的注意力信息进行交互式操作。",
+      "findings": "实验表明，ClickRemoval在定量指标和用户研究中均取得了具有竞争力的结果，能够有效处理复杂场景中的物体移除任务，实现更完整的移除和更自然的背景补全。"
+    }
+  }
+]
