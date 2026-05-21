@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2605.21484",
+    "title": "One-Step Distillation of Discrete Diffusion Image Generators via Fixed-Point Iteration",
+    "abstract": "Discrete diffusion models excel at visual synthesis but rely on slow, iterative decoding. Existing single-step distillation methods attempt to bypass this bottleneck, either by training auxiliary score networks that effectively double compute, or by introducing specialized parameterizations and multi-stage pipelines that fragment optimization. In this paper, we introduce Fixed-Point Distillation (FPD), an end-to-end framework that constructs local correction targets by partially corrupting the student's one-step draft and refining it with a single teacher step. To compute the training objective in a semantically meaningful space, we lift discrete tokens into continuous features and apply a multi-bandwidth drift loss that iteratively accumulates these corrections. To backpropagate through the discrete bottleneck, we employ a straight-through estimator that feeds exact hard-sampled tokens to the teacher and decoder during the forward pass, ensuring that training and inference operate on the same codebook manifold, while routing continuous gradients back to the student logits. This fully differentiable pathway additionally accommodates an optional unconditional adversarial objective to enhance perceptual realism. Evaluations on both class- and text-conditional generation validate the effectiveness of our framework. FPD achieves competitive visual fidelity and structural alignment within a single inference step, narrowing the gap to multi-step teachers while outperforming existing discrete distillation baselines.",
+    "authors": [
+      "Chaoyang Wang",
+      "Yunhai Tong"
+    ],
+    "published": "2026-05-20",
+    "updated": "2026-05-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21484.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21484",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于不动点迭代的离散扩散图像生成器单步蒸馏",
+      "core_contribution": "提出了一种端到端的单步蒸馏框架FPD，通过局部校正目标和多带宽漂移损失，在不增加辅助网络或复杂流水线的情况下，显著缩小了离散扩散模型单步生成与多步教师模型之间的性能差距。",
+      "method": "FPD首先让学生模型生成单步草稿，然后通过部分破坏该草稿并利用教师模型的一步修正来构建局部校正目标。为了在语义有意义的空间计算损失，将离散token提升为连续特征并应用多带宽漂移损失。通过直通估计器实现离散瓶颈的反向传播，在前向传播中传递精确硬采样token，同时将连续梯度路由回学生logits，并可选地加入无条件对抗目标以增强感知真实性。",
+      "findings": "在类别条件和文本条件图像生成任务上，FPD在单步推理中取得了与多步教师模型相近的视觉保真度和结构对齐，优于现有的离散蒸馏基线方法。"
+    }
+  },
+  {
+    "id": "2605.21343",
+    "title": "OcclusionFormer: Arranging Z-Order for Layout-Grounded Image Generation",
+    "abstract": "Recent layout-to-image models have achieved remarkable progress in spatial controllability. However, they still struggle with inter-object occlusion. When bounding boxes overlap, most existing methods lack explicit occlusion information, which makes the generation in intersection regions inherently ambiguous and hinders the determination of complex occlusion relationships. As a result, they often produce entangled textures or physically inconsistent layering in the overlapped areas. To address this issue, we first construct SA-Z, a large-scale dataset enriched with explicit occlusion ordering and pixel-level annotations. Building upon our proposed dataset, we introduce OcclusionFormer, a novel occlusion-aware Diffusion Transformer framework that explicitly models Z-order priority by decoupling instances and compositing them via volume rendering. Furthermore, to ensure fine-grained spatial precision, we introduce a queried alignment loss that explicitly supervises individual instances and enhances semantic consistency. The proposed method effectively reduces ambiguity in overlapping regions, enforces correct occlusion dependencies, and preserves structural integrity, leading to substantial accuracy gains across diverse scenes.",
+    "authors": [
+      "Ziye Li",
+      "Henghui Ding"
+    ],
+    "published": "2026-05-20",
+    "updated": "2026-05-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21343.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21343",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "OcclusionFormer：基于Z顺序排列的布局引导图像生成",
+      "core_contribution": "提出了一种显式建模遮挡顺序的扩散变换器框架OcclusionFormer，并构建了首个带有显式遮挡顺序和像素级标注的大规模数据集SA-Z，有效解决了布局到图像生成中物体重叠区域的纹理纠缠和层叠不一致问题。",
+      "method": "首先构建了SA-Z数据集，包含显式的遮挡顺序和像素级标注。然后提出OcclusionFormer框架，通过解耦实例并使用体渲染技术进行合成，显式建模Z顺序优先级。此外，引入查询对齐损失，对单个实例进行显式监督，增强语义一致性并确保细粒度的空间精度。",
+      "findings": "实验表明，OcclusionFormer有效减少了重叠区域的生成歧义，强制了正确的遮挡依赖关系，并保持了结构完整性，在多种场景下显著提升了生成精度。"
+    }
+  },
+  {
+    "id": "2605.21272",
+    "title": "MONET: A Massive, Open, Non-redundant and Enriched Text-to-image dataset",
+    "abstract": "Training large text-to-image models requires high-quality, curated datasets with diverse content and detailed captions. Yet the cost and complexity of collecting, filtering, deduplicating, and re-captioning such corpora at scale hinders open and reproducible research in the field. We introduce MONET, an open Apache 2.0 dataset of approx. 104.9M image--text pairs collected from 2.9B raw pairs across heterogeneous open sources through successive stages of safety filtering, domain-based filtering, exact and near-duplicate removal, and re-captioning with multiple vision-language models covering short to long-form descriptions, and further augmented with synthetically generated samples. Each image is shipped with pre-computed embeddings and annotations to accelerate downstream use. To validate the effectiveness of MONET, we train a 4B-parameter latent diffusion model exclusively on it and reach competitive GenEval and DPG scores, demonstrating that our dataset lowers the barrier to large-scale, reproducible text-to-image research.",
+    "authors": [
+      "Benjamin Aubin",
+      "Gonzalo Iñaki Quintana",
+      "Onur Tasar",
+      "Sanjeev Sreetharan",
+      "Urszula Czerwinska",
+      "Damien Henry",
+      "Clément Chadebec"
+    ],
+    "published": "2026-05-20",
+    "updated": "2026-05-20",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21272.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21272",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MONET：一个大规模、开放、无冗余且丰富的文本到图像数据集",
+      "core_contribution": "提出了一个大规模、高质量、开放许可的文本-图像数据集MONET（约1.049亿对），通过多阶段过滤、去重和重新标注流程，降低了大规模可复现文本到图像研究的门槛。",
+      "method": "从29亿原始图像-文本对中，依次经过安全过滤、基于领域的过滤、精确和近似去重，再使用多种视觉语言模型进行从短到长描述的重新标注，并补充合成生成样本。每个图像附带预计算的嵌入和注释以加速下游使用。",
+      "findings": "仅使用MONET数据集训练一个40亿参数的潜在扩散模型，在GenEval和DPG评分上达到了有竞争力的性能，验证了该数据集能有效支持大规模、可复现的文本到图像研究。"
+    }
+  },
+  {
+    "id": "2605.21195",
+    "title": "RankE: End-to-End Post-Training for Discrete Text-to-Image Generation with Decoder Co-Evolution",
+    "abstract": "Discrete autoregressive (AR) text-to-image (T2I) models pair a VQ tokenizer with an AR policy, and current post-training pipelines optimize only the policy while keeping the VQ decoder frozen. Recent diffusion T2I work, exemplified by REPA-E, has shown that the VAE itself constitutes a key alignment bottleneck, yet no analogous investigation exists for discrete AR models. We show that policy-only optimization induces Latent Covariate Shift: as the policy evolves, the resulting token distribution diverges from the ground-truth distribution on which the decoder was trained, such that reward scores improve while decoded image quality degrades. To address this mismatch, we propose RankE, the first end-to-end post-training framework for discrete T2I generation. Rather than optimizing the policy against a fixed decoder, RankE co-evolves both components through alternating optimization: each module maximizes a ranking-based alignment objective while being regularized by a stability-preserving anchor suited to its parameter space. This co-evolution breaks the fidelity--alignment trade-off that plagues frozen-decoder approaches: on LlamaGen-XL (775M), standard RL improves CLIP but degrades FID, whereas RankE improves both simultaneously (FID 15.21, CLIP 33.76 on MS-COCO 30K). Consistent gains on Janus-Pro (1B) confirm that decoder co-evolution reliably converts reward optimization into pixel-space quality improvements.",
+    "authors": [
+      "Siyong Jian",
+      "Siyuan Li",
+      "Luyuan Zhang",
+      "Zedong Wang",
+      "Xin Jin",
+      "Ying Li",
+      "Cheng Tan",
+      "Huan Wang"
+    ],
+    "published": "2026-05-20",
+    "updated": "2026-05-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21195.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21195",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RankE：面向离散文本到图像生成的端到端后训练与解码器协同进化",
+      "core_contribution": "本文首次提出针对离散自回归文本到图像模型的端到端后训练框架RankE，通过解码器与策略网络的协同进化，打破了传统冻结解码器方法中图像保真度与文本对齐度之间的权衡。",
+      "method": "RankE采用交替优化策略，同时更新自回归策略网络和VQ解码器。每个模块在优化时最大化基于排序的对齐目标，并利用适合其参数空间的稳定性保持锚点进行正则化，从而在提升奖励分数的同时避免图像质量退化。",
+      "findings": "在LlamaGen-XL（775M）上，标准RL方法虽提升了CLIP分数但导致FID恶化，而RankE同时改善了FID（15.21）和CLIP（33.76）；在Janus-Pro（1B）上的实验结果也一致表明，解码器协同进化能可靠地将奖励优化转化为像素空间的质量提升。"
+    }
+  },
+  {
+    "id": "2605.21090",
+    "title": "TextSculptor: Training and Benchmarking Scene Text Editing",
+    "abstract": "Recent advances in Multimodal Large Language Models (MLLMs) and diffusion-based generative models have substantially improved prompt-driven image editing. However, scene text editing remains challenging, as it requires models to precisely modify textual content while preserving visual realism and non-target regions. Current open-source models still lag behind proprietary systems, largely due to the scarcity of high-quality training data and the lack of standardized benchmarks tailored to text editing. To address these challenges, we present TextSculptor, a comprehensive framework for data construction and evaluation of scene text editing. We first develop an automated data construction pipeline that combines text-aware image synthesis with programmatic text rendering and compositing. Based on this pipeline, we build TextSculpt-Data, a large-scale dataset containing 3.2M training samples, including 1.2M OCR-verified text-to-image samples and 2M paired text editing samples with naturally aligned source-target images and strong background consistency. We further introduce TextSculpt-Bench, a benchmark covering four fundamental text editing tasks: text addition, text replacement, text removal, and hybrid editing. To support reliable evaluation, we design a tailored protocol that measures text accuracy, visual quality, and background preservation through OCR-based text alignment, multimodal judgment, and background-region similarity. Extensive experiments show that TextSculptor improves open-source text editing performance and narrows the gap to proprietary models. The data and benchmark are available at https://github.com/linyiheng123/TextSculptor.",
+    "authors": [
+      "Yiheng Lin",
+      "Siyu Jiao",
+      "Xiaohan Lan",
+      "Wei Zhou",
+      "Qi She",
+      "Fei Yu",
+      "Heyun Chen",
+      "Zhengwei Wang",
+      "Jinghuan Chen",
+      "Moran Li",
+      "Yingchen Yu",
+      "Zijian Feng",
+      "Yao Zhao",
+      "Yunchao Wei",
+      "Yujie Zhong"
+    ],
+    "published": "2026-05-20",
+    "updated": "2026-05-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21090.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21090",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TextSculptor：场景文本编辑的训练与基准测试",
+      "core_contribution": "提出了一个名为TextSculptor的全面框架，包含自动化数据构建流程和标准化基准测试，显著提升了开源模型在场景文本编辑任务上的性能，缩小了与专有模型的差距。",
+      "method": "首先开发了一个自动化数据构建流程，结合文本感知图像合成与程序化文本渲染合成技术，生成了包含320万训练样本的大规模数据集TextSculpt-Data。然后构建了TextSculpt-Bench基准，涵盖文本添加、替换、删除和混合编辑四种任务，并设计了基于OCR文本对齐、多模态判断和背景区域相似度的评估协议。",
+      "findings": "实验表明，TextSculptor框架有效提升了开源模型的场景文本编辑能力，在文本准确性、视觉质量和背景保持方面均取得显著改进，缩小了与专有模型之间的性能差距。"
+    }
+  }
+]
