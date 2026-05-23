@@ -1,0 +1,132 @@
+[
+  {
+    "id": "2605.22777",
+    "title": "DecQ: Detail-Condensing Queries for Enhanced Reconstruction and Generation in Representation Autoencoders",
+    "abstract": "Representation Autoencoders (RAEs) leverage frozen vision foundation models (VFMs) as tokenizer encoders, providing robust high-level representations that facilitate fast convergence and high-quality generation in latent diffusion models. However, freezing the VFM inherently constrains its spatial reconstruction capacity, limiting fine-grained generation and image editing; in contrast, incorporating reconstruction-oriented signals via fine-tuning disrupts the pretrained semantic space and degrades generative fidelity. To address this trade-off, we propose DecQ, a simple yet effective framework for RAEs. Specifically, DecQ introduces lightweight detail-condensing queries that extract fine-grained information from intermediate VFM features through condenser modules. These queries are incorporated into the decoder to support reconstruction and are jointly generated with patch tokens during generative modeling. By aggregating information from both shallow and deep layers, DecQ effectively mitigates the reconstruction--generation trade-off, improving both reconstruction quality and generative performance. Our experiments demonstrate that: (1) with only 8 additional queries and 3.9% extra computation, DecQ improves reconstruction over the frozen DINOv2-based RAE, increasing PSNR from 19.13 dB to 22.76 dB; and (2) for generative modeling, DecQ achieves 3.3$\\times$ faster convergence than RAE, attaining an FID of 1.41 without guidance and 1.05 with guidance.",
+    "authors": [
+      "Tianhang Wang",
+      "Yitong Chen",
+      "Wei Song",
+      "Zuxuan Wu",
+      "Min Li",
+      "Jiaqi Wang"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.22777.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.22777",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DecQ：用于表示自编码器中增强重建与生成的细节浓缩查询",
+      "core_contribution": "提出了一种名为DecQ的轻量级框架，通过引入细节浓缩查询（detail-condensing queries）来提取视觉基础模型中间层的细粒度信息，在不破坏预训练语义空间的前提下，有效缓解了表示自编码器中重建质量与生成性能之间的权衡。",
+      "method": "DecQ在冻结的视觉基础模型（如DINOv2）基础上，添加了轻量级的浓缩器模块（condenser modules），从中间层特征中提取细粒度信息并生成少量细节浓缩查询。这些查询被注入解码器以辅助图像重建，同时在生成建模阶段与补丁令牌（patch tokens）一起联合生成。通过聚合浅层和深层特征，DecQ在仅增加3.9%计算量的情况下显著提升了重建和生成性能。",
+      "findings": "实验表明：(1) 仅使用8个额外查询和3.9%的额外计算，DecQ将基于冻结DINOv2的RAE的重建PSNR从19.13 dB提升至22.76 dB；(2) 在生成建模中，DecQ的收敛速度比RAE快3.3倍，无引导条件下FID达到1.41，有引导条件下FID达到1.05。"
+    }
+  },
+  {
+    "id": "2605.22668",
+    "title": "SEGA: Spectral-Energy Guided Attention for Resolution Extrapolation in Diffusion Transformers",
+    "abstract": "Diffusion transformers (DiTs) have emerged as a dominant architecture for text-to-image generation, yet their performance drops when generating at resolutions beyond their training range. Existing training-free approaches mitigate this by modifying inference-time attention behavior, often through Rotary Position Embeddings (RoPE) extrapolation combined with attention scaling. However, these strategies apply a uniform and content-agnostic scaling across RoPE components with distinct frequency characteristics, inducing a trade-off between preserving global structure and recovering fine detail. We introduce SEGA, a training-free method that dynamically scales attention across RoPE components according to the latent's spatial-frequency structure at each denoising step. This adaptive scaling improves both structural coherence and fine-detail fidelity. Experiments show that SEGA consistently improves high-resolution synthesis across multiple target resolutions, outperforming state-of-the-art training-free baselines.",
+    "authors": [
+      "Javad Rajabi",
+      "Kimia Shaban",
+      "Koorosh Roohi",
+      "David B. Lindell",
+      "Babak Taati"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.22668.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.22668",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SEGA：面向扩散Transformer分辨率外推的频谱能量引导注意力机制",
+      "core_contribution": "提出了一种无需训练的动态注意力缩放方法SEGA，通过根据去噪步骤中潜变量的空间-频率结构自适应调整RoPE组件的注意力权重，解决了现有方法在分辨率外推时全局结构与细节恢复之间的权衡问题。",
+      "method": "SEGA利用潜变量在每一步去噪过程中的频谱能量分布，对具有不同频率特征的RoPE组件进行内容感知的动态缩放。具体而言，它通过分析潜变量的空间频率结构，为高频和低频分量分配不同的注意力缩放系数，从而在保持全局结构的同时增强细节恢复。该方法无需额外训练，仅修改推理时的注意力行为。",
+      "findings": "实验表明，SEGA在多个目标分辨率下均能持续提升高分辨率图像合成质量，在结构连贯性和细节保真度上均优于现有的无训练基线方法，有效克服了均匀缩放策略带来的性能瓶颈。"
+    }
+  },
+  {
+    "id": "2605.22126",
+    "title": "AesFormer: Transform Everyday Photos into Beautiful Memories",
+    "abstract": "In everyday photography, aesthetically appealing moments are often captured with structural flaws (e.g., composition, camera viewpoint, or pose) that existing retouching and portrait enhancement methods cannot fix. We formulate Aesthetic Photo Reconstruction (APR) as improving a photo's aesthetic quality via structural reconstruction while preserving subject identity and scene semantics. Although recent advances in image editing models make APR feasible, they often lack aesthetic understanding, yielding edits that are semantically plausible yet aesthetically weak. To address this, we propose AesFormer, a two-stage framework that decouples aesthetic planning from image editing. In Stage 1, an aesthetic action model (AesThinker) analyzes the input along seven progressive photographic dimensions and outputs executable editing actions; we further apply GRPO-A to encourage broad exploration over diverse action plans beyond SFT. In Stage 2, an action-conditioned editor (AesEditor) performs structural edits guided by these actions. To support APR, we build a video-based corpus-mining pipeline (VCMP) and construct AesRecon, a benchmark of 9,071 strictly aligned (poor, good) image pairs. Experiments show that AesFormer substantially improves APR performance and is competitive with Nano Banana Pro. Code is available at https://github.com/PKU-ICST-MIPL/AesFormer_ICML2026.",
+    "authors": [
+      "Tianxiang Du",
+      "Hulingxiao He",
+      "Yuxin Peng"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.22126.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.22126",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AesFormer：将日常照片转化为美好记忆",
+      "core_contribution": "提出了一种名为AesFormer的两阶段框架，通过结构重建提升照片的美学质量，同时保留主体身份和场景语义，解决了现有方法缺乏美学理解的问题。",
+      "method": "AesFormer分为两个阶段：第一阶段，美学动作模型（AesThinker）沿七个渐进式摄影维度分析输入图像，并输出可执行的编辑动作，采用GRPO-A方法鼓励探索多样化的动作方案；第二阶段，动作条件编辑器（AesEditor）根据这些动作执行结构编辑。此外，构建了基于视频的语料挖掘管道（VCMP）和包含9,071对严格对齐的（差、好）图像对的基准数据集AesRecon。",
+      "findings": "实验表明，AesFormer显著提升了美学照片重建（APR）性能，并与Nano Banana Pro方法具有竞争力。"
+    }
+  },
+  {
+    "id": "2605.22068",
+    "title": "COCOTree: A Dataset and Benchmark for Open Tree-Structured Visual Decomposition",
+    "abstract": "We formalize and enable the task of open tree decomposition, which segments an image into hierarchical trees of visual components with unconstrained granularity and flexibility. Specifically, we provide the foundation benchmark for this new paradigm with the following three key contributions. First, we overcome the prohibitively high cognitive and physical bottlenecks of manual annotation by developing a fully automated generation pipeline that synergizes the semantic reasoning of Large Vision-Language Models (LVLMs) with the precise geometric grounding of SAM 3. Second, leveraging this pipeline, we construct COCOTree, a massive-scale benchmark featuring over 21K images and 1.8M structural nodes. By embracing an open-vocabulary space of over 3.5K unique labels, it successfully captures the long-tail distribution of complex physical assemblies. Notably, rigorous human evaluation confirms our generated annotations demonstrate strong alignment with human structural judgment. Third, we establish a standardized evaluation protocol by proposing the Open Tree Quality (OTQ) metric, which jointly assesses mask precision, label accuracy, and structural consistency. We release our dataset and benchmark code at https://github.com/melonkick3090/COCOTree.",
+    "authors": [
+      "Junhyub Lee",
+      "Seunghun Chae",
+      "Hyosu Kim"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.22068.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.22068",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "COCOTree：面向开放树状结构视觉分解的数据集与基准",
+      "core_contribution": "本文首次形式化并实现了开放树状分解任务，即对图像进行层次化、粒度不受限的视觉组件分解，并构建了大规模基准数据集COCOTree及相应的评估指标OTQ。",
+      "method": "首先，作者开发了一条全自动生成流水线，结合大型视觉语言模型（LVLM）的语义推理能力与SAM 3的精确几何分割能力，以克服人工标注的高认知与物理瓶颈。然后，利用该流水线构建了包含超过2.1万张图像和180万个结构节点的COCOTree数据集，覆盖超过3500种独特标签的开放词汇空间。最后，提出了开放树质量（OTQ）指标，用于联合评估掩码精度、标签准确性和结构一致性。",
+      "findings": "实验表明，COCOTree成功捕捉了复杂物理组件的长尾分布，且人工评估证实生成的标注与人类结构判断高度一致。该数据集和基准为开放树状分解任务提供了标准化评估协议，并已公开代码与数据。"
+    }
+  },
+  {
+    "id": "2605.22011",
+    "title": "Rethinking Token Reduction for Diffusion Models via Output-Similarity-Awareness",
+    "abstract": "Diffusion Transformers (DiTs) achieve superior image generation quality but suffer from quadratic computational complexity relative to token count. While various token reduction (TR) methods have been proposed to mitigate this cost, they overlook the primary objective of generative models: minimizing recovery error, which requires reflecting output token similarity. They rely solely on input token similarity inherited from reduction-only ViT paradigms, leading to a fundamental misalignment with this objective. To bridge this gap, we propose DiTo, a novel TR paradigm that shifts the focus toward output-centric token reduction. Based on the observation that output token similarity is consistently preserved across adjacent timesteps, DiTo utilizes prior-step similarities as an effective proxy to establish token correspondences at a Matching timestep, which are then reused across multiple subsequent Reduction timesteps. To optimize this interleaved scheduling, we propose Pair Match Ratio (PMR)-guided Interval Scheduling to determine the optimal matching frequency. Furthermore, to mitigate localized approximation errors and resulting blocking artifacts caused by repeated reuse, we propose Frequency-aware Token Matching by incorporating a selection-frequency penalty. Extensive experiments demonstrate that DiTo consistently outperforms existing TR methods with 1.6-3.9 dB higher PSNR at comparable speedups, achieving a superior Pareto frontier.",
+    "authors": [
+      "Hangyeol Lee",
+      "Hyojeong Lee",
+      "Joo-Young Kim"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.22011.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.22011",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "重新思考扩散模型的令牌缩减：基于输出相似性感知的方法",
+      "core_contribution": "提出了一种面向输出相似性的令牌缩减范式DiTo，解决了现有方法仅依赖输入相似性而忽略生成模型最小化恢复误差目标的根本性错配问题。",
+      "method": "DiTo利用相邻时间步中输出令牌相似性保持一致的观察，将前一步的相似性作为代理来建立令牌对应关系，并在多个后续缩减时间步中复用。通过提出PMR引导的间隔调度确定最优匹配频率，并引入频率感知令牌匹配来抑制因重复复用导致的局部近似误差和块状伪影。",
+      "findings": "在可比加速比下，DiTo相比现有令牌缩减方法持续取得1.6-3.9 dB更高的PSNR，实现了更优的帕累托前沿性能。"
+    }
+  }
+]
