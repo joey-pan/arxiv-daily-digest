@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2605.23902",
+    "title": "PiD: Fast and High-Resolution Latent Decoding with Pixel Diffusion",
+    "abstract": "Most practical high-resolution text-to-image systems, including latent diffusion and autoregressive models, perform generation in a compact latent space, and a decoder maps the generated latents back to pixels. Yet the latent-to-pixel decoder is reconstruction-oriented, optimized to invert the encoder rather than synthesize more details, and becomes increasingly costly at megapixel scale. This drawback calls for a more expressive and efficient decoding paradigm. Motivated by recent progress in scalable pixel-space diffusion, we introduce PiD, a Pixel diffusion Decoder that reformulates latent decoding as conditional pixel diffusion, unifying decoding and upsampling into one generative module. By denoising directly in high-resolution pixel space, PiD synthesizes $4\\times$ and even $8\\times$ upscaled images with low latency. For latent conditioning, a lightweight sigma-aware adapter injects noise-corrupted latents into the pixel diffusion backbone, enabling PiD to decode partially denoised latents and terminate the latent diffusion process early. To further improve efficiency, we distill the model using DMD2, reducing inference to just 4 steps. PiD applies to both conventional VAE latents and semantic latents (e.g., SigLIP, DINOv2) used in recent RAE-based models. PiD decodes latents of $512 \\times 512$ images into $2048 \\times 2048$ pixels in under 1 second with 13 GB peak memory on a consumer RTX 5090, and as fast as 210 ms on a GB200 GPU, about $6\\times$ faster than cascaded diffusion-based super-resolution pipelines with better visual fidelity.",
+    "authors": [
+      "Yifan Lu",
+      "Qi Wu",
+      "Jay Zhangjie Wu",
+      "Zian Wang",
+      "Huan Ling",
+      "Sanja Fidler",
+      "Xuanchi Ren"
+    ],
+    "published": "2026-05-22",
+    "updated": "2026-05-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.23902.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.23902",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "PiD：基于像素扩散的快速高分辨率潜在解码",
+      "core_contribution": "提出了一种名为PiD的像素扩散解码器，将传统的潜在空间解码重新定义为条件像素扩散过程，统一了解码与上采样，实现了高分辨率图像的快速生成，并支持早期终止潜在扩散过程以提升效率。",
+      "method": "PiD将潜在解码视为条件像素扩散过程，通过在像素空间中直接去噪来生成4倍甚至8倍上采样的高分辨率图像。它采用轻量级的sigma感知适配器将噪声污染的潜在表示注入像素扩散主干网络，从而支持对部分去噪的潜在进行解码。此外，利用DMD2蒸馏技术将推理步骤减少至仅4步，大幅提升效率。",
+      "findings": "PiD在消费级RTX 5090上仅需不到1秒即可将512×512图像的潜在解码为2048×2048像素，峰值内存13 GB；在GB200 GPU上最快可达210毫秒，比级联扩散超分辨率管线快约6倍，且视觉保真度更优。该方法适用于传统VAE潜在和基于RAE的语义潜在（如SigLIP、DINOv2）。"
+    }
+  },
+  {
+    "id": "2605.23518",
+    "title": "VINS-120K: Ultra High-Resolution Image Editing with A Large-Scale Dataset",
+    "abstract": "Directly editing ultra-high-resolution (UHR) images is valuable but underexplored, primarily due to the lack of high-quality data and the challenge in modeling high-frequency texture details. We introduce VINS-120K, the first large-scale dataset for instruction-based UHR image editing, comprising 120K carefully curated triplets of instruction, input image, and edited image. Each image exceeds 4K resolution ($\\geq$4096 $\\times$ 4096) and is filtered through a rigorous multi-stage pipeline to ensure visual quality, instruction alignment, and aesthetic fidelity. Built on VINS-120K, we further develop a high-frequency-aware post-adaptation strategy to extend pretrained non-high-resolution models to the UHR regime. We also present VINS-4KEval, a benchmark covering diverse editing types, to facilitate consistent evaluation in UHR settings. Experiments confirm that our work improves fine-grained detail synthesis and texture realism in UHR image editing.",
+    "authors": [
+      "Zhizhou Chen",
+      "Shanyan Guan",
+      "Zhanxin Gao",
+      "En Ci",
+      "Yanhao Ge",
+      "Wei Li",
+      "Zhenyu Zhang",
+      "Jian Yang",
+      "Ying Tai"
+    ],
+    "published": "2026-05-22",
+    "updated": "2026-05-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.23518.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.23518",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VINS-120K：基于大规模数据集的超高分辨率图像编辑",
+      "core_contribution": "提出了首个面向指令式超高分辨率图像编辑的大规模数据集VINS-120K，并开发了一种高频感知后适应策略，使预训练的非高分辨率模型能够扩展到超高分辨率图像编辑领域。",
+      "method": "首先构建了包含12万组指令、输入图像和编辑图像三元组的数据集，所有图像分辨率均超过4K，并通过多阶段严格筛选确保质量。在此基础上，提出了一种高频感知后适应策略，通过微调预训练模型使其能够处理超高分辨率图像中的高频纹理细节。同时，构建了VINS-4KEval基准测试，涵盖多种编辑类型，用于统一评估超高分辨率编辑效果。",
+      "findings": "实验表明，该方法在超高分辨率图像编辑中显著提升了细粒度细节合成和纹理真实感，验证了数据集和适应策略的有效性。"
+    }
+  },
+  {
+    "id": "2605.23508",
+    "title": "DrawVideo: Generating Long Video from Storyboard Keyframe Sketches",
+    "abstract": "Long video generation requires high-fidelity synthesis, coherent narrative structure, and user control over extended time spans. Existing text-to-video methods often rely on a single long prompt, limiting control over pose, composition, layout, and motion. We propose DrawVideo, a sketch-guided, storyboard-driven framework for controllable long-video generation. DrawVideo decomposes long videos into independently controllable shots, each defined by a black-and-white sketch, an appearance prompt, and a motion prompt. The sketch controls pose and layout, the appearance prompt defines identity, scene, and style, and the motion prompt guides temporal dynamics. DrawVideo follows a hierarchical 'global multi-shot, local single-sketch' strategy: it first generates a structure-aligned reference keyframe, then expands the motion prompt into derivative keyframes representing action states, and finally synthesizes clips between adjacent keyframes to build each shot. We also introduce SketchLongVideo, the first dataset for sketch-guided text-to-long-video generation, constructed from animation videos via shot detection, keyframe extraction, vision-language recognition, prompt decomposition, and sketch conversion. Experiments show that DrawVideo achieves strong structural controllability, appearance consistency, visual stability, and coherent long-video generation.",
+    "authors": [
+      "Chuanzhi Xu",
+      "Huiqi Liang",
+      "Bang Shi",
+      "Huiming Zhang",
+      "Yifan Xiao",
+      "Guangcheng Lin",
+      "Haodong Chen",
+      "Qiang Qu",
+      "Zhicheng Lu",
+      "Weidong Cai"
+    ],
+    "published": "2026-05-22",
+    "updated": "2026-05-22",
+    "categories": [
+      "cs.GR",
+      "cs.AI",
+      "cs.CV",
+      "cs.MM",
+      "eess.IV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.23508.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.23508",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "DrawVideo：从故事板关键帧草图生成长时间视频",
+      "core_contribution": "提出了一种基于草图引导和故事板驱动的框架DrawVideo，能够将长时间视频分解为独立可控的镜头，实现结构可控、外观一致且叙事连贯的长视频生成。",
+      "method": "DrawVideo采用层次化的‘全局多镜头、局部单草图’策略：首先为每个镜头生成结构对齐的参考关键帧，然后根据运动提示扩展出表示动作状态的衍生关键帧，最后在相邻关键帧之间合成视频片段以构建完整镜头。该方法通过黑白草图控制姿态与布局，外观提示定义身份与风格，运动提示引导时间动态。",
+      "findings": "实验表明，DrawVideo在结构可控性、外观一致性、视觉稳定性以及连贯的长视频生成方面均取得了优异效果。此外，论文还构建了首个用于草图引导文本到长视频生成的数据集SketchLongVideo。"
+    }
+  },
+  {
+    "id": "2605.23178",
+    "title": "Composing People Together: Iterative Pose-Image Generation for Multi-Person Interaction Scenes",
+    "abstract": "Despite recent progress, text-to-image models still struggle to generate semantically diverse and compositionally accurate multi-person interaction scenes, often collapsing to repetitive layouts, stereotypical poses, and poorly grounded interactions. In this work, we bridge this gap by introducing a dual pose-image representation that brings person-centric structural priors into pretrained diffusion transformers. Our model jointly predicts a 2D pose visualization image and its corresponding RGB image, enabling structure and appearance to co-evolve during learning. At its core, a cross-modal alignment scheme binds text, pose, and image representations, ensuring consistent grounding across modalities. Furthermore, we design an iterative scene construction scheme, progressively generating complex multi-human interactions while effectively decomposing the overall generation complexity. Extensive experiments demonstrate that our method substantially improves prompt alignment and scene diversity in multi-person image generation.",
+    "authors": [
+      "Wenxuan Peng",
+      "Bharath Hariharan",
+      "Hadar Averbuch-Elor"
+    ],
+    "published": "2026-05-22",
+    "updated": "2026-05-22",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.23178.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.23178",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "将人物组合在一起：面向多人交互场景的迭代式姿态-图像生成",
+      "core_contribution": "提出了一种双姿态-图像表示方法，将人物中心的结构先验引入预训练的扩散变换器，显著提升了文本到图像模型在多人交互场景中的语义多样性和构图准确性。",
+      "method": "该方法联合预测2D姿态可视化图像及其对应的RGB图像，使结构与外观在学习过程中共同演化。核心采用跨模态对齐方案，将文本、姿态和图像表示绑定，确保各模态间的一致性。此外，设计了一种迭代式场景构建策略，逐步生成复杂的多人交互场景，有效分解了整体生成复杂度。",
+      "findings": "大量实验表明，该方法在多人图像生成中显著提升了提示对齐度和场景多样性，有效解决了重复布局、刻板姿态和交互不准确等问题。"
+    }
+  },
+  {
+    "id": "2605.21981",
+    "title": "RiT: Vanilla Diffusion Transformers Suffice in Representation Space",
+    "abstract": "Flow matching with $x$-prediction -- regressing the clean data point rather than the ambient velocity -- is known to exploit low-dimensional manifold structure effectively in pixel space \\cite{li2025back}. We ask whether a pretrained representation space, while containing a low-dimensional data manifold of comparable intrinsic dimensionality, offers a distribution more favorable for flow-matching learning. Comparing pixel, SD-VAE, and DINOv2 features along four geometric axes, we find that pixel and DINOv2 share nearly identical intrinsic dimensionalities (both $\\hat{d}\\!\\approx\\!33$) yet DINOv2 exhibits $7.3\\times$ higher effective rank, $35\\times$ better covariance conditioning, $11.5\\times$ lower excess kurtosis, and $1.7\\times$ lower on-manifold interpolation error; SD-VAE latents are consistently intermediate, indicating that the advantage stems from representation-learning objectives rather than mere compression. These statistical properties render the flow-matching regression well-conditioned and remove the need for the specialized prediction heads or Riemannian transport used by prior DINOv2 diffusion methods. We propose the \\emph{Representation Image Transformer} (RiT): a vanilla Diffusion Transformer trained by $x$-prediction on frozen DINOv2 features, augmented only by a dimension-aware noise schedule and joint \\texttt{[CLS]}-patch modeling. On ImageNet $256{\\times}256$, RiT attains FID 1.45 without guidance and 1.14 with classifier-free guidance, outperforming DiT$^\\text{DH}$-XL with $19\\%$ fewer parameters (676M vs.\\ 839M). The resulting ODE is efficiently solvable at coarse discretizations: with classifier-free guidance, $5$ Heun steps already reach FID 2.0 and $10$ steps reach 1.25, without distillation or consistency training. Code at https://github.com/lezhang7/RiT.",
+    "authors": [
+      "Le Zhang",
+      "Ning Mang",
+      "Aishwarya Agrawal"
+    ],
+    "published": "2026-05-21",
+    "updated": "2026-05-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2605.21981.pdf",
+    "abs_url": "https://arxiv.org/abs/2605.21981",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RiT：表示空间中的普通扩散Transformer",
+      "core_contribution": "本文发现，在预训练表示空间（如DINOv2）中训练扩散模型，相比像素空间具有更好的统计特性（如更高有效秩、更好协方差条件数），从而无需特殊预测头或黎曼传输即可实现高性能生成；并据此提出RiT，一个在冻结DINOv2特征上使用x预测的普通扩散Transformer，以更少参数超越DiT。",
+      "method": "RiT采用普通扩散Transformer架构，在冻结的DINOv2特征空间中进行x预测（直接回归干净数据点），而非预测速度场。方法仅增加维度感知噪声调度和联合[CLS]-patch建模，无需特殊预测头或黎曼传输。通过对比像素、SD-VAE和DINOv2特征在四个几何轴上的统计特性，验证了DINOv2空间更有利于流匹配学习。",
+      "findings": "在ImageNet 256×256上，RiT无引导时FID为1.45，分类器引导下FID为1.14，以676M参数（比DiT^DH-XL少19%）取得更优性能。其ODE可粗粒度求解：分类器引导下，5步Heun法即达FID 2.0，10步达1.25，无需蒸馏或一致性训练。统计上，DINOv2相比像素空间有效秩高7.3倍，协方差条件数好35倍，超额峰度低11.5倍，流形内插误差低1.7倍。"
+    }
+  }
+]
