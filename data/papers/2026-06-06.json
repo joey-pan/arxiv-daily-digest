@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2606.05268",
+    "title": "Aggregating LLM-Based Weak Verifiers for Spatial Layout Generation",
+    "abstract": "We present a pipeline for building and aggregating task-specific, LLM-generated weak (imperfect) verifiers into a strong verifier for spatial layout domains. Given a task description, our pipeline asks an LLM to synthesize a collection of verifier programs using a layout verification DSL. Each individual LLM-generated verifier usually provides an imperfect check for a match between the layout and the corresponding task description. We show that by aggregating the responses of many such verifiers we can produce a stronger verifier. Moreover, by applying techniques from weak learning, our pipeline can learn how to aggregate the weak verifiers from a very sparse set of human labeled example layouts (about 10). We find that the strong verifiers produced by our pipeline outperform the status-quo approach of using a set of LLM judges to directly check whether a layout matches a task description, raising F1-scores by up to 7X across a variety of 3D room layout and 2D poster design tasks. We also demonstrate that verifier-guided layout generation using natural language feedback from our strong verifiers improves layout quality of a base layout generator by up to 66.2% according to a human evaluator.",
+    "authors": [
+      "Sharon Zhang",
+      "R. Kenny Jones",
+      "Jiajun Wu",
+      "Maneesh Agrawala"
+    ],
+    "published": "2026-06-03",
+    "updated": "2026-06-03",
+    "categories": [
+      "cs.GR",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05268.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05268",
+    "primary_category": "cs.GR",
+    "score": 90,
+    "summary": {
+      "title_zh": "基于LLM的弱验证器聚合用于空间布局生成",
+      "core_contribution": "提出了一种通过聚合多个由LLM生成的弱验证器来构建强验证器的流水线，显著提升了空间布局与任务描述匹配的检测性能，并能在仅需约10个人工标注样本的情况下学习聚合策略。",
+      "method": "首先，给定任务描述，利用LLM根据布局验证领域特定语言（DSL）生成一组弱验证器程序，每个验证器只能对布局与描述的匹配性进行不完美的检查。然后，通过弱学习技术，从少量人工标注的示例布局中学习如何将这些弱验证器的响应进行加权聚合，从而形成一个更强的验证器。最后，该强验证器可用于指导布局生成，通过自然语言反馈优化生成质量。",
+      "findings": "在3D房间布局和2D海报设计任务上，该方法相比直接使用LLM作为评判者的传统方法，F1分数最高提升了7倍；同时，利用强验证器的自然语言反馈引导布局生成，使基础布局生成器的质量在人工评估中提升了高达66.2%。"
+    }
+  },
+  {
+    "id": "2606.06066",
+    "title": "FontFusion: Enhancing Generative Text in Diffusion Models with Typographic Conditioning",
+    "abstract": "Typography generation in diffusion models faces a persistent trade-off: enabling precise font control typically degrades text legibility, while maintaining readability often sacrifices typographic fidelity. We present FontFusion, a plug-and-play conditioning framework for Diffusion Transformer (DiT) architectures that resolves this dilemma through three core innovations: (1) a hierarchical token representation establishing explicit text-font relationships at multiple granularities, (2) position-aware embeddings creating spatial bindings between typography and image content, and (3) a multi-level token dropping strategy improving both computational efficiency and generalization to unseen fonts. Our systematic evaluation of font embedding spaces reveals that a dual encoder combining DeepFont and DINOv2 outperforms any single encoder for typography tasks. FontFusion demonstrates 76% relative improvement on challenging decorative fonts over single-encoder baselines and font consistency gains exceeding approximately 68-76% over unconditioned models, while integrating into existing DiT architectures without retraining.",
+    "authors": [
+      "Marian Lupascu",
+      "Nipun Jindal",
+      "Ionut Mironica",
+      "Zhaowen Wang"
+    ],
+    "published": "2026-06-04",
+    "updated": "2026-06-04",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.06066.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.06066",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "FontFusion：通过字体条件增强扩散模型中的生成文本",
+      "core_contribution": "提出了一种即插即用的字体条件框架FontFusion，解决了扩散模型中字体精确控制与文本可读性之间的权衡问题，在不重新训练模型的前提下显著提升了字体一致性与生成质量。",
+      "method": "FontFusion基于扩散Transformer架构，通过三项核心创新实现字体条件控制：首先，构建层次化令牌表示，在多个粒度上建立明确的文本-字体关系；其次，引入位置感知嵌入，在字体与图像内容之间形成空间绑定；最后，采用多级令牌丢弃策略，提升计算效率并增强对未见字体的泛化能力。",
+      "findings": "实验表明，结合DeepFont与DINOv2的双编码器在字体任务上优于任何单一编码器；在挑战性装饰字体上，FontFusion相比单编码器基线实现了76%的相对改进，相比无条件模型字体一致性提升约68-76%，且能无缝集成到现有DiT架构中无需重新训练。"
+    }
+  },
+  {
+    "id": "2606.06113",
+    "title": "Where, What, Why, and Importance: Structured Defect Grounding for Text-to-Image Feedback",
+    "abstract": "Despite generating increasingly photorealistic images, text-to-image (T2I) models still exhibit localized, subtle, and structurally complex failures. Diagnosing these failures requires instance-level feedback that answers where a defect occurs, what type it is, why it is defective, and its importance to overall image quality. While recent dense-feedback methods move beyond scalar supervision, their heatmap-centric representations still formulate diagnosis as pixel-field regression, making it difficult to localize variable-cardinality defects and bind semantic reasons to individual failures. To address this representation bottleneck, we propose Structured Defect Grounding (SDG), which casts T2I diagnosis as structured set prediction by modeling each defect as a (location, type, reason, importance) tuple. To make this formulation trainable and measurable, we introduce SDG-30K, a 30K-image dataset with box-grounded annotations across four modern T2I generators, together with a dedicated evaluation protocol, SDG-Eval. Building on this structured representation, we further present a diagnosis-to-alignment framework in which a Vision-Language Model (VLM) serves as the SDG detector, and BoxFlow-GRPO converts predicted defect sets into box-derived, importance-weighted spatial rewards for diffusion model alignment. Extensive experiments show that our SDG detector outperforms leading proprietary VLMs on structured defect grounding, while SDG-guided rewards consistently improve T2I alignment and support localized image refinement. These results establish SDG as a unified, instance-level interface for diagnosing, evaluating, and enhancing modern generative models.",
+    "authors": [
+      "Huaisong Zhang",
+      "Hao Yu",
+      "Yuxuan Zhang",
+      "Jiahe Wang",
+      "Xinrui Chen",
+      "Haoxiang Cao",
+      "Feng Lu",
+      "Wendong Zhang",
+      "Changqian Yu",
+      "Chun Yuan"
+    ],
+    "published": "2026-06-04",
+    "updated": "2026-06-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.06113.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.06113",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "位置、类型、原因与重要性：面向文本到图像反馈的结构化缺陷定位",
+      "core_contribution": "提出结构化缺陷定位（SDG）框架，将文本到图像生成中的缺陷诊断建模为结构化集合预测，并构建了SDG-30K数据集与SDG-Eval评估协议，为生成模型的诊断、评估与对齐提供了统一的实例级接口。",
+      "method": "首先，将每个缺陷表示为（位置、类型、原因、重要性）四元组，将诊断任务转化为结构化集合预测问题。其次，构建包含30K图像、覆盖四种现代T2I生成器的SDG-30K数据集，并设计专用评估协议SDG-Eval。最后，提出诊断到对齐框架，利用视觉语言模型（VLM）作为SDG检测器，并通过BoxFlow-GRPO将预测的缺陷集合转化为基于框的、重要性加权的空间奖励，用于扩散模型的对齐优化。",
+      "findings": "实验表明，所提出的SDG检测器在结构化缺陷定位任务上优于领先的专有VLM；基于SDG引导的奖励能够持续提升T2I模型的对齐质量，并支持局部图像精炼。"
+    }
+  },
+  {
+    "id": "2606.05703",
+    "title": "Parallel Jacobi Decoding for Fast Autoregressive Image Generation",
+    "abstract": "Autoregressive (AR) models have demonstrated remarkable performance in generating high-fidelity images. However, their inherently sequential next-token prediction leads to significantly slower inference. Recent studies have introduced Jacobi-style decoding to accelerate autoregressive image generation. Extending the draft sequence initially improves efficiency, yet the acceleration quickly saturates as error propagation in the one-dimensional sequence hinders convergence. Observing that images exhibit strong local spatial correlations, we propose Parallel Jacobi Decoding (PJD), a training-free decoding approach that expands draft tokens in the two-dimensional spatial domain to enable efficient spatially parallel refinement. PJD adjusts the attention mask to mitigate error accumulation and improve convergence stability. Extensive experiments on diverse datasets show that PJD achieves 4.8x-6.4x acceleration across multiple autoregressive image generation models while maintaining competitive generation quality.",
+    "authors": [
+      "Boya Liao",
+      "Ying Li",
+      "Siyong Jian",
+      "Huan Wang"
+    ],
+    "published": "2026-06-04",
+    "updated": "2026-06-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05703.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05703",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "并行雅可比解码：用于快速自回归图像生成",
+      "core_contribution": "提出了一种无需训练的并行雅可比解码方法（PJD），通过二维空间域扩展草稿令牌并调整注意力掩码，显著加速自回归图像生成，同时保持生成质量。",
+      "method": "PJD利用图像中强烈的局部空间相关性，在二维空间域中并行扩展草稿令牌，替代传统一维序列中的逐令牌预测。通过调整注意力掩码来减少误差累积，提高收敛稳定性，从而实现高效的并行细化。该方法无需额外训练，可直接应用于现有自回归图像生成模型。",
+      "findings": "在多个数据集上的实验表明，PJD在多种自回归图像生成模型上实现了4.8倍至6.4倍的加速，同时保持了与原始模型相当的生成质量。"
+    }
+  },
+  {
+    "id": "2606.05635",
+    "title": "ShotCrop$^3$: Cropping Human-Centric Images into Cinematic Triple-Shot Compositions",
+    "abstract": "Prior work on aesthetic composition typically produces a single aesthetically pleasing crop, overlooking the narrative value of composing multiple shots from one scene. In practice, multi-shot composition is critical for downstream creative workflows: commercial posters often require multiple crops with different emphases (e.g., context, subject, and emotion/product details) to present key story beats. Therefore, we propose \\textbf{Triple-Shot Compositions (TSC)}, a composition task that generates a three-shot set -- establishing, medium, and close-up -- from a single human-centric image, each paired with a brief shot description to support visual narration. To learn TSC with limited expert annotations, we introduce \\textbf{ShotCrop} which undergoes a three-stage training process: it first applies Chain-of-Thought supervised fine-tuning to establish basic reasoning and aesthetic shot-cropping skills, then performs semi-supervised fine-tuning with high-confidence pseudo labels to further enhance aesthetic capability, and is finally optimized with Group Relative Policy Optimization for \\textbf{ShotCrop} (GRPO-S) using a composite reward tailored for it. Specifically, our pseudo-labeling strategy combines MLLM-based scoring, aesthetic assessment, and CLIP similarity to retain high-confidence training signals. In addition, we present TSC-Bench, a benchmark of 1.2k expert-annotated test cases. Notably, ShotCrop achieves an average improvement of \\textbf{2.82} times over GPT-5 in shot localization accuracy.",
+    "authors": [
+      "Dehong Kong",
+      "Lina Lei",
+      "Lingtao Zheng",
+      "Chenyang Wu",
+      "Ailing Zhang",
+      "Xinran Qin",
+      "Teng Ma",
+      "Jiaqi Xu",
+      "Zhixin Wang",
+      "Zhikai Chen",
+      "Xuecheng Qi",
+      "Renjing Pei",
+      "Fan Li"
+    ],
+    "published": "2026-06-04",
+    "updated": "2026-06-04",
+    "categories": [
+      "cs.CV",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05635.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05635",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ShotCrop³：将以人为中心的图像裁剪成电影级三镜头构图",
+      "core_contribution": "提出了一个新颖的“三镜头构图”（TSC）任务，能从单张以人为中心的图像中自动生成包含远景、中景和特写三种镜头的组合，并附带简短描述以支持视觉叙事；同时开发了ShotCrop模型，通过三阶段训练流程显著提升了镜头定位精度。",
+      "method": "ShotCrop采用三阶段训练流程：首先通过思维链监督微调建立基础推理和美学裁剪能力；然后利用高置信度伪标签进行半监督微调以增强美学表现；最后使用针对ShotCrop设计的组相对策略优化（GRPO-S）结合复合奖励函数进行优化。伪标签策略融合了多模态大模型评分、美学评估和CLIP相似度来保留高置信度训练信号。",
+      "findings": "在包含1200个专家标注测试用例的TSC-Bench基准上，ShotCrop在镜头定位精度上平均比GPT-5提升了2.82倍。"
+    }
+  }
+]
