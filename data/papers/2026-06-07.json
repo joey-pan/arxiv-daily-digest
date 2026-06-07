@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2606.05552",
+    "title": "Balancing Image Compression and Generation with Bootstrapped Tokenization",
+    "abstract": "Despite progress in image tokenization, standard methods encode redundant information by mixing all granularities within each token, thus redundancy persists between tokens. The mix of information of different granularity also complicates the training of generators. This paper introduces SelfBootTok, a method that resolves this by cleanly decomposing information into global and local token groups. Through self-bootstrapped learning, the model predicts local details exclusively from global tokens, shifting the burden of visual details from the generator to the tokenizer. Consequently, our generator is far more efficient, requiring only global tokens and reducing computation by approximately 40%, while delivering superior reconstruction and generation. Moreover, this paradigm scales elegantly: by leveraging more data or parameters to self-supervise local representation learning, SelfBootTok achieves a new state-of-the-art gFID score of 1.56 using only 64 tokens.",
+    "authors": [
+      "Haozhe Chi",
+      "Jinghan Li",
+      "Hao Jiang",
+      "Wu Sheng",
+      "Yi Ma",
+      "Jing Wang",
+      "Yadong Mu"
+    ],
+    "published": "2026-06-04",
+    "updated": "2026-06-04",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05552.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05552",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过自引导分词实现图像压缩与生成的平衡",
+      "core_contribution": "提出SelfBootTok方法，通过自引导学习将图像信息分解为全局和局部标记组，使生成器仅需处理全局标记，从而大幅提升生成效率并实现更优的重建与生成性能。",
+      "method": "该方法通过自引导学习（self-bootstrapped learning）将图像信息干净地分解为全局和局部两组标记。模型仅从全局标记预测局部细节，从而将视觉细节的负担从生成器转移到分词器。生成器只需处理全局标记，计算量减少约40%。",
+      "findings": "SelfBootTok在仅使用64个标记的情况下，实现了新的最先进gFID分数1.56，并且通过增加数据或参数来自监督局部表示学习，该范式能够优雅地扩展，进一步提升性能。"
+    }
+  },
+  {
+    "id": "2606.05261",
+    "title": "NIV: Neural Axis Variations for Variable Font Generation",
+    "abstract": "Variable fonts enable continuous variation of glyph geometry along semantic design axes such as weight, width, slant, and optical size. However, constructing a variable font from a static font remains a labor-intensive process requiring expert typographic design and manual specification of glyph variation data. We introduce NIV (Neural Axis Variations), a method that automatically converts a static font into a fully functional variable font. Given glyph outlines and a set of desired design axes, NIV predicts per-point displacements. The model operates directly on vector glyph geometry and employs a novel Property Embedding mechanism that captures interactions between multiple axes, enabling consistent multi-axis variation within a unified framework. We train NIV on a newly constructed dataset derived from variable Google Fonts, comprising over one million variation tuples. The resulting model generalizes across unseen code points, unseen font styles, high-complexity CJK glyphs, and even out-of-distribution handwriting inputs. The generated outputs are standard variable font files supporting continuous interpolation via existing rendering engines. To facilitate research, we release the dataset, the complete training and inference implementation, and trained models at https://github.com/ndvbd/NIV. Beyond typography, our approach demonstrates how structured geometric objects with continuous parametric variation can be synthesized using neural deformations.",
+    "authors": [
+      "Nadav Benedek",
+      "Ariel Shamir",
+      "Ohad Fried"
+    ],
+    "published": "2026-06-03",
+    "updated": "2026-06-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05261.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05261",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "NIV：用于可变字体生成的神经轴变化",
+      "core_contribution": "提出了一种名为NIV（神经轴变化）的方法，能够自动将静态字体转换为功能完整的可变字体，无需专家手工设计，并支持多轴一致变化。",
+      "method": "NIV直接处理矢量字形几何，通过预测每个点的位移来生成可变字体。模型采用新颖的属性嵌入机制，捕捉多个设计轴之间的交互，从而在统一框架内实现多轴一致变化。训练数据来自从Google可变字体构建的新数据集，包含超过一百万个变化元组。",
+      "findings": "模型在未见过的码点、未见过的字体风格、高复杂度的CJK字形以及分布外的手写输入上均表现出良好的泛化能力。生成的输出为标准可变字体文件，支持通过现有渲染引擎进行连续插值。"
+    }
+  },
+  {
+    "id": "2606.05031",
+    "title": "MetaPoint: Unlocking Precise Spatial Control in Agentic Visual Generation",
+    "abstract": "Generative visual models fundamentally struggle with precise spatial control. This arises from a core disconnect: models can process textual descriptions of space but cannot directly map numerical coordinates onto the 2D image canvas. We introduce MetaPoint, a method that bridges this gap by representing a continuous 2D coordinate as a single, special token. Crucially, MetaPoint requires no new architectural components; it directly leverages the model's inherent positional encoding schemes to interpret these coordinates, treating our token as a virtual point on the canvas. This lightweight approach enables pixel-level control of an object's position with one token or its bounding box with two, all without requiring architectural changes or bespoke attention masking. The MetaPoint tokens are designed to be compositional, serving as spatial primitives. This allows a planner agent to decompose a high-level user request into a structured sequence of primitives for the generator. By providing a simple, precise, and scalable building block for spatial control, MetaPoint unlocks more powerful compositional generative agents and enables intuitive, interactive editing systems.",
+    "authors": [
+      "Dewei Zhou",
+      "Xinyu Huang",
+      "Xun Wang",
+      "Ji Xie",
+      "Yabo Zhang",
+      "Liang Li",
+      "Kunchang Li",
+      "Zongxin Yang",
+      "Yi Yang"
+    ],
+    "published": "2026-06-03",
+    "updated": "2026-06-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.05031.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.05031",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MetaPoint：在智能体视觉生成中实现精确空间控制",
+      "core_contribution": "提出一种名为MetaPoint的轻量级方法，通过将连续二维坐标表示为单个特殊标记，在不改变模型架构的前提下，实现了像素级的精确空间控制，从而弥合了文本描述与数值坐标之间的鸿沟。",
+      "method": "MetaPoint将连续的二维坐标编码为一个特殊的标记（token），并直接利用模型固有的位置编码方案来解析该标记，将其视为画布上的虚拟点。该方法无需引入新的架构组件或定制的注意力掩码，仅用一个标记即可控制物体位置，用两个标记即可控制其边界框。这些标记被设计为可组合的空间基元，允许规划智能体将高层用户请求分解为结构化的基元序列，供生成器执行。",
+      "findings": "实验表明，MetaPoint能够实现精确的像素级空间控制，支持物体位置和边界框的指定，且无需修改模型架构。其可组合性使得智能体能够分解复杂用户请求，从而构建更强大的生成式智能体，并支持直观的交互式编辑系统。"
+    }
+  },
+  {
+    "id": "2606.04479",
+    "title": "Evaluating Reasoning Fidelity in Visual Text Generation",
+    "abstract": "Recent text-to-image (T2I) models can render highly legible and well-structured text within images, enabling applications including document generation and slide generation. However, it remains unclear whether such systems faithfully preserve reasoning ability when complex solutions must be expressed directly through rendered text, or whether they merely imitate surface-level patterns. We investigate this question by evaluating reasoning fidelity in visual text generation, where models must express complete reasoning processes as images. Our evaluation includes long text rendering, factual knowledge probing, context understanding, and multi-step reasoning. Across these settings, we find that current T2I models frequently produce semantic errors, logical inconsistencies, and incorrect intermediate steps, even when the rendered text appears visually clear. These failures contrast with the strong reasoning performance of text-only models on the same tasks. Our findings reveal a substantial gap between visual text generation and procedural reasoning, motivating more reliable visual text reasoning.",
+    "authors": [
+      "Jiajun Hong",
+      "Jiawei Zhou"
+    ],
+    "published": "2026-06-03",
+    "updated": "2026-06-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.04479.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.04479",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "评估视觉文本生成中的推理保真度",
+      "core_contribution": "本文首次系统评估了当前文本到图像模型在视觉文本生成中的推理保真度，揭示了这些模型在表达复杂推理过程时存在显著的语义错误和逻辑不一致，与纯文本模型的推理能力存在巨大差距。",
+      "method": "作者设计了四个评估维度：长文本渲染、事实知识探测、上下文理解和多步推理。通过让文本到图像模型生成包含完整推理过程的图像，并与纯文本模型在相同任务上的表现进行对比，分析模型是否真正具备推理能力还是仅模仿表面模式。",
+      "findings": "当前文本到图像模型在视觉文本生成中频繁出现语义错误、逻辑不一致和中间步骤错误，即使渲染的文本视觉上清晰可读；与纯文本模型在相同任务上的强大推理表现形成鲜明对比，表明视觉文本生成与程序化推理之间存在显著差距。"
+    }
+  },
+  {
+    "id": "2606.04457",
+    "title": "Imagine Before You Draw: Visual Prompt Engineering for Image Generation",
+    "abstract": "Incorporating visual semantic representations as an intermediate step before image generation can reduce the modeling difficulty between text and images, thereby improving generation quality. Recent works such as X-Omni and BLIP3o-Next have explored this direction, but they typically use a two-stage external pipeline: a separate autoregressive model first generates semantic tokens, which are then fed as conditioning to an independent diffusion decoder. Since the decoder cannot jointly access the original input and the semantic plan, this design introduces an information bottleneck that limits detail preservation in downstream tasks such as editing. Internal architectures such as Transfusion, BAGEL, and Show-o2 avoid this bottleneck by enabling cross-modal interaction within a single model, but they still face the difficult text-to-pixel modeling gap without intermediate semantic guidance. We propose Visual Prompt Engineering (VPE), which can be seamlessly integrated into such internal frameworks. Specifically, the model first autoregressively generates visual semantic tokens (e.g., SigLIP 2) as \"visual prompts\" that capture the semantic layout, then generates the full image tokens conditioned on this plan. We validate VPE across class-conditional generation, text-to-image generation, and image editing, covering various token types and model architectures. Results show that VPE can accelerate convergence, raise quality ceilings, and through internal integration, achieve substantially better editing preservation (PSNR: 26.76 vs. 19.92) than external alternatives of the same parameter scale, while maintaining competitive editing responsiveness.",
+    "authors": [
+      "Liyu Jia",
+      "Fengda Zhang",
+      "Jiachun Pan",
+      "Kesen Zhao",
+      "Saining Zhang",
+      "Wang Lin",
+      "Weijia Wu",
+      "Yue Liao",
+      "Aojun Zhou",
+      "Hanwang Zhang"
+    ],
+    "published": "2026-06-03",
+    "updated": "2026-06-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.04457.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.04457",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "先想象再绘制：面向图像生成的视觉提示工程",
+      "core_contribution": "提出一种名为视觉提示工程（VPE）的方法，通过将视觉语义令牌作为中间步骤无缝集成到单一模型内部，在避免信息瓶颈的同时加速收敛、提升生成质量，并在图像编辑任务中显著优于同等规模的外部流水线方法。",
+      "method": "VPE首先在模型内部自回归地生成视觉语义令牌（如SigLIP 2），这些令牌作为捕捉语义布局的“视觉提示”；随后，模型基于这些提示生成完整的图像令牌。该方法可无缝集成到Transfusion、BAGEL、Show-o2等内部架构中，无需外部独立模块，从而保留跨模态交互能力。",
+      "findings": "在类别条件生成、文生图和图像编辑任务上的实验表明，VPE能加速收敛并提升生成质量上限；在图像编辑任务中，通过内部集成，VPE在保持竞争性编辑响应速度的同时，实现了显著更优的编辑保留效果（PSNR：26.76对比外部方法的19.92）。"
+    }
+  }
+]
