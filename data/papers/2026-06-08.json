@@ -1,0 +1,142 @@
+[
+  {
+    "id": "2606.07185",
+    "title": "AdaTok: Self-Budgeting Image Tokenization with Quality-Preserving Dynamic Tokens",
+    "abstract": "Image tokenizers, from 2D grids to recent 1D sequences, typically encode every image with the same fixed number of tokens. Yet visual complexity is highly heterogeneous, so a uniform budget overspends on simple inputs and underserves complex ones. Existing elastic tokenizers expose variable-length reconstructions, but often leave token length as a deployment-time operating point, a search target, or an external prediction rather than an output of the tokenizer itself. In this work, we ask whether a discrete visual tokenizer can budget itself in one pass. Our central finding is that actionable elasticity requires a representation--allocation co-design: prefixes must remain decodable across budgets, and the tokenizer must learn which prefix each image needs. We propose AdaTok, a self-budgeting discrete 1D tokenizer. AdaTok combines Prioritized Representation Learning, which orders tokens with nested tail masking and resolves budget-dependent semantic shift through Multi-Head LoRA decoder heads, with Adaptive Token Allocation, which trains a lightweight deterministic-group GRPO policy over candidate budgets. Dynamic Pareto Weighting balances fidelity and efficiency during policy training without manual trade-off sweeps. On ImageNet-1K, AdaTok-Full reaches rFID 1.31 at 256 tokens, while AdaTok-Adaptive attains rFID 1.50 using only ~118 tokens on average, outperforming discrete 1D baselines at comparable budgets. In autoregressive image generation, the shorter adaptive representation yields ~2.1x throughput over a fixed 256-token decode, suggesting that visual token count can be learned as a content-conditioned output rather than set as a fixed hyperparameter.",
+    "authors": [
+      "Xiaocheng Lu",
+      "Yuxi Chen",
+      "Jie Zhang",
+      "Jian Liu",
+      "Jingcai Guo",
+      "Fangqi Zhu",
+      "Tao Han",
+      "Song Guo"
+    ],
+    "published": "2026-06-05",
+    "updated": "2026-06-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.07185.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.07185",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AdaTok：具有质量保持动态令牌的自预算图像分词",
+      "core_contribution": "提出了一种自预算离散图像分词器AdaTok，能够根据图像内容自适应地分配不同数量的令牌，在保持重建质量的同时显著提升生成效率，打破了传统固定令牌预算的限制。",
+      "method": "AdaTok采用表示-分配协同设计：首先通过优先表示学习（Prioritized Representation Learning）对令牌进行嵌套尾部掩码排序，并利用多头LoRA解码器头解决预算变化导致的语义偏移；其次通过自适应令牌分配（Adaptive Token Allocation）训练一个轻量级确定性分组GRPO策略，在候选预算中选择最优令牌数；最后使用动态帕累托加权（Dynamic Pareto Weighting）平衡保真度与效率，无需手动调参。",
+      "findings": "在ImageNet-1K上，AdaTok-Full在256个令牌时达到rFID 1.31，而AdaTok-Adaptive平均仅用约118个令牌即可达到rFID 1.50，优于同等预算下的离散1D基线；在自回归图像生成中，自适应表示相比固定256令牌解码实现了约2.1倍的吞吐量提升，表明视觉令牌数量可作为内容条件输出而非固定超参数。"
+    }
+  },
+  {
+    "id": "2606.07145",
+    "title": "Consistent-Inversion: Reverse Consistency Guidance for Structure-Preserving Visual Editing",
+    "abstract": "Text-guided diffusion models have become effective tools for real-image visual editing, where the edited image must follow a target instruction while preserving editing-irrelevant structure. Most training-free editors rely on inversion: a source image is mapped to a noisy latent trajectory and the terminal latent is reused for target-prompt denoising. This reuse is useful for preservation, but it also couples source reconstruction and target editing. The resulting trajectory mismatch may either damage background/layout details or over-constrain the intended edit. This paper presents Consistent-Inversion, a training-free reverse consistency guidance framework for structure-preserving visual editing. Instead of treating the inverted source latent as a fixed initialization, Consistent-Inversion checks whether an intermediate target trajectory can be reversed toward the source inversion trajectory under the source prompt. To make this check well-defined, we construct an auxiliary target-side noise representation, perform source-guided reverse denoising, and use the resulting reverse consistency discrepancy as a correction signal for selected early target denoising steps. The method does not update model parameters, is compatible with inversion-based editors, and introduces only a small inference overhead when applied sparsely. Experiments on PIE-Bench show that Consistent-Inversion improves background and structural fidelity under a unified SD3.5 protocol while maintaining target-prompt alignment, and compatibility experiments further verify the same correction principle on classical Stable-Diffusion inversion pipelines.",
+    "authors": [
+      "Xiaocheng Lu",
+      "Jingcai Guo",
+      "Song Guo"
+    ],
+    "published": "2026-06-05",
+    "updated": "2026-06-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.07145.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.07145",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "一致反转：面向结构保持视觉编辑的反向一致性引导",
+      "core_contribution": "提出了一种无需训练的反向一致性引导框架，通过检查目标轨迹能否在源提示下反向回到源反转轨迹，从而在不更新模型参数的前提下，提升图像编辑中背景与结构的保真度。",
+      "method": "该方法不将反转后的源潜在变量视为固定初始化，而是在目标去噪的早期步骤中，构建辅助的目标侧噪声表示，并执行源引导的反向去噪，计算反向一致性差异作为校正信号。该校正信号仅稀疏地应用于选定的早期去噪步骤，从而在保持目标提示对齐的同时，引入较小的推理开销。",
+      "findings": "在PIE-Bench基准上，基于统一的SD3.5协议，Consistent-Inversion在保持目标提示对齐的同时，显著提升了背景与结构的保真度；兼容性实验进一步验证了该方法在经典Stable-Diffusion反转管线上的相同校正效果。"
+    }
+  },
+  {
+    "id": "2606.07053",
+    "title": "TrioPose: Native Triple-Stream Diffusion Transformers for Pose-Guided Text-to-Image Generation",
+    "abstract": "Pose-guided text-to-image generation often suffers from limb distortions and feature crosstalk in complex multi-person scenarios. While existing UNet-based adapters struggle with long-range spatial dependencies, emerging Multimodal Diffusion Transformers (MM-DiTs) offer superior global modeling. However, naive signal concatenation in MM-DiTs severely disrupts pre-trained latent distributions. To address this, we propose TrioPose, a native pose-driven framework built upon the SD3.5M architecture. Specifically, we introduce a Triple-Stream Pose-Aware DiT (TSPA-DiT) that treats pose as an independent modality. It employs layer-wise activation and zero-initialized dual-residual injection to smoothly enforce geometric constraints while preserving pre-trained latent stability. To resolve severe multi-instance occlusions, we design a Learnable Relational Bias Mask that categorizes topological connectivity into fine-grained physical states, mapping them into continuous attention soft constraints to effectively decouple inter-instance interference. Furthermore, a Pose-Guided Spatial Loss Weighting strategy modulates the native diffusion objective using heatmap-derived error maps, focusing anatomical supervision strictly on distortion-prone regions. Extensive experiments demonstrate that TrioPose achieves state-of-the-art performance across challenging benchmarks, including Human-Art, CrowdPose, and OCHuman. Notably, it attains an AP of $64.33$ on Human-Art, representing a $30\\%$ improvement over prior arts, while setting new standards for visual fidelity and text-image semantic alignment in complex multi-human generation.",
+    "authors": [
+      "Dian Gu",
+      "Zhengyi Yang"
+    ],
+    "published": "2026-06-05",
+    "updated": "2026-06-05",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.07053.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.07053",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TrioPose：用于姿态引导文本到图像生成的原生三流扩散变换器",
+      "core_contribution": "提出了一种基于SD3.5M架构的原生姿态驱动框架TrioPose，通过三流姿态感知扩散变换器（TSPA-DiT）和可学习关系偏置掩码，有效解决了复杂多人场景中的肢体扭曲和特征串扰问题，在多个基准上实现了最先进的性能。",
+      "method": "TrioPose将姿态作为独立模态，引入三流姿态感知扩散变换器（TSPA-DiT），通过逐层激活和零初始化的双残差注入来施加几何约束，同时保持预训练潜变量的稳定性。为处理多人遮挡，设计了可学习关系偏置掩码，将拓扑连接分类为细粒度物理状态并映射为连续注意力软约束，以解耦实例间干扰。此外，采用姿态引导的空间损失加权策略，利用热力图导出的误差图调制原生扩散目标，将解剖学监督聚焦于易扭曲区域。",
+      "findings": "在Human-Art、CrowdPose和OCHuman等挑战性基准上，TrioPose达到了最先进性能，尤其在Human-Art上AP达到64.33，相比先前方法提升30%，并在复杂多人生成中树立了视觉保真度和文本-图像语义对齐的新标准。"
+    }
+  },
+  {
+    "id": "2606.06828",
+    "title": "AdaGRPO: A Capability-Aware Adaptive Enhancement for Flow-based GRPO",
+    "abstract": "Group Relative Policy Optimization (GRPO) has demonstrated remarkable success in aligning text-to-image (T2I) flow models with human preferences. However, we have identified that the learning loop of current flow-based GRPO is fundamentally decoupled from the learner's current capability, suffering from critical blind spots at both prompt selection and advantage estimation: (i) Existing methods sample prompts randomly, overlooking the substantial impact of data selection on reinforcement learning (RL) efficacy--a factor proven crucial in GRPO for large language models; (ii) They evaluate sample quality solely relying on intra-group statistics, lacking a global perspective to accurately measure true policy improvement. To address these issues, we propose Adaptive GRPO (AdaGRPO), a novel capability-aware RL algorithm tailored for flow models. Specifically, AdaGRPO consists of two principal components: (i) Online Curriculum Filtering Strategy: Dynamically tracks the model's proficiency and adaptively selects prompts that best match its current learning boundary; (ii) Cross-Level Advantage Fusion: Synergistically integrates fine-grained intra-group advantages with macro-level global advantages, providing a comprehensive and unbiased policy evaluation. As a lightweight, plug-and-play module, AdaGRPO can be seamlessly integrated with existing frameworks such as Flow-GRPO, DanceGRPO, and Flow-CPS. Extensive experiments demonstrate that AdaGRPO consistently drives performance gains while significantly stabilizes GRPO training for flow models.",
+    "authors": [
+      "Jiazi Bu",
+      "Pengyang Ling",
+      "Yujie Zhou",
+      "Yibin Wang",
+      "Yuhang Zang",
+      "Tianyi Wei",
+      "Xiaohang Zhan",
+      "Jiaqi Wang",
+      "Tong Wu",
+      "Xingang Pan",
+      "Dahua Lin"
+    ],
+    "published": "2026-06-05",
+    "updated": "2026-06-05",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.06828.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.06828",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AdaGRPO：一种面向基于流的GRPO的能力感知自适应增强方法",
+      "core_contribution": "提出了一种名为AdaGRPO的能力感知强化学习算法，通过在线课程过滤策略和跨层级优势融合，解决了现有基于流的GRPO在提示选择和优势估计中的盲点问题，显著提升了文本到图像流模型与人类偏好对齐的效果。",
+      "method": "AdaGRPO包含两个核心组件：一是在线课程过滤策略，动态追踪模型当前能力，自适应选择与学习边界最匹配的提示；二是跨层级优势融合，将细粒度的组内优势与宏观的全局优势协同整合，提供更全面、无偏的策略评估。该方法作为轻量级即插即用模块，可无缝集成到Flow-GRPO、DanceGRPO和Flow-CPS等现有框架中。",
+      "findings": "大量实验表明，AdaGRPO能够持续驱动性能提升，同时显著稳定基于流的GRPO训练过程，在多个现有框架上均取得了一致的改进效果。"
+    }
+  },
+  {
+    "id": "2606.06813",
+    "title": "Breaking the Lock-in: Diversifying Text-to-Image Generation via Representation Modulation",
+    "abstract": "Recent text-to-image models built on large-scale Transformer backbones and flow-based objectives deliver strong text-image alignment and high visual quality, yet often produce overly similar samples under a fixed prompt. Existing diversity-enhancement methods alleviate this issue, but typically require expensive sampling or auxiliary optimization, incurring non-trivial overhead. To investigate the root cause of this homogeneity, we examine intermediate Transformer features and observe that the zero-frequency spatial average (DC) component rapidly converges across seeds early in generation, causing early trajectory lock-in that limits downstream variation. Building on this observation, we propose DC Attenuation for diVersity Enhancement (DAVE), a training-free representation-level intervention that selectively attenuates this component in the early regime. DAVE preserves the sampling pipeline with negligible overhead, improving prompt-consistent diversity while maintaining competitive image quality.",
+    "authors": [
+      "Dahee Kwon",
+      "Haeun Lee",
+      "Jaesik Choi"
+    ],
+    "published": "2026-06-05",
+    "updated": "2026-06-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.06813.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.06813",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "打破锁定：通过表示调制实现文本到图像生成的多样化",
+      "core_contribution": "提出了一种无需训练、计算开销极小的表示级干预方法DAVE，通过衰减早期生成阶段Transformer特征中的零频空间平均（DC）分量，有效提升文本到图像生成中提示一致下的样本多样性，同时保持图像质量。",
+      "method": "首先，论文通过分析中间Transformer特征，发现早期生成过程中DC分量快速收敛导致不同种子样本的生成轨迹过早锁定，限制了后续多样性。基于此，提出DAVE方法，在生成早期阶段选择性地衰减该DC分量，从而打破轨迹锁定。该方法无需额外训练或优化，直接作用于表示层，几乎不增加计算开销。",
+      "findings": "实验表明，DAVE在保持提示一致性和图像质量的前提下，显著提升了生成样本的多样性，且与现有多样性增强方法相比，计算成本极低。关键发现是DC分量的早期收敛是导致生成同质化的根本原因，而针对性的衰减能有效缓解该问题。"
+    }
+  }
+]
