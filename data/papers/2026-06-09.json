@@ -1,0 +1,153 @@
+[
+  {
+    "id": "2606.09156",
+    "title": "OmniGen-AR: AutoRegressive Any-to-Image Generation",
+    "abstract": "Autoregressive (AR) models have demonstrated strong potential in visual generation, offering superior performance with simple architectures and optimization objectives. However, existing methods are typically limited to single-modality conditions, e.g., text, restricting their applicability in real-world scenarios that demand image synthesis from diverse controls. In this work, we present OmniGen-AR, a unified autoregressive framework for Any-to-Image generation. By discretizing various visual conditions through a shared visual tokenizer and text prompts with a text tokenizer, OmniGen-AR supports a broad spectrum of conditional inputs within a single model, including text (text-to-image generation), spatial signals (segmentation-to-image and depth-to-image), and visual context (image editing, frame prediction, and text-to-video generation). To mitigate the risk of information leakage from condition tokens to content tokens, we introduce Disentangled Causal Attention (DCA), which separates the full-sequence causal mask into condition causal attention and content causal attention. It serves as a training-time regularizer without affecting the standard next-token prediction during inference. With this design, OmniGen-AR achieves new state-of-the-art or at least competitive results across a range of benchmark, e.g., 0.63 on GenEval and 80.02 on VBench, demonstrating its effectiveness in flexible and high-fidelity visual generation.",
+    "authors": [
+      "Junke Wang",
+      "Xun Wang",
+      "Qiushan Guo",
+      "Peize Sun",
+      "Weilin Huang",
+      "Zuxuan Wu",
+      "Yu-Gang Jiang"
+    ],
+    "published": "2026-06-08",
+    "updated": "2026-06-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.09156.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.09156",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "OmniGen-AR：自回归任意到图像生成",
+      "core_contribution": "提出了一种统一的任意条件到图像生成的自回归框架OmniGen-AR，能够在一个模型中支持文本、空间信号和视觉上下文等多种条件输入，并通过解耦因果注意力机制有效防止信息泄露。",
+      "method": "OmniGen-AR通过共享的视觉分词器将各种视觉条件离散化，同时使用文本分词器处理文本提示，从而在单一模型中支持多种条件输入。为了缓解条件令牌到内容令牌的信息泄露风险，引入了解耦因果注意力（DCA），将全序列因果掩码分离为条件因果注意力和内容因果注意力，该机制仅在训练时作为正则化项，不影响推理时的标准下一个令牌预测。",
+      "findings": "在多个基准测试中取得了新的最优或具有竞争力的结果，例如在GenEval上达到0.63，在VBench上达到80.02，证明了该方法在灵活且高保真视觉生成中的有效性。"
+    }
+  },
+  {
+    "id": "2606.09076",
+    "title": "Beyond Scalar Rewards by Internalizing Reasoning into Score Distributions",
+    "abstract": "Reward models are central to text-to-image post-training, but visual preference is subjective and better represented as a distribution over rubric scores than as a deterministic scalar. Existing scalar, score-token, and pairwise reward models over-compress uncertainty and fine-grained score differences, while reasoning-based generative rewards provide stronger judgments but are costly to deploy and difficult to use as direct optimization signals. We propose Z-Reward, a teacher-student reward modeling framework that decouples reasoning-heavy judgment from efficient reward deployment. The teacher is a large VLM that uses reasoning to infer rubric-aligned score distributions, and is trained with Group-wise Direct Score Optimization (GDSO), which combines policy-gradient rewards from distribution expectations with direct pointwise and pairwise supervision on score distributions and score gaps. The student is trained with Reasoning-Internalized Score Distillation (RISD), which transfers the teacher's reasoning-conditioned score distribution into a compact VLM without requiring explicit reasoning chains at inference time. On our internally annotated evaluation set, the 27B GDSO teacher reaches 89.6% human preference accuracy, outperforming SFT, RewardDance, and GRPO, while the 9B RISD student reaches 88.6%, outperforming the OPD baseline and closely matching the larger teacher. We further show that Z-Reward can serve as a differentiable reward signal for text-to-image optimization, yielding a 41.3% net human-preference improvement over the SFT baseline.",
+    "authors": [
+      "Xin Jin",
+      "Huanqia Cai",
+      "Zhen Li",
+      "Zechao Zhan",
+      "Dengyang Jiang",
+      "Aiming Hao",
+      "Yuming Jiang",
+      "Chunle Guo",
+      "Peng Gao",
+      "Ming-Ming Cheng",
+      "Steven C. H. Hoi"
+    ],
+    "published": "2026-06-08",
+    "updated": "2026-06-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.09076.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.09076",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越标量奖励：将推理内化到评分分布中",
+      "core_contribution": "提出Z-Reward框架，通过教师-学生模型将推理型奖励判断与高效部署解耦，在保持高人类偏好准确率的同时，实现可微分的文本到图像优化奖励信号。",
+      "method": "采用教师-学生架构：教师模型为大视觉语言模型（VLM），通过Group-wise Direct Score Optimization（GDSO）训练，结合策略梯度奖励与点对点、成对监督来推断符合评分标准的分布；学生模型通过Reasoning-Internalized Score Distillation（RISD）训练，将教师的推理条件化评分分布迁移到紧凑VLM中，推理时无需显式推理链。",
+      "findings": "27B参数的GDSO教师模型在内部标注集上达到89.6%的人类偏好准确率，优于SFT、RewardDance和GRPO；9B参数的RISD学生模型达到88.6%，优于OPD基线并接近教师性能。Z-Reward作为可微分奖励信号用于文本到图像优化，相比SFT基线带来41.3%的净人类偏好提升。"
+    }
+  },
+  {
+    "id": "2606.08841",
+    "title": "ZIPP:Zero-shot Image Personalization from Personas",
+    "abstract": "Text-to-image diffusion models are increasingly deployed in open-ended creative contexts, yet their outputs remain impersonal, optimized for aggregate aesthetics rather than individual taste. Human preferences are pluralistic: one user favoring muted, nostalgic portraits may prefer vibrant street photography, while another gravitates toward dreamy film aesthetics. Existing methods require dense interaction histories or per-user fine-tuning, failing in cold-start settings and collapsing context-dependent preferences into a static representation. We introduce zero-shot image personalization from personas (ZIPP), which conditions image generation on natural-language personas (concise descriptors of a user's identity and aesthetic sensibilities) without any user-specific data or weight updates. ZIPP uses an LLM to rewrite prompts from the perspective of a given persona, steering diffusion models toward personalized outputs. To mine personas at scale, we train an inductive Graph Attention Network over a 22M-user Reddit interaction graph with dual contrastive objectives aligning graph structure with visual behavior, then verbalize learned representations into natural-language personas via an MLLM. We introduce ZIPBench, the first zero-shot personalization benchmark with 1.5K users, graph-mined personas, and 40K generated images. Across four benchmarks and 14 LLMs spanning five model families, persona conditioning yields consistent gains (13-20%), with frontier models benefiting most. In the few-shot setting, ZIPP matches or exceeds fine-tuned baselines trained on 100+ examples per user. ZIPP achieves the lowest preference distributional divergence (CMMD 0.16 vs. 0.55), and IPF-normalized demographic evaluation shows it substantially reduces subpopulation bias present in existing methods. Human evaluation confirms a 79% win rate over generic generation and 58-65% over all fine-tuned baselines.",
+    "authors": [
+      "Harini SI",
+      "Somesh Singh",
+      "Yaman Kumar Singla",
+      "David Doermann",
+      "Rajiv Ratn Shah"
+    ],
+    "published": "2026-06-07",
+    "updated": "2026-06-07",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.08841.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.08841",
+    "primary_category": "cs.AI",
+    "score": 85,
+    "summary": {
+      "title_zh": "ZIPP：基于用户画像的零样本图像个性化生成",
+      "core_contribution": "提出了一种无需用户数据或模型微调的零样本图像个性化方法，通过自然语言用户画像引导扩散模型生成符合个人审美偏好的图像，并构建了首个大规模零样本个性化基准数据集ZIPBench。",
+      "method": "ZIPP首先利用大型语言模型（LLM）从给定用户画像的角度重写文本提示，从而引导扩散模型生成个性化输出。为了大规模挖掘用户画像，该方法在包含2200万用户的Reddit交互图上训练了一个归纳式图注意力网络，通过双重对比学习目标将图结构与视觉行为对齐，再借助多模态大语言模型将学习到的表示转化为自然语言画像。最后，在生成的图像上评估个性化效果，无需任何用户特定数据或权重更新。",
+      "findings": "在四个基准测试和14个LLM上的实验表明，用户画像条件化生成在零样本设置下持续带来13-20%的性能提升，前沿模型受益最大；在少样本场景下，ZIPP匹配或超越了每个用户使用100+样本微调的基线方法；ZIPP实现了最低的偏好分布散度（CMMD 0.16 vs. 0.55），并显著降低了现有方法中的子群体偏差；人工评估显示，ZIPP相对于通用生成胜率达79%，相对于所有微调基线胜率达58-65%。"
+    }
+  },
+  {
+    "id": "2606.08788",
+    "title": "MaskAlign: Token-Subset Representation Alignment for Efficient Diffusion Training",
+    "abstract": "Representation alignment with pretrained vision models has recently shown strong potential for accelerating diffusion transformer training. By aligning intermediate diffusion features with clean-image representations from self-supervised vision encoders, existing methods improve convergence and generation quality. However, such alignment also introduces a non-trivial constraint: diffusion models operate on noisy inputs whose usable information varies across timesteps, while the reference features are extracted from clean images. In this paper, we revisit this mismatch from a token-level perspective. We find that, under full-token representation alignment, tokens with large alignment-gradient norms exhibit a stable spatial preference, suggesting that the alignment objective does not affect all tokens uniformly and may encourage the model to rely on the complete set of clean-image tokens. To address this issue, we propose MaskAlign, a token-subset representation alignment method that applies alignment to randomly sampled token subsets during training. By exposing the model to different token subsets across iterations, MaskAlign reduces the dependence of representation alignment on the complete token set and encourages alignment behavior that is more stable under token-subset perturbations. To mitigate the information loss caused by directly dropping tokens, we further introduce a lightweight pre-mask token mixing block that shares information across tokens before masking.",
+    "authors": [
+      "Lianyu Pang",
+      "Tianlin Pan",
+      "Cheng Da",
+      "Changqian Yu",
+      "Huan Yang",
+      "Kun Gai",
+      "Song Guo",
+      "Wenhan Luo"
+    ],
+    "published": "2026-06-07",
+    "updated": "2026-06-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.08788.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.08788",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MaskAlign：面向高效扩散训练的令牌子集表示对齐方法",
+      "core_contribution": "提出了一种令牌子集表示对齐方法MaskAlign，通过随机采样令牌子集进行对齐，解决了现有全令牌对齐方法中模型过度依赖完整干净图像令牌集的问题，从而提升扩散Transformer的训练效率和生成质量。",
+      "method": "首先，从令牌级视角分析了全令牌表示对齐中存在的失配问题，发现对齐梯度范数较大的令牌具有稳定的空间偏好，表明对齐目标对令牌影响不均。然后，提出MaskAlign方法，在训练过程中对随机采样的令牌子集施加表示对齐，减少模型对完整令牌集的依赖，增强对齐的稳定性。为缓解直接丢弃令牌带来的信息损失，进一步引入一个轻量级的预掩码令牌混合模块，在掩码操作前实现令牌间的信息共享。",
+      "findings": "实验表明，MaskAlign能够有效降低表示对齐对完整令牌集的依赖，在令牌子集扰动下保持更稳定的对齐行为，从而加速扩散Transformer的训练收敛并提升生成质量。"
+    }
+  },
+  {
+    "id": "2606.08492",
+    "title": "Seeing is Believing: Aligning Prompt Rewriting with Visual Anchors for Text-to-Image Generation",
+    "abstract": "Despite the impressive capabilities of text-to-image (T2I) models, an intent-generation gap often persists due to the brevity and ambiguity of user prompts. Existing approaches primarily polish the prompt for fluency and readability. However, the enhancement process still lacks visual grounding. As a result, the rewriter may over-infer missing details, causing an intent-generation gap. To address this limitation, we propose FaithRewriter, a novel prompt-enhancement framework for T2I generation. Specifically, FaithRewriter first leverages a multimodal MLLM to generate an image from the original prompt as an intermediate visual cue. This cue is then combined with the prompt and fed into a large-scale LLM to produce visually grounded augmentations that better reflect how the intended content should appear in images. Finally, these augmentations are distilled into a small-scale LLM for efficient deployment, enhancing its ability to generate effective T2I prompts. Experiments show that FaithRewriter yields prompts that are more faithful to the user intent and more visually plausible than strong baselines, helping narrow the intent-generation gap.",
+    "authors": [
+      "Xuanyi Liu",
+      "Deyi Ji",
+      "Junyu Lu",
+      "Jing Wang",
+      "Qianxiong Xu",
+      "Xuhang Chen",
+      "Tianrun Chen",
+      "Siwei Ma"
+    ],
+    "published": "2026-06-07",
+    "updated": "2026-06-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.08492.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.08492",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "眼见为实：通过视觉锚点对齐提示重写以改进文本到图像生成",
+      "core_contribution": "提出FaithRewriter框架，通过引入中间视觉线索（图像）来引导提示重写，使生成的提示更忠实于用户意图且视觉上更合理，从而缩小文本到图像生成中的意图-生成差距。",
+      "method": "首先，利用多模态大语言模型（MLLM）根据原始提示生成一张中间图像作为视觉线索；然后，将该图像与原始提示结合，输入大规模语言模型（LLM）以生成具有视觉依据的增强描述；最后，将这些增强描述蒸馏到一个小规模语言模型中，实现高效部署，使其能够生成更有效的文本到图像提示。",
+      "findings": "实验表明，FaithRewriter生成的提示比强基线方法更忠实于用户意图，且视觉上更合理，有效缩小了意图与生成结果之间的差距。"
+    }
+  }
+]
