@@ -1,0 +1,145 @@
+[
+  {
+    "id": "2606.11289",
+    "title": "i1: A Simple and Fully Open Recipe for Strong Text-to-Image Models",
+    "abstract": "Diffusion models have consistently driven progress in text-to-image generation. However, it is challenging to attribute recent progress to specific modeling and data choices: state-of-the-art open-weight models provide limited ablations, and do not disclose their training data and full training details. The research community needs fully open (weights, data, and code) models as a foundation for further research; yet existing fully open models still fall significantly short of leading models in performance. In this project, we conduct a systematic investigation of the modeling and data design choices in text-to-image diffusion training and inference with 300+ controlled experiments totaling 700K+ TPU v6e hours. Our experiments highlight several empirical findings (e.g., equal weighting is a strong default for mixing curated datasets) and simple design decisions (e.g., larger text encoder adapters improve performance with minimal added parameters) for training strong models. Guided by these insights, we train i1, a 3B-parameter text-to-image diffusion model using only publicly available datasets. i1 is competitive with leading models on five representative benchmarks (GenEval, DPG, PRISM, CVTG-2K, and LongText), and outperforms the best existing fully open model by 29.5 absolute percentage points on average. We provide the i1 checkpoints, training and inference code, and the data processing pipeline. Together, our findings and the i1 recipe establish a practical foundation for future open research in text-to-image diffusion models. Our code is available at https://github.com/zlab-princeton/i1.",
+    "authors": [
+      "Boya Zeng",
+      "Tianze Luo",
+      "Shu Pu",
+      "Jucheng Shen",
+      "Taiming Lu",
+      "Gabriel Sarch",
+      "Zhuang Liu"
+    ],
+    "published": "2026-06-09",
+    "updated": "2026-06-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.11289.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.11289",
+    "primary_category": "cs.CV",
+    "score": 90,
+    "summary": {
+      "title_zh": "i1：一个简单且完全开源的强文本到图像模型配方",
+      "core_contribution": "本文通过大规模系统实验，揭示了训练强文本到图像扩散模型的关键设计选择，并基于仅公开数据集训练出性能与领先模型相当的i1模型，同时开源了权重、数据和代码，为开源研究提供了实用基础。",
+      "method": "作者进行了300余次受控实验（总计超过70万TPU v6e小时），系统研究了扩散模型训练和推理中的建模与数据设计选择。基于实验发现（如等权重混合策展数据集、更大文本编码器适配器可提升性能），训练了一个30亿参数的文本到图像扩散模型i1，仅使用公开数据集，并提供了完整的数据处理流水线。",
+      "findings": "i1在GenEval、DPG、PRISM、CVTG-2K和LongText五个代表性基准上与领先模型竞争，平均性能比现有最佳完全开源模型高出29.5个绝对百分点。"
+    }
+  },
+  {
+    "id": "2606.13679",
+    "title": "InterleaveThinker: Reinforcing Agentic Interleaved Generation",
+    "abstract": "Recent image generators have demonstrated impressive photorealism and instruction-following capabilities in single-image generation and editing. However, constrained by their architectures, they cannot achieve interleaved generation (text-image sequence), which has crucial applications in visual narratives, guidance, and embodied manipulation. Even the latest open-source Unified Multimodal Models (UMMs) exhibit limited performance in this regard. In this paper, we introduce InterleaveThinker, the first multi-agent pipeline designed to endow any existing image generator with interleaved generation capabilities. Specifically, we employ a planner agent to organize the image-text input sequence, instructing the image generator on the required execution at each step. Subsequently, we introduce a critic agent to evaluate the generator's outputs, identify samples that deviate from the planned instructions, and refine the instructions for regeneration. To implement this pipeline, we construct the Interleave-Planner-SFT-80k and Interleave-Critic-SFT-112k to perform a format cold-start. Then we develop Interleave-Critic-RL-13k to reinforce the step-wise instruction correction capability within a generation trajectory using GRPO. Since a single interleaved generation trajectory may involve over 25 generator calls, optimizing the entire trajectory is computationally impractical. Therefore, we propose accuracy reward and step-wise reward, allowing single-step RL to effectively guide the entire generation trajectory. The results show that InterleaveThinker improves performance across various image generators. On interleaved generation benchmarks, it achieves performance comparable to Nano Banana and GPT-5. Surprisingly, it also significantly enhances the base model on reasoning-based benchmarks; for example, on 4-step FLUX.2-klein, we observe substantial gains on WISE and RISE.",
+    "authors": [
+      "Dian Zheng",
+      "Harry Lee",
+      "Manyuan Zhang",
+      "Kaituo Feng",
+      "Zoey Guo",
+      "Ray Zhang",
+      "Hongsheng Li"
+    ],
+    "published": "2026-06-11",
+    "updated": "2026-06-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.13679.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.13679",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InterleaveThinker：强化智能体交织生成",
+      "core_contribution": "提出了首个多智能体流水线InterleaveThinker，使任意现有图像生成器具备文本-图像交织生成能力，并通过单步强化学习有效优化长轨迹生成过程。",
+      "method": "采用规划器智能体组织图像-文本输入序列，指导图像生成器按步骤执行；引入评论家智能体评估生成结果，识别偏离指令的样本并修正指令以重新生成。构建了Interleave-Planner-SFT-80k和Interleave-Critic-SFT-112k数据集进行格式冷启动，再使用GRPO在Interleave-Critic-RL-13k上强化逐步指令修正能力。针对单次交织生成轨迹可能涉及超过25次生成器调用、优化整条轨迹计算不可行的问题，提出准确率奖励和逐步奖励，使单步强化学习有效引导整个生成轨迹。",
+      "findings": "InterleaveThinker在多种图像生成器上均提升了性能，在交织生成基准上达到与Nano Banana和GPT-5相当的水平。此外，它显著增强了基础模型在推理型基准上的表现，例如在4步FLUX.2-klein上，WISE和RISE指标均获得大幅提升。"
+    }
+  },
+  {
+    "id": "2606.13558",
+    "title": "Edit the Bits, Diff the Codes: Bitwise Residual Editing for Visual Autoregressive Models",
+    "abstract": "Text-guided image editing with visual autoregressive (VAR) generators requires controlling both what the model samples and where the sampled change is written back into the image code. Existing VAR editors mainly operate on token streams, features, or flat next-token logits, leaving two native structures of bitwise-residual VAR models underused: the per-bit Bernoulli prediction head and the additive multi-scale residual code field from which the image is assembled. We propose BitResEdit, a training-free editor for bitwise-residual VAR generators such as Infinity. BitEdit performs source-negative guidance by tilting the post-CFG per-bit log-odds along a source--target contrast computed on a shared edited prefix, then projects each update into a closed-form Bernoulli-KL trust region around the clean CFG sampler. ResEdit converts the sampled bits into per-scale continuous-code residuals, gates them with a localization mask, and re-injects them through the generator's native sum-of-scales. Together they couple decision-time bit guidance with combination-time code composition, so masked-out latent features are preserved exactly by code arithmetic while localized, scale-aware edits are applied inside the target region. On PIE-Bench with Infinity-2B, BitResEdit attains the strongest text alignment among same-backbone VAR editors, improving CLIP on the edited region by +1.07 over the strongest prior editor while keeping background preservation competitive with it. Ablations show BitEdit and ResEdit play complementary roles in target alignment and background preservation.",
+    "authors": [
+      "Shengqiang Zhang",
+      "Ruotong Liao",
+      "Volker Tresp",
+      "Barbara Plank",
+      "Hinrich Schütze"
+    ],
+    "published": "2026-06-11",
+    "updated": "2026-06-11",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.13558.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.13558",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "编辑比特，比较编码：面向视觉自回归模型的逐比特残差编辑方法",
+      "core_contribution": "提出了一种无需训练的视觉自回归图像编辑方法BitResEdit，通过利用逐比特伯努利预测头和加性多尺度残差编码结构，实现了对目标区域的精确文本引导编辑，同时保持背景不变。",
+      "method": "该方法包含两个核心组件：BitEdit通过计算源-目标对比来倾斜后CFG逐比特对数几率，并将每次更新投影到伯努利-KL信任区域内；ResEdit将采样比特转换为每尺度连续编码残差，用定位掩码门控后通过生成器的原生尺度求和机制重新注入。两者协同实现决策时的比特引导与组合时的编码组合，从而通过编码算术精确保留掩码外的潜在特征。",
+      "findings": "在PIE-Bench数据集上使用Infinity-2B模型，BitResEdit在相同骨干网络的VAR编辑器中取得了最强的文本对齐性能，在编辑区域上的CLIP分数比最强先前方法提高了+1.07，同时背景保持能力与之相当。消融实验表明BitEdit和ResEdit在目标对齐和背景保持中扮演互补角色。"
+    }
+  },
+  {
+    "id": "2606.13382",
+    "title": "SmartFont: Dynamic Condition Allocation for Few-Shot Font Generation",
+    "abstract": "Few-shot font generation simultaneously requires global structural completeness and fine-grained local style fidelity. Existing methods usually either rely on global content-style modeling, which is robust but imperfectly disentangled, or emphasize component/local modeling, which captures fine details but relies heavily on local priors and reference coverage. We argue that the key challenge is not merely to learn purer conditions, but to organize complementary yet biased global and local conditions through multi-level allocation during generation. To this end, we propose SmartFont, a diffusion-based few-shot font generation framework that combines global content-style generation with weakly supervised local corrective experts. The local branch performs semantic-spatial allocation by learning expert-wise local concepts and semantically meaningful spatial maps under weak component supervision, enabling fine-grained correction without requiring explicit component-conditioned inference. On top of this, a denoising-state condition allocation module adaptively weights global content, global style, and local corrective feature across timesteps and injection blocks. Extensive experiments show that SmartFont achieves better global-local balance, improves glyph quality and local detail fidelity.",
+    "authors": [
+      "Zian Yang",
+      "Zixin Wang"
+    ],
+    "published": "2026-06-11",
+    "updated": "2026-06-11",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.13382.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.13382",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SmartFont: 面向少样本字体生成的动态条件分配方法",
+      "core_contribution": "提出了一种基于扩散模型的少样本字体生成框架SmartFont，通过多层级条件分配机制有效融合全局内容-风格建模与局部修正专家，解决了全局结构完整性与局部细节保真度之间的平衡问题。",
+      "method": "该方法包含两个核心模块：一是弱监督局部修正专家分支，通过学习专家级局部概念和语义空间映射实现细粒度修正，无需显式的组件条件推理；二是去噪状态条件分配模块，该模块根据时间步和注入块自适应地加权全局内容、全局风格和局部修正特征。整体采用扩散模型框架，将全局生成与局部校正相结合。",
+      "findings": "实验表明，SmartFont在少样本字体生成任务中实现了更好的全局-局部平衡，显著提升了字形质量和局部细节保真度，优于现有依赖纯全局建模或纯局部建模的方法。"
+    }
+  },
+  {
+    "id": "2606.12575",
+    "title": "High-Fidelity Two-Step Image Generation via Teacher-Aligned End-to-End Distillation",
+    "abstract": "Few-step diffusion distillation has become increasingly mature for 4-8-step generation, yet pushing further to 2 steps remains challenging. In this work, we introduce Z-Image Turbo++, a high-quality 2-step image generation model distilled from the 8-step Z-Image Turbo teacher. Our method addresses the central bottlenecks of increased task difficulty and limited model capacity in 2-step generation through three simple but effective design choices tailored to this regime. First, we propose Distribution-Aligned Adversarial Learning, which uses teacher-generated images rather than external real images as real samples for GAN training, providing a more attainable and informative adversarial target. Second, we adopt Step-Decoupled Parameterization, assigning independent model parameters to the two denoising steps to better match their distinct capacity demands. Third, we perform End-to-End Training with Iterative Regularization, allowing the first step to receive gradients from final image quality while preserving a meaningful intermediate generation through an explicit step-1 loss. Together, these designs substantially narrow the quality gap between 2-step and 8-step generation in both qualitative and quantitative evaluations, highlighting the potential of carefully tailored distillation strategies for improving the quality-efficiency trade-off in few-step generation.",
+    "authors": [
+      "Dongyang Liu",
+      "Ruoyi Du",
+      "David Liu",
+      "Dengyang Jiang",
+      "Liangchen Li",
+      "Qilong Wu",
+      "Zhen Li",
+      "Steven C. H. Hoi",
+      "Hongsheng Li",
+      "Peng Gao"
+    ],
+    "published": "2026-06-10",
+    "updated": "2026-06-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.12575.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.12575",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过教师对齐的端到端蒸馏实现高保真两步图像生成",
+      "core_contribution": "提出了一种名为Z-Image Turbo++的两步图像生成模型，通过三种针对性设计显著缩小了两步生成与八步生成之间的质量差距，实现了高质量与高效率的更好平衡。",
+      "method": "首先，采用分布对齐对抗学习，使用教师模型生成的图像而非真实图像作为GAN训练的真实样本，提供更易达成的对抗目标。其次，采用步骤解耦参数化，为两个去噪步骤分配独立的模型参数，以匹配各自不同的容量需求。最后，进行带有迭代正则化的端到端训练，使第一步能接收来自最终图像质量的梯度，同时通过显式的第一步损失保留有意义的中间生成结果。",
+      "findings": "在定性和定量评估中，该方法显著缩小了两步生成与八步生成之间的质量差距，证明了针对两步生成精心设计的蒸馏策略能够有效改善少步生成中的质量-效率权衡。"
+    }
+  }
+]
