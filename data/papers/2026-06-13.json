@@ -1,0 +1,199 @@
+[
+  {
+    "id": "2606.11751",
+    "title": "AnchorEdit: Maintaining Temporal Consistency in Multi-turn Image Editing via Causal Memory",
+    "abstract": "Multi-turn image editing is essential for iterative design, yet current models often struggle with identity drift and error accumulation over successive steps. While existing research leverages video priors for consistency, their reliance on bidirectional attention is fundamentally misaligned with the causal, sequential nature of interactive editing. In this paper, we propose AnchorEdit, the first autoregressive (AR) diffusion-based framework designed specifically for high-resolution, long-term multi-turn editing. AnchorEdit bridges the gap between video priors and causal inference through a three-stage training curriculum: identity-preserving sing-turn pretraining, causal AR forcing fine-tuning with a novel self-rollout strategy to mitigate exposure bias, and consistency distillation for efficient 4-step generation. During inference, we introduce a memory mechanism to anchor the initial subject identity and ensure stable extrapolation across extended editing trajectories. To evaluate performance, we provide a new high-resolution multi-turn editing benchmark designed to stress-test long-horizon stability. Extensive experiments demonstrate that AnchorEdit achieves state-of-the-art results, maintaining exceptional subject fidelity and instruction following even over 10+ interaction rounds.",
+    "authors": [
+      "Hang Xu",
+      "Xiaoxiao Ma",
+      "Guohui Zhang",
+      "Yu Hu",
+      "Siming Fu",
+      "Jie Huang",
+      "Lin Song",
+      "Haoyang Huang",
+      "Nan Duan",
+      "Feng Zhao"
+    ],
+    "published": "2026-06-10",
+    "updated": "2026-06-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.11751.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.11751",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AnchorEdit：通过因果记忆保持多轮图像编辑中的时间一致性",
+      "core_contribution": "提出了首个自回归扩散框架AnchorEdit，专门用于高分辨率、长序列的多轮图像编辑，通过因果记忆机制有效解决了身份漂移和错误累积问题。",
+      "method": "该方法采用三阶段训练课程：首先进行保持身份的单轮预训练，然后通过自回归强制微调（结合自滚动策略缓解曝光偏差），最后进行一致性蒸馏以实现4步高效生成。在推理阶段，引入记忆机制锚定初始主体身份，确保在长编辑轨迹中稳定外推。",
+      "findings": "在提出的高分辨率多轮编辑基准测试中，AnchorEdit在超过10轮交互后仍能保持卓越的主体保真度和指令遵循能力，达到了最先进的性能水平。"
+    }
+  },
+  {
+    "id": "2606.11188",
+    "title": "ARM: An AutoRegressive Large Multimodal Model with Unified Discrete Representations",
+    "abstract": "This paper introduces ARM, a discrete representation-based AutoRegressive Model that unifies image understanding, generation, and editing within a next-token prediction framework. ARM is built on three efforts: first, we train a discrete semantic visual tokenizer that maps images into compact token sequences. Our tokenizer is supervised with multiple objectives that jointly promote semantic discriminability, language alignment and faithful reconstruction, thereby supporting diverse tasks in a shared latent space. With this, we train a 7B autoregressive model over large-scale text and image token sequences, seamlessly developing vision-language perception and generation capabilities. Finally, to further improve preference-aligned behavior for text-to-image generation and instruction-guided editing, ARM applies reinforcement learning (RL) to optimize task-level objectives such as visual quality, instruction adherence, and edit consistency. Surprisingly, the results show that RL not only substantially improves performance on the target tasks (e.g., raising WISE overall from 0.50 to 0.56, GEdit-Bench-EN G_O from 5.75 to 6.68), but also induces cross-task synergy between text-to-image generation and editing. Collectively, these findings highlight autoregressive modeling, when paired with strong representations and preference optimization, as a scalable foundation for multimodal intelligence. Code: https://github.com/wdrink/ARM.",
+    "authors": [
+      "Junke Wang",
+      "Xiao Wang",
+      "Jiacheng Pan",
+      "Xuefeng Hu",
+      "Feng Li",
+      "Jingxiang Sun",
+      "Chaorui Deng",
+      "Zilong Chen",
+      "Yunpeng Chen",
+      "Kaibin Tian",
+      "Matthew Gwilliam",
+      "Hao Chen",
+      "Danhui Guan",
+      "Kun Xu",
+      "Weilin Huang",
+      "Zuxuan Wu",
+      "Haoqi Fan",
+      "Yu-Gang Jiang",
+      "Zhenheng Yang"
+    ],
+    "published": "2026-06-09",
+    "updated": "2026-06-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.11188.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.11188",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ARM：一种基于统一离散表示的自回归大型多模态模型",
+      "core_contribution": "提出了一种基于离散表示的自回归多模态模型ARM，首次在统一的下一词预测框架中同时实现图像理解、生成和编辑任务，并通过强化学习进一步优化任务级偏好对齐。",
+      "method": "首先训练一个离散语义视觉分词器，通过多目标监督学习将图像映射为紧凑的离散标记序列，兼顾语义判别性、语言对齐和忠实重建。然后基于该分词器，在7B参数的自回归模型上联合训练大规模文本和图像标记序列，使模型同时具备视觉语言感知与生成能力。最后，针对文本到图像生成和指令引导编辑任务，应用强化学习优化视觉质量、指令遵循度和编辑一致性等任务级目标。",
+      "findings": "强化学习不仅显著提升了目标任务性能（如WISE整体得分从0.50提升至0.56，GEdit-Bench-EN的G_O从5.75提升至6.68），还意外地促进了文本到图像生成与编辑之间的跨任务协同效应，表明自回归建模结合强表示与偏好优化可作为多模态智能的可扩展基础。"
+    }
+  },
+  {
+    "id": "2606.11096",
+    "title": "IDEAL: In-DEpth ALignment Makes A Discrete Representation AutoEncoder",
+    "abstract": "Built on pretrained vision foundation models (VFMs), representation autoencoders (RAEs) have recently emerged as a promising approach for constructing semantically rich latent spaces for image generation. However, their reconstruction quality often remains suboptimal, largely because deep VFM representations do not preserve sufficient fine-grained visual detail. This limitation becomes even more severe after discretization, where missing low-level information is difficult to recover. In fact, we observe that shallow VFM features retain considerably richer local appearance and structural detail, which complements the high-level semantics carried by deep features used in existing RAEs. Motivated by this complementary property, we propose Ideal, an In-depth Alignment framework for discrete representation autoencoding. By jointly aligning quantized tokens with both shallow and deep VFM features, Ideal enables the resulting discrete visual tokens to preserve both visual fidelity and rich semantics. Extensive experiments demonstrate that Ideal yields superior reconstruction performance, achieving 0.61 rFID on ImageNet and outperforming the previous best method by 0.28. When used for autoregressive image generation, Ideal further produces a gFID of 1.89, establishing a new state of the art for autoregressive image generation.",
+    "authors": [
+      "Yitong Chen",
+      "Zijie Diao",
+      "Junke Wang",
+      "Lingyu Kong",
+      "Yixuan Ren",
+      "Bo He",
+      "Yu-Gang Jiang",
+      "Zuxuan Wu"
+    ],
+    "published": "2026-06-09",
+    "updated": "2026-06-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.11096.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.11096",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "IDEAL：深度对齐使离散表示自编码器更优",
+      "core_contribution": "提出了一种名为IDEAL的深度对齐框架，通过联合对齐量化后的离散视觉token与浅层和深层视觉基础模型特征，显著提升了离散表示自编码器的重建质量，并在自回归图像生成任务上取得了新的最优结果。",
+      "method": "该方法基于预训练视觉基础模型，构建了一个离散表示自编码器。核心创新在于引入深度对齐机制：在量化离散token后，同时将其与浅层VFM特征（保留丰富局部外观和结构细节）和深层VFM特征（携带高层语义）进行对齐，从而让离散视觉token同时保留视觉保真度和丰富语义。训练过程中通过联合优化重建损失和对齐损失来实现这一目标。",
+      "findings": "在ImageNet数据集上，IDEAL实现了0.61的rFID重建指标，比之前最优方法提升了0.28；用于自回归图像生成时，取得了1.89的gFID，创下了自回归图像生成领域的新纪录。实验表明，浅层与深层特征的互补性对提升离散表示质量至关重要。"
+    }
+  },
+  {
+    "id": "2606.10953",
+    "title": "Architect-Ant: Editable Automatic Furnishing of Architectural Floor Plans",
+    "abstract": "Furnished floor plans are fundamental to real estate visualization, interior design, and architectural workflows. However, progress in automatic furniture arrangement has been limited by the lack of real, professionally designed floor-plan datasets with object-level furniture annotations. To address this gap, we introduce AntPlan-270, a curated dataset of 270 architectural floor plans with per-room furniture bounding box annotations across ten residential room categories. Building on this dataset, we present Architect-Ant, an editable automatic furnishing framework powered by a fine-tuned vision-language model. Furniture layouts are represented using a compact, coordinate-based domain-specific language (DSL) that encodes object categories and placements relative to the room geometry. To improve spatial reasoning, we generate procedural reasoning traces that capture architectural constraints such as wall alignment, door and window clearance, circulation, fixture compatibility, and room-specific furniture inventories, and use them to supervise fine-tuning of the model. We then apply preference optimization over candidate object placements to further refine layout quality. The generated DSL can be rasterized into semantic masks and used to condition a Flux-based LoRA renderer, producing realistic blueprint-style furnished floor-plan images while preserving the editable symbolic layout. Experiments on layout furnishing show that Architect-Ant produces geometrically valid and functionally plausible layouts, and suggest a scalable path for furnishing larger structure-only floor-plan datasets.",
+    "authors": [
+      "Fedor Rodionov",
+      "Aleksandar Cvejic",
+      "Michael Birsak",
+      "John Femiani",
+      "Peter Wonka"
+    ],
+    "published": "2026-06-09",
+    "updated": "2026-06-09",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.10953.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.10953",
+    "primary_category": "cs.AI",
+    "score": 85,
+    "summary": {
+      "title_zh": "建筑师蚂蚁：可编辑的建筑平面图自动家具布置",
+      "core_contribution": "提出了AntPlan-270数据集（首个带逐房间家具边界框标注的真实专业平面图数据集）和Architect-Ant框架，实现了基于视觉语言模型的可编辑自动家具布局生成。",
+      "method": "首先构建了包含270张专业平面图的数据集AntPlan-270，并为每个房间标注了家具边界框。然后使用紧凑的坐标式领域特定语言（DSL）表示家具布局，并生成包含墙对齐、门窗避让等建筑约束的推理轨迹，用于微调视觉语言模型。最后通过偏好优化进一步改善布局质量，并将生成的DSL光栅化为语义掩码，结合Flux-based LoRA渲染器生成逼真的蓝图风格平面图。",
+      "findings": "实验表明，Architect-Ant能够生成几何有效且功能合理的家具布局，为大规模结构平面图的自动家具布置提供了一条可扩展的路径。"
+    }
+  },
+  {
+    "id": "2606.10894",
+    "title": "The 1st PortraitCraft Challenge: A CVPR 2026 Workshop Competition on Portrait Composition Understanding and Generation",
+    "abstract": "This paper presents an overview of the inaugural PortraitCraft Challenge, held as one of the official competitions at CVPR 2026. The challenge focuses on portrait composition understanding and generation, aiming to advance AI research in portrait aesthetics analysis and controllable image synthesis. Unlike existing datasets and tasks that primarily focus on global aesthetic scoring, PortraitCraft introduces a unified evaluation framework comprising two complementary tracks. Track 1 requires models to perform structured portrait composition understanding, and Track 2 requires models to generate portrait images from structured composition descriptions under explicit compositional constraints. To support the challenge, we constructed and publicly released a large-scale portrait composition dataset consisting of approximately 50,000 curated real portrait images, providing multi-level supervision. This report describes the challenge setup, evaluation protocols, dataset composition, and final results, along with an analysis of the technical characteristics of the submitted solutions. The PortraitCraft Challenge provides a standardized and reproducible platform for research on portrait composition understanding and generation, and is expected to foster further progress in the fields of portrait aesthetics and controllable image generation.",
+    "authors": [
+      "Zijie Lou",
+      "Youyun Tang",
+      "Xiaochao Qu",
+      "Haoxiang Li",
+      "Ting Liu",
+      "Luoqi Liu",
+      "Xun Zhu",
+      "Zheng Zhang",
+      "Xi Chen",
+      "Miao Li",
+      "Ji Wu",
+      "Dizhe Zhang",
+      "Xian Ge",
+      "Sujia Wang",
+      "Ruiyang Zhang",
+      "Jiaming Wang",
+      "Xianshun Wang",
+      "Lu Qi",
+      "Boao Kang",
+      "Wei Zhou",
+      "Jinghui Sun",
+      "Zhenyu Yan",
+      "Jiliang Zhao",
+      "Rui Yang",
+      "Yipo Huang",
+      "Boyuan Liu",
+      "Shanglin Li",
+      "Zifan Xie",
+      "Yichen Zhang",
+      "Anlan Wang",
+      "Wenfeng Lin",
+      "Mingyu Guo",
+      "Dong Li",
+      "Xinghao Wang",
+      "Yanting Li",
+      "Shanzhao Tong",
+      "Shuai He",
+      "Qiu Zhou",
+      "Yongqi Yang",
+      "Taoyang Mu",
+      "Dianqiao Lei",
+      "Anlong Ming",
+      "Huadong Ma"
+    ],
+    "published": "2026-06-09",
+    "updated": "2026-06-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.10894.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.10894",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "首届PortraitCraft挑战赛：CVPR 2026研讨会关于肖像构图理解与生成的竞赛",
+      "core_contribution": "提出了首个面向肖像构图理解与生成的统一评估框架，并构建并公开了一个包含约5万张真实肖像图像的大规模数据集，为肖像美学分析和可控图像生成提供了标准化研究平台。",
+      "method": "挑战赛包含两个互补赛道：Track 1要求模型进行结构化肖像构图理解，Track 2要求模型根据结构化构图描述在显式构图约束下生成肖像图像。为此，构建了一个包含约5万张精选真实肖像图像的数据集，提供多层级标注。评估协议涵盖构图理解准确性和生成图像质量等指标。",
+      "findings": "挑战赛成功吸引了多个参赛方案，通过对提交方案的技术特征分析，验证了所提出的统一评估框架的有效性，并表明该数据集和任务设置能够推动肖像美学分析与可控图像生成领域的进一步进展。"
+    }
+  }
+]
