@@ -1,0 +1,145 @@
+[
+  {
+    "id": "2606.14700",
+    "title": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
+    "abstract": "Large language models (LLMs) are widely used in text-to-image (T2I) systems, but they are typically limited to text encoding, while denoising is handled by newly trained generative backbones. The emergence of representation autoencoders (RAEs) shifts the generation target toward semantically structured visual representations, creating a latent space that is more compatible with pretrained LLM priors. Inspired by multimodal LLMs (MLLMs), where an MLP projector is sufficient to align clean visual representations with a pretrained LLM, we repurpose the MLLM itself as a noisy representation encoder, extending this mechanism from clean to noisy inputs. We present RepFusion, which uses the resulting MLLM outputs as the conditioning signal for a diffusion transformer. In controlled comparisons at similar inference budgets, RepFusion outperforms baselines that devote comparable capacity to newly initialized denoisers. These results demonstrate that MLLMs provide strong priors for denoising visual representations and that, by conditioning on evolving noisy representations, test-time compute can be productively spent on repeated MLLM conditioning in modern T2I systems.",
+    "authors": [
+      "Xichen Pan",
+      "Aashu Singh",
+      "Satya Narayan Shukla",
+      "Xiangjun Fan",
+      "Shlok Kumar Mishra",
+      "Saining Xie"
+    ],
+    "published": "2026-06-12",
+    "updated": "2026-06-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.14700.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.14700",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RepFusion：利用多模态先验在表示空间中进行去噪",
+      "core_contribution": "提出RepFusion方法，首次将多模态大语言模型（MLLM）本身作为噪声表示编码器，利用其强大的先验知识直接对噪声视觉表示进行去噪，从而在文本到图像生成中替代传统新训练的去噪骨干网络。",
+      "method": "RepFusion基于表示自编码器（RAE）框架，将生成目标转向语义结构化的视觉表示。受多模态大语言模型（MLLM）启发，该方法将MLLM重新用作噪声表示编码器，通过MLP投影器将噪声视觉表示与预训练LLM对齐，并利用MLLM的输出作为扩散Transformer的条件信号，从而在表示空间中进行迭代去噪。",
+      "findings": "在相似推理预算下的控制对比实验中，RepFusion优于将同等容量分配给新初始化解码器的基线方法。结果表明，MLLM为视觉表示去噪提供了强先验，并且通过条件化于不断演化的噪声表示，测试时的计算可以有效地用于现代T2I系统中重复的MLLM条件化过程。"
+    }
+  },
+  {
+    "id": "2606.14657",
+    "title": "HPSv3++: Scaling Reward Models Across the Full Spectrum of Diffusion Model Capabilities",
+    "abstract": "Reward models guide text-to-image (T2I) systems toward outputs aligned with human preferences. However, typical reward models such as HPSv3 are trained on pre-annotated data from earlier T2I models, without accounting for quality discriminative shifts arising from evolving model capabilities and reinforcement learning (RL) iterations, limiting their broader applicability. In this work, we propose HPSv3++, a reward model framework that elevates the HPSv3 model for varying T2I model capabilities and their RL iteration changes across the full capability-iteration spectrum. Specifically, we first introduce HPDv3++, a 212K dual-dimension preference dataset annotated for text fidelity and aesthetic quality using a recent high-capability (Qwen-Image) model with human supervision. We then propose a two-stage training framework. Stage 1 employs data-aware orthogonal gradient projection to incorporate diverse aesthetic perception from HPDv3++ while preserving the original effective human preference knowledge in HPSv3. Stage 2 further leverages unlabeled data from T2I models spanning different capability levels and RL iterations, and introduces a joint capability-iterations conditioned signal for the reward model together with a standard deviation-driven unsupervised guidance mechanism, strengthening reward model across the capability-iteration spectrum. HPSv3++ achieves state-of-the-art preference prediction, outperforming HPSv3 9.8% on HPDv3, 5.5% on GenAI-Bench, while achieving 79.1%/88.1% on our proposed HPDv3++. When used for T2I RL training, it consistently improves GenEval scores across diverse T2I models, demonstrating its wide-range capabilities. The code is available at https://github.com/PlantPotatoOnMoon/HPSv3-PlusPlus.",
+    "authors": [
+      "Yijun Liu",
+      "Jie Huang",
+      "Zeyue Xue",
+      "Yuming Li",
+      "Ruizhe He",
+      "Haoran Li",
+      "Shijia Ge",
+      "Siming Fu"
+    ],
+    "published": "2026-06-12",
+    "updated": "2026-06-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.14657.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.14657",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "HPSv3++：跨扩散模型能力全谱系扩展奖励模型",
+      "core_contribution": "提出HPSv3++奖励模型框架，通过构建双维度偏好数据集和两阶段训练方法，使奖励模型能够适应不同能力水平的文本到图像模型及其强化学习迭代变化，显著提升偏好预测和生成质量。",
+      "method": "首先构建包含21.2万条样本的HPDv3++数据集，使用高能力模型Qwen-Image结合人工监督对文本保真度和美学质量进行双维度标注。然后采用两阶段训练框架：第一阶段通过数据感知的正交梯度投影，在保留HPSv3原有偏好知识的同时融入HPDv3++的美学感知；第二阶段利用来自不同能力水平和RL迭代的未标注数据，引入联合能力-迭代条件信号和标准差驱动的无监督引导机制，增强奖励模型在全谱系上的泛化能力。",
+      "findings": "HPSv3++在偏好预测上达到最先进水平，在HPDv3上比HPSv3提升9.8%，在GenAI-Bench上提升5.5%，在提出的HPDv3++上达到79.1%/88.1%。用于T2I强化学习训练时，能持续提升多种不同能力水平T2I模型的GenEval分数，证明了其广泛的适用性。"
+    }
+  },
+  {
+    "id": "2606.14025",
+    "title": "GarmentSketch: Large-scale Sketch-to-Fashion Benchmark",
+    "abstract": "Fashion sketching is a cornerstone of design workflows, allowing rapid visualization of creative concepts prior to physical prototyping. Yet, progress in sketch-based fashion image synthesis has been hindered by the absence of large-scale, high-quality paired resources. To bridge this gap, we present GarmentSketch, a novel dataset comprising 26,249 fashion sketches across 21 garment categories, each paired with detailed textual descriptions. Captions were produced through a multi-stage pipeline that integrates multiple multimodal large language models (MLLMs) with human-in-the-loop refinement, ensuring both semantic accuracy and descriptive richness. We benchmark GarmentSketch on state-of-the-art generative models, providing baseline performance for sketch-guided text-to-image generation. Our experiments reveal both the promise and the current limitations of existing methods. By offering a comprehensive and richly annotated resource, GarmentSketch establishes a foundation for advancing sketch understanding, fine-grained fashion image generation, and creative human-AI collaboration in design. The dataset will be available at: https://khangbdd.github.io/garmentsketch.",
+    "authors": [
+      "Duong-Duy-Khang Bui",
+      "Minh-Tan Pham",
+      "Tam V. Nguyen",
+      "Minh-Triet Tran",
+      "Trung-Nghia Le"
+    ],
+    "published": "2026-06-12",
+    "updated": "2026-06-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.14025.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.14025",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GarmentSketch：大规模草图到时尚图像的基准数据集",
+      "core_contribution": "提出了首个大规模、高质量、带详细文本描述的时尚草图数据集GarmentSketch，填补了草图引导的时尚图像合成领域缺乏配对资源的空白，并为该任务提供了基准性能评估。",
+      "method": "首先收集了涵盖21个服装类别的26,249张时尚草图，然后通过一个多阶段流水线生成文本描述：该流水线集成了多个多模态大语言模型（MLLMs），并结合人工循环优化，以确保语义准确性和描述丰富性。最后，在多个最先进的生成模型上对数据集进行基准测试，评估草图引导的文本到图像生成性能。",
+      "findings": "实验揭示了现有生成模型在草图引导时尚图像合成中的潜力与当前局限性，表明GarmentSketch能够有效推动草图理解、细粒度时尚图像生成以及人机创意协作设计的发展。"
+    }
+  },
+  {
+    "id": "2606.13964",
+    "title": "CaricHarmony: Contrastive Diffusion Paths for Identity-Preserving Caricature Synthesis",
+    "abstract": "Sketch-based caricature synthesis suffers from a fundamental failure mode: when identity and shape conditions are combined in diffusion models, they create destructive interference that causes inevitable collapse toward either bland portraits or unrecognizable distortions. We identify the root cause as \\emph{condition signal contamination} -- competing probability distributions in the denoising trajectory that make balanced generation impossible. We present CaricHarmony, the first training-free method that explicitly resolves this contamination through parallel uncontaminated diffusion paths. During inference, we maintain three paths: $\\mathcal{P}^{\\mathrm{i}}$ (pure identity), $\\mathcal{P}^{\\mathrm{s}}$ (pure shape), and $\\mathcal{P}^{\\mathrm{i+s}}$ (harmonized output). Novel energy functions operating on cross-attention features provide gradient guidance that steers $\\mathcal{P}^{\\mathrm{i+s}}$ toward optimal balance: $\\mathcal{E}_{\\mathrm{shape}}$ ensures sketch fidelity through layout and semantic alignment, while $\\mathcal{E}_{\\mathrm{id}}$ employs token-level correspondence matching robust to extreme distortions. Unlike DemoCaricature requiring 70 seconds per-identity fine-tuning or CaricatureBooth constrained to Bezier curves, CaricHarmony accepts any sketch format and generates in under 16 seconds. Experiments demonstrate state-of-the-art performance: 0.8615 shape CLIP score (vs. 0.8450) under comparable identity consistency score, with 7.81 overall user preference score (vs. 6.06). Our method fundamentally reconceptualizes the ID-shape conflict as conditioning signal contamination for diffusion models, enabling unprecedented creative control while preserving recognition.",
+    "authors": [
+      "Dongyu Wang",
+      "Dar-Yen Chen",
+      "Yi-Zhe Song"
+    ],
+    "published": "2026-06-11",
+    "updated": "2026-06-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.13964.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.13964",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CaricHarmony：面向身份保持的漫画合成的对比扩散路径",
+      "core_contribution": "提出了CaricHarmony，首个无需训练即可解决扩散模型中身份与形状条件信号污染问题的方法，通过并行无污染扩散路径实现平衡的漫画生成，同时保持身份可识别性。",
+      "method": "该方法在推理时维护三条并行扩散路径：纯身份路径、纯形状路径和融合输出路径。通过设计基于交叉注意力特征的能量函数，对融合路径进行梯度引导：形状能量函数确保草图布局与语义对齐，身份能量函数采用令牌级对应匹配以应对极端形变。该方法无需任何预训练或微调，可接受任意草图格式。",
+      "findings": "实验表明，CaricHarmony在形状CLIP分数上达到0.8615（对比基线0.8450），在身份一致性相当的情况下实现更优性能；用户偏好评分达7.81（对比基线6.06）。生成时间仅需16秒，远优于需要70秒微调的DemoCaricature方法，且不受贝塞尔曲线限制。"
+    }
+  },
+  {
+    "id": "2606.13898",
+    "title": "HiLo-Token: Input-Adaptive High-Low Frequency Token Compression for Efficient Image Editing",
+    "abstract": "Creative image editing tools, such as Photoshop's Remove or Generative Fill buttons, are central to everyday customer use and account for a major share of traffic in Photoshop and Lightroom. However, current generative AI models face significant latency challenges, which become even more pronounced when transitioning from convolution-based U-Nets to Diffusion Transformers (DiTs). In our evaluation on hundreds of representative image editing samples spanning a wide range of mask ratios, the DiT module alone accounts for an average of 73% of the total model latency, even after being distilled from 50 timesteps down to 8 timesteps. To tackle this challenge, we propose $\\textbf{HiLo-Token}$, an input-adaptive token compression framework that allocates more token budget to high-frequency, rich-context regions while assigning fewer tokens to low-frequency areas. Specifically, for the editing region specified by the user mask, we retain all tokens within a dilated mask to preserve strong locality and contextual relevance. Outside the editing region, we introduce a simple yet effective high-frequency token selection strategy based on spatial frequency to capture important local details, while using tokens from a 16x downsampled image to represent low-frequency components and preserve the blurry but global structure. Extensive experiments on production-level evaluation data validate the effectiveness of the proposed method, achieving 3.13x, 2.59x, and 1.67x DiT speedups on A100-80GB for image editing tasks across small, medium, and large mask ratio categories with average ratios of 6.38%, 15.92%, and 35.36%, respectively, without any regression in generation quality.",
+    "authors": [
+      "Haoran You",
+      "Yotam Nitzan",
+      "Lingzhi Zhang",
+      "Yifan Gong",
+      "Mang-Tik Chiu",
+      "Connelly Barnes",
+      "Yan Kang",
+      "Yuqian Zhou",
+      "Eli Shechtman",
+      "Sohrab Amirghodsi"
+    ],
+    "published": "2026-06-11",
+    "updated": "2026-06-11",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.13898.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.13898",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "HiLo-Token：面向高效图像编辑的输入自适应高低频令牌压缩",
+      "core_contribution": "提出了一种输入自适应的令牌压缩框架HiLo-Token，通过根据图像区域的空间频率动态分配令牌预算，在不牺牲生成质量的前提下显著加速基于扩散变换器（DiT）的图像编辑任务。",
+      "method": "该方法针对用户指定的编辑区域，保留膨胀掩码内的所有令牌以保持局部上下文；在编辑区域外，采用基于空间频率的高频令牌选择策略捕捉重要细节，同时使用16倍下采样图像的令牌表示低频成分以保留模糊但全局的结构信息。通过这种高低频分离与自适应分配，实现了令牌数量的有效压缩。",
+      "findings": "在涵盖小、中、大三种掩码比例（平均6.38%、15.92%、35.36%）的生产级图像编辑样本上，HiLo-Token在A100-80GB GPU上分别实现了3.13倍、2.59倍和1.67倍的DiT模块加速，且生成质量无退化。"
+    }
+  }
+]
