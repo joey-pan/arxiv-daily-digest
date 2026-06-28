@@ -1,0 +1,160 @@
+[
+  {
+    "id": "2606.27377",
+    "title": "DanceOPD: On-Policy Generative Field Distillation",
+    "abstract": "Modern image generation demands a single model that unifies diverse capabilities, including text-to-image (T2I), local editing, and global editing. However, these capabilities are rarely naturally aligned and often conflict. For instance, editing tends to degrade T2I performance, while global and local editing interfere with each other. Consequently, effectively composing these capabilities has become a central challenge for image generation model training. To tackle this, we introduce DanceOPD, an on-policy generative field distillation framework for flow-matching models that routes each sample to one capability field, queries one low-noise student-induced state, and trains with a simple velocity MSE objective. With each capability source defined as a velocity field over the shared flow state space, the student learns from fields queried on its own rollout states to compose expert capabilities. This formulation also absorbs operator-defined fields such as classifier-free guidance. Comprehensive experiments on T2I, editing, realism-field absorption, and CFG absorption show that our approach improves multi-capability composition, strengthening target capabilities while preserving anchor generation quality. We believe this work establishes a practical route for generative field distillation in flow-matching models.",
+    "authors": [
+      "Wei Zhou",
+      "Xiongwei Zhu",
+      "Zelin Xu",
+      "Bo Dong",
+      "Lixue Gong",
+      "Yongyuan Liang",
+      "Meng Chu",
+      "Leigang Qu",
+      "Lingdong Kong",
+      "Wei Liu",
+      "Tat-Seng Chua"
+    ],
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "categories": [
+      "cs.CV",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.27377.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.27377",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DanceOPD：基于策略的生成场蒸馏",
+      "core_contribution": "提出了一种名为DanceOPD的在线策略生成场蒸馏框架，用于流匹配模型，能够有效融合文本到图像生成、局部编辑和全局编辑等多种能力，解决它们之间的相互干扰问题。",
+      "method": "该方法将每种能力（如T2I、编辑）定义为共享流状态空间上的速度场，并在训练时对每个样本路由到对应的能力场，查询学生模型自身生成的低噪声状态，使用简单的速度均方误差目标进行训练。通过从学生自身的轨迹状态中查询专家场，实现了多能力组合学习，并能够吸收如无分类器引导等操作定义场。",
+      "findings": "在T2I、编辑、真实感场吸收和CFG吸收等综合实验表明，DanceOPD显著提升了多能力组合性能，在增强目标能力的同时保持了锚点生成质量，为流匹配模型中的生成场蒸馏提供了一条实用路径。"
+    }
+  },
+  {
+    "id": "2606.27313",
+    "title": "ViQ: Text-Aligned Visual Quantized Representations at Any Resolution",
+    "abstract": "A unified representation for text and vision is a natural pursuit, as it enables simpler multimodal modeling and more efficient training. However, representing images as discrete signals in the same way as text inevitably introduces severe information loss. Existing work struggles to balance low-level details and high-level semantics in discrete representations: reconstruction-oriented representations often lack semantic information, whereas semantically stronger features typically suffer from severe loss of detail. We present ViQ, a Visual Quantized Representations framework, which is designed to balance semantics and details in discrete representations while supporting inputs at native resolutions, thereby enabling it to serve as a unified and general discrete representation for arbitrary visual inputs. Our approach structures quantization learning into two stages: text-aligned pre-training and feature discretization. With text-aligned pre-training, we enhance the visual encoder semantic-rich supervision from the pretrained language model and enable it to process native-resolution visual inputs. During discretization, we propose a proximal representation learning strategy to progressively compact the feature space, along with a position-aware head-wise quantization mechanism that enables flexible processing of arbitrary resolutions. Extensive experiments on multimodal tasks demonstrate that ViQ achieves competitive performance compared to state-of-the-art multimodal vision encoders with continuous and high-dimensional visual features, while maintaining high precision in low-level reconstruction. We also show that multimodal training with visual quantized representations largely improves efficiency, yielding up to 20\\%-70\\% acceleration with different base LLMs and training recipes.",
+    "authors": [
+      "Xumin Yu",
+      "Zuyan Liu",
+      "Zhenyu Yang",
+      "Yuhao Dong",
+      "Shengsheng Qian",
+      "Jiwen Lu",
+      "Han Hu",
+      "Yongming Rao"
+    ],
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.27313.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.27313",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ViQ：任意分辨率下的文本对齐视觉量化表示",
+      "core_contribution": "提出ViQ框架，首次在离散视觉表示中同时平衡高层语义与低层细节，并支持任意原生分辨率输入，实现了统一且通用的视觉离散表示。",
+      "method": "ViQ将量化学习分为两个阶段：文本对齐预训练和特征离散化。在预训练阶段，利用预训练语言模型提供语义丰富的监督信号，增强视觉编码器并使其能处理原生分辨率输入；在离散化阶段，提出邻近表示学习策略逐步压缩特征空间，并设计位置感知的头式量化机制，灵活处理任意分辨率。",
+      "findings": "在多模态任务上，ViQ的离散表示性能与使用连续高维特征的先进视觉编码器相当，同时保持高精度的低层重建；此外，基于ViQ的多模态训练可显著提升效率，在不同基础大语言模型和训练方案下实现20%-70%的加速。"
+    }
+  },
+  {
+    "id": "2606.27192",
+    "title": "LISA: Likelihood Score Alignment for Visual-condition Controllable Generation",
+    "abstract": "The prevalent dual-branch paradigm, i.e., training a side network to encode visual conditions and fusing its intermediate-layer features to a frozen pretrained main network, has shown remarkable success in visual-condition controllable generation. Despite its widespread adoption, the role of the side branch and its training efficiency remain underexplored. In this paper, we first revisit this mainstream paradigm through the lens of score-based generative modeling: 1) The main network preserves visual perceptual quality by providing a prior unconditional score. 2) The side network steers conditional control by implicitly contributing a likelihood score. Guided by this perspective, we propose LIkelihood Score Alignment (LISA), an effective regularization method that explicitly aligns the intermediate feature of the side network with an approximated likelihood score. Specifically, we first hook features from a designated layer of the side network and project them into the score latent space by a lightweight decoder. Then, we construct an approximated likelihood score target and calculate the distance between the decoder's output and this target as an additional regularization loss. Finally, we jointly optimize the side network and decoder with both standard diffusion loss and our regularization loss. Experiments across various image/video tasks, architectures, and diffusion/flow models demonstrated that LISA can not only consistently accelerate the training convergence and improve final synthetic results, but also encourage the side network's features to be more disentangled for conditional modeling with negligible additional training cost and zero extra inference cost.",
+    "authors": [
+      "Yanghao Wang",
+      "Hongxu Chen",
+      "Jiazhen Liu",
+      "Zhenqi He",
+      "Rui Liu",
+      "Zhen Wang",
+      "Long Chen"
+    ],
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.27192.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.27192",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LISA：面向视觉条件可控生成的似然分数对齐方法",
+      "core_contribution": "本文从分数生成模型的角度重新审视了主流双分支范式，提出了一种名为LISA的正则化方法，通过显式对齐侧网络中间特征与近似似然分数，显著加速了训练收敛并提升了生成质量，且几乎不增加额外训练成本与零推理开销。",
+      "method": "首先，从侧网络的指定层中钩取特征，并通过轻量级解码器将其投影到分数潜空间；然后，构造一个近似的似然分数目标，计算解码器输出与该目标之间的距离作为额外的正则化损失；最后，联合优化侧网络和解码器，同时使用标准扩散损失和该正则化损失。该方法在多种图像/视频任务、架构和扩散/流模型上均有效。",
+      "findings": "实验表明，LISA不仅能够一致地加速训练收敛并改善最终合成结果，还能促使侧网络的特征在条件建模中更具解耦性，且仅需忽略不计的额外训练成本，推理时无需任何额外开销。"
+    }
+  },
+  {
+    "id": "2606.27089",
+    "title": "TMP: Tree-structured Mixed-policy Pruning for Large-scale Image Generation and Editing",
+    "abstract": "Modern image generation model rapidly grows their sizes to meet high-fidelity image synthesis. However, they gradually become unaffordable for their enormous parameter consumption and computation budget that lead to massive resources requirement and gpu memory footprint. In this paper, we propose TMP, the first Tree-structured Mixed-policy Pruning framework that generalizes prevalent image tasks (T2I and TI2I) and architectures (Mixture-of-Experts (MoE) and Diffusion transformer (DiT)). It could be applied to the step-distilled models and contribute as the last stage. We perform experiments upon current open-sourced SOTA HunyuanImage-3.0 instruct and a popular efficient model Z-Image turbo. The proposed pruning framework manages to compress HunyuanImage 3.0 from 80B to 20B parameters at 75% reduction ratio, sacrificing limited generation quality. We also optimize to enable the inference of the pruned 20B version of HunyuanImage 3.0 on a single 24GB 4090 GPU by engineering skills. The inference script and model weight have been integrated into the existing HunyuanImage3.0 open-source github and huggingface repository. Besides, we prove the efficacy of TMP by compressing Z-Image turbo from 6B to 4B (33% reduction) with negligible degradation.",
+    "authors": [
+      "Peizhen Zhang",
+      "Yang Li",
+      "Xunsong Li",
+      "Songtao Liu",
+      "Zewen Liu",
+      "Qiangqiang Hu",
+      "Guotong Guo",
+      "Jupeng Ding",
+      "Yifu Sun",
+      " coopersli",
+      "Jian Zhang",
+      "Zhao Zhong",
+      "Liefeng Bo"
+    ],
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.27089.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.27089",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TMP：面向大规模图像生成与编辑的树状结构混合策略剪枝框架",
+      "core_contribution": "提出了首个通用的树状结构混合策略剪枝框架TMP，能够高效压缩大规模图像生成模型（如HunyuanImage 3.0和Z-Image turbo），在显著减少参数量的同时保持生成质量，并支持在消费级GPU上运行。",
+      "method": "TMP采用树状结构混合策略剪枝方法，结合了多种剪枝策略（如结构化剪枝、混合专家路由剪枝等），以层次化方式对模型进行压缩。该方法适用于扩散Transformer（DiT）和混合专家（MoE）架构，并能应用于步骤蒸馏后的模型作为最后优化阶段。通过工程优化，进一步降低了推理时的GPU内存占用。",
+      "findings": "在HunyuanImage 3.0上，TMP实现了从80B参数压缩至20B（75%缩减），生成质量损失有限，且压缩后的20B版本可在单张24GB 4090 GPU上推理。在Z-Image turbo上，从6B压缩至4B（33%缩减），性能退化可忽略。实验证明了TMP在不同规模模型和任务（T2I和TI2I）上的有效性和通用性。"
+    }
+  },
+  {
+    "id": "2606.26938",
+    "title": "Focusing on What Matters: Saliency-Harnessing Accurate Routing for Diffusion MoE",
+    "abstract": "Mixture-of-Experts (MoE) architectures have emerged as a powerful paradigm for scaling diffusion models in visual generation. Recent advancements have focused on adaptively allocating computational resources across diverse tokens to improve efficiency and performance. However, we identify a routing assignment problem in existing diffusion MoE frameworks: the router fails to accurately allocate more computational resources to salient tokens. Our analysis attributes this failure to the router's reliance on noise-corrupted latent features throughout the denoising process. Such stochastic noise obscures the critical structural and textural information, thereby preventing the router from effectively distinguishing salient tokens. To address this, we propose SharpMoE, a post-training framework with a saliency-harnessing accurate routing mechanism, which utilizes clean latent features as a noise-free guidance signal for routing. By bypassing the noise-distorted inputs, SharpMoE provides the router with clear saliency guidance, enabling the identification of salient tokens even in high-noise stages. Furthermore, we introduce a trajectory routing loss to constrain the compute allocation throughout the multi-step denoising trajectory, ensuring precise resource allocation along the generation rollout. Extensive experiments demonstrate that SharpMoE serves as a versatile, plug-and-play solution that further enhances the pretrained, converged MoE models, achieving state-of-the-art performance in visual generation.",
+    "authors": [
+      "Haoyou Deng",
+      "Keyu Yan",
+      "Chaojie Mao",
+      "Xiang Wang",
+      "Yu Liu",
+      "Changxin Gao",
+      "Nong Sang"
+    ],
+    "published": "2026-06-25",
+    "updated": "2026-06-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2606.26938.pdf",
+    "abs_url": "https://arxiv.org/abs/2606.26938",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "聚焦关键：面向扩散MoE的显著性引导精确路由机制",
+      "core_contribution": "提出SharpMoE框架，通过利用干净潜在特征作为无噪声引导信号，解决了扩散MoE模型中路由无法准确为显著令牌分配计算资源的问题，实现了后训练阶段即插即用的性能提升。",
+      "method": "首先，SharpMoE在去噪过程中引入干净潜在特征作为路由的噪声无关引导，使路由器即使在噪声较高的阶段也能识别显著令牌。其次，设计轨迹路由损失函数，约束多步去噪轨迹中的计算资源分配，确保生成过程中资源分配的精确性。该方法作为后训练框架，可直接应用于预训练收敛的MoE模型。",
+      "findings": "实验表明，SharpMoE作为通用即插即用方案，能显著增强预训练MoE模型的性能，在视觉生成任务上达到最先进水平，验证了其解决路由分配问题及提升资源分配准确性的有效性。"
+    }
+  }
+]
