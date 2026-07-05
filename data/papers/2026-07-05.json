@@ -1,0 +1,153 @@
+[
+  {
+    "id": "2607.02375",
+    "title": "Representation Distribution Matching for One-Step Visual Generation",
+    "abstract": "We elucidate the design space of Representation Distribution Matching (RDM), our name for the paradigm that trains a one-step image generator by matching generated and reference feature distributions under frozen pretrained encoders. We identify two design axes, how the distributions are compared and the representations they are compared in, and controlled studies along them yield three findings. First, the classical MMD, which could not train convincing generators a decade ago, becomes a strong and scalable objective once estimated right. Second, the generated batch is then the operative variable, with an optimum above 2048, far beyond customary batch sizes. Third, any single representation can be gamed, driven below the real score while images stay visibly fake, so we match against a balanced battery of encoders and evaluate with SW_r14, a Sliced-Wasserstein distance over 14 encoders that is independent of the training loss and resists gaming. Combining the preferred choices yields improved RDM (iRDM): it sets the one-step state of the art on ImageNet at SW_r14 1.30, corroborated by PickScore, a human-preference proxy our objective never optimizes, which prefers it over the prior best one-step generator on 71.2% of matched samples. The same recipe post-trains the four-step FLUX.2 [klein] into a one-step generator, surpassing the four-step version on GenEval, 0.826 to 0.794, and on PickScore, 22.76 to 22.58, in 90 H200 GPU-hours. Project page: https://alan-lanfeng.github.io/rdm/.",
+    "authors": [
+      "Lan Feng",
+      "Wuyang Li",
+      "Eloi Zablocki",
+      "Matthieu Cord",
+      "Alexandre Alahi"
+    ],
+    "published": "2026-07-02",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.02375.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.02375",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "表示分布匹配：用于一步视觉生成",
+      "core_contribution": "本文系统性地探索了表示分布匹配（RDM）这一范式，通过优化分布比较方式和表示空间选择，提出改进版iRDM，在一步图像生成任务上达到当前最优性能，并能将多步扩散模型高效蒸馏为一步生成器。",
+      "method": "该方法在冻结的预训练编码器下，通过匹配生成图像与参考图像的特征分布来训练一步生成器。研究沿两个设计轴展开：分布比较方式（如MMD、Sliced-Wasserstein距离）和表示空间（不同编码器）。通过控制实验，发现经典MMD在正确估计后成为可扩展的强目标，且生成批次大小需超过2048才能达到最优。为避免单一表示被“钻空子”，采用多个编码器的平衡组合，并用SW_r14（基于14个编码器的切片Wasserstein距离）作为独立评估指标。",
+      "findings": "iRDM在ImageNet上以SW_r14 1.30达到一步生成最优，且被人类偏好代理指标PickScore在71.2%的样本中偏好于此前最佳一步生成器。将四步FLUX.2模型后训练为一步生成器后，在GenEval（0.826 vs 0.794）和PickScore（22.76 vs 22.58）上均超越原四步版本，仅需90 H200 GPU小时。"
+    }
+  },
+  {
+    "id": "2607.02291",
+    "title": "Optimizing Visual Generative Models via Distribution-wise Rewards",
+    "abstract": "Conventional reinforcement learning strategies for visual generation typically employ sample-wise reward functions, yet this practice frequently results in reward hacking that degrades image diversity and introduces visual anomalies. To address these limitations, we present a novel framework that finetunes generative models using distribution-wise rewards, ensuring better alignment with real-world data distributions. Unlike rewards that evaluate samples individually, distribution-wise reward accounts for the data distribution of the samples, mitigating the mode collapse problem that occurs when all samples optimize towards the same direction independently. To overcome the prohibitive computational cost of estimating these rewards, we introduce a subset-replace strategy that efficiently provides reward signals by updating only a small subset of a generated reference set. Additionally, we apply RL to optimize post-hoc model merging coefficients, potentially mitigating the train-inference inconsistency caused by introducing stochastic differential equation (SDE) in regular RL practices. Extensive experiments show our approach significantly improves FID-50K across various base models, from 8.30 to 5.77 for SiT and from 3.74 to 3.52 for EDM2. Qualitative evaluation also confirms that our method enhances perceptual quality while preserving sample diversity.",
+    "authors": [
+      "Ruihang Li",
+      "Mengde Xu",
+      "Shuyang Gu",
+      "Leigang Qu",
+      "Fuli Feng",
+      "Han Hu",
+      "Wenjie Wang"
+    ],
+    "published": "2026-07-02",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.02291.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.02291",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过分布级奖励优化视觉生成模型",
+      "core_contribution": "提出了一种基于分布级奖励的微调框架，解决了传统样本级奖励导致的奖励破解和模式崩溃问题，显著提升了生成模型的图像质量与多样性。",
+      "method": "该方法使用分布级奖励替代样本级奖励，通过评估生成样本的整体数据分布而非单个样本，来避免模式崩溃。为降低计算成本，引入子集替换策略，仅更新生成参考集中的一小部分样本以高效提供奖励信号。此外，采用强化学习优化后验模型合并系数，缓解了常规强化学习实践中引入随机微分方程导致的训练-推理不一致问题。",
+      "findings": "实验表明，该方法在多个基模型上显著提升了FID-50K指标：SiT从8.30降至5.77，EDM2从3.74降至3.52。定性评估也证实，该方法在保持样本多样性的同时增强了感知质量。"
+    }
+  },
+  {
+    "id": "2607.02290",
+    "title": "DisciplineGen-1M: A Large-Scale Dataset for Multidisciplinary Visual Generation and Editing",
+    "abstract": "Recent image generation and editing models can produce visually appealing natural images, yet they remain unreliable when the target image is a knowledge-intensive diagram whose correctness depends on disciplinary concepts, symbolic structure, and precise spatial relations. We introduce DisciplineGen-1M, a million-scale multidisciplinary dataset that supports text-to-image generation and image editing. It contains 1.2M samples spanning mathematics, physics, chemistry, biology, geography, computer science, economics, history, music, and sports. To construct the dataset, we design a scalable framework that combines vector-graphics rendering, OCR-based editing, curated programmatic synthesis, and large-scale text-to-image filtering. These pipelines produce captions, editing instructions, structured annotations, and paired images with controllable semantic differences. Building on DisciplineGen-1M, we further introduce a discipline-informed reasoning-generation model for both text-to-image generation and image editing. Experiments on discipline-related benchmarks, GenExam and GRADE, show substantial improvements over open-source baselines, while evaluations on general reasoning-informed benchmarks, WISE and RISE, further indicate broader transfer. The results suggest that large-scale structured academic visual data is a key ingredient for moving image generation from aesthetic plausibility toward verifiable knowledge-grounded visual creation. We will publicly release our dataset, model, and source code of the data curation pipeline to ensure reproducibility and benefit future research.",
+    "authors": [
+      "Zhaokai Wang",
+      "Mingxin Liu",
+      "Zirun Zhu",
+      "Ziqian Fan",
+      "Yiguo He",
+      "Mohan Zhang",
+      "Leyao Gu",
+      "Xiangyu Zhao",
+      "Ning Liao",
+      "Shaofeng Zhang",
+      "Xuanhe Zhou",
+      "Zhihang Zhong",
+      "Junchi Yan",
+      "Xue Yang"
+    ],
+    "published": "2026-07-02",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.02290.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.02290",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DisciplineGen-1M：面向多学科视觉生成与编辑的大规模数据集",
+      "core_contribution": "提出了一个百万级的多学科图像生成与编辑数据集DisciplineGen-1M，并基于该数据集开发了学科感知的推理生成模型，显著提升了知识密集型图表（如数学、物理等学科图示）的生成可靠性与准确性。",
+      "method": "采用可扩展的数据构建框架，结合矢量图形渲染、基于OCR的编辑、程序化合成以及大规模文本到图像过滤四种管道，生成了包含标题、编辑指令、结构化标注和可控语义差异的配对图像。在此基础上，训练了一个学科感知的推理生成模型，用于文本到图像生成和图像编辑任务。",
+      "findings": "在学科相关基准（GenExam和GRADE）上，该方法显著优于开源基线模型；在通用推理基准（WISE和RISE）上也表现出良好的迁移能力。结果表明，大规模结构化学术视觉数据是推动图像生成从美学合理性走向可验证知识驱动视觉创作的关键因素。"
+    }
+  },
+  {
+    "id": "2607.01642",
+    "title": "Multi-Resolution Flow Matching: Training-Free Diffusion Acceleration via Staged Sampling",
+    "abstract": "Hardware-agnostic strategies for accelerating text-to-image diffusion, such as timestep distillation and feature caching, can reduce inference time without custom kernels or system-level optimization. Among them, multi-resolution generation strategies have recently received broad attention, attaining more than 5x speedup without any training. However, the design of performing upsampling in the latent space, together with the selective modification of partial regions, causes these methods to exhibit noticeable blurring or artifacts. To this end, we propose MrFlow, a training-free multi-resolution acceleration strategy for pretrained flow-matching models built upon a staged low-to-high-resolution pipeline. MrFlow first rapidly generates the main structure at low resolution, then performs super-resolution in the pixel space using a lightweight pretrained GAN-based model, subsequently injects low-strength noise to enable high-frequency resampling, and finally refines the details at high resolution. Quantitative and qualitative results on FLUX.1-dev and Qwen-Image show that MrFlow exploits the quadratic token reduction and reduced step requirement of low-resolution sampling to achieve 10x end-to-end acceleration while keeping OneIG within a 1% gap relative to that before acceleration, significantly surpassing other training-free acceleration strategies, and requiring no training or runtime dynamic identification whatsoever. MrFlow can further be directly combined orthogonally with pre-trained timestep distillation strategies, achieving even higher generation acceleration of up to 25x.",
+    "authors": [
+      "Xingyu Zheng",
+      "Xianglong Liu",
+      "Yifu Ding",
+      "Weilun Feng",
+      "Junqing Lin",
+      "Jinyang Guo",
+      "Haotong Qin"
+    ],
+    "published": "2026-07-02",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.01642.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.01642",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "多分辨率流匹配：通过分阶段采样实现无需训练的扩散加速",
+      "core_contribution": "提出了一种无需训练的多分辨率加速策略MrFlow，通过分阶段低到高分辨率流水线，在保持生成质量的同时实现10倍端到端加速，并可正交结合预训练时间步蒸馏策略达到25倍加速。",
+      "method": "MrFlow首先在低分辨率下快速生成图像主体结构，然后使用轻量级预训练GAN模型在像素空间进行超分辨率重建，接着注入低强度噪声以重新采样高频细节，最后在高分辨率下细化细节。该方法利用低分辨率采样的二次令牌减少和步数降低优势，无需训练或运行时动态识别。",
+      "findings": "在FLUX.1-dev和Qwen-Image上的定量和定性结果表明，MrFlow实现了10倍端到端加速，同时将OneIG保持在加速前1%的差距内，显著优于其他无需训练的加速策略；与预训练时间步蒸馏策略正交结合后，可进一步达到25倍加速。"
+    }
+  },
+  {
+    "id": "2607.00927",
+    "title": "Post-Training Pruning for Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) have demonstrated impressive performance in image generation but suffer from substantial computational overhead and resource consumption. Post-training pruning offers a promising solution; however, due to DiTs' unique architectural design and parameter distribution, traditional pruning methods are inapplicable, leading to significant performance degradation. Specifically, prior methods developed for LLMs, which derive metrics through a series of approximations, amplify the relative contribution of weights in the saliency metric. In addition, weights in DiTs exhibit significantly larger magnitudes than those in LLMs. Moreover, existing pruning granularity overlooks variations in model structures. In this paper, we propose DiT-Pruning, which improves pruning performance by introducing customized saliency criteria and pruning granularity. We design a novel metric that balances the contributions of weights and activations from an energy-based perspective, enabling more effective identification of important elements. Furthermore, we observe distinct clustering patterns in the two-dimensional weight space. Accordingly, we adopt a clustering-aware pruning granularity, enabling effective sparse allocation. Extensive evaluations on various DiTs show that our method consistently preserves image quality, especially under high sparsity. For FLUX.1-dev at 512x512 resolution on MJHQ, DiT-Pruning achieves only a 0.001 loss in CLIP score at 50% sparsity, dramatically outperforming recent pruning methods.",
+    "authors": [
+      "Chengzhi Hu",
+      "Xuewen Liu",
+      "Jing Zhang",
+      "Mengjuan Chen",
+      "Zhikai Li",
+      "Qingyi Gu"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-01",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00927.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00927",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "扩散变换器的训练后剪枝",
+      "core_contribution": "提出了一种针对扩散变换器（DiTs）的训练后剪枝方法DiT-Pruning，通过定制化的显著性标准和剪枝粒度，在保持图像质量的同时显著降低计算开销，尤其在高稀疏度下表现优异。",
+      "method": "首先，从能量角度设计了一种新的显著性度量，平衡权重和激活的贡献，从而更有效地识别重要元素。其次，观察到DiT权重在二维空间中呈现明显的聚类模式，据此采用聚类感知的剪枝粒度，实现高效的稀疏分配。该方法无需重新训练，直接对预训练模型进行剪枝。",
+      "findings": "在多种DiT模型上的实验表明，该方法能持续保持图像质量，尤其在高稀疏度下。例如，在FLUX.1-dev模型上，MJHQ数据集512×512分辨率下，50%稀疏度时CLIP分数仅损失0.001，显著优于近期其他剪枝方法。"
+    }
+  }
+]
