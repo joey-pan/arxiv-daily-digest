@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2607.00920",
+    "title": "GMO-E$^2$DIT: Grounded Multi-Operation Editing for E-Commerce Images",
+    "abstract": "Real-world e-commerce image editing often requires multiple, localized, and auditable operations rather than global restyling. This compositional nature poses a dual challenge: models must precisely apply all requested edits to the correct regions while preserving unmodified content, even under ambiguous instructions. Existing one-shot editors conflate intent resolution, spatial grounding, and synthesis into a single step, frequently resulting in partial execution failures, which is unacceptable for commercial scenarios. To address this, we introduce GMO-E$^2$DIT, an agentic editing framework that couples a Vision-Language Model (VLM) with a mask-conditioned image editor to tackle structured multi-turn task completion. Given an underspecified instruction, the VLM agent constructs a region-grounded edit agenda, effectively decoupling cognitive reasoning from generative rendering. The framework then executes sub-programs via operation-aware masks and references, utilizing a reflection-driven loop to inspect intermediate results and determine the subsequent state. This iterative mechanism reliably preserves safe partial progress, retries unfinished operations, and recovers from errors. Furthermore, we develop a unified data pipeline providing aligned supervision for planning, execution, and reflection, alongside EComEditBench, a comprehensive benchmark for instruction-driven evaluation. Extensive experiments demonstrate that GMO-E$^2$DIT achieves competitive performance compared to strong closed-source models, yielding superior instruction accuracy and edit fidelity over existing baselines.",
+    "authors": [
+      "Zipeng Guo",
+      "Xiaoan Liu",
+      "Lichen Ma",
+      "Cheng Wang",
+      "Yu He",
+      "Xiaolong Fu",
+      "Jingling Fu",
+      "Xinyuan Shan",
+      "Shaojie Guo",
+      "Luohang Liu",
+      "Junshi Huang",
+      "Yan Li"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00920.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00920",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GMO-E²DIT：基于多操作定位的电商图像编辑",
+      "core_contribution": "提出了一种将视觉语言模型与掩码条件图像编辑器相结合的智能编辑框架，能够将模糊指令分解为区域定位的编辑议程，并通过反思驱动循环可靠地执行多步、局部化的电商图像编辑任务。",
+      "method": "该方法首先利用视觉语言模型（VLM）解析用户的不完整指令，构建一个区域定位的编辑议程，将认知推理与生成渲染分离。随后，框架通过操作感知的掩码和参考图像执行子程序，并采用反思驱动循环检查中间结果，决定下一步状态。这种迭代机制能够保留已完成的正确部分，重试未完成的操作，并从错误中恢复。",
+      "findings": "在提出的EComEditBench基准测试上，GMO-E²DIT相比现有基线方法取得了更优的指令准确率和编辑保真度，性能与强大的闭源模型相当。"
+    }
+  },
+  {
+    "id": "2607.00766",
+    "title": "Decoupled Guidance: Disentangling Subject and Context Pathways in Text-to-Image Personalization",
+    "abstract": "Text-to-image personalization aims to generate a user-provided subject in novel scenes described by text. However, most existing methods encode subject identity (fidelity) and context (editability) through the same conditioning pathway, forcing the two to compete for attention-map resources. We refer to this phenomenon as conditioning entanglement and show that it induces a fidelity-editability trade-off. We further provide causal evidence by replacing the target subject token with a generic subject token, which produces shifts in attention allocation and corresponding changes in context adherence. To this end, we propose Decoupled Guidance (DeGu), a plug-and-play framework that routes subject identity and scene context through two independent guidance streams. We further introduce a spatial mixing mechanism that dynamically fuses these streams, ensuring each operates within its semantically relevant region without interference. Furthermore, DeGu can be readily applied to existing personalization methods without modifying the underlying backbone models, consistently improving the overall personalization performance while enabling inference-time control over the fidelity-editability balance, across diverse methods and backbones, including flow-matching Diffusion Transformers (DiTs).",
+    "authors": [
+      "Seongmin Kim",
+      "Kyucheol Shin",
+      "Heesun Jung",
+      "Jinseo Kim",
+      "Sungyong Baik"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00766.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00766",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "解耦引导：文本到图像个性化中的主体与上下文路径分离",
+      "core_contribution": "提出了一种名为Decoupled Guidance（DeGu）的即插即用框架，通过将主体身份和场景上下文路由到两个独立的引导流，解决了现有方法中因条件纠缠导致的保真度与可编辑性之间的权衡问题。",
+      "method": "DeGu框架首先将文本到图像个性化中的主体身份和场景上下文分离到两个独立的引导流中，避免它们竞争注意力图资源。然后，引入一个空间混合机制，动态融合这两个流，确保每个流在其语义相关区域内运行而不相互干扰。该框架无需修改底层骨干模型，即可应用于现有个性化方法，并支持推理时对保真度与可编辑性平衡的控制。",
+      "findings": "实验表明，DeGu在多种方法和骨干模型（包括流匹配扩散Transformer）上一致提升了整体个性化性能，同时允许用户通过推理时控制来调整保真度与可编辑性的平衡，有效解决了传统方法中两者相互制约的问题。"
+    }
+  },
+  {
+    "id": "2607.00535",
+    "title": "Flow-Map GRPO: Reinforcement Learning for Few-Step Flow-Map Generators via Anchored Stochastic Composition",
+    "abstract": "Few-step flow-map generators, such as consistency models and MeanFlow, accelerate sampling by directly learning long-range transport maps between noise and data. However, these models are typically deterministic, which makes them difficult to optimize with reinforcement learning (RL) post-training methods that require stochastic trajectories and well-defined likelihood ratios. Existing SDE-based stochasticization techniques are designed for velocity-based samplers with infinitesimal or finely discretized transitions, and therefore do not directly apply to long-range flow maps. In this work, we propose Flow-Map GRPO, an online RL post-training framework for deterministic few-step flow-map generators. The key component is Anchored Stochastic Flow Map Composition (ASFMC), a path-preserving stochasticization mechanism that introduces randomness through anchor-based conditional resampling while preserving the original marginal probability path of the deterministic flow map. We derive GRPO objectives for both single-time and two-time flow-map parameterizations. Experiments on few-step FLUX-based text-to-image generators, including MeanFlow and sCM, show that Flow-Map GRPO improves pretrained deterministic flow-map models across reward-based, perceptual, and task-level evaluation metrics. Our results demonstrate that deterministic few-step flow-map generators can be effectively aligned with RL post-training without modifying their original model parameterization or retraining them as native stochastic models.",
+    "authors": [
+      "Zhiqi Li",
+      "Wen Zhang",
+      "Bo Zhu"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-01",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00535.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00535",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "Flow-Map GRPO：基于锚定随机组合的少步流映射生成器的强化学习",
+      "core_contribution": "提出了一种名为Flow-Map GRPO的在线强化学习后训练框架，首次实现了对确定性少步流映射生成器（如一致性模型和MeanFlow）的有效强化学习对齐，无需改变其原始参数化或重新训练为随机模型。",
+      "method": "该方法的核心是锚定随机流映射组合（ASFMC），这是一种路径保持的随机化机制，通过基于锚点的条件重采样引入随机性，同时保留原始确定性流映射的边缘概率路径。在此基础上，推导了适用于单时间和双时间流映射参数化的GRPO目标函数，从而在保持生成质量的同时实现强化学习优化。",
+      "findings": "在基于FLUX的少步文本到图像生成器（包括MeanFlow和sCM）上的实验表明，Flow-Map GRPO在奖励指标、感知指标和任务级评估指标上均显著提升了预训练确定性流映射模型的性能，证明了确定性少步流映射生成器可以通过强化学习后训练有效对齐，而无需修改模型结构或重新训练为原生随机模型。"
+    }
+  },
+  {
+    "id": "2607.00371",
+    "title": "MEPA: Multi-Scale Representation Alignment for Visual Autoregressive Modeling with Mixture of Experts",
+    "abstract": "Visual AutoRegressive modeling (VAR) has pioneered a coarse-to-fine multi-scale autoregressive generative paradigm, demonstrating strong capabilities in image generation. However, VAR still suffers from inherent deficiencies in multi-scale representation learning. Specifically, lower scales primarily capture global semantics, while higher scales focus on fine-grained details. Employing a shared architecture across scales induces optimization conflicts. Moreover, due to the causal autoregressive process, inaccurate semantics at early scales can propagate and significantly degrade the final output. To address these issues, we introduce a scale-aware token-routed Mixture of Experts (MoE) architecture, allowing scale-adaptive expert selection, thereby facilitating decoupled representation learning across scales. In addition, we enhance semantic modeling at early scales by incorporating external self-supervised features. Unlike naive alignment, we analyse and design a residual feature aggregation scheme tailored to the VAR paradigm. Extensive experiments show that our method significantly improves both training efficiency and generation quality. On the ImageNet 256*256 benchmark, our model achieves a superior FID compared to the dense baseline while requiring only half of the default training epochs and a smaller parameter budget, with a merely marginal increase in training cost. Moreover, the performance gap further widens with larger training epochs.",
+    "authors": [
+      "Nuoyan Zhou",
+      "Zhijun Tu",
+      "Lei Yu",
+      "Kun Cheng",
+      "Jie Hu",
+      "Nannan Wang",
+      "Xinghao Chen"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-01",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00371.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00371",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MEPA：基于混合专家模型的多尺度表示对齐用于视觉自回归建模",
+      "core_contribution": "提出了一种尺度感知的混合专家（MoE）架构，解决了视觉自回归模型（VAR）中多尺度表示学习的优化冲突和语义传播误差问题，显著提升了训练效率和生成质量。",
+      "method": "首先，引入尺度感知的令牌路由混合专家（MoE）模块，使不同尺度的令牌能够自适应地选择专家，从而实现跨尺度的解耦表示学习。其次，通过外部自监督特征增强早期尺度的语义建模，并设计了一种残差特征聚合方案，以适配VAR的粗到细自回归范式，避免简单对齐带来的信息损失。",
+      "findings": "在ImageNet 256×256基准上，该方法仅需默认训练轮次的一半和更少的参数预算，即可达到优于密集基线的FID分数，且训练成本仅略有增加；随着训练轮次增加，性能优势进一步扩大。"
+    }
+  },
+  {
+    "id": "2607.00293",
+    "title": "Rosetta: Composable Native Multimodal Pretraining",
+    "abstract": "Achieving true artificial general intelligence requires foundation models capable of integrating new modalities without forgetting prior knowledge. However, accommodating continuous generative objectives alongside discrete understanding tasks causes severe gradient conflicts. Existing architectures, including standard Mixture-of-Experts (MoE), are highly susceptible to representation overwriting. Even structurally partitioned paradigms like Mixture-of-Transformers (MoT) remain vulnerable to catastrophic forgetting, severely impeding multimodal scalability. In this work, we introduce Rosetta, a composable native multimodal pretraining framework designed for seamless and non-destructive modality expansion. Rosetta adopts a modular paradigm where core foundational knowledge is preserved within global shared experts, while modality-specific capabilities are distributed across plug-and-play experts. To guarantee non-destructive composition, we propose Momentum-Anchored Orthogonal Projection (MAOP). MAOP leverages the optimizer's momentum state as an implicit semantic anchor, selectively neutralizing conflicting gradient components from new modalities while preserving synergistic updates. Extensive evaluations demonstrate that, while standard MoE and MoT architectures suffer catastrophic forgetting of previously acquired knowledge, Rosetta robustly preserves established language and visual understanding. Furthermore, it delivers superior image generation and unlocks cross-modal synergy, paving the way for truly composable and unified multimodal foundation models. To facilitate further multimodal research, we release our code and checkpoints to the community. Project page at https://rosetta-lmm.github.io/.",
+    "authors": [
+      "Xiangyue Liu",
+      "Zijian Zhang",
+      "Miles Yang",
+      "Zhao Zhong",
+      "Liefeng Bo",
+      "Ping Tan"
+    ],
+    "published": "2026-07-01",
+    "updated": "2026-07-01",
+    "categories": [
+      "cs.CV",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.00293.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.00293",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Rosetta：可组合的原生多模态预训练",
+      "core_contribution": "提出了一种名为Rosetta的可组合原生多模态预训练框架，通过模块化设计和动量锚定正交投影（MAOP）方法，实现了在不遗忘已有知识的前提下无缝扩展新模态，解决了多模态扩展中的灾难性遗忘问题。",
+      "method": "Rosetta采用模块化架构，将核心基础知识保留在全局共享专家中，而模态特定能力则分布在可插拔的专家模块中。为了确保非破坏性组合，提出了动量锚定正交投影（MAOP），利用优化器的动量状态作为隐式语义锚点，选择性地中和来自新模态的冲突梯度成分，同时保留协同更新。",
+      "findings": "实验表明，标准MoE和MoT架构在扩展新模态时会严重遗忘已有知识，而Rosetta能够稳健地保留已学习的语言和视觉理解能力，同时实现更优的图像生成性能，并解锁跨模态协同效应，为构建真正可组合的统一多模态基础模型铺平了道路。"
+    }
+  }
+]
