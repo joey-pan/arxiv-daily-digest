@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2607.04612",
+    "title": "StructuredEdit: Constraint-Aware Graphic Design Editing via Differentiable Parameter Propagation",
+    "abstract": "Graphic design editing requires precise manipulation of typography, layout, and visual hierarchy under strict design constraints. Following the introduction of large language models, organizations have increasingly promoted vision-language models to enhance productivity. However, current models operate on pixels and achieve only 52% constraint satisfaction on structured design edits, thereby limiting their reliability for professional workflows. We present StructuredEdit, a pipeline that reframes design editing as parameter manipulation rather than pixel generation. Our core technical contribution is Differentiable Parameter Propagation (DPP), a training method that embeds hard design constraints into vision-language model fine-tuning by backpropagating pixel-level constraint violations through a lightweight differentiable rasterizer. A hybrid candidate-and-filter pipeline produces 125k validated edit triplets. The resulting system reaches 89% constraint satisfaction versus 52% for GPT-4V, 0.82 matched-element Intersection over Union, and 76% top-1 font accuracy over the 100 most-frequent design typefaces. In a user study (N=35), editing time drops 33% and correction iterations drop 44% relative to a GPT-4V baseline.",
+    "authors": [
+      "Veeramanohar Avudaiappan",
+      "Ritwik Murali"
+    ],
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.04612.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.04612",
+    "primary_category": "cs.GR",
+    "score": 95,
+    "summary": {
+      "title_zh": "结构化编辑：通过可微分参数传播实现约束感知的图形设计编辑",
+      "core_contribution": "提出了一种将图形设计编辑重构为参数操作而非像素生成的新范式，并引入可微分参数传播（DPP）方法，将硬设计约束嵌入视觉语言模型的微调过程，显著提升了编辑的约束满足率。",
+      "method": "首先构建一个混合候选-过滤管道，生成12.5万个经过验证的编辑三元组。核心方法DPP通过轻量级可微分光栅化器反向传播像素级约束违反信号，将硬设计约束嵌入视觉语言模型的微调中，使模型能够直接优化参数而非像素。",
+      "findings": "系统在约束满足率上达到89%（GPT-4V为52%），匹配元素的交并比为0.82，前100种常用字体的Top-1准确率为76%。用户研究（N=35）显示，相比GPT-4V基线，编辑时间减少33%，修正迭代次数减少44%。"
+    }
+  },
+  {
+    "id": "2607.05382",
+    "title": "Search Beyond What Can Be Taught: Evolving the Knowledge Boundary in Agentic Visual Generation",
+    "abstract": "Visual generators excel at rendering, but they confidently fabricate what they do not know. User requests are unbounded, evolving, and deeply long-tailed: new characters, trending entities, post-cutoff events, and more. This world-knowledge bottleneck is structural: generators are trained on fixed corpora, but the visual world is open-ended. We construct SearchGen-20K and SearchGen-Bench, with 20,839 prompts spanning twelve failure categories and twenty-two domains, paired with a pre-executed multimodal SearchGen-Corpus-1M to support offline, reproducible research. On SearchGen-Bench, frontier open generators score only 21 to 28 out of 100, a 40-point collapse invisible to existing benchmarks. The natural remedy is to employ search tools, enabling agentic visual generation. However, we find that naive search fails: it retrieves indiscriminately, injecting noise into prompts the generator already handles. We trace the root cause to a generator-specific, evolving knowledge boundary: the divide between what a generator can internalize through training and what must remain in external context. Although this boundary is hard to specify in advance, we show that it is discoverable through a teach-then-search co-training framework. Even a minimal version of this co-training recipe produces monotonic improvement, laying the foundation for recursive self-improvement in visual generation that can meet world-knowledge-grounded requests. We release the full dataset, co-training corpus, and search corpus as a replayable harness for tool-augmented, world-knowledge-grounded visual generation.",
+    "authors": [
+      "Haozhe Wang",
+      "Weijia Feng",
+      "Jinpeng Yu",
+      "Che Liu",
+      "Ping Nie",
+      "Fangzhen Lin",
+      "Jiaming Liu",
+      "Ruihua Huang",
+      "Jimmy Lin",
+      "Wenhu Chen",
+      "Cong Wei"
+    ],
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.05382.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.05382",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越可教之域：在智能体视觉生成中演化知识边界",
+      "core_contribution": "本文揭示了当前视觉生成模型在面对开放世界知识（如新角色、流行实体、截止日期后事件等）时的结构性瓶颈，并提出了一个“先教后搜”的协同训练框架，使模型能够自主发现并扩展其知识边界，从而在长尾、动态的用户请求下实现可靠生成。",
+      "method": "首先，作者构建了包含20,839条提示的SearchGen-20K数据集和SearchGen-Bench基准，覆盖12类失败模式与22个领域，并配套了预执行的1M多模态语料库SearchGen-Corpus-1M以支持离线可复现研究。接着，他们发现直接使用搜索工具会引入噪声，因为模型无法区分已知与未知。为此，提出一个“先教后搜”的协同训练框架：先让模型在内部知识上训练，再通过搜索工具补充外部上下文，使模型逐步学会识别自身知识边界，并在生成时动态决定是否调用搜索。",
+      "findings": "在SearchGen-Bench上，前沿开放生成模型得分仅为21-28分（满分100），比现有基准低40分，表明现有评估严重低估了真实世界知识缺口。而采用“先教后搜”协同训练后，即使是最简版本也能带来单调的性能提升，为视觉生成实现递归自我改进奠定了基础，使模型能够满足基于世界知识的用户请求。"
+    }
+  },
+  {
+    "id": "2607.05088",
+    "title": "RADIANCE: Relative Adaptive Denoising with IP-Adapter for Novel Concept Enhancement",
+    "abstract": "Text-to-image (T2I) diffusion models have achieved striking progress but still struggle to synthesize rare concepts involving unusual attribute-object pairings, often resulting in concept omission or semantic drift where a dominant entity overwhelms the generation. Tracing these failures to a lack of compositional balance during the denoising trajectory, we propose RADIANCE, a training-free framework that treats inference as a closed-loop feedback process. RADIANCE augments pretrained backbones with three modular components: (1) a Compositional Similarity Monitor (CSM) that tracks the emergence of objects and attributes in intermediate latents via CLIP-based feedback; (2) a Bidirectional Scale Controller (BSC) that applies a reactive \"restoring force\" using positive and negative IP-Adapter scales to rebalance biased trajectories; and (3) a Feedback Guidance Scheduler (FGS) that coordinates these updates across timesteps without additional training. We further extend the framework to multi-object prompts via Delayed Adapter Activation (DAA) and Layer-wise Alternating Guidance (LAG) to prevent premature concept fusion. By overlapping monitoring and denoising through pipelined execution, RADIANCE maintains competitive latency while significantly enhancing the per-sample success rate and effective throughput. Experiments on RareBench and T2I-CompBench demonstrate that RADIANCE consistently enhances compositional alignment and perceptual quality over state-of-the-art baselines.",
+    "authors": [
+      "Zi-Xiang Ni",
+      "Bo-Lun Huang",
+      "Teng-Fang Hsiao",
+      "Bo-Kai Ruan",
+      "Hong-Han Shuai"
+    ],
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.05088.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.05088",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RADIANCE: 基于IP-Adapter的相对自适应去噪方法用于新颖概念增强",
+      "core_contribution": "提出了一种无需额外训练的训练自由框架RADIANCE，通过闭环反馈机制动态调整去噪轨迹，有效解决了文本到图像扩散模型在生成稀有概念（如不常见属性-对象组合）时出现的概念遗漏和语义漂移问题。",
+      "method": "RADIANCE在预训练骨干网络上集成了三个模块：1) 组合相似度监测器（CSM），利用CLIP反馈追踪中间隐变量中对象和属性的出现情况；2) 双向尺度控制器（BSC），通过正负IP-Adapter尺度施加“恢复力”以重新平衡偏斜的去噪轨迹；3) 反馈引导调度器（FGS），协调各时间步的更新。针对多对象提示，还引入了延迟适配器激活（DAA）和逐层交替引导（LAG）以防止过早的概念融合。整个系统通过流水线执行重叠监测与去噪过程，在保持竞争性延迟的同时显著提升单样本成功率和有效吞吐量。",
+      "findings": "在RareBench和T2I-CompBench上的实验表明，RADIANCE在组合对齐和感知质量上持续优于当前最先进的基线方法，有效提升了罕见概念生成的准确性和图像质量。"
+    }
+  },
+  {
+    "id": "2607.04801",
+    "title": "LILAC: Layer-Wise Independent LoRAs and Cascaded Conditioning for Multi-Concept Customization of Diffusion Models",
+    "abstract": "Personalizing text-to-image diffusion models to render several specific subjects in a coherent image remains challenging: the model must preserve each subject's identity while keeping the scene spatially and visually coherent. Methods that fuse independently trained concept adapters in a shared weight space (via federated averaging, gradient fusion, or orthogonality constraints) suffer from identity confusion and style bleeding and require joint retraining. In this work, we show that composing concepts as separate image layers, instead of merging their adapters in a shared weight space, avoids parameter-level interference. We introduce LILAC, a framework that composes independently trained low-rank adapters at inference time: each subject is conditioned on the frozen composite of previously placed subjects, with exactly one adapter active at a time, therefore identities never interfere at the parameter level. LILAC composes the adapters without any joint training, scales linearly with the number of concepts, and is backbone-agnostic. Under the Orthogonal Adaptation protocol, LILAC applied on Qwen-Image-Edit reaches an ArcFace detection rate of 0.861, while Orthogonal Adaptation reports 0.745 in its original setting. Adaptation reports 0.745 in its original setting. Code is available at https://github.com/marianlupascu/LILAC.",
+    "authors": [
+      "Marian Lupascu",
+      "Sebastian Ripa",
+      "Mihai Trascau",
+      "Mariana-Iuliana Georgescu",
+      "Ionut Mironica"
+    ],
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.04801.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.04801",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LILAC：基于逐层独立LoRA与级联条件的多概念扩散模型定制化",
+      "core_contribution": "提出了一种无需联合训练即可在推理时组合多个独立训练的低秩适配器（LoRA）的方法，通过将不同概念作为独立图像层依次生成，避免了参数级干扰，实现了多概念定制化。",
+      "method": "LILAC框架在推理时依次激活每个概念的LoRA适配器，每次只处理一个概念，并将之前已放置的所有概念作为冻结的复合条件输入当前适配器。这样，每个新概念都基于已有场景进行条件生成，从而保持空间和视觉一致性，且无需联合训练或共享权重空间。",
+      "findings": "在Orthogonal Adaptation协议下，LILAC应用于Qwen-Image-Edit模型时，ArcFace检测率达到0.861，而原Orthogonal Adaptation方法仅为0.745，表明该方法在保持多概念身份一致性方面显著优于现有方法。"
+    }
+  },
+  {
+    "id": "2607.04727",
+    "title": "Dashboard2Code: Evaluating Multimodal Models on Reconstructing Interactive Dashboards",
+    "abstract": "Automatic data visualization generation has advanced rapidly with multi-modal large language models, yet existing efforts largely focus on static charts and overlook the interactive dashboards commonly used for real-world data exploration. We introduce Dashboard2Code, a novel task that requires a model to proactively explore an interactive dashboard, acquire and integrate feedback from its own interactions (e.g., clicking and filtering), and generate code that reproduces the target dashboard. To support comprehensive evaluation, we present DashboardMimic, the first Plotly+Dash benchmark for Dashboard2Code, comprising 180 carefully designed and manually verified dashboard-code pairs spanning three difficulty levels and covering eight common real-world interaction patterns. We further propose an automated evaluation framework tailored to dashboards that combines code semantic analysis with dynamic interaction-based testing to assess visual and interaction consistency, showing strong agreement with human judgments. Experiments across a range of open- and closed-source multi-modal models reveal that even the strongest systems struggle on high-complexity dashboards and that a substantial performance gap remains between open-source and closed-source models on the Dashboard2Code task.",
+    "authors": [
+      "Tianhao Niu",
+      "Ziyu Han",
+      "Qiguang Chen",
+      "Shiqi Zhou",
+      "Baocai Shan",
+      "Hengjie Fang",
+      "Qingfu Zhu",
+      "Wanxiang Che"
+    ],
+    "published": "2026-07-06",
+    "updated": "2026-07-06",
+    "categories": [
+      "cs.SE",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.04727.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.04727",
+    "primary_category": "cs.SE",
+    "score": 85,
+    "summary": {
+      "title_zh": "Dashboard2Code：评估多模态模型在重建交互式仪表盘上的表现",
+      "core_contribution": "提出了Dashboard2Code这一新任务，要求模型通过主动探索交互式仪表盘、获取并整合自身交互反馈来生成重建代码；同时构建了首个Plotly+Dash基准数据集DashboardMimic，并设计了结合代码语义分析与动态交互测试的自动化评估框架。",
+      "method": "首先定义Dashboard2Code任务，要求模型与交互式仪表盘进行点击、筛选等操作，获取反馈后生成重现该仪表盘的代码。然后构建包含180个精心设计的手工验证的仪表盘-代码对数据集DashboardMimic，覆盖三个难度级别和八种常见交互模式。最后提出自动化评估框架，结合代码语义分析和基于动态交互的测试，评估视觉与交互一致性，并与人工判断高度一致。",
+      "findings": "实验表明，即使最强的多模态模型在处理高复杂度仪表盘时仍表现困难，且开源模型与闭源模型在Dashboard2Code任务上存在显著性能差距。"
+    }
+  }
+]
