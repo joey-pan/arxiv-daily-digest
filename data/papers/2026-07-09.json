@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2607.07119",
+    "title": "ColorFM: An Optimization-to-Learning Framework for Color Transfer via Flow Matching",
+    "abstract": "Color transfer aims to align the color distribution of a source image with that of a reference image while preserving structural and semantic consistency. However, existing methods often suffer from inaccurate global mapping, semantic misalignment, and visual artifacts. To address these issues, we propose ColorFM, an optimization-to-learning framework. ColorFM connects online optimization to offline inference by reformulating color transfer as the transport of pixel distributions along velocity fields via Flow Matching. Specifically, we introduce ColorFM-O, an instance-specific optimization scheme that fits the velocity field through hierarchical color coupling guided by semantic priors. By numerically integrating the induced flow trajectories, ColorFM-O produces precise and semantically consistent color transfer results, while generating high-quality paired data as pseudo-supervision. Building upon this, we design ColorFM-L, an efficient feed-forward model trained on the generated pairs. Through implicit state modeling, ColorFM-L extracts deep semantic features to predict flow parameters for bidirectional linearized transport, ensuring accurate color transfer. Extensive experiments demonstrate that ColorFM-L outperforms state-of-the-art methods in visual quality, structural fidelity, and semantic consistency, successfully combining the accuracy of optimization with the speed of feed-forward inference.",
+    "authors": [
+      "Yuhang He",
+      "Kai Zhang",
+      "Xiaoming Li",
+      "Du Chen",
+      "Jian Yang"
+    ],
+    "published": "2026-07-08",
+    "updated": "2026-07-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.07119.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.07119",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ColorFM：基于流匹配的从优化到学习的颜色迁移框架",
+      "core_contribution": "提出了一种将在线优化与离线推理相结合的颜色迁移框架ColorFM，通过流匹配将颜色迁移重新定义为像素分布沿速度场的传输，同时实现了优化方法的精确性和前馈推理的高效性。",
+      "method": "首先，提出实例特定的优化方案ColorFM-O，通过语义先验引导的分层颜色耦合拟合速度场，并数值积分生成流轨迹，得到精确且语义一致的颜色迁移结果，同时生成高质量伪监督数据。然后，基于生成的数据训练前馈模型ColorFM-L，该模型通过隐式状态建模提取深层语义特征，预测双向线性化传输的流参数，实现快速准确的颜色迁移。",
+      "findings": "大量实验表明，ColorFM-L在视觉质量、结构保真度和语义一致性上均优于现有最先进方法，成功结合了优化方法的精度与前馈推理的速度。"
+    }
+  },
+  {
+    "id": "2607.06553",
+    "title": "From RGB Generation to Dense Field Readout: Pixel-Space Dense Prediction with Text-to-Image Models",
+    "abstract": "Large-scale text-to-image models are attractive backbones for dense prediction because RGB generation pretraining learns rich semantic, structural, and geometric priors. Existing generative and editing approaches reuse these priors by casting dense prediction as target generation: annotations such as depth, normals, alpha mattes, masks, and heatmaps are encoded into an RGB-trained VAE latent space and decoded back as image-like targets. We argue this inherits more of the generative output interface than dense prediction requires: unlike RGB synthesis, dense prediction asks for pixel-correct, task-native fields on the same image plane, not new RGB content to be rendered. Our key observation is that a pretrained DiT already organizes RGB inputs through a patch-to-token-to-patch lattice on the image plane, so each token indexes a fixed output patch whose channels can carry task-native quantities instead of RGB appearance. We instantiate this as ReChannel: we keep the VAE encoder for the DiT's input distribution but drop the target-side decoder, adapt the frozen DiT with task LoRA, and map each token to its p x p x K_t pixel-space patch through a shared token-local linear head--about 33K parameters, no spatial mixing. Using FLUX-Klein, we evaluate on six dense prediction tasks and over a dozen benchmarks. This minimal interface sets new state-of-the-art on trimap-free matting, KITTI depth, and referring segmentation, and stays competitive on normals, saliency, and pose. In a matched 4B setting it is more accurate and 2.48x faster than an edit-plus-latent-decode counterpart--dense perception can benefit from generative pretraining without inheriting its output interface.",
+    "authors": [
+      "Zanyi Wang",
+      "Xin Lin",
+      "Haodong Li",
+      "Dengyang Jiang",
+      "Yijiang Li",
+      "Pengtao Xie"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06553.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06553",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从RGB生成到密集场读出：基于文本到图像模型的像素空间密集预测",
+      "core_contribution": "提出ReChannel方法，证明预训练的扩散Transformer（DiT）可直接用于密集预测任务，无需继承生成模型的输出接口（如VAE解码器），在多个密集预测任务上取得新最优结果，同时显著提升推理速度。",
+      "method": "ReChannel保留DiT的VAE编码器以匹配输入分布，但移除目标侧的VAE解码器。使用任务特定的LoRA微调冻结的DiT，并将每个token通过一个共享的token局部线性头（约33K参数，无空间混合）直接映射到对应的p×p×K_t像素空间块，从而输出任务原生场（如深度、法线、掩码等），而非RGB图像。",
+      "findings": "在无三分图抠图、KITTI深度估计和指代分割上取得新最优结果，在法线估计、显著性检测和姿态估计上保持竞争力。在匹配4B参数设置下，相比编辑加潜在解码的基线方法，ReChannel精度更高且速度快2.48倍，表明密集感知可从生成预训练中受益而无需继承其输出接口。"
+    }
+  },
+  {
+    "id": "2607.06162",
+    "title": "High-Resolution Artwork Outpainting with Global Blueprint Guidance and Layout Control",
+    "abstract": "Image outpainting extends an image beyond its original borders, requiring seamless style integration and globally coherent scene completion. Building on the success of diffusion models, recent methods have achieved substantial improvements in visual quality. In practice, however, high-resolution outpainting is commonly performed via progressive expansion around a fixed source image, particularly in artwork scenarios. Despite this progress, existing approaches still suffer from three key limitations: (i) the absence of a reliable global planning mechanism, which leads to structural instability and error accumulation at high resolutions; (ii) limited spatial controllability beyond text prompts, making it difficult to place objects at user-specified locations; and (iii) high inference latency caused by inherently sequential patch generation. To address these issues, we propose a global blueprint-guided two-stage diffusion framework for layout-controllable high-resolution outpainting with efficient parallel synthesis. In Stage 1, we generate a low-resolution global blueprint using a layout adapter that injects bounding-box conditions into a Stable Diffusion inpainting backbone, producing a globally consistent structural plan while extracting global guidance features. In Stage 2, we synthesize high-resolution local patches in parallel by injecting the blueprint-derived global guidance and initializing each patch from the blueprint using the low-frequency preservation property of forward diffusion. This design eliminates sequential dependency while maintaining global coherence. Extensive experiments on large-scale artwork datasets demonstrate improved visual fidelity, stronger semantic consistency, and substantially reduced inference time compared to prior baselines, while uniquely supporting explicit layout control for artwork outpainting.",
+    "authors": [
+      "Junha Kim",
+      "Hyunjoon Park",
+      "Donghyeon Cho"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06162.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06162",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于全局蓝图引导与布局控制的高分辨率艺术作品外延扩展",
+      "core_contribution": "提出了一种结合全局蓝图引导和布局控制的两阶段扩散框架，解决了高分辨率艺术作品外延扩展中结构不稳定、空间可控性差和推理延迟高的问题。",
+      "method": "该方法分为两个阶段：第一阶段，利用布局适配器将边界框条件注入Stable Diffusion修复骨干网络，生成低分辨率全局蓝图，同时提取全局引导特征；第二阶段，通过前向扩散的低频保持特性，从蓝图中初始化高分辨率局部补丁，并注入蓝图衍生的全局引导，实现并行合成，消除顺序依赖并保持全局一致性。",
+      "findings": "在大规模艺术作品数据集上的实验表明，该方法相比基线方法在视觉保真度、语义一致性上显著提升，推理时间大幅减少，并首次支持艺术作品外延扩展中的显式布局控制。"
+    }
+  },
+  {
+    "id": "2607.06136",
+    "title": "Tuning-Free Latent Diffusion Models for Ultrahigh-Resolution Image Editing",
+    "abstract": "Recent diffusion-based generative models have shown impressive performance in image generation and editing. However, due to memory limitations and the high cost of collecting high-resolution training images, existing methods are typically restricted to inputs with linear resolutions below 1K. In contrast, photos captured by modern mobile devices often reach linear resolutions up to 8K, revealing a significant gap between current capabilities and real-world demands. Simply upscaling low-resolution edited results often results in visually enlarged but blurry images that lack fine details. This paper introduces UltraDiffEdit, a novel, tuning-free image editing framework that extends off-the-shelf latent diffusion models (LDMs) to ultrahigh resolutions. UltraDiffEdit employs a multi-scale progressive editing strategy, iteratively blending high-resolution edited content with unedited areas in a coarse-to-fine manner. We employ multi-patch encoding to preserve both edited and unedited visual details within the latent space. To mitigate editing artifacts, our global-local consistency denoising technique consistently integrates edited and unedited latent features, ensuring smooth transition at editing boundaries from the latent representation to the final image. We also introduce a patch-based hybrid sampling approach that captures local, intermediate, and global features, ensuring semantic coherence and enhancing fine detail during denoising. We conduct extensive experiments demonstrating UltraDiffEdit's superior editing quality and flexibility: it can handle image resolutions up to 8K using only a single NVIDIA GeForce RTX 3090 GPU. The source code is publicly available at https://github.com/LonglongaaaGo/UltraDiffEdit.",
+    "authors": [
+      "Wanglong Lu",
+      "Lingming Su",
+      "Kaijie Shi",
+      "Minglun Gong",
+      "Xiaogang Jin",
+      "Hanli Zhao",
+      "Xianta Jiang"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.CV",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06136.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06136",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "无需微调的潜在扩散模型用于超高分辨率图像编辑",
+      "core_contribution": "提出了一种名为UltraDiffEdit的无调优图像编辑框架，首次将现成的潜在扩散模型扩展到超高分辨率（最高8K），解决了现有方法受限于1K以下分辨率的问题。",
+      "method": "采用多尺度渐进式编辑策略，以从粗到细的方式迭代融合高分辨率编辑内容与未编辑区域；通过多块编码在潜在空间中保留编辑和未编辑区域的视觉细节；引入全局-局部一致性去噪技术，确保编辑边界平滑过渡；并采用基于块的混合采样方法，在去噪过程中捕获局部、中间和全局特征以增强细节和语义一致性。",
+      "findings": "实验表明，UltraDiffEdit在高达8K分辨率下仍能保持优越的编辑质量和灵活性，且仅需单张NVIDIA GeForce RTX 3090 GPU即可运行，显著超越了现有低分辨率编辑后简单放大的方法。"
+    }
+  },
+  {
+    "id": "2607.05711",
+    "title": "FourTune: Towards Fully 4-Bit Efficient Post-Training for Diffusion Models",
+    "abstract": "Diffusion models have become a dominant paradigm for high-quality generative modeling, while post-training is essential for adapting them to diverse downstream applications. However, post-training of large diffusion models is still challenging due to the prohibitive memory footprints and slow training speed, which existing parameter-efficient fine-tuning methods only partially address. To overcome these limitations, we propose FourTune, an efficient post-training framework for diffusion models based on an end-to-end W4A4G4 paradigm. FourTune introduces a triple-branch hybrid pipeline that augments the standard LoRA architecture with a frozen numerical stabilizer to isolate quantization-sensitive outliers, enabling stable training under native 4-bit computation. In addition, FourTune employs hardware-efficient block-wise quantization and customized fused kernels to support efficient quantized backpropagation and reduce memory bandwidth overhead. Across customization, reinforcement learning, and distillation tasks, FourTune matches the quality of full-precision fine-tuning. On FLUX.1-dev (12B), FourTune reduces memory overhead by 2.25$\\times$ and increases end-to-end training throughput by 2.27$\\times$ compared to BF16 LoRA.",
+    "authors": [
+      "Bowen Xue",
+      "Zihan Min",
+      "Xingyang Li",
+      "Zhekai Zhang",
+      "Haocheng Xi",
+      "Lvmin Zhang",
+      "Maneesh Agrawala",
+      "Jun-Yan Zhu",
+      "Song Han",
+      "Yujun Lin",
+      "Muyang Li"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.05711.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.05711",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "FourTune：迈向扩散模型的完全4比特高效后训练",
+      "core_contribution": "提出了一种基于端到端W4A4G4量化范式的扩散模型高效后训练框架FourTune，首次在扩散模型后训练中实现全4比特计算，显著降低显存开销并提升训练吞吐量，同时保持与全精度微调相当的质量。",
+      "method": "FourTune引入三分支混合流水线，在标准LoRA架构上增加一个冻结的数值稳定器分支，用于隔离量化敏感的异常值，从而在原生4比特计算下实现稳定训练。此外，采用硬件高效的块式量化和定制融合内核，支持高效的量化反向传播并减少内存带宽开销。",
+      "findings": "在定制化、强化学习和蒸馏任务中，FourTune达到了与全精度微调相当的质量。在FLUX.1-dev（12B）模型上，相比BF16 LoRA，FourTune将显存开销降低2.25倍，端到端训练吞吐量提升2.27倍。"
+    }
+  }
+]
