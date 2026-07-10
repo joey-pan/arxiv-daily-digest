@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2607.08086",
+    "title": "GRE-Diff: Gaussian Room Embeddings for Structured Layout Diffusion",
+    "abstract": "Designing functional and aesthetically coherent floor plans requires exploring a vast space of possible room arrangements, a task that quickly becomes overwhelming for human designers. In this paper, we propose GRE-Diff, a controllable and interactive diffusion-based framework that automates the creation and editing of apartment floor plans under user-specified constraints. By combining AI-generated suggestions with real-time, human-in-the-loop editing, the system enables users to specify room types, room counts, boundary shapes, and editing operations through LLM-parsed instructions or GUI-based interaction. It then generates a diverse set of plausible and well-structured designs for refinement. At the core of our approach is Gaussian Room Embedding (GRE), a continuous latent representation that models each room as a spatial Gaussian distribution capturing its location and extent. Extensive experiments on the RPLAN dataset show that GRE-Diff produces high-quality, constraint-aware, and editable polygonal layouts, offering a practical step toward bridging AI-driven automation and human creativity in spatial design.",
+    "authors": [
+      "Jing Wang",
+      "Haoran Xiong",
+      "Zihao Yan",
+      "Minglun Gong",
+      "Hui Huang"
+    ],
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.08086.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.08086",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GRE-Diff：基于高斯房间嵌入的结构化布局扩散模型",
+      "core_contribution": "提出了一种可控、可交互的扩散框架GRE-Diff，能够根据用户指定的约束条件自动生成和编辑公寓平面图，并通过高斯房间嵌入（GRE）实现高质量、可编辑的多边形布局。",
+      "method": "该方法将每个房间建模为连续的高斯分布（Gaussian Room Embedding, GRE），以捕捉其位置和范围；结合大语言模型解析的用户指令或GUI交互，支持房间类型、数量、边界形状等约束的输入；通过扩散模型生成多样化的合理布局，并支持人在回路中的实时编辑。",
+      "findings": "在RPLAN数据集上的实验表明，GRE-Diff能够生成高质量、满足约束且可编辑的多边形布局，有效弥合了AI自动化与人类创造力在空间设计中的差距。"
+    }
+  },
+  {
+    "id": "2607.08497",
+    "title": "Cognitive-structured Multimodal Agent for Multimodal Understanding, Generation, and Editing",
+    "abstract": "Recent unified multimodal models show a single architecture can jointly perform vision/language understanding and image generation/editing. However, they repeatedly feed all historical visual and textual inputs into a shared context window, limiting long-horizon multimodal dialogue due to visual token explosion and unreliable cross-turn referencing. We propose a Cognitive-structured Multimodal Agent that externalizes visual information into an Episodic Visual Memory and selectively reactivates relevant episodes during reasoning. The agent consists of a Perceptual Abstraction Engine for structured visual abstraction, a Cognitive Retrieval Engine for cross-turn memory retrieval, and a Multimodal Executive Controller for autonomous task inference and action planning. To address the lack of turn-level retrieval supervision in existing datasets, we develop a Unified Scenario Engine that programmatically generates structured multi-turn conversations with fine-grained retrieval annotations, enabling reinforcement learning to optimize abstraction and retrieval policies. We also construct a long-horizon visual-dialogue benchmark stratified by difficulty to evaluate episodic visual recall. Our 8B agent achieves 91.4% retrieval accuracy over 20-turn sessions, surpassing 32B baselines by +8.2% while nearly halving per-turn inference time (23.1s -> 12.7s). We further present the Cognitive-structured Multimodal Agent Harness (CMA-Harness), a tool-augmented deployment of the same cognitive structure integrating persistent multimodal memory, web access, image generation/editing/composition tools, and OpenAI-compatible serving. Structured memory and modular decision-making offer a more scalable, efficient paradigm for long-horizon multimodal agents than monolithic parameter scaling. Code: https://github.com/caseclose/cma-harness ; Project page: https://caseclose.github.io/cma-harness/",
+    "authors": [
+      "Feng Wang",
+      "Canmiao Fu",
+      "Zhipeng Huang",
+      "Chen Li",
+      "Jing Lyu",
+      "Ge Li"
+    ],
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.08497.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.08497",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "认知结构化多模态智能体：用于多模态理解、生成与编辑",
+      "core_contribution": "提出了一种认知结构化的多模态智能体框架，通过引入情景视觉记忆和模块化决策机制，有效解决了长程多模态对话中视觉令牌爆炸和跨轮引用不可靠的问题，在20轮对话中实现了91.4%的检索准确率，并显著降低了推理时间。",
+      "method": "该方法将视觉信息外化到情景视觉记忆中，并在推理时选择性激活相关记忆。智能体包含三个核心模块：感知抽象引擎用于结构化视觉抽象，认知检索引擎用于跨轮记忆检索，以及多模态执行控制器用于自主任务推理和动作规划。此外，还开发了统一场景引擎，通过程序化生成带有细粒度检索标注的多轮对话，利用强化学习优化抽象和检索策略。",
+      "findings": "该8B参数智能体在20轮对话中达到91.4%的检索准确率，超过32B基线模型8.2%，同时将每轮推理时间从23.1秒降至12.7秒。实验表明，结构化记忆和模块化决策相比单纯扩大参数规模，为长程多模态智能体提供了更可扩展、更高效的范式。"
+    }
+  },
+  {
+    "id": "2607.08434",
+    "title": "DeltaV: Thinking with Visual State Updates in Unified Large Multimodal Models",
+    "abstract": "Current Unified Large Multimodal Models (ULMMs) support interleaved multimodal reasoning through textual reasoning and intermediate visual states, but typically generate each visual state as a full image. This full-image generation paradigm introduces substantial visual-token redundancy and dilutes supervision on sparse yet reasoning-critical state transitions. We propose DeltaV, a ULMM that replaces full-image generation with visual updates. Conditioned on historical visual states, DeltaV incrementally predicts compact update tokens that capture the visual changes across reasoning steps, avoiding repeated modeling of unchanged content. To align the token budget of each update with the magnitude of visual change, DeltaV introduces a temporal similarity (TSIM) Router, which stops allocating tokens once the marginal reconstruction gain falls below a threshold. To support more diverse and generalizable reasoning, we further construct StructCoT, a large-scale interleaved multimodal reasoning dataset with 1.05M samples spanning 44 task domains. Experiments show that the visual-update paradigm reduces newly generated visual tokens by 55.6\\% on average without compromising reconstruction fidelity, and improves multimodal reasoning by 3.3\\% over full-image generation. Trained with StructCoT and large-scale multimodal data, DeltaV-2B further outperforms substantially larger open-source models by 8.4\\% on in-domain multimodal reasoning evaluations and surpasses the comparable-scale Qwen3-VL-2B by 5.9\\% on external multimodal reasoning and understanding benchmarks. Code, models, and StructCoT will be released at https://github.com/Pengjie-W/DeltaV.",
+    "authors": [
+      "Pengjie Wang",
+      "Linger Deng",
+      "Zujia Zhang",
+      "Shaojie Zhang",
+      "Zhenbo Luo",
+      "Pei Fu",
+      "Jian Luan",
+      "Xiang Bai",
+      "Yuliang Liu"
+    ],
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.08434.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.08434",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "DeltaV：在统一大型多模态模型中通过视觉状态更新进行思考",
+      "core_contribution": "提出了一种名为DeltaV的统一大型多模态模型，用增量视觉更新替代传统的全图生成范式，显著减少了视觉令牌冗余并提升了多模态推理性能。同时构建了包含105万样本的大规模交错多模态推理数据集StructCoT，覆盖44个任务领域。",
+      "method": "DeltaV基于历史视觉状态，仅预测捕获推理步骤间视觉变化的紧凑更新令牌，避免重复建模不变内容。引入时间相似性（TSIM）路由器，当边际重建增益低于阈值时停止分配令牌，从而将每个更新的令牌预算与视觉变化幅度对齐。模型在StructCoT和大规模多模态数据上训练，实现了高效的视觉状态更新。",
+      "findings": "视觉更新范式平均减少55.6%的新生成视觉令牌，且不损失重建保真度；多模态推理性能比全图生成提升3.3%。DeltaV-2B在领域内多模态推理评估中比显著更大的开源模型高出8.4%，在外部多模态推理和理解基准上超越同规模Qwen3-VL-2B达5.9%。"
+    }
+  },
+  {
+    "id": "2607.07173",
+    "title": "Stage-Aware Adaptation and Distribution Calibration for Subject-Driven Personalized Text-to-Image Generation",
+    "abstract": "Subject-driven personalized text-to-image generation requires a pretrained diffusion model to acquire a specific subject from a few reference images while preserving subject identity, following novel text prompts, and maintaining sample diversity. Existing optimization-based methods instantiate subject adaptation through full fine-tuning, textual embedding optimization, or low-rank parameter updates; PaRa further constrains personalization from the perspective of parameter rank reduction. However, a uniform low-rank constraint or a uniform adapter strength cannot explicitly distinguish the capacity requirements of different denoising stages. Moreover, inference-time candidate selection driven mainly by identity similarity may compress the selected samples in the visual representation space. We decompose the problem into two complementary components: SPaRa denotes training-side stage-aware low-rank adaptation, DCAL denotes inference-side distribution-calibrated candidate selection, and SPaRa-DCAL denotes the combined framework. Theoretical analysis shows that timestep-dependent scaling controls the effective perturbation magnitude of a low-rank adapter, while identity-biased candidate selection restricts the radius of selected features around the reference center under explicit conditions. Auditable experiments under the SDXL and DreamBooth 30-subject protocol show that DCAL improves 1-LPIPS, CLIP-I, DINO-I, and CLIP-T on a fixed LoRA candidate pool, while revealing a clear trade-off with CLIP/DINO pairwise diversity and pairwise LPIPS. These results indicate that personalized generation should be evaluated through identity consistency, text alignment, and representation diversity rather than identity metrics alone.",
+    "authors": [
+      "Wenyan Xu",
+      "Alizer Wong"
+    ],
+    "published": "2026-07-08",
+    "updated": "2026-07-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.07173.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.07173",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "面向主体驱动的个性化文本到图像生成的阶段感知自适应与分布校准",
+      "core_contribution": "本文提出了一种结合训练阶段感知低秩自适应（SPaRa）与推理阶段分布校准候选选择（DCAL）的框架，解决了现有方法中统一低秩约束无法区分不同去噪阶段容量需求、以及仅依赖身份相似度导致样本多样性压缩的问题。",
+      "method": "方法分为两部分：训练侧采用阶段感知低秩自适应（SPaRa），通过时间步依赖的缩放因子控制不同去噪阶段的低秩适配器有效扰动幅度；推理侧采用分布校准候选选择（DCAL），在候选样本选择中引入分布校准以避免身份偏置导致的表示空间压缩。两者结合形成SPaRa-DCAL框架，理论分析表明时间步缩放控制扰动大小，而身份偏置选择会限制特征半径。",
+      "findings": "在SDXL和DreamBooth 30主体协议下的实验表明，DCAL在固定LoRA候选池上提升了1-LPIPS、CLIP-I、DINO-I和CLIP-T指标，但同时也揭示了与CLIP/DINO成对多样性和成对LPIPS之间的明显权衡。结论指出个性化生成应综合评估身份一致性、文本对齐和表示多样性，而非仅依赖身份指标。"
+    }
+  },
+  {
+    "id": "2607.07117",
+    "title": "Tree-of-Thoughts Reasoning for Text-to-Image In-Context Learning",
+    "abstract": "In text-to-image in-context learning (T2I-ICL), a model has to infer a latent compositional pattern from fewshot demonstrations for generating a query image. Recent studies show that state-of-the-art multimodal large language models struggle with this setting, particularly due to limited compositional reasoning and sensitivity to prompt construction. In this work, we propose a Tree-of-Thoughts (ToT) reasoning framework for T2I-ICL that introduces a multi-stage reasoning and selection layer that generates, evaluates, and selects among multiple candidate hypotheses before constructing the final prompt for image synthesis. By exploring alternative reasoning branches and selecting a coherent interpretation, the proposed approach mitigates prompt ambiguity and compositional errors. We implement the proposed approach in a complete ToT-T2IICL inference pipeline and evaluate it on the CoBSAT benchmark. Both qualitative and quantitative results show that structured multi-branch reasoning leads to more consistent and semantically aligned image generation compared to baseline and Chain-of-Thought prompting strategies, without any additional training or fine-tuning.",
+    "authors": [
+      "Stepanida Alekseeva",
+      "Jenifer Kalafatovich",
+      "Seong-Whan Lee"
+    ],
+    "published": "2026-07-08",
+    "updated": "2026-07-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.07117.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.07117",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "思维树推理在文本到图像上下文学习中的应用",
+      "core_contribution": "提出了一种基于思维树（Tree-of-Thoughts）的多阶段推理与选择框架，用于文本到图像的上下文学习，无需额外训练即可显著提升图像生成的语义一致性和组合推理能力。",
+      "method": "该方法在生成最终图像合成提示之前，引入了一个多阶段推理与选择层：首先通过多个推理分支生成候选假设，然后对每个假设进行评估和筛选，最后选择最连贯的解释用于构建提示。整个流程被实现为一个完整的ToT-T2I-ICL推理管线，在CoBSAT基准上进行评估。",
+      "findings": "定性和定量实验结果表明，与基线方法和链式思维（Chain-of-Thought）提示策略相比，结构化多分支推理能够生成更一致且语义对齐的图像，有效缓解了提示歧义和组合错误问题。"
+    }
+  }
+]
