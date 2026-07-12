@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2607.06483",
+    "title": "Mitigating Domain Shift in Conditioned Floor Plan Generation: Synthetic Pre-training for Data-Efficient Adaptation",
+    "abstract": "Robustness to domain shift is a key requirement for floor plan generative models to be applicable beyond the single dataset they were trained on, as floor plans vary widely across regions due to distinct architectural cultures, spatial constraints, and construction practices, while acquiring new annotated datasets remains costly and domain-specific. Yet, no prior work has studied this robustness in the context of conditioned floor plan generation. In this paper, we evaluate state-of-the-art models from two fundamentally different generative paradigms across three public datasets (RPLAN, MagicPlan and Swiss Dwellings) and show that they are highly sensitive to domain shift, with up to an order of magnitude performance degradation when transferred across domains. To mitigate this with minimal target-domain supervision, we introduce a procedural method to generate a large-scale synthetic training dataset that enforces strict physical constraints (non-overlapping rooms, valid door placement, graph consistency) while intentionally sacrificing architectural realism through highly irregular spatial arrangements and aggressive geometric perturbation of room shapes. We show that pre-training on this synthetic data considerably improves zero-shot cross-domain performance, outperforming in-domain training on MagicPlan. Furthermore, it provides a highly effective initialization for fine-tuning, accelerating target domain adaptation and outperforming real-world initialization baselines by up to 40% in a low-data regime.",
+    "authors": [
+      "Matthieu Ospici",
+      "Arnaud Gueze",
+      "Luc Bourrat",
+      "Adrien Bernhardt"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06483.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06483",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "缓解条件式户型图生成中的领域偏移：面向数据高效适应的合成预训练",
+      "core_contribution": "本文首次系统研究了条件式户型图生成模型在跨领域迁移时的鲁棒性问题，并提出一种基于合成数据预训练的方法，在仅需少量目标域标注的情况下显著缓解领域偏移带来的性能下降。",
+      "method": "作者提出了一种程序化合成数据生成方法，通过强制满足物理约束（如房间不重叠、门位置有效、图结构一致）来构建大规模训练集，同时故意引入高度不规则的空间布局和几何扰动以牺牲建筑真实性。该方法利用合成数据对模型进行预训练，随后在目标域上进行微调，从而实现数据高效的领域适应。",
+      "findings": "实验表明，现有先进模型在跨领域迁移时性能下降高达一个数量级；而合成数据预训练在零样本跨域场景下显著提升性能，甚至优于在MagicPlan数据集上的域内训练；在低数据微调场景下，该方法比真实数据初始化基线提升高达40%。"
+    }
+  },
+  {
+    "id": "2607.06440",
+    "title": "PIPBench: A Profile-Inclusive Framework for Personalized Image Generation Evaluation",
+    "abstract": "Recent text-to-image models such as DALLE-3 excel at following diverse prompts yet remain blind to individual aesthetic preferences. We study personalized image generation, where models must align outputs with a user's implicit visual preferences based on a few historically preferred images and a short prompt. To this end, we introduce PIPBench, the first profile-inclusive benchmark for evaluating personalized image generation. We further propose a novel data construction pipeline that leverages psychological and demographic profiling dimensions for both real-user data collection and scalable agent-based data generation. Using PIPBench, we conduct a thorough evaluation of representative line of methods. Our experiments reveal key limitations in existing methods, suggesting new challenges and opportunities for personalized text-to-image synthesis. Project page: https://wuyuhang05.github.io/PIPBench/",
+    "authors": [
+      "Yuhang Wu",
+      "Shuxiang Zhang",
+      "Wee Hian Ching",
+      "Chi Zhang",
+      "Miao Liu"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06440.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06440",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "PIPBench：面向个性化图像生成的包含用户画像的评估框架",
+      "core_contribution": "提出了首个包含用户画像的个性化图像生成评估基准PIPBench，并设计了一种结合心理学与人口统计学维度的数据构建流程，支持真实用户数据收集与可扩展的智能体数据生成。",
+      "method": "首先，基于心理学和人口统计学维度构建用户画像，用于描述用户的视觉偏好。然后，通过两种方式收集数据：一是从真实用户收集其历史偏好图像与简短提示，二是利用智能体模拟生成大规模合成数据。最后，利用PIPBench对多种代表性个性化图像生成方法进行系统评估。",
+      "findings": "实验揭示了现有个性化图像生成方法在捕捉用户隐含视觉偏好方面的关键局限性，指出了该领域面临的新挑战与机遇，为个性化文本到图像合成提供了改进方向。"
+    }
+  },
+  {
+    "id": "2607.06306",
+    "title": "UI2App: Benchmarking Visual Interaction Inference in Executable Web Application Generation",
+    "abstract": "Large language models (LLMs) have demonstrated growing competence in web page generation. However, existing text-driven approaches rely on complex prompts that impose substantial demands on users and offer limited expressivity for page layout and cross-page visual coherence. Image-driven paradigms, which take UI screenshots as input, align more closely with real development workflows. However, current benchmarks focus primarily on visual fidelity and lack a systematic evaluation of the interaction capabilities in generated artifacts. To address this gap, we introduce UI2App, the first benchmark targeting interaction inference, the ability to recover application behavior from screenshots alone, without any textual or behavioral guidance. UI2App comprises 327 screenshots grouped into 45 state-coherent screenshot sets for runnable multi-route web applications. We design an end-to-end pipeline that evaluates each artifact along four dimensions: executability, navigation reachability, visual fidelity, and interaction inference. The interaction metric (IIS) assesses inferred interactions by functional correctness and state-management complexity, crediting any valid implementation rather than matching a single reference. Experiments on six frontier vision-language models reveal a marked capability mismatch between visual reconstruction and interaction realization: the visual-fidelity leader scores only 7.5 on IIS, ranking fourth and trailing the IIS leader by 5.2x. High-complexity interactions such as cross-page state remain a pervasive bottleneck, with half of the evaluated models scoring exactly zero on this dimension. Overall, the results indicate that inferring complete interaction behavior from static screenshots remains a key challenge for models.",
+    "authors": [
+      "Grace Man Chen",
+      "Litao Guo",
+      "Yifan Wu",
+      "Yiyu Chen",
+      "Yenchi Tseng",
+      "Sicheng Liu",
+      "Yuyu Luo",
+      "Ying-Cong Chen"
+    ],
+    "published": "2026-07-07",
+    "updated": "2026-07-07",
+    "categories": [
+      "cs.SE",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.06306.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.06306",
+    "primary_category": "cs.SE",
+    "score": 75,
+    "summary": {
+      "title_zh": "UI2App：可执行Web应用生成中的视觉交互推理基准测试",
+      "core_contribution": "提出了首个专门评估从静态截图推断应用交互行为能力的基准UI2App，填补了现有图像驱动Web生成基准仅关注视觉保真度而缺乏交互能力系统评估的空白。",
+      "method": "构建了包含327张截图、组成45个状态连贯截图集的基准数据集，对应可运行的多路径Web应用。设计了一个端到端评估流水线，从可执行性、导航可达性、视觉保真度和交互推理四个维度评估生成产物，其中交互度量（IIS）根据功能正确性和状态管理复杂性对推断的交互进行评分，不要求匹配单一参考实现。",
+      "findings": "对六个前沿视觉语言模型的实验表明，视觉重建与交互实现之间存在显著能力差距：视觉保真度最高的模型在IIS上仅得7.5分，排名第四，落后IIS领先者5.2倍；跨页面状态等高复杂度交互仍是普遍瓶颈，半数评估模型在该维度得分为零。总体而言，从静态截图推断完整交互行为对模型仍是关键挑战。"
+    }
+  },
+  {
+    "id": "2607.08765",
+    "title": "Enhancing In-context Panoramic Generation via Geometric-aware Pretraining",
+    "abstract": "In this work, we present Canvas360, a two-stage framework for in-context panoramic generation that combines geometry-aware pretraining with downstream task-specific fine-tuning. To address the lack of large-scale, high-quality training data tailored to in-context panoramic tasks, we propose Canvas360Dataset, a collection of 1M high-quality paired panoramic samples for style transfer, inpainting, outpainting, and editing, enabling effective supervision across diverse in-context generation scenarios. On the modeling side, Canvas360 enhances text-to-panorama generation through parallel depth generation, velocity circular padding, and similarity loss regularization, enabling the model to learn geometry-aware representations, capture object distortion details, and improve geometric consistency and global coherence. Furthermore, empowered by strong panoramic priors, Canvas360 enables a unified in-context panoramic generation framework that supports diverse downstream tasks via token-level concatenation, surpassing prior methods in both task coverage and modeling flexibility. Extensive experiments show that Canvas360 improves panoramic image fidelity, achieving particularly strong performance on the panorama-specific FAED metric and competitive or leading results across the reported quantitative evaluations. More information can be found on our project page: https://zry000.github.io/Canvas360/",
+    "authors": [
+      "Haoran Feng",
+      "Ruiyang Zhang",
+      "Longyi Zhang",
+      "Dizhe Zhang",
+      "Lu Qi"
+    ],
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.08765.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.08765",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "通过几何感知预训练增强上下文全景生成",
+      "core_contribution": "提出了Canvas360，一个两阶段框架，通过几何感知预训练和下游任务微调，结合大规模高质量数据集Canvas360Dataset，显著提升了全景图像在上下文生成任务中的保真度和几何一致性。",
+      "method": "首先构建了包含100万高质量配对全景样本的Canvas360Dataset，覆盖风格迁移、修复、外扩和编辑等任务。在建模上，通过并行深度生成、速度循环填充和相似性损失正则化，使模型学习几何感知表示，捕捉物体畸变细节并增强几何一致性与全局连贯性。最后，利用强大的全景先验，通过令牌级拼接实现统一上下文全景生成框架，支持多种下游任务。",
+      "findings": "实验表明，Canvas360在全景图像保真度上显著提升，尤其在全景专用FAED指标上表现突出，并在多项定量评估中取得领先或竞争性结果。"
+    }
+  },
+  {
+    "id": "2607.08227",
+    "title": "Multimodal 3D LUT Generation via StatLUT with Statistical Features for Photorealistic Style Transfer",
+    "abstract": "Photorealistic Style Transfer (PST) aims to transfer the color and tonal style of a reference to a content image while strictly preserving its structural integrity. However, existing deep learning-based methods inherently suffer from semantic entanglement caused by pre-trained image encoders, leading to unnatural spatial distortions. Moreover, current pixel-level mapping paradigms often ignore color gamut topology, resulting in color banding, while also lacking the multimodal capability for intuitive text-driven control. To address these bottlenecks, we propose StatLUT, an innovative multimodal framework for 3D LUT generation. First, we bypass traditional encoders and introduce a Lab-Extractor to derive spatially-agnostic statistical features, fundamentally decoupling color distributions from structural semantics to ensure artifact-free rendering. Second, we formulate LUT generation as a Transformer-based Seq2Seq translation task, utilizing a Multi-dimensional Residual Mapper (MR-Mapper) to predict topologically smooth 3D LUTs. Finally, to break the single-modal barrier, we propose the H-Diffuser, a lightweight Diffusion Transformer that directly synthesizes statistical features from natural language prompts, enabling flexible text-driven color grading. Extensive experiments on standard benchmarks demonstrate that StatLUT significantly outperforms state-of-the-art methods in both visual quality and quantitative metrics, pioneering a highly robust and flexible paradigm for multimodal photorealistic style transfer.",
+    "authors": [
+      "Yifan Wang",
+      "Zhixiang Hao",
+      "Yu Wang",
+      "Congchao Zhu"
+    ],
+    "published": "2026-07-09",
+    "updated": "2026-07-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.08227.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.08227",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "基于StatLUT的多模态3D查找表生成：利用统计特征实现逼真风格迁移",
+      "core_contribution": "提出StatLUT框架，通过统计特征解耦颜色与结构信息，并引入Transformer序列生成和扩散模型，首次实现文本驱动的多模态逼真风格迁移，显著优于现有方法。",
+      "method": "首先，设计Lab-Extractor从Lab色彩空间提取与空间结构无关的统计特征，避免语义纠缠导致的伪影。其次，将3D LUT生成建模为基于Transformer的序列到序列任务，利用多维残差映射器（MR-Mapper）预测拓扑平滑的LUT。最后，提出轻量级扩散Transformer（H-Diffuser），直接从自然语言提示合成统计特征，实现灵活的文字驱动色彩调整。",
+      "findings": "在标准基准测试上，StatLUT在视觉质量和量化指标上均显著超越当前最先进方法，开创了多模态逼真风格迁移的高鲁棒性、高灵活性新范式。"
+    }
+  }
+]
