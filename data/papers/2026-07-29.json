@@ -1,0 +1,157 @@
+[
+  {
+    "id": "2607.25565",
+    "title": "ReDesign: Recovering Editable Design Structures from Images via Agentic Decomposition",
+    "abstract": "Recovering an editable design file from a raster image is a common and costly bottleneck in modern design workflows, yet remains challenging since editability depends on recovering multi-modal attributes, such as typography, vector geometry, colors, grouping, and layer ordering. We present ReDesign, an agentic framework that grows an editable layer hierarchy by selecting and composing specialized tools across modalities. To keep this long decision process reliable despite imperfect tool outputs, we introduce graceful verification at each expansion, which provides local accept, prune, or retry feedback that prevents error accumulation and avoids large scale reruns. To evaluate editability at scale, we introduce the Figma Edit Replay Benchmark, consisting of 909 raw Figma files and 14,796 controlled edit instructions that replay edits on reconstructed outputs. Across this benchmark and standard reconstruction metrics, ReDesign achieves strong visual fidelity while delivering the highest editability across layout, color, and text edits, outperforming layered decomposition baselines and serial tool use pipelines.",
+    "authors": [
+      "Jooyeol Yun",
+      "Jintae Park",
+      "Hyesu Lim",
+      "Junha Hyung",
+      "Hyungjin Chung",
+      "Jaegul Choo"
+    ],
+    "published": "2026-07-28",
+    "updated": "2026-07-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.25565.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.25565",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "ReDesign：通过智能体分解从图像中恢复可编辑设计结构",
+      "core_contribution": "提出了一种名为ReDesign的智能体框架，能够从光栅图像中恢复多模态可编辑设计文件（包括排版、矢量图形、颜色、分组和图层顺序），并通过优雅验证机制防止错误累积，显著提升了重建输出的可编辑性。",
+      "method": "该方法构建了一个智能体框架，通过选择并组合跨模态的专业工具，逐步生成可编辑的图层层次结构。在每个扩展步骤中引入优雅验证机制，根据工具输出提供接受、剪枝或重试的局部反馈，从而避免错误累积和大规模重运行。框架在重建过程中同时处理排版、矢量几何、颜色、分组和图层顺序等多模态属性。",
+      "findings": "在包含909个原始Figma文件和14,796个受控编辑指令的Figma编辑回放基准测试中，ReDesign在保持高视觉保真度的同时，在布局、颜色和文本编辑任务上实现了最高的可编辑性，性能优于分层分解基线和串行工具使用流水线。"
+    }
+  },
+  {
+    "id": "2607.25642",
+    "title": "Instruction-based Image Editing: A Survey on Data, Models, Evaluation, and Applications",
+    "abstract": "Instruction-based Image Editing (IIE) aims to transform a given image into a new one based on textual instructions. Advances in Large Language Models (LLMs) and Vision-Language Models (VLMs) have accelerated progress toward practical ``one-sentence image editing\" systems. This survey presents a systematic taxonomy and comprehensive review of IIE research, structured around five core dimensions: (1) task definition and hierarchical categorization of editing operations, (2) methodologies for training data construction, (3) architectural evolution from GAN-based to diffusion and autoregressive paradigms, (4) standardized evaluation metrics and benchmark development, and (5) introduction of commercial solutions. Our analysis shows critical technological milestones across model generations. We further propose a Comprehensive, in-Depth, and Diagnostic benchmark for IIE task (CDD-IIE Bench), which can rigorously assess the multiple aspects of model performance. Through empirical comparisons of open-source solutions, we highlight their respective capabilities and limitations. Finally, we discuss future research directions to advance the field.",
+    "authors": [
+      "Xianghao Zang",
+      "Zijian Jiang",
+      "Jiarong Cheng",
+      "Qianrui Teng",
+      "Ying He",
+      "Yuxuan Mu",
+      "Chao Ban",
+      "Huayu Zhang",
+      "Lanxiang Zhou",
+      "Zerun Feng",
+      "Chi Zhang"
+    ],
+    "published": "2026-07-28",
+    "updated": "2026-07-28",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.25642.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.25642",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于指令的图像编辑：数据、模型、评估与应用综述",
+      "core_contribution": "本文首次系统性地对基于指令的图像编辑（IIE）领域进行了全面综述，提出了涵盖任务定义、数据构建、模型架构、评估基准和商业应用的五维分类体系，并构建了新的综合诊断性基准（CDD-IIE Bench）以严格评估模型性能。",
+      "method": "论文首先对IIE任务进行了层次化分类，梳理了从GAN到扩散模型和自回归模型的架构演进。接着，系统总结了训练数据的构建方法，包括合成数据、真实标注和半监督策略。然后，提出了一个名为CDD-IIE Bench的基准，用于多维度诊断模型能力。最后，通过对比开源解决方案，分析了各自优势与局限，并展望了未来研究方向。",
+      "findings": "论文揭示了IIE领域的关键技术里程碑，包括模型代际间的性能跃迁；通过CDD-IIE Bench的实证比较，发现不同开源模型在编辑精度、指令遵循能力和图像保真度上存在显著差异；同时指出当前评估标准尚不统一，商业解决方案在易用性和效果上领先于开源方案，但开源模型在可定制性方面具有潜力。"
+    }
+  },
+  {
+    "id": "2607.24665",
+    "title": "MMOE: Modernizing Diffusion Transformers with Efficient Expert Design",
+    "abstract": "Modern large language models scale successfully by pairing capacity growth with efficiency, keeping per-token and deployment costs under control as capacity grows. AIGC Foundation Models (AFMs), especially diffusion-transformer backbones, have begun to adopt sparse experts, but recent efforts mostly enlarge total parameter counts and sparsity ratios without importing the efficiency mechanisms that made LLM scaling practical, so generation quality is seldom balanced against training and deployment cost. This raises a natural question: can the architectural principles behind efficient LLM scaling be adapted to AFMs in a more balanced way? We introduce ModernMOE (MMOE), a modernization of SiT-style diffusion transformers that systematically adapts routed experts, shared and lightweight experts, gate-residual routing, and attention-residual information reuse to AIGC generation. Rather than treating MoE as a single plug-in replacement, MMOE studies how different modern expert components affect convergence, efficiency, and generation quality when composed inside a diffusion transformer. Every experiment in this paper is trained on a single eight-GPU H100 node with batch size 256 for 400k steps, an accessible single-machine budget. Under matched training and sampling protocols and at this budget, MMOE reaches lower FID at every recorded checkpoint, that is, it converges faster per training step, than dense and intermediate sparse-expert baselines, and among the sparse variants it attains the best quality-cost balance. Routing analysis further shows stable expert specialization across depth, substantial use of lightweight routes, and modest step-to-step routing changes during denoising. These results suggest that AFMs can follow the balanced scaling path of LLMs by importing proven efficiency designs, rather than by simply increasing total parameters and sparsity ratios.",
+    "authors": [
+      "Yanhao Jia",
+      "Jiepeng Wang",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Erik Cambria",
+      "Xuelong Li"
+    ],
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "categories": [
+      "cs.CV",
+      "cs.GR",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.24665.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.24665",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MMOE：通过高效专家设计实现扩散Transformer的现代化",
+      "core_contribution": "论文提出了一种名为ModernMOE（MMOE）的方法，系统地将大型语言模型中的高效稀疏专家设计（如路由专家、共享专家、门控残差路由和注意力残差信息复用）适配到扩散Transformer中，在可控的计算预算下实现了更快的收敛速度和更好的生成质量-成本平衡。",
+      "method": "MMOE基于SiT风格的扩散Transformer，通过集成多种现代专家组件（包括路由专家、共享专家和轻量级专家）以及门控残差路由和注意力残差信息复用机制，替代了传统的单一MoE插件式替换。所有实验在单台八GPU H100节点上以256的批大小训练40万步，确保在可访问的单机预算下进行公平比较。",
+      "findings": "在匹配的训练和采样协议下，MMOE在每个记录检查点均达到更低的FID分数，即每训练步收敛速度优于密集基线和中间稀疏专家基线；在稀疏变体中，MMOE实现了最佳的质量-成本平衡。路由分析进一步表明，专家在深度上稳定专业化，轻量级路由被大量使用，且在去噪过程中步骤间的路由变化适中。"
+    }
+  },
+  {
+    "id": "2607.24591",
+    "title": "CameraAnything: Refilming Videos with Arbitrary Camera Control",
+    "abstract": "We introduce CameraAnything, the first unified framework for camera controlled video editing that enables joint control of both intrinsic and extrinsic camera parameters. Existing approaches either rely on expensive 3D reconstruction to achieve full camera functionality or restrict editing to extrinsic parameter manipulation. Moreover, the coupled influence of intrinsic and extrinsic parameters on video appearance makes disentangled modeling particularly challenging. To address this, we adopt per-pixel Plücker ray injection alongside resolution-aware 3D RoPE in self-attention, building both camera conditioning and spatial positional encoding on the target latent to jointly control camera position, focal length, and native resolution editing without cropping or outpainting. To overcome the scarcity of paired training data, we further develop a scalable synthetic pipeline that constructs diverse dynamic scenes through structured multi-camera recording and generates synchronized videos with varied camera configurations. With a tailored orthogonal training strategy, CameraAnything enables expressive video reshooting with arbitrary viewpoint control, focal length adjustment, resolution adaptation, and multi-shot transitions within a single generation process, offering strong practical value for cinematic video editing and cross-platform content adaptation in video production.",
+    "authors": [
+      "Yixuan Li",
+      "Yanhong Zeng",
+      "Ka Leong Cheng",
+      "Jiayi Zhu",
+      "Hanlin Wang",
+      "Wen Wang",
+      "Yihao Meng",
+      "Hao Ouyang",
+      "Qiuyu Wang",
+      "Yue Yu",
+      "ZiDong Wang",
+      "Yiyuan Zhang",
+      "Yujun Shen",
+      "Dahua Lin"
+    ],
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.24591.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.24591",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CameraAnything：任意相机控制下的视频重拍",
+      "core_contribution": "提出了首个统一框架CameraAnything，能够同时控制视频编辑中的内参（焦距、分辨率）和外参（相机位置），无需昂贵的3D重建或裁剪外扩操作。",
+      "method": "该方法通过逐像素Plücker射线注入和分辨率感知的3D旋转位置编码（3D RoPE）在自注意力机制中构建相机条件与空间位置编码，实现对相机位置、焦距和原生分辨率编辑的联合控制。为解决配对训练数据稀缺问题，还开发了可扩展的合成数据流水线，通过结构化多相机录制构建多样化动态场景并生成同步视频。最后采用正交训练策略，使模型在单次生成中支持任意视角、焦距调整、分辨率适配和多镜头切换。",
+      "findings": "实验表明，CameraAnything能够实现表达丰富的视频重拍，包括任意视角控制、焦距调整、分辨率自适应以及多镜头过渡，在电影级视频编辑和跨平台内容适配中展现出强实用价值。"
+    }
+  },
+  {
+    "id": "2607.24353",
+    "title": "PRISM: Prompt Refinement via Image-grounded Self-rewarding Mechanism for Text-to-Image Generation",
+    "abstract": "Text-to-image generation models can synthesize high-quality images from natural language descriptions, but their performance remains highly sensitive to prompt formulation. Existing prompt optimization methods mainly rely on text-side rewriting, prompt expansion, or external reward signals, offering limited image-grounded diagnosis and weak support for learning reusable optimisation policies. In this paper, we propose PRISM, a Prompt Refinement framework via Image-grounded Self-rewarding Mechanism. PRISM closes the prompt-image-feedback loop by interpreting generated images with structured visual diagnosis and scoring them along semantic consistency, aesthetic quality, and human preference alignment. It first initializes a unified VLM through multi-task supervised fine-tuning, and then improves the prompt policy via self-rewarding optimization with a hybrid ideal-point and Chebyshev reward. Extensive experiments show that PRISM improves holistic image quality and fine-grained semantic alignment, while providing interpretable feedback for targeted prompt refinement. The code is available at https://anonymous.4open.science/r/PRISM-FF81.",
+    "authors": [
+      "Guo Tang",
+      "HongJie Luo",
+      "Tianxu Wang",
+      "Ying Zhang",
+      "Hao Wang"
+    ],
+    "published": "2026-07-27",
+    "updated": "2026-07-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2607.24353.pdf",
+    "abs_url": "https://arxiv.org/abs/2607.24353",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PRISM：基于图像引导自奖励机制的文本到图像生成提示优化框架",
+      "core_contribution": "提出了一种通过图像引导的自奖励机制来优化文本到图像生成提示的框架PRISM，实现了提示-图像-反馈的闭环，无需依赖外部奖励信号即可学习可复用的优化策略。",
+      "method": "PRISM首先通过多任务监督微调初始化一个统一的视觉语言模型（VLM），使其能够对生成图像进行结构化视觉诊断，包括语义一致性、美学质量和人类偏好对齐三个维度的评分。然后，利用混合理想点与切比雪夫奖励的自奖励优化方法，迭代改进提示策略，从而在无需外部奖励信号的情况下实现提示的自动优化。",
+      "findings": "大量实验表明，PRISM能够显著提升生成图像的整体质量和细粒度语义对齐，同时提供可解释的反馈用于针对性的提示改进，验证了其有效性。"
+    }
+  }
+]
