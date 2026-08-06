@@ -2,8 +2,8 @@ name: Daily ArXiv Digest
 
 on:
   schedule:
-    # 每天北京时间早上 8:00 运行 (UTC 0:00)
-    - cron: '0 0 * * *'
+    # 每天北京时间早上 10:00 运行 (UTC 02:00)
+    - cron: '0 2 * * *'
   workflow_dispatch:  # 允许手动触发
 
 permissions:
