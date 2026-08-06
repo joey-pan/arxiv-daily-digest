@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2608.03971",
+    "title": "UniWorld-Design: From Pixel Generation to Layer-Native Design",
+    "abstract": "We introduce UniWorld-Design, a framework that redefines image generation from flat pixel synthesis to structured visual composition, with semantic RGBA layers as the atomic units of generation, understanding, and editing. Our key insight is that pixels define how an image is rendered, whereas layers define how an image is created, understood, and edited. Just as human designers create and manipulate visual content through layers rather than raw pixels, UniWorld-Design equips multimodal generative models with a layer-native design space. UniWorld-Design comprises two models. The Text-to-RGBA (T2RGBA) model generates standalone RGBA assets directly from text. The Image-to-Layer (I2L) model conditions on a finished image, a global instruction and per-layer prompts, and jointly produces ordered, complete semantic RGBA layers. Its instruction interface supports top-level decomposition, recursive decomposition and targeted extraction, making layering an instruction-addressable operation for agentic editing. Because I2L learns complete semantic objects rather than visible-pixel partitions, its layers stay usable when moved or removed. On the Crello benchmark, I2L reduces per-layer RGB L1 error by 37% and achieves a 34% relative improvement in Alpha Soft IoU over Qwen-Image-Layered. Separately, T2RGBA achieves the highest CLIP Score, outperforming LayerDiffuse and OmniAlpha.",
+    "authors": [
+      "Zongjian Li",
+      "Zhiyuan Yan",
+      "Chenxu Bai",
+      "Chen Chen",
+      "Haoxiang Sun",
+      "Shaodong Wang",
+      "Feize Wu",
+      "Shenghai Yuan",
+      "Bin Lin",
+      "Zheyuan Liu",
+      "Yuwei Niu",
+      "Li Yuan"
+    ],
+    "published": "2026-08-04",
+    "updated": "2026-08-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.03971.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.03971",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "UniWorld-Design：从像素生成到图层原生设计",
+      "core_contribution": "提出UniWorld-Design框架，将图像生成从平面像素合成重构为结构化视觉组合，以语义RGBA图层作为生成、理解和编辑的基本单元，使多模态生成模型具备图层原生的设计空间。",
+      "method": "该框架包含两个模型：Text-to-RGBA（T2RGBA）模型直接从文本生成独立的RGBA素材；Image-to-Layer（I2L）模型以完整图像、全局指令和每层提示为条件，联合生成有序且完整的语义RGBA图层。I2L的指令接口支持顶层分解、递归分解和定向提取，使分层成为可寻址的编辑操作，且学习的是完整语义对象而非可见像素分区，因此图层在移动或移除后仍保持可用。",
+      "findings": "在Crello基准上，I2L将每层RGB L1误差降低37%，Alpha Soft IoU相对提升34%（优于Qwen-Image-Layered）；T2RGBA在CLIP Score上达到最高，优于LayerDiffuse和OmniAlpha。"
+    }
+  },
+  {
+    "id": "2608.04887",
+    "title": "STEP-OPD: Rethinking Output Targets and Internal Dynamics in On-Policy Distillation for Diffusion Models",
+    "abstract": "On-policy distillation (OPD) has become an effective approach for consolidating multiple task-specialized image generation models into a single student. However, existing OPD methods optimize the student mainly to match the teacher's output velocity, making the teacher the upper limit of the optimization objective. While output-level supervision alone leaves the student's blockwise representation evolution underconstrained, which weakens the transfer of capabilities that must be progressively developed across layers. We propose STEP-OPD, an on-policy distillation framework for image generation that extends the student's learning target beyond the teacher and introduces explicit constraints on its internal representation evolution. Instead of treating the teacher as the final target, we use the velocity difference between each task-specific teacher and the shared base model as a direction for further learning and add a scaled version of this difference to the teacher velocity. In addition, we align the direction and magnitude of representation changes between the student and teacher, enabling the student to learn how representations are progressively transformed across network blocks. Experiments on compositional alignment, text rendering, and human preference show that our method consistently improves Standard OPD methods. In particular, it increases the GenEval score of DiffusionOPD from 0.927 to 0.961, while also improving OCR and all preference-based metrics. The resulting unified student surpasses the corresponding single-task teachers across all three capability groups, showing that output extrapolation enables beyond-teacher learning. And representation change alignment provides complementary guidance for the student's internal transformations.",
+    "authors": [
+      "Qingyan Wei",
+      "Guangzhao Li",
+      "Xiaobing Tu",
+      "Yinggui Wang",
+      "Xiantao Zhang",
+      "Jinkui Ren",
+      "Xiaohong Liu",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04887.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04887",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "STEP-OPD：重新思考扩散模型在线蒸馏中的输出目标与内部动态",
+      "core_contribution": "提出STEP-OPD框架，通过将学习目标扩展到教师模型之外（输出外推）并显式约束学生模型的内部表示演化，使统一学生模型超越单任务教师模型，显著提升图像生成性能。",
+      "method": "STEP-OPD在在线蒸馏中，利用每个任务特定教师与共享基础模型之间的速度差作为额外学习方向，并将该差值的缩放版本加到教师速度上，形成扩展的学习目标。同时，对齐学生与教师在各网络块间的表示变化方向和幅度，强制学生模仿教师的分层表示演化过程。",
+      "findings": "在组合对齐、文本渲染和人类偏好任务上，STEP-OPD一致优于标准OPD方法。具体地，将DiffusionOPD的GenEval分数从0.927提升至0.961，同时改善OCR和所有偏好指标。统一学生模型在三个能力组上均超过对应的单任务教师，证明输出外推支持超越教师的学习，而表示变化对齐为内部变换提供互补指导。"
+    }
+  },
+  {
+    "id": "2608.04821",
+    "title": "Global Attention-Fused Image Cropping with Attention-Guided and Global-Aligned Crop Evaluator",
+    "abstract": "Image cropping aims to improve image aesthetics by preserving important content within an appropriately composed region. However, most existing methods focus primarily on salient regions and therefore have limited sensitivity to the global relationships among the main image components. To address this limitation, we propose Global Attention-Fused Image Cropping (GAFIC), which consists of an Attention-Guided Feature Fusion (AGFF) and a Global-Aligned Crop Evaluator (GACE). AGFF aggregates the importance of local regions to construct a global representation that captures both image structure and local details. GACE aligns candidate crop features with this global representation, enabling crop evaluation to remain sensitive to boundary changes. We further combine three ranking losses across multiple scales to obtain accurate and stable crop scores. Extensive experiments on the GAIC and CPC datasets demonstrate that GAFIC outperforms existing image-cropping methods, particularly in terms of accuracy and stability. Unlike pixel-level retargeting methods such as seam carving, inpainting, and diffusion-based synthesis, GAFIC does not synthesize or modify the retained pixels; instead, it selects an aesthetically preferred crop from the source image, making it suitable for scenarios where pixel integrity and efficient batch processing are important. The source code is available at https://github.com/AIVRC/GAFIC.git.",
+    "authors": [
+      "Haotian Yang",
+      "Zhile Yang",
+      "Kin-Man Lam",
+      "Patrick Le Callet",
+      "Xin Sun"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04821.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04821",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "全局注意力融合的图像裁剪：基于注意力引导与全局对齐的裁剪评估器",
+      "core_contribution": "提出了一种名为GAFIC的图像裁剪方法，通过全局注意力融合和全局对齐的裁剪评估器，有效捕捉图像组件间的全局关系，从而提升裁剪的准确性和稳定性，优于现有方法。",
+      "method": "GAFIC包含两个关键模块：注意力引导特征融合（AGFF）和全局对齐裁剪评估器（GACE）。AGFF聚合局部区域的重要性以构建全局表示，同时保留图像结构和局部细节；GACE将候选裁剪特征与全局表示对齐，使评估对边界变化敏感。此外，结合多尺度的三种排序损失，以获得准确且稳定的裁剪评分。",
+      "findings": "在GAIC和CPC数据集上的大量实验表明，GAFIC在准确性和稳定性方面优于现有图像裁剪方法。与像素级重定向方法（如接缝雕刻、修复和扩散合成）不同，GAFIC不合成或修改保留像素，而是从源图像中选择美学上更优的裁剪区域，适用于需要像素完整性和高效批量处理的场景。"
+    }
+  },
+  {
+    "id": "2608.04818",
+    "title": "Rethinking Pixel Mean Flows via Interval Denoiser",
+    "abstract": "Modern diffusion and flow-based models are increasingly moving toward few-step, latent-free generation to bypass the computational overhead of multi-step sampling and the reconstruction bottlenecks of external autoencoders. We propose the Interval Denoiser, a theoretically rigorous framework for latent-free generation. Derived directly from the flow matching ODE, it establishes an exact analytical mapping for intermediate trajectory states. Unlike prior formulations, our prediction is shown to reside on a low-dimensional manifold across any time interval, making the regression tractable for a network operating directly on pixels. Furthermore, by avoiding empirical algebraic substitutions, our formulation correctly isolates the pure time derivative to prevent biased gradient evaluations and ensure exact first-order optimization. By analyzing this objective, we equip our framework with residual clipping and a time-sampling curriculum, enabling effective long-interval training and improving few-step performance. Trained from scratch on ImageNet 256x256, our model achieves an FID of 4.55 in one step (1-NFE) and 3.98 in two steps (2-NFE) without perceptual losses.",
+    "authors": [
+      "Alexander Zaytsev",
+      "Dmitry Baranchuk",
+      "Alexander Korotin",
+      "Aibek Alanov"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04818.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04818",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "重新思考像素均值流：基于区间去噪器的方法",
+      "core_contribution": "本文提出了一种名为区间去噪器（Interval Denoiser）的理论框架，用于无潜在编码器的少步生成，通过精确解析中间轨迹状态，使得在像素空间上的回归变得可行，并避免了梯度偏差，从而显著提升少步生成性能。",
+      "method": "该方法直接从流匹配ODE推导出区间去噪器，建立了中间轨迹状态的精确解析映射，并证明该预测位于低维流形上，从而简化了网络回归任务。通过避免经验性的代数替换，正确分离纯时间导数，确保了一阶优化的精确性。此外，引入了残差裁剪和时间采样课程，以支持长区间训练并改善少步生成效果。",
+      "findings": "在ImageNet 256x256上从零训练，该模型在单步（1-NFE）时达到FID 4.55，两步（2-NFE）时达到FID 3.98，且无需感知损失，显著优于现有方法。"
+    }
+  },
+  {
+    "id": "2608.04436",
+    "title": "ToolArtist: Tool-Using Unified Multimodal Models for Agentic Image Generation",
+    "abstract": "Text-to-image (T2I) models can produce visually compelling images, yet they remain limited on open-world tasks that require complex semantic understanding, multi-step reasoning, and the integration of external world knowledge. Existing efforts introduce agent capabilities into image generation, but they either prescribe a fixed workflow or place only a subset of the open-world image generation process under agent control. Consequently, reasoning, tool invocation, and image generation are not coordinated by a single policy. We propose ToolArtist, a fully agentic image generation model obtained by post-training a Unified Multimodal Model (UMM). ToolArtist dynamically orchestrates reasoning, external tool use, and native image generation within one unified policy. During Supervised Fine-Tuning (SFT), we equip a teacher agent with search tools alongside an image-generation tool. We then convert the collected trajectories into a UMM compatible format, where the image-generation tool is concealed while the resulting generated images are retained. During Reinforcement Learning (RL), we develop an agentic RL infrastructure for UMMs and introduce Reason-Act-Draw GRPO (RAD-GRPO), which uses complementary intent and quality rewards to jointly optimize the model. Experiments show that placing the entire open-world image-generation process under an agent policy consistently outperforms approaches with fixed pipelines or only partially agent-controlled components. We release the training data and the complete post-training infrastructure.",
+    "authors": [
+      "Jiahao Zhao",
+      "Xiaomin Yu",
+      "Zhongxiang Sun",
+      "Fengwei Teng",
+      "Chengwei Qin",
+      "Xiaobin Hu",
+      "Jun Xu",
+      "Shuicheng Yan"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04436.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04436",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ToolArtist：用于智能体图像生成的工具使用统一多模态模型",
+      "core_contribution": "提出ToolArtist，一个完全智能体化的图像生成模型，通过后训练统一多模态模型（UMM），将推理、外部工具调用和原生图像生成统一在单一策略中，从而解决开放世界图像生成任务中复杂语义理解、多步推理和外部知识整合的挑战。",
+      "method": "该方法首先在监督微调阶段，使用配备搜索工具和图像生成工具的教师智能体收集轨迹，并将其转换为UMM兼容格式，其中图像生成工具被隐藏但生成的图像保留。随后在强化学习阶段，开发了针对UMM的智能体强化学习基础设施，并提出Reason-Act-Draw GRPO（RAD-GRPO）算法，利用互补的意图奖励和质量奖励对模型进行联合优化。",
+      "findings": "实验表明，将整个开放世界图像生成过程置于智能体策略控制下，持续优于固定流程或仅部分组件受智能体控制的方法，验证了完全智能体化设计的有效性。"
+    }
+  }
+]
