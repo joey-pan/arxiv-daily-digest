@@ -1,0 +1,143 @@
+[
+  {
+    "id": "2608.06125",
+    "title": "Sample-Adaptive Latent Rewards for Uncertainty-Guided Diffusion Post-Training",
+    "abstract": "Latent reward models can supervise visual diffusion models without decoding intermediate states into pixel space. This makes alignment with human preferences more efficient. However, existing latent reward models output only scalar scores. They do not estimate the uncertainty of each prediction. The generator therefore cannot determine which feedback is reliable. This can drive optimization in the wrong direction and lead to reward hacking. We propose \\textsc{SURE}, a unified latent-space framework for image and video diffusion models. It learns reward distributions and directly uses their reliability to guide dense post-training. First, we propose sample-adaptive latent reward model (\\textsc{SURE-LRM}). It predicts a Gaussian utility for each noisy latent. Its mean predicts the reward score. Its variance reflect the uncertainty of prediction without human annotation. The learned distribution then guides post-training through uncertainty-guided reward feedback learning (\\textsc{SURE-REFL}). This method provides uncertainty-guided dense feedback along the denoising trajectory. At selected transitions, \\textsc{SURE-REFL} queries the frozen \\textsc{SURE-LRM}. It converts detached variance into reliability weights for samples at the same transition. Each weighted reward is backpropagated only through its local transition. The entire process remains in latent space and requires neither pixel-space decoding nor the full denoising graph. Experiments show that \\textsc{SURE-LRM} improves preference prediction over strong baselines. \\textsc{SURE-REFL} achieves the sota performance among various metrics and further improves optimization stability. It also achieves the highest VBench quality, semantic, and total scores among the evaluated methods.",
+    "authors": [
+      "Rui Li",
+      "Yuanzhi Liang",
+      "Ke Hao",
+      "Ziqiao Weng",
+      "Haibin Huang",
+      "Chi Zhang",
+      "XueLong Li"
+    ],
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.06125.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.06125",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "样本自适应潜在奖励用于不确定性引导的扩散模型后训练",
+      "core_contribution": "提出了一种统一的潜在空间框架SURE，用于图像和视频扩散模型，通过学习奖励分布并利用其不确定性来引导密集后训练，从而避免奖励黑客攻击并提高对齐效率。",
+      "method": "SURE框架包含两个关键组件：样本自适应潜在奖励模型（SURE-LRM）和不确定性引导的奖励反馈学习（SURE-REFL）。SURE-LRM为每个噪声潜在变量预测一个高斯效用，其均值表示奖励分数，方差反映预测不确定性（无需人工标注）。SURE-REFL在去噪轨迹的选定转换处查询冻结的SURE-LRM，将分离的方差转换为可靠性权重，并仅通过局部转换反向传播加权奖励，整个过程保持在潜在空间内，无需像素级解码或完整去噪图。",
+      "findings": "实验表明，SURE-LRM在偏好预测上优于强基线；SURE-REFL在多种指标上达到最先进性能，并进一步提高了优化稳定性，同时在VBench质量、语义和总分上均取得最高分。"
+    }
+  },
+  {
+    "id": "2608.05811",
+    "title": "Energy-Guided Flow Matching",
+    "abstract": "Pixel-space generative models bypass lossy latent compression, yet necessitate joint learning of global structure and fine-grained details in a high-dimensional space. Standard flow matching interpolates noise toward a fixed clean-image endpoint, leaving the spectral evolution to be learned implicitly. In this paper, we introduce Energy-Guided Flow Matching(EG-FM) that explicitly models a coarse-to-fine generative trajectory by moving endpoint. Specifically, EG-FM replaces the fixed endpoint with a heat-kernel-filtered endpoint that evolves smoothly from low-frequency image to clean image.The fraction of high-frequency signal in moving endpoint is released by an image-specific energy-guided scheduling, leading to the re-targeting of velocity in flow matching.Our framework requires no adaptation of the backbone and training data, bringing negligible cost on the training and inference stages. In our experiment, EG-FM consistently achieves lower FID on the ImageNet class-conditional image generation task at $256 \\times 256$ with fewer epochs, reaching an FID of 1.55 at 200 epochs and 1.45 at 600 epochs. We continue training the generation task on the setting of $512 \\times 512$ resolution, yielding a FID of 1.58 after only 40 high-resolution adaptation epochs.Furthermore, we transfer EG-FM on text-to-image generation and achieve 0.85 on GenEval score and 83.9 on DPG-Bench. Code is available at https://github.com/ysng123/EG-FM.",
+    "authors": [
+      "Haoyang Tong",
+      "Yu He",
+      "Fang Li",
+      "Lichen Ma",
+      "Jingling Fu",
+      "Dong Chen",
+      "Zhen Chen",
+      "Junshi Huang",
+      "Jie Cao"
+    ],
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.05811.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.05811",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "能量引导的流匹配",
+      "core_contribution": "提出了一种名为能量引导流匹配（EG-FM）的新方法，通过动态调整生成过程中的端点，显式建模从粗到细的生成轨迹，从而在不改变骨干网络和训练数据的情况下，提升像素空间生成模型的性能，尤其在图像生成任务上取得了显著的FID改进。",
+      "method": "EG-FM将标准流匹配中的固定端点替换为热核滤波后的动态端点，该端点从低频图像平滑过渡到干净图像。通过图像特定的能量引导调度来控制高频信号的释放比例，从而重新调整流匹配中的速度场。该方法无需修改网络结构或训练数据，仅增加极小的训练和推理开销。",
+      "findings": "在ImageNet 256×256类条件生成任务上，EG-FM在200个epoch时达到FID 1.55，600个epoch时达到1.45，优于标准流匹配。在512×512分辨率下，仅经过40个高分辨率适应epoch即获得FID 1.58。此外，在文本到图像生成任务中，EG-FM在GenEval上获得0.85分，在DPG-Bench上获得83.9分，展示了良好的泛化能力。"
+    }
+  },
+  {
+    "id": "2608.05478",
+    "title": "GenGA: Editable and Data-Grounded Graphical Abstract Generation for Academic Papers",
+    "abstract": "Graphical Abstracts (GAs) visually summarize the key findings of academic papers, playing a crucial role in facilitating the understanding of research content. Recently, advancements in vision-language models and image generation models have enabled the automatic generation of scientific figures based on paper content. However, most conventional methods output the generated results as raster graphics, making post-editing (e.g., text modification and layout changes) highly difficult. This poses a significant challenge, as they are unsuitable for the iterative figure revision process inherent in paper writing and peer review. To tackle these challenges, we define the novel task of generating editable GAs from paper content and propose GenGA, a new GA generation framework that directly produces figures in vector format. By generating figures as a collection of vector elements with a hierarchical structure, GenGA produces outputs that can be seamlessly imported into existing drawing tools for intuitive, element-level editing. Furthermore, we introduce the Structural Independence Coefficient (SIC), a metric that quantifies the editing simplicity of a figure based on the degree to which local modifications propagate to other elements. Experimental results show that GenGA achieves superior editing simplicity compared to conventional methods, and even surpasses human-authored GAs in conciseness and semantic alignment. We also validate SIC as an effective metric correlated with manual editing costs. This study fundamentally redefines GA generation as an editable vector graphic generation problem grounded in the practical workflows of researchers, significantly promoting effective scientific communication.",
+    "authors": [
+      "Takuro Kawada",
+      "Shunsuke Kitada",
+      "Hitoshi Iyatomi"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.GR",
+      "cs.CL",
+      "cs.CV",
+      "cs.HC",
+      "cs.LG",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.05478.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.05478",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "GenGA：面向学术论文的可编辑且基于数据的图形摘要生成",
+      "core_contribution": "本文首次提出从论文内容生成可编辑图形摘要（GA）的任务，并提出了GenGA框架，直接以矢量格式生成图形，支持元素级编辑，解决了传统方法生成栅格图像难以修改的问题。",
+      "method": "GenGA通过将图形表示为具有层次结构的矢量元素集合来生成图形摘要，利用视觉-语言模型和图像生成模型从论文内容中提取关键信息，并输出可导入现有绘图工具的矢量格式。此外，作者引入了结构独立性系数（SIC）来量化图形的编辑简易性，该系数基于局部修改对其他元素的传播程度计算。",
+      "findings": "实验结果表明，GenGA在编辑简易性上优于传统方法，并且在简洁性和语义对齐方面甚至超过人工撰写的图形摘要。同时，SIC被验证为与手动编辑成本相关的有效指标，能够可靠地评估图形的可编辑性。"
+    }
+  },
+  {
+    "id": "2608.05450",
+    "title": "MOSAIK: Multi-Patch Content-Aware Spatial Allocation of Image Tokens for Efficient Generation",
+    "abstract": "Pixel-space diffusion models avoid the reconstruction ceiling of latent diffusion models by generating directly in image space. However, their substantially higher token count makes generation expensive due to the quadratic complexity of self-attention. Several existing efficiency methods reduce this cost by using larger patches at selected denoising steps, thereby representing the image with fewer tokens. Yet, each step still uses a single patch size uniformly across the entire image, overlooking that different regions suffer different fidelity losses when coarsened. We introduce MOSAIK, a damage-guided framework that varies patch size across regions and denoising steps. MOSAIK adapts the PixelDiT backbone to generate arbitrary heterogeneous patch layouts, and a lightweight predictor uses intermediate denoising features to estimate the fidelity loss caused by coarsening each region. Given a token budget, our damage-guided layout predictor assigns fine patches to sensitive regions and coarse patches elsewhere. Remarkably, while reducing FLOPs by 70% and token count by 83%, MOSAIK matches the full-compute PixelDiT on GenEval and its DPG-Bench score drops by only 1.0 point. Compared to diverse efficiency paradigms, including temporal patch scheduling and feature caching, our approach delivers highly competitive performance at moderate budgets and consistently outperforms these baselines in highly constrained compute regimes.",
+    "authors": [
+      "Mohammadreza Hami",
+      "Mohammadreza Samadi",
+      "Chao Gao",
+      "Negar Hassanpour"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.05450.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.05450",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MOSAIK：面向高效生成的图像令牌多补丁内容感知空间分配",
+      "core_contribution": "提出了一种损伤引导的框架MOSAIK，能够在不同图像区域和去噪步骤中自适应调整补丁大小，从而在显著降低计算成本的同时保持生成质量，解决了现有方法中单一补丁大小无法适应区域差异的问题。",
+      "method": "MOSAIK基于PixelDiT骨干网络，通过修改其结构以支持任意异构补丁布局。它使用一个轻量级预测器，利用中间去噪特征估计每个区域因粗化（使用较大补丁）而导致的保真度损失。在给定令牌预算下，该损伤引导的布局预测器将细补丁分配给敏感区域，而将粗补丁分配给其他区域，从而在生成过程中动态调整补丁大小。",
+      "findings": "在GenEval基准上，MOSAIK在减少70% FLOPs和83%令牌数量的情况下，性能与全计算PixelDiT相当；在DPG-Bench上仅下降1.0分。与时间补丁调度和特征缓存等效率方法相比，MOSAIK在中等预算下具有竞争力，并在高度受限的计算条件下持续优于这些基线。"
+    }
+  },
+  {
+    "id": "2608.05213",
+    "title": "StyleComposer: Training-Free Multi-Reference Style Composition",
+    "abstract": "The style of a painting is not monolithic: color, texture, and structure may come from different sources. Existing reference-guided methods transfer them as one style signal, leaving each attribute's source and strength outside the user's control. We ask where in a diffusion model one attribute can change while the others hold, and find that no single representation isolates all three. The proposed StyleComposer therefore routes each style attribute through the representation where it separates best and coordinates the routes over denoising time. Without training or inversion, it satisfies three references and the prompt jointly more closely than prior methods, and exposes one strength slider per attribute. Project page: https://lexxsh.github.io/StyleComposer",
+    "authors": [
+      "Sanghyeok Lee",
+      "Jihye Kang",
+      "Namhyuk Ahn"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.05213.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.05213",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "StyleComposer：无需训练的多参考风格组合",
+      "core_contribution": "提出了一种无需训练或反转的扩散模型方法，能够将绘画风格中的颜色、纹理和结构等属性分别从不同参考图像中提取并组合，同时允许用户独立控制每个属性的强度。",
+      "method": "该方法首先在扩散模型中定位每个风格属性（颜色、纹理、结构）最能独立分离的表示层，然后为每个属性选择最优的表示路径，并在去噪过程中协调这些路径，使得多个参考图像和文本提示能够同时满足。整个过程无需训练或反转，仅通过调整表示层的特征融合方式实现。",
+      "findings": "实验表明，StyleComposer在同时满足三个参考图像和文本提示方面优于现有方法，并且提供了每个属性的强度滑块，使用户能够灵活调节颜色、纹理和结构的贡献程度。"
+    }
+  }
+]
