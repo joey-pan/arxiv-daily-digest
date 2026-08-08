@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2608.04435",
+    "title": "Revisiting Channel Effectiveness: A Multi-Dimensional Evaluation with Primitive Visual Stimuli",
+    "abstract": "Established channel effectiveness rankings primarily assess magnitude estimation accuracy in complete chart contexts, often neglecting other perceptual tasks such as discriminability, separability, and pop-out. To address this gap, we conducted crowdsourced experiments on seven core visual channels (position, length, tilt, area, curvature, luminance, and saturation) using primitive visual stimuli, a set of visual marks without chart-specific scaffolding to isolate channel-level variation. We evaluated these channels across four perceptual tasks (accuracy, discriminability, separability, and pop-out) and found that channel effectiveness is fundamentally multi-dimensional, with rankings shifting substantially across tasks. For instance, while spatial channels maintain an overall advantage, accuracy depends strongly on whether a fixed spatial anchor is available. Discriminability varies dramatically across channels and value ranges, a pattern we formalized with a novel Anchored Harmonic Weber model. Pairwise channel interactions are often strongly asymmetric. Finally, we identify a dissociation between estimation accuracy and preattentive detection: length shows only moderate detection effectiveness despite top-tier accuracy, while area achieves the highest detection rates despite poor quantitative accuracy, though the latter advantage may partly reflect stimulus-level cues. We synthesize these findings into a scenario-driven perspective for context-sensitive channel selection.",
+    "authors": [
+      "Soohyun Lee",
+      "Seokhyeon Park",
+      "Minsuk Chang",
+      "Jinwook Seo"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.HC",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04435.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04435",
+    "primary_category": "cs.HC",
+    "score": 85,
+    "summary": {
+      "title_zh": "重新审视通道有效性：基于原始视觉刺激的多维度评估",
+      "core_contribution": "本文通过使用原始视觉刺激（无图表框架的视觉标记）系统评估了七种核心视觉通道在四种感知任务中的表现，揭示了通道有效性的多维度本质，并提出了情境敏感的通道选择视角。",
+      "method": "作者在众包平台上进行了实验，使用原始视觉刺激（如位置、长度、倾斜、面积、曲率、亮度和饱和度）作为刺激材料，排除了图表特定框架的干扰。参与者分别完成准确性、可辨别性、可分离性和弹出性四种感知任务，通过比较不同通道在各任务中的表现来评估其有效性。此外，作者提出了一个新颖的锚定谐波韦伯模型来形式化可辨别性随通道和值域变化的规律。",
+      "findings": "研究发现通道有效性在不同任务间排名差异显著：空间通道整体占优，但准确性依赖于固定空间锚点的存在；可辨别性在不同通道和值域间变化剧烈，且通道间交互作用常呈强不对称性；此外，长度在准确性上表现优异但弹出检测效果一般，而面积在检测中表现最佳但定量准确性较差，表明估计准确性与前注意检测之间存在分离现象。"
+    }
+  },
+  {
+    "id": "2608.04349",
+    "title": "Poly-OPD: Heterogeneous Multi-Teacher On-Policy Distillation for Capability-Selectable Flow Models",
+    "abstract": "Leading open text-to-image models often carry complementary strengths: one may lead on preference-aligned aesthetics while another follows compositional instructions more faithfully. However, differences in their autoencoders and noise schedules make it difficult to transfer these strengths across models. In this paper, we present Poly-OPD, a framework that can consolidate complementary strengths of heterogeneous teachers into a single compact flow-matching student. To bridge the incompatible latent spaces of different teachers, Poly-OPD performs on-policy distillation through a pixel bridge. Each student-generated image is re-encoded by a selected teacher's encoder and refined from a noise level matched by magnitude under the teacher's noise schedule. The resulting target is further matched to the student in frozen DINOv2 space, enabling supervision across incompatible latent spaces. To retain complementary capabilities without cross-teacher interference, Poly-OPD uses a gradient compatibility diagnostic to organize its adapters: attention LoRA modules are shared across teachers, whereas feed-forward adapters remain teacher-specific. During distillation, a gap-aware curriculum devotes more training to compositional categories where the student still falls short of the teacher. As each gap narrows, training shifts toward categories with larger remaining gaps. By distilling FLUX.1-dev and Z-Image into a 2.5B SD3.5-Medium student, Poly-OPD improves GenEval from 67.3 to 73.3, surpassing both larger teachers, and raises DrawBench HPSv3 from 9.34 to 11.35, consolidating both strengths within a switchable model.",
+    "authors": [
+      "Siming Fu",
+      "Haojun Xu",
+      "Ruizhe He",
+      "Zheming Fu",
+      "Hualiang Wang",
+      "Jie Huang",
+      "Xiaoxiao Ma",
+      "Mingchen Zhong",
+      "Weihu Huang",
+      "Xiaoxuan He",
+      "Linjiang Huang",
+      "Si Liu"
+    ],
+    "published": "2026-08-05",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.04349.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.04349",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Poly-OPD：面向能力可选流模型的多教师异构在线蒸馏",
+      "core_contribution": "提出一种异构多教师在线蒸馏框架Poly-OPD，能够将多个具有互补能力的文本生成图像模型（如FLUX.1-dev和Z-Image）的优势整合到一个紧凑的流匹配学生模型中，同时通过可切换适配器实现能力可选。",
+      "method": "Poly-OPD通过像素桥接解决不同教师潜在空间不兼容的问题：学生生成的图像被所选教师的编码器重新编码，并在该教师的噪声调度下按幅度匹配的噪声水平进行细化。目标进一步在冻结的DINOv2空间中与学生匹配，实现跨潜在空间的监督。为保留互补能力并避免教师间干扰，使用梯度兼容性诊断来组织适配器：注意力LoRA模块在教师间共享，而前馈适配器保持教师特定。蒸馏过程中，采用差距感知课程，优先训练学生仍落后于教师的组合类别，随着差距缩小，训练转向剩余差距更大的类别。",
+      "findings": "将FLUX.1-dev和Z-Image蒸馏到2.5B的SD3.5-Medium学生模型中，GenEval得分从67.3提升至73.3，超过两个更大的教师模型；DrawBench HPSv3得分从9.34提升至11.35，成功整合了两种模型的优势，并支持能力切换。"
+    }
+  },
+  {
+    "id": "2608.03929",
+    "title": "Latent Reward Registers for Diffusion Preference Alignment",
+    "abstract": "Aligning diffusion models with human preferences usually relies on a sparse terminal reward evaluated on the final generated samples, presenting a severe temporal credit-assignment challenge across the multi-step denoising process. We propose Latent Reward Registers, a mechanism that estimates terminal preference directly from intermediate noisy latents by prepending learnable, position-free register tokens to the input sequence of a frozen Diffusion Transformer (DiT). This independent readout mechanism extracts latent reward evidence without altering the generator's hidden states or velocity field. The resulting dense, differentiable reward signal throughout the full denoising process facilitates two alignment strategies. For training, Reward-Gradient On-Policy Distillation (RG-OPD) distills reward-guided updates along on-policy trajectories, bypassing the computationally expensive rollouts of standard policy gradients. For inference, Reward-Guided Sampling (RGS) steers trajectories via magnitude-matched reward gradients without parameter updates. Empirically, at high noise levels (u = 0.8), the registers reach the highest pairwise accuracy among the evaluated latent reward models. Furthermore, RG-OPD outperforms online reinforcement learning baselines while reducing GPU hours by up to 33x, and RGS establishes a new state-of-the-art among training-free methods, strictly enhancing both alignment and perceptual metrics. Code and weights are available at https://github.com/Guanys-dar/latent-reward-register",
+    "authors": [
+      "Yuanshen Guan",
+      "Zipeng Feng",
+      "Chengru Song",
+      "Zhiwei Xiong",
+      "Peiqin Sun"
+    ],
+    "published": "2026-08-04",
+    "updated": "2026-08-05",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.03929.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.03929",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "用于扩散模型偏好对齐的潜在奖励寄存器",
+      "core_contribution": "提出一种名为潜在奖励寄存器（Latent Reward Registers）的机制，通过从中间噪声潜在表示中直接估计终端偏好，解决扩散模型多步去噪过程中的时间信用分配问题，并支持训练与推理两种对齐策略。",
+      "method": "该方法在冻结的扩散Transformer（DiT）输入序列中前置可学习的、与位置无关的寄存器令牌，独立读取潜在奖励证据，不改变生成器的隐藏状态或速度场。基于此密集可微奖励信号，提出两种策略：训练阶段采用奖励梯度在线策略蒸馏（RG-OPD），沿在线轨迹蒸馏奖励引导更新，避免标准策略梯度的昂贵采样；推理阶段采用奖励引导采样（RGS），通过幅度匹配的奖励梯度引导轨迹，无需参数更新。",
+      "findings": "在高噪声水平（u=0.8）下，寄存器在潜在奖励模型中达到最高的成对准确率；RG-OPD优于在线强化学习基线，同时将GPU耗时减少最多33倍；RGS在无训练方法中达到新最优，同时提升对齐质量和感知指标。"
+    }
+  },
+  {
+    "id": "2608.03708",
+    "title": "MultiCompose: Multi-Concept Personalized Composition with Per-Subject Attribute Binding",
+    "abstract": "Text-to-image diffusion models enable personalization of specific visual concepts from a small number of reference images. However, generating a single image that contains multiple personalized subjects, each bound to user-specified attributes such as clothing, accessories, and held objects, remains largely unaddressed. Without explicit spatial constraints, concurrently activated concept checkpoints produce overlapping cross-attention responses, causing per-subject identity degradation and attribute misalignment. Moreover, no established benchmark jointly evaluates these two failure modes in the personalized multi-subject setting. We present MultiCompose, a composition framework that decouples per-concept personalization from multi-subject inference. A semantic preservation regularization maintains attribute binding capacity during fine-tuning, while a two-phase inference procedure automatically establishes subject layout and composes per-concept predictions through spatially exclusive masks. We further introduce MSP-Bench, a benchmark that jointly evaluates identity fidelity (ID), attribute binding accuracy (BIND), and attribute misalignment (MIS) through a dual-pathway protocol. Experiments show that MultiCompose outperforms existing methods on both conventional metrics and MSP-Bench, confirming the benchmark's ability to reveal failure modes that conventional metrics overlook. Code is available at https://github.com/I2-Multimedia-Lab/MultiCompose",
+    "authors": [
+      "Ruirui Zhang",
+      "Zhengkai Zhao",
+      "Pan Gao"
+    ],
+    "published": "2026-08-04",
+    "updated": "2026-08-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.03708.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.03708",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MultiCompose：基于逐主体属性绑定的多概念个性化组合",
+      "core_contribution": "提出了一种多概念个性化组合框架MultiCompose，能够生成包含多个个性化主体且每个主体绑定指定属性（如衣物、配饰、手持物）的图像，并引入了一个联合评估身份保真度、属性绑定准确性和属性错位的新基准MSP-Bench。",
+      "method": "MultiCompose将逐概念个性化与多主体推理解耦。在微调阶段，使用语义保持正则化来维持属性绑定能力；在推理阶段，采用两阶段流程，自动建立主体布局，并通过空间互斥掩码组合每个概念的预测结果。同时，MSP-Bench通过双路径协议联合评估ID、BIND和MIS指标。",
+      "findings": "实验表明，MultiCompose在传统指标和MSP-Bench上均优于现有方法，且MSP-Bench能够揭示传统指标忽略的失败模式，验证了其有效性。"
+    }
+  },
+  {
+    "id": "2608.05798",
+    "title": "KVAE: Family of Tokenizers for Multimodal Generative Models",
+    "abstract": "Latent diffusion modeling (LDM), a prominent paradigm, utilizes tokenizers to map input signal to compressed representation. This dependency positions tokenizer as an integral part of generation process itself, since it affects learning speed, quality of synthesized samples and lay foundation for later applications. This report presents series of KVAE tokenizers for audio, image and video, all designed for subsequent text-conditioned generation: KVAE-Audio, a continuous full-band 48 kHz tokenizer with a 50 Hz latent of 64 channels; KVAE-3D -- two causal video tokenizers for 4x16x16 and 4x8x8 compression; KVAE-2D, an image model, compressing input by factor of 8 with 32 channels. We demonstrate that reconstruction (PSNR, LPIPS, PESQ, etc.) and generation results on objective (Frechet Distance, CLIP score, CLAP score, etc.) and subjective (side-by-side evaluation) metrics matches or surpasses frontier opensource tokenizers, such as VAEs from Wan-2.2, HunyuanVideo-1.5, FLUX.2, MovieGen, StableAudio and MMAudio. Considering difficulty of development, we share with community training details, model selection method and ablation on design choices. The code is publicly available at https://github.com/kandinskylab/kvae and https://github.com/kandinskylab/kvae-audio.",
+    "authors": [
+      "Andrey Shutkin",
+      "Denis Parkhomenko",
+      "Ivan Kirillov",
+      "Kirill Chernyshev",
+      "Kirill Malakhov",
+      "Ilia Vasiliev",
+      "Ilia Trushkin",
+      "Valeriya Kobenko",
+      "David Chikovani",
+      "Alexander Ivanov",
+      "Azat Saginbaev",
+      "Egor Silvestrov",
+      "Ivan Mikheev",
+      "Konstantin Zakharov"
+    ],
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "categories": [
+      "cs.CV",
+      "cs.LG",
+      "cs.SD"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.05798.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.05798",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "KVAE：多模态生成模型的系列分词器",
+      "core_contribution": "本文提出了KVAE系列分词器，覆盖音频、图像和视频模态，用于文本条件生成，在重建质量和生成指标上达到或超越现有开源分词器，并公开了训练细节和设计选择。",
+      "method": "KVAE系列包括：KVAE-Audio（连续全频带48 kHz音频分词器，50 Hz潜在率，64通道）、KVAE-3D（两个因果视频分词器，分别实现4x16x16和4x8x8压缩）、KVAE-2D（图像模型，8倍压缩，32通道）。这些分词器基于潜在扩散模型（LDM）框架，通过将输入信号映射到压缩潜在表示来支持后续的文本条件生成。作者还提供了训练细节、模型选择方法和设计选择的消融实验。",
+      "findings": "在重建指标（PSNR、LPIPS、PESQ等）和生成指标（Frechet Distance、CLIP score、CLAP score等）以及主观评估（并排比较）上，KVAE系列匹配或超越了前沿开源分词器，如Wan-2.2、HunyuanVideo-1.5、FLUX.2、MovieGen、StableAudio和MMAudio的VAE。代码已公开。"
+    }
+  }
+]
