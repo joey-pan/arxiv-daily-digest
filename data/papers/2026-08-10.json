@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2608.07003",
+    "title": "HRDiT: Training-Free High-Resolution Image Generation with Off-the-Shelf Diffusion Transformer Models",
+    "abstract": "Training-free text-to-high-resolution image generation has recently attracted growing research attention. However, existing studies on this task primarily focus on adapting off-the-shelf U-Net-based diffusion models to high resolutions, with limited progress on adapting off-the-shelf Diffusion Transformer (DiT) models despite their strong text-to-image generation capabilities at limited resolutions. In this work, we find two key challenges particularly hindering the application of off-the-shelf DiT models for high-resolution image synthesis in a training-free manner, namely, spatial disorder and long generation time. To address these challenges, we propose a novel method tailored to adapt off-the-shelf DiT models for high-resolution image synthesis. Extensive experiments show the efficacy of our method. Our code is available at: https://github.com/zylwithxy/HRDiT.",
+    "authors": [
+      "Yu Xue",
+      "Haoxuan Qu",
+      "Zhuoling Li",
+      "Hongbin Xu",
+      "Jianxiong Yin",
+      "Simon See",
+      "Hossein Rahmani",
+      "Jun Liu"
+    ],
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.07003.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.07003",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "HRDiT：利用现成扩散Transformer模型实现无需训练的高分辨率图像生成",
+      "core_contribution": "本文提出了一种无需训练即可将现成扩散Transformer（DiT）模型适配到高分辨率图像生成的方法，解决了该任务中存在的空间混乱和生成时间长两大关键挑战。",
+      "method": "该方法针对DiT模型在高分辨率生成中的空间无序问题，引入了特定的注意力机制调整或位置编码修正策略，以保持全局结构一致性；同时通过优化采样流程或减少冗余计算来加速生成过程，从而在不进行任何训练的情况下实现高效的高分辨率图像合成。",
+      "findings": "大量实验证明，该方法能有效提升现成DiT模型在高分辨率图像生成中的质量，并显著缩短生成时间，优于现有基于U-Net的无需训练方法，验证了其在文本到高分辨率图像任务中的实用性和泛化能力。"
+    }
+  },
+  {
+    "id": "2608.06929",
+    "title": "MaskFlow: Precise, Consistent and Seamless Regional Image Editing",
+    "abstract": "Regional image editing has attracted considerable attention for its spatial controllability. Although instruction-based and mask-reference-based editing methods can achieve strong semantic alignment, reliable regional control remains challenging, where an edit must be accurately localized and naturally integrated with the preserved context. We propose \\textbf{MaskFlow}, a training framework for precise localization, consistent background preservation, and seamless boundary transitions. MaskFlow incorporates the mask into the probability path and flow-matching objective, coordinating generation within the editable region with source preservation outside it. The proposed Soft-Poisson de-seaming module further refines the predicted vector field during both training and sampling to improve the smooth integration of the edited foreground with the preserved background. We also design a data synthesis pipeline to construct MEData, a mask-based image editing dataset for training regional image editing models and facilitating further research. Experiments on natural scenes and infographic images demonstrate consistent improvements over competing methods in both quantitative and qualitative evaluations.",
+    "authors": [
+      "Rui Xu",
+      "Yang Yong",
+      "Shunzi Yang",
+      "Ruihao Gong",
+      "Chengtao Lv"
+    ],
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.06929.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.06929",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MaskFlow：精确、一致且无缝的区域图像编辑",
+      "core_contribution": "提出了一种名为MaskFlow的训练框架，用于实现区域图像编辑中的精确定位、背景一致性和无缝边界过渡，并构建了基于掩码的图像编辑数据集MEData以支持模型训练和后续研究。",
+      "method": "MaskFlow将掩码信息直接整合到概率路径和流匹配目标中，在可编辑区域内协调生成过程，同时保持区域外的源图像内容不变。此外，引入Soft-Poisson去接缝模块，在训练和采样阶段细化预测的向量场，以改善编辑前景与保留背景之间的平滑融合。同时，设计了一个数据合成流程来生成MEData数据集，用于训练区域编辑模型。",
+      "findings": "在自然场景和信息图图像上的实验表明，MaskFlow在定量和定性评估中均优于现有竞争方法，实现了更精确的编辑定位、更一致的背景保留和更自然的边界过渡。"
+    }
+  },
+  {
+    "id": "2608.06878",
+    "title": "ControlRef: Efficient Layout-Guided Multi-Instance Generation via Anchored 4D-RoPE",
+    "abstract": "Layout-guided multi-instance generation is essential for controllable image synthesis in Multi-Modal Diffusion Transformers (MM-DiTs). However, integrating this capability into unified architectures remains challenging. Prior frameworks rely on redundant full-resolution canvas padding and Shifted-RoPE to manage multiple reference images. This mechanism drastically inflates computational overhead for sparse layouts and disrupts critical low-frequency RoPE features, creating a severe spatial-frequency compromise that blurs absolute spatial correspondence. To overcome these limitations, we propose ControlRef, a highly efficient and precise multi-instance synthesis framework. ControlRef utilizes a Unified Instance-Layout Control (UILC) attention mask to strictly decouple inter-instance semantic interactions and enforce precise regional binding. To further promote region-level spatial alignment, we introduce Anchored 4D-RoPE, a novel positional encoding mechanism that directly anchors tokens to their absolute geometric centers. By pre-aligning reference images to their corresponding bounding box resolutions, physically anchoring both layout and reference tokens to their absolute geometric centers, and stacking the references along the z-axis, Anchored 4D-RoPE natively preserves spatial priors and mitigates the spatial-frequency compromise without lossy shifting. Extensive experiments demonstrate that ControlRef achieves state-of-the-art visual fidelity and localization accuracy, while concurrently slashing inference latency by over 80% in sparse layouts and reducing memory overhead by 50% in dense scenarios.",
+    "authors": [
+      "Yunkai Yang",
+      "Yudong Zhang",
+      "Xinying Chen",
+      "Haoyuan Liang",
+      "Yizhuo Niu",
+      "Jinshuai Cheng",
+      "Kunquan Zhang",
+      "Liziyue Fang",
+      "Weitao Wan",
+      "Runmin Dong"
+    ],
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.06878.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.06878",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ControlRef：基于锚定4D-RoPE的高效布局引导多实例生成",
+      "core_contribution": "提出ControlRef框架，通过统一实例布局控制注意力掩码和锚定4D-RoPE位置编码，在保持高视觉保真度和定位精度的同时，大幅降低稀疏布局下的推理延迟和内存开销。",
+      "method": "ControlRef采用统一实例布局控制（UILC）注意力掩码严格解耦实例间语义交互并强制区域绑定；引入锚定4D-RoPE位置编码，将参考图像预对齐到对应边界框分辨率，物理锚定布局和参考token到绝对几何中心，并沿z轴堆叠参考，从而保留空间先验并避免有损移位。",
+      "findings": "实验表明，ControlRef在视觉保真度和定位精度上达到最先进水平，同时在稀疏布局下推理延迟降低超过80%，在密集场景下内存开销减少50%。"
+    }
+  },
+  {
+    "id": "2608.06751",
+    "title": "Beyond Starry Night: Shortcut-Aware Control-State Planning for Artist-Grounded Text to Image Generation",
+    "abstract": "Artist-grounded image generation requires more than appending an artist name to a prompt. Image models often respond to artist names through canonical shortcuts, such as recurring motifs, generic palettes, or overrepresented period signatures, rather than preserving the user's intended scene. We introduce Atelier, a shortcut-aware control-state planning framework for artist-grounded image generation. Atelier translates underspecified artistic intent into an explicit control state that separates scene anchors, preserve/transform decisions, style-regime hypotheses, role-bound artist evidence, and shortcut-avoidance constraints. It grounds this state using artist-level knowledge and local patch references, compiles backend-aware generation plans, and iteratively refines candidates through global and local authenticity feedback. We further introduce ArtIntentBench, a benchmark covering Van Gogh and Qi Baishi across artwork re-rendering, period/style-controlled generation, historically unseen subjects, shortcut auditing, and human preference evaluation. Across open-weight and closed-source generators, Atelier improves artist-level style fidelity, preserves source structure more faithfully, and substantially reduces shortcut substitution compared with prompt-engineered, retrieval-augmented, and general-purpose agent baselines. These results suggest that artist-grounded generation is bottlenecked not only by image synthesis, but by the upstream inference of explicit, evidence-grounded artistic controls.",
+    "authors": [
+      "Kuan Xing",
+      "Ye Wang",
+      "Changyi Gan",
+      "Yuheng Li",
+      "Thao Nguyen",
+      "Yi Chang",
+      "Yilin Wang"
+    ],
+    "published": "2026-08-07",
+    "updated": "2026-08-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.06751.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.06751",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越星空：面向艺术家风格文本到图像生成的捷径感知控制状态规划",
+      "core_contribution": "提出了一种名为Atelier的捷径感知控制状态规划框架，用于艺术家风格图像生成，通过显式分离场景锚点、保留/变换决策、风格机制假设等控制状态，显著提升风格保真度并减少捷径替代现象。",
+      "method": "Atelier将模糊的艺术意图转化为显式控制状态，包括场景锚点、保留/变换决策、风格机制假设、角色绑定艺术家证据和捷径避免约束。它利用艺术家级知识和局部补丁参考来锚定状态，编译后端感知的生成计划，并通过全局和局部真实性反馈迭代优化候选结果。",
+      "findings": "在Van Gogh和Qi Baishi的多个任务（包括作品重渲染、时期/风格控制生成、历史未见主题、捷径审计和人类偏好评估）中，Atelier相比提示工程、检索增强和通用代理基线，显著提高了艺术家级风格保真度，更忠实地保留源结构，并大幅减少了捷径替代。结果表明艺术家风格生成不仅受限于图像合成，更受限于上游显式、证据基础的艺术控制的推断。"
+    }
+  },
+  {
+    "id": "2608.06490",
+    "title": "InsertFuse: A Unified Framework for Multi-Category Reference-Guided Image Insertion",
+    "abstract": "We present InsertFuse, a unified framework for multi-category reference-guided image insertion. Its key idea is to decouple category-specific expertise learning from cross-category capability consolidation. InsertFuse first trains specialized experts for different insertion categories and then introduces Insertion On-Policy Distillation (IOPD) to consolidate their capabilities into a single student. By querying the matched expert at states visited by the student, IOPD preserves category-specific insertion behavior while mitigating the cross-category interference caused by direct joint training. To improve spatial control, we propose Token-Aligned Geometry Conditioning (TAGC), which maps mask-derived geometric cues to the visual token grid, and Region-Balanced Flow Matching, which separately normalizes prediction errors inside and outside the insertion region to prevent background-dominated and scale-dependent supervision. We further introduce Reference CFG to isolate and strengthen the guidance induced by the visual reference under fixed scene and geometry conditions, with IOPD transferring this enhanced supervision into the unified student. Extensive experiments on the public AnyInsertion benchmark and our multi-category test set demonstrate state-of-the-art performance on most metrics, showing strong reference fidelity and generation quality across diverse insertion categories.",
+    "authors": [
+      "Guangzhao Li",
+      "Qingyan Wei",
+      "Huayu Zheng",
+      "Yige Zheng",
+      "Chaoyang Zhang",
+      "Jie Yang",
+      "Yunan Ding",
+      "Yan Tai",
+      "Siqi Luo",
+      "Xiaohong Liu"
+    ],
+    "published": "2026-08-06",
+    "updated": "2026-08-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.06490.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.06490",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "InsertFuse：多类别参考引导图像插入的统一框架",
+      "core_contribution": "提出了一种统一的多类别参考引导图像插入框架，通过解耦类别特定专家学习与跨类别能力整合，并引入插入策略蒸馏和几何条件控制，实现了在多种插入类别上的最先进性能。",
+      "method": "方法包括：首先为不同插入类别训练专门的专家模型，然后通过插入策略蒸馏（IOPD）将专家能力整合到单一学生模型中，IOPD通过查询学生访问状态下的匹配专家来保留类别特定行为并减少跨类别干扰。此外，提出令牌对齐几何条件（TAGC）将掩码几何线索映射到视觉令牌网格，以及区域平衡流匹配来分别归一化插入区域内外预测误差，避免背景主导和尺度依赖。最后引入参考CFG增强视觉参考的引导，并通过IOPD将增强监督转移到统一学生模型。",
+      "findings": "在公共AnyInsertion基准和自建多类别测试集上的大量实验表明，该方法在大多数指标上达到最先进性能，展现出跨不同插入类别的强参考保真度和生成质量。"
+    }
+  }
+]
