@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2608.09438",
+    "title": "Unveiling the Secret of AdaLN-Zero in Diffusion Transformer",
+    "abstract": "Diffusion transformer (DiT), a rapidly emerging architecture for image generation, has gained much attention. However, despite ongoing efforts to improve its performance, the understanding of DiT remains superficial. In this work, we delve into and investigate a critical conditioning mechanism within DiT, adaLN-Zero, which achieves superior performance compared to adaLN. Our work studies three potential elements driving this performance, including an SE-like structure, zero-initialization, and a \"gradual\" update order, among which zero-initialization is proved to be the most influential. Building on this understanding, we propose an analysis-guided initialization strategy, termed adaLN-Gaussian, which serves both as an empirical validation of our analysis and as a practical initialization method that consistently improves optimization efficiency. On the other hand, inspired by the SE-like structure, we introduce an improved conditioning mechanism called SE-adaLN-Zero. Extensive experiments following DiT on four datasets, especially on ImageNet1K demonstrate the effectiveness and generalization of adaLN-Gaussian and SE-adaLN-Zero. Beyond class-to-image generation, we also evaluate the generalization of the two improved methods on text-to-image generation.",
+    "authors": [
+      "Jie Zhu",
+      "Mingyu Ding",
+      "Boqiang Duan",
+      "Leye Wang",
+      "Jingdong Wang"
+    ],
+    "published": "2026-08-10",
+    "updated": "2026-08-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.09438.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.09438",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "揭示扩散Transformer中AdaLN-Zero的秘密",
+      "core_contribution": "本文深入分析了扩散Transformer（DiT）中关键条件机制adaLN-Zero的性能优势，提出两种改进方法（adaLN-Gaussian和SE-adaLN-Zero），显著提升优化效率和生成质量。",
+      "method": "首先，通过消融实验研究adaLN-Zero中三个潜在因素（SE-like结构、零初始化、'渐进'更新顺序），证明零初始化最关键。基于此，提出分析引导的初始化策略adaLN-Gaussian，以高斯分布初始化替代零初始化，提升优化效率。同时，受SE-like结构启发，设计改进的条件机制SE-adaLN-Zero，增强特征重标定能力。在多个数据集上进行类条件生成和文本条件生成实验验证。",
+      "findings": "零初始化是adaLN-Zero性能提升的核心因素；adaLN-Gaussian和SE-adaLN-Zero在ImageNet1K等四个数据集上均优于现有DiT基线，尤其在类条件生成中效果显著，且能泛化到文本到图像生成任务，证明其有效性和通用性。"
+    }
+  },
+  {
+    "id": "2608.09226",
+    "title": "RL-Native Distillation: Exploiting Scored Trajectories for Few-Step Image Generation",
+    "abstract": "Efficient text-to-image generation requires both reinforcement-learning (RL)-based reward alignment and few-step distillation, yet these procedures are typically performed sequentially, increasing training cost and risking the loss of reward gains during compression. We instead take an RL-native perspective: diffusion RL already generates reward-scored finite-step trajectories, whose intermediate states provide a natural source of distillation supervision rather than a disposable byproduct of sampling. Based on this insight, we propose REST (Reward-Enhanced Scored-Trajectory Distillation), a single-stage RL-distillation co-training framework that attaches a decoupled student to an arbitrary RL teacher. The student learns segment-wise from the teacher's evolving rollout trajectories while leaving the original teacher optimization unchanged. To prevent uniform imitation from preserving undesirable low-reward behaviors, we further introduce Advantage-Modulated Distillation (AMD), which transforms rollout advantages into signed weights over a base distillation loss. AMD strengthens supervision from preferred trajectories and mildly repels the student from low-reward ones. The resulting framework is lightweight and plug-and-play, requires no extra image rollouts, no separate distillation dataset, and no adversarial training. Experiments on compositional generation, visual text rendering, and human-preference alignment show that REST enables few-step CFG-free inference that matches or surpasses its 40-step RL teacher, with an overall additional training cost below 25% over pure RL. REST improves DrawBench PickScore over RTDMD by 0.82 while requiring only one-fifth of the training iterations.",
+    "authors": [
+      "Yuhan Li",
+      "Fangao Zeng",
+      "Sicong Kang",
+      "Mengfei Xu",
+      "Hao Zhou",
+      "Wei Li",
+      "Pipei Huang",
+      "Bingbing Ni"
+    ],
+    "published": "2026-08-10",
+    "updated": "2026-08-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.09226.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.09226",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RL原生蒸馏：利用评分轨迹实现少步图像生成",
+      "core_contribution": "提出一种单阶段RL-蒸馏协同训练框架REST，将RL训练中产生的评分轨迹作为蒸馏监督信号，在保持奖励对齐的同时实现少步生成，避免了传统顺序训练的高成本和奖励损失。",
+      "method": "REST框架将解耦的学生模型附加到任意RL教师模型上，学生模型从教师不断演化的轨迹中分段学习，同时保持教师优化不变。引入优势调制蒸馏（AMD），将轨迹优势转化为基础蒸馏损失的符号权重，增强高奖励轨迹的监督并轻微抑制低奖励轨迹，无需额外图像采样、蒸馏数据集或对抗训练。",
+      "findings": "在组合生成、视觉文本渲染和人类偏好对齐实验中，REST使少步无CFG推理匹配或超越其40步RL教师，额外训练成本低于纯RL的25%。相比RTDMD，REST在DrawBench PickScore上提升0.82，且仅需五分之一的训练迭代。"
+    }
+  },
+  {
+    "id": "2608.09097",
+    "title": "SI-Edit: Toward Sketch-Instruction Guided Local Image Editing with Pixel-Level Precision",
+    "abstract": "Despite rapid advances in generative models, achieving pixel-level precision in sketch-based image editing remains a persistent challenge, particularly for fine-grained local deformations. This gap stems primarily from the critical shortage of high-quality, publicly available benchmark datasets that jointly provide geometric constraints and semantic instructions. To address this issue, we first introduce **SI-Data**, a high-quality dataset specifically designed for instruction-guided local sketch editing. We develop an automated pipeline leveraging Multimodal Large Language Models (MLLMs) to synthesize comprehensive quadruplets comprising original images, local geometric sketches, semantic instructions, and corresponding edited images. By providing both reliable spatial anchors and explicit semantic intent, SI-Data uniquely enables collaborative spatial-semantic learning. Building upon this, we propose a collaborative framework called **SI-Edit** that integrates semantic instructions with precise geometric constraints. Furthermore, to address the lack of standardized evaluation, we establish a comprehensive set of metrics designed to measure both structural fidelity (e.g., sketch-to-edge alignment) and semantic adherence. Experimental results demonstrate that SI-Edit provides more reliable structural control than baselines for sketch-based image editing, and achieves precise, pixel-level local refinements aligned with user intent. The data and code are released on the [project page](https://github.com/ywxsuperstar/SIEdit).",
+    "authors": [
+      "Weixin Ye",
+      "Wei Wang",
+      "Hongguang Zhu",
+      "Xuecheng Nie"
+    ],
+    "published": "2026-08-10",
+    "updated": "2026-08-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.09097.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.09097",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SI-Edit：面向草图指令引导的像素级局部图像编辑",
+      "core_contribution": "本文提出了SI-Edit框架，通过构建高质量数据集SI-Data和协同空间-语义学习机制，解决了草图引导图像编辑中像素级局部变形精度不足的问题。",
+      "method": "首先，利用多模态大语言模型（MLLMs）自动生成包含原始图像、局部几何草图、语义指令和编辑后图像的四元组数据集SI-Data。然后，提出SI-Edit协作框架，将语义指令与精确几何约束相结合，实现空间与语义的联合学习。最后，建立了一套综合评估指标，用于衡量结构保真度和语义一致性。",
+      "findings": "实验结果表明，SI-Edit在草图引导的图像编辑中提供了比基线更可靠的结构控制，并实现了符合用户意图的精确像素级局部细化，验证了其有效性和优越性。"
+    }
+  },
+  {
+    "id": "2608.09057",
+    "title": "Model the Edit, Not the Image: Visual Autoregressive Editing from a Source-Centric Perspective",
+    "abstract": "Next-scale visual autoregressive models (VARs) have emerged as a powerful generative paradigm, producing high-quality images through efficient coarse-to-fine prediction. However, their potential for text-guided image editing remains largely underexplored. Existing training-free VAR editing approaches often formulate editing as target-conditioned regeneration guided or constrained by the source image, and may rely on inversion, test-time optimization, attention control, or user-provided masks. This generation-centric formulation does not fully exploit the multiscale source representations provided by VARs and may introduce additional computation or intervention. We instead take a source-centric perspective on VAR editing, in which the encoded source image tokens serve as the primary visual state and the editing process focuses on condition-induced changes. Based on this perspective, we propose \\textbf{EditMod}, which compares source- and target-conditioned predictions under a shared autoregressive context, treats their difference as a scale-wise editing direction, and applies it as a residual update to source tokens at selected scales. Experiments show that EditMod achieves leading source-image fidelity while maintaining strong text alignment, and completes end-to-end editing of a 1K image in only 1.57 seconds on a single A100 GPU without per-image preparation.",
+    "authors": [
+      "Hongyi Fang",
+      "Chuwen Xie",
+      "Benjia Zhou",
+      "Yu-Xuan Qiu",
+      "Chenggong Hu",
+      "Zhibin Wang",
+      "Chao Chen",
+      "Jianbin Qin",
+      "Rui Mao"
+    ],
+    "published": "2026-08-10",
+    "updated": "2026-08-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.09057.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.09057",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "建模编辑而非图像：从源中心视角进行视觉自回归编辑",
+      "core_contribution": "提出一种新的源中心视角的视觉自回归编辑方法EditMod，通过比较源和目标条件下的预测差异作为编辑方向，实现无需反演、测试时优化或用户掩码的高保真文本引导图像编辑。",
+      "method": "EditMod利用视觉自回归模型（VAR）的多尺度源表示，在共享自回归上下文中分别计算源条件和目标条件下的预测，将两者的差异作为尺度级编辑方向，并作为残差更新应用于选定尺度的源token。该方法避免了生成中心范式中的额外计算或干预，仅需一次前向传播即可完成编辑。",
+      "findings": "实验表明，EditMod在保持源图像保真度方面达到领先水平，同时保持强文本对齐，并在单个A100 GPU上以1.57秒完成1K图像的端到端编辑，无需逐图像准备，显著优于现有训练-free VAR编辑方法。"
+    }
+  },
+  {
+    "id": "2608.08676",
+    "title": "UniSpace: Unified Visual Representation and Scalable Multimodal Modeling",
+    "abstract": "Semantic vision encoders have become a central visual interface for multimodal understanding and semantic conditioning in image generation. However, their final tokens discard fine-grained visual details, leading to poor pixel reconstruction and limiting their use in reconstruction-sensitive tasks such as image generation and editing. In this work, we ask whether understanding, generation, and editing can be modeled in a single visual representation space built from a pretrained semantic ViT. We show that the frozen Transformer blocks of a semantic ViT are not intrinsically unable to preserve visual details. Instead, the original patch parameterization drives the representation toward semantic abstraction, making fine-grained information difficult to recover from the final tokens. Based on this observation, we introduce \\emph{Patch Reparameterization}, which preserves the original semantic pathway while adding a reconstruction-aware patch embedding that provides fine-grained visual information to the same frozen ViT blocks. The resulting unified representation preserves multimodal understanding while enabling high-fidelity image reconstruction and a favorable reconstruction--generation trade-off. We further scale this representation into \\emph{UniSpace}, an 8B Mixture-of-Transformer-Experts model that performs understanding, generation, and editing in the same visual space without a separate VAE pathway. System-level evaluations demonstrate practical text-to-image generation and instruction-based image editing, showing that a reparameterized pretrained ViT can serve as a unified visual interface for scalable multimodal modeling.",
+    "authors": [
+      "Jinbo Yan",
+      "Limeng Qiao",
+      "Jie Qin",
+      "Junyan He",
+      "Feize Wu",
+      "Guanglu Wan"
+    ],
+    "published": "2026-08-09",
+    "updated": "2026-08-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.08676.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.08676",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UniSpace：统一视觉表示与可扩展多模态建模",
+      "core_contribution": "本文提出了一种基于预训练语义ViT的统一视觉表示空间，通过补丁重参数化（Patch Reparameterization）在保留语义理解能力的同时恢复细粒度视觉细节，从而实现了无需独立VAE路径的高保真图像重建、生成与编辑，并扩展为8B规模的混合Transformer专家模型UniSpace。",
+      "method": "方法的核心是补丁重参数化（Patch Reparameterization），即在保持原始语义路径不变的前提下，添加一个重建感知的补丁嵌入，为冻结的ViT Transformer块提供细粒度视觉信息。该表示被进一步扩展为UniSpace，一个8B参数的混合Transformer专家（MoE）模型，在同一个视觉空间中统一处理理解、生成和编辑任务，无需单独的VAE路径。",
+      "findings": "实验表明，冻结的语义ViT Transformer块并非本质上无法保留视觉细节，而是原始补丁参数化导致表示偏向语义抽象，使得细粒度信息难以从最终token中恢复。通过补丁重参数化，UniSpace在保持多模态理解能力的同时，实现了高保真图像重建，并在重建与生成之间取得了有利的权衡。系统级评估验证了其在实际文本到图像生成和指令式图像编辑中的有效性，证明重参数化的预训练ViT可以作为可扩展多模态建模的统一视觉接口。"
+    }
+  }
+]
