@@ -1,0 +1,151 @@
+[
+  {
+    "id": "2608.13560",
+    "title": "AutoDesign: Meta-Harness Optimization for Long-Horizon Agentic Design",
+    "abstract": "Transforming multimodal sources into condensed and structured media outputs can be fundamentally conceptualized as a long-horizon agentic process centered on a model-harness system. While an ideal harness system should align with human design priors and accumulate reusable experience through empirical exploration to drive recursive self-improvement, existing paradigms remain static and fall short of this capability. In this paper, we present AutoDesign, a framework that aligns with human design priors, where a meta-harness optimizer guides a code agent to recursively improve harness based on rollout feedback. To instantiate and evaluate this framework, we focus on the academic paper-to-poster generation task and introduce PosterBench, comprising a 100-paper Main Track spanning five disciplines and PosterBench-mini, a shared 10-paper subset for controlled evaluation. On the PosterBench Main Track, AutoDesign achieves the highest score of 78.32, surpassing the closed-source commercial system Claude Design by 7.45 points. Across seven controlled code-agent-model configurations, integrating the learned DesignHarness consistently improves performance, increasing the average PosterBench Score from 54.99 to 67.39 (+12.4%). In a fully autonomous long-horizon loop, it executes 253 tool calls and 11 editing turns within 40 minutes for under $3, reaching average conference-poster quality in human evaluation. A system-blind human study further demonstrates that AutoDesign achieves the highest human preference among evaluated systems.",
+    "authors": [
+      "Yaxin Luo",
+      "Haobin Jiang",
+      "Jialv Zou",
+      "Xu Huang",
+      "Wenhao Yan",
+      "Haodong Li",
+      "Zhengrong Yue",
+      "Jing Li",
+      "Xiaofu Chen",
+      "Xiaohan Zhao",
+      "Jiacheng Liu",
+      "Jiacheng Cui",
+      "Zhiqiang Shen",
+      "Xiaotong Li"
+    ],
+    "published": "2026-08-13",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.13560.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.13560",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AutoDesign：面向长周期智能体设计的元框架优化",
+      "core_contribution": "提出AutoDesign框架，通过元框架优化器指导代码智能体基于反馈递归改进模型-框架系统，实现多模态源到结构化媒体的长周期自动生成，并在学术论文到海报生成任务上显著超越现有系统。",
+      "method": "AutoDesign采用元框架优化器，该优化器根据人类设计先验初始化，并利用rollout反馈（即生成结果的质量评估）来迭代更新代码智能体的策略。代码智能体在每次迭代中修改模型-框架系统的配置或代码，从而逐步优化生成流程。框架在PosterBench数据集上训练和评估，其中PosterBench包含100篇论文的主轨和10篇论文的迷你子集，用于控制实验。",
+      "findings": "在PosterBench主轨上，AutoDesign达到78.32分，比闭源商业系统Claude Design高7.45分。在七种受控代码智能体模型配置中，集成学习到的DesignHarness平均将PosterBench分数从54.99提升至67.39（+12.4%）。在完全自主的长周期循环中，AutoDesign在40分钟内执行253次工具调用和11次编辑轮次，成本低于3美元，生成的海报达到会议平均质量。系统盲测中，AutoDesign获得最高的人类偏好率。"
+    }
+  },
+  {
+    "id": "2608.13441",
+    "title": "Edit2TikZ: A Comprehensive and Challenging Benchmark for Scientific Figure Editing with TikZ",
+    "abstract": "Although multimodal large language models (MLLMs) have shown substantial potential in visual understanding and graphic code generation, editing scientific figures through code presents a greater challenge: a model must jointly recover visual structure, ground the requested change, generate compilable code, and preserve all unrelated content. While existing TikZ benchmarks mainly focus on figure reconstruction and generation, few systematically evaluate instruction-guided scientific figure editing with compilable code. We introduce Edit2TikZ, a comprehensive benchmark for scientific figure editing tasks, featuring 1,548 diverse and high-quality samples. Edit2TikZ combines real-world and controlled synthetic edit cases, supports both textual and visual localization request, and contains multi-step editing, each with step-level annotations. We further construct a human-aligned evaluation framework to measure whether a requested edit is completed while irrelevant content is preserved. Utilizing Edit2TikZ, we evaluate 14 mainstream MLLMs and find that current systems remain unreliable: on average, proprietary models achieve a compilation success rate of merely 75% and remain limited in both figure restoration and edit correctness, while compact models below 9B struggle further with instruction following and complete figure generation. Therefore, we build a mixed training set TikZEditMix and adopt reconstruction-then-editing curriculum learning for compact models. On Qwen3.5-4B, this training improves the compilation success rate from 45.35% to 83.40% and yields an average improvement of 18.7 points across our proposed evaluation metrics. The code and data will be released at https://github.com/Solunny/Edit2TikZ.",
+    "authors": [
+      "Zongyun Zhang",
+      "Jiacheng Ruan",
+      "Xian Gao",
+      "Ruizhu Zhou",
+      "Lingcheng Meng",
+      "Lining Hu",
+      "Ting Liu",
+      "Yuzhuo Fu"
+    ],
+    "published": "2026-08-13",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.13441.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.13441",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Edit2TikZ：一个全面且具有挑战性的科学图表编辑基准，基于TikZ代码",
+      "core_contribution": "提出了Edit2TikZ，首个系统评估指令引导的科学图表编辑（而非仅生成或重建）的基准，包含1548个高质量样本，并配套人类对齐的评估框架和训练策略，显著提升了紧凑型模型的编辑能力。",
+      "method": "构建了结合真实与受控合成编辑案例的基准，支持文本和视觉定位请求，并包含多步编辑及逐步标注。评估框架通过编译成功率和编辑正确性（含无关内容保留度）衡量模型表现。针对紧凑模型，设计了混合训练集TikZEditMix，并采用“先重建后编辑”的课程学习策略进行微调。",
+      "findings": "14个主流MLLM在Edit2TikZ上表现不可靠：专有模型平均编译成功率仅75%，且图形恢复和编辑正确性有限；9B以下紧凑模型在指令遵循和完整图形生成上更弱。通过所提训练方法，Qwen3.5-4B的编译成功率从45.35%提升至83.40%，平均评估指标提升18.7分。"
+    }
+  },
+  {
+    "id": "2608.13186",
+    "title": "SketchSense: Learning to Interpret Imperfect Sketch Guidance for Image Inpainting",
+    "abstract": "Sketch-guided image inpainting provides intuitive structural control, yet real sketches often mix reliable global intent with locally crowded, displaced, incomplete, or deliberately unconventional strokes. Existing approaches typically either retain the input sketch as a fixed condition throughout denoising or refine it into a clean structure before RGB synthesis. The former assumes uniformly reliable strokes and can propagate local errors throughout generation; the latter must resolve ambiguous structure before emerging appearance and semantic context become available. We propose SketchSense, a framework that interprets imperfect sketch guidance by synchronously denoising interacting RGB and structure streams. Bidirectional Attention Fusion couples appearance generation with structural recovery, producing a refined structure that exposes the model's evolving sketch interpretation. A phrase-level objective aligns the semantic grounding of the two streams. Sketch-Aware Spatial Regulation further adapts sketch use to local generation states by modulating attention and the fusion process, while an optional signed prior injects preserve-versus-correct intent into feature representations and attention behavior. Experiments on natural and structurally complex imagery show substantial gains over existing methods in both restoration quality and structural fidelity.",
+    "authors": [
+      "Zian Yang"
+    ],
+    "published": "2026-08-13",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.13186.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.13186",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SketchSense：学习解读不完美草图引导的图像修复",
+      "core_contribution": "提出SketchSense框架，通过同步去噪交互的RGB和结构流来解读不完美的草图引导，解决了现有方法在草图局部不可靠或结构模糊时生成质量下降的问题，显著提升了修复质量和结构保真度。",
+      "method": "SketchSense采用双向注意力融合（Bidirectional Attention Fusion）耦合外观生成与结构恢复，产生精炼结构以暴露模型对草图的动态解读；引入短语级目标对齐两流的语义基础；通过草图感知空间调节（Sketch-Aware Spatial Regulation）根据局部生成状态调整注意力与融合过程；可选的有符号先验将保留与纠正意图注入特征表示和注意力行为。",
+      "findings": "在自然图像和结构复杂图像上的实验表明，SketchSense在修复质量和结构保真度上均显著优于现有方法，有效处理了局部拥挤、位移、不完整或故意非传统的草图输入。"
+    }
+  },
+  {
+    "id": "2608.12611",
+    "title": "From Visual Widgets to UI Code: Efficient Tool-Grounded Generation",
+    "abstract": "Existing screenshot-to-code systems face a trade-off between flexibility and controllability. Direct multimodal generation can hallucinate visible details, whereas structured pipelines reduce such errors through component-wise decomposition, predefined templates, and customized intermediate representations. These structures, however, introduce additional generative orchestration and restrict outputs to designs covered by the representation. We investigate whether selective tool grounding can improve the fidelity--efficiency trade-off of direct widget-to-code generation. We introduce \\textbf{WidgetGen}, a lightweight tool-grounded framework that extracts observable text and color evidence, performs high-level layout and optional chart reasoning, and directly generates executable JavaScript XML (\\emph{JSX}). This design reduces reliance on component-wise generation while avoiding a fixed UI schema. Across six multimodal models and \\(1{,}000\\) held-out widgets, WidgetGen outperforms direct prompting and the structured Widget2Code pipeline on most visual reconstruction metrics, with consistent gains in area, legibility, and style. Finally, reconstruction-derived image-code pairs improve six Qwen-family open-weight models across every reported metric through supervised fine-tuning. These results establish WidgetGen as a strong lightweight baseline and show that selective evidence grounding offers an effective alternative to extensive representation constraints.",
+    "authors": [
+      "Houston H. Zhang",
+      "Tao Zhang",
+      "Li Gu",
+      "Linfeng Ye",
+      "Yuanhao Yu",
+      "Xinxin Zuo",
+      "Yang Wang",
+      "Zhixiang Chi"
+    ],
+    "published": "2026-08-12",
+    "updated": "2026-08-12",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.12611.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.12611",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从视觉组件到UI代码：高效的工具接地生成",
+      "core_contribution": "提出WidgetGen，一种轻量级工具接地框架，通过选择性提取视觉证据（文本和颜色）并直接生成可执行JSX代码，在保真度和效率之间取得更优平衡，优于直接提示和结构化管线方法。",
+      "method": "WidgetGen首先从截图中提取可观察的文本和颜色证据，然后进行高层布局推理和可选的图表推理，最后直接生成JSX代码，避免了组件级生成和固定UI模式。该方法不依赖预定义模板或中间表示，减少了生成编排的复杂性。",
+      "findings": "在六个多模态模型和1000个保留组件上，WidgetGen在大多数视觉重建指标上优于直接提示和结构化Widget2Code管线，尤其在面积、可读性和风格方面一致提升。此外，由重建生成的图像-代码对通过监督微调显著提升了六个Qwen系列开源模型的性能。"
+    }
+  },
+  {
+    "id": "2608.12276",
+    "title": "XYZFlow:Scaling Multi dimensional Shortcut Flows for Efficient Generative Modeling",
+    "abstract": "High-fidelity image generation faces a trade-off between speed and quality. Diffusion models produce strong visuals but require costly iterative sampling. Existing efficient methods mainly distill pretrained models into few-step samplers, a challenging process that depends heavily on teacher-model quality. In this paper, we introduce XYZFlow, a framework that rethinks efficient generation through multidimensional scaling of flow matching. Unlike single-step mappings, XYZFlow enhances expressivity by making probability paths more identifiable and learnable through structured multidimensional conditioning. We view autoregressive modeling as implicit flow straightening, where richer context reduces trajectory ambiguity. XYZFlow realizes this idea through two orthogonal dimensions: temporal scaling, which uses non-Markovian conditioning on the full denoising history; and spatial scaling, enabled by Next Shortcut Prediction, which sequentially generates patches using preceding patches' denoising trajectories as priors. Experiments show that XYZFlow achieves state-of-the-art performance, with 7.2-8.5X teacher speedups and competitive FID, while Next Shortcut Prediction delivers superior quality-latency trade-offs over model scaling or step reduction.",
+    "authors": [
+      "Jinxiu Liu",
+      "Xuanming Liu",
+      "Kangfu Mei",
+      "Yandong Wen",
+      "Weiyang Liu"
+    ],
+    "published": "2026-08-12",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.12276.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.12276",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "XYZFlow：多维捷径流的高效生成建模扩展",
+      "core_contribution": "提出XYZFlow框架，通过多维缩放流匹配（包括时间缩放和空间缩放）实现高效生成建模，在不依赖教师模型蒸馏的情况下，显著提升生成速度并保持高质量输出。",
+      "method": "XYZFlow通过两个正交维度增强概率路径的可识别性和可学习性：时间缩放采用非马尔可夫条件，利用完整去噪历史；空间缩放通过Next Shortcut Prediction，顺序生成图像块，并利用前序图像块的去噪轨迹作为先验。该方法将自回归建模视为隐式流拉直，通过丰富上下文减少轨迹歧义。",
+      "findings": "实验表明，XYZFlow在保持竞争力的FID分数下，实现了7.2-8.5倍的教师模型加速，且Next Shortcut Prediction在质量-延迟权衡上优于模型缩放或减少步数的方法，达到最先进性能。"
+    }
+  }
+]
