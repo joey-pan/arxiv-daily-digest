@@ -1,0 +1,139 @@
+[
+  {
+    "id": "2608.12064",
+    "title": "Draw This First",
+    "abstract": "We invert the typical formulation of sketch generation: instead of drawing strokes in order, we predict a 2D field that defines the order in which strokes are drawn. We use a pretrained latent flow-matching transformer to supply the image prior to predict an intermediate representation, while training the VAE's decoder to predict the order field, stroke mask, and stroke segmentation. We vectorize the predicted segmentation into polylines and sort them by the field, producing an ordered vector sketch. Our model can predict an ordered vector sketch from a text description or derender an image into ordered vectors; for either, it follows text instructions specifying the order of drawing.",
+    "authors": [
+      "Dazhi Zhong",
+      "Rowan Bradbury",
+      "Grant Davis"
+    ],
+    "published": "2026-08-12",
+    "updated": "2026-08-12",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.12064.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.12064",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "先画这个",
+      "core_contribution": "该论文提出了一种新颖的草图生成方法，通过预测二维绘制顺序场来定义笔画顺序，而非按顺序逐笔绘制，从而实现了从文本或图像生成有序矢量草图的能力。",
+      "method": "方法利用预训练的潜流匹配变压器提供图像先验，以预测中间表示；同时训练VAE的解码器来预测顺序场、笔画掩码和笔画分割。随后将预测的分割矢量化为折线，并根据顺序场进行排序，生成有序的矢量草图。模型既能从文本描述生成有序草图，也能将图像反渲染为有序矢量，并遵循文本指令指定绘制顺序。",
+      "findings": "实验表明，该模型能够有效生成符合指定顺序的矢量草图，支持文本引导的绘制顺序控制，并在从图像反渲染和文本生成任务中均取得了良好效果。"
+    }
+  },
+  {
+    "id": "2608.11546",
+    "title": "Through Van Gogh's Eyes: Global Style Transfer with Diffusion Model",
+    "abstract": "Artistic image synthesis aims to recreate the expressive visual identity of a target artist, yet existing methods often fail to capture an artist's global style. Conventional style transfer methods transfer the style of one or a few reference artworks to a content image in a One-to-One manner, making them effective for artwork-level stylization but limited in representing the broader stylistic distribution of an artist. Text-to-image diffusion models conditioned on artist names, such as '~ in Van Gogh style', offer greater flexibility, but they often suffer from text-induced bias and reproduce patterns from only a few iconic works. To address these limitations, we introduce Global Style Transfer (GST), an artistic image synthesis paradigm, in a Many-to-One manner, that aggregates multiple artworks from a target artist and transfers their shared global style to a single content image. For GST, we propose Global Style Guidance (GSG), which learns a residual global style offset in the intermediate feature space, or h-space, of a diffusion model under a fixed prompt. By learning artist-level style semantics purely from visual statistics, GSG mitigates text-dependent artistic bias. We further propose Content Alignment Guidance (CAG), a training-free perceptual guidance mechanism that preserves the semantic structure of the content image while allowing artist-specific geometric deformation. Experiments on WikiArt demonstrate that GST achieves superior stylistic fidelity, content preservation, and output diversity compared to existing style transfer and diffusion-based artistic synthesis methods.",
+    "authors": [
+      "Jeongha Lee",
+      "Yujin Kim",
+      "Ghazanfar Ali",
+      "Suhyun Kim",
+      "Jae-In Hwang"
+    ],
+    "published": "2026-08-12",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.11546.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.11546",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "透过梵高之眼：基于扩散模型的全局风格迁移",
+      "core_contribution": "提出了一种名为全局风格迁移（GST）的新范式，以多对一的方式聚合目标艺术家的多幅作品，学习其共享的全局风格并迁移到内容图像上，克服了传统风格迁移和文本引导扩散模型在捕捉艺术家整体风格上的局限性。",
+      "method": "方法包括两个关键组件：全局风格引导（GSG）和内容对齐引导（CAG）。GSG在扩散模型的中间特征空间（h-space）中学习一个残差全局风格偏移，仅从视觉统计中提取艺术家级别的风格语义，避免文本依赖偏差；CAG是一种无需训练的可感知引导机制，在保留内容图像语义结构的同时允许艺术家特有的几何变形。",
+      "findings": "在WikiArt数据集上的实验表明，GST在风格保真度、内容保留和输出多样性方面均优于现有的风格迁移和基于扩散模型的艺术合成方法，有效捕捉了艺术家的全局风格特征。"
+    }
+  },
+  {
+    "id": "2608.11205",
+    "title": "AdvFD: Boosting Visual Generation via Adversarial Fr'echet Distance Loss",
+    "abstract": "Fréchet distance has recently emerged as an effective distribution-level objective for generator post-training, complementing the conventional sample-level diffusion and flow-matching losses. However, directly optimizing Fréchet objectives can cause Fréchet hacking. The target metrics keep improving, but visual quality and Fréchet alignment in other feature spaces may stagnate or deteriorate. We attribute this failure to the static pretrained feature spaces used by existing Fréchet losses. These feature spaces provide incomplete and fixed views of the differences between real and generated distributions. To address this limitation, we propose Adversarial Fréchet Distance (AdvFD), which complements the static representation targets in FD-Loss with a calibrated adversarially learned representation. AdvFD augments the original static Fréchet objective with a learnable representation that adversarially maximizes the Fréchet discrepancy between real and generated samples, while the generator minimizes the same discrepancy in the resulting adaptive feature space. To prevent the adversarial representation from trivially increasing the objective through feature amplification, we further introduce real-feature whitening, which normalizes its scale and covariance geometry and stabilizes the min--max optimization. Extensive experiments show that AdvFD consistently improves one-step generator post-training across both JiT and pMF backbones and across different model scales.",
+    "authors": [
+      "Mingju Gao",
+      "Jingkai Zhou",
+      "Kun Gai",
+      "Changqian Yu",
+      "Hao Tang"
+    ],
+    "published": "2026-08-11",
+    "updated": "2026-08-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.11205.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.11205",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AdvFD：通过对抗性弗雷歇距离损失提升视觉生成",
+      "core_contribution": "提出了一种新的对抗性弗雷歇距离（AdvFD）损失，通过引入可学习的对抗性表示来补充静态特征空间，解决了现有弗雷歇损失在生成器后训练中出现的“弗雷歇黑客”问题，从而在多种骨干网络和模型规模下一致提升了一步生成器的后训练效果。",
+      "method": "AdvFD在原有静态FD损失的基础上，增加了一个可学习的表示网络，该网络通过对抗性训练最大化真实样本与生成样本之间的弗雷歇距离，而生成器则在同一自适应特征空间中最小化该距离。为了防止对抗性表示通过特征放大导致目标函数平凡增大，引入了真实特征白化技术，对特征的尺度和协方差几何进行归一化，从而稳定最小-最大优化过程。",
+      "findings": "实验表明，AdvFD在JiT和pMF两种骨干网络以及不同模型规模下，均能一致地改善一步生成器的后训练效果，相比基线方法，在视觉质量和弗雷歇对齐方面均有提升，且避免了弗雷歇黑客现象。"
+    }
+  },
+  {
+    "id": "2608.13043",
+    "title": "From Local Mismatch to Global Impact: Optimizing Cache Reuse Policy for Efficient Diffusion",
+    "abstract": "Diffusion models have achieved dominant performance in visual generation but suffer from substantial inference overhead. While cache-based acceleration has emerged as a promising solution, existing policies rely on local similarity heuristics, which we identify as being significantly misaligned with final generation quality. This discrepancy stems from the non-uniform propagation and accumulation of errors along the denoising trajectory. To address this, we propose Global-Impact Cache (GCache). We first establish a rigorous theoretical characterization of the error propagation upper bound. Recognizing that this bound can be overly conservative for complex, highly non-convex diffusion models, we further reparameterize the propagation exponent with a Bernstein form and reformulate cache policy search as a bilevel optimization problem. In detail, GCache identifies an optimal reuse policy in the inner objective while aligning the error-weighting function with generation quality loss in the outer objective. This framework effectively reconciles theoretical rigor with empirical performance, learning to prioritize computation where it most impacts visual fidelity. Extensive experiments demonstrate that GCache consistently outperforms prior caching strategies on both video and image generation. Notably, on the state-of-the-art Wan2.1 video diffusion model, GCache maintains a 2.17x speedup while significantly enhancing generation quality, reducing LPIPS from 0.1095 to 0.0316.",
+    "authors": [
+      "Xichen Ye",
+      "Yifan Wu",
+      "Zhikang Xie",
+      "Xiangyu Yue",
+      "Cheng Jin",
+      "Weizhong Zhang"
+    ],
+    "published": "2026-08-13",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.AI",
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.13043.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.13043",
+    "primary_category": "cs.AI",
+    "score": 75,
+    "summary": {
+      "title_zh": "从局部失配到全局影响：优化缓存重用策略以实现高效扩散生成",
+      "core_contribution": "本文提出了一种名为Global-Impact Cache (GCache)的缓存重用策略，通过理论分析和双层优化，解决了现有缓存策略中局部相似性启发式与最终生成质量之间的失配问题，从而在保持生成质量的同时显著加速扩散模型的推理。",
+      "method": "GCache首先建立了误差传播上界的严格理论表征，然后针对高度非凸的扩散模型，将该上界中的传播指数用Bernstein形式重新参数化，并将缓存策略搜索转化为一个双层优化问题：内层目标寻找最优重用策略，外层目标将误差权重与生成质量损失对齐。该方法在理论上保证了严谨性，同时通过优化学习优先在影响视觉保真度的关键位置分配计算资源。",
+      "findings": "在视频和图像生成任务上，GCache均优于现有缓存策略。特别是在最先进的Wan2.1视频扩散模型上，GCache实现了2.17倍加速，同时显著提升了生成质量，将LPIPS从0.1095降低至0.0316。"
+    }
+  },
+  {
+    "id": "2608.13037",
+    "title": "Spatially-Grounded Text-to-Video Generation via Inference-Time Gradient-Free Optimization",
+    "abstract": "Diffusion Transformer Text-to-Video models have achieved remarkable synthesis quality, yet fine-grained spatial controllability remains a significant challenge. While existing training-free methods produce solid overall results in spatially grounded generation, \\ie, placing a specific object in a designated location, they rely on gradient-based optimization techniques that incur prohibitive computational overhead, a bottleneck amplified in modern large-scale architectures. To address this limitation, we present Gradient-free Analytical Trajectory Optimization Video Generation (GATO-Vid), a novel training-free and gradient-free approach for precise spatial guidance. Rather than relying on costly backward passes, we introduce an alternative cross-attention score and solve it analytically to obtain an exact, closed-form solution. To use our analytical solution, we propose an on-the-fly injection mechanism tailored to the topological manifold of the transformer's latent space. Our experiments demonstrate that GATO-Vid significantly outperforms existing baselines in localization accuracy while introducing minimal computational overhead.",
+    "authors": [
+      "Guillaume Jeanneret",
+      "Mathis Koroglu",
+      "Hugo Caselles-Dupré",
+      "Arnaud Dapogny",
+      "Matthieu Cord"
+    ],
+    "published": "2026-08-13",
+    "updated": "2026-08-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.13037.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.13037",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "基于推理时无梯度优化的空间锚定文本到视频生成",
+      "core_contribution": "提出一种无需训练且无需梯度的空间可控文本到视频生成方法GATO-Vid，通过解析求解交叉注意力分数实现精确的物体定位，同时大幅降低计算开销。",
+      "method": "GATO-Vid引入一种替代的交叉注意力分数，并利用解析方法获得精确的闭式解，替代传统基于梯度的迭代优化。在推理过程中，该方法将解析解通过一种针对Transformer潜在空间拓扑流形设计的即时注入机制动态融入生成过程，从而在不进行反向传播的情况下实现空间引导。",
+      "findings": "实验表明，GATO-Vid在定位准确性上显著优于现有基线，同时仅引入极小的额外计算开销，验证了其高效性和有效性。"
+    }
+  }
+]
