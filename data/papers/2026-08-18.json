@@ -1,0 +1,170 @@
+[
+  {
+    "id": "2608.16887",
+    "title": "An Empirical Study of Training Pixel-Space Text-to-Image Diffusion Models",
+    "abstract": "This paper investigates an increasingly important topic in generative modeling: pixel-space diffusion models. Although numerous studies have explored this topic, most focus on small-scale or class-conditional settings. Consequently, a practical recipe for training pixel-space models that rival or exceed well-established latent-space counterparts remains elusive. Through a comprehensive empirical study, we first observe that direct large-scale pre-training in pixel space converges substantially more slowly than in latent space. This observation motivates a latent-to-pixel strategy that acquires generative priors efficiently in latent space and transitions to pixel space during post-training. We then systematically investigate the key design choices governing this transition, including weight initialization, data composition, prediction target, decoder architecture, and noise schedule, and identify a practical recipe that makes the resulting pixel-space models match or outperform their latent-space counterparts while delivering 3.18 to 4.75 times end-to-end inference speedups. We hope that our findings provide useful empirical insights and practical guidelines for future research on pixel-space generation.",
+    "authors": [
+      "Dengyang Jiang",
+      "Ruoyi Du",
+      "Zhennan Chen",
+      "Dongyang Liu",
+      "Zanyi Wang",
+      "Mingzhe Zheng",
+      "Xiangpeng Yang",
+      "Huanqia Cai",
+      "Aiming Hao",
+      "Yuming Jiang",
+      "Peng Gao",
+      "Harry Yang",
+      "Steven Hoi"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16887.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16887",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "像素空间文生图扩散模型训练的实证研究",
+      "core_contribution": "本文通过大规模实证研究，提出了一种从潜在空间到像素空间的训练策略，使像素空间扩散模型在性能上匹配或超越潜在空间模型，同时实现3.18至4.75倍的端到端推理加速。",
+      "method": "首先观察到直接在大规模像素空间预训练收敛速度远慢于潜在空间，因此提出先潜在空间后像素空间的两阶段训练方法。在像素空间后训练阶段，系统研究了权重初始化、数据组成、预测目标、解码器架构和噪声调度等关键设计选择，并确定了一套实用配置。",
+      "findings": "该策略使像素空间模型在生成质量上与潜在空间模型相当或更优，同时推理速度显著提升（3.18至4.75倍）。研究还揭示了直接像素空间预训练的低效性，并提供了像素空间生成未来研究的实证指导和实践建议。"
+    }
+  },
+  {
+    "id": "2608.16812",
+    "title": "Unlocking the Potential of Image Editing via Concept Scaling and Dense Supervision",
+    "abstract": "Existing image editing frameworks predominantly follow the training paradigm of text-to-image diffusion models. However, extending this paradigm to image editing highlights two inherent discrepancies, specifically, the insufficient attention to edit concept granularity and the training inefficiency caused by sparse supervision signals. To address these issues, we establish a comprehensive hierarchical taxonomy featuring over 1,000 fine-grained edit concepts and build ConceptEdit-12M, a massive dataset of 12 million high-quality editing pairs via an improved synthesis framework. This library-driven approach effectively rectifies the distribution collapse of generated data while ensuring high data fidelity. Furthermore, we propose a dense supervision training strategy that synthesizes multiple non-interfering concepts into single image pairs. By providing richer learning signals, this strategy significantly enhances both training efficiency and overall model performance. Training results validate our strategy, significantly outperforming prior works. Finally, we present ConceptEdit-Bench, a granular evaluation suite designed to diagnose model capabilities across a vast array of real-world scenarios.",
+    "authors": [
+      "Long Cui",
+      "Xiaoqian Liu",
+      "Qi Qin",
+      "Yi Xin",
+      "Tao Lin",
+      "Jianguo Li",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16812.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16812",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "通过概念缩放与密集监督释放图像编辑的潜力",
+      "core_contribution": "本文提出了一种基于概念缩放和密集监督的图像编辑新范式，通过构建大规模细粒度概念数据集和密集监督训练策略，显著提升了图像编辑模型的性能与训练效率。",
+      "method": "首先，建立了一个包含超过1000个细粒度编辑概念的分层分类体系，并利用改进的合成框架构建了包含1200万高质量编辑对的ConceptEdit-12M数据集，以解决数据分布崩溃问题。其次，提出密集监督训练策略，将多个不干扰的概念合成到同一图像对中，提供更丰富的学习信号，从而增强训练效率和模型性能。",
+      "findings": "实验结果表明，所提出的策略显著优于先前方法，并构建了ConceptEdit-Bench评估套件，用于在真实场景中细粒度诊断模型能力。"
+    }
+  },
+  {
+    "id": "2608.16721",
+    "title": "GenRouter: Unified Workflow Routing for Agentic Image Generation",
+    "abstract": "The rapid evolution of text-to-image (T2I) generation models has effectively solved the foundational challenge of raw pixel synthesis, shifting the community's focus toward fulfilling increasingly intricate user requests. While recent agentic image generation workflows enhance static inference with advanced capabilities like external knowledge retrieval and iterative reasoning, they mostly operate in isolated silos with fixed ``one-size-fits-all\" topologies. This inevitably leads to severe compute-mismatch, where simple queries are forced through computationally heavy pipelines. To bridge this gap, we present GenRouter, the first unified workflow routing framework for agentic image generation. We first formulate GenCanvas, standardizing diverse agentic pipelines into a universal set of foundational primitives and executable templates. Operating over this unified space, GenRouter adaptively routes heterogeneous prompts to their optimal workflows via (i) demand profiling, (ii) experience matching, and (iii) Pareto filtering. Extensive experiments across diverse benchmarks demonstrate that GenRouter achieves superior visual alignment while reducing execution costs by over 95% and latency by 65% compared to heavyweight static pipelines. Furthermore, the system continuously self-evolves via accumulated experience, enabling robust zero-shot generalization that boosts performance and halves computational overhead.",
+    "authors": [
+      "Harold Haodong Chen",
+      "Zhiyu Hou",
+      "Wen-Jie Shu",
+      "Weilin Ruan",
+      "Yingjie Xu",
+      "Litao Guo",
+      "Ying-Cong Chen"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16721.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16721",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GenRouter：面向智能体图像生成的统一工作流路由框架",
+      "core_contribution": "提出了首个面向智能体图像生成的统一工作流路由框架GenRouter，通过标准化不同智能体流水线并自适应路由提示词到最优工作流，在显著降低计算成本和延迟的同时提升视觉对齐效果。",
+      "method": "GenRouter首先构建GenCanvas，将多样化的智能体流水线标准化为一组基础原语和可执行模板。在此基础上，GenRouter通过需求分析（demand profiling）、经验匹配（experience matching）和帕累托过滤（Pareto filtering）三个步骤，将异构提示词自适应路由到最优工作流。系统还通过累积经验实现持续自我进化，支持零样本泛化。",
+      "findings": "在多个基准测试中，GenRouter相比重型静态流水线，在保持更优视觉对齐的同时，将执行成本降低超过95%，延迟降低65%。此外，系统通过累积经验实现稳健的零样本泛化，进一步提升性能并将计算开销减半。"
+    }
+  },
+  {
+    "id": "2608.16289",
+    "title": "PosterText: Towards Unified Visual Text Generation and Editing for E-commerce Poster",
+    "abstract": "Automated e-commerce poster design requires both high-quality poster generation and flexible editing of existing designs. However, most existing methods either target end-to-end poster generation or follow multi-stage design pipelines, with limited capability for flexible and precise editing of existing posters. To enable unified generation and editing of e-commerce posters, we introduce Text Patch Generation and Editing, a unified task formulation that treats text patches as atomic units and covers four operations: poster generation, patch addition, patch deletion, and patch modification, with optional reference-guided style control. Based on this, we propose PosterText, a unified model trained with a four-stage curriculum, including text rendering pretraining, instruction-following training, reinforcement learning for preference alignment, and spatial guidance self-distillation for execution refinement. We further construct a large-scale dataset with patch-level annotations and a comprehensive benchmark for evaluation. Extensive experiments demonstrate that PosterText achieves competitive performance against existing generation and editing approaches, validating the effectiveness of the proposed framework.",
+    "authors": [
+      "Xiaoan Liu",
+      "Lichen Ma",
+      "Zipeng Guo",
+      "Yu He",
+      "Xiaoyan Su",
+      "Shaojie Guo",
+      "Jingling Fu",
+      "Xiaolong Fu",
+      "Hao Yang",
+      "Tongxuan Liu",
+      "Yu Guo",
+      "Fei Wang",
+      "Xinyi Liu",
+      "Yongjun Zhang",
+      "Junshi Huang"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16289.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16289",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "PosterText：面向电商海报的统一视觉文本生成与编辑",
+      "core_contribution": "提出了一种统一的文本补丁生成与编辑任务框架，并构建了相应的统一模型PosterText，能够同时支持电商海报的生成和灵活编辑，填补了现有方法在统一生成与编辑能力上的空白。",
+      "method": "将文本补丁视为原子单元，定义了四种操作（海报生成、补丁添加、删除和修改），并支持参考引导的风格控制。模型采用四阶段课程训练：文本渲染预训练、指令跟随训练、强化学习偏好对齐以及空间引导自蒸馏执行细化。同时构建了带补丁级标注的大规模数据集和综合评估基准。",
+      "findings": "实验表明，PosterText在生成和编辑任务上均达到与现有专门方法相当的性能，验证了统一框架的有效性，尤其在灵活编辑和风格控制方面表现出优势。"
+    }
+  },
+  {
+    "id": "2608.16284",
+    "title": "TransAnyText: Translating Arbitrary Text in E-commerce Images via Structured Visual Generation",
+    "abstract": "Cross-border e-commerce image translation is essential for global retail, where product images, banners, and detail pages need to be produced in different languages. Existing methods struggle to achieve accurate translation, faithful visual identity preservation, and easy-to-edit outputs, simultaneously. To address these challenges, we introduce TransAnyText, a structured visual code framework that reformulates image text translation as generating renderable HTML patches from source images and target languages. Our framework decouples semantic generation from pixel rendering: a vision-language model (VLM) handles visual understanding, cross-lingual translation, and structured visual generation, while a diffusion model performs background inpainting and pixel-level refinement, followed by deterministic rendering to synthesize the final image. Based on this formulation, we develop a three-stage post-training framework, where supervised fine-tuning (SFT) establishes the image-to-code mapping, privilege-gap weighted self-distillation (PWSD) improves the learning of style and layout tokens, and reinforcement learning with verifiable rewards (RLVR) further optimizes task-level performance. We further introduce TransAnyDataset and TransAnyBench, a multilingual dataset and benchmark for e-commerce image translation. Extensive experiments demonstrate competitive performance against cascaded pipelines, open-source end-to-end models, and closed-source image editing systems, providing an effective, controllable, and editable solution for cross-border e-commerce image translation.",
+    "authors": [
+      "Xiaoan Liu",
+      "Lichen Ma",
+      "Zipeng Guo",
+      "Yu He",
+      "Xiaoyan Su",
+      "Shaojie Guo",
+      "Hao Yang",
+      "Jingling Fu",
+      "Xiaolong Fu",
+      "Zhen Chen",
+      "Yu Guo",
+      "Fei Wang",
+      "Xinyi Liu",
+      "Yongjun Zhang",
+      "Ke Zhang",
+      "Junshi Huang"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16284.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16284",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TransAnyText：通过结构化视觉生成翻译电商图像中的任意文本",
+      "core_contribution": "提出了一种名为TransAnyText的框架，将电商图像中的文本翻译重新定义为从源图像和目标语言生成可渲染的HTML补丁，实现了高准确率、视觉身份保持和易于编辑的翻译输出，解决了现有方法在准确性、视觉一致性和可编辑性上的矛盾。",
+      "method": "该框架将语义生成与像素渲染解耦：使用视觉语言模型（VLM）进行视觉理解、跨语言翻译和结构化视觉生成，扩散模型负责背景修复和像素级细化，最后通过确定性渲染合成最终图像。训练采用三阶段后训练框架：监督微调（SFT）建立图像到代码的映射，特权差距加权自蒸馏（PWSD）改进风格和布局令牌的学习，以及基于可验证奖励的强化学习（RLVR）优化任务级性能。",
+      "findings": "在引入的多语言数据集TransAnyDataset和基准TransAnyBench上，实验表明TransAnyText在性能上优于级联流水线、开源端到端模型和闭源图像编辑系统，提供了有效、可控且可编辑的跨境电商图像翻译解决方案。"
+    }
+  }
+]
