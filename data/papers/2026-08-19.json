@@ -1,0 +1,170 @@
+[
+  {
+    "id": "2608.18076",
+    "title": "From Corpora to Co-Evolving Capabilities: Capability-Centric Data Design for Generalist Image Generation",
+    "abstract": "Large-scale image generation has benefited from advances in data scale, quality, rebalancing, and recaptioning, yet conventional pipelines typically optimize task-specific datasets in isolation. A central challenge is not only how to curate each task-specific corpus, but also how to organize heterogeneous supervision according to the dependencies among generative capabilities. We present a \\textbf{capability-driven data infrastructure} that couples capability-specific supervision construction with capability-aligned curriculum scheduling. Its three specialized yet interoperable data engines build complementary relational supervision for text-image grounding, inter-image transformation, and image-knowledge association, while caption experts align T2I and editing supervision across tasks and granularities. A multi-stage curriculum jointly evolves task composition, visual-concept distribution, data quality, and image resolution along the dependency order of capability acquisition, with capability-aware evaluation closing the loop through targeted retrieval, expert construction, and gap-aware resampling. At scale, the framework curates a 440M-image T2I corpus, 120M editing pairs, and over 27M image-entity pairs. With this infrastructure, we train multimodal diffusion models at two scales from scratch, with 3B and 6B sizes respectively. We conduct quantitative evaluation on CPI-Bench, along with qualitative evaluations across diverse text-to-image and editing scenarios. Experimental results present broad visual coverage, versatile rendering, and effective transfer across generative capabilities.",
+    "authors": [
+      "Xingjian Wang",
+      "Zhao Wang",
+      "Taihang Hu",
+      "Jun Zheng",
+      "Qing Jin",
+      "Qinye Zhou",
+      "Zhengtao Wu",
+      "Yongchao Du",
+      "Zuan Gao",
+      "Chao Lin",
+      "Yefeng Shen",
+      "Xiaoli Xu",
+      "Zhengze Xu",
+      "Hao Yan",
+      "Yuhang Yu",
+      "Mingzhou Zhang",
+      "Mengting Chen"
+    ],
+    "published": "2026-08-18",
+    "updated": "2026-08-18",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.18076.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.18076",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "从语料库到协同演进的能力：面向通用图像生成的能力中心化数据设计",
+      "core_contribution": "提出了一种能力驱动的数据基础设施，通过构建能力特定的监督数据与能力对齐的课程调度，实现异构数据组织与生成能力间的依赖协调，从而支持大规模通用图像生成模型的训练。",
+      "method": "该方法包含三个专门化且可互操作的数据引擎，分别构建文本-图像对齐、图像间变换和图像-知识关联的互补关系监督；同时，字幕专家统一不同任务和粒度下的T2I与编辑监督。多阶段课程按能力获取的依赖顺序联合演进任务组成、视觉概念分布、数据质量和图像分辨率，并通过能力感知评估闭环，利用目标检索、专家构建和差距感知重采样进行优化。",
+      "findings": "在440M图像T2I语料、120M编辑对和超过27M图像-实体对的数据规模下，训练了3B和6B两种规模的多模态扩散模型。在CPI-Bench上的定量评估及多种T2I和编辑场景的定性评估显示，模型具有广泛的视觉覆盖、多样的渲染能力和跨生成能力的有效迁移。"
+    }
+  },
+  {
+    "id": "2608.18063",
+    "title": "EDITBRIDGE: Towards Faithful and Efficient Ultra-High-Resolution Image Editing",
+    "abstract": "High-resolution image editing is increasingly demanded in professional workflows, yet existing diffusion-based models remain constrained to resolutions below 1K due to quadratic attention complexity and prohibitive memory requirements. A prevalent workaround employs a two-stage pipeline: editing at low resolution followed by independent super-resolution. However, this approach suffers from two critical issues: information divergence, where hallucinated details contradict the original high-resolution (HR) source, and texture degradation, manifesting as over-smoothed or over-sharpened artifacts. We propose EditBridge, a diffusion bridge framework for efficient ultra high-resolution editing. Unlike conventional diffusion that regenerates from noise, we formulate refinement as structured data-to-data translation from the low-resolution (LR) edited result to its HR counterpart, explicitly conditioned on the original HR source to preserve authentic details. To efficiently incorporate HR source guidance, we introduce a prior-guided block-wise sparse attention mechanism that exploits semantic correspondence from first-stage editing to constrain cross-image interactions to spatially aligned regions, significantly reducing computational overhead. Extensive experiments demonstrate that EditBridge achieves high-fidelity editing with superior perceptual quality at resolutions up to 4K, delivering 3.6--8.4$\\times$ speedup at 2K and enabling practical 4K editing in 61 seconds.",
+    "authors": [
+      "Jiayi Song",
+      "Shijie Huang",
+      "Fangtai Wu",
+      "Yubo Huang",
+      "Zhenxiong Tan",
+      "Songhua Liu",
+      "Jiaming Liu",
+      "Ruihua Huang"
+    ],
+    "published": "2026-08-18",
+    "updated": "2026-08-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.18063.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.18063",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "EDITBRIDGE：迈向忠实且高效的超高分辨率图像编辑",
+      "core_contribution": "提出了一种基于扩散桥框架的EditBridge方法，首次实现高达4K分辨率的忠实且高效的图像编辑，解决了现有方法在超高分辨率下信息发散和纹理退化的问题。",
+      "method": "EditBridge将编辑过程建模为从低分辨率编辑结果到高分辨率对应结果的结构化数据到数据转换，并显式以原始高分辨率图像为条件以保留真实细节。为高效融合高分辨率引导信息，引入了基于先验引导的块状稀疏注意力机制，利用第一阶段编辑的语义对应关系将跨图像交互限制在空间对齐区域，大幅降低计算开销。",
+      "findings": "实验表明，EditBridge在高达4K分辨率下实现了高保真编辑和优越的感知质量，在2K分辨率下获得3.6至8.4倍的加速，并能在61秒内完成实际的4K编辑任务。"
+    }
+  },
+  {
+    "id": "2608.18040",
+    "title": "Optimize Your Sampling: Tuned Diffusion Sampling with Bayesian Optimization",
+    "abstract": "Sampling from a diffusion model typically requires many forward passes through a large neural network, making generation computationally expensive. While much work has focused on efficient solvers and samplers, comparatively little attention has been paid to selecting the sampling timesteps themselves. A recent line of work optimizes theoretically derived surrogates for sample quality rather than the quality metric itself. We propose Optimizing Your Sampling (OYS), which instead treats timestep selection as a black-box optimization problem, optimizing the target metric directly with Bayesian optimization. OYS outperforms both the default schedules and those of Align Your Steps on text-to-image generation, and improves over the default schedules on inpainting and other image tasks, in both quantitative and human evaluations. OYS requires no additional training, is applicable even to distilled models, and improves both simple and sophisticated samplers such as Euler and DPM-Solver++. A 5-step OYS schedule retains 89%-94% of the quality of a 50-step schedule while reducing inference cost by 10x.",
+    "authors": [
+      "Travis Zhang",
+      "Christian Belardi",
+      "Justin Lovelace",
+      "Jin Peng Zhou",
+      "Saebyeol Shin",
+      "Carla P. Gomes",
+      "Kilian Q. Weinberger"
+    ],
+    "published": "2026-08-18",
+    "updated": "2026-08-18",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.18040.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.18040",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "优化你的采样：基于贝叶斯优化的调谐扩散采样",
+      "core_contribution": "提出OYS方法，将扩散模型的采样时间步选择视为黑盒优化问题，直接使用贝叶斯优化目标质量指标，无需额外训练，显著提升文本到图像生成及其他图像任务的采样质量，并适用于蒸馏模型和多种采样器。",
+      "method": "OYS将采样时间步序列视为待优化的黑盒输入，以目标质量指标（如FID或CLIP分数）为优化目标，使用贝叶斯优化（如高斯过程代理模型）迭代搜索最优时间步配置。该方法不依赖理论代理指标，直接优化真实质量，且可适配不同采样器（如Euler和DPM-Solver++）及蒸馏模型。",
+      "findings": "在文本到图像生成任务中，OYS优于默认时间步调度和Align Your Steps方法；在图像修复等其他任务上也优于默认调度。定量和人工评估均显示改进。5步OYS调度可保留50步调度质量的89%-94%，同时推理成本降低10倍。"
+    }
+  },
+  {
+    "id": "2608.17995",
+    "title": "AViTS: Adaptive Spatiotemporal Token Selection for Efficient Dynamic-Resolution Generation",
+    "abstract": "Diffusion Transformers (DiTs) achieve high-quality generation but are costly due to iterative sampling. Dynamic-resolution sampling reduces early-stage cost by denoising at low resolution; however, uniformly upsampling all latent tokens at resolution transitions incurs redundant computation and may degrade fine-detail consistency. Existing partial upsampling strategies typically rely on local latent structure cues or single-step statistics, making it difficult to jointly capture token-text semantic relevance and token-wise representation dynamics across diffusion steps. We propose AViTS, an adaptive spatiotemporal token selection framework for dynamic-resolution DiTs. AViTS models spatial importance via latent-text attention and temporal importance via token-level feature variation across diffusion timesteps, and fuses them to enable spatiotemporal importance-aware selective upsampling: it prioritizes resolution refinement for critical tokens while deferring less important ones, thereby reducing redundant high-resolution computation and improving the quality-efficiency trade-off. AViTS achieves up to 6.34x on FLUX and nearly 9x FLOPs reduction on Qwen-Image-Edit and FLUX.1-Kontext-dev, orthogonal to distillation, quantization, and feature caching, and reaching 14.76x with distilled models. Code: https://github.com/QHR69/AViTS",
+    "authors": [
+      "Haoran Qin",
+      "Zhengan Yan",
+      "Shikang Zheng",
+      "Xiaobing Tu",
+      "Jiacheng Liu",
+      "Yuqi Lin",
+      "Chang Zou",
+      "JinShan Liu",
+      "Peiliang Cai",
+      "Xiantao Zhang",
+      "Jinkui Ren",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-08-18",
+    "updated": "2026-08-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.17995.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.17995",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AViTS：用于高效动态分辨率生成的自适应时空令牌选择",
+      "core_contribution": "提出了一种自适应时空令牌选择框架AViTS，用于动态分辨率扩散Transformer，通过联合建模令牌-文本语义相关性和跨扩散步骤的令牌级表示动态，实现重要性感知的选择性上采样，从而在减少冗余高分辨率计算的同时提升生成质量与效率的权衡。",
+      "method": "AViTS首先利用潜在文本注意力计算空间重要性，并通过跨扩散时间步的令牌特征变化计算时间重要性，然后将两者融合得到综合的时空重要性分数。基于该分数，在分辨率转换时优先对关键令牌进行上采样细化，而延迟处理次要令牌，从而减少高分辨率下的冗余计算。该方法与蒸馏、量化和特征缓存等技术正交，可组合使用。",
+      "findings": "在FLUX上实现了高达6.34倍的FLOPs减少，在Qwen-Image-Edit和FLUX.1-Kontext-dev上实现了近9倍的FLOPs减少，与蒸馏模型结合时可达14.76倍，同时保持了生成质量或改善了质量-效率权衡。"
+    }
+  },
+  {
+    "id": "2608.17973",
+    "title": "LinCa: Accelerating Diffusion Models via Learnable Decomposed Feature Caching",
+    "abstract": "Diffusion models have achieved remarkable success in image and video generation, yet the high computational cost of iterative sampling remains a critical bottleneck for practical deployment. Feature caching has emerged as a promising acceleration paradigm by reusing or predicting intermediate features across timesteps. However, existing training-free methods apply uniform prediction strategies that cannot adapt to the heterogeneous feature dynamics, causing significant quality degradation under high acceleration ratios. We propose LinCa, a feature caching framework based on learnable invertible networks. LinCa decomposes cached features into sub-components with distinct continuity properties via a lightweight invertible network and applies differentiated prediction orders matched to each component. The strict invertibility guarantees lossless reconstruction back to the original feature space, forming a unified Decompose-Predict-Reconstruct pipeline. By training separate predictors for different models and timestep segments, LinCa adapts to heterogeneous feature dynamics. Experiments on FLUX, Qwen-Image, and HunyuanVideo demonstrate that LinCa, with less than 0.2% additional parameters, significantly outperforms existing methods and maintains near-lossless quality at 5-7x speedup. Code: https://github.com/QHR69/LinCa",
+    "authors": [
+      "Jinshan Liu",
+      "Haoran Qin",
+      "Xiaobing Tu",
+      "Jiacheng Liu",
+      "Jiahui Hu",
+      "Zhengan Yan",
+      "Yukun Xie",
+      "Kerui Shen",
+      "Jinkui Ren",
+      "Yuqi Lin",
+      "Xiantao Zhang",
+      "Linfeng Zhang"
+    ],
+    "published": "2026-08-18",
+    "updated": "2026-08-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.17973.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.17973",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LinCa：通过可学习分解特征缓存加速扩散模型",
+      "core_contribution": "提出了一种基于可学习可逆网络的特征缓存框架LinCa，通过将缓存特征分解为具有不同连续性的子组件并应用差异化预测顺序，在极低额外参数下实现高加速比下的近无损生成质量。",
+      "method": "LinCa利用轻量级可逆网络将缓存特征分解为多个子组件，每个子组件具有不同的时间连续性，然后针对每个组件采用匹配的预测顺序（如线性外推或高阶预测），并通过严格可逆性保证无损重建回原始特征空间，形成统一的分解-预测-重建流程。此外，为不同模型和时间段训练独立的预测器，以适应异构特征动态。",
+      "findings": "在FLUX、Qwen-Image和HunyuanVideo上，LinCa仅增加不到0.2%的参数，显著优于现有方法，并在5-7倍加速下保持近无损质量。"
+    }
+  }
+]
