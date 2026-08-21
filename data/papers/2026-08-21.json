@@ -1,0 +1,167 @@
+[
+  {
+    "id": "2608.20334",
+    "title": "Swift-Image: Exploring the Performance Frontier of Compact Unified Image Generation Models",
+    "abstract": "We present Swift-Image, a compact unified model for text-to-image generation, single-image editing, and multi-image editing. Our goal is to explore how far a relatively small visual generator can be pushed through systematic training engineering under a constrained computational budget. Swift-Image adopts an efficient 6B single-stream DiT and a progressive training pipeline that evolves from broad semantic coverage to higher resolution, stronger visual quality, and unified generation-editing supervision. For post-training, we employ parallel expert reinforcement learning followed by multi-teacher on-policy distillation to alleviate interference among heterogeneous objectives. We further decouple high-level reasoning from pixel-level rendering with a Prompt Enhancer that translates user requests into generator-aligned visual specifications. For efficient deployment, structural pruning and few-step distillation produce 3B and accelerated variants. Swift-Image achieves leading aggregate performance among evaluated open-source models with only 6B parameters and 243K GPU training hours; the compressed 3B model incurs nearly no loss, while few-step distillation further improves aggregate editing performance with substantially fewer sampling steps. Our study also summarizes practical lessons for architecture, data curriculum, post-training, prompt enhancement, and model compression.",
+    "authors": [
+      "Taihang Hu",
+      "Zhao Wang",
+      "Zuan Gao",
+      "Tao Liu",
+      "Hao Yan",
+      "Zhengze Xu",
+      "Yuhang Yu",
+      "Yongchao Du",
+      "Xingjian Wang",
+      "Jun Zheng",
+      "Qinye Zhou",
+      "Zhengrui Chen",
+      "Chao Lin",
+      "Yefeng Shen",
+      "Zhengtao Wu",
+      "Ge Wu",
+      "Xiaoli Xu",
+      "Denghui Yang",
+      "Huayu Zhang",
+      "Mingzhou Zhang",
+      "Mengting Chen"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.20334.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.20334",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Swift-Image：探索紧凑统一图像生成模型的性能前沿",
+      "core_contribution": "本文提出了Swift-Image，一个仅6B参数的紧凑统一图像生成模型，通过系统的训练工程在有限计算预算下实现了领先的生成性能，并提供了实用的架构、训练和压缩经验。",
+      "method": "Swift-Image采用高效的6B单流DiT架构，通过渐进式训练流程从广泛语义覆盖逐步过渡到高分辨率、强视觉质量和统一生成-编辑监督。后训练阶段使用并行专家强化学习和多教师在线蒸馏来缓解异构目标间的干扰，并引入Prompt Enhancer将用户请求转化为生成器对齐的视觉规格。部署时通过结构剪枝和少步蒸馏得到3B及加速变体。",
+      "findings": "Swift-Image在6B参数和243K GPU训练小时下达到开源模型中的领先综合性能；压缩后的3B模型性能几乎无损，少步蒸馏在显著减少采样步数的同时提升了编辑性能。研究还总结了架构、数据课程、后训练、提示增强和模型压缩方面的实用经验。"
+    }
+  },
+  {
+    "id": "2608.19719",
+    "title": "Scale-Separated Conditioning for Style-Encoder-Free Diffusion Stylization",
+    "abstract": "Reference-based diffusion stylization requires separating target geometry from transferable appearance. Existing tuning-based methods often rely on aligned content-style-target triplets or auxiliary visual encoders, which increases data cost and can transfer unintended scene structure from the style reference. We propose SEFS (Style-Encoder-Free Stylization), a style-encoder-free conditioning framework for diffusion transformers. SEFS forms style tokens from stochastic low-resolution crops of single training images. This crop bottleneck preserves local appearance statistics such as palette, stroke, texture, and material, while reducing access to global layout cues. Target content is encoded by edge and segmentation cues and fused with the noisy latent through parameter-efficient trainable projections. We add style-to-denoising re-normalization for token-statistic alignment and cross-block skip fusion for spatial detail. SEFS trains on unpaired single images; the frozen diffusion VAE is used only to place image conditions in the latent space. On artistic stylization benchmarks, SEFS improves content consistency and leakage diagnostics while retaining reference-style affinity, and ablations support the crop-resolution, re-normalization, and skip-fusion choices. The code of SEFS will be made publicly available.",
+    "authors": [
+      "Jingtao Zhang",
+      "Haorui Gao",
+      "Youqing Liang",
+      "Zeming Liu"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.19719.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.19719",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "尺度分离条件化用于无风格编码器的扩散风格化",
+      "core_contribution": "提出了一种无需风格编码器的扩散风格化框架SEFS，通过随机低分辨率裁剪形成风格标记，有效分离目标几何与可迁移外观，同时避免了对齐三元组或辅助视觉编码器的依赖，提高了内容一致性和风格保真度。",
+      "method": "SEFS利用扩散变换器，从单张训练图像的随机低分辨率裁剪中提取风格标记，该裁剪瓶颈保留局部外观统计（如调色板、笔触、纹理和材质），同时减少全局布局线索的访问。目标内容通过边缘和分割线索编码，并与噪声潜在表示通过参数高效的可训练投影融合。此外，引入风格到去噪的重新归一化以对齐标记统计，以及跨块跳跃融合以增强空间细节。模型在未配对单图像上训练，冻结的扩散VAE仅用于将图像条件置于潜在空间。",
+      "findings": "在艺术风格化基准上，SEFS在保持参考风格亲和力的同时，显著提高了内容一致性并改善了泄漏诊断（即减少风格参考中场景结构的意外转移）。消融实验验证了裁剪分辨率、重新归一化和跳跃融合设计的有效性。"
+    }
+  },
+  {
+    "id": "2608.19637",
+    "title": "TextRefine: Improving Textual Fidelity, Spatial Placement, and Glyph Rendering for Text Editing in Product Posters",
+    "abstract": "Text editing in product posters entails inserting new text or replacing existing text while preserving product appearance, background content, and global composition. Despite recent progress in instruction-based image editing, general-purpose models remain unreliable in this setting: they often omit or incorrectly render the target text, place it over salient products or pre-existing content, and produce structurally distorted or visually inconsistent glyphs. We introduce \\textbf{TextRefine}, a task-aligned post-training framework that combines supervised fine-tuning with operation-specific reward optimization to address these complementary failure modes. For text insertion, our text-span-level reward jointly assesses semantic fidelity and target-span coverage, penalizes spatial conflicts with products and existing text, and employs a gated structural constraint to preserve non-text regions. For text replacement, our glyph-level reward leverages the connectionist temporal classification (CTC) posterior of the target character to provide graded supervision for fine-grained defects, including missing strokes, structural deformations, and confusion among visually similar characters. We further introduce \\textbf{OpenTextEdit}, a dataset comprising 100K images for text editing in product posters, with multi-text layouts, detailed text attributes, product masks, and challenging low-frequency characters. Extensive experiments on both insertion and replacement demonstrate that TextRefine consistently outperforms the evaluated image editing baselines in textual fidelity, placement reliability, and glyph quality while better preserving source-image content.",
+    "authors": [
+      "Honglie Wang",
+      "Jia Sun",
+      "Zijun Li",
+      "Junlong Wu",
+      "Pengcheng Wei",
+      "Jiyuan Wang",
+      "Yongrui Heng",
+      "Boheng Zhang",
+      "Huaiqing Wang",
+      "Dewen Fan",
+      "Qianqian Gan",
+      "Fan Yang",
+      "Tingting Gao",
+      "Yan-Ming Zhang"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.19637.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.19637",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "TextRefine：提升产品海报文本编辑中的文本保真度、空间布局与字形渲染",
+      "core_contribution": "提出了TextRefine，一个针对产品海报文本编辑的任务对齐后训练框架，通过结合监督微调和操作特定的奖励优化，显著改善了文本插入和替换中的文本保真度、空间放置和字形质量，同时更好地保留源图像内容。",
+      "method": "TextRefine采用两阶段训练：首先进行监督微调，然后针对插入和替换操作分别进行奖励优化。对于文本插入，使用文本跨度级奖励，联合评估语义保真度和目标跨度覆盖率，惩罚与产品和现有文本的空间冲突，并采用门控结构约束保护非文本区域。对于文本替换，使用字形级奖励，基于目标字符的连接时序分类（CTC）后验提供细粒度缺陷的梯度监督，包括缺失笔画、结构变形和相似字符混淆。此外，构建了包含10万张图像的数据集OpenTextEdit，涵盖多文本布局、详细文本属性、产品掩码和低频字符。",
+      "findings": "实验表明，TextRefine在文本插入和替换任务上均优于评估的图像编辑基线，在文本保真度、放置可靠性和字形质量方面表现更佳，同时更好地保留了源图像内容。"
+    }
+  },
+  {
+    "id": "2608.20336",
+    "title": "WithEveryone: Unified Planning and Identity Grounding for Group Image Generation",
+    "abstract": "Identity-preserving image generation becomes increasingly unreliable when a scene must contain many specified people. Beyond retaining each identity, the model must bind every reference to a distinct person and location, while training-time identity losses must establish correspondence among several noisy predicted faces. We introduce WithEveryone, a unified framework for generating group images up to ten reference identities. WithEveryone injects each selected identity as an addressed token, predicts a structured identity--layout plan, and renders the plan as a visual condition. Its key objective, Layout-Grounded ID Loss, uses annotated face regions to supervise the intended identities directly, avoiding unstable embedding-based face matching; ID Representation Forcing additionally trains a prediction for each identity before image synthesis. On an identity-disjoint benchmark, WithEveryone achieves the highest target-context identity similarity, improving face similarity from 0.462 for GPT-Image-2 to 0.499, while reducing copy-paste artifacts from 0.169 to 0.055. It further covers 97.3\\% of the requested identities with a duplicate rate of only 2.8\\%. These results show that explicit identity--layout grounding enables identity-preserving generation to scale to larger groups without relying on direct reference-face copying.",
+    "authors": [
+      "Hengyuan Xu",
+      "Qixun Wang",
+      "Yiji Cheng",
+      "Miles Yang",
+      "Zhao Zhong",
+      "Wei Cheng",
+      "Xingjun Ma",
+      "Yu-gang Jiang"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.20336.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.20336",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "WithEveryone：群体图像生成的统一规划与身份锚定",
+      "core_contribution": "提出一个统一框架WithEveryone，用于生成包含多达十个指定身份的群体图像，通过显式的身份-布局锚定解决了多身份保持和定位的难题，显著提升了身份相似度并减少了复制粘贴伪影。",
+      "method": "该方法将每个选定身份作为带地址的令牌注入，预测结构化的身份-布局计划，并将其渲染为视觉条件。核心目标函数为布局锚定身份损失（Layout-Grounded ID Loss），利用标注的人脸区域直接监督目标身份，避免不稳定的基于嵌入的人脸匹配；同时，身份表示强制（ID Representation Forcing）在图像合成前为每个身份训练预测。",
+      "findings": "在身份不相交的基准测试中，WithEveryone实现了最高的目标上下文身份相似度，将人脸相似度从GPT-Image-2的0.462提升至0.499，同时将复制粘贴伪影从0.169降至0.055。此外，它覆盖了97.3%的请求身份，重复率仅为2.8%，表明显式的身份-布局锚定使身份保持生成能够扩展到更大群体，而无需依赖直接参考人脸复制。"
+    }
+  },
+  {
+    "id": "2608.19540",
+    "title": "Continuous Adversarial MeanFlow Transfer",
+    "abstract": "Training fast generators on new domains with limited data remains challenging for two reasons. First, adapting a pretrained diffusion or flow model to a new domain leaves its costly multi-step sampling unaddressed, and existing acceleration methods are tied to the source parameterization--$ε$, $x$, $v$, or $u$--leaving heterogeneous pretrained models with no common acceleration target. Second, while adversarial refinement is proven effective for few-step quality, it is formulated only for instantaneous-velocity flows, not for the finite-interval average velocities that MeanFlow (MF) models predict. We address both problems. We propose MeanFlow-Transfer, which maps heterogeneous source outputs into a shared velocity representation, uses it to initialize an MF generator from the source weights, and optimizes an MF objective on the target domain. This unifies adaptation and acceleration in a single training loop across a broad range of pretrained models. We then introduce Continuous Adversarial MeanFlow, a post-training stage that extends continuous adversarial flow models from instantaneous velocities to MF's finite-interval average velocities. CAMF contrasts changes in a learned potential between real and predicted interval endpoints, recovering fine detail that MF regression averages away, and reduces to the instantaneous criterion in the vanishing-interval limit. Adapting four ImageNet-based source models--DiT ($ε$), SiT ($v$), JiT ($x$), iMF ($u$)--to five target domains, MF-T with CAMF matches or exceeds the fine-tuned teacher in FID and FDD at up to $125\\times$ fewer Neural Function Evaluations (NFEs), while CAMF improves MF-T's few-step FID by $29\\%$ on average.",
+    "authors": [
+      "Yara Bahram",
+      "Zahra Dehghani",
+      "Mélodie Desbos",
+      "Eric Granger",
+      "Pablo Piantanida",
+      "Mohammadhadi Shateri"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.19540.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.19540",
+    "primary_category": "cs.LG",
+    "score": 75,
+    "summary": {
+      "title_zh": "连续对抗平均流迁移",
+      "core_contribution": "提出了一种统一框架，将预训练扩散/流模型适配到新域并加速采样，同时引入连续对抗训练以恢复平均流回归丢失的细节，显著提升少步生成质量。",
+      "method": "首先，MeanFlow-Transfer将异构源模型（如ε、v、x、u参数化）的输出映射到共享的有限区间平均速度表示，并初始化目标域的MeanFlow生成器，通过优化MeanFlow目标进行适配。其次，提出连续对抗平均流（CAMF），在训练后阶段对比真实与预测区间端点的学习势能变化，从而恢复细节，并在区间趋近于零时退化为瞬时速度的对抗准则。",
+      "findings": "在四个ImageNet源模型（DiT、SiT、JiT、iMF）适配到五个目标域的实验中，MF-T结合CAMF在FID和FDD指标上匹配或超过微调教师模型，同时推理速度提升高达125倍（NFE减少），且CAMF平均将MF-T的少步FID改善29%。"
+    }
+  }
+]
