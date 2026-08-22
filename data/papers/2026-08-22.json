@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2608.19504",
+    "title": "A Plug-in Interpretation of Conditioning in Score-Based Diffusion Models",
+    "abstract": "We propose a conditioning mechanism for diffusion models based on multi-speed joint diffusion of the target and the condition. The mechanism learns an unconditional joint score network and enforces conditioning at inference via a plug-in correction term. The plug-in term separates the conditioning contribution from the learned unconditional dynamics, offering a transparent view of how the condition steers generation of the target distribution. Building on this, we derive explicit conditional reverse-time SDEs and approximate probability-flow ODEs, enabling principled and directly comparable conditional samplers. To reduce the induced ODE--SDE discrepancy, we introduce a log-Fokker--Planck residual regularization that improves ODE sampling quality. Experiments on conditional image generation tasks demonstrate competitive performance and support the effectiveness of the plug-in conditioning view. Additional ODE--SDE comparison experiments show that the log-Fokker--Planck residual regularization improves deterministic ODE sampling.",
+    "authors": [
+      "Libo Chen",
+      "Souvik Ghosh",
+      "Teo Deveney",
+      "Chris Budd",
+      "Vinay P. Namboodiri"
+    ],
+    "published": "2026-08-19",
+    "updated": "2026-08-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.19504.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.19504",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "基于得分扩散模型中条件作用的即插即用解释",
+      "core_contribution": "提出了一种基于目标与条件多速联合扩散的条件机制，通过即插即用校正项在推理时施加条件，从而清晰解释条件如何引导目标分布生成，并推导出显式的条件反向SDE和概率流ODE。",
+      "method": "该方法学习一个无条件联合得分网络，并在推理时通过即插即用校正项分离条件贡献。基于此推导出条件反向SDE和近似概率流ODE，并引入log-Fokker-Planck残差正则化以减少ODE与SDE之间的差异，提升确定性采样质量。",
+      "findings": "在条件图像生成任务上，该方法表现出竞争性性能，验证了即插即用条件视图的有效性；额外的ODE-SDE对比实验表明，log-Fokker-Planck残差正则化能显著改善确定性ODE采样的质量。"
+    }
+  },
+  {
+    "id": "2608.16786",
+    "title": "Revisiting Classifier-Free Guidance Methods in Latent Diffusion Models",
+    "abstract": "Inference-time quality-enhancement methods are an effective and widely adopted means of improving diffusion models without expensive retraining. We study a family of training-free techniques conceptually rooted in Classifier-Free Guidance (CFG), most of which were originally proposed on older U-Net diffusion models and validated using metrics that assess image quality in isolation, without accounting for compositional alignment or semantic correspondence between the generated image and its associated text prompt. We re-evaluate eight such methods on two open-weight rectified-flow transformers under a fixed per-model protocol and three compositional-alignment benchmarks. No method consistently improves on CFG across the measured criteria. APG obtains several nominal best scores, but the corresponding gains often remain within the estimated evaluation uncertainty. Attention-perturbation methods provide isolated gains on SD3.5 Medium and more frequent degradations on FLUX.2 [klein] 4B Base, while CFG remains a competitive lower-cost baseline.",
+    "authors": [
+      "Artem Sergievskii",
+      "Artyom Turevich",
+      "Sergey Kastryulin"
+    ],
+    "published": "2026-08-17",
+    "updated": "2026-08-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.16786.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.16786",
+    "primary_category": "cs.CV",
+    "score": 65,
+    "summary": {
+      "title_zh": "重新审视潜在扩散模型中的无分类器引导方法",
+      "core_contribution": "该论文系统性地重新评估了八种基于无分类器引导（CFG）的训练免费推理时增强方法，在两种开源的整流流变压器模型上，使用三个组合对齐基准进行测试，发现这些方法在一致性上并未优于CFG基线，挑战了现有方法的有效性。",
+      "method": "论文采用固定的每模型评估协议，在SD3.5 Medium和FLUX.2 [klein] 4B Base两种模型上，对八种训练免费方法（如APG、注意力扰动等）进行对比测试，使用组合对齐基准（如 compositional alignment benchmarks）评估生成图像与文本提示之间的语义对应关系，并考虑评估不确定性。",
+      "findings": "实验结果显示，没有方法在所有指标上持续优于CFG。APG在名义上取得了一些最佳分数，但增益往往在评估不确定性范围内；注意力扰动方法在SD3.5 Medium上带来孤立增益，但在FLUX.2 [klein] 4B Base上更频繁导致性能下降，而CFG仍是一个有竞争力的低成本基线。"
+    }
+  },
+  {
+    "id": "2608.20011",
+    "title": "Manifold Drift in Flow Preference Optimization: A Root Cause of Reward Hacking",
+    "abstract": "Preference optimization is a standard alignment method for generative models, yet extending it to continuous-time dynamics remains non-trivial. In flow matching, reward-driven updates modify transport trajectories without an inherent constraint to the pretrained data manifold and can move terminal samples off the pretrained support. We formalize this failure mode as manifold drift. Theoretically, we show that optimal flow matching recovers the terminal data distribution, whereas a preference update leaves the pretrained manifold whenever its induced terminal displacement has a nonzero normal component. As a remedy, we propose ThermoDPO, a temperature-controlled objective that anchors pairwise preference optimization on preferred samples. Across temperature regimes, this objective connects rejection sampling fine-tuning and FlowDPO and controls a pointwise reconstruction-based surrogate for manifold distance. To counteract diminished signals at low temperatures, we further introduce a weighted variant, ThermoDPO-weighted. On the main toy benchmark, ThermoDPO-weighted attains a StrictScore of 0.899, compared with 0.629 for FlowDPO and 0.857 for FlowDPO+RFT. On SD3.5-M at CFG = 4.5, it improves OCR by 47.5% and the average of four metrics by 16.0%.",
+    "authors": [
+      "Yansen Han",
+      "Shengyi Liao",
+      "Yuanxing Zhang",
+      "Pengfei Wan",
+      "Tao Lin"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.20011.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.20011",
+    "primary_category": "cs.AI",
+    "score": 55,
+    "summary": {
+      "title_zh": "流偏好优化中的流形漂移：奖励黑客行为的根本原因",
+      "core_contribution": "本文首次系统性地揭示了流匹配模型中偏好优化导致的流形漂移问题，并提出了温度控制的ThermoDPO目标及其加权变体，有效缓解了奖励黑客行为，显著提升了生成模型的偏好对齐性能。",
+      "method": "本文首先从理论上证明最优流匹配能恢复终端数据分布，而偏好更新在终端位移存在非零法向分量时会偏离预训练流形。基于此，提出ThermoDPO，通过温度参数控制偏好优化目标，将样本锚定在偏好样本上，从而抑制流形漂移。进一步引入加权变体ThermoDPO-weighted，以应对低温下信号减弱的问题，增强优化稳定性。",
+      "findings": "在主要玩具基准上，ThermoDPO-weighted的StrictScore达到0.899，显著高于FlowDPO的0.629和FlowDPO+RFT的0.857。在SD3.5-M数据集（CFG=4.5）上，OCR指标提升47.5%，四项指标平均值提升16.0%，验证了方法的有效性。"
+    }
+  },
+  {
+    "id": "2608.19739",
+    "title": "Question-Guided Evidence Acquisition for Multimodal Visual Question Answering",
+    "abstract": "Multimodal LLMs can see a document, but they often can't read it reliably. Small text, tables, visual cues, and topological elements still trip them up under direct visual inference, even when the page is already sitting in the model's context. Most document-VQA systems treat perception as fixed: they encode the page once, ask the question, and answer from whatever the model happened to extract in that single fast pass. We think document VQA needs slower, more deliberate perception: rather than answering from one fixed encoding, the model should spend a bit of extra compute at inference time working out what to look at next, and only then answer. We build this into \\textbf{Q-Guide}, a small agent that reads a question, works out what evidence it is still missing, and calls targeted tool(s) to recover it---reading text where text is needed, zooming in where detail is needed, or grounding a region where position matters. On DocVQA2026 and Manga109, Q-Guide outperforms both direct prompting and recent multi-agent document systems ($65.0\\%$ vs.\\ $40.0\\%$ on DocVQA2026, $32.4\\%$ vs.\\ $24.4\\%$ on Manga109), and the improvement holds across three Claude backbones (Opus 4.6, Sonnet 4.6, and Opus 4.5). We find that accuracy scales with the perception budget---most of the gain appears within two to three deliberate rounds---and that the gain comes from directing perception to the right place, not from complex control logic: adding planners, routers, or multiple collaborating agents does not help.",
+    "authors": [
+      "Alin-Ionut Popa"
+    ],
+    "published": "2026-08-20",
+    "updated": "2026-08-20",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.19739.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.19739",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "问题引导的多模态视觉问答证据获取",
+      "core_contribution": "提出Q-Guide，一个轻量级智能体，通过推理时动态决定下一步感知目标并调用针对性工具，显著提升文档视觉问答的准确性，超越直接提示和现有复杂多智能体系统。",
+      "method": "Q-Guide首先读取用户问题，分析当前已获取的视觉信息，识别缺失的证据类型（如文本、细节或位置），然后调用相应工具（如OCR、图像缩放、区域定位）获取所需信息，经过2-3轮迭代后生成最终答案。该方法强调在推理时增加计算预算，而非依赖复杂的控制逻辑或多智能体协作。",
+      "findings": "在DocVQA2026和Manga109基准上，Q-Guide分别达到65.0%和32.4%的准确率，远超直接提示（40.0%和24.4%）及多智能体系统；性能提升在三种Claude后端（Opus 4.6、Sonnet 4.6、Opus 4.5）上均一致；增益主要来自前2-3轮定向感知，且增加规划器、路由器或多智能体协作无额外帮助。"
+    }
+  },
+  {
+    "id": "2608.18622",
+    "title": "PALATE: Personalized Aesthetic Learning through Adaptive Taste Evolution for Multi-User Portrait Retouching",
+    "abstract": "Automatic portrait retouching has advanced rapidly, yet its objective is inherently subjective: the same portrait admits multiple professionally valid results, and users disagree about which one is best. Most existing methods optimize a population-level aesthetic standard and therefore cannot capture individual taste, while fine-tuning a separate editing model for every user incurs prohibitive training, storage, and data costs. We propose PALATE, a shared reward-evolution framework that keeps the image editor fixed and instead personalizes the selection among retouched candidates of the same source portrait. PALATE decomposes the reward for each user into a global backbone shared by all users, category-level residuals shared by aesthetically similar users, and a lightweight user adapter, with anti-collapse regularizers keeping the three levels complementary.A cyclic dual-level distillation scheme first distills user-specific preferences into category rewards and then consolidates the resulting category-level knowledge into the global backbone, which is redistributed to initialize the next evolution round. In this way, the shared initialization improves progressively across rounds, enabling unseen users to be calibrated from only a few rankings. On expert-retouched candidates from PPR10K with held-out users and held-out images, PALATE attains 72.83% pairwise preference-prediction accuracy, surpassing all reward, aesthetic, and image-quality baselines, of which the strongest, PickScore, reaches 58.06%. Each new user costs only 512 bytes of user-specific parameters and millisecond-level scoring.",
+    "authors": [
+      "Jingxuan Wang",
+      "Yifan Mei",
+      "Yuxia Niu",
+      "Chaowan Jiao",
+      "Qijin Shen"
+    ],
+    "published": "2026-08-19",
+    "updated": "2026-08-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.18622.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.18622",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "PALATE：通过自适应品味演化实现多用户人像修图的个性化美学学习",
+      "core_contribution": "提出了一种共享奖励演化框架PALATE，在不修改图像编辑器的情况下，通过个性化选择同一源人像的修图候选结果来适应不同用户的审美偏好，仅需极少的用户特定参数即可实现高效个性化。",
+      "method": "PALATE将每个用户的奖励分解为全局骨干网络、类别级残差和轻量级用户适配器，并引入防坍缩正则化保持三者互补。采用循环双级蒸馏方案，先将用户特定偏好蒸馏为类别奖励，再将类别级知识整合到全局骨干中，用于初始化下一轮演化，从而逐步提升共享初始化质量，使新用户仅需少量排序即可校准。",
+      "findings": "在PPR10K数据集上，针对留出用户和留出图像的专家修图候选，PALATE达到72.83%的成对偏好预测准确率，显著优于所有奖励、美学和图像质量基线（最强基线PickScore为58.06%）。每个新用户仅需512字节的用户特定参数，且评分时间在毫秒级。"
+    }
+  }
+]
