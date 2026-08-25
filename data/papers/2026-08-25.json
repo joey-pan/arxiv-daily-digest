@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2608.22780",
+    "title": "Can We Perform Online RL for Image Editing without Editing Rewards?",
+    "abstract": "Reinforcement learning (RL) enables direct preference optimization for image editing through editing-specific rewards, which remain less developed due to costly triplet supervision and complex task-dependent calibration. In contrast, text-to-image (T2I) generation benefits from a mature and diverse reward ecosystem spanning semantic alignment, aesthetics, realism, glyph shape, and other visual preferences. Extending this ecosystem to image editing would substantially broaden the range of visual preferences accessible to RL-based optimization, prompting the central question: \\emph{Can We Perform Image Editing RL without Editing Rewards?} In this paper, we argue that the standard image editing dimensions have potential to be mapped to the T2I reward space: image quality can transfer directly, prompt following can be aligned through a description of the desired visual state, and reference consistency admits a coarse semantic conversion by encoding the source content to preserve. However, editing instructions specify relative changes, whereas T2I rewards require self-contained target descriptions; moreover, semantically valid captions from generic vision-language models may be incompatible with the frozen reward. Hence, we further introduce Lever-Edit, a two-stage framework that learns a reward-aligned captioner for counterfactual target descriptions, freezes it, and optimizes the editing policy solely with the transferred T2I reward. Experiments show competitive editing alignment and source preservation against editing-reward-based fine-tuning, while outperforming intuitive transfer baselines.",
+    "authors": [
+      "Qichao Ma",
+      "Jikang Cheng",
+      "Ling Liang",
+      "Zhaofei Yu",
+      "Tiejun Huang",
+      "Renye Yan"
+    ],
+    "published": "2026-08-24",
+    "updated": "2026-08-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.22780.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.22780",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "我们能否在没有编辑奖励的情况下进行图像编辑的在线强化学习？",
+      "core_contribution": "本文提出了一种无需编辑特定奖励即可进行图像编辑强化学习的方法，通过将标准图像编辑维度映射到成熟的文本到图像（T2I）奖励空间，并引入Lever-Edit框架，实现了与基于编辑奖励的微调相当的编辑对齐和源内容保持性能。",
+      "method": "方法包括两个阶段：首先，学习一个与奖励对齐的标题生成器，用于生成反事实的目标描述，以解决编辑指令指定相对变化而T2I奖励需要自包含目标描述的不匹配问题；然后，冻结该标题生成器，仅使用转换后的T2I奖励来优化编辑策略，从而避免依赖昂贵的编辑特定奖励。",
+      "findings": "实验结果表明，Lever-Edit在编辑对齐和源内容保持方面与基于编辑奖励的微调方法性能相当，并且优于直观的奖励转移基线方法，验证了无需编辑奖励进行图像编辑RL的可行性。"
+    }
+  },
+  {
+    "id": "2608.22757",
+    "title": "Object-Uni: A Unified Model for Object-Centric Spatial Understanding and Controllable Generation",
+    "abstract": "Unified models for visual understanding and generation have made rapid progress, yet they still lack the ability to understand and manipulate the spatial states of object instances. Existing models can describe objects in natural language, but they struggle to precisely represent continuous object poses and generate geometrically consistent images under target viewpoints. To mitigate this, we propose \\emph{Object-Uni}, a unified model for object-centric spatial understanding and controllable generation. Specifically, we formulate object-centric spatial intelligence as a unified problem connecting pose perception, spatial reasoning, pose-conditioned generation, and object-centric novel view synthesis. We treat object pose as an explicit geometric variable shared by understanding and generation, rather than merely a prediction label or control signal. To make pose usable by multimodal large language models, we propose a viewpoint-based orientation abstraction that maps orientation into structured viewpoint descriptions while preserving continuous geometric supervision. We further construct an object-centric spatial benchmark (UniSpatial-80K) and train a unified model with an object-token-grounded pose anchor to associate each instance with its pose state. Experiments show that our model improves object-level pose understanding and pose-controllable generation, moving unified models from describing objects toward manipulating spatial states.",
+    "authors": [
+      "Mining Tan",
+      "Yinuo Wang",
+      "Ziqi Zhou",
+      "Weize Quan",
+      "Sifei Li",
+      "Jingdong Chen",
+      "DanDan Zheng",
+      "Libin Wang",
+      "Weiming Dong"
+    ],
+    "published": "2026-08-24",
+    "updated": "2026-08-24",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.22757.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.22757",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "Object-Uni：面向对象中心空间理解与可控生成的统一模型",
+      "core_contribution": "提出Object-Uni，首个将对象姿态作为显式几何变量统一用于空间理解与可控生成的模型，显著提升对象级姿态理解与姿态条件生成的几何一致性。",
+      "method": "将对象中心空间智能建模为统一问题，涵盖姿态感知、空间推理、姿态条件生成和新视角合成。提出基于视点的方向抽象方法，将连续姿态映射为结构化视点描述，同时保留连续几何监督；构建UniSpatial-80K基准数据集，并设计对象令牌锚定的姿态关联机制，使多模态大语言模型能够将每个实例与其姿态状态关联。",
+      "findings": "实验表明，Object-Uni在对象级姿态理解任务上优于现有统一模型，在姿态可控生成中能生成几何一致的目标视角图像，验证了将姿态作为共享几何变量的有效性，推动统一模型从描述对象向操控空间状态迈进。"
+    }
+  },
+  {
+    "id": "2608.22521",
+    "title": "VISTA: Test-Time Compositional Alignment for Visual Autoregressive Generation",
+    "abstract": "Visual autoregressive (VAR) models have emerged as a fast, high-quality alternative to diffusion for text-to-image generation, but like diffusion models they exhibit persistent compositional failures, producing images that violate the attribute bindings and spatial relations specified in the prompt. While a rich line of test-time alignment methods has developed for diffusion, no comparable approach exists for next-scale VAR generation, whose stateful, discrete, multi-resolution sampling process makes existing techniques inapplicable. We close this gap with \\textbf{VISTA} (\\textbf{Vi}sual Autoregressive \\textbf{S}emantic \\textbf{T}est-time \\textbf{A}lignment), the first gradient-based test-time alignment framework for next-scale autoregressive image generation. Built on Infinity, VISTA intervenes directly in the generation process, optimizing intermediate representations through the frozen transformer to steer visual predictions toward compositional constraints, without modifying model parameters or requiring additional training. VISTA introduces the mechanisms needed to make such optimization stable across scales, together with an extensible objective space that any differentiable constraint on cross-attention can plug into. Across two benchmarks and two model scales, VISTA improves every targeted compositional category, raising the mean targeted score by nearly 20\\% on a 2B backbone and almost 6\\% on an 8B backbone, with the largest gains on spatial relations. Image quality is preserved: an independent preference model VISTA never optimizes scores its outputs nearly 20\\% higher. Notably, the 2B model with VISTA surpasses a backbone four times its size, indicating that a substantial part of the compositional gap between model scales is recoverable at test time.",
+    "authors": [
+      "Hossein Shahabadi",
+      "Niki Sepasian",
+      "Mahdieh Soleymani Baghshah"
+    ],
+    "published": "2026-08-23",
+    "updated": "2026-08-23",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.22521.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.22521",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "VISTA：视觉自回归生成的测试时组合对齐",
+      "core_contribution": "VISTA是首个针对下一尺度自回归图像生成的基于梯度的测试时对齐框架，无需修改模型参数或额外训练，即可在生成过程中优化中间表示，以强制满足提示中的组合约束，显著提升组合生成质量。",
+      "method": "VISTA基于Infinity模型，在冻结的Transformer中直接干预生成过程，通过优化中间表示来引导视觉预测符合组合约束。它引入了跨尺度稳定的优化机制，并提供了一个可扩展的目标空间，允许任何可微分的交叉注意力约束直接接入。",
+      "findings": "在两个基准和两种模型规模上，VISTA提升了所有目标组合类别，2B骨干的平均目标分数提升近20%，8B骨干提升近6%，其中空间关系提升最大。图像质量保持不变，独立偏好模型评分提升近20%。此外，2B模型配合VISTA超越了4倍规模的骨干模型，表明模型规模间的组合差距大部分可在测试时恢复。"
+    }
+  },
+  {
+    "id": "2608.22329",
+    "title": "ReART: Reference-Guided Retrieval and Refinement for Emotion-Aware Art Generation",
+    "abstract": "Emotion-aware artistic image generation requires a model to satisfy semantic content, artistic style, and target emotion simultaneously. The key challenge is that artistic captions conflate these axes into underspecified free-form text, making fine-grained visual attributes such as brushwork, composition, and tonal atmosphere difficult to ground concretely. We present ReART, a reference-guided retrieval and refinement framework. Our method decomposes test captions and each image annotation in the EmoArt database into structured visual fields, and performs field-wise retrieval over subject, layout, brush-line, and tone-mood dimensions to retrieve role-specific visual references that supply the perceptual detail text alone cannot convey; these references are used alongside a structured prompt for initial synthesis. For samples where any Attribute Alignment Score (AAS) axis falls below threshold, an AAS-driven refinement loop diagnoses failures, constructs constrained repair plans specifying elements to keep, errors to fix, and operations to avoid, routes references by correction purpose, and performs controlled editing under structural preservation constraints. Our system ranks 2nd in Track 1 of the AffectiveArt 2026 Grand Challenge, achieving a perfect AAS of 1.00 and an overall score of 0.78. Code is available at https://github.com/oceanflowlab/ReART.git.",
+    "authors": [
+      "Qianqian Tang",
+      "Jiayi Gao",
+      "Ting Lei",
+      "Yang Liu"
+    ],
+    "published": "2026-08-23",
+    "updated": "2026-08-23",
+    "categories": [
+      "cs.MM",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.22329.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.22329",
+    "primary_category": "cs.MM",
+    "score": 85,
+    "summary": {
+      "title_zh": "ReART：基于参考引导的检索与精炼框架用于情感感知艺术生成",
+      "core_contribution": "提出了一种参考引导的检索与精炼框架（ReART），通过结构化视觉字段检索和属性对齐分数驱动的修复循环，解决了艺术图像生成中语义、风格与情感难以同时满足的问题，并在AffectiveArt 2026挑战赛Track 1中取得第二名。",
+      "method": "ReART首先将测试标题和EmoArt数据库中的图像注释分解为结构化视觉字段，并在主题、布局、笔触和色调-情绪维度上进行逐字段检索，以获取角色特定的视觉参考，用于初始合成。随后，对于任何属性对齐分数（AAS）轴低于阈值的样本，系统启动AAS驱动的精炼循环，该循环诊断失败原因，构建包含保留元素、修复错误和避免操作的约束修复计划，并根据修正目的路由参考，在结构保持约束下进行受控编辑。",
+      "findings": "在AffectiveArt 2026大挑战赛Track 1中，ReART排名第二，取得了完美的AAS分数1.00和总体分数0.78，验证了参考引导检索与精炼机制在情感感知艺术生成中的有效性。"
+    }
+  },
+  {
+    "id": "2608.21893",
+    "title": "A Scalable Vector Graphics Latent Space",
+    "abstract": "Scalable Vector Graphics are a fundamental medium for resolution-independent visual content, yet the deep learning community lacks a continuous, dense, and invertible latent space for vector representations, the kind of foundational building block that Variational Autoencoders and their descendants have long provided for raster images. We introduce SLS (SVG Latent Space), a Transformer-based autoencoder that learns compact dense representations of individual SVG paths, the atomic visual elements from which any SVG image can be composed. By modeling SVG commands, coordinate data, and visual properties within a unified BPE-based token vocabulary, SLS learns fixed-size latent representations that jointly capture structure and appearance, and can be decoded back into valid, style-consistent SVG paths with high fidelity. The resulting embedding space is robust, invertible, and structured: embeddings lie on a unit hypersphere, enabling efficient similarity search, composition, and downstream conditioning through simple vector-space operations. Finally, we demonstrate that SLS generalizes across diverse tasks reducing their FLOPs by over 150 times compared to token-based approaches, and establishing a general-purpose latent foundation for vector graphics research.",
+    "authors": [
+      "Leonardo Zini",
+      "Elia Frigieri",
+      "Lorenzo Baraldi"
+    ],
+    "published": "2026-08-22",
+    "updated": "2026-08-22",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.21893.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.21893",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "可缩放矢量图形潜空间",
+      "core_contribution": "本文首次为可缩放矢量图形（SVG）构建了一个连续、稠密且可逆的潜空间，基于Transformer自编码器学习单个SVG路径的紧凑表示，为矢量图形研究提供了类似VAE之于光栅图像的基础性构建模块。",
+      "method": "该方法提出SLS（SVG潜空间），使用基于Transformer的自编码器，将SVG命令、坐标数据和视觉属性统一编码为BPE（字节对编码）词表，从而学习固定大小的潜表示。潜向量被约束在单位超球面上，支持高效的相似性搜索、组合和下游条件生成，并能解码回高保真、风格一致的SVG路径。",
+      "findings": "实验表明，SLS生成的嵌入空间具有鲁棒性、可逆性和结构化特性，在多种下游任务中相比基于token的方法减少了超过150倍的计算量（FLOPs），验证了其作为通用矢量图形潜基础的泛化能力。"
+    }
+  }
+]
