@@ -1,0 +1,173 @@
+[
+  {
+    "id": "2608.24138",
+    "title": "Rubrics as Visual-Repair Context for Self-Evolving UI-to-Code Generation",
+    "abstract": "Large vision-language models have shown strong progress in UI-to-code generation, yet their test-time self-evolution remains unstable. We first identify a fundamental obstacle, termed visual repair coupling: a local code edit may propagate through layout, style, and component dependencies, correcting one visual mismatch while degrading regions that were previously faithful. To address this issue, we present RubSE, a Rubric-guided Self-Evolution framework that uses rubrics to represent visual feedback as a structured visual-repair context. At each refinement round, RubSE generates typed candidate rubrics, selects one prioritized repair target, and stores previously selected rubrics as history, thereby steering each revision toward a well-scoped visual repair while discouraging repeated or over-broad changes. Evaluations across six VLMs and three UI-to-code benchmarks demonstrate that RubSE substantially outperforms naïve self-evolution in final-round and best-round settings, achieving more stable refinement trajectories and a higher trajectory-level performance ceiling. Further analysis shows that RubSE mitigates trajectory collapse by improving recovery from severe visual regressions, and that stronger rubric generators can transfer effective visual-repair guidance to weaker code improvers.",
+    "authors": [
+      "Tianyi Xiong",
+      "Zhengyuan Yang",
+      "Xiaofei Wang",
+      "Chung-Ching Lin",
+      "Ruichun Ma",
+      "Kevin Lin",
+      "Zhendong Wang",
+      "Linjie Li",
+      "Chenxi Liu",
+      "Ruibo Chen",
+      "Ramani Duraiswami",
+      "Heng Huang",
+      "Lijuan Wang"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24138.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24138",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于评分标准的视觉修复上下文用于自进化UI到代码生成",
+      "core_contribution": "本文提出RubSE框架，通过评分标准（rubrics）将视觉反馈结构化为修复上下文，解决了UI到代码生成中自进化过程的不稳定性问题，显著提升了多轮修复的轨迹质量和最终性能。",
+      "method": "RubSE在每轮修复中生成类型化的候选评分标准，选择优先级最高的修复目标，并将历史评分标准存储为上下文，以引导每次修订聚焦于明确的视觉修复，避免重复或过宽的改动。该方法通过结构化反馈解耦视觉修复耦合，使模型在自进化过程中更稳定地改进代码。",
+      "findings": "在六个视觉语言模型和三个UI到代码基准上的实验表明，RubSE在最终轮和最佳轮设置下均显著优于朴素自进化方法，实现了更稳定的修复轨迹和更高的轨迹级性能上限。进一步分析显示，RubSE通过改善对严重视觉回归的恢复能力来缓解轨迹崩溃，且更强的评分标准生成器可以将有效的视觉修复指导迁移给较弱的代码改进器。"
+    }
+  },
+  {
+    "id": "2608.24107",
+    "title": "MatReplace: A Reference-Free, Conditioning-Aligned Benchmark for Material Replacement in Interior Scenes",
+    "abstract": "Material replacement is a common interior-design operation: changing the material of a selected surface while preserving its geometry, surroundings, and illumination. Despite its commercial relevance, no public benchmark isolates this task, and evaluating it is challenging. Reference-based metrics penalize valid outputs in this inherently one-to-many setting, favor the style of the reference generator, and cannot fairly compare editors that receive different forms of guidance. We introduce MatReplace, a reference-free benchmark that evaluates edits along four verifiable dimensions: local material correctness, global lighting harmony, outside preservation, and inside structure. It defines three tracks that vary one conditioning signal at a time: (A) instruction only, (B) instruction plus region mask, and (C) material reference image instead of instruction. Our results reveal a clear divide between naming and visually grounding materials. In Track A, leading closed-source editors achieve exemplar-level material rendering and surpass the exemplar anchor under our primary aggregate. In Track B, masks help only mask-compatible models with weak scene preservation, with task-paired, single-seed effects ranging from +0.137 to -0.090 across aligned model families. In Track C, reference-image conditioning degrades every family under both aggregates, by -0.031 to -0.508; in the worst cases, models repaint the reference image itself and perform worse than returning the input unchanged. Thus, named-material rendering is largely solved by the strongest closed editors on this distribution, but grounding materials from pixels remains an open challenge. Expert ratings validate our ranking (Kendall's tau = 0.68) and align with our aggregates more closely than GT-referenced or CLIP-based baselines.",
+    "authors": [
+      "Mingzhe Du",
+      "Thong Thanh Nguyen",
+      "Nguyen Tran Cong Duy",
+      "See-Kiong Ng",
+      "Luu Anh Tuan"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24107.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24107",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MatReplace：一种用于室内场景材质替换的无参考、条件对齐基准",
+      "core_contribution": "提出了首个专门用于室内场景材质替换任务的无参考基准MatReplace，从四个可验证维度评估编辑质量，并设计了三种条件控制轨迹，揭示了命名材质与视觉材质接地之间的性能差距。",
+      "method": "MatReplace基准通过四个维度（局部材质正确性、全局光照和谐性、外部区域保留、内部结构保持）进行无参考评估。它定义了三个轨迹，每次仅变化一种条件信号：轨迹A仅使用指令，轨迹B在指令基础上添加区域掩码，轨迹C使用材质参考图像替代指令。评估采用聚合指标，并与专家评分进行相关性验证。",
+      "findings": "在轨迹A中，领先的闭源编辑器在示例级材质渲染上表现优异，并超过示例锚点；在轨迹B中，掩码仅对掩码兼容模型有帮助，但效果因模型而异（从+0.137到-0.090）；在轨迹C中，参考图像条件导致所有模型性能下降（-0.031到-0.508），最差情况下模型重绘参考图像本身，甚至不如不修改输入。专家评分验证了排名（Kendall's tau = 0.68），且聚合指标比基于GT或CLIP的基线更符合专家判断。"
+    }
+  },
+  {
+    "id": "2608.23864",
+    "title": "AffineTok: Semantic Affine Consistency for Diffusion-Friendly Visual Tokenizer",
+    "abstract": "Visual tokenizers increasingly inject semantic supervision into latent spaces to make downstream diffusion easier. Yet how these semantics should be organized to facilitate denoising remains underexplored. In this paper, we define the semantic recovery objective: the denoising process should recover the semantic content of the clean image from noisy latent, and a good tokenizer should make it easier. Existing approaches train a projector to predict the semantics directly from the noisy latent. We argue that this predicts the average of clean-image semantics, whereas what really needs to be aligned is the semantics of averaged clean latents. More importantly, we demonstrate that the semantic recovery error orthogonally decomposes into the error of the optimal semantic prediction directly from the noisy latent and the error between these two predictions. We therefore identify their consistency as the missing requirement and call it Semantic Affine Consistency (SAC). To examine whether this overlooked requirement is closely related to downstream generation, we introduce M_SAC, a tokenizer-side proxy for SAC. Across the evaluated tokenizers and diffusion model scales, M_SAC closely tracks generation quality, reaching a Pearson correlation of 0.960 with SiT-XL gFID, thereby motivating SAC-guided tokenizer training. We then introduce AffineTok, which promotes SAC through two complementary, training-only components. Global Semantic Coordination Token (GSCT) coordinates the semantic organization of clean latents, keeping semantic averaging meaningful, while Posterior-Mean Semantic Alignment (PMSA) predicts posterior-mean latents from noisy inputs and supervises their semantics. On ImageNet 256, compared with the baseline, AffineTok reduces gFID by 26% at 20 epochs and, with continued training, achieves a new state-of-the-art gFID of 1.21 without classifier-free guidance and 1.10 with guidance.",
+    "authors": [
+      "Junqiu Yu",
+      "Pandeng Li",
+      "Yikai Wang",
+      "Jiaxing Zhao",
+      "Yujie Wei",
+      "Kaixun Jiang",
+      "Quanhao Li",
+      "Hongtao Yu",
+      "Zhihang Liu",
+      "Zhaohe Liao",
+      "Junjie Zhou",
+      "Yun Zheng",
+      "Yu Liu",
+      "Yanwei Fu"
+    ],
+    "published": "2026-08-24",
+    "updated": "2026-08-24",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.23864.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.23864",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "AffineTok：面向扩散友好的视觉分词器的语义仿射一致性",
+      "core_contribution": "本文提出语义仿射一致性（SAC）作为视觉分词器训练中缺失的关键约束，并据此设计AffineTok分词器，显著提升下游扩散模型的生成质量，在ImageNet 256上达到新的最优gFID。",
+      "method": "本文首先定义语义恢复目标，并证明语义恢复误差可正交分解为最优直接预测误差与两种预测间误差，从而提出SAC。为验证SAC与生成质量的相关性，引入代理指标M_SAC。基于此，设计AffineTok，包含两个仅训练时使用的组件：全局语义协调Token（GSCT）协调干净潜变量的语义组织，使语义平均有意义；后验均值语义对齐（PMSA）从噪声输入预测后验均值潜变量并监督其语义，从而促进SAC。",
+      "findings": "在ImageNet 256上，AffineTok相比基线在20个epoch时gFID降低26%；继续训练后，无需分类器引导的gFID达到1.21，有引导时达到1.10，均为新最优。此外，M_SAC与SiT-XL的gFID皮尔逊相关系数达0.960，表明SAC与生成质量高度相关。"
+    }
+  },
+  {
+    "id": "2608.21885",
+    "title": "Pixel-Space Diffusion via Observation Operators",
+    "abstract": "Pixel-space diffusion models directly model image distributions but remain difficult to optimize. Recent methods alleviate this challenge through target reparameterization, while still relying on a fixed clean-image target throughout denoising. Through empirical analysis, we identify a scale-time mismatch: image structures become predictable from coarse to fine as noise decreases, whereas existing models are forced to predict the full image even under high noise, resulting in low-SNR gradients that hinder optimization. To resolve this mismatch, we propose Observation Operator Diffusion, a unified framework that aligns both the supervision trajectory and feature refinement with the intrinsic recovery order of image structures. Specifically, we replace fixed full-image supervision along the standard flow path with a time-indexed observation trajectory that evolves from coarse structures to the full image during denoising. This trajectory is instantiated with a family of Gaussian-Lanczos operators at varying observation scales, yielding a path-consistent training objective. We further introduce GL-CoDA, a decoder that injects scale-specific Gaussian-Lanczos observations across decoding stages for coarse-to-fine feature refinement. Extensive experiments show that the proposed approach converges substantially faster while consistently improving generation quality, achieving an FID of 1.52 on ImageNet-256.",
+    "authors": [
+      "Shaojie Guo",
+      "Lichen Ma",
+      "Haoyang Tong",
+      "Yu He",
+      "Zipeng Guo",
+      "Xiaoan Liu",
+      "Feng Yan",
+      "Yu Guo",
+      "Fei Wang",
+      "Junshi Huang",
+      "Yan Wang"
+    ],
+    "published": "2026-08-22",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.21885.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.21885",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "基于观测算子的像素空间扩散模型",
+      "core_contribution": "提出一种统一框架（Observation Operator Diffusion），通过时间索引的观测轨迹替代固定全图像监督，解决像素空间扩散模型中尺度与时间不匹配的问题，从而加速收敛并提升生成质量。",
+      "method": "方法基于标准扩散流程，将固定全图像监督替换为随去噪过程从粗到细演化的观测轨迹，该轨迹由一族不同尺度的Gaussian-Lanczos算子实例化，形成路径一致的训练目标。此外，引入GL-CoDA解码器，在各解码阶段注入尺度特定的Gaussian-Lanczos观测，实现从粗到细的特征细化。",
+      "findings": "实验表明，该方法显著加快收敛速度，同时持续提升生成质量，在ImageNet-256上达到FID 1.52，优于现有方法。"
+    }
+  },
+  {
+    "id": "2608.24646",
+    "title": "On-Policy Self-Distillation in Diffusion Models",
+    "abstract": "Reinforcement learning can align diffusion models with human preferences and task-specific objectives, but endpoint rewards do not specify how an intermediate denoising prediction should change. We introduce DiffusionOPSD as an on-policy self-distillation framework that converts image-level reward guidance into explicit targets for clean-output predictions at sampled queries. At each outer iteration, a frozen behavior policy generates trajectories and supplies query states and anchors. Reward gradients construct bounded positive and negative targets around each anchor. The trainable policy fits these targets as detached supervision through finite fitting before an exponential moving average update refreshes the behavior policy. This setup lets us measure target construction and finite realization separately. Controlled same-query experiments show that larger target-construction gains do not necessarily translate into larger realized gains after a single fitting update. Across SD 3.5-M and the step-distilled Z-Image-Turbo, our approach achieves the best final held-out scores in 19 of 20 reward-matched settings across two backbones and ten evaluators. It outperforms the strongest competing method by up to 44.0% and reduces training GPU-hours relative to DiffusionNFT by 40% on SD 3.5-M and 63% on Z-Image-Turbo. These results support on-policy self-distillation as an efficient and analyzable approach to diffusion post-training by converting image-level reward guidance into explicit and continually refreshed intermediate supervision, thereby opening a path toward more efficient and diagnosable alignment.",
+    "authors": [
+      "Wei Zhou",
+      "Xiongwei Zhu",
+      "Lingdong Kong",
+      "Bo Chen",
+      "Lei Zhang",
+      "Yongyuan Liang",
+      "Xiaoxia Hou",
+      "Ye Tian",
+      "Xian Sun",
+      "Yingshuo Wang",
+      "Linfeng Li",
+      "Shengqiong Wu",
+      "Leigang Qu",
+      "Feng Li",
+      "Wei Liu",
+      "Julian McAuley",
+      "Tat-Seng Chua"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24646.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24646",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "扩散模型中的同策略自蒸馏",
+      "core_contribution": "提出DiffusionOPSD框架，将图像级奖励引导转化为扩散模型中间去噪步骤的显式监督目标，实现高效且可分析的扩散模型后训练对齐，在多个模型和评估器上取得最优性能并显著降低训练成本。",
+      "method": "采用同策略自蒸馏机制，每次外迭代中冻结行为策略生成轨迹并提供查询状态和锚点，利用奖励梯度构建有界正负目标，训练策略通过有限次拟合匹配这些目标，随后通过指数移动平均更新行为策略。该方法将目标构建与有限实现分离，便于独立分析各环节效果。",
+      "findings": "在SD 3.5-M和Z-Image-Turbo两个骨干模型上，跨10个评估器的20个奖励匹配设置中，DiffusionOPSD在19个设置中取得最佳最终保留分数，比最强对比方法最高提升44.0%，同时训练GPU时间相比DiffusionNFT减少40%（SD 3.5-M）和63%（Z-Image-Turbo）。此外，控制相同查询的实验表明，更大的目标构建增益并不一定转化为单次拟合更新后更大的实际增益。"
+    }
+  }
+]
