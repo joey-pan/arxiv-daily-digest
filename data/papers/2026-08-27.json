@@ -1,0 +1,144 @@
+[
+  {
+    "id": "2608.25386",
+    "title": "Efficient Training with Foresight: Multi-Token Auxiliary Supervision for Autoregressive Image Generation",
+    "abstract": "Autoregressive (AR) image generation has shown strong potential for scalable high-fidelity synthesis by modeling images as discrete token sequences. However, traditional next token prediction (NTP) continues to suffer from sparse and myopic supervision, insufficiently discriminative representations, and high training cost caused by dense computation over the full token sequence. To address these issues, we propose multi-token autoregressive (MTAR), a unified training framework that improves autoregressive image generation from three aspects: prediction objectives, representation regularization, and training efficiency. Specifically, MTAR introduces multi-token prediction (MTP) to alleviate the sparsity and myopia of traditional NTP by imposing joint supervision on multiple future tokens; employs token-level contrastive regularization (TCR) to explicitly enhance the separability of sampled token representations and thereby improve representation discriminability; and incorporates semantic dropping (SD) as a semantics-aware training acceleration strategy to reduce redundant computation on low-information tokens while preserving informative learning signals. All three components are applied only during training and introduce no additional overhead during autoregressive inference. On ImageNet, MTAR achieves a better balance between generation quality and training efficiency. Compared with LlamaGen, MTAR achieves up to 0.95 lower FID and 39\\% faster training. Moreover, even with only 1/3 of the training iterations, it still attains performance comparable to or better than the baseline, substantially reducing training time.",
+    "authors": [
+      "Guo Niu",
+      "Xiongfei Yao",
+      "Teng Wang",
+      "Nannan Zhu"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25386.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25386",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "具有前瞻性的高效训练：自回归图像生成的多令牌辅助监督",
+      "core_contribution": "提出了一种统一的自回归图像生成训练框架MTAR，通过多令牌预测、令牌级对比正则化和语义丢弃策略，同时提升生成质量、表示判别性和训练效率，且推理时无额外开销。",
+      "method": "MTAR框架包含三个组件：多令牌预测（MTP）对多个未来令牌施加联合监督，缓解传统下一令牌预测的稀疏性和短视性；令牌级对比正则化（TCR）增强采样令牌表示的分离性；语义丢弃（SD）作为训练加速策略，减少低信息令牌上的冗余计算。所有组件仅在训练阶段使用，不影响推理效率。",
+      "findings": "在ImageNet上，MTAR相比LlamaGen基线，FID降低最多0.95，训练速度提升39%；即使仅使用1/3的训练迭代，也能达到与基线相当或更好的性能，显著减少训练时间。"
+    }
+  },
+  {
+    "id": "2608.25933",
+    "title": "When Composition Doesn't Add Up: Humans Identifying Defects in AI-Generated Images",
+    "abstract": "*Chulin Zhao and Ruoqi Hu contributed equally to this work. State-of-the-art text-to-image (T2I) models exhibit pronounced and systematic defects when prompts involve intricate compositional factors such as multiple entities and multiple attributes. In this paper, we investigate how humans identify such defects. Specifically, we manually select 651 reference images from the four categories of people, hand, object, and scene that exhibit complex compositional characteristics, from which prompts emphasizing compositional factors are derived by manually editing ChatGPT-generated prompts. We then feed the prompts into three selected T2I models to generate AI images and conduct a comprehensive subjective study to identify their defects. For each image, 29 participants provide multi-label assessments specifying defect types and locations. The study yields the compositional AI-generated image defect (CO-AID) dataset, including reference images, prompts, AI-generated images, and information on defect locations and types. Experimental results show that training a deep model on CO-AID can both predict defects in AI-generated images and optimize AI image generation, demonstrating its usability and effectiveness. The database and supplementary materials are available at: https://github.com/Future-IQA/CO-AID .",
+    "authors": [
+      "Ruoqi Hu",
+      "Chulin Zhao",
+      "Jiashuo Chang",
+      "Ramon Ruiz-Dolz",
+      "Hanhe Lin"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25933.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25933",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "当组合不成立：人类识别AI生成图像中的缺陷",
+      "core_contribution": "本文首次系统研究了人类如何识别AI生成图像中因复杂组合因素（如多实体、多属性）导致的缺陷，并构建了包含参考图像、提示词、AI生成图像及缺陷标注的CO-AID数据集，为缺陷预测和图像生成优化提供了基准。",
+      "method": "作者从人物、手、物体和场景四类复杂组合特征中手动选取651张参考图像，通过人工编辑ChatGPT生成的提示词来强调组合因素，然后输入三个选定的文本到图像（T2I）模型生成AI图像。随后，29名参与者对每张图像进行多标签评估，标注缺陷类型和位置，最终形成CO-AID数据集。此外，作者训练了一个深度学习模型来预测缺陷，并利用该模型优化AI图像生成。",
+      "findings": "实验结果表明，在CO-AID上训练的深度模型能够有效预测AI生成图像中的缺陷，并能用于优化图像生成过程，验证了数据集的有效性和实用性。研究还揭示了T2I模型在复杂组合场景下存在系统性缺陷，且人类能够可靠地识别这些缺陷。"
+    }
+  },
+  {
+    "id": "2608.24563",
+    "title": "X-MULTI: VLM-based Imaging Factor Disentanglement for Factor-Aware Image Synthesis",
+    "abstract": "Imaging factor disentanglement in text-to-image generation aims to independently control image acquisition properties such as types of camera lenses, sensor types, viewpoints, and domains to enable combinatorial generalization. This should let the model synthesize novel factor combinations unobserved in the training data, such as pairing a fisheye lens with an event sensor never observed in training data. Recent work, MULTI, introduced learnable, factor-specific embeddings to disentangle imaging factors, along with the Factor Alignment Accuracy (FAA) metric to evaluate disentanglement quality. We identify and address two independent limitations. First, MULTI's pixel-level reconstruction objective supervises the model only on observed imaging factor combinations, providing no direct training signal for novel combinations. We therefore propose X-MULTI, which uses a pretrained vision-language model (VLM) to supervise novel factor combinations synthesized during training. Second, we show the FAA metric exhibits severe cross-factor correlation leakage, misrepresenting true disentanglement quality. We therefore propose Improved-FAA (I-FAA), which employs factor-specific augmentation strategies to break these correlations and enables more rigorous evaluation. Experiments demonstrate that X-MULTI achieves improved factor alignment on novel combinations compared to MULTI. Moreover, we show that correlation leakage in FAA distorts the evaluation of true factor disentanglement and I-FAA reduces this leakage and therefore provides a more robust assessment of factor alignment.",
+    "authors": [
+      "Sonali Godavarthy",
+      "Matthias Neuwirth-Trapp",
+      "Tim-Felix Faasch",
+      "Maarten Bieshaar",
+      "Michael Moeller",
+      "Kristof Van Laerhoven",
+      "Danda Pani Paudel"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV",
+      "cs.RO"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24563.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24563",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "X-MULTI：基于视觉语言模型的成像因子解缠及其在因子感知图像合成中的应用",
+      "core_contribution": "本文提出X-MULTI方法，利用预训练视觉语言模型（VLM）监督训练中合成的新颖因子组合，解决了现有MULTI方法在像素级重建目标下无法直接训练未见组合的问题；同时提出改进的评估指标I-FAA，通过因子特定增强策略打破交叉因子相关性泄漏，提供更严格的解缠质量评估。",
+      "method": "X-MULTI在MULTI的可学习因子嵌入基础上，引入预训练VLM作为监督信号，对训练过程中随机生成的新颖因子组合（如鱼眼镜头与事件传感器）进行语义对齐指导，从而增强模型对未观测组合的泛化能力。同时，针对FAA指标中的交叉因子相关性泄漏问题，I-FAA采用因子特定的数据增强策略（如对镜头类型进行旋转、对传感器类型进行噪声扰动等），以切断因子间的虚假关联，从而更准确地衡量因子对齐质量。",
+      "findings": "实验表明，X-MULTI在新颖因子组合上的因子对齐精度显著优于MULTI，验证了VLM监督的有效性；同时，I-FAA相比原始FAA能显著减少相关性泄漏，提供更可靠的解缠评估，揭示了原始FAA可能高估真实解缠质量的问题。"
+    }
+  },
+  {
+    "id": "2608.24119",
+    "title": "TransPhy: Visual In-Context Learning for Physically Grounded Image Editing",
+    "abstract": "Visual demonstrations provide a natural interface for specifying image transformations that are difficult to describe exhaustively with text. However, existing visual in-context learning (VICL) methods primarily focus on appearance-level relation transfer and provide limited support for physically grounded transformations, whose outcomes depend on material properties, geometry, object interactions, and environmental conditions. Given a source--target exemplar pair and a query image, physically grounded VICL requires a model to infer the demonstrated transformation, adapt its effects to the query-specific scene context, and preserve rule-irrelevant content. We introduce PhysVICL-74, comprising 74 physically grounded transformation rules and 5,240 source--target image pairs that form nearly 75K training and evaluation contexts. Its benchmark split separately evaluates novel-instance transfer and unseen-rule generalization. We further propose TransPhy, a framework that decomposes physically grounded VICL into physical-rule induction and transition-aligned rendering. TransPhy first predicts the demonstrated rule and an explicit query-specific target-state description, and then synthesizes the target image through token-wise mixture-of-experts adaptation, with expert routing guided by localized transition cues. Experiments show that TransPhy improves physical-rule adherence, query consistency, and unseen-rule generalization over existing visual in-context editing methods.",
+    "authors": [
+      "Siyi Xie",
+      "Xuanke Shi",
+      "Jinsheng Quan",
+      "Haoran Tang",
+      "Zukai Chen",
+      "Lei Yang",
+      "Quan Wang"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24119.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24119",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "TransPhy：面向物理接地图像编辑的视觉上下文学习",
+      "core_contribution": "提出了PhysVICL-74基准数据集和TransPhy框架，首次系统性地解决物理接地图像编辑中的视觉上下文学习问题，显著提升了物理规则遵循、查询一致性和未见规则泛化能力。",
+      "method": "TransPhy将物理接地VICL分解为物理规则归纳和过渡对齐渲染两个阶段。首先，模型预测演示的物理规则和显式的查询特定目标状态描述；然后，通过基于局部过渡线索引导的token级混合专家（MoE）适应机制合成目标图像，确保规则效果与场景上下文对齐。",
+      "findings": "实验表明，TransPhy在物理规则遵循、查询一致性和未见规则泛化方面均优于现有视觉上下文编辑方法，验证了分解式规则归纳与过渡对齐渲染的有效性，并揭示了物理接地VICL中显式规则预测和局部线索引导的重要性。"
+    }
+  },
+  {
+    "id": "2608.24068",
+    "title": "Representation Learning in Diffusion and Flow-based Model: An Application Aspect",
+    "abstract": "Diffusion models and flow-based models have recently become the dominant paradigms in generative modeling, largely due to their ability to learn rich, multi-level visual representations through large-scale training. This creates a bidirectional relationship between generative models and representation learning: improving representation learning enhances generation quality, while the learned representations can be leveraged for broader understanding tasks. This survey systematically explores this interplay with a focus on applications. We propose a three-tier progressive framework that organizes existing works from three perspectives: using representation learning to improve generative capabilities, exploiting generative models to extract representations for perception tasks, and ultimately moving toward general-purpose unified applications. We systematically categorize representative methods across a wide range of downstream tasks, including image classification, dense visual prediction, instance-level perception, and annotation-scarce scenarios. By providing a unified taxonomy and identifying key challenges, this survey aims to clarify the underlying logic of current research and suggest promising directions for future exploration. We hope this work can serve as a valuable reference for researchers interested in harnessing the representation power of generative models for applications beyond generation.",
+    "authors": [
+      "Yanchen Xu",
+      "Sida Huang",
+      "Zhenyu Gu",
+      "Ruishu Zhu",
+      "Yilan Gao",
+      "Hongyuan Zhang"
+    ],
+    "published": "2026-08-25",
+    "updated": "2026-08-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.24068.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.24068",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "扩散模型与流模型中的表示学习：应用视角",
+      "core_contribution": "本文系统综述了扩散模型和流模型中表示学习与生成模型之间的双向关系，提出了一个三层渐进框架，从应用角度统一了现有研究，并指出了未来探索方向。",
+      "method": "本文采用综述方法，通过构建一个三层渐进框架来组织现有工作：第一层利用表示学习提升生成能力，第二层利用生成模型提取表示以支持感知任务，第三层迈向通用统一应用。作者系统分类了包括图像分类、密集视觉预测、实例级感知和标注稀缺场景在内的多种下游任务，并提供了统一的分类体系和关键挑战分析。",
+      "findings": "主要发现包括：表示学习与生成质量相互促进；生成模型学到的表示可有效用于多种感知任务；现有研究可被统一归类到三层框架中，但通用统一应用仍面临挑战，未来需进一步探索表示能力的跨任务泛化。"
+    }
+  }
+]
