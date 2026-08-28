@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2608.26956",
+    "title": "RubricRM: Generative Reward Modeling via Dynamic Rubrics for Image Generation and Editing",
+    "abstract": "Reward models play an essential role in aligning visual generative models, yet most existing visual reward models use a single scalar score or rely on fixed criteria that cannot adapt to different instructions. This limits both interpretability and task sensitivity, especially for text-to-image generation and instruction-based image editing, where different inputs require different evaluation dimensions. We propose RubricRM, a pairwise generative reward modeling framework that first produces an input-specific rubric with evaluation dimensions, weights, and scoring criteria, and then applies the rubric to score candidate images. We train dedicated RubricRM models for text-to-image generation and image editing using a two-stage training pipeline: supervised fine-tuning teaches the model the rubric-based scoring paradigm, while GRPO further improves scoring through fine-grained dimension-level rewards. Experiments on multiple generation and editing benchmarks show that RubricRM outperforms existing specialized reward models and remains competitive with strong proprietary MLLM judges despite using smaller backbones. Our models, data, and code are available at https://github.com/zijiankan/RubricRM.",
+    "authors": [
+      "Zijian Kan",
+      "Wei Wang",
+      "Long Luo",
+      "Bing Zhao",
+      "Xuan Ren",
+      "Weixu Qiao",
+      "Wenbo Li",
+      "Hu Wei",
+      "Lin Qu"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26956.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26956",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RubricRM：基于动态评分标准的生成式奖励建模用于图像生成与编辑",
+      "core_contribution": "提出RubricRM，一种生成式成对奖励模型，能够针对不同输入动态生成包含评估维度、权重和评分标准的评分细则，从而提升视觉生成模型对齐的可解释性和任务适应性，并在多个基准上超越现有专用奖励模型。",
+      "method": "RubricRM采用两阶段训练流程：首先通过监督微调（SFT）让模型学习基于评分标准的打分范式，然后使用GRPO（组相对策略优化）通过细粒度的维度级奖励进一步优化评分。模型针对文本到图像生成和指令式图像编辑分别训练，输入为指令和候选图像对，输出为动态生成的评分标准及成对比较结果。",
+      "findings": "在多个图像生成和编辑基准上，RubricRM优于现有的专用奖励模型，并且在使用较小骨干网络的情况下，仍能与强大的专有MLLM评判模型保持竞争力，验证了动态评分标准机制的有效性和泛化能力。"
+    }
+  },
+  {
+    "id": "2608.26716",
+    "title": "Beyond Atomic Layouts: Compositional Design Understanding with Vision-Language Models",
+    "abstract": "Layout understanding, or the interpretation of element organization, is essential for document analysis, user interface (UI) creation, and graphic design. While recent vision-language models (VLMs) excel at interpreting atomic layouts composed of independent elements, they struggle with compositional layouts that require reasoning over visually entangled elements within hierarchical multi-layer structures. In this paper, we introduce a new task, compositional layout understanding, and present CoDeLayout, a VQA dataset of ~20K real-world multi-layer layouts annotated with compositional element pairs and design intent. Through empirical analysis on CoDeLayout, we identify two key challenges for existing VLMs: semantic drift between textual metadata and visual content, and structural ambiguity in hierarchical inter-element relationships. To address these challenges, we propose MASON, a post-training paradigm that integrates multimodal alignment (MA) and structural perception (SP). MA enhances element interpretation by grounding metadata-defined elements to their visual counterparts, mitigating semantic drift, while SP models layer-aware inter-element spatial relationships to improve hierarchical understanding and reduce structural ambiguity. Experiments reveal substantial gaps in existing VLMs: even the strongest baseline, GPT-o3, achieves only 79.68% accuracy, whereas Qwen2.5-VL 7B with MASON reaches 91.66%. Notably, MASON surpasses full-data Direct Finetune using only 30% of the training data and scales better with additional data.",
+    "authors": [
+      "Yiyang Huang",
+      "Zhaowen Wang",
+      "Simon Jenni",
+      "Jing Shi",
+      "Yitian Zhang",
+      "Yizhou Wang",
+      "Yun Fu"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26716.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26716",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "超越原子布局：基于视觉-语言模型的组合设计理解",
+      "core_contribution": "本文首次提出组合布局理解任务，并构建了包含约2万个真实多层布局的VQA数据集CoDeLayout，同时提出了一种后训练范式MASON，显著提升了视觉-语言模型在组合布局理解上的性能。",
+      "method": "MASON后训练范式包含两个关键模块：多模态对齐（MA）和结构感知（SP）。MA通过将文本元数据定义的元素与视觉对应部分进行对齐，缓解语义漂移问题；SP则建模层间感知的元素空间关系，增强层次结构理解，减少结构歧义。该方法在Qwen2.5-VL 7B模型上应用，通过后训练方式优化模型。",
+      "findings": "实验表明，现有VLM在组合布局理解上存在明显不足，最强基线GPT-o3仅达到79.68%的准确率，而采用MASON的Qwen2.5-VL 7B达到91.66%。此外，MASON仅使用30%的训练数据即可超越全量数据直接微调的效果，且随着数据增加表现出更好的扩展性。"
+    }
+  },
+  {
+    "id": "2608.27280",
+    "title": "Sidecar: Training-Free Semantic Reuse for Character-Consistent Free-form Visual Storytelling",
+    "abstract": "Visual storytelling requires generating images that follow a narrative while preserving consistent character identities across frames. In free-form story generation, a character is fully described only when first introduced and is later referred to by a type-level mention or pronoun. Although this setting better reflects natural storytelling, later prompts may omit important identity-related semantics, making character consistency more difficult to maintain. We propose \\textbf{Sidecar}, a plug-and-play semantic augmentation module that preserves entity-level information from the initial description and injects the missing semantics into later prompt embeddings. Sidecar requires no additional training and does not modify the architecture of the base diffusion model. Experiments on FreeStoryBench show that Sidecar consistently improves prompt-image alignment and character consistency across multiple SDXL- and FLUX-based baselines, with negligible computational overhead.",
+    "authors": [
+      "Sibo Dong",
+      "Sarah Adel Bargal"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.27280.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.27280",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "Sidecar：无需训练的可视化故事生成中的语义复用方法，用于保持角色一致性的自由形式视觉叙事",
+      "core_contribution": "提出了一种名为Sidecar的即插即用语义增强模块，无需额外训练或修改基础扩散模型架构，即可在自由形式视觉故事生成中有效保持角色一致性，并提升提示-图像对齐度。",
+      "method": "Sidecar通过保留角色首次引入时的实体级语义信息，并将这些缺失的语义注入到后续提及该角色的提示嵌入中。它作为附加模块工作，不改变基础扩散模型的结构，仅通过语义复用增强提示表示。",
+      "findings": "在FreeStoryBench上的实验表明，Sidecar在多个基于SDXL和FLUX的基线模型上均能持续提升提示-图像对齐度和角色一致性，且计算开销可忽略不计。"
+    }
+  },
+  {
+    "id": "2608.26872",
+    "title": "Self-OPD: On-Policy Distillation for Flow Matching Models without Teacher",
+    "abstract": "On-policy distillation (OPD), which leverages a pre-trained, specialized teacher model to provide dense supervisory signals, has achieved significant success in Large Language Models (LLMs) and has recently been adapted to flow matching models. However, this paradigm suffers from two major issues: First, training a separate, task-specific teacher for every new objective incurs high computational costs. Second, the discrepancy between teacher and student distributions often leads to compounding errors along the generation trajectory. In this paper, we introduce \\textbf{Self-OPD}, a teacher-free OPD framework for flow matching models that turns the student's own self-exploration into step-wise supervision. At each timestep, Self-OPD branches the deterministic next-state prediction into $K$ stochastic SDE candidates, rolls them out with the ODE sampler, and compares their rewards against a deterministic self-reference baseline to obtain normalized advantages. The velocity field is optimized with an all-branch pull-push objective, where high-advantage branches attract the student and low-advantage branches repel it under direction-aware attenuation and SDE-variance normalization. For multi-objective alignment, Self-OPD fuses normalized scores at the reward level, avoiding direct gradient conflict. Experiments on single and mixed reward benchmarks show that Self-OPD outperforms prior RL and OPD methods without task-specific teachers.",
+    "authors": [
+      "Shiyi Zhang",
+      "Mushui Liu",
+      "Yunze Tong",
+      "Wanggui He",
+      "Siyu Zou",
+      "Jinlong Liu",
+      "Yunlong Yu",
+      "Jian Song",
+      "Hao Jiang",
+      "Pipei Huang",
+      "Bo Zheng"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26872.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26872",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "Self-OPD：无教师流匹配模型的同策略蒸馏方法",
+      "core_contribution": "提出了一种无需预训练教师模型的同策略蒸馏框架Self-OPD，通过利用学生自身的探索生成逐步监督信号，解决了传统OPD方法中教师训练成本高和师生分布差异导致误差累积的问题。",
+      "method": "Self-OPD在每个时间步将确定性的下一步预测分支为K个随机SDE候选，并使用ODE采样器进行 rollout，然后与确定性自参考基线比较奖励以获得归一化优势。速度场通过全分支的推拉目标进行优化，其中高优势分支吸引学生，低优势分支在方向感知衰减和SDE方差归一化下排斥学生。对于多目标对齐，Self-OPD在奖励层面融合归一化分数，避免直接梯度冲突。",
+      "findings": "在单一和混合奖励基准上的实验表明，Self-OPD在无需任务特定教师的情况下，优于先前的强化学习和OPD方法，验证了其有效性和泛化能力。"
+    }
+  },
+  {
+    "id": "2608.26713",
+    "title": "AesCanvas: A Large-Scale Dataset and Benchmark for Aesthetic Critique and Contextual Suitability",
+    "abstract": "Recent advances in Multimodal Large Language Models (MLLMs) have extended Image Aesthetic Assessment (IAA) beyond scalar scores toward interpretable critique and guidance. Yet existing benchmarks mainly assess intrinsic visual quality or fixed domain criteria, leaving open whether an appealing image is appropriate for a specific purpose, audience, cultural setting, or domain convention. We introduce AesCanvas, a unified suite with two complementary components: CritiqueCanvas with 519,136 instruction-response pairs from 54,300 images supports long-form, multi-dimensional critique across photography, painting, and virtual imagery, whereas ContextCanvas with 301 expert-reviewed use scenarios evaluates contextual aesthetic suitability in realistic use scenarios. Under a unified protocol, we evaluate closed-source frontier, open-weight general, and aesthetic-specific MLLMs. Results reveal a clear separation between critique generation and context-sensitive judgment: reference-based lexical and semantic metrics only partially capture critique quality, while aesthetic specialists remain competitive on selected critique metrics yet substantially lag strong general-purpose MLLMs on ContextCanvas. Further analyses show that aesthetic specialization does not reliably transfer to contextual suitability and that model decisions may fail to track or ground themselves in decisive contextual visual cues. These findings establish culturally situated, evidence-grounded suitability as a distinct objective for aesthetic modeling.",
+    "authors": [
+      "Xuanwei Hu",
+      "Haoyu Dong",
+      "Kejun Wu",
+      "Tianyi Liu",
+      "Jianjun Gao"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26713.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26713",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "AesCanvas：用于美学批评与情境适宜性的大规模数据集与基准",
+      "core_contribution": "本文提出了AesCanvas，一个包含两个互补组件（CritiqueCanvas和ContextCanvas）的统一基准套件，用于评估多模态大语言模型在图像美学批评生成和情境适宜性判断方面的能力，揭示了美学批评与情境敏感判断之间的显著差异。",
+      "method": "AesCanvas包含两个数据集：CritiqueCanvas包含54,300张图像和519,136条指令-响应对，支持摄影、绘画和虚拟图像的长篇多维批评；ContextCanvas包含301个专家评审的使用场景，用于评估真实使用场景中的情境美学适宜性。作者在统一协议下评估了闭源前沿模型、开源通用模型和美学专用MLLM，并使用参考基础的词汇和语义指标以及情境判断准确率进行分析。",
+      "findings": "结果显示，美学批评生成与情境适宜性判断之间存在明显分离：参考基础的词汇和语义指标仅部分捕捉批评质量；美学专用模型在部分批评指标上具有竞争力，但在ContextCanvas上显著落后于强通用MLLM。进一步分析表明，美学专业化并不能可靠地迁移到情境适宜性判断，且模型决策可能无法追踪或基于决定性的情境视觉线索。这些发现确立了文化情境化、证据基础的适宜性作为美学建模的一个独立目标。"
+    }
+  }
+]
