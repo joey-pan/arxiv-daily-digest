@@ -1,0 +1,154 @@
+[
+  {
+    "id": "2608.26794",
+    "title": "Ring Forcing: Towards Precise Long-Term Memory for Autoregressive Video Diffusion",
+    "abstract": "Scaling video generation to long durations reveals a critical bottleneck: current models lack robust long-term memory. This deficiency can be studied along two critical aspects: object permanence, the ability to precisely reproduce the appearance of objects upon re-entry; and memory capacity, the ability to process ultra-long context and use information from distant history. Robust long-term memory requires both: object permanence without sufficient context handling limits the temporal scope, while long context length without permanence fails to maintain identity. To address this, we present Ring Forcing, an autoregressive video diffusion framework designed to robustly construct and precisely utilize long-term memory. Our ring-structured training strategy enforces retrieval from distant history, effectively reconciling the trade-off between strict historical adherence and generative diversity. To expand memory capacity, we introduce a compression and timestep composition strategy. Under fixed sequence length constraints, this method extends the effective historical span to minutes-long durations and achieves a comprehensive receptive field over the entire history. Furthermore, we present a sparse RoPE mechanism to enable flexible, scalable memory adaptation while fully exploiting pre-trained priors. Extensive experiments demonstrate that Ring Forcing achieves superior minutes-long coherence and object permanence, significantly outperforming state-of-the-art methods.",
+    "authors": [
+      "Bowen Xue",
+      "Brandon Y. Feng",
+      "Chenguo Lin",
+      "Yuchen Lin",
+      "Yujia Zeng",
+      "Lvmin Zhang",
+      "Maneesh Agrawala",
+      "Honglei Yan",
+      "Panwang Pan"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26794.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26794",
+    "primary_category": "cs.CV",
+    "score": 60,
+    "summary": {
+      "title_zh": "环形强制：面向自回归视频扩散的精确长期记忆",
+      "core_contribution": "提出了一种名为Ring Forcing的自回归视频扩散框架，通过环形结构训练策略和压缩-时间步组合方法，显著提升了视频生成中的长期记忆能力，实现了分钟级连贯性和物体恒存性。",
+      "method": "采用环形结构训练策略，强制模型从远距离历史中检索信息，平衡历史遵循与生成多样性；引入压缩和时间步组合策略，在固定序列长度下扩展有效历史跨度至分钟级，实现全历史感受野；提出稀疏RoPE机制，支持灵活可扩展的记忆适应并充分利用预训练先验。",
+      "findings": "实验表明，Ring Forcing在分钟级连贯性和物体恒存性上显著优于现有最先进方法，有效解决了长期记忆中的物体重现精确性和超长上下文处理问题。"
+    }
+  },
+  {
+    "id": "2608.26965",
+    "title": "ClusterAttention: A training-free speedup of bidirectional attention",
+    "abstract": "This paper introduces ClusterAttention, a general training-free speedup of bidirectional attention layers. Existing sparse attention methods either rely on structure in the input, such as order in language or spatial proximity in images, or use slow clustering processes amortized over several forward passes. ClusterAttention instead uses a fast recursive clustering method that adapts to the geometry of the keys and queries in each attention head to produce useful clusters. This method allows setting the size of the clusters arbitrarily. We utilize this by setting all clusters to be a fixed size that is a power of two, allowing the block-sparse attention to run at the same latency per query-key interaction as dense attention on GPUs. We also derive an expression for the output error in sparse attention, that explains the counterintuitive experimental finding that tight clusters can lead to larger errors than random clusters. We then derive the error when excluded clusters are compensated through their centroids, and show that this error shrinks with tighter clusters. We integrate this compensation into the method. On large-scale tabular data ClusterAttention speeds up TabPFN-3 arXiv:2605.13986 by two to six times, while retaining at least 99% of the dense accuracy. To our knowledge, it is the first training-free method that can be successfully applied in the setting of unstructured input and a single forward pass. For video generation with Wan 2.1-14B T2V arXiv:2503.20314 , ClusterAttention achieves output closer to dense attention and a larger speedup (1.8x versus 1.4x) compared to SVOO arXiv:2603.18636 , a leading method developed specifically for this domain, both run without offline calibration.",
+    "authors": [
+      "Kasper Nordenram",
+      "Amelie Dittmann"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26965.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26965",
+    "primary_category": "cs.LG",
+    "score": 55,
+    "summary": {
+      "title_zh": "ClusterAttention：一种无需训练的双向注意力加速方法",
+      "core_contribution": "提出了一种通用的、无需训练的双向注意力层加速方法，通过快速递归聚类和质心补偿，在保持高精度的同时显著提升推理速度，适用于非结构化输入和单次前向传播场景。",
+      "method": "该方法采用快速递归聚类算法，根据每个注意力头中键和查询的几何分布自适应生成簇，并允许任意设置簇大小（固定为2的幂以匹配GPU高效块稀疏计算）。同时，推导了稀疏注意力的输出误差表达式，并引入被排除簇的质心补偿机制，以减小误差并提升聚类紧密性。",
+      "findings": "在大规模表格数据上，ClusterAttention将TabPFN-3的推理速度提升2至6倍，同时保持至少99%的密集注意力准确率；在视频生成任务（Wan 2.1-14B T2V）中，相比领域专用方法SVOO，ClusterAttention在无需离线校准的情况下，实现了更接近密集注意力的输出和更高的加速比（1.8倍对比1.4倍）。"
+    }
+  },
+  {
+    "id": "2608.26671",
+    "title": "RECAP-Forcing: Retaining Content Appearances for Long Video Generation",
+    "abstract": "Long autoregressive video generation faces a fundamental memory challenge: with a finite attention window, a model must decide which information from an ever-expanding history to retain. Existing methods organize memory temporally, preserving recent frames while compressing or discarding older ones. We instead propose RECAP-Forcing, organizing memory by appearance novelty. A long video is not merely a sequence of frames, but an evolving cast of subjects, objects, and scenes whose identities must remain consistent over time. We organize memory by retaining the KV cache associated with newly appearing content--such as entering subjects, disoccluded regions, and newly introduced scenes--at the moment it first becomes visible, prioritizing novelty over recency. Memory should scale with the amount of newly introduced content, rather than with video length. This appearance-indexed memory makes long-range consistency an explicit property of the memory structure. Our framework unifies two mechanisms under this single principle. At the beginning of a video, when all visible content is novel, an attention sink preserves the initial scene. As the video evolves, an optical-flow-based novelty bank extends the same principle by selectively retaining newly revealed content. As a training-free inference method with no additional learnable parameters, RECAP-Forcing consistently improves visual quality and semantic fidelity across multiple strong baselines and outperforms existing memory methods.",
+    "authors": [
+      "Haiyang Xu",
+      "Zheng Ding",
+      "Zhuowen Tu"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26671.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26671",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "RECAP-Forcing：保留内容外观以实现长视频生成",
+      "core_contribution": "提出一种基于外观新颖性而非时间顺序的记忆组织方法，使长视频生成中的长期一致性成为记忆结构的显式属性，无需额外训练即可提升多个强基线的视觉质量和语义保真度。",
+      "method": "该方法将记忆按内容首次出现的时刻组织，保留新出现内容（如进入的主体、去遮挡区域、新场景）对应的KV缓存，优先考虑新颖性而非时间近因。具体包含两个机制：视频开始时，注意力汇聚点保留初始场景；视频演进中，基于光流的新颖性库选择性地保留新揭示的内容。该方法为免训练推理方法，无额外可学习参数。",
+      "findings": "在多个强基线上，RECAP-Forcing一致提升了视觉质量和语义保真度，并优于现有记忆方法，表明按内容新颖性扩展记忆（而非按视频长度）能更有效地维持长期一致性。"
+    }
+  },
+  {
+    "id": "2608.26580",
+    "title": "Visual Information-Guided Parallel Decoding for Diffusion Multimodal Large Language Models",
+    "abstract": "Diffusion multimodal large language models (dMLLMs) have recently emerged as a new decoding paradigm for multimodal generation. Starting from a fully masked sequence, dMLLMs progressively decode the sequence by unmasking a subset of the remaining masked positions at each step. Since the selected tokens serve as the prediction context for subsequent steps, deciding which tokens to decode is crucial to the quality of the final output. The most common strategy prioritizes tokens based on a certainty measure that tends to favor tokens frequently observed in the training data. Recent approaches instead order tokens according to their influence on subsequent predictions, but do not explicitly account for the input image. We propose the Visual Information-Guided Sampler (VIG-Sampler), which prioritizes tokens based on their attention to image tokens. We further impose a constraint that penalizes candidate tokens whose image-attention distributions are similar to those of previously selected tokens, thereby increasing the information gain of the decoded subset. Extensive experiments on 7 captioning and VQA benchmarks with 3 open-source dMLLMs demonstrate the effectiveness of VIG-Sampler, which outperforms the Info-Gain Sampler by an average of 19.3 CIDEr points across the captioning benchmarks and surpasses it on COCO Caption while using only half as many decoding steps.",
+    "authors": [
+      "Insu Lee",
+      "Wooje Park",
+      "Wonseok Shin",
+      "Jinwoo Son",
+      "Byonghyo Shim"
+    ],
+    "published": "2026-08-27",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.26580.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.26580",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "视觉信息引导的扩散多模态大语言模型并行解码方法",
+      "core_contribution": "提出了一种名为VIG-Sampler的采样器，通过利用图像注意力信息来指导扩散多模态大语言模型的解码顺序，从而提升生成质量，并在多个基准上超越现有方法。",
+      "method": "VIG-Sampler根据候选令牌对图像令牌的注意力程度进行优先级排序，优先解码与图像关联更紧密的令牌。同时，它引入一个约束项，惩罚那些图像注意力分布与已选令牌相似的候选令牌，以增加解码子集的信息增益，避免冗余。该方法在解码过程中逐步选择令牌，与现有基于确定性或影响力的策略不同，显式利用了输入图像信息。",
+      "findings": "在7个图像描述和视觉问答基准上，使用3个开源dMLLMs进行实验，VIG-Sampler在图像描述任务上平均比Info-Gain Sampler高出19.3个CIDEr点，并且在COCO Caption上仅用一半解码步数就超越了后者，证明了其高效性和有效性。"
+    }
+  },
+  {
+    "id": "2608.25924",
+    "title": "Visual General Intelligence: A White Paper",
+    "abstract": "This paper reconsiders intelligence from a vision-centered perspective and examines whether intelligence emerging from visual experience and learning may provide a pathway toward AGI. In the language domain, beginning with the introduction of the Transformer architecture, the GPT series has demonstrated transfer to unseen tasks through autoregressive language modeling on web-scale text combined with aggressive scaling. This raises a natural question, namely, what capabilities and forms of intelligence can emerge from visual modalities such as images, videos, and geometry? In this paper, we discuss whether visual intelligence can serve as a pathway toward AGI, referred to in this paper as visual general intelligence (VGI), by bringing together contributors from diverse standpoints and affiliations. Our aim is not to offer a single definition of visual intelligence, but to clarify the principles that computer vision should pursue in the AGI era, the visual input modalities, the benchmarks, the learning paradigms, and the relationship between vision, when taken as the core, and other modalities such as language.",
+    "authors": [
+      "Hirokatsu Kataoka",
+      "Yoshihiro Fukuhara",
+      "Yonglong Tian",
+      "Shangzhe Wu",
+      "Oishi Deb",
+      "Ryousuke Yamada",
+      "Christian Rupprecht",
+      "Jianyuan Wang",
+      "Kohsuke Ide",
+      "Koichi Namekata",
+      "Xianzheng Ma",
+      "Yiming Chen",
+      "Robert Geirhos",
+      "Aditi Raghunathan",
+      "Yuki M. Asano",
+      "Deva Ramanan",
+      "David Fouhey",
+      "Andrew J. Davison",
+      "Yilun Du",
+      "Jiajun Wu",
+      "Zhuang Liu"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25924.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25924",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "视觉通用智能：白皮书",
+      "core_contribution": "本文从视觉中心视角重新审视智能，探讨视觉经验与学习能否通向通用人工智能（AGI），并提出“视觉通用智能”（VGI）的概念框架，旨在为计算机视觉在AGI时代的发展提供原则性指导。",
+      "method": "本文采用综述与立场阐述的方法，汇集了来自不同观点和机构的贡献者，通过讨论视觉智能的定义、视觉输入模态、基准测试、学习范式以及视觉与语言等其他模态的关系，来阐明VGI的核心原则，而非给出单一定义。",
+      "findings": "论文指出，语言领域通过Transformer架构和自回归语言建模在规模化上取得了成功，类比提出视觉模态（如图像、视频、几何）可能通过类似方式涌现出通用智能能力；同时强调视觉智能应作为AGI的核心，而非仅作为语言的辅助，并呼吁重新设计视觉基准和学习范式以支持VGI的发展。"
+    }
+  }
+]
