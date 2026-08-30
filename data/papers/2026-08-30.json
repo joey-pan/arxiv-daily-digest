@@ -1,0 +1,144 @@
+[
+  {
+    "id": "2608.25876",
+    "title": "Do Vision-Language Models Agree on the Affective Qualities of Shape? A Cross-Model Audit for Generative Design Interfaces",
+    "abstract": "Generative design interfaces increasingly expose semantic controls that let users steer output with concepts such as \"more elegant\" or \"more minimalist,\" typically encoded by a vision-language model (VLM). A practical question is whether state-of-the-art VLMs represent objects consistently in terms of the same concept. We audit 6 VLMs by ranking untextured 3D objects along Kansei adjective pairs, where Kansei describes affective impressions of product form, with each axis defined as the difference between the text representations of its two poles. Geometric pairs serve as positive controls, and pairs of unrelated adjectives establish an empirical null. Across 10 categories of ShapeNet database, affective axes converge above the null (mean pairwise rank correlation 0.36 vs. 0.14) but below the geometric ceiling (0.44). The agreement between models is partial and highly uneven: on the three axes shared by all categories, mean convergence ranges from 0.21 for bookshelves to 0.51 for jars. Convergence depends primarily on whether a category's representational variation aligns with the semantic direction being evaluated, rather than simply on how much the objects vary in shape overall. Cross-model convergence does not imply agreement with human judgments. Based on our findings, we implement a UI prototype that shows how the audit can inform which Kansei descriptors to expose as controls for a given object class and which to withhold.",
+    "authors": [
+      "Luca Bux",
+      "Thiago Rios",
+      "Ingo Scholtes",
+      "Stefan Menzel"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.HC",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25876.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25876",
+    "primary_category": "cs.HC",
+    "score": 55,
+    "summary": {
+      "title_zh": "视觉语言模型在形状的情感品质上是否一致？面向生成设计界面的跨模型审计",
+      "core_contribution": "本文首次系统审计了6个视觉语言模型（VLM）在三维物体形状的情感品质（如“优雅”、“简约”）排序上的一致性，揭示了模型间部分且不均匀的收敛性，并据此提出了一种用于生成设计界面中情感描述符选择与抑制的UI原型。",
+      "method": "作者使用ShapeNet数据库中的10个物体类别，对未纹理化的3D对象按Kansei形容词对（如优雅-粗俗）进行排序，每个情感轴由形容词对两极的文本表示差异定义。他们以几何形状对作为阳性对照，不相关形容词对作为经验零假设，计算模型间排序的秩相关性，并分析收敛性与类别形状变异及语义方向的关系。",
+      "findings": "情感轴的平均秩相关为0.36，显著高于零假设的0.14，但低于几何对照的0.44，表明模型间部分一致但远非完全一致。收敛性高度不均匀，例如书架类收敛仅0.21，而罐子类达0.51；收敛性主要取决于类别形状变异是否与语义方向对齐，而非整体形状变异量。此外，跨模型一致性与人类判断并不等同，因此审计结果可用于指导界面中情感描述符的暴露或隐藏。"
+    }
+  },
+  {
+    "id": "2608.25862",
+    "title": "Learning Late, Guiding Early: Timestep-Decoupled Semantic Guidance for Fair Face Generation",
+    "abstract": "Demographic imbalance in synthetic face generation can propagate to downstream face recognition systems, making fairness an important consideration when diffusion models are used for data generation. Existing fairness-aware generation approaches often require model retraining, architectural modifications, or repeated guidance throughout the reverse diffusion process. In this work, we introduce Semantic Boundary Predictor (SBP), an inference-time framework that performs demographic guidance through a one-shot intervention during reverse denoising. Our approach is motivated by the observation that latent representations at different diffusion timesteps play distinct semantic roles: late-stage latents provide stronger demographic separability, whereas early-stage latents offer greater flexibility for semantic intervention. SBP leverages this timestep decoupling by learning linear semantic boundaries from late-stage latent representations while applying them only once at the initial noisy latent, allowing the remainder of the reverse denoising process to proceed unchanged. The method requires neither retraining nor fine-tuning of the underlying Latent Diffusion Model and operates without external balanced datasets. Experiments on CelebA-HQ demonstrate substantial improvements in demographic fairness, reducing fairness disparity by 98% for gender, 95% for binary race, and 15% for four-class race, while maintaining perceptual image quality across demographic groups. Owing to its one-shot inference strategy and model-agnostic design, SBP introduces only a small computational overhead and can be readily integrated with existing pre-trained latent diffusion models.",
+    "authors": [
+      "Subir Kumar Parida",
+      "Rajbabu Velmurugan",
+      "Ketan Kotwal",
+      "R. S. Sengar",
+      "Swati Hiremath"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25862.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25862",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "后期学习，早期引导：面向公平人脸生成的时间步解耦语义引导",
+      "core_contribution": "提出了一种无需重训练或微调的推理时框架——语义边界预测器（SBP），通过单次干预实现公平人脸生成，显著降低人口统计偏差，同时保持图像质量。",
+      "method": "SBP利用扩散模型不同时间步的潜在表示具有不同语义角色的观察：后期潜在表示提供更强的人口统计可分离性，而早期潜在表示更利于语义干预。该方法从后期潜在表示中学习线性语义边界，并仅在初始噪声潜在表示上应用一次，随后保持反向去噪过程不变。SBP无需外部平衡数据集，且与模型无关，可轻松集成到现有预训练潜在扩散模型中。",
+      "findings": "在CelebA-HQ数据集上，SBP将性别公平性差距降低98%，二元种族公平性差距降低95%，四类种族公平性差距降低15%，同时保持各人口统计组的感知图像质量。由于单次推理策略和模型无关设计，计算开销很小。"
+    }
+  },
+  {
+    "id": "2608.25575",
+    "title": "MLLMCLIP: Feature-Level Distillation of MLLM for Robust Vision-Language Representations",
+    "abstract": "Pretrained vision-language models such as CLIP excel at zero-shot recognition but often fail at compositionality, particularly attribute-object and relational structures. Recent studies mitigate this issue by augmenting training with synthetic hard negatives generated by a cascade of large language models and text-to-image models, which incurs substantial pipeline overhead. We instead propose MLLMCLIP, a heterogeneous distillation framework that transfers multimodal knowledge directly from a generative Multimodal Large Language Model (MLLM) teacher into a discriminative CLIP student, bypassing synthetic data entirely. To bridge the architectural mismatch between the two paradigms, we introduce an attention-based per-layer token selection and a CKA-based distillation loss. Compared to prior CLIP-enhancement methods, MLLMCLIP achieves state-of-the-art compositional accuracy while delivering consistent gains on standard zero-shot classification and image-text retrieval, showing that feature-level distillation strengthens both compositional and general vision-language representation capability.",
+    "authors": [
+      "Jongsuk Kim",
+      "Qiyu Wu",
+      "Zhuoyuan Mao",
+      "Hiromi Wakaki",
+      "Junmo Kim",
+      "Yuki Mitsufuji"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25575.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25575",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "MLLMCLIP：基于多模态大语言模型特征级蒸馏的鲁棒视觉-语言表示",
+      "core_contribution": "提出一种异构蒸馏框架MLLMCLIP，直接从生成式多模态大语言模型（MLLM）教师模型中蒸馏知识到判别式CLIP学生模型，无需合成负样本或额外流水线，同时提升组合性理解与通用视觉-语言表示能力。",
+      "method": "利用注意力机制进行逐层token选择，以对齐MLLM与CLIP的架构差异；采用基于CKA（中心核对齐）的蒸馏损失，将教师模型的多模态特征知识迁移至学生模型，实现特征级蒸馏而非数据级增强。",
+      "findings": "在组合性准确率上达到最先进水平，并在标准零样本分类和图像-文本检索任务上持续提升，表明特征级蒸馏能同时增强组合性与通用视觉-语言表示能力。"
+    }
+  },
+  {
+    "id": "2608.25461",
+    "title": "GLOSS: Geometric Local Self-Similarity Learning for Faithful Reference-Guided Texture Fill",
+    "abstract": "Using conditional image generators, texture artists can explore many single-view looks for an existing 3D shape. Despite impressive progress, state-of-the-art generative methods still struggle to generate a full object texture while closely adhering to fine scale geometric detail and single view references, leaving little room for artists guidance. Furthermore, current automatic models lack the flexibility for artist to explore multiple textures from varied sources in an interactive and controllable manner. Unlike methods trained on large 3D datasets that generate full object textures from global guidance, our work explores a local and less data-hungry approach to texture with explicit artist control. We leverage the geometric self-similarity and geometry-texture correlation existing in many natural and man-made shapes; and train a shape-specific local texture generation and completion model. This model learns from existing image model priors and a single 3D shape, and is guided by attending to a set of geometry-aware reference patches. The trained shape-specific network can transfer any novel reference to the full target object texture through patchwise inpainting. We show improved or comparable quality to strong image-conditioned texture generation baselines, suggesting local texturing as a promising research direction. Our model also enables local geometry-conditioned texture inpainting, guided by artist-selected references, and generalizes to PBR materials and unseen meshes for texture transfer. We piloted our novel texture fill capability as a Blender addon with several 3D texturing professionals who reported positive feedback on the model's controllability, practical usefulness, and creative affordances.",
+    "authors": [
+      "Chenyue Cai",
+      "Anita Hu",
+      "James Lucas",
+      "Szymon Rusinkiewicz",
+      "Masha Shugrina"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25461.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25461",
+    "primary_category": "cs.GR",
+    "score": 55,
+    "summary": {
+      "title_zh": "GLOSS：几何局部自相似性学习用于忠实的参考引导纹理填充",
+      "core_contribution": "提出了一种无需大规模3D数据集、基于几何自相似性和局部纹理学习的形状特定纹理生成方法，能够从单一参考图像忠实且可控地填充完整3D物体的纹理，并支持艺术家交互式引导。",
+      "method": "该方法利用自然和人造形状中存在的几何自相似性及几何-纹理相关性，训练一个形状特定的局部纹理生成与补全模型。模型从现有图像模型先验和单个3D形状中学习，通过注意力机制关注一组几何感知的参考补丁，将任意新参考纹理通过逐补丁修复方式迁移到完整目标物体上，同时支持局部几何条件纹理修复。",
+      "findings": "实验表明，该方法在纹理生成质量上达到或超过强图像条件纹理生成基线，并支持PBR材质和未见网格的纹理迁移。艺术家试用Blender插件后反馈积极，认为模型在可控性、实用性和创意性方面表现良好。"
+    }
+  },
+  {
+    "id": "2608.25412",
+    "title": "AdaptiveEmbed: Sample-Adaptive Multi-Vector Representation for Multimodal Retrieval",
+    "abstract": "Multi-vector representations have emerged as an effective paradigm for multimodal retrieval, representing each sample with multiple complementary embeddings to capture fine-grained cross-modal information. However, existing approaches typically employ a fixed representation capacity, assigning the same number of vectors to all samples regardless of their individual retrieval demands. Such a fixed-capacity formulation overlooks the fact that different samples may require different amounts of representation capacity for effective retrieval. In this work, we introduce \\emph{Sample-Adaptive Multi-Vector Representation} (SAMVR), a new problem setting for multimodal retrieval that studies how multi-vector representation capacity can be allocated at the sample level. Under SAMVR, each sample is represented by a \\emph{content-adaptive embedding set} (CAES), whose capacity is determined according to the sample-specific retrieval utility of additional representation vectors. To instantiate SAMVR, we propose \\emph{AdaptiveEmbed}, a unified framework for learning sample-adaptive multi-vector representations. AdaptiveEmbed learns structured multi-vector representations through \\emph{Multi-Group Contrastive Learning} (MGCL) with the symmetric \\emph{set-to-set similarity} (SetSim), and further employs \\emph{Utility Policy Optimization} (UPO) to determine sample-specific representation capacity via \\emph{Marginal Utility Allocation} (MUA). Experiments across multimodal retrieval benchmarks involving image, text, video, and audio show that sample-adaptive capacity allocation achieves overall better retrieval performance than fixed-capacity multi-vector representations, validating the effectiveness of SAMVR for multimodal retrieval. These results establish SAMVR as a viable formulation for adaptive capacity allocation in multi-vector multimodal retrieval.",
+    "authors": [
+      "Xinze Liu",
+      "Lei Yang",
+      "Dayan Wu",
+      "Hengjie Zhu",
+      "Zihao Zhang",
+      "Hanqi Wu",
+      "Tianzhu Hu",
+      "Peng Fu",
+      "Zheng Lin",
+      "Weiping Wang"
+    ],
+    "published": "2026-08-26",
+    "updated": "2026-08-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.25412.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.25412",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "自适应嵌入：用于多模态检索的样本自适应多向量表示",
+      "core_contribution": "提出了样本自适应多向量表示（SAMVR）这一新问题设置，并设计了统一框架AdaptiveEmbed，通过为每个样本动态分配表示容量，实现了比固定容量多向量表示更优的多模态检索性能。",
+      "method": "AdaptiveEmbed框架包含两个关键组件：一是通过多组对比学习（MGCL）和对称的集合间相似度（SetSim）学习结构化的多向量表示；二是采用效用策略优化（UPO）和边际效用分配（MUA）机制，根据每个样本的检索效用动态决定其表示容量（即向量数量）。",
+      "findings": "在图像、文本、视频和音频等多模态检索基准上的实验表明，样本自适应容量分配在整体检索性能上优于固定容量的多向量表示，验证了SAMVR在多模态检索中的有效性。"
+    }
+  }
+]
