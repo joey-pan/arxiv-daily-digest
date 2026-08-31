@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2608.28082",
+    "title": "Attribute Token Arithmetic: Disentangled and Continuous Semantic Control for Visual Autoregressive Models",
+    "abstract": "Autoregressive text-to-image generation has recently achieved remarkable progress, offering high-fidelity synthesis via a unified generative framework. However, fine-grained semantic control remains challenging due to the attribute entanglement and the misalignment between textual and fine-grained visual representations. In this paper, we introduce Attribute Token Arithmetic (ATA), a method that enables disentangled and continuous attribute control in visual autoregressive modelling. Inspired by the vector arithmetic property observed in word embeddings, ATA identifies semantic directions corresponding to visual attributes (e.g., aging, fatness, emotion) directly within the pretrained autoregressive latent space. These directions are learned from a single reference image, without model retraining or large-scale supervision. During generation, attributes can be continuously adjusted and compositionally combined through simple arithmetic operations with other attribute tokens. Extensive experiments demonstrate that ATA achieves identity-preserving, fine-grained, and multi-attribute adjustment, outperforming existing autoregressive editing baselines in controllability, generality, and computational efficiency. Our code will be available at https://github.com/Madaoer/ATA.",
+    "authors": [
+      "Xindi Yang",
+      "Yicheng Wu",
+      "Cheng Zhang",
+      "Jianfei Cai",
+      "Tien-Tsin Wong"
+    ],
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.28082.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.28082",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "属性标记算术：视觉自回归模型中的解耦与连续语义控制",
+      "core_contribution": "提出了一种名为属性标记算术（ATA）的方法，能够在预训练的视觉自回归模型中实现解耦且连续的属性控制，无需重新训练模型或大规模监督，仅需单张参考图像即可学习属性方向。",
+      "method": "ATA借鉴词嵌入中的向量算术性质，在预训练自回归模型的潜在空间中直接识别对应视觉属性（如衰老、肥胖、情绪）的语义方向。这些方向通过单张参考图像学习得到，生成过程中通过简单的算术运算（如加减）对属性标记进行连续调整和组合，实现多属性控制。",
+      "findings": "实验表明，ATA在保持身份特征的同时，实现了细粒度和多属性的调整，在可控性、泛化性和计算效率上优于现有的自回归编辑基线方法。"
+    }
+  },
+  {
+    "id": "2608.27893",
+    "title": "CommerceVibe: Learning to Design E-Commerce Creatives as Executable Visual Code via Dual-Feedback Reinforcement Learning",
+    "abstract": "High-quality e-commerce creatives are essential for presenting products and conveying marketing messages. Recent diffusion models enable scalable creative generation and produce visually compelling images, but their flattened raster outputs often contain distorted text and inconsistent product details, requiring refinement before deployment. Moreover, without explicit structure, the resulting creatives are difficult to edit and reuse, while complex design requirements remain challenging to encode as verifiable training signals. To address these challenges, we present CommerceVibe, which represents creatives as executable visual code and formulates generation as conditional HTML/CSS program synthesis. Given product images, design requirements, and product information, it produces renderable, editable, and reusable creatives. We further introduce dual-feedback reinforcement learning, in which rule-based feedback evaluates rendered programs for text readability, product visibility, and layout validity, while visual feedback from a vision-language model (VLM) assesses rendered creatives against input specifications across six perceptual and commercial dimensions. Together, these complementary feedback signals improve both constraint satisfaction and perception-dependent quality. We perform supervised fine-tuning (SFT) of Qwen3.5-9B on over 28,000 e-commerce examples, followed by dual-feedback reinforcement learning. On a 1,300-case benchmark, the optimized CommerceVibe model achieves a weighted score of 94.0/100, compared with 87.3 for the SFT-only variant, and outperforms strong external models. Blind evaluations by five e-commerce design experts further validate these improvements. CommerceVibe supports controllable, editable, and scalable e-commerce creative production.",
+    "authors": [
+      "Yajiao Xu",
+      "Jin Zhang",
+      "Jiangbo Ai",
+      "Tao Jiang",
+      "Mo Xu",
+      "Lina Huang",
+      "Chengfu Huo"
+    ],
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.27893.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.27893",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CommerceVibe：通过双反馈强化学习将电商创意设计为可执行视觉代码",
+      "core_contribution": "提出CommerceVibe框架，将电商创意生成转化为条件HTML/CSS程序合成，生成可渲染、可编辑、可复用的视觉代码，并引入规则与视觉模型双反馈强化学习，显著提升创意质量与约束满足度。",
+      "method": "CommerceVibe将创意表示为可执行视觉代码，基于产品图像、设计要求和产品信息进行条件程序合成。首先对Qwen3.5-9B模型在超过28,000个电商样本上进行监督微调，随后采用双反馈强化学习：规则反馈评估渲染程序的文本可读性、产品可见性和布局有效性，视觉反馈通过视觉语言模型从六个感知与商业维度评估渲染创意与输入规格的一致性。两种反馈信号互补，共同优化模型。",
+      "findings": "在1,300案例基准上，优化后的CommerceVibe模型加权得分达94.0/100，显著高于仅监督微调的87.3分，并超越外部强模型。五名电商设计专家的盲评进一步验证了改进效果，表明CommerceVibe支持可控、可编辑、可扩展的电商创意生产。"
+    }
+  },
+  {
+    "id": "2608.28339",
+    "title": "Abstract4D: A Large-Scale Dataset and Framework for Understanding the Visual Language of Abstract Art",
+    "abstract": "Artificial intelligence can classify artistic styles and synthesize images, but it still lacks a model of the visual language that gives art meaning. Abstract painting minimizes object semantics and foregrounds structural cues, making it an ideal testbed for computational perception. We introduce \\textbf{Abstract4D}, the largest dataset of abstract paintings to date: more than 120,000 images paired with rich metadata and multi-dimensional prompts that capture each work's perceptual attributes---\\textit{form, color, texture, and composition}. Annotations are produced by a hybrid human--VLM pipeline for quality and consistency. Using Abstract4D, we (i) analyze the semantic structure of abstract art through large-scale embedding visualization, uncovering how perceptual relationships organize artistic meaning, and (ii) establish benchmark tasks for classification, cross-modal retrieval, and text-to-image generation to evaluate how AI models perceive and reproduce abstract visual language. Together, these analyses demonstrate how Abstract4D enables both exploration and quantitative assessment of AI's ability to represent and interpret abstract art.",
+    "authors": [
+      "Haowei Zhang",
+      "Yuanpei Zhao",
+      "Ji-Zhe Zhou",
+      "Mao Li"
+    ],
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.28339.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.28339",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "Abstract4D：理解抽象艺术视觉语言的大规模数据集与框架",
+      "core_contribution": "本文构建了目前最大的抽象绘画数据集Abstract4D（包含超过12万张图像及丰富的元数据和多维提示），并基于该数据集提出了分析抽象艺术语义结构的方法和多个基准任务，以评估AI模型对抽象视觉语言的感知与再现能力。",
+      "method": "采用人工与视觉语言模型（VLM）混合的标注流程，为每幅画生成关于形式、色彩、纹理和构图的多维感知属性提示。利用大规模嵌入可视化分析抽象艺术语义结构，并建立分类、跨模态检索和文本到图像生成等基准任务。",
+      "findings": "通过嵌入可视化揭示了抽象艺术中感知关系如何组织艺术意义；基准测试表明现有AI模型在分类、检索和生成任务上对抽象视觉语言的理解仍有局限，但Abstract4D为系统评估和改进提供了基础。"
+    }
+  },
+  {
+    "id": "2608.28248",
+    "title": "Synth-JDoc: Synthesizing a Japanese Document Image Dataset for OCR with Diverse Layouts and Embedded Images",
+    "abstract": "The ability of Large Vision Language Models (LVLMs) to read text within document images is crucial, as it enables various applications such as Document Visual Question Answering. To enhance the text-reading capabilities of LVLMs, high-quality OCR datasets are essential. This need is particularly critical for Japanese documents, which often feature vertically written text alongside horizontally written text. Current LVLMs demonstrate considerably lower performance on vertically written Japanese text than on horizontally written text, necessitating specialized OCR datasets to bridge this gap. However, manually constructing OCR datasets is expensive and difficult to scale. Alternatively, constructing datasets by extracting text from existing document images using OCR models introduces challenges, such as text recognition errors and the prerequisite of sourcing document images. To address these issues, we construct an OCR dataset by synthesizing document images directly from text. Leveraging HTML and CSS, we generate multi-column documents that incorporate both vertical and horizontal writing styles. Furthermore, to ensure the visual realism of the documents, we embed images generated by text-to-image models within the layout. Additionally, to foster model robustness, we apply noise and degradation filters to the synthesized document images. In our experiments, we compared the performance of models fine-tuned on our synthetic dataset against baselines fine-tuned on synthetic datasets from prior work and those generated by a high-performance text-to-image model. Evaluation results demonstrate that our synthetic dataset is the most effective approach for improving LVLM performance on reading vertically written Japanese text. Our dataset and code are publicly available (https://github.com/llm-jp/synth-jdoc).",
+    "authors": [
+      "Keito Sasagawa",
+      "Shuhei Kurita",
+      "Daisuke Kawahara"
+    ],
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.28248.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.28248",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "Synth-JDoc：合成一个包含多样布局和嵌入图像的日语文档图像数据集，用于OCR",
+      "core_contribution": "本文提出了一种通过HTML和CSS从文本直接合成日语文档图像的方法，构建了包含横排和竖排文本、嵌入生成图像及噪声增强的OCR数据集，显著提升了大型视觉语言模型（LVLMs）在竖排日语文本上的阅读性能。",
+      "method": "利用HTML和CSS生成多栏布局的文档，同时包含竖排和横排文本；使用文本到图像模型生成图像并嵌入布局中，增强视觉真实性；对合成图像应用噪声和退化滤镜以提高模型鲁棒性。",
+      "findings": "实验表明，基于该合成数据集微调的模型在竖排日语文本阅读任务上优于基于先前工作或高性能文本到图像模型生成的合成数据集微调的基线模型，证明该数据集是提升LVLM竖排日语OCR性能的最有效方法。"
+    }
+  },
+  {
+    "id": "2608.28206",
+    "title": "NumBench: Diagnosing Counting Failures in Text-to-Image Models",
+    "abstract": "Text-to-image (T2I) models often generate the wrong number of objects, yet existing benchmarks are too small or weakly controlled to explain why. We introduce \\textbf{NumBench}, a benchmark of 640{,}000 prompts spanning 1{,}600 categories and counts from 1 to 100. Its factorial design varies object composition, spatial guidance, and appearance conditions while balancing counts and category exposure. We also develop a process model in which requested instances compete for a finite set of resolvable image regions. The model predicts a near-quadratic collision deficit at low occupancy and shows how coordinated placement reduces it. For scalable evaluation, we propose the Confidence-Weighted Numeric Precision Score (\\cwnps), which aggregates three calibrated detectors and discounts uncertain proposals. Across five commercial systems, two open models, and two specialized counting methods, performance declines sharply with requested count; all evaluated methods are weak above 50 objects. Count range has the largest measured effect, followed by layout and composition. Grid guidance is strongest among guided layouts, consistent with the coordination prediction, although the analysis does not establish collision as the sole cause. A 14{,}400-image human study supports automated evaluation through count 50, while results on 243 natural-language prompts show transfer beyond NumBench templates.",
+    "authors": [
+      "Sandeep Wadhwa",
+      "Mayank Vatsa",
+      "Richa Singh",
+      "Parrva Chirag Shah",
+      "Prakhar Galriya"
+    ],
+    "published": "2026-08-28",
+    "updated": "2026-08-28",
+    "categories": [
+      "cs.CV",
+      "cs.DB"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.28206.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.28206",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "NumBench：诊断文本到图像模型中的计数失败",
+      "core_contribution": "提出了一个大规模、因子化设计的基准NumBench，用于系统诊断文本到图像模型在对象计数上的失败，并引入了一个过程模型和一种可扩展的评估指标（CW-NPS），以解释和量化计数错误。",
+      "method": "NumBench包含640,000个提示，覆盖1,600个类别和1到100的计数范围，采用因子设计变化对象组成、空间引导和外观条件，同时平衡计数和类别暴露。作者开发了一个过程模型，假设请求的实例竞争有限的图像区域，预测低占用率下近似二次的碰撞赤字，并显示协调放置可减少赤字。评估使用置信度加权数值精度分数（CW-NPS），聚合三个校准检测器并折扣不确定的提议。",
+      "findings": "在五个商业系统、两个开放模型和两个专门计数方法上的评估显示，性能随请求计数增加而急剧下降，所有方法在50个对象以上表现较弱。计数范围是影响最大的因素，其次是布局和组成。网格引导在引导布局中最强，与协调预测一致，但分析未确立碰撞为唯一原因。14,400图像的人类研究支持自动化评估至计数50，而243个自然语言提示的结果显示模型能迁移到NumBench模板之外。"
+    }
+  }
+]
