@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2608.30689",
+    "title": "CANVAS: Consistency-Aware Navigation via Visual Adaptive Sampling for Long-Context Text-to-SVG Generation",
+    "abstract": "Autoregressive large models have recently advanced Text-to-SVG generation from simple icons to complex, long-context graphics, yet standard autoregressive decoding often fails to maintain global consistency across geometry, layout, occlusion, and composition. We introduce CANVAS (Consistency-Aware Navigation via Visual Adaptive Sampling), a training-free, render-aware inference framework that combines power-sharpened trajectory likelihood with visual feedback from rendered futures and derives a stroke-wise navigation rule. It effectively estimates each candidate stroke's future value under a limited generation and rendering budget and adaptively allocates samples according to candidate uncertainty, decision influence, and rollout cost. Experiments across multiple autoregressive SVG backbones and complementary benchmarks demonstrate improvements in global consistency, which includes sound geometric relationships, spatial layouts, occlusion ordering, and overall composition, without additional training, demonstrating the effectiveness and generalization ability of our framework.",
+    "authors": [
+      "Yichen Wu",
+      "Haoxuan Qu",
+      "Yihang Lou",
+      "Hossein Rahmani",
+      "Jun Liu"
+    ],
+    "published": "2026-08-31",
+    "updated": "2026-08-31",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.30689.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.30689",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CANVAS：通过视觉自适应采样实现长上下文文本到SVG生成的一致性感知导航",
+      "core_contribution": "提出了一种无需训练的、渲染感知的推理框架CANVAS，通过结合功率锐化的轨迹似然和渲染未来的视觉反馈，有效提升自回归模型在长上下文文本到SVG生成中的全局一致性（包括几何关系、空间布局、遮挡顺序和整体构图）。",
+      "method": "CANVAS框架在推理时对每个候选笔画进行未来价值估计，采用功率锐化的轨迹似然作为先验，并利用渲染的未来图像提供视觉反馈。它根据候选不确定性、决策影响和回滚成本自适应分配采样预算，并推导出笔画级别的导航规则，以在有限的生成和渲染预算下选择最优笔画。",
+      "findings": "在多个自回归SVG骨干模型和互补基准上的实验表明，CANVAS无需额外训练即可显著提升全局一致性，包括几何关系、空间布局、遮挡顺序和整体构图，验证了其有效性和泛化能力。"
+    }
+  },
+  {
+    "id": "2608.30241",
+    "title": "PaperBanana-Interact: Scientific Diagram Refinement with Multi-Turn Human Feedback",
+    "abstract": "Recent efforts have aimed to automate scientific diagram generation from paper content (Lin et al., 2026; Zhu et al., 2026a). However, fully satisfying an author's visual and communicative preferences in a single turn is challenging: in our formative user study (N = 14), all participants requested further revisions after viewing an initial draft, and 86% of them rated the refined diagrams as more satisfactory. Despite the clear demand, the multi-turn workflow remains largely underexplored. To bridge this gap, we present MTPaperBananaBench, a benchmark for multi-turn diagram generation containing 292 images annotated with 3,518 user requirements. To reduce expensive human studies and enable scalable benchmarking, we construct a user simulator that, at each turn, identifies unsatisfied requirements and converts k of them into natural language feedback. Evaluating both requirement satisfaction and overall diagram quality reveals two key failure modes shared across baseline multiturn systems: (1) quality drift, where diagram quality progressively declines over turns, and (2) forgetting, where previously implemented features are lost in subsequent turns. To address these issues, we introduce PaperBanana-Interact, a multi-agent system that refines diagrams via an internal critique-and-refine loop. PaperBanana-Interact consistently improves rather than degrades diagram quality across turns, outperforming baselines by 11.9-18.6 points in quality score and reducing forgetting by 3.7-6.2 points.",
+    "authors": [
+      "Xueqing Wu",
+      "Ashwin Balasubramanian",
+      "Bingxuan Li",
+      "Dawei Zhu",
+      "Kai-Wei Chang",
+      "Yale Song",
+      "Yiwen Song",
+      "Rui Meng",
+      "Tomas Pfister",
+      "Nanyun Peng"
+    ],
+    "published": "2026-08-31",
+    "updated": "2026-08-31",
+    "categories": [
+      "cs.CL",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.30241.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.30241",
+    "primary_category": "cs.CL",
+    "score": 85,
+    "summary": {
+      "title_zh": "PaperBanana-Interact：基于多轮人类反馈的科学图表优化",
+      "core_contribution": "本文提出了一个多轮科学图表生成基准MTPaperBananaBench和一个多智能体系统PaperBanana-Interact，用于解决现有单轮图表生成无法满足用户偏好、且多轮优化中存在的质量下降和遗忘问题。",
+      "method": "首先构建了包含292张图像和3518条用户需求的多轮图表生成基准，并设计了一个用户模拟器，在每轮中识别未满足的需求并将其转化为自然语言反馈。针对基线系统的缺陷，提出了PaperBanana-Interact，这是一个多智能体系统，通过内部批评-优化循环来迭代改进图表，从而避免质量漂移和遗忘。",
+      "findings": "在基准测试中，所有基线多轮系统均出现质量随轮次下降和质量漂移及遗忘问题；而PaperBanana-Interact在每轮中持续提升图表质量，质量分数比基线高出11.9-18.6分，遗忘问题减少3.7-6.2分。"
+    }
+  },
+  {
+    "id": "2608.29809",
+    "title": "RegionCache: Semantic-Aware Region Reuse for Efficient Multi-Turn Image Generation",
+    "abstract": "Real-world image generation often involves multi-turn editing, where users iteratively modify small regions while most image content remains unchanged. However, existing diffusion transformer (DiT)-based editing pipelines recompute the entire image at every turn, causing substantial redundant computation. Existing DiT acceleration methods further ignore semantic correspondence across prompts, leading to unnecessary recomputation or unsafe reuse that harms editing quality. To address this, we propose RegionCache, a semantic-aware reuse framework for multi-turn image editing that selectively reuses diffusion states from unchanged regions. RegionCache detects reusable regions through semantic overlap between consecutive prompts and cross-attention localization, and adopts an adaptive reuse schedule based on prompt similarity and contextual consistency. Experiments on PixArt-alpha demonstrate that RegionCache achieves 1.43x--2.55x end-to-end speedup while maintaining comparable image quality. Code is available at https://github.com/hebutBryant/RegionCache.",
+    "authors": [
+      "Peizheng Li",
+      "Xin Ai",
+      "Hanyuan Liu",
+      "Qiange Wang",
+      "Yanfeng Zhang"
+    ],
+    "published": "2026-08-30",
+    "updated": "2026-08-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.29809.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.29809",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "区域缓存：面向高效多轮图像生成的语义感知区域复用",
+      "core_contribution": "提出了一种语义感知的区域复用框架RegionCache，用于多轮图像编辑，通过选择性复用未变化区域的扩散状态，显著减少计算冗余，同时保持图像质量。",
+      "method": "RegionCache通过计算连续提示之间的语义重叠和交叉注意力定位来检测可复用区域，并基于提示相似性和上下文一致性采用自适应复用调度策略，从而在编辑过程中跳过对未变化区域的重计算。",
+      "findings": "在PixArt-alpha上的实验表明，RegionCache实现了1.43倍至2.55倍的端到端加速，同时保持了与原始方法相当的图像质量。"
+    }
+  },
+  {
+    "id": "2608.29281",
+    "title": "Elastic Token Compression for Pixel-Space Diffusion Transformers",
+    "abstract": "Natural images concentrate their detail in a small fraction of the frame, yet diffusion models spend a full token on every patch, in every layer and at every timestep. The waste is largest in pixel-space models, with no autoencoder to absorb low-level redundancy first. Probing a pretrained pixel text-to-image transformer, we find its middle-block tokens redundant wherever the image is flat. The redundancy occupies connected, content-shaped regions, and exploiting it requires tokens with the same geometry. Cutting a Hilbert ordering of the patches provides them. Consecutive positions are always image neighbours, so any contiguous run is a connected region whose size and shape follow the content, and grouping in two dimensions becomes a cut in one. Existing reductions each lose part of this. Similarity merging scatters its groups, latent bottlenecks discard position, and skipping deletes what it should summarize. We cut where the model's features change most and pool each run into one region token. Our Region Token Interface (\\method{}) adapts a diffusion model to these tokens, with the region count drawn at random during fine-tuning so one checkpoint serves every budget. \\method{} leads prior reduction methods at matched budgets, matches dense quality at $2.0\\times$ the speed, and stays close at $2.6\\times$. The code and models are open-sourced at https://eduardzamfir.github.io/rti",
+    "authors": [
+      "Eduard Zamfir",
+      "Christian Reisswig",
+      "Zongwei Wu",
+      "Yongqin Xian",
+      "Radu Timofte"
+    ],
+    "published": "2026-08-29",
+    "updated": "2026-08-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.29281.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.29281",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "像素空间扩散Transformer的弹性令牌压缩",
+      "core_contribution": "提出了一种针对像素空间扩散Transformer的令牌压缩方法（Region Token Interface, RTI），通过基于内容形状的弹性区域令牌替代固定网格令牌，在保持生成质量的同时显著提升推理速度，且支持单模型适配多种计算预算。",
+      "method": "该方法首先利用预训练模型的中间层特征检测图像中的平坦区域，识别冗余令牌；然后对图像块采用希尔伯特曲线排序，将二维空间分组转化为一维连续切割，使得每个连续片段对应一个内容相关的连通区域；最后将每个区域池化为一个区域令牌，并在微调时随机采样区域数量，使模型能够适应不同的令牌预算。",
+      "findings": "实验表明，RTI在相同计算预算下优于现有压缩方法（如相似性合并、潜在瓶颈和跳跃连接）；在2.0倍加速时生成质量与密集模型相当，在2.6倍加速时仍保持接近的质量，证明了其高效性和灵活性。"
+    }
+  },
+  {
+    "id": "2608.29160",
+    "title": "Training-Free Hidden-State Refinement for Flow-Matching Image Generators",
+    "abstract": "We aim to improve frozen flow-matching image generators by adding inference computation inside the denoiser, without changing model weights or the outer sampler. Existing generators usually spend extra test-time computation by increasing the number of sampling steps, which repeatedly evaluates the entire denoiser and couples quality gains to sampler cost. A key challenge is how to use extra computation inside a frozen transformer denoiser: the method must decide which tokens, layers, and sampling times receive repeated updates while preserving the original generation pipeline. We introduce a training-free looping framework that repeatedly applies selected transformer layers inside each denoising call. Dense and Sparse Token Loop vary the token scope; Sampling-Progress Gating and the loop layer range specify when and where looping is active; loop count and strength control the repeated updates; and Loop Guidance combines ordinary and looped vector-field predictions. Across two Scale-RAE model scales, loop variants improve primary and auxiliary quality metrics with competitive quality--efficiency trade-offs. Loop Guidance further improves both primary metrics across all three tested models; on Scale-RAE DiT2.4B, it raises GenEval from 0.4471 to 0.5691 and DPG-Bench from 0.7656 to 0.8053. Code will be released.",
+    "authors": [
+      "Yuanyi Yan",
+      "Xinzhe Rao",
+      "Canyu Shen",
+      "Yang Chen",
+      "Yunlu Chen",
+      "Meng Tang",
+      "Teng Long",
+      "Vincent Tao Hu"
+    ],
+    "published": "2026-08-29",
+    "updated": "2026-08-29",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2608.29160.pdf",
+    "abs_url": "https://arxiv.org/abs/2608.29160",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "无需训练的流匹配图像生成器隐藏状态精炼方法",
+      "core_contribution": "提出一种无需训练、仅增加推理计算量的方法，通过循环精炼冻结的流匹配生成器内部的隐藏状态，在不改变模型权重或外部采样器的情况下提升图像生成质量，并实现了质量与效率的较好权衡。",
+      "method": "该方法在每次去噪调用中，对选定的Transformer层进行重复应用，形成循环框架。具体包括：密集和稀疏令牌循环（Dense/Sparse Token Loop）控制令牌范围；采样进度门控（Sampling-Progress Gating）和循环层范围决定循环激活的时间和位置；循环次数和强度控制重复更新的程度；循环引导（Loop Guidance）结合普通和循环的向量场预测，以优化生成过程。",
+      "findings": "在两种Scale-RAE模型规模上，循环变体提升了主要和辅助质量指标，且质量-效率权衡具有竞争力。Loop Guidance在所有三个测试模型上均提升了两个主要指标；在Scale-RAE DiT2.4B上，GenEval从0.4471提升至0.5691，DPG-Bench从0.7656提升至0.8053。"
+    }
+  }
+]
