@@ -1,0 +1,156 @@
+[
+  {
+    "id": "2609.00776",
+    "title": "Solaris: Towards Interfaces That Are Generated, Not Coded",
+    "abstract": "Digital interfaces are traditionally implemented through intermediate representations such as code, requiring their appearance and behavior to be specified in advance. We introduce Solaris, an interface world model that instead generates an interactive UI directly, frame by frame, in response to user actions. Solaris treats mouse interactions as conditioning signals and autoregressively synthesizes the resulting visual state at interactive speeds. To enable real-time generation while maintaining visual coherence over extended interactions, we combine autoregressive frame generation with few-step distillation and training on the model's own outputs. A language model complements the visual world model by interpreting user intent and specifying how interactions should affect the generated environment, separating high-level reasoning from visual rendering. By generating both the appearance and behavior of an interface dynamically, Solaris enables open-ended interactions that need not be explicitly programmed in advance. We view interface world models as a step toward a new paradigm for software, where interfaces are generated and adapted continuously around user intent rather than implemented as fixed collections of predefined states and",
+    "authors": [
+      "Yuval Alaluf",
+      "Omri Avrahami",
+      "Guy Bukchin Leshem",
+      "Michal Geyer",
+      "Kfir Goldberg",
+      "Elad Richardson",
+      "Diego Alarcón",
+      "Alejandro Alvarez",
+      "Cole Garry",
+      "Anastasis Germanidis",
+      "Tenaya Goldsen",
+      "Corina Gurau",
+      "Robin Kahlow",
+      "Joel Kwartler",
+      "Kathleen Lewis",
+      "Alejandro Matamala Ortiz",
+      "Eugene McMahon",
+      "Thon Prom",
+      "Sarah Saltonstall-Wurm",
+      "Jamie Umpherson",
+      "Hudson Yeo"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.00776.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.00776",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "Solaris：迈向生成而非编码的界面",
+      "core_contribution": "本文提出Solaris，一种界面世界模型，能够根据用户操作逐帧生成交互式UI，无需预先编码或定义界面状态，从而支持开放式、未预设的交互。",
+      "method": "Solaris将鼠标交互作为条件信号，通过自回归方式合成视觉状态，并结合少步蒸馏和自训练（在模型自身输出上训练）以实现实时生成和长时间交互的视觉一致性。同时，语言模型负责解析用户意图并指定交互对生成环境的影响，将高层推理与视觉渲染分离。",
+      "findings": "实验表明，Solaris能够动态生成界面的外观和行为，支持未明确编程的开放式交互，并在交互速度与视觉连贯性上达到可行水平，为软件界面从固定状态集合转向围绕用户意图持续生成的新范式提供了初步证据。"
+    }
+  },
+  {
+    "id": "2609.00476",
+    "title": "Less Is More: Balancing Positive and Negative Space in Visual Concept Blending",
+    "abstract": "Graphic designers often blend visual concepts to communicate multiple ideas within a single image, leveraging positive and negative space to create balance, emphasis, and aesthetic appeal. While computational methods have begun to support automatic concept blending, they largely overlook the role of spatial composition in the design. To address this gap, we present an automatic pipeline that explicitly applies positive and negative space throughout the blending process. Our approach first identifies plausible regions for concept integration by combining semantic reasoning from vision-language models with geometric constraints derived from real-world examples. Conditioned on these regions, the system generates blended compositions using a hybrid pixel-vector pipeline: diffusion-based inpainting produces a fast, coarse initialization, which is then refined through vector-based optimization at the point level to ensure structural coherence and balanced semantic expression. A multimodal agent orchestrates this process as a planner and evaluator, enabling iterative improvement and interpretable control. Through an evaluation using both baseline comparisons and a user study, we demonstrate greater expressiveness, creativity, and concept recognizability by effectively leveraging positive and negative space. We further demonstrate the generalizability of our approach across diverse applications, including controllable image and infographic generation.",
+    "authors": [
+      "Shishi Xiao",
+      "Adam J. Coscia",
+      "David H. Laidlaw"
+    ],
+    "published": "2026-08-31",
+    "updated": "2026-08-31",
+    "categories": [
+      "cs.CV",
+      "cs.HC"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.00476.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.00476",
+    "primary_category": "cs.CV",
+    "score": 92,
+    "summary": {
+      "title_zh": "少即是多：在视觉概念融合中平衡正负空间",
+      "core_contribution": "提出了一种自动化的视觉概念融合管道，显式地在融合过程中利用正负空间，以生成更具表现力、创造性和概念可识别性的图像，弥补了现有方法忽视空间构图设计的不足。",
+      "method": "该方法首先结合视觉语言模型的语义推理和从真实示例中提取的几何约束，识别适合概念整合的区域；然后采用混合像素-矢量管道生成融合构图，即通过扩散模型进行快速粗略的初始修复，再通过基于矢量的点级优化细化，以确保结构连贯性和语义平衡；最后，一个多模态智能体作为规划器和评估器，迭代改进并实现可解释的控制。",
+      "findings": "通过基线比较和用户研究，该方法在表达力、创造性和概念可识别性上优于现有方法，并展示了在可控图像和信息图生成等多种应用中的泛化能力。"
+    }
+  },
+  {
+    "id": "2609.01582",
+    "title": "SpatialGuard: Harness-Guided Verifiable Spatial Reasoning for Text-to-Image Generation",
+    "abstract": "Complex 3D spatial text to image generation requires models to convert natural language into stable visual geometry, not merely semantic appearance. Existing prompt-driven or layout-conditioned methods improve controllability, but often lack an optimizable and verifiable spatial intermediary before visual sampling. As a result, object relations, occlusion, visibility, and camera constraints can decay during multi-round generation. This paper presents SpatialGuard, a structured layout-guided framework for complex 3D spatial text-to-image generation. SpatialGuard parses prompts into image synthesis-oriented 3D layouts through a Spatial Layout Architect, realizes them as visual conditions and candidate images through a Visual Realizer, and uses a Visual Alignment Critic to validate consistency among prompt, layout, and image. To keep constraints stable across iterations, SpatialGuard introduces a Layout Harness that organizes rule constraints, tool invocation, shared knowledge, and feedback loops around the editable layout state. This design turns complex spatial generation from implicit prompt following into a verifiable process of planning, realization, validation, and repair. Comprehensive experiments show that SpatialGuard achieves state-of-the-art performance in complex 3D spatial layout generation and improves spatial faithfulness over existing text-to-image and layout control baselines.",
+    "authors": [
+      "Ziyun Qian",
+      "Zizhi Chen",
+      "Yizhou Liu",
+      "Mingyang Sun",
+      "Dingkang Yang",
+      "Lihua Zhang"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01582.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01582",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SpatialGuard：基于引导的可验证空间推理用于文本到图像生成",
+      "core_contribution": "提出了一种结构化布局引导框架SpatialGuard，通过可编辑的布局状态和验证机制，将复杂的3D空间文本到图像生成从隐式提示遵循转变为可验证的规划、实现、验证和修复过程，显著提升了空间保真度。",
+      "method": "SpatialGuard包含三个核心组件：空间布局架构师（Spatial Layout Architect）将提示解析为面向图像合成的3D布局；视觉实现器（Visual Realizer）将布局转化为视觉条件和候选图像；视觉对齐评论家（Visual Alignment Critic）验证提示、布局和图像之间的一致性。此外，引入布局引导（Layout Harness）来组织规则约束、工具调用、共享知识和反馈循环，确保跨迭代的约束稳定性。",
+      "findings": "实验表明，SpatialGuard在复杂3D空间布局生成任务上达到了最先进的性能，相比现有的文本到图像和布局控制基线，显著提高了空间保真度，有效解决了多轮生成中对象关系、遮挡、可见性和相机约束退化的问题。"
+    }
+  },
+  {
+    "id": "2609.01423",
+    "title": "MegaStyle++: Scaling Image Style Space through Hierarchical Style Definition",
+    "abstract": "Image style is a highly abstract, human-constructed concept shaped by a range of visual factors and intrinsically entangled with content, yet a unified and explicit definition of image style remains lacking. In this work, we first discuss the fundamental question of what is style and then propose a hierarchical style definition that describes image style from an overall style identity to fine-grained visual attributes, providing a more structured, transferable, and interpretable style representation. Based on this definition, we refine the style annotation pipeline of MegaStyle and construct MegaStyle++-8M, a large-scale style dataset containing 150K overall style identities, 1M fine-grained style prompts, and 8M stylized images. Extensive analyses demonstrate that our hierarchical definition substantially expands the style space in both diversity and semantic breadth, while precisely capturing intrinsic visual style of reference images. The dataset and code will be updated at https://github.com/Tencent/MegaStyle, we hope MegaStyle++ provides a scalable foundation for studying and modeling diverse image styles.",
+    "authors": [
+      "Junyao Gao",
+      "Sibo Liu",
+      "Jiaxing Li",
+      "Yanan Sun",
+      "Weidong Zhang",
+      "Cairong Zhao",
+      "Jun Zhang"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01423.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01423",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "MegaStyle++：通过层级化风格定义扩展图像风格空间",
+      "core_contribution": "提出了一种层级化的图像风格定义框架，并基于此构建了大规模风格数据集MegaStyle++-8M，显著扩展了风格空间的多样性和语义广度，为图像风格建模提供了可扩展的基础。",
+      "method": "首先从理论上探讨了图像风格的本质，提出从整体风格身份到细粒度视觉属性的层级化风格定义，使风格表示更具结构化、可迁移性和可解释性。基于该定义，改进了MegaStyle的风格标注流程，构建了包含150K整体风格身份、1M细粒度风格提示和8M风格化图像的大规模数据集。",
+      "findings": "实验分析表明，层级化风格定义显著提升了风格空间的多样性和语义覆盖范围，并能精确捕捉参考图像的内在视觉风格，验证了该定义在风格表示和数据集构建中的有效性。"
+    }
+  },
+  {
+    "id": "2609.01409",
+    "title": "EdiTikZ: Scientific Figure Editing from Revision Trajectories",
+    "abstract": "Vision-language models (VLMs) have shown strong performance in generating scientific figures from text or images. However, producing publication-ready figures requires iterative refinement, making scientific figure editing an important yet largely unexplored task. Existing approaches rely on costly proprietary agentic systems, focus primarily on evaluation, or construct training supervision from synthetically generated edits. Instead, we leverage naturally occurring scientific revision and development trajectories as a scalable source of supervision. To this end, we introduce DaEdiTikZ, the first large-scale dataset of revision-derived scientific figure edits, constructed by mining 391K plausible TikZ edit pairs from arXiv, GitHub, and TeX SE and inferring 781K directed edit instructions with a VLM conditioned on rendered figures and TikZ code. We further introduce DaEdiTikZ-Bench, a human-refined benchmark with 790 instances, and train two compact Qwen3.5-based EdiTikZ models (4B and 9B) by jointly learning reconstruction and editing, followed by reinforcement learning (RL) with complementary rewards for rendered fidelity and edit application. Automatic evaluation places our 9B model above all tested baselines, while human evaluation with 9 annotators and 4,320 ratings places it above GPT-5.6-Sol and on par with Gemini-3.1-Pro. Under severe out-of-distribution shifts, it remains competitive with GPT-5.6-Sol near its 2K training sequence-length regime. Models and datasets will be released.",
+    "authors": [
+      "Christian Greisinger",
+      "Zhixue Zhao",
+      "Steffen Eger"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01409.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01409",
+    "primary_category": "cs.AI",
+    "score": 85,
+    "summary": {
+      "title_zh": "EdiTikZ：基于修订轨迹的科学图形编辑",
+      "core_contribution": "本文提出了首个基于自然修订轨迹的大规模科学图形编辑数据集DaEdiTikZ及其基准DaEdiTikZ-Bench，并训练了紧凑型EdiTikZ模型，在科学图形编辑任务上达到了与大型专有模型相当或更优的性能。",
+      "method": "作者从arXiv、GitHub和TeX SE中挖掘出391K对TikZ代码编辑对，利用视觉语言模型（VLM）根据渲染图形和代码推断出781K条有向编辑指令，构建了DaEdiTikZ数据集。随后，基于Qwen3.5架构训练了4B和9B两个紧凑模型，通过联合学习重建与编辑任务，并采用强化学习（RL）结合渲染保真度和编辑应用互补奖励进行优化。",
+      "findings": "自动评估显示9B模型优于所有测试基线；人工评估（9名标注者，4320个评分）表明其性能超过GPT-5.6-Sol，并与Gemini-3.1-Pro相当。在严重的分布外偏移下，该模型在接近其2K训练序列长度范围内仍能与GPT-5.6-Sol保持竞争力。"
+    }
+  }
+]
