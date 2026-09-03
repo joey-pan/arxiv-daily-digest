@@ -1,0 +1,137 @@
+[
+  {
+    "id": "2609.02813",
+    "title": "GDB-Reward: From Evaluation Metrics to Training Rewards for Graphic Design",
+    "abstract": "Text-to-image models excel at natural image synthesis but struggle with graphic design, where success depends on satisfying precise constraints on typography, layout, color, and visual communication. While prompt optimization offers an attractive alternative to expensive diffusion model fine-tuning, learning prompts for frozen image generators requires informative reward functions despite the entirely non-differentiable generation process. Reinforcement learning does not require differentiable objectives; it requires only scalar rewards capable of ranking candidate outputs. This raises a simple question: can design evaluation metrics themselves become reinforcement learning rewards? Our central contribution is GDB-Reward, a framework that systematically transforms heterogeneous graphic design evaluation metrics into a unified reinforcement learning reward. Experiments demonstrate that GDB-Reward provides an effective optimization objective, substantially improving adherence to the design specification in perceptual quality, rendering fidelity, and spatial accuracy while keeping the image generator entirely frozen. More broadly, our results demonstrate that heterogeneous, non-differentiable evaluation metrics can move beyond passive benchmarking to become effective optimization objectives for reinforcement learning in domains where differentiable supervision is unavailable.",
+    "authors": [
+      "Adrienne Deganutti",
+      "Purvanshi Mehta",
+      "Simon Hadfield",
+      "Andrew Gilbert"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02813.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02813",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "GDB-Reward：从评估指标到图形设计的训练奖励",
+      "core_contribution": "提出GDB-Reward框架，将异构的图形设计评估指标系统性地转化为统一的强化学习奖励，从而在不微调扩散模型的情况下，显著提升生成图像对设计规范的遵循度。",
+      "method": "该方法利用强化学习框架，将多种非可微的图形设计评估指标（如排版、布局、颜色和视觉传达的约束）整合为统一的标量奖励信号。通过优化提示词（prompt）而非模型参数，GDB-Reward在冻结的图像生成器上使用策略梯度方法进行训练，以最大化设计质量相关的奖励。",
+      "findings": "实验表明，GDB-Reward作为优化目标能有效提升生成图像在感知质量、渲染保真度和空间准确性上对设计规范的遵循程度，同时保持图像生成器完全冻结。结果还证明，异构且非可微的评估指标可以超越被动基准测试，成为强化学习中的有效优化目标，尤其在缺乏可微监督的领域。"
+    }
+  },
+  {
+    "id": "2609.02748",
+    "title": "Balancing Frequencies and Pixels in Flow Matching",
+    "abstract": "Natural images follow a $1/f^2$ spectral distribution: most signal energy lies in the low spatial frequencies, while the perceptually important structures such as textures and edges occupy sparse high-frequency bands. Pixel-space reconstruction objectives, however, treat all spatial errors uniformly, causing low frequencies to dominate the optimization signal and delaying the learning of fine-scale details. In this work, we identify this objective-level spectral imbalance as a key inefficiency in training pixel-space flow models. To address it, we propose a Focal Log-Frequency Loss (f-loss), a spectrally balanced objective that equalizes the learning signal across frequencies, emphasizing high-frequency components that are otherwise underrepresented in pixel-space objectives. Building on this, we introduce a simple training strategy that combines frequency and pixel supervision: we first emphasize frequency-domain learning early to capture all frequencies, and then transition to standard pixel-space v-loss for spatial refinement. This balancing mitigates the low-frequency bias of pixel losses and aligns the training signal with the evolving needs of the model. Our approach is conceptually simple, requires no architectural changes, and acts as a drop-in replacement for flow matching losses. Across multiple model scales, it accelerates convergence by up to 40% while consistently improving FID and perceptual fidelity. We will release code and models.",
+    "authors": [
+      "Lucas Degeorge",
+      "Paul Couairon",
+      "Arijit Ghosh",
+      "Alexei A. Efros",
+      "David Picard",
+      "Vicky Kalogeiton"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02748.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02748",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "流匹配中的频率与像素平衡",
+      "core_contribution": "本文提出了一种频谱平衡的损失函数（Focal Log-Frequency Loss, f-loss），用于解决像素空间流匹配模型中低频主导优化信号的问题，从而加速收敛并提升生成质量。",
+      "method": "方法包括两个部分：首先，设计一个f-loss，通过对数频率加权来均衡不同频率分量的学习信号，特别强调高频成分；其次，提出一种两阶段训练策略，先使用频率域损失（f-loss）以捕获所有频率信息，然后切换到标准的像素空间v-loss进行空间细化，从而平衡频率和像素监督。",
+      "findings": "实验表明，该方法在多个模型规模下，无需架构改动，即可将收敛速度提升高达40%，并持续改善FID和感知保真度指标。"
+    }
+  },
+  {
+    "id": "2609.02511",
+    "title": "Telligram: Text-Driven Calligram Generation via Diffusion-Guided Skeleton Optimization",
+    "abstract": "Compact calligram generation aims to form a semantic shape while keeping letters recognizable. Most existing methods are shape-conditioned and mainly solve downstream letter layout inside a given contour. We study text-only calligram generation without an input contour. This setting is difficult because semantic shape formation and letter readability strongly interfere with each other when optimized in a single stage. Pushing the word toward a clear figure can easily damage glyph structure, while preserving readable letters can weaken the target shape. To address this difficulty, we present Telligram, a training-free, low-tuning, two-stage framework composed of Semantic Occupancy Prior Formation and Readability-Constrained Glyph Realization. The first stage uses Variational Score Distillation (VSD) with structured skeleton optimization and hierarchical gradient projection to produce a semantic occupancy prior. The second stage converts this occupancy prior into per-letter regions and reconstructs readable glyph layouts through lightweight geometric processing. The framework generates coherent and creative word-level semantic calligrams directly from text prompts.",
+    "authors": [
+      "Tianci Shi",
+      "Pengfei Xu"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02511.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02511",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "Telligram：通过扩散引导的骨架优化实现文本驱动的紧凑书法生成",
+      "core_contribution": "提出了一种无需训练、低参数调整的两阶段框架Telligram，能够仅从文本提示直接生成语义形状与字母可读性兼顾的紧凑书法作品，解决了无输入轮廓条件下语义形状形成与字形可读性相互干扰的难题。",
+      "method": "Telligram采用两阶段方法：第一阶段通过变分分数蒸馏（VSD）结合结构化骨架优化和分层梯度投影，生成语义占用先验；第二阶段将该占用先验转换为逐字母区域，并通过轻量级几何处理重建可读的字形布局，最终实现从文本提示生成连贯且富有创意的词级语义书法。",
+      "findings": "实验表明，Telligram能够生成语义清晰且字母可读的紧凑书法，无需输入轮廓或训练过程，相比现有形状条件方法更具灵活性和创造性，有效平衡了语义形状与字形可读性之间的冲突。"
+    }
+  },
+  {
+    "id": "2609.02502",
+    "title": "Blending Concepts: Benchmarking Visual Metaphor Generation in Text-to-Image Models",
+    "abstract": "Text-to-image (T2I) models have achieved remarkable success at faithfully rendering specified objects and attributes, yet their ability to produce visual metaphors, images that convey abstract ideas by combining elements from two distinct domains, remains largely unexamined. To bridge this gap, we introduce VMetaphor-Bench, the first benchmark for evaluating visual metaphor generation in T2I models. It comprises 1,500 visual metaphors curated from real-world creative imagery, organized into three levels and ten categories, with each sample paired with two prompts of differing specificity. For evaluation, we develop a hybrid framework within an MLLM-as-judge paradigm, combining a multiple-choice question (MCQ) based protocol of 9,594 questions across four levels of metaphorical fidelity with a dimension-based scoring protocol along three perceptual dimensions. Extensive evaluation of 11 representative T2I models reveals that even the strongest proprietary models struggle with compositional structuring and cross-domain mapping, key aspects of metaphorical expression, highlighting visual metaphor generation as an important frontier for future T2I research.",
+    "authors": [
+      "Chuer Chen",
+      "Zichen Wang",
+      "Yi He",
+      "Zhengxi Yu",
+      "Nan Cao"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02502.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02502",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "融合概念：文本到图像模型中视觉隐喻生成的基准测试",
+      "core_contribution": "该论文首次提出了用于评估文本到图像（T2I）模型中视觉隐喻生成能力的基准VMetaphor-Bench，填补了该领域缺乏系统评估的空白。",
+      "method": "论文构建了一个包含1,500个从真实创意图像中精选的视觉隐喻数据集，按三个难度级别和十个类别组织，每个样本配有两个不同具体程度的提示词。评估采用基于多模态大语言模型（MLLM）的混合框架，包括基于多项选择题（MCQ）的协议（涵盖9,594个问题，评估四个层次的隐喻保真度）和基于维度的评分协议（评估三个感知维度）。",
+      "findings": "对11个代表性T2I模型的广泛评估显示，即使是最强的专有模型在组合结构和跨域映射（隐喻表达的关键方面）上仍存在困难，表明视觉隐喻生成是未来T2I研究的重要前沿方向。"
+    }
+  },
+  {
+    "id": "2609.02349",
+    "title": "GlyphAnchor: Enhancing Visual Text Rendering via Position-Anchored Glyph Priors",
+    "abstract": "Rendering accurate text remains difficult for image generation and editing models, especially when the target contains long, complex, and densely arranged text or rare characters. Existing approaches either improve native text rendering through stronger backbones and data-centric training without explicit glyph priors, or incorporate glyph priors through specialized designs that remain insufficiently accurate and robust under challenging scenarios. We introduce GlyphAnchor, a novel text-rendering enhancement method for both text-to-image and image-editing diffusion transformer models. GlyphAnchor enhances the backbone with lightweight glyph patch conditions whose positions are anchored to the target image through the model's native positional encoding. We train this capability with staged supervised finetuning and further refine it with text-aware post-training to improve robustness. We also introduce InfoTextBench, a benchmark for evaluating text-rich visual text rendering in both generation and editing settings. Experiments across multiple backbones and benchmarks, including long, complex, and densely arranged text and rare character scenarios, show that GlyphAnchor consistently improves text fidelity while preserving overall image quality.",
+    "authors": [
+      "Qiang Xiang",
+      "Shuang Sun",
+      "Binglei Li",
+      "Yibo Chen",
+      "Xu Tang",
+      "Yao Hu",
+      "Junping Zhang"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02349.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02349",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "GlyphAnchor：通过位置锚定的字形先验增强视觉文本渲染",
+      "core_contribution": "提出了一种名为GlyphAnchor的文本渲染增强方法，通过轻量级字形补丁条件与位置锚定机制，显著提升了文本到图像及图像编辑扩散模型在长文本、复杂布局和罕见字符场景下的文本保真度，同时保持图像质量。",
+      "method": "GlyphAnchor在扩散Transformer骨干网络中引入轻量级字形补丁条件，这些补丁的位置通过模型的原生位置编码锚定到目标图像上。训练过程分为两阶段：先进行有监督微调，再通过文本感知的后训练提升鲁棒性。此外，作者构建了InfoTextBench基准，用于评估生成和编辑场景下的文本丰富视觉渲染。",
+      "findings": "在多个骨干网络和基准测试（包括长文本、复杂密集排列文本及罕见字符场景）上，GlyphAnchor一致地提高了文本渲染的准确性，同时保持了整体图像质量，证明了其在挑战性条件下的有效性和鲁棒性。"
+    }
+  }
+]
