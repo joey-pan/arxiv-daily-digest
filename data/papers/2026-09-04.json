@@ -1,0 +1,179 @@
+[
+  {
+    "id": "2609.04034",
+    "title": "Editable Visual Design",
+    "abstract": "While diffusion base models such as GPT-Image-2 and Nano-Banana exhibit remarkable visual expressiveness, their end-to-end generation inherently yields flattened bitmaps with error-prone text, precluding layer-wise post-editing. Conversely, code-based visual generation via Coding Agents provides precise layout control and decoupled layers, yet remains constrained by a lack of global aesthetic intuition and the difficulty of coding complex visual assets. To address this, we propose Editable Visual Design, a new paradigm driven by a Coding Agent. We designate the VLM as the ``creative brain'' for requirement comprehension, task planning, and aesthetic judgment, while utilizing the image generation model as an on-demand ``visual world simulator'' to synthesize standalone visual assets. Operating under an ``imagine first, then act'' closed-loop workflow, the agent generates isolated assets, writes native HTML/CSS, and iteratively refines the design against visual rendering feedback. Furthermore, Agent Design Replay faithfully reproduces the creative and reasoning trajectory akin to that of professional human designers. Ultimately, the system delivers editable artifacts with decoupled layers and real text, enabling users to perform intuitive mouse dragging and layout adjustments on a graphical user interface. Validations on posters, infographics, and other scenarios show that this paradigm successfully achieves both refined aesthetics and production-grade editability.",
+    "authors": [
+      "Junyan Ye",
+      "Wei Liu",
+      "Dongzhi Jiang",
+      "Zichen Wen",
+      "HaoDong Li",
+      "Zhutao Lv",
+      "Jiaxin Lin",
+      "Jinhua Yu",
+      "Jun He",
+      "Zilong Huang",
+      "Rui Chen",
+      "Weijia Li"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04034.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04034",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "可编辑视觉设计",
+      "core_contribution": "提出了一种由编码代理驱动的新范式，结合视觉语言模型和图像生成模型，实现既具有精细美学又具备生产级可编辑性的视觉设计（如海报和信息图）。",
+      "method": "该方法将视觉语言模型作为“创意大脑”，负责需求理解、任务规划和美学判断，而图像生成模型作为“视觉世界模拟器”按需生成独立视觉资产。系统采用“先想象后行动”的闭环流程，代理生成独立资产、编写原生HTML/CSS，并根据视觉渲染反馈迭代优化设计。此外，通过“代理设计回放”机制忠实再现专业设计师的创作和推理轨迹，最终交付具有解耦层和真实文本的可编辑工件，支持用户在图形界面上进行直观的鼠标拖拽和布局调整。",
+      "findings": "在海报、信息图等场景的验证表明，该范式成功实现了精细美学和生产级可编辑性，克服了扩散模型生成扁平位图且文本易错的问题，以及基于代码生成缺乏全局美学直觉和复杂资产编码困难的局限。"
+    }
+  },
+  {
+    "id": "2609.03806",
+    "title": "SVG-Score: Human-Aligned Evaluation of Text-to-SVG Generation",
+    "abstract": "Scalable Vector Graphics (SVG) generation is attracting increasing attention as generative models improve in expressiveness and controllability. Progress, however, is held back by the lack of domain-specific evaluation protocols: current practice relies on metrics designed for natural images, most notably CLIPScore, which was never trained on vector graphics and aligns only partially with human judgment. We introduce \\textbf{\\ours}, a human-aligned evaluation framework for text-to-SVG generation. Through controlled caption and image perturbations, we first show that CLIP-based scores barely react to the errors SVG generators actually make, such as wrong colors, counts, and spatial relations, and that off-the-shelf Vision-Language Model (VLM) judges, while more sensitive, respond unevenly across error types and SVG styles. We then introduce a human-annotated dataset for \\textit{Semantic Alignment}, measuring how faithfully a generated SVG reflects its caption. Building on it, we develop two complementary evaluators: CLIP scorers adapted to vector graphics and then aligned to human preferences, for fast large-scale evaluation, and a VLM judge trained with supervised fine-tuning and reward-shaped reinforcement learning, for more expressive and interpretable assessment. Using both, we benchmark major open-source, commercial, and optimization-based SVG generators on an independent caption set.",
+    "authors": [
+      "Marco Cipriano",
+      "Leonardo Zini",
+      "Alexandra Schild",
+      "Valentin Teutschbein",
+      "Afsana Mimi",
+      "Marcella Cornia",
+      "Lorenzo Baraldi",
+      "Gerard de Melo"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.03806.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.03806",
+    "primary_category": "cs.AI",
+    "score": 85,
+    "summary": {
+      "title_zh": "SVG-Score：面向文本到SVG生成的人类对齐评估",
+      "core_contribution": "提出了首个针对文本到SVG生成任务的人类对齐评估框架SVG-Score，解决了现有基于自然图像的指标（如CLIPScore）无法有效反映SVG生成错误的问题。",
+      "method": "首先通过受控的标题和图像扰动实验，系统分析了CLIPScore和现成VLM评估器对SVG生成错误的敏感性差异。然后构建了带人工标注的语义对齐数据集，并基于此开发了两个互补的评估器：一是针对矢量图形适配并校准到人类偏好的CLIP评分器，用于快速大规模评估；二是通过监督微调和奖励塑形强化学习训练的VLM评判器，用于更表达性和可解释性的评估。",
+      "findings": "CLIPScore对SVG生成中的颜色、数量、空间关系等错误几乎不敏感，而现成VLM虽然更敏感但响应不均匀。所提出的SVG-Score评估器能更好地与人类判断对齐，并成功用于基准测试多个开源、商业及优化型SVG生成器。"
+    }
+  },
+  {
+    "id": "2609.03796",
+    "title": "LLaDA-Image: Building Strong Image Generators with Fully Open Training Recipes",
+    "abstract": "We introduce LLaDA-Image, a unified framework that pairs a 6B Diffusion Transformer (DiT) trained from scratch with a frozen vision-language understanding module built on the LLaDA2.0-Mini diffusion language model backbone. Instead of relying heavily on paired image-text data from the beginning, we first build a strong visual generative prior through image-only pre-training and mid-training. The generation pipeline comprises 220M samples, 98 of which are real images. For efficient and scalable optimization, we use parameter-free RMSNorm throughout the DiT together with the Muon optimizer. The resulting unified model produces highly photorealistic images while accurately following fine-grained editing instructions. We further distill LLaDA-Image into LLaDA-Image-Turbo, enabling fast inference in 2-4 sampling steps. On Qwen-Image-Bench, LLaDA-Image achieves overall scores of 53.53 and 53.38 on the English and Chinese tracks, respectively, setting a new state-of-the-art among open-source models on both tracks. To support further research on capable and efficient generative models, we release our model weights, training code, and detailed recipes.",
+    "authors": [
+      "Chuyan Chen",
+      "Haoxing Chen",
+      "Kun Chen",
+      "Zhenglin Cheng",
+      "Long Cui",
+      "Ruishan Fang",
+      "Zhangxuan Gu",
+      "Zhicheng Huang",
+      "Zhenzhong Lan",
+      "Yuanting Lei",
+      "Haoquan Li",
+      "Jianguo Li",
+      "Rongchuan Li",
+      "Sidu Li",
+      "Tao Lin",
+      "Deyuan Liu",
+      "Jiacheng Liu",
+      "Lin Liu",
+      "Yuxuan Lou",
+      "Zhisheng Lu",
+      "Yuxin Ma",
+      "Shuheng Shen",
+      "Peng Sun",
+      "Chaoyang Wang",
+      "Hongjun Wang",
+      "Xiaomei Wang",
+      "Yongxin Wang",
+      "Chengzhang Wu",
+      "Hongru Wu",
+      "Jun Xie"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.03796.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.03796",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LLaDA-Image：构建具有完全开放训练方案的高性能图像生成器",
+      "core_contribution": "提出LLaDA-Image，一个将6B扩散Transformer与冻结的视觉语言理解模块相结合的统一框架，通过图像仅预训练和中期训练建立强大的视觉生成先验，在Qwen-Image-Bench上达到开源模型的最先进水平，并公开模型权重、训练代码和详细方案。",
+      "method": "采用从零训练的6B DiT，结合基于LLaDA2.0-Mini扩散语言模型骨干的冻结视觉语言理解模块；训练流程包括图像仅预训练和中期训练，共使用220M样本（其中98M为真实图像）；在DiT中使用无参数RMSNorm和Muon优化器以实现高效可扩展优化；通过蒸馏得到LLaDA-Image-Turbo，支持2-4步快速推理。",
+      "findings": "LLaDA-Image在Qwen-Image-Bench英文和中文赛道分别获得53.53和53.38的总分，均创下开源模型的新纪录；生成的图像高度逼真，并能准确遵循细粒度编辑指令；蒸馏后的Turbo版本在2-4步采样下实现快速推理，同时保持高质量输出。"
+    }
+  },
+  {
+    "id": "2609.03109",
+    "title": "SLIDEFORGE: An LLM Agent for Controllable Editing of Slides as Structured Artifacts",
+    "abstract": "Current AI agents compellingly describe slides. However, AI-assisted slide editing requires more than understanding: the output must retain layout, style, component structure, and native editability. Towards, AI-assisted slide editing, existing agents operate on screenshots or weak document representations and often fragment coherent visual units, rasterize editable content, or break layout. In contrast, for controllable slide editing, we introduce an agentic framework, SLIDEFORGE, which builds a Deck State Graph, an executable slide state that links visual decomposition, native pptx object structure, and perceptual organization. By recovering human-referable components while retaining fine-grained editable structure, SLIDEFORGE supports theme-preserving reconstruction through slide-native operations and rendered-state verification. We further introduce an evaluation paradigm for controllable slide transformation that jointly measures component recovery, preservation, restyling consistency, visual quality, and native editability. Experiments show that SLIDEFORGE outperforms direct prompting, screenshot-based agents, and generic code-agent baselines across these dimensions. Code is available at https://github.com/UIUC-MONET/SLIDEFORGE.",
+    "authors": [
+      "Haozhen Zheng",
+      "Fulin Wang",
+      "Tianhu Xiong",
+      "Yingjie Yu",
+      "Shengyi Qian",
+      "Hanchao Yu",
+      "Alex Schwing",
+      "Klara Nahrstedt",
+      "Mingyuan Wu"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.03109.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.03109",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SLIDEFORGE：一种用于将幻灯片作为结构化工件进行可控编辑的LLM智能体",
+      "core_contribution": "提出了一种基于大语言模型（LLM）的智能体框架SLIDEFORGE，通过构建可执行的幻灯片状态图（Deck State Graph），实现了保留布局、样式和原生可编辑性的可控幻灯片编辑，优于现有基于截图或弱文档表示的方法。",
+      "method": "SLIDEFORGE构建了一个Deck State Graph，该图将视觉分解、原生pptx对象结构和感知组织相链接，从而恢复人类可引用的组件，同时保留细粒度的可编辑结构。它通过幻灯片原生操作和渲染状态验证来执行保持主题的重建，并引入了一个评估范式，联合衡量组件恢复、保留、重样式一致性、视觉质量和原生可编辑性。",
+      "findings": "实验表明，SLIDEFORGE在组件恢复、保留、重样式一致性、视觉质量和原生可编辑性等多个维度上，均优于直接提示、基于截图的智能体和通用代码智能体基线。"
+    }
+  },
+  {
+    "id": "2609.02255",
+    "title": "T2LSC-Bench: Benchmarking Localized Semantic Control in Text-to-Image Generation",
+    "abstract": "Recent text-to-image models have become increasingly capable of rendering explicit text, but reliable localized text control requires more than generating the correct string. In applications such as product labeling, signage, and interface design, target text should be rendered within a designated text-bearing region without altering the predefined subject identity or surrounding scene semantics. We refer to violations of this requirement as target-text-associated semantic leakage, in which target-text semantics are expressed through non-textual visual content beyond the designated anchor. Existing visual-text benchmarks primarily evaluate readability, spelling accuracy, and layout, leaving this form of semantic leakage largely unexamined. We introduce T2LSC-Bench, a controlled diagnostic benchmark comprising 50 seed subjects and 1,200 prompt cases per model, yielding 7,160 evaluated images across six models. Its factorized design varies semantic relation, scene openness, prompt mode, and language. A dual-branch protocol combines OCR-VLM text verification with structured VLM semantic judgments to measure Text-at-Anchor Accuracy (TAA), Semantic Subject Preservation (SSP), Semantic Leakage Rate (SLR), and Conditional Semantic Leakage Rate (cSLR). Under stress-test conditions, SLR increases from 1.2% to 18.1% and cSLR from 1.3% to 18.2%, whereas TAA decreases only from 91.4% to 90.9%. Anti-leakage prompting reduces SLR from 16.6% to 8.4% without degrading rendering accuracy. Human validation on 420 images shows strong agreement between automatic and adjudicated annotations. These results show that accurate text rendering does not guarantee local containment of target-text semantics.",
+    "authors": [
+      "Yan Wang",
+      "Xinyi Hou",
+      "Weiguo Lin",
+      "Junjun Si",
+      "Siwei Ma"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02255.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02255",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "T2LSC-Bench：文本到图像生成中局部语义控制的基准测试",
+      "core_contribution": "提出了T2LSC-Bench基准，首次系统评估文本到图像模型在指定区域生成目标文本时是否发生语义泄漏（即目标文本语义通过非文本视觉内容溢出到周围区域），揭示了准确渲染文本并不保证语义局部性。",
+      "method": "构建包含50个种子主体和每模型1200个提示案例的诊断基准，通过因子化设计变化语义关系、场景开放性、提示模式和语言。采用双分支协议，结合OCR-VLM文本验证和结构化VLM语义判断，计算四个指标：文本锚定准确率(TAA)、语义主体保持(SSP)、语义泄漏率(SLR)和条件语义泄漏率(cSLR)。",
+      "findings": "在压力测试条件下，SLR从1.2%升至18.1%，cSLR从1.3%升至18.2%，而TAA仅从91.4%微降至90.9%；抗泄漏提示可将SLR从16.6%降至8.4%且不损害渲染准确性；人工验证420张图像显示自动与人工标注高度一致。结果表明，准确的文本渲染并不能保证目标文本语义的局部包含。"
+    }
+  }
+]
