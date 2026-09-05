@@ -1,0 +1,136 @@
+[
+  {
+    "id": "2609.02088",
+    "title": "Rendering-in-the-Loop: An Execution-Driven Agent for Interactive Web Development",
+    "abstract": "Multimodal large language models have achieved remarkable progress in front-end web development, generating interactive webpages from multimodal references such as screenshots and interaction videos. However, existing work largely emphasizes visual metrics such as aesthetics and layout similarity, while overlooking the more critical validation of interactive functionality. We present RILA, an execution-driven agent that puts browser rendering in the loop, iteratively editing generated code from runtime interaction feedback. RILA introduces an Action Interaction Verification (AIV) module that replays the reference interaction trajectory on the generated webpage to collect grounded execution-aware observations, and an Execution-aware Rendering Score (ERS) that jointly measures interaction correctness and visual fidelity to guide iterative optimization. We further build an execution-verified data synthesis pipeline that produces diverse, high-quality training data, offering gains complementary to inference-time optimization. On IWR-Bench, RILA consistently improves both interaction and visual fidelity across foundation models. Notably, with our training pipeline, RILA lifts the compact Qwen3.5-9B backbone from 40.40% to 57.52%, surpassing far larger one-shot generators, including the 1T-parameter Kimi-K2.6 (55.61%) and the proprietary GPT-5.5 (55.74%).",
+    "authors": [
+      "Yilong Guo",
+      "Hanqi Chen",
+      "Zixiao Ye",
+      "Guanzhong Wang",
+      "Chen Yu",
+      "Zeyu Chen"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02088.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02088",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "渲染在环：一种面向交互式网页开发的执行驱动智能体",
+      "core_contribution": "提出RILA，一种执行驱动的智能体，通过将浏览器渲染纳入循环，利用运行时交互反馈迭代优化生成的网页代码，同时提升交互正确性和视觉保真度，并构建执行验证的数据合成流程以增强模型训练。",
+      "method": "RILA引入动作交互验证（AIV）模块，在生成的网页上重放参考交互轨迹，收集基于执行的观察数据；同时设计执行感知渲染评分（ERS），联合衡量交互正确性和视觉相似度，以指导代码的迭代优化。此外，构建执行验证的数据合成管道，生成多样化高质量训练数据，与推理时优化互补。",
+      "findings": "在IWR-Bench基准上，RILA一致提升了多种基础模型的交互和视觉保真度。通过训练流程，RILA将紧凑的Qwen3.5-9B骨干模型从40.40%提升至57.52%，超越了远大于其的Kimi-K2.6（1T参数，55.61%）和专有GPT-5.5（55.74%）等单次生成模型。"
+    }
+  },
+  {
+    "id": "2609.02036",
+    "title": "SelfLift: Accelerating Few-Step Diffusion via Self-Recovering Resolution Transition",
+    "abstract": "Few-step diffusion models substantially compress temporal computation, making the spatial cost of each model evaluation an increasingly dominant source of inference latency. Progressive-resolution inference reduces this cost by performing early denoising at low resolution and reserving high-resolution computation for refinement. However, existing methods typically lift intermediate latents directly and rely on subsequent steps to absorb the induced distribution mismatch. In the few-step regime, the limited recovery budget leaves these errors as visible artifacts, constraining how late the transition can occur and, consequently, how efficiently it can be performed. We introduce SelfLift, a self-recovering progressive-resolution framework that derives both transition-repair signals and trajectory-aligned supervision from the generative model itself. SelfLift-zero proposes a training-free Artifact-Aware Consistency Lift, using disagreement between direct latent lifting and pixel-VAE re-encoding as both a localized artifact-risk signal and a model-native correction direction. It enables reliable late transitions without external super-resolution, extra denoiser evaluations, or sampling-schedule modifications. Building on this robust transition, SelfLift-rich performs On-Policy Self Recovery on student-visited states, transferring dense high-resolution guidance from an internal self-teacher while remaining aligned with the altered progressive-resolution dynamics. Across FLUX.2-Klein and Z-Image-Turbo, SelfLift reduces end-to-end latency by 41.5% and 44.1%, respectively. Combined with timestep distillation, it delivers overall speedups of 29.61x and 19.21x over the corresponding 50-step models while preserving competitive generation quality, establishing a stronger speed-quality frontier for few-step diffusion.",
+    "authors": [
+      "Tingyan Wen",
+      "Chenqian Yan",
+      "Xurui Peng",
+      "Xiazhang Fang",
+      "Shuai Wang",
+      "Xueqian Wang",
+      "Songwei Liu"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02036.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02036",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SelfLift：通过自恢复分辨率转换加速少步扩散模型",
+      "core_contribution": "提出了一种自恢复的渐进分辨率推理框架SelfLift，解决了少步扩散模型中直接潜变量提升导致的分辨率转换伪影问题，在不牺牲生成质量的前提下显著降低端到端推理延迟。",
+      "method": "SelfLift包含两个变体：SelfLift-zero采用无训练的伪影感知一致性提升方法，利用直接潜变量提升与像素-VAE重编码之间的差异作为局部伪影风险信号和模型原生的修正方向，实现可靠的后期分辨率转换；SelfLift-rich则在此基础上进行策略内自恢复训练，从内部自教师模型传递密集高分辨率指导，并保持与渐进分辨率动态的一致性。",
+      "findings": "在FLUX.2-Klein和Z-Image-Turbo上，SelfLift分别将端到端延迟降低41.5%和44.1%；结合时间步蒸馏，相比对应的50步模型实现了29.61倍和19.21倍的总体加速，同时保持了有竞争力的生成质量，建立了少步扩散模型更强的速度-质量前沿。"
+    }
+  },
+  {
+    "id": "2609.04151",
+    "title": "Persistent Identity Preservation in Generative Image Models: A Benchmark and Evaluation System",
+    "abstract": "Generative image models can now produce high-quality images, follow complex instructions, and support precise edits, but they still struggle to preserve who or what is being depicted. When generating or editing images of a specific subject, identity may drift as the pose, expression, appearance, viewpoint, or surrounding scene changes. Existing subject-driven methods make fundamentally different choices about where identity is represented: through the input context (GPT-Image-2, NB2), as trainable subject-specific model parameters (LoRA), or as a persistent identity layer (PHOTA IDENTITY) reusable across generations and edits. We systematically benchmark these paradigms across subject-driven generation, editing, restoration, and multi-subject settings, with tasks designed to increasingly stress identity preservation. Our results show that identity preservation remains a distinct limitation of current generative foundation models: strong image quality and instruction following do not necessarily imply strong identity fidelity, and identity degradation becomes more pronounced under iterative edits, small subject scales, severe image degradation, and multi-subject composition. Persistent identity substantially reduces this degradation across generation, editing, and restoration, consistently improving identity preservation when applied to different foundation models while maintaining comparable instruction adherence and perceptual image quality. These results suggest that identity does not simply emerge from increasingly capable generative models, but can instead be represented as persistent subject knowledge that is composed independently with the underlying generative model.",
+    "authors": [
+      "Mengwei Ren",
+      "Xuaner Zhang",
+      "Zhihao Xia"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04151.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04151",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "生成图像模型中的持久身份保持：基准测试与评估系统",
+      "core_contribution": "本文系统性地比较了三种身份表示范式（输入上下文、可训练参数、持久身份层）在生成、编辑、修复和多主体场景下的身份保持能力，并提出了一个压力测试基准，揭示了当前生成模型在身份保真度上的不足，同时证明了持久身份表示能有效提升跨任务的稳定性。",
+      "method": "作者设计了一个包含生成、编辑、修复和多主体设置的基准测试，任务难度逐步增加以强化身份保持的挑战。他们对比了三种方法：基于输入上下文的模型（如GPT-Image-2、NB2）、基于LoRA的可训练参数方法，以及基于持久身份层（PHOTA IDENTITY）的方法。评估指标包括身份保真度、指令遵循度和感知图像质量，并在不同基础模型上测试了持久身份层的泛化性。",
+      "findings": "研究发现，身份保持是当前生成基础模型的独立短板，图像质量和指令遵循能力并不等同于身份保真度。身份退化在迭代编辑、小主体尺度、严重图像退化和多主体组合下更为明显。持久身份表示（PHOTA IDENTITY）在生成、编辑和修复中显著减少了身份退化，且在不同基础模型上均能提升身份保持，同时不损害指令遵循和感知质量，表明身份可作为独立于生成模型的持久知识进行组合。"
+    }
+  },
+  {
+    "id": "2609.03688",
+    "title": "ToPO: Token-Conditioned Preference Routing for Attention-Based Latent Diffusion Models",
+    "abstract": "Pairwise preference labels rank complete images, yet Diffusion-DPO applies their effect over many spatial and denoising-time coordinates. For attention-based, noise-prediction latent diffusion, ToPO (Token-Oriented Preference Optimization) constructs a per-minibatch, detached, separable spatial-temporal route from branchwise squared-residual contrast in a frozen reference denoiser. Preferred-branch cross-attention uses content tokens to modulate the spatial factor, and an auxiliary pixel-midpoint ordering term is added without local labels or a learned reward model. In matched three-seed retrainings with a shared update schedule, ToPO has higher endpoint estimates than Diffusion-DPO on all five reported SD-1.5 metrics and on HPSv2, ImageReward, and CLIP for SDXL. It also receives larger raw win shares in an aggregate blind SDXL A/B study. These findings are scoped to the reported equal-update U-Net protocols rather than an equal-compute comparison.",
+    "authors": [
+      "Juntao Xu",
+      "Shihong Li",
+      "Hoi Fan Au",
+      "Ning Zhu"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.03688.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.03688",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "ToPO：基于注意力机制的潜在扩散模型中的令牌条件偏好路由",
+      "core_contribution": "提出了一种新的偏好优化方法ToPO，通过令牌条件路由机制，在无需局部标签或奖励模型的情况下，显著提升了扩散模型在图像生成质量上的表现，优于现有Diffusion-DPO方法。",
+      "method": "ToPO基于注意力机制和噪声预测的潜在扩散模型，通过构建每个小批量的分离且可微的空间-时间路由，利用冻结参考去噪器中的分支平方残差对比。在优选分支中，交叉注意力使用内容令牌调制空间因子，并添加辅助像素中点排序项，无需局部标签或学习奖励模型。",
+      "findings": "在匹配的三种子重训练和共享更新计划下，ToPO在SD-1.5的所有五个报告指标以及SDXL的HPSv2、ImageReward和CLIP上均获得比Diffusion-DPO更高的端点估计值，并在聚合盲测SDXL A/B研究中获得更大的原始胜率。"
+    }
+  },
+  {
+    "id": "2609.02864",
+    "title": "Thinking in Pictures: A Systematic Benchmark for Reasoning-driven Image Generation",
+    "abstract": "Recent advancements in unified generative models (UGMs) and world simulators have achieved unprecedented results in visual perception and synthesis. However, these models primarily rely on surface-level event alignment, leaving the capacity for high-level visual reasoning underexplored. True visual generative intelligence demands \"Reasoning-to-Generation\", an ability to infer latent rules from visual inputs and manifest solutions through precise, logically constrained visual outcomes. We introduce RIG-BENCH, a novel comprehensive benchmark that systematically evaluates Reasoning-driven Image Generation (RIG) across four cognitively demanding domains: Concept-based, Transformation-based, Pattern & Structure, and Scenario-based. Featuring 2000 curated samples, RIG-BENCH serves as a rigorous stress test for RIG. Our extensive evaluations of state-of-the-art UGMs and image/video generation models reveal a significant reasoning-generation gap, wherein models frequently produce locally plausible but globally illogical outputs. RIG-BENCH provides a vital diagnostic framework to guide the development of next-generation, logically grounded UGMs and world simulators.",
+    "authors": [
+      "Yutong Liu",
+      "Nan Huang",
+      "Xu Cao",
+      "James M. Rehg"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02864.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02864",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "图像中的思考：面向推理驱动图像生成的系统性基准",
+      "core_contribution": "本文提出了RIG-BENCH，一个系统评估推理驱动图像生成（RIG）能力的综合基准，填补了现有统一生成模型在高级视觉推理评估上的空白。",
+      "method": "RIG-BENCH包含2000个精选样本，覆盖四个认知要求高的领域：基于概念、基于变换、模式与结构、以及基于场景的推理。通过设计这些任务，基准要求模型从视觉输入中推断潜在规则，并生成符合逻辑约束的图像，从而对模型的推理到生成能力进行压力测试。",
+      "findings": "对最先进的统一生成模型和图像/视频生成模型的广泛评估揭示了显著的推理-生成差距：模型经常产生局部合理但全局不合逻辑的输出。RIG-BENCH为开发下一代逻辑严谨的生成模型提供了关键诊断框架。"
+    }
+  }
+]
