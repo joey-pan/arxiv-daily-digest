@@ -1,0 +1,140 @@
+[
+  {
+    "id": "2609.02504",
+    "title": "SR-Edit: Region-Aware Image Editing via Self-Refinement",
+    "abstract": "With the recent rapid progress in generative models, image editing has made remarkable advances, yet achieving faithful edits that precisely modify only the target regions while strictly preserving all other regions remains challenging. Since externally provided region annotations are often difficult to obtain in practice, a growing body of work seeks to improve preservation by automatically inferring edit and non-edit regions, and then enforcing consistency on the latter. However, these approaches still suffer from inaccurate region estimation and heuristic correction strategies that distort the native inference process, making methods designed for fidelity themselves a new source of artifacts. We propose SR-Edit, an image editing framework that overcomes these issues via iterative self-refinement. Specifically, at each iteration, SR-Edit first (i) extracts progressively precise and self-consistent region separation from the model's own predictions by lightweight post-processing, and then (ii) enforces preservation in non-edit areas through correction updates that remain aligned with the original sampling dynamics. Extensive experiments demonstrate that SR-Edit achieves superior preservation and overall image quality compared to existing editing techniques.",
+    "authors": [
+      "Andong Wang",
+      "Zehua Chen",
+      "Yuxuan Jiang",
+      "Jun Zhu"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02504.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02504",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "SR-Edit：通过自我精炼实现区域感知的图像编辑",
+      "core_contribution": "提出了一种基于迭代自我精炼的图像编辑框架SR-Edit，能够在不依赖外部区域标注的情况下，自动推断并精确编辑目标区域，同时严格保持非编辑区域的一致性，解决了现有方法因区域估计不准确和启发式校正策略导致的伪影问题。",
+      "method": "SR-Edit在每次迭代中执行两个步骤：首先，通过轻量级后处理从模型自身的预测中提取逐步精确且自洽的区域分离（区分编辑区和非编辑区）；然后，通过保持与原始采样动态一致的校正更新，强制保留非编辑区域的内容。该过程迭代进行，逐步精炼区域估计和编辑结果。",
+      "findings": "大量实验表明，与现有编辑技术相比，SR-Edit在保持非编辑区域不变性和整体图像质量方面取得了更优的性能，有效减少了因编辑过程引入的伪影，实现了更忠实和高质量的图像编辑。"
+    }
+  },
+  {
+    "id": "2609.01997",
+    "title": "Linear Fusion MultiDiffusion for Fast Training-Free Spherical Panorama Generation",
+    "abstract": "We propose LF-MultiDiffusion, a training-free panorama generation method that extends MultiDiffusion to support linear projections between target and reference image spaces. Our key idea is to reformulate latent aggregation as a regularized least-squares problem and solve it efficiently with a Krylov-based iterative solver inside the denoising loop. This formulation enables denser and more natural mappings than prior training-free methods, yielding more stable generation with far fewer perspective views. As a result, LF-MultiDiffusion reduces the number of image generator evaluations during denoising and significantly improves inference efficiency. Experiments show that LF-MultiDiffusion achieves better visual quality, text alignment, and panoramic consistency than the strongest training-free baseline, while providing a 15.36$\\times$ speedup. Our project page is available at: https://ahykw.github.io/lfmd.",
+    "authors": [
+      "Akio Hayakawa",
+      "Yusuke Mukuta",
+      "Tatsuya Harada"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01997.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01997",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "线性融合多扩散用于快速免训练的球面全景图生成",
+      "core_contribution": "提出LF-MultiDiffusion，一种无需训练的球面全景图生成方法，通过线性投影和高效求解器显著提升生成速度与质量，相比最强免训练基线实现15.36倍加速。",
+      "method": "将MultiDiffusion扩展到支持目标图像空间与参考图像空间之间的线性投影，并将潜在特征聚合重新表述为正则化最小二乘问题，在去噪循环内使用基于Krylov的迭代求解器高效求解。该公式允许比先前免训练方法更密集、更自然的映射，从而减少所需透视视图数量，降低生成过程中的图像生成器评估次数。",
+      "findings": "实验表明，LF-MultiDiffusion在视觉质量、文本对齐和全景一致性上均优于最强免训练基线，同时提供15.36倍的推理速度提升，且生成过程更稳定，所需透视视图更少。"
+    }
+  },
+  {
+    "id": "2609.01479",
+    "title": "CameraEditor: Camera-Controlled Image Editing via Video-Prior Sequential Modeling",
+    "abstract": "Beyond semantic content, camera parameters play a pivotal role in dictating the geometric perspective and appearance of any given image. While recent image editing models excel at semantic and stylistic manipulation, they struggle with explicit camera parameter control. When handling large perspective shifts, instruction-driven models face a dilemma: they either suffer from structural tearing or generate conservative outputs that ignore geometric instructions. To address this, we introduce CameraEditor, a framework that reformulates camera-controlled editing from a spatial problem into a temporal sequence prediction task. By leveraging the temporal coherence of video diffusion models, our approach integrates an explicit geometric perception module with a dynamic reference routing mechanism. This allows us to construct geometrically rigorous visual reference pairs via dynamic panorama cropping, overcoming the ambiguity of text-based instructions. Furthermore, CameraEditor strategically inserts intermediate transition frames to decompose large perspective shifts, providing a robust temporal buffer that preserves content identity and spatial coherence. We construct a training dataset of 5,760 instances. As an independent contribution, we introduce CamEditor-Bench, a model-agnostic evaluation suite of 462 test cases. Extensive experiments demonstrate that CameraEditor achieves state-of-the-art camera control precision and source identity preservation, outperforming existing methods.",
+    "authors": [
+      "Xin Shen",
+      "Chengyou Jia",
+      "Keshuo Xing",
+      "Zifeng Zhu",
+      "Changliang Xia",
+      "Bowen Ping",
+      "Zhuohang Dang",
+      "Hangwei Qian",
+      "Minnan Luo"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01479.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01479",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "CameraEditor：基于视频先验序列建模的相机控制图像编辑",
+      "core_contribution": "提出CameraEditor框架，将相机参数控制的图像编辑问题转化为时间序列预测任务，利用视频扩散模型的时间一致性实现精确的相机视角控制，同时保持源图像的内容身份和空间连贯性。",
+      "method": "方法包括三个关键组件：一是显式几何感知模块，用于理解相机参数变化；二是动态参考路由机制，通过动态全景裁剪构建几何上严格的视觉参考对，避免文本指令的模糊性；三是策略性地插入中间过渡帧，将大的视角变化分解为多个小步骤，提供时间缓冲以保持内容身份和空间一致性。训练数据包含5760个实例。",
+      "findings": "在自建的CamEditor-Bench评估套件（462个测试案例）上，CameraEditor在相机控制精度和源身份保持方面均达到最先进水平，优于现有方法，有效解决了大视角变化下的结构撕裂或忽略几何指令的问题。"
+    }
+  },
+  {
+    "id": "2609.01433",
+    "title": "Gaussian Core LoRA: Distribution-Aware Dynamic Adaptation for Broad Concept Erasure",
+    "abstract": "Concept erasure aims to suppress unsafe, privacy-sensitive, or undesirable generations in text-to-image diffusion models while preserving benign semantics, visual quality, and deployment efficiency. Existing adapter-based methods, such as Low-Rank Adaptation (LoRA), typically freeze the diffusion backbone and learn lightweight parameter updates to steer generation away from target semantics. However, these methods usually assign a static semantic erasure direction to each target concept. This assumption is overly coarse for broad and complex target concepts, since a concept often contains multiple latent semantic prototypes involving different objects, scenes, or relations, and requires different local erasure directions. A single LoRA update averages these heterogeneous erasure demands, leading to under-erasure on difficult prototypes and over-editing of nearby benign semantics. To address this limitation, we propose Gaussian Core LoRA, a distribution-aware low-rank adaptation framework. It fits a Gaussian mixture model in the prompt feature space to estimate latent semantic prototypes within the target concept. During inference, each input prompt is projected into this feature space to compute its Gaussian posterior responsibilities, which condition the core generator to produce a prompt-specific, norm-bounded residual reconfiguration of the shared LoRA rank space. This enables prototype-adaptive erasure with a single lightweight adapter. Compared with the strongest baseline on each metric, Gaussian Core LoRA reduces average Attack Success Rate (ASR) by 7.95%, lowers COCO Fr'echet Inception Distance (FID) by 14.72%, and improves CLIP Score by 4.98%. Further experiments show robustness to adversarial prompts, scalability to multi-identity and multi-style erasure, and compatibility with SDXL and FLUX.",
+    "authors": [
+      "Qinghui Gong",
+      "Xunlei Chen",
+      "Yu-Xuan Zhang",
+      "Hua Meng",
+      "Zhengchun Zhou"
+    ],
+    "published": "2026-09-01",
+    "updated": "2026-09-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.01433.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.01433",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "高斯核心LoRA：面向广泛概念擦除的分布感知动态适配",
+      "core_contribution": "提出一种分布感知的低秩适配框架Gaussian Core LoRA，通过高斯混合模型估计目标概念中的潜在语义原型，并为每个提示生成原型自适应的动态LoRA残差重构，从而在单一轻量适配器下实现广泛概念的精准擦除，同时减少对良性语义的过度编辑。",
+      "method": "该方法首先在提示特征空间中拟合高斯混合模型，以识别目标概念内的多个潜在语义原型。在推理时，将输入提示投影到该特征空间，计算其对各高斯分量的后验责任度，并以此条件化核心生成器，产生提示特定的、范数有界的LoRA秩空间残差重构。这样，每个提示都能获得针对其所属原型的定制擦除方向，而非使用静态的统一擦除方向。",
+      "findings": "与各指标上的最强基线相比，Gaussian Core LoRA将平均攻击成功率（ASR）降低7.95%，COCO Fréchet Inception Distance（FID）降低14.72%，CLIP分数提高4.98%。此外，实验表明该方法对对抗性提示具有鲁棒性，可扩展到多身份和多风格擦除，并兼容SDXL和FLUX等模型。"
+    }
+  },
+  {
+    "id": "2609.02107",
+    "title": "A Unified Rate-Distortion Perspective on Vector, Product, and Scalar Quantization",
+    "abstract": "Discrete visual tokenization, predominantly driven by vector, scalar, and product quantization, lacks a unified conceptual framework for understanding quantization tradeoffs. In this paper, we propose a unified rate--distortion perspective on modern discrete visual tokenization. By viewing quantization as lossy compression, we characterize the nominal fixed-length coding rate through token count and codebook size, and quantization error as the distortion. Within this framework, we resolve three central questions. First, we theoretically and empirically show that minimizing distortion, rather than maximizing codebook utilization, is the primary intrinsic objective for reconstruction fidelity, with a direct connection to the STE-induced gradient discrepancy. Second, we establish two critical fairness conditions for intrinsic quantization comparison: controlling latent feature statistics and enforcing identical coding rates. Third, under these conditions, we recover the VQ--PQ--SQ distortion hierarchy in modern visual tokenization and show empirically that modern VQ methods achieve the lowest distortion. This work provides a foundational rate--distortion reframing of modern discrete visual tokenization, resolves ambiguities in quantizer evaluation, and provides a controlled framework for isolating intrinsic quantization effectiveness under fixed-rate constraints.",
+    "authors": [
+      "Xianghong Fang",
+      "Wenlong Mou",
+      "Yuan Yuan",
+      "Dehan Kong",
+      "Tim G. J. Rudner"
+    ],
+    "published": "2026-09-02",
+    "updated": "2026-09-02",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.02107.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.02107",
+    "primary_category": "cs.LG",
+    "score": 60,
+    "summary": {
+      "title_zh": "向量量化、乘积量化与标量量化的统一率失真视角",
+      "core_contribution": "本文提出了一个统一的率失真框架来理解现代离散视觉标记化中的量化权衡，解决了量化器评估中的模糊性，并揭示了量化内在目标与公平比较条件。",
+      "method": "将量化视为有损压缩，以标记数和码本大小定义名义固定长度编码率，以量化误差作为失真度量。通过理论分析和实验验证，在控制潜在特征统计和编码率一致的条件下，比较不同量化方法的失真表现，并建立VQ-PQ-SQ的失真层级。",
+      "findings": "最小化失真（而非最大化码本利用率）是重建保真度的主要内在目标，且与STE梯度差异直接相关；公平比较需控制潜在特征统计和编码率；现代VQ方法在相同条件下取得最低失真，验证了VQ-PQ-SQ的失真层级。"
+    }
+  }
+]
