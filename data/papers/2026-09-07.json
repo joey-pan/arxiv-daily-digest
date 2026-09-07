@@ -1,0 +1,138 @@
+[
+  {
+    "id": "2609.05234",
+    "title": "Measured Sliders: Learning Continuous Controls from Differentiable Image Measurements",
+    "abstract": "Continuous sliders are useful only when coefficient changes produce predictable image changes. Yet most diffusion sliders derive their axes from text or learned representations, leaving their scales disconnected from observable image properties. Consequently, we cannot tell in advance which attributes are learnable, compare control strengths directly, or anticipate interference when multiple controls are combined. We propose Measured Sliders, a framework that defines continuous controls through closed-form differentiable image measurements. A common measurement space unifies the pipeline. Before training, an observability test identifies usable supervision. During training, a measurement-guided objective learns target movement while suppressing non-target changes. After training, decoded calibration expresses controls in comparable units of realized image change. Multiple LoRA branches are stored in one checkpoint and composed without training on joint activations. Across SDXL and FLUX.1-dev, the resulting controls are ordered, selective, and composable. On 553 prompts, lighting direction reaches rho = 0.995 and 98.9% monotone sweeps. A five-attribute checkpoint achieves average selectivity 2.59, compared with 1.50 for the strongest baseline, and preserves every requested direction in 96.7% of pair and 86.1% of triple compositions. The observability test also separates every subsequently successful measurement from the failed candidate. Overall, image-space measurement provides a common basis for learning, diagnosing, calibrating, and composing continuous generative controls.",
+    "authors": [
+      "Yijia Chen",
+      "Boyu Wei",
+      "Xuanhua Yin"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.05234.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.05234",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "可测量滑块：从可微图像测量中学习连续控制",
+      "core_contribution": "提出了一种名为“可测量滑块”的框架，通过闭式可微图像测量来定义连续生成控制，使控制轴与可观察图像属性直接关联，从而支持可学习性预判、控制强度比较和组合干扰预测。",
+      "method": "该框架首先构建统一的测量空间，并在训练前通过可观测性测试筛选可用的监督信号；训练时采用测量引导的目标函数，在推动目标属性变化的同时抑制非目标属性的改变；训练后通过解码校准将控制参数映射为实际图像变化的可比单位。多个LoRA分支存储在同一检查点中，无需联合激活训练即可组合使用。",
+      "findings": "在SDXL和FLUX.1-dev上，该方法生成的控制具有有序性、选择性和可组合性。在553个提示词上，光照方向控制的斯皮尔曼相关系数达0.995，且98.9%的扫描呈单调变化；五属性检查点的平均选择性为2.59，远超最强基线的1.50，并在96.7%的双属性组合和86.1%的三属性组合中保持了所有请求方向。可观测性测试能有效区分后续成功的测量与失败的候选，表明图像空间测量为连续生成控制的学习、诊断、校准和组合提供了统一基础。"
+    }
+  },
+  {
+    "id": "2609.05171",
+    "title": "WeAgent-MMGenEdit: A Full-Stack Recipe for Multimodal Agentic Image Generation and Editing",
+    "abstract": "Image generation and editing models have advanced rapidly, yet remain unreliable when prompts require external world knowledge. Bounded and long-tail parametric knowledge prevents direct or reason-then-generate approaches from recovering the required facts and visual appearances. Existing agentic generation and editing methods mitigate this limitation with retrieval tools, yet remain constrained by insufficient visual verification, overloaded policy models, and weak integration of retrieved textual and visual evidence. To address these limitations, we present WeAgent-MMGenEdit, a full-stack recipe including a multimodal harness, a scalable data construction pipeline, a comprehensive benchmark, and post-training methods for the agent policy and image backend. We first introduce WeAgent-Harness, a multimodal runtime with persistent evidence management and dedicated verification and integration tools that organize retrieved multimodal evidence into a dense carrier. Upon this, we develop a scalable pipeline for prompt synthesis and agentic trajectory collection, yielding 23K supervised trajectories and 14.7K RL tasks with three-layer verifiable checklists. We further introduce WeBench-MMGenEdit, a bilingual benchmark covering both knowledge-intensive image generation and multi-image editing. Finally, a two-sided post-training recipe based on SFT and RL improves the agent policy and image backend. Together, WeAgent-MMGenEdit enables a 30B-total/3B-active policy to outperform similarly sized policy models and approach the performance of a 1T-parameter agent.",
+    "authors": [
+      "Hui Zhang",
+      "Zongkai Liu",
+      "Liqiang Niu",
+      "Juntao Liu",
+      "Han Li",
+      "Zhen Cao",
+      "Wenchao Chen",
+      "Chengduo Zhao",
+      "Fandong Meng"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.05171.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.05171",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "WeAgent-MMGenEdit：多模态智能体图像生成与编辑的全栈方案",
+      "core_contribution": "提出一个全栈式多模态智能体图像生成与编辑框架，通过引入专用验证与整合工具、可扩展数据构建流程及后训练方法，解决了现有方法在外部知识依赖、视觉验证不足和策略模型过载等问题，显著提升了智能体在知识密集型图像生成和多图编辑任务上的性能。",
+      "method": "该方法包括四个核心组件：首先，构建多模态运行时WeAgent-Harness，具备持久证据管理和专用验证与整合工具，将检索到的多模态证据组织成密集载体；其次，开发可扩展的提示合成与轨迹收集流程，生成23K监督轨迹和14.7K强化学习任务，并附带三层可验证清单；再次，引入双语基准WeBench-MMGenEdit，覆盖知识密集型图像生成和多图编辑；最后，采用基于SFT和RL的双侧后训练方法，同时优化智能体策略和图像后端模型。",
+      "findings": "实验表明，该框架使一个总参数30B（激活参数3B）的策略模型在性能上超越同规模策略模型，并接近1T参数智能体的表现，验证了全栈方案在提升知识密集型图像生成与编辑任务中的有效性。"
+    }
+  },
+  {
+    "id": "2609.04976",
+    "title": "RefDiT: Local Attribute Guidance in Reference-Based Image Generation",
+    "abstract": "Personalization models generate new images guided by a few subject references, while style transfer methods aim to produce images aligned with a global style derived from a reference image. Recent approaches perform well when the reference image contains a single object, effectively capturing a global style that encompasses all implicit attributes. However, when applied to complex real-world scenes containing multiple objects with distinct attribute characteristics, these methods, due to their global-level guidance, fail to localize relevant elements in the reference image. The global guidance restricts their ability to generate new images based on the local attributes in the reference image. Moreover, existing methods typically employ a single identifier token to capture all details from the reference, resulting in a lack of individual, attribute-level control. Motivated by these limitations, we propose RefDiT, a novel framework for reference-guided image generation. RefDiT takes as input a reference image, a text prompt, and an optional user-provided guidance context. RefDiT employs local region guidance using the attributes of local elements. It constructs an attribute-aware conditioning signal from the reference image by performing attribute-level decomposition of the identifier token and performs context adjustment in the inference prompt to train low-rank adapter (LoRA) blocks of a diffusion transformer (DiT)-based generative model. RefDiT learns the correspondence between identifier tokens and local regions in the reference image, enabling more effective local guidance.",
+    "authors": [
+      "Rameshwar Mishra",
+      "Srikrishna Karanam",
+      "A V Subramanyam"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04976.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04976",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "RefDiT：基于参考图像生成中的局部属性引导",
+      "core_contribution": "提出RefDiT框架，解决现有参考图像生成方法在复杂场景中无法对局部属性进行精确引导的问题，通过属性级分解和局部区域引导实现细粒度的个性化生成。",
+      "method": "RefDiT采用扩散变换器（DiT）作为基础生成模型，输入参考图像、文本提示和可选的用户引导上下文。首先，对参考图像中的标识符令牌进行属性级分解，构建属性感知的条件信号；其次，在推理提示中调整上下文，训练低秩适配器（LoRA）块，以学习标识符令牌与参考图像局部区域之间的对应关系，从而实现局部区域引导。",
+      "findings": "实验表明，RefDiT在包含多个不同属性对象的复杂真实场景中，能够有效定位参考图像中的相关局部元素，并基于这些局部属性生成新图像，相比现有全局引导方法，提供了更精细的属性级控制，提升了生成图像的准确性和灵活性。"
+    }
+  },
+  {
+    "id": "2609.04649",
+    "title": "ReaDiT Guidance: Control for Image and Video Generation using Diffusion Transformer Features",
+    "abstract": "We present DiT Readout (ReaDiT) Guidance, a lightweight framework for controlling generation with Diffusion Transformer (DiT) models via their internal feature representations. ReaDiT Guidance uses features from a single DiT block to steer the generative process according to spatial targets - like depth, pose, or edge maps - provided at test time. Furthermore, since modern text-to-video models are largely built on DiT backbones, ReaDiT Guidance naturally extends to video generation, enabling camera and motion control. Experimental results demonstrate that our approach achieves competitive or improved results compared to existing feature-based and off-the-shelf adapter-based approaches while requiring fewer parameters.",
+    "authors": [
+      "Jay Mahajan",
+      "Chang Liu",
+      "Rauf Makharov",
+      "Viraj Shah",
+      "Alexander Schwing",
+      "Svetlana Lazebnik"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04649.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04649",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ReaDiT引导：利用扩散Transformer特征进行图像与视频生成的控制",
+      "core_contribution": "提出了一种轻量级框架ReaDiT Guidance，通过利用扩散Transformer（DiT）模型的内部特征表示来控制生成过程，支持空间目标（如深度、姿态或边缘图）以及视频中的相机和运动控制，且参数需求更少。",
+      "method": "该方法从单个DiT块中提取特征，并利用这些特征在测试时根据提供的空间目标（如深度图、姿态图或边缘图）来引导生成过程。由于现代文本到视频模型大多基于DiT骨干网络，该方法自然扩展至视频生成，通过类似的特征引导实现相机和运动控制。整个框架设计为轻量级，无需额外训练大量参数。",
+      "findings": "实验结果表明，与现有的基于特征的方法和现成的基于适配器的方法相比，ReaDiT Guidance在图像和视频生成控制任务上取得了具有竞争力或更优的结果，同时所需参数更少，验证了其高效性和有效性。"
+    }
+  },
+  {
+    "id": "2609.04646",
+    "title": "Importance-Aware Low-Rank Distillation of Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) have emerged as a dominant architecture for high-quality text-to-image generation, yet their scale poses challenges for efficient deployment. While truncated singular value decomposition (SVD) is a principled tool for parameter reduction, evidence from large language models (LLMs) suggests that naive low-rank approximation can cause catastrophic failure. In contrast, we find that truncated SVD in DiTs produces smooth degradation even under substantial global compression, with redundancy distributed across projection matrices throughout the whole network rather than concentrated in a few transformer blocks. Building on these insights, we introduce SVDtrunc, a two-step block-level compression scheme, first allocating ranks across blocks and compressing the least important ones via truncated SVD under a global parameter budget, and then fine-tuning all blocks with modular knowledge distillation and a rectified-flow objective. We apply SVDtrunc to FLUX.dev across compression levels ranging from 40-90% of the original parameter count. Across three benchmarks, GenEval, HPSv2, and DPG, we outperform all competing approaches. Notably, and in contrast to prior work, we retain near-full performance at 68% and remain competitive even at 57% of the original parameter budget. Furthermore, we show that SVDtrunc complements step distillation and achieves strong results even without fine-tuning, positioning it as a practical continuation of efficiency improvements beyond diffusion step reduction for large-scale generative models. Project page: https://vislearn.github.io/SVDtrunc/",
+    "authors": [
+      "Denis Zavadski",
+      "Sebastian Heid",
+      "Damjan Kalšan",
+      "Stefan Roth",
+      "Carsten Rother"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04646.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04646",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "重要性感知的扩散Transformer低秩蒸馏",
+      "core_contribution": "提出了一种名为SVDtrunc的两阶段块级压缩方法，通过全局参数预算下的秩分配和截断SVD结合知识蒸馏，实现了对扩散Transformer（如FLUX.dev）的高效压缩，在40-90%参数缩减范围内保持性能，并优于现有方法。",
+      "method": "首先，SVDtrunc分析DiT中截断SVD的退化特性，发现冗余分布在整个网络的投影矩阵中，而非集中在少数块。然后，它采用两阶段方案：第一阶段在全局参数预算下跨块分配秩，并对最不重要的块进行截断SVD压缩；第二阶段使用模块化知识蒸馏和修正流目标对所有块进行微调，以恢复压缩损失。",
+      "findings": "在GenEval、HPSv2和DPG三个基准上，SVDtrunc在所有压缩水平下均优于竞争方法。特别地，在保留68%参数时性能接近完整模型，在57%参数时仍具竞争力。此外，SVDtrunc与步骤蒸馏互补，且无需微调也能取得良好效果，表明其可作为扩散模型效率优化的实用扩展。"
+    }
+  }
+]
