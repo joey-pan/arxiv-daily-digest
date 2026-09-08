@@ -1,0 +1,139 @@
+[
+  {
+    "id": "2609.05098",
+    "title": "LayoutShop: Content-Constrained Exploratory Design of Creative Article Layout",
+    "abstract": "We present LayoutShop, a novel computational framework for designing creative layouts that frame a given article. Inspired by the actual article layout design process, we enable users to create or select layout templates for conceptualization. These templates help construct a layout design space to extract eligible layout structures. Our algorithm then determines the geometry of the extracted layout structures to frame the given article via an optimization approach. We then employ two neural networks for layout assessment, and the high-quality outputs are returned to users for selection. We conducted a user study to evaluate the framework's usability and the quality of the article layouts it produces. The results of the user study confirmed that our framework can effectively help users create high-quality article layouts.",
+    "authors": [
+      "Jialuo Li",
+      "Pengfei Xu"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.05098.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.05098",
+    "primary_category": "cs.GR",
+    "score": 85,
+    "summary": {
+      "title_zh": "LayoutShop：内容约束下的创意文章版式探索性设计",
+      "core_contribution": "提出了一种新颖的计算框架LayoutShop，能够根据给定文章内容自动生成创意版式，并通过用户研究验证了其有效性和实用性。",
+      "method": "该方法首先允许用户创建或选择版式模板以进行概念化，并基于这些模板构建版式设计空间以提取合适的版式结构。随后，通过优化算法确定提取的版式结构的几何参数，以适配给定文章内容。最后，采用两个神经网络对生成的版式进行评估，并将高质量结果返回给用户进行选择。",
+      "findings": "用户研究结果表明，LayoutShop框架能够有效帮助用户创建高质量的创意文章版式，验证了其在版式设计中的可用性和输出质量。"
+    }
+  },
+  {
+    "id": "2609.04282",
+    "title": "Step Back to Move Forward: Reflection-Aware Preference Optimization for Visual Generation",
+    "abstract": "Diffusion models have become the mainstream paradigm for modern visual generation and have substantially advanced multimedia content synthesis, especially in text-to-image and text-to-video tasks. To further align such generative models with human preferences, reinforcement learning (RL) has recently shown strong potential as a post-training strategy. Nevertheless, existing policy gradient-based methods often explore inefficiently, making them vulnerable to local optima that may degrade semantic faithfulness and visual realism. To address these challenges, we present Reflection-Aware GRPO (RA-GRPO), a new RL-based preference alignment framework for diffusion generative models. The core idea is to improve \"forward\" generation by incorporating \"backward\" reflection during optimization. We first introduce Diffusion Reflection, which rectifies intermediate sampling trajectories by inverting the diffusion process with a weak estimator, guiding latent states toward higher-probability regions of the true data manifold. Furthermore, we introduce Counterfactual Path Synthesis to implicitly distill these rectified trajectories into the policy, enabling the model to internalize the benefits of search-based exploration without incurring inference-time overhead. Extensive experiments on T2I and T2V models demonstrate that RA-GRPO significantly outperforms existing methods, particularly in mitigating reward hacking and improving generalization. The method remains architecture-agnostic and integrates seamlessly with standard pipelines, suggesting a promising direction for stable preference alignment.",
+    "authors": [
+      "Junlong Wu",
+      "Jiuzhou Lin",
+      "Jia Sun",
+      "Boheng Zhang",
+      "Huaiqing Wang",
+      "Dewen Fan",
+      "Houde Liu",
+      "Qianqian Gan",
+      "Fan Yang",
+      "Tingting Gao"
+    ],
+    "published": "2026-09-03",
+    "updated": "2026-09-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04282.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04282",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "退一步以进：面向视觉生成的反思感知偏好优化",
+      "core_contribution": "提出了一种名为RA-GRPO的基于强化学习的偏好对齐框架，通过引入扩散反思和反事实路径合成，解决了扩散模型在偏好对齐中探索效率低、易陷入局部最优的问题，显著提升了生成质量与泛化能力。",
+      "method": "该方法首先通过扩散反思机制，利用弱估计器反转扩散过程，修正中间采样轨迹，将潜在状态引导至真实数据流形的高概率区域；其次，引入反事实路径合成，将修正后的轨迹隐式蒸馏到策略中，使模型无需额外推理开销即可内化搜索式探索的优势。整个框架与模型架构无关，可无缝集成到标准扩散模型流程中。",
+      "findings": "在文本到图像和文本到视频任务上的大量实验表明，RA-GRPO显著优于现有方法，尤其在缓解奖励黑客现象和提升泛化能力方面表现突出，同时保持了架构无关性和与标准流程的兼容性。"
+    }
+  },
+  {
+    "id": "2609.04939",
+    "title": "LensStyle: Learning the Optical Aesthetics for Controllable Stylized Lens Effect Rendering",
+    "abstract": "The visual aesthetics of photographs are deeply influenced by lens characteristics such as aperture shape, optical vignetting and optical diffraction, which together define a camera's unique optical style. Existing lens effect rendering methods primarily focus on accurately simulating the blur transition from small to large apertures but overlook the stylistic aspects of lens effects. As a result, they fail to produce diverse bokeh effects under large apertures or capture distinctive photographic phenomena such as starbursts that emerge under small apertures. In this work, we introduce LensStyle, a unified framework for controllable stylized lens effect rendering that explicitly models lens aesthetics through joint continuous-discrete control. Our model incorporates a Dual-Path Controller that disentangles continuous optical parameter modulation (e.g., focus distance and blur strength) from discrete lens-style conditioning (e.g., circular, polygonal, donut, cat-eye, and starburst effects), enabling fine-grained, interpretable, and physically grounded lens manipulation within a single unified framework. To support model training, we curate a comprehensive MultiLens dataset containing multi-lens image pairs synthesized under real optical constraints. Extensive experiments demonstrate that LensStyle achieves superior realism, controllability, and aesthetic quality compared with existing lens effect rendering approaches and diffusion-based image editing models, advancing computational photography toward multiple-lens-style simulation.",
+    "authors": [
+      "Yachuan Huang",
+      "Liwen Xiao",
+      "Liao Shen",
+      "Qiwen Wang",
+      "Huiqiang Sun",
+      "Zhiyu Pan",
+      "Zhiguo Cao"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04939.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04939",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "LensStyle：学习光学美学以实现可控的风格化镜头效果渲染",
+      "core_contribution": "提出一个统一框架LensStyle，首次将镜头美学（如光圈形状、光学渐晕、衍射等）显式建模为可控的风格化镜头效果，支持连续光学参数与离散镜头风格的联合控制，实现多样且物理可解释的镜头效果渲染。",
+      "method": "LensStyle采用双路径控制器（Dual-Path Controller），将连续光学参数（如焦距和模糊强度）与离散镜头风格条件（如圆形、多边形、甜甜圈、猫眼和星芒效果）解耦，从而在单一框架内实现精细、可解释且物理基础的镜头操控。为训练模型，作者构建了MultiLens数据集，包含在真实光学约束下合成的多镜头图像对。",
+      "findings": "实验表明，LensStyle在真实感、可控性和美学质量上均优于现有镜头效果渲染方法和基于扩散的图像编辑模型，推动了计算摄影向多镜头风格模拟的发展，尤其能生成大光圈下的多样散景效果和小光圈下的星芒等独特现象。"
+    }
+  },
+  {
+    "id": "2609.04709",
+    "title": "AngelFingerprint: A Traceable, Explainable, and White-Box Stealthy Watermark for Text-Guided Image Editing",
+    "abstract": "Text-guided diffusion editing raises disinformation concerns, making reliable image provenance essential. While watermarks are commonly used for this purpose, most methods carry a fixed ID that cannot explain what was changed and which prompt produced it. Furthermore, under open-source white-box access, attackers can easily locate and remove watermarks added as separate modules. Targeting this setting, we propose AngelFingerprint, a novel watermarking framework ensuring edit traceability, explainability, and white-box stealthiness. It integrates a LoRA into the diffusion model to embed the editing prompt's CLIP text embedding directly into the model's weights. An extractor then recovers this embedding from the image pixels alone. This semantic payload explains the edit, while the weight-integrated design makes it hard to detect and isolate even under full white-box access. Two techniques make this possible: a velocity-alignment anchor that preserves edit quality, and a specially designed frequency filter that keeps the watermark imperceptible yet recoverable and robust. On the MagicBrush dataset, our extractor achieves $86\\%$ top-1 accuracy in a 200-way prompt retrieval, versus $20\\%$ for prompt inversion.",
+    "authors": [
+      "Bo-Han Kung",
+      "Futa Waseda",
+      "Ching-Chun Chang",
+      "Isao Echizen",
+      "Shang-Tse Chen"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04709.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04709",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "AngelFingerprint：一种用于文本引导图像编辑的可追溯、可解释且白盒隐蔽的水印方法",
+      "core_contribution": "提出了一种将编辑提示的CLIP文本嵌入直接集成到扩散模型权重中的水印框架，实现了编辑的可追溯性和可解释性，并在白盒访问下保持隐蔽性，难以被检测和移除。",
+      "method": "该方法通过将LoRA集成到扩散模型中，将编辑提示的CLIP文本嵌入直接编码到模型权重中；随后使用一个提取器从图像像素中恢复该嵌入，从而解释编辑内容。为了保持编辑质量和水印的不可感知性，采用了速度对齐锚点（velocity-alignment anchor）来维持编辑效果，并设计了特殊的频率滤波器使水印在视觉上不可见但可恢复且鲁棒。",
+      "findings": "在MagicBrush数据集上，该方法在200路提示检索中实现了86%的top-1准确率，而提示反演方法仅为20%，显著提升了编辑提示的恢复能力，同时保持了编辑质量和白盒隐蔽性。"
+    }
+  },
+  {
+    "id": "2609.04603",
+    "title": "An Evaluation Framework for Generating Multi-View Images of a Person in a Scene",
+    "abstract": "Recent generative image-editing Diffusion Transformers (DiTs) demonstrate impressive semantic editing capabilities but still struggle with spatially consistent camera angle changes. A primary bottleneck in training foundation models to execute free-form, promptable camera angle changes is the lack of specialized training data. While multi-view datasets exist for generic 3D environments and objects, there remains an absence of paired, multi-view datasets featuring human subjects at fixed locations in natural scenes, including frontal and side-profile views. Capturing such multi-camera data in unconstrained environments is logistically challenging and unscalable. In this paper, we first experiment with multiple state-of-the-art image editing models to create this data synthetically, but find that the outputs are frequently prone to hallucinations involving how much the subject's head turns relative to the background, often producing inconsistent environments. To address this issue, we propose the Head Scene Rotation Difference (HSRD) metric to quantitatively evaluate camera movements around a person. The proposed metric operates by decoupling camera movement from localized head pose manipulation. As demonstrated by the extensive experimentation, HSRD provides the pipeline necessary to evaluate 3D spatial parallax for a person in a scene, paving the way to reliably construct high-quality multi-view synthetic datasets.",
+    "authors": [
+      "Mahir Majid",
+      "Young Kyung Kim",
+      "Guillermo Sapiro"
+    ],
+    "published": "2026-09-04",
+    "updated": "2026-09-04",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.04603.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.04603",
+    "primary_category": "cs.CV",
+    "score": 55,
+    "summary": {
+      "title_zh": "一种用于生成场景中人物多视角图像的评估框架",
+      "core_contribution": "本文提出了一种评估框架，用于解决生成式图像编辑模型在人物场景中相机角度变化时产生空间不一致和幻觉的问题，并引入了新的量化指标HSRD来评估相机移动的准确性。",
+      "method": "首先，作者尝试使用多种最先进的图像编辑模型来合成多视角数据，但发现输出常出现头部转向与背景不一致的幻觉。为解决此问题，他们提出了头部场景旋转差异（HSRD）指标，该指标通过将相机移动与局部头部姿态变化解耦，来定量评估围绕人物的相机移动效果。HSRD提供了一种评估人物场景中3D空间视差的方法，从而支持高质量多视角合成数据集的构建。",
+      "findings": "实验表明，现有模型在生成人物多视角图像时容易产生环境不一致的幻觉，而HSRD指标能够有效量化相机移动的准确性，为可靠构建多视角合成数据集提供了必要工具。"
+    }
+  }
+]
