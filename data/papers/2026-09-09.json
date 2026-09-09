@@ -1,0 +1,150 @@
+[
+  {
+    "id": "2609.08657",
+    "title": "Charts Are Beyond Pixels: Probing for Layer-Wise Chart Understanding and Editing",
+    "abstract": "Charts are structured visual compositions whose elements have distinct functional roles, semantic correspondences, and visibility relations. This structural view motivates evaluating whether models can understand and manipulate charts at the layer level. Existing chart benchmarks, however, primarily assess the correctness or fidelity of final outputs and do not directly evaluate these layer-wise behaviors. We present LayerWiseBench, a benchmark organized around three core concepts, layer attribution, layer binding, and visibility ordering, that structure its chart-understanding and chart-editing evaluations. Generated from executable chart programs, LayerWiseBench pairs each rendered chart with spatially aligned per-layer RGBA assets and construction-derived labels for functional roles, semantic bindings, and visibility relations. From this layer-wise representation, we derive controlled understanding questions, editing targets, reference images, and evaluation regions. It contains 2,800 source charts across 14 chart paradigms, from which we derive 7,329 layer-wise understanding questions and 53,791 instruction-guided editing variants. Among the evaluated VLMs, Qwen3.5-27B, which achieves the highest QA macro-average, obtains 93.04% accuracy on layer attribution and 97.46% on layer binding, but only 61.46% on visibility ordering. Across the four evaluated image editors, overall mIoU ranges from 1.49% to 4.93%, and visibility-constrained edits have the lowest mIoU for every editor, ranging from 0.37% to 2.00%. Taken together, these results identify tasks involving front-to-back relations between overlapping components as a recurring challenge across understanding and editing, motivating more explicit modeling of component identity and visibility relations.",
+    "authors": [
+      "Xiaochuan Zhong",
+      "Yifan Hou",
+      "Chenxi Pang",
+      "Shaobo Cui"
+    ],
+    "published": "2026-09-08",
+    "updated": "2026-09-08",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.08657.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.08657",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "图表超越像素：探测分层图表理解与编辑能力",
+      "core_contribution": "提出了LayerWiseBench基准，首次从图层层面系统评估视觉语言模型（VLMs）和图编辑器的图表理解与编辑能力，揭示了模型在可见性排序等结构化关系上的显著不足。",
+      "method": "基于可执行图表程序生成基准，将每个渲染图表与逐层RGBA资产及构造标签对齐，从而获得功能角色、语义绑定和可见性关系的标注。从该图层表示中派生受控的理解问题、编辑目标、参考图像和评估区域，构建了包含14种图表范式、2800个源图表的测试集，并衍生出7329个理解问题和53791个编辑变体。",
+      "findings": "在评估的VLM中，Qwen3.5-27B在QA宏平均上表现最佳，但可见性排序准确率仅61.46%，远低于图层归因（93.04%）和图层绑定（97.46%）。四个图像编辑器的整体mIoU仅为1.49%-4.93%，其中可见性约束编辑的mIoU最低（0.37%-2.00%）。结果表明，涉及重叠组件前后关系的任务对理解和编辑均是持续挑战，需显式建模组件身份和可见性关系。"
+    }
+  },
+  {
+    "id": "2609.07815",
+    "title": "VoT: Vision-of-Thought for Unified Multimodal Representation Alignment",
+    "abstract": "Current text-to-image systems typically employ a \"text encoder plus diffusion decoder\" paradigm, in which text semantics directly modulate continuous latent noise. Despite their success, these methods lack an explicit, interpretable intermediate representation that effectively bridges high-level linguistic semantics and low-level visual signals. In this paper, we propose Vision-of-Thought (VoT), a framework that introduces a discrete visual-thinking layer between vision-language models (VLMs) and diffusion transformers (DiTs). Instead of treating VLMs merely as text encoders, we use them as multimodal planners that generate discrete VoT tokens representing high-level visual plans, such as objects and layouts, before rendering pixels. We train a specialized VoT tokenizer in the VLM semantic space with a closed-loop objective that combines VLM alignment, feature reconstruction, and vector-quantization losses. These objectives make the tokens semantically readable by the VLM while preserving the visual information needed for generation. Experimental results demonstrate that VoT improves semantic alignment and provides a structured interface for interpretable and controllable generation.",
+    "authors": [
+      "Jingxiang Sun",
+      "Chao Liao",
+      "Zhengxiong Luo",
+      "Chaorui Deng",
+      "Chen-lin Zhang",
+      "Junke Wang",
+      "Ceyuan Yang",
+      "Haoqi Fan",
+      "Weilin Huang"
+    ],
+    "published": "2026-09-07",
+    "updated": "2026-09-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.07815.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.07815",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "视觉思维：用于统一多模态表示对齐的VoT框架",
+      "core_contribution": "提出了一种名为Vision-of-Thought (VoT)的框架，通过在视觉语言模型和扩散变压器之间引入离散的视觉思维层，实现了高层语言语义与低层视觉信号之间的显式、可解释的中间表示，从而提升文本到图像生成的语义对齐和可控性。",
+      "method": "VoT框架将视觉语言模型用作多模态规划器，生成离散的VoT标记来表示高层视觉计划（如物体和布局），而非仅作为文本编码器。训练过程中，使用专门的VoT分词器，结合VLM对齐损失、特征重建损失和向量量化损失组成的闭环目标，确保生成的标记既在语义上可被VLM理解，又保留生成所需的视觉信息。",
+      "findings": "实验结果表明，VoT显著改善了语义对齐，并提供了一个结构化接口，支持可解释和可控的图像生成，优于传统仅依赖文本编码器的方法。"
+    }
+  },
+  {
+    "id": "2609.07072",
+    "title": "Detect Anything in Graphic Design: Element-Level Rewards for Autoregressive Detection",
+    "abstract": "Graphic designs, such as posters, advertisements, and infographics, are an important medium for communicating information and shaping understanding. Unlike natural images, they consist of layered elements with explicit compositional order. However, existing object detection models treat these elements as an unordered set, leaving compositional order unexploited. To address this limitation, we present Detect Anything in Graphic Design (DAD), a model that formulates graphic design detection as compositional deconstruction. It decodes elements in compositional order, using lower-layer elements to better detect higher-layer ones. The key feature of DAD is amodal detection, which predicts the full bounding box of each element, including regions occluded by elements placed above it. Building on this formulation, we propose Element Relative Policy Optimization (EleRPO), which extends GRPO from sequence-level supervision to element-level optimization. EleRPO provides fine-grained training signals that capture how each detected element contributes to overall detection quality, and works synergistically with compositional order to improve detection performance. To support training and evaluation, we build a dataset of 10 million graphic designs. Experiments show that DAD outperforms all baselines and achieves human-level performance in amodal detection, supporting effective image-to-layer decomposition. EleRPO consistently improves over GRPO across nine detection benchmarks.",
+    "authors": [
+      "Jiangning Zhu",
+      "Bowen Li",
+      "Shenyu Qiao",
+      "Yima Gu",
+      "Zhao Zhang",
+      "Yuhui Yuan",
+      "Shixia Liu"
+    ],
+    "published": "2026-09-07",
+    "updated": "2026-09-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.07072.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.07072",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "检测图形设计中的一切：用于自回归检测的元素级奖励",
+      "core_contribution": "提出了一种针对图形设计检测的新模型DAD，利用元素间的组合顺序进行解码，并引入元素级奖励优化方法EleRPO，显著提升了遮挡下的完整边界框预测能力，达到人类水平。",
+      "method": "DAD将图形设计检测视为组合解构任务，按从底层到高层的顺序解码元素，利用低层元素辅助检测高层元素。其核心是amodal检测，预测每个元素的完整边界框（包括被遮挡部分）。训练时，EleRPO将GRPO从序列级监督扩展至元素级优化，为每个检测元素提供细粒度奖励信号，并与组合顺序协同提升性能。",
+      "findings": "在包含1000万图形设计的数据集上，DAD在所有基线中表现最优，在amodal检测上达到人类水平，支持有效的图像到图层分解。EleRPO在九个检测基准上一致优于GRPO。"
+    }
+  },
+  {
+    "id": "2609.07029",
+    "title": "LoGAN: Multilingual Font Localization with Generative Agents",
+    "abstract": "Localizing a font into new languages is a highly intricate task requiring precise design adaptation of glyphs, color/texture, and spacing/kerning, from source to target languages. Most existing methods focus on single glyph generation with limited capability in handling multilingual font rendering. In this work, we propose LoGAN, a VLM-based agentic framework for few-shot multilingual font localization, which takes in a small number of individual glyphs from a font or letters from a logo and uses them to generate complete character sets in other languages. LoGAN breaks down this task into multiple components: a glyph-level diffusion model, a style finetuning module, a spacing and kerning transfer algorithm, and a texture expansion model, with a VLM agent coordinator. LoGAN achieves broad language coverage for font localization with various styles, including Chinese/Korean/Japanese (CJK). We evaluate our approach on both font and real-world logo datasets spanning more than 27 languages and compare it against both specialized font generation and state-of-the-art image editing models with strong text rendering capabilities (e.g., FLUX, Nano-Banana). Our approach yields higher glyph fidelity while maintaining better style, texture, and kerning consistency according to both quantitative and qualitative evaluations.",
+    "authors": [
+      "Zhuoning Yuan",
+      "Ta-Ying Cheng",
+      "Benjamin Klein"
+    ],
+    "published": "2026-09-07",
+    "updated": "2026-09-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.07029.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.07029",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "LoGAN：基于生成式智能体的多语言字体本地化",
+      "core_contribution": "提出了一种基于视觉语言模型（VLM）的智能体框架LoGAN，能够利用少量字形或标志字母，实现跨多种语言（包括中日韩）的字体本地化，同时保持字形保真度、风格、纹理和字距的一致性。",
+      "method": "LoGAN将字体本地化任务分解为多个子模块：字形级扩散模型负责生成目标语言的字形，风格微调模块调整字体风格，间距和字距迁移算法处理排版间距，纹理扩展模型生成纹理细节，并由VLM智能体协调器统一调度这些模块。该方法支持少样本输入，并覆盖多种语言和风格。",
+      "findings": "在超过27种语言的字体和真实标志数据集上，LoGAN相比专门的字体生成模型和具有强文本渲染能力的图像编辑模型（如FLUX、Nano-Banana），在定量和定性评估中均展现出更高的字形保真度，以及更好的风格、纹理和字距一致性。"
+    }
+  },
+  {
+    "id": "2609.06758",
+    "title": "Agentic Visual Generation: From Generative Models to Agentic Control",
+    "abstract": "Visual generation is evolving from generative models used through a single invocation into agentic control processes that can plan, select tools, inspect intermediate synthesized outputs, revise failures, and reuse prior experience. In most existing systems, the controller is an LLM or VLM, while visual generation models serve as tools or executors. However, existing work lacks a consistent criterion for determining when a generation system becomes agentic. Planning depth, tool use, multi-role collaboration, and reinforcement learning are often treated as evidence of agenticity, even though none of them necessarily determines which generation decisions the controller can make. We organize the field according to what the controller can directly control in the generation process. At L1 Conditioning Control, the controller prepares the input to a predetermined generator but does not control which visual operation is executed. At L2 Execution Control, it selects and invokes actual generation, editing, rendering, or other content-modifying operations. At L3 Outcome-Adaptive Control, it observes an intermediate outcome and uses that observation to change a subsequent operation within the current task. At L4 Experience-Adaptive Control, it retains experience from completed tasks and uses that experience to change decisions on future tasks. L0 Fixed Support separately denotes generators, editors, evaluators, reward models, benchmarks, and fixed pipelines without a deployed controller that makes generation-level decisions. These levels describe a progressively broader decision-making scope rather than model size, system complexity, output quality, tool or role count, or training method. Applying this framework across image, video, editing, 3D, world, slide, and user-interface generation reveals how controller capabilities have evolved and how their mechanisms are distributed across levels.",
+    "authors": [
+      "Yinming Huang",
+      "Shuyuan Tu",
+      "Xi Yan",
+      "Jiahao Zhan",
+      "Zihan Yang",
+      "Zhen Xing",
+      "Hui Zhang",
+      "Tiehua Zhang",
+      "Yu-Gang Jiang",
+      "Zuxuan Wu"
+    ],
+    "published": "2026-09-06",
+    "updated": "2026-09-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.06758.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.06758",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "智能体视觉生成：从生成模型到智能体控制",
+      "core_contribution": "本文提出了一种基于控制器决策范围的分层框架（L0-L4），用于统一界定视觉生成系统何时具备智能体特性，并据此梳理该领域的发展脉络。",
+      "method": "作者根据控制器在生成过程中能直接控制的内容，将系统划分为五个层级：L1条件控制（仅准备输入）、L2执行控制（选择并调用生成/编辑操作）、L3结果自适应控制（观察中间结果并调整后续操作）、L4经验自适应控制（跨任务复用经验），以及L0固定支持（无控制器）。该框架不依赖模型规模、输出质量或工具数量，而是聚焦于决策范围的扩展。",
+      "findings": "通过将该框架应用于图像、视频、编辑、3D、世界模型、幻灯片和用户界面生成等多个领域，揭示了控制器能力从低级条件控制向高级经验自适应控制的演进趋势，并展示了不同机制在各层级上的分布规律，为理解和比较现有智能体生成系统提供了统一标准。"
+    }
+  }
+]
