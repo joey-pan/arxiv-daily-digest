@@ -1,0 +1,153 @@
+[
+  {
+    "id": "2609.09909",
+    "title": "Interpreting Object-Dependent Concept Brittleness in Text-to-Image Diffusion Models",
+    "abstract": "Although text-to-image diffusion models generally exhibit strong prompt-following ability, we identify a persistent and previously underexplored failure pattern in which a small subset of prompts differing only in the object consistently fails to realize the same target concept under identical generation settings. We term this phenomenon object-dependent concept brittleness. Such cases suggest systematic internal blind spots rather than random sampling noise. In this paper, we present an interpretability-oriented framework to audit and minimally correct these failures. Our key idea is to analyze denoising trajectories in a step-wise sparse autoencoder (SAE) space, where abstract style and attribute concepts become more separable than in the raw denoising representation. This sparse space enables us to compare successful and failed generations, identify concept dimensions whose evidence is missing, weakened, or temporally delayed, and construct class-level concept prototypes from reliable class-consistent samples. Based on this audit process, we introduce a lightweight inference-time correction strategy that interpolates denoising features toward the corresponding prototype in SAE space. Rather than serving as a task-specific retraining method, this intervention acts as a validation of the diagnosed concept deficiency. We evaluate the proposed framework on style and attribute failure cases across multiple diffusion backbones, with significant improvements in concept consistency, text fidelity, and repair success. Further analyses show that deeper denoising representations provide clearer concept structure, while early-stage intervention offers the strongest correction leverage. Code is available at https://github.com/Metecade/Object-Dependent-Concept-Brittleness.",
+    "authors": [
+      "Yifan Yuan",
+      "Xiangyu Liu",
+      "Hongming Shan",
+      "Yu Han",
+      "Yu Jiang",
+      "Hao Tan",
+      "Junping Zhang",
+      "Linlin Shen"
+    ],
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "categories": [
+      "cs.CV",
+      "cs.MM"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.09909.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.09909",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "解读文本到图像扩散模型中对象依赖的概念脆弱性",
+      "core_contribution": "本文识别并定义了文本到图像扩散模型中一种此前未被充分探索的失败模式——对象依赖的概念脆弱性，即仅改变对象词的少量提示在相同生成设置下持续无法实现同一目标概念，并提出了一个面向可解释性的审计与最小修正框架。",
+      "method": "作者在逐步稀疏自编码器（SAE）空间中分析去噪轨迹，该空间比原始去噪表示更能分离抽象风格与属性概念。通过对比成功与失败的生成样本，识别证据缺失、减弱或时间延迟的概念维度，并从可靠的类一致样本中构建类级概念原型。基于该审计过程，提出一种轻量级推理时修正策略，在SAE空间中将去噪特征向对应原型插值，以验证所诊断的概念缺陷。",
+      "findings": "在多种扩散骨干网络上针对风格和属性失败案例的评估表明，该框架在概念一致性、文本保真度和修复成功率上均有显著提升。进一步分析显示，更深的去噪表示提供更清晰的概念结构，而早期干预具有最强的修正效果。"
+    }
+  },
+  {
+    "id": "2609.09905",
+    "title": "FlowCPO: A Unified Divergence View of Preference Alignment for Flow Models",
+    "abstract": "Preference alignment for flow and diffusion models now spans online reinforcement learning and offline preference optimization, but the relation between these methods remains unclear. In particular, existing forward-process alignment methods require fresh samples from the current model, while offline methods based on fixed preference pairs rely primarily on positive-only fine-tuning or DPO-style likelihood-ratio surrogates. We organize these approaches through a divergence-based framework and introduce FlowCPO, an offline forward-KL objective that uses both preferred and dispreferred samples without online rollouts. For linear interpolation, we show under explicit regularity conditions that the forward-KL objective is bounded by a contrastive flow matching loss, yielding a tractable surrogate on fixed data. We further show that this loss is nonnegative, whereas the signed regression loss of simplified FlowDPO can be unbounded below. In the in-domain setting, FlowCPO achieves higher mean GenEval and OCR scores than the evaluated baselines, reaching 0.84 and 0.87 versus 0.81 and 0.74 for FlowDPO at CFG 3.0. In the out-of-domain setting, the results are mixed, with the best GenEval result but lower reward scores than RFT on several metrics.",
+    "authors": [
+      "Yansen Han",
+      "Shengyi Liao",
+      "Peng Sun",
+      "Deyuan Liu",
+      "Yuanxing Zhang",
+      "Pengfei Wan",
+      "Tao Lin"
+    ],
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "categories": [
+      "stat.ML",
+      "cs.AI",
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.09905.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.09905",
+    "primary_category": "stat.ML",
+    "score": 78,
+    "summary": {
+      "title_zh": "FlowCPO：流模型偏好对齐的统一散度视角",
+      "core_contribution": "论文提出了一个基于散度的统一框架来组织流模型和扩散模型的偏好对齐方法，并据此提出了FlowCPO——一种无需在线采样的离线前向KL目标，同时利用偏好和非偏好样本进行优化。",
+      "method": "作者通过散度框架统一了在线强化学习与离线偏好优化方法，提出FlowCPO离线前向KL目标，在固定偏好数据上同时使用正负样本而无需在线rollout。在线性插值设定下，作者证明在显式正则条件下前向KL目标可被对比流匹配损失所界定，从而得到一个可处理的代理损失。作者进一步分析了该损失的非负性，并指出简化FlowDPO的有符号回归损失可能无下界。",
+      "findings": "在域内设定下，FlowCPO在CFG 3.0时取得了比基线更高的GenEval和OCR分数（0.84和0.87，对比FlowDPO的0.81和0.74）。在域外设定下结果参差不齐，GenEval结果最佳，但在若干指标上奖励分数低于RFT。"
+    }
+  },
+  {
+    "id": "2609.09143",
+    "title": "Studying Image Tokenizers as Visual Languages in Unified Multimodal Models",
+    "abstract": "Image tokenizers define the ``visual language'' of unified multimodal models, yet are commonly studied through isolated metrics or generation-/understanding-only evaluations. These evaluations do not fully capture how visual tokens behave when modeled jointly with text. We build a controlled pure-autoregressive testbed and track task-specific validation losses during multimodal continual pretraining across text, image, text-to-image (T2I), and image-to-text (I2T) prediction. We examine how these losses scale and relate to downstream performance, then use them to study multimodal learnability---how well image and text tokens are jointly modeled---and tokenizer design. We find that (1) losses should be analyzed by task, since they exhibit distinct scaling behavior and rank tokenizers differently. (2) The loss--performance relationship depends on the predicted token space: for a fixed tokenizer, T2I and I2T losses correlate with generation quality, but across tokenizers, the T2I loss--performance relationship shifts with the image-token space, whereas I2T loss, computed over a shared text vocabulary, provides a more consistent signal. I2T loss also correlates with both generation and visual understanding performance after supervised finetuning. Using losses as a lens, we show that (3) better reconstruction does not necessarily yield lower task-specific losses or stronger downstream performance, and that (4) image tokenizer choice can affect text modeling under joint optimization. As case studies, we revisit three tokenizer design axes---the discriminator, semantic supervision, and vocabulary size---to examine their effects on joint modeling and downstream performance. Together, our testbed offers a complementary perspective on image tokenizers as visual languages, highlighting their interplay with text in joint multimodal training.",
+    "authors": [
+      "Siting Li",
+      "Zhengyang Wang",
+      "Simon Shaolei Du",
+      "Xi Chen",
+      "Yang Liu"
+    ],
+    "published": "2026-09-08",
+    "updated": "2026-09-08",
+    "categories": [
+      "cs.CV",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.09143.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.09143",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "将图像分词器作为统一多模态模型中的视觉语言进行研究",
+      "core_contribution": "本文构建了一个受控的纯自回归多模态持续预训练测试平台，通过跟踪任务特定的验证损失来研究图像分词器作为“视觉语言”在与文本联合建模时的行为，揭示了损失应按任务分析、损失-性能关系依赖于预测词元空间等关键规律。",
+      "method": "作者构建了一个受控的纯自回归测试平台，在多模态持续预训练过程中跟踪文本、图像、文本到图像（T2I）和图像到文本（I2T）预测的任务特定验证损失。他们分析这些损失如何随规模变化并与下游性能相关联，进而研究多模态可学习性以及分词器设计。最后以三个分词器设计维度（判别器、语义监督和词表大小）作为案例研究，考察其对联合建模和下游性能的影响。",
+      "findings": "（1）损失应按任务分别分析，因为不同任务的损失呈现不同的缩放行为且对分词器的排名不同。（2）损失-性能关系取决于预测的词元空间：对于固定分词器，T2I和I2T损失与生成质量相关；但跨分词器比较时，T2I损失-性能关系随图像词元空间变化，而I2T损失因基于共享文本词表而提供更一致的信号，且与生成和视觉理解性能均相关。（3）更好的重建质量不一定带来更低的任务特定损失或更强的下游性能。（4）图像分词器的选择会影响联合优化下的文本建模。"
+    }
+  },
+  {
+    "id": "2609.08282",
+    "title": "Dreaming in Flow: Generative Grounding Feedback for Self-Evolving Unified Multimodal Models",
+    "abstract": "Unified multimodal models integrate visual understanding and generation within a single network, yet the two capabilities are commonly optimized as separate tasks. We introduce Generative Grounding Feedback(GGF), a self-evolving post-training framework that uses only text prompts and the model's own visual experience. Given a prompt, the model first generates a visual ``dream.'' Flow-level feedback compares text-, image-, and repair-conditioned predictions at the same noisy latent state, transferring image-grounded generation directions to the prompt condition. Dream replay grounding replays this dream through captioning and re-imagination, training claim-level evidence to remain consistent across the replay while separating unrelated visual experiences. Jointly optimized, these two directions let generation provide visual grounding for understanding and understanding refine subsequent generation without paired image--text supervision. Experiments across unified models with different understanding--generation integration designs show consistent improvements in text-to-image generation together with modest gains in visual understanding.",
+    "authors": [
+      "Ke Hao",
+      "Yuanzhi Liang",
+      "Tingxi Chen",
+      "Rui Li",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Yun Gu",
+      "Xuelong Li"
+    ],
+    "published": "2026-09-08",
+    "updated": "2026-09-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.08282.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.08282",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "在流中做梦：面向自演化统一多模态模型的生成式接地反馈",
+      "core_contribution": "提出生成式接地反馈（GGF），一种仅使用文本提示和模型自身视觉经验的自演化后训练框架，使统一多模态模型的生成能力为理解提供视觉接地，理解能力反过来优化生成，无需配对的图文监督。",
+      "method": "给定文本提示，模型首先生成一个视觉“梦境”。流级反馈在同一噪声潜状态上比较文本条件、图像条件和修复条件的预测，将图像接地的生成方向迁移到提示条件。梦境重放接地通过描述和重新想象来重放该梦境，训练声明级证据在重放过程中保持一致，同时分离无关的视觉经验。两个方向联合优化，使生成与理解相互促进。",
+      "findings": "在不同理解-生成集成设计的统一模型上，实验显示文本到图像生成获得一致提升，视觉理解也有适度增益，且无需配对的图像-文本监督。"
+    }
+  },
+  {
+    "id": "2609.10363",
+    "title": "SceneHI: High-Resolution 3D-Consistent Scene Texturing with Controllable Illumination",
+    "abstract": "SceneHI is a framework that lifts high-resolution, illumination-aware priors from 2D diffusion models to perform 3D texture synthesis. It is the first to demonstrate that high-resolution textures, previously limited to 2D synthesis, can be generated directly on 3D objects without model fine-tuning or optimization. Designed for complex, multi-object environments, SceneHI uniquely combines 3D-consistency, high-resolution fidelity, and physically plausible baked shadows within a single generative pipeline. To enforce strict geometric coherence, we introduce an exact analytical pixel-to-texel mapping that aligns diffusion trajectories across multiple viewpoints. We utilize High-Resolution Latent Textures (HRLTs) as a persistent canvas for gradually denoised textures, while camera views perform the denoising steps in latent pixel space. This ensures a shared base texture that can be subsequently refined to high resolution without compromising multi-view consistency. Finally, a light-aware generative pass embeds realistic geometry-consistent shadows directly into the atlases, bridging the gap to production workflows. SceneHI achieves high visual fidelity while reducing generation time by 80% compared to existing scene-level methods.",
+    "authors": [
+      "Athanasios Tragakis",
+      "Marco Aversa",
+      "Daniela Ivanova",
+      "Chaitanya Kaul",
+      "Roderick Murray-Smith",
+      "Daniele Faccio",
+      "Paul Henderson"
+    ],
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.10363.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.10363",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "SceneHI：可控光照下的高分辨率3D一致场景纹理生成",
+      "core_contribution": "SceneHI是首个无需模型微调或优化即可直接在3D对象上生成高分辨率纹理的框架，在单一生成管线中同时实现了3D一致性、高分辨率保真度和物理合理的烘焙阴影。",
+      "method": "该框架从2D扩散模型中提取高分辨率、光照感知的先验知识，用于3D纹理合成。作者引入了精确的解析像素到纹素映射，以对齐多视角下的扩散轨迹，确保严格的几何一致性。采用高分辨率潜在纹理（HRLTs）作为持续画布，在潜在像素空间中进行去噪，从而获得可后续精炼至高清的共享基础纹理。最后通过光照感知生成通道，将几何一致的逼真阴影直接嵌入纹理图集中。",
+      "findings": "SceneHI在保持高视觉保真度的同时，相比现有场景级方法将生成时间减少了80%，并成功将高分辨率纹理生成从2D合成扩展到3D对象，且无需模型微调。"
+    }
+  }
+]
