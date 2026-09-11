@@ -1,0 +1,198 @@
+[
+  {
+    "id": "2609.11519",
+    "title": "Learning Interaction between Image and Layout Priors for Joint Image-Layout Generation in Design Templates",
+    "abstract": "In this paper, we address the problem of graphic design template creation, which generates a background image and a layout of foreground elements over the background to form a harmonious composition from an input text. Prior work on graphic design generation mostly adopts a sequential paradigm, where design elements are generated sequentially. We argue that such a sequential scheme falls short of faithfully capturing the dependency between the background and layout (and thus the joint image-layout distribution), which limits the quality of generated design templates. To overcome this limitation, we propose a model, InterIL, which jointly generates the two modalities, background image and layout, in a single generative process. The novel design of our joint model connects the backbones of pretrained image and layout diffusion models with a learnable communication module to explicitly model bidirectional image-layout interaction. During training, the image and layout backbones are frozen to maintain and leverage the vast pretrained single-modality prior knowledge, while only the communication module is updated, so that the model can focus on learning image-layout interaction and thereby better capture the joint image-layout distribution for improved composition harmony. Our model has no design-specific inductive bias, which allows it to better preserve the original characteristics of realistic designs. We further introduce a test-time guidance strategy to enable users to impose their specific preferences on generated results. Our experiments show that, compared with prior approaches, our model can generate significantly better results in terms of image, layout and image-layout harmonization, producing outputs closer to real samples. We also demonstrate the flexibility of our model in enforcing user preferences at inference without retraining.",
+    "authors": [
+      "Shirong Yang",
+      "Bo Yang",
+      "Ying Cao"
+    ],
+    "published": "2026-09-10",
+    "updated": "2026-09-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.11519.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.11519",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "学习图像与布局先验之间的交互：面向设计模板中的图像-布局联合生成",
+      "core_contribution": "提出了一种名为InterIL的联合生成模型，在单一生成过程中同时生成背景图像和前景布局，通过显式建模图像与布局之间的双向交互来更好地捕捉联合分布，从而提升设计模板的构图和谐度。",
+      "method": "该方法将预训练的图像扩散模型和布局扩散模型的主干网络通过一个可学习的通信模块连接起来，以显式建模图像与布局之间的双向交互。训练时冻结图像和布局主干网络以保留大规模预训练的单模态先验知识，仅更新通信模块，使模型专注于学习图像-布局交互。模型不引入设计特定的归纳偏置，从而更好地保留真实设计的原始特征。此外，还引入了测试时引导策略，允许用户在推理阶段施加特定偏好而无需重新训练。",
+      "findings": "实验表明，与现有方法相比，该模型在图像质量、布局质量以及图像-布局协调性方面均能生成显著更好的结果，输出更接近真实样本。同时，模型在推理阶段无需重新训练即可灵活地满足用户偏好。"
+    }
+  },
+  {
+    "id": "2609.11929",
+    "title": "SenseNova-U1.5: Towards Native Unified Visual Intelligence",
+    "abstract": "We launch SenseNova-U1.5, an 8B-MoT native unified multimodal model that understands, reasons about, and generates visual content within an encoder-free and VAE-free architecture. We strengthen its visual interface through spatially coherent patch reconstruction and scale its training with carefully curated generation and editing data, improved task formulation, structural prompt enhancement, and native resolutions of up to 4K. For post-training, we optimize specialized experts for visual aesthetics, bilingual text rendering, infographic generation, and image editing, and consolidate their capabilities through multi-expert on-policy distillation. Across extensive evaluations, SenseNova-U1.5 largely advances image fidelity, text rendering, complex composition, multi-reference editing, and interleaved generation, while improving instruction following and preserving subject identity, geometry, and unmodified regions. Despite limited exposure to structured formats in its generation data, SenseNova-U1.5 generalizes effectively to long, complex, and structured visual instructions, further proving that multimodal understanding can transfer to visual planning and creation. Together, these findings position native unified modelling as a promising path towards systems that perceive, reason and create within a fully end-to-end framework. We will open-source training code, including supervised fine-tuning, reinforcement learning, and on-policy distillation.",
+    "authors": [
+      "Haiwen Diao",
+      "Jiahao Wang",
+      "Chenjing Ding",
+      "Hanming Deng",
+      "Jiangnan Chen",
+      "Ruixi Zhang",
+      "Ruohui Wang",
+      "Wenwen Tong",
+      "Xiangyu Fan",
+      "Yubo Wang",
+      "Yue Zhu",
+      "Yuwei Niu",
+      "Zhengqi Bai",
+      "Zhiqian Lin",
+      "Zhitao Yang",
+      "Zhongang Cai",
+      "Bo Yang",
+      "Chen Feng",
+      "Chengguang Lv",
+      "Guangjia Liu",
+      "Guanlin Wang",
+      "Hanyu Zhang",
+      "Haojia Yu",
+      "Hongcan Xiao",
+      "Hongli Wang",
+      "Huan Wu",
+      "Huaping Zhong",
+      "Jian Fang",
+      "Jianan Fan",
+      "Jiaqi Li",
+      "Jiefan Lu",
+      "Jing Zuo",
+      "Jingcheng Ni",
+      "Junxiang Xu",
+      "Linjun Dai",
+      "Mutian Xu",
+      "Peishen Yan",
+      "Penghao Wu",
+      "Ruijie Mao",
+      "Ruisi Wang",
+      "Shihao Bai",
+      "Shuang Yang",
+      "Shuya Yang",
+      "Shuyan Zheng",
+      "Silei Wu",
+      "Siying Li",
+      "Tao Chu",
+      "Tianbo Zhong",
+      "Tongxi Zhou",
+      "Weichao Luo",
+      "Weichen Fan",
+      "Wenhao Jia",
+      "Wenjie Gao",
+      "Xiangli Kong",
+      "Yan Li",
+      "Yang Yong",
+      "Zimo Wen",
+      "Zixuan Qian",
+      "Wenxiu Sun",
+      "Ruihao Gong",
+      "Quan Wang",
+      "Lewei Lu",
+      "Lei Yang",
+      "Ziwei Liu",
+      "Dahua Lin"
+    ],
+    "published": "2026-09-10",
+    "updated": "2026-09-10",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.11929.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.11929",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "SenseNova-U1.5：迈向原生统一视觉智能",
+      "core_contribution": "提出了一个80亿参数、基于MoT架构的原生统一多模态模型SenseNova-U1.5，在无编码器和无VAE的架构下同时实现视觉内容的理解、推理与生成，并开源了训练代码。",
+      "method": "该模型采用无编码器、无VAE的原生统一架构，通过空间连贯的patch重建强化视觉接口，并使用精心筛选的生成与编辑数据、改进的任务形式、结构化提示增强以及最高4K的原生分辨率来扩展训练。在后训练阶段，针对视觉美学、双语文字渲染、信息图生成和图像编辑优化了专门专家，并通过多专家在线策略蒸馏整合其能力。",
+      "findings": "在广泛评估中，SenseNova-U1.5在图像保真度、文字渲染、复杂构图、多参考编辑和交错生成方面取得显著进步，同时提升了指令遵循能力并保持了主体身份、几何结构和未修改区域的一致性。尽管生成数据中结构化格式的暴露有限，模型仍能有效泛化到长而复杂的结构化视觉指令，证明多模态理解能力可迁移至视觉规划与创作，表明原生统一建模是通向端到端感知、推理与创作系统的一条有前景的路径。"
+    }
+  },
+  {
+    "id": "2609.11804",
+    "title": "Logit Refiner: Improving Visual Autoregressive Models via Intra-Scale Dependency Modeling",
+    "abstract": "Visual Autoregressive Models (VAR) generate images through next-scale prediction, producing all tokens within each scale in parallel. We show that this parallel decoding constitutes a mean-field-style approximation that discards spatial dependencies among same-scale tokens, causing locally incoherent samples regardless of backbone capacity -- a limitation of the decoding rule. Addressing this limitation, we introduce the Logit Refiner, a lightweight autoregressive module that restores intra-scale dependencies by sequentially sampling tokens conditioned on frozen backbone features. Adding only ~10% parameters and less than 5% of the base model's training compute, it plugs into any pretrained VAR checkpoint without retraining. Controlled ablations isolate joint intra-scale sampling -- rather than additional capacity or training -- as the critical ingredient. Across backbones from 310M to 2B parameters on class-conditional ImageNet 256x256, the refiner consistently improves generation quality, enabling a 1.1B-parameter model to surpass one twice its size. The approach further generalizes to text-to-image generation, confirming that the mean-field bottleneck persists across VAR variants and is effectively alleviated by our method. Project page: https://compvis.github.io/logit-refiner/",
+    "authors": [
+      "Meimingwei Li",
+      "Stefan Andreas Baumann",
+      "Felix Krause",
+      "Björn Ommer"
+    ],
+    "published": "2026-09-10",
+    "updated": "2026-09-10",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.11804.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.11804",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Logit精炼器：通过尺度内依赖建模改进视觉自回归模型",
+      "core_contribution": "论文揭示了视觉自回归模型（VAR）中并行解码导致的尺度内空间依赖丢失问题（即平均场式近似），并提出了一种轻量级自回归模块Logit Refiner，在不重新训练的情况下恢复尺度内依赖，显著提升生成质量。",
+      "method": "作者首先从理论上分析了VAR的下一尺度预测中并行解码的局限性，指出其等价于平均场近似，丢弃了同一尺度内token间的空间依赖。为此，他们设计了Logit Refiner，一个轻量级自回归模块，以冻结的主干网络特征为条件，顺序采样同一尺度内的token，从而恢复尺度内依赖。该模块仅增加约10%的参数和不到5%的基础模型训练计算量，可直接插入任何预训练的VAR检查点，无需重新训练。",
+      "findings": "在ImageNet 256x256类条件生成任务上，从310M到2B参数的多种主干网络中，Logit Refiner均一致提升了生成质量，使1.1B参数的模型超越了其两倍大小的模型。消融实验表明，联合尺度内采样（而非额外容量或训练）是关键因素。该方法还泛化到文本到图像生成，证实了平均场瓶颈在VAR变体中普遍存在，且能被有效缓解。"
+    }
+  },
+  {
+    "id": "2609.10723",
+    "title": "AcFlow: Controlling Text-to-Image Diffusion Transformers via Learned Conditional Activation Flow",
+    "abstract": "Text-to-image diffusion transformers (DiTs) are powerful generators, yet direct prompting provides limited control interface for style intensity and can fail to suppress unwanted concepts. To enable these controls, we introduce AcFlow, an inference-time controller that transports intermediate layer image-token activations through a learned concept-conditioned velocity field while keeping the base DiT frozen. A textual concept description specifies the desired intervention, while the integration horizon provides a continuous control parameter. The field produces token-varying, activation-dependent updates. With parameters shared across concepts within each task family, the field supports fine-grained descriptions and generalizes to concepts unseen during training without per-concept fitting. On style control, AcFlow achieves the best style--content trade-off among the evaluated baselines in the high-style-alignment regime. At a fixed operating point, AcFlow attains style--content alignment of 0.5365/0.2860, compared with 0.4397/0.2684 for the baseline with the highest style alignment. Qualitative results demonstrate suppression of diverse concepts, including cases where direct prompting fails. Our analyses support the learned velocity field as an adaptive control mechanism, with update directions varying across tokens and depend on their activation states. Our code is available at https://github.com/Nove1yst/AcFlow.",
+    "authors": [
+      "Junran Wang",
+      "Zehao Jin",
+      "Tianyu Luan",
+      "Xinjie Shen"
+    ],
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.10723.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.10723",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "AcFlow：通过学习条件激活流控制文本到图像扩散Transformer",
+      "core_contribution": "提出了一种推理时控制器AcFlow，通过学习的、以概念为条件的速度场来传输DiT中间层图像token的激活，从而在冻结基础模型的情况下实现对风格强度和概念抑制的连续、细粒度控制。",
+      "method": "AcFlow在推理阶段对文本到图像扩散Transformer（DiT）的中间层图像token激活进行干预，利用一个概念条件化的速度场沿积分时间窗口传输这些激活，积分时长作为连续控制参数。该速度场产生随token变化且依赖激活状态的更新，且在同一任务族内跨概念共享参数，因此无需针对每个概念单独拟合即可泛化到未见概念。整个过程中基础DiT保持冻结，仅通过文本概念描述指定所需干预。",
+      "findings": "在风格控制任务中，AcFlow在高风格对齐区间取得了最优的风格-内容权衡；在固定操作点上达到0.5365/0.2860的风格-内容对齐，优于最高风格对齐基线的0.4397/0.2684。定性结果展示了AcFlow能抑制多种概念，包括直接提示失败的情况。分析表明所学速度场是一种自适应控制机制，其更新方向随token及其激活状态而变化。"
+    }
+  },
+  {
+    "id": "2609.10811",
+    "title": "Overpainting: Localized Context-aware Diffusion Image Editing",
+    "abstract": "We present \"overpainting\", an image editing operation which offers both control over the location of the edit and awareness of the previous content in that location. The overpainted area is given by a trimap, where white-annotated pixels must be edited, gray-annotated pixels may be edited, and black-annotated pixels must not be edited. This enables both precise and loose control, depending on user intent. We implement overpainting by adapting a pretrained image editing diffusion model using a combination of joint attention and low-rank adaption across input images with attention-dropout to balance the information flow between noise, source and mask images. We present a novel, automated, training data generation pipeline that (1) generates a set of candidate image pairs leveraging existing language-based editing models, (2) carefully curates those pairs, and (3) extracts a trimap from each usable pair. We demonstrate the versatility of our overpainting model on a wide range of editing tasks.",
+    "authors": [
+      "Sam Sartor",
+      "Iliyan Georgiev",
+      "Michael Fischer",
+      "Valentin Deschaintre",
+      "Pieter Peers"
+    ],
+    "published": "2026-09-09",
+    "updated": "2026-09-09",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.10811.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.10811",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "覆盖绘制：局部化上下文感知的扩散图像编辑",
+      "core_contribution": "提出了一种名为“覆盖绘制”的图像编辑操作，既能控制编辑位置，又能感知该位置原有的内容，通过三元图（trimap）实现精确与宽松两种编辑控制模式。",
+      "method": "该方法通过联合注意力机制和低秩适配（LoRA）对预训练的图像编辑扩散模型进行改造，并在输入图像间引入注意力丢弃（attention-dropout）来平衡噪声、源图像和掩码图像之间的信息流。同时，作者设计了一套新颖的自动化训练数据生成流程：首先生成候选图像对，然后进行筛选，最后从可用图像对中提取三元图。",
+      "findings": "实验表明，该覆盖绘制模型在多种编辑任务上均展现出良好的通用性和灵活性，能够根据用户意图实现精确或宽松的局部编辑控制。"
+    }
+  }
+]
