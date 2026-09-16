@@ -1,0 +1,153 @@
+[
+  {
+    "id": "2609.14657",
+    "title": "Compositional SVG Generation via VLM-Driven Hierarchical Semantic Parsing",
+    "abstract": "While Vision-Language Models (VLMs) excel at visual reasoning, generating structured, editable Scalable Vector Graphics (SVG) remains a fundamental challenge. Existing pipelines predominantly yield flat, semantically agnostic collections of paths, where editing a single object requires manually identifying its constituent paths. To address this, we propose a VLM-driven agentic framework for semantic compositional SVG generation. Our pipeline recursively parses visual scenes into semantic and geometric hierarchies via top-down decomposition, visual grounding, and prompt-driven amodal occlusion recovery, ensuring each component is geometrically complete. Furthermore, we introduce the Semantic SVG Benchmark with human-annotated semantic groups and novel sub-component metrics (Semantic Recall/Precision, PERE) to explicitly evaluate structural compositionality and functional editability. Experiments show that our natively predicted structures surpass the upper bounds of existing flat-generation methods in both grouping quality and editability, while maintaining state-of-the-art visual fidelity.",
+    "authors": [
+      "Sehwan Park",
+      "Taehoon Kim",
+      "Geonhee Han",
+      "Dohyun Kim",
+      "Seung Wook Kim",
+      "Paul Hongsuck Seo"
+    ],
+    "published": "2026-09-13",
+    "updated": "2026-09-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.14657.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.14657",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "基于视觉语言模型驱动的层次语义解析的组合式SVG生成",
+      "core_contribution": "提出了一种由视觉语言模型驱动的智能体框架，用于生成具有语义组合结构的可编辑SVG，并引入了带有语义分组标注和新评估指标的语义SVG基准。",
+      "method": "该框架通过自顶向下的递归分解、视觉定位和提示驱动的非模态遮挡恢复，将视觉场景解析为语义与几何层次结构，确保每个组件在几何上完整。同时构建了包含人工标注语义组和新子组件指标（语义召回率/精确率、PERE）的语义SVG基准，以显式评估结构组合性和功能可编辑性。",
+      "findings": "实验表明，该方法原生预测的结构在分组质量和可编辑性上超越了现有扁平生成方法的上限，同时保持了最先进的视觉保真度。"
+    }
+  },
+  {
+    "id": "2609.16572",
+    "title": "Efficient Text-to-Image Generation: An Adaptive Step Schedule Controller for Diffusion Models",
+    "abstract": "Text-to-image diffusion models often use a fixed number of denoising steps, balancing time costs and image quality. However, the optimal number of steps depends on the complexity of the input text prompt. We propose an adaptive diffusion controller that dynamically adjusts the number of steps to generate high-quality images efficiently, without additional model training. By leveraging a mixture of step schedules with varying step sizes and evaluating the error term discrepancy at each timestep, our method transitions between schedules to optimize performance. Experiments on COCO and DiffusionDB show that our approach reduces inference time while maintaining visual fidelity, offering a more efficient alternative for text-to-image diffusion models.",
+    "authors": [
+      "Kuluhan Binici",
+      "Cihan Acar",
+      "Shivam Aggarwal",
+      "Siying Liu",
+      "Tulika Mitra"
+    ],
+    "published": "2026-09-15",
+    "updated": "2026-09-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.16572.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.16572",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "高效文本到图像生成：面向扩散模型的自适应步数调度控制器",
+      "core_contribution": "提出了一种无需额外训练的自适应扩散控制器，能够根据输入文本提示的复杂度动态调整去噪步数，在保持图像质量的同时显著减少推理时间。",
+      "method": "该方法利用多种不同步长的步数调度方案进行混合，并在每个时间步评估误差项的差异。通过监测误差项的变化，模型能够在不同调度方案之间动态切换，从而自适应地确定最优的去噪步数。整个过程无需对原有扩散模型进行重新训练或微调。",
+      "findings": "在COCO和DiffusionDB数据集上的实验表明，该方法在保持视觉保真度的同时有效降低了推理时间，为文本到图像扩散模型提供了一种更高效的替代方案。"
+    }
+  },
+  {
+    "id": "2609.14725",
+    "title": "CrossDistill: Balancing Quality and Diversity via Trajectory-Level Hybrid Few-Step Distillation",
+    "abstract": "Few-step distillation accelerates diffusion models but must balance diversity and fidelity: trajectory-based distillation preserves mode coverage, while distribution matching sharpens samples but can reduce diversity. We show that this tension can be exploited in a noise-regime-dependent way: high-noise steps largely determine global modes, whereas low-noise steps refine local details. We propose CrossDistill, a trajectory-level hybrid distillation framework that splits the sampling trajectory at a crossover point, applies a trajectory-preserving objective on the high-noise interval and a distribution-matching objective on the low-noise interval, and couples the two stages through the crossover state. In contrast to loss-level mixing, and complementarily to training-time two-stage recipes, CrossDistill explicitly assigns complementary objectives along the noise axis, so that global branching is preserved before local statistics are sharpened. CrossDistill is a noise-level scheduling policy: PCM and DMD are plug-in instantiations, while the noise partition, crossover coupling, and objective ordering are the key design elements. Experiments on text-to-video diffusion models and qualitative image-to-video results show that CrossDistill expands the few-step quality-diversity frontier, retaining seed-level variation while achieving competitive visual fidelity.",
+    "authors": [
+      "Yuxi Liu",
+      "Haoyu Li",
+      "Yixiang Cai",
+      "Tengxu Sun",
+      "Zekun Zhang",
+      "Baole Ai",
+      "Ang Wang",
+      "Jiamang Wang",
+      "Lin Qu",
+      "Kun Yuan",
+      "Kai Zhang"
+    ],
+    "published": "2026-09-13",
+    "updated": "2026-09-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.14725.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.14725",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "CrossDistill：通过轨迹级混合少步蒸馏平衡质量与多样性",
+      "core_contribution": "提出CrossDistill框架，通过在噪声轴上显式分配互补的蒸馏目标（高噪声区间保留轨迹以维持模式覆盖，低噪声区间进行分布匹配以锐化细节），在少步蒸馏中同时提升生成多样性与视觉保真度。",
+      "method": "CrossDistill是一种轨迹级混合蒸馏框架，将采样轨迹在交叉点处分为两段：在高噪声区间应用轨迹保持目标（如PCM），在低噪声区间应用分布匹配目标（如DMD），并通过交叉状态耦合两个阶段。与损失级混合不同，该方法沿噪声轴显式分配互补目标，先保留全局分支再锐化局部统计。噪声分区、交叉耦合和目标顺序是其关键设计要素，PCM和DMD可作为即插即用的实例化方案。",
+      "findings": "在文本到视频扩散模型上的实验以及定性的图像到视频结果表明，CrossDistill扩展了少步生成的质量-多样性前沿，在保持种子级变化（多样性）的同时实现了具有竞争力的视觉保真度。"
+    }
+  },
+  {
+    "id": "2609.17458",
+    "title": "Tables Decoded: DELTA for Structure, TARQA for Understanding",
+    "abstract": "Table understanding is a core task in document intelligence, encompassing two key subtasks: table reconstruction and table visual question answering (TabVQA). While recent approaches predominantly rely on vision- language models (VLMs) operating on table images, we propose a more scalable and effective alternative based on structured textual representations. These representations are easier to process, align more naturally with LLMs, and eliminate the need for language-specific visual encoders, making them particularly suitable for multilingual documents. We present DELTA, which separates physical structure recognition, logical structure recognition, and OCR to extract both layout and content accurately. DELTA outputs tables in Optimised Table Structure Language (OTSL), a compact and unified format that encodes cell arrangements and textual content. On table structure recognition (TSR), DELTA achieves TEDS- Structure scores comparable with state-of-the-art methods across FinTabNet, PubTabNet, and PubTables-1M. We further establish its robustness on non-English tables through our curated Hindi benchmark, TORQUE. Building on this, we introduce TARQA, an LLM fine-tuned on OTSL sequences. Our approach yields gains of 9.3 p.p. on WTQ (TabQA) and 9.2 p.p. on FinTabNetQA (TabVQA), respectively. On TORQUE, our method ranks second among all VLMs and DELTA + LLM variants. We release our code, models, and benchmark at: https://github.com/Tihiitborg/Tables-Decoded",
+    "authors": [
+      "Jahanvi Rajput",
+      "Dhruv Kudale",
+      "Saikiran Kasturi",
+      "Utkarsh Verma",
+      "Ganesh Ramakrishnan"
+    ],
+    "published": "2026-09-15",
+    "updated": "2026-09-15",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.17458.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.17458",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "表格解码：DELTA用于结构识别，TARQA用于理解",
+      "core_contribution": "提出了一种基于结构化文本表示（而非表格图像）的可扩展表格理解方案，包括用于表格结构识别的DELTA和用于表格视觉问答的TARQA，在多语言场景下表现优异。",
+      "method": "DELTA将物理结构识别、逻辑结构识别和OCR分离，以优化表格结构语言（OTSL）这一紧凑统一的格式输出表格，编码单元格排列和文本内容。TARQA则是在OTSL序列上微调的大语言模型，用于表格视觉问答任务。该方法无需语言特定的视觉编码器，更易于处理且与LLM自然对齐。",
+      "findings": "DELTA在FinTabNet、PubTabNet和PubTables-1M上的TEDS-Structure分数与最先进方法相当，并在自建的印地语基准TORQUE上展现出鲁棒性。TARQA在WTQ上提升9.3个百分点，在FinTabNetQA上提升9.2个百分点。在TORQUE上，该方法在所有VLM和DELTA+LLM变体中排名第二。"
+    }
+  },
+  {
+    "id": "2609.16591",
+    "title": "FLAT: Resampling Image and Text into 1D Flexible-Length Aligned Transmodal Tokens for Retrieval and Generation",
+    "abstract": "Traditional multimodal representation learning and generation are two stages: a contrastive or self-supervised visual encoder is trained first, followed by a separate downstream generative model. This setup bottlenecks generative performance behind frozen embeddings. To bridge this gap, we revisit joint multimodal representation learning and generation to produce linearly interpolatable embeddings that are directly consumable by generative decoders. We present FLAT (Flexible-Length Aligned Transmodal representations), a representation pre-training framework that jointly optimizes a shared multimodal encoder alongside downstream text-to-image (T2I) and image-to-text (I2T) decoders. By combining contrastive alignment with bidirectional cross-modal generative objectives, FLAT ensures its representations function as both discriminative semantic descriptors and generative conditions. Architecturally, FLAT maps visual and textual inputs into a unified continuous 1D sequence space, applying nested dropout over prefix-K tokens to enable dynamic output lengths. A single pre-training stage allows FLAT to perform cross-modal retrieval and generation across variable prefix K, achieving a T2I GenEval score of 71.1. Task-specific fine-tuning aligns model performance with state-of-the-art baselines: 83.1 GenEval on T2I generation; 40.5 BLEU-4 and 138.6 CIDEr on MS-COCO image captioning; and Recall@5 scores of 86.8 (I2T) / 75.8 (T2I) on MS-COCO alongside 98.3 (I2T) / 93.6 (T2I) on Flickr30K. Finally, qualitative evaluations demonstrate that FLAT representations natively support linear interpolation, latent space arithmetic, and zero-shot composed retrieval.",
+    "authors": [
+      "Guangyu Sun",
+      "Shlok Kumar Mishra",
+      "Wentao Bao",
+      "Robert Zhenheng Yang",
+      "Xiao Wang",
+      "Xiyuan Wang",
+      "Yujunrong Ma",
+      "Chen Yuan",
+      "Max Xiangjun Fan",
+      "Jun Xiao",
+      "Jianpeng Cheng"
+    ],
+    "published": "2026-09-15",
+    "updated": "2026-09-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.16591.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.16591",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "FLAT：将图像和文本重采样为1D可变长度对齐的跨模态Token用于检索与生成",
+      "core_contribution": "FLAT提出了一种联合优化共享多模态编码器与下游生成解码器的表示预训练框架，使学到的嵌入既能作为判别性语义描述符，又能直接作为生成条件，从而弥合了多模态表示学习与生成之间的鸿沟。",
+      "method": "FLAT将视觉和文本输入映射到统一的连续1D序列空间，并通过在前缀K个token上施加嵌套dropout来实现动态输出长度。该框架结合了对比对齐与双向跨模态生成目标进行联合优化，使表示同时具备判别和生成能力。仅需一个预训练阶段，FLAT即可在可变前缀K下执行跨模态检索和生成任务，并可通过任务特定微调进一步提升性能。",
+      "findings": "FLAT在单阶段预训练下即达到T2I GenEval 71.1分；经任务特定微调后，T2I生成达到83.1 GenEval，MS-COCO图像描述达到40.5 BLEU-4和138.6 CIDEr，MS-COCO检索Recall@5为86.8（I2T）/ 75.8（T2I），Flickr30K检索Recall@5为98.3（I2T）/ 93.6（T2I）。定性评估表明FLAT表示天然支持线性插值、潜在空间算术和零样本组合检索。"
+    }
+  }
+]
