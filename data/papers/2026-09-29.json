@@ -1,0 +1,143 @@
+[
+  {
+    "id": "2609.35641",
+    "title": "Verifiable Visual Rewards Transfer from Synthetic Scenes to Natural Prompts",
+    "abstract": "Precise instruction following in image generation, such as satisfying object counts and spatial relations, remains an open challenge at least in part because it is learned using unreliable reward models such as object detectors and vision-language models. We introduce Verifiable Visual Rewards (VVR), the first framework for programmatically verifiable image rewards, and show that training on it generalizes to natural prompts. Each VVR task is a scene of geometric objects and relations among them, from which we derive both the prompt and a deterministic verifier, so tasks can be generated in any number and at any chosen complexity. We release VVRBench, with 10,000 tasks over 32 constraint types, and VVRBench-Challenge, with 720 more complex tasks; the strongest model we evaluate---GPT-Image-2.5---solves 21.4% of VVRBench-Challenge. Using VVR scores as rewards for reinforcement learning (RLVVR) raises the accuracy of Stable Diffusion 3.5 Medium on VVRBench from 2.8% to 28.3% and demonstrates consistent easy-to-hard generalization. These gains extend to out-of-domain benchmarks, and mixing VVR into existing objectives further improves overall performance and human preference, motivating the adoption of VVR into standard image generation post-training recipes.",
+    "authors": [
+      "Shuyue Stella Li",
+      "Xiaochuang Han",
+      "Yulia Tsvetkov",
+      "Luke Zettlemoyer"
+    ],
+    "published": "2026-09-28",
+    "updated": "2026-09-28",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.35641.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.35641",
+    "primary_category": "cs.AI",
+    "score": 88,
+    "summary": {
+      "title_zh": "从合成场景到自然提示的可验证视觉奖励迁移",
+      "core_contribution": "提出了首个可编程验证的图像奖励框架VVR，通过合成场景生成可验证的奖励信号，并证明在该框架上训练可以泛化到自然提示，显著提升图像生成模型对精确指令（如物体计数和空间关系）的遵循能力。",
+      "method": "每个VVR任务由几何物体及其关系的合成场景构成，从中自动生成提示词和确定性验证器，从而可以任意数量和任意复杂度地生成任务。作者发布了包含32种约束类型、10000个任务的VVRBench以及720个更复杂任务的VVRBench-Challenge。将VVR分数作为强化学习奖励（RLVVR）来训练Stable Diffusion 3.5 Medium。",
+      "findings": "最强评估模型GPT-Image-2.5仅解决VVRBench-Challenge的21.4%；使用RLVVR后，Stable Diffusion 3.5 Medium在VVRBench上的准确率从2.8%提升至28.3%，并展现出一致的从易到难泛化能力。这些增益可扩展到域外基准，将VVR混入现有目标还能进一步提升整体性能和人类偏好，表明VVR适合纳入标准图像生成后训练流程。"
+    }
+  },
+  {
+    "id": "2609.35530",
+    "title": "AutoRef: Harness Optimization for Agentic Multi-Reference Image Generation",
+    "abstract": "Recent image generation models can take multiple reference images as input and combine them into a new image. However, multi-reference image generation remains challenging: models may omit or duplicate subjects from the references, or produce images in which multiple subjects appear unnaturally pasted. Recent work has proposed image generation agents that combine image generation models, reasoning models, and a harness, which is an executable program that specifies how reference images are interpreted, how generation is performed, how outputs are diagnosed, and how the final image is selected. In multi-reference generation, however, references play different roles and outputs must satisfy many criteria at once, such as fidelity to each reference and the naturalness of the whole image, so many parts of the harness could be improved, from how references are processed to how outputs are diagnosed. This makes it hard to predict which changes will improve performance and by how much, and good harnesses difficult to design by hand; indeed, human-written harnesses vary widely in performance. We therefore propose AutoRef, which optimizes the harness automatically while keeping both models frozen: a coding agent iteratively rewrites the harness code. AutoRef separates the tasks whose feedback informs proposals from the tasks used to select candidates, and continues the search from a beam of the top-ranked harnesses on the selection tasks. Using this procedure, we discover AutoRef-Harness, which improves the open-weight FLUX.2 [klein] 4B from 5.72 to 7.37 on held-out four-reference tasks of the MultiBanana benchmark, matching or exceeding proprietary models including Nano Banana Pro and GPT-Image-1.5. Without re-optimization, the same harness also improves results when the generator, number of references, benchmark, evaluator, or reasoning model differs from those used in the search.",
+    "authors": [
+      "Yuta Oshima",
+      "Ku Onoda",
+      "Yusuke Iwasawa",
+      "Masahiro Suzuki",
+      "Yutaka Matsuo",
+      "Hiroki Furuta"
+    ],
+    "published": "2026-09-28",
+    "updated": "2026-09-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.35530.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.35530",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "AutoRef：面向智能体多参考图像生成的Harness优化",
+      "core_contribution": "提出AutoRef，一种在保持生成模型和推理模型冻结的前提下自动优化图像生成智能体harness的方法，并发现AutoRef-Harness，在多参考图像生成任务上显著超越现有开源与专有模型。",
+      "method": "AutoRef使用编码智能体迭代重写harness代码，将提供反馈以生成候选方案的任务与用于筛选候选方案的任务相分离，并在筛选任务上从排名靠前的harness组成的beam中继续搜索，从而自动优化harness的各个组成部分（如参考图像处理、生成执行、输出诊断和最终图像选择）。",
+      "findings": "AutoRef-Harness将开源模型FLUX.2 [klein] 4B在MultiBanana基准的四参考任务上的得分从5.72提升至7.37，达到或超过Nano Banana Pro和GPT-Image-1.5等专有模型；且无需重新优化，该harness在生成器、参考图像数量、基准、评估器或推理模型发生变化时仍能提升效果。"
+    }
+  },
+  {
+    "id": "2609.34658",
+    "title": "CapField-OPD: Learning Continuous Capability Fields via Joint-Anchored Multi-Teacher On-Policy Distillation for Flow Models",
+    "abstract": "Reward-specialized post-training produces strong experts for flow-based generative models, while multi-teacher on-policy distillation (OPD) consolidates their capabilities into a single student. Existing methods, however, route each prompt to a single teacher according to its semantic category, implicitly binding the desired capability to prompt content. This coupling makes capability invocation vulnerable to prompt perturbations and prevents users from explicitly adjusting the strength of the desired capability at inference time. In this work, we introduce CapField-OPD, an OPD framework that integrates multiple teachers into a continuous capability field through explicit capability coordinates. We use teacher models as anchors to construct this field, with the coordinates determining how their outputs are combined. Each capability configuration thus receives a unique supervision target, and capability control no longer depends on prompt semantics. Since the training anchors may not be optimal at inference time, we further profile the learned field on a small calibration set. The coordinate with the highest mean reward serves as the recommended default, while coordinates that are frequently optimal offer a promising candidate set for test-time scaling. Extensive experiments on compositional generation, text rendering, and visual aesthetics demonstrate that CapField-OPD consolidates multiple specialized teachers into a single student while preserving or surpassing their performance, reliably invokes the desired capabilities under semantics-preserving prompt variations, and supports continuous capability control and coordinate-based test-time scaling.",
+    "authors": [
+      "Pengyang Ling",
+      "Yujie Zhou",
+      "Jiazi Bu",
+      "Yibin Wang",
+      "Xiaoxiao Ma",
+      "Yi Jin",
+      "Huaian Chen",
+      "Yuhang Zang"
+    ],
+    "published": "2026-09-28",
+    "updated": "2026-09-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.34658.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.34658",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "CapField-OPD：通过联合锚定多教师在线策略蒸馏为流模型学习连续能力场",
+      "core_contribution": "提出CapField-OPD框架，通过显式能力坐标将多个奖励专精教师整合为连续能力场，解耦能力调用与提示语义，实现推理时连续能力控制与基于坐标的测试时扩展。",
+      "method": "以多个奖励专精的流模型教师作为锚点，通过显式能力坐标构建连续能力场，坐标决定教师输出的组合方式，使每个能力配置获得唯一监督目标。训练后在小校准集上对学习到的能力场进行剖析，以平均奖励最高的坐标作为推荐默认值，并识别频繁最优的坐标作为测试时扩展的候选集。",
+      "findings": "在组合生成、文本渲染和视觉美学任务上，CapField-OPD将多个专精教师整合为单一学生模型，性能保持或超越教师；在语义保持的提示扰动下可靠调用目标能力；支持连续能力控制和基于坐标的测试时扩展。"
+    }
+  },
+  {
+    "id": "2609.34587",
+    "title": "Reinforcement Learning from Intermediate Renders for Image-to-Code Generation",
+    "abstract": "Reinforcement learning is increasingly used to post-train vision-language models for image-to-code generation, such as generating SVG code from a reference image, by optimizing rewards computed from the final rendered output. However, relying on a single terminal reward provides sparse feedback that is poorly aligned with the contribution of individual tokens. A generated program may contain operations that accurately reproduce some parts of the target image alongside others that introduce errors, yet all tokens are trained from the same final outcome. We observe that many intermediate code prefixes are not only executable, but already produce meaningful partial renders that reflect progress toward the target. This property provides a natural source of denser supervision during generation. Based on this observation, we introduce IR4RL, an RL framework with a token-level render-progress reward that turns changes between intermediate renders into localized feedback for the generated sequence. We evaluate our approach on Image-to-SVG and Image-to-TikZ generation. Across both tasks, our method improves over supervised fine-tuning and standard GRPO, yielding new state-of-the-art open-source models. This shows that intermediate rendering provides a simple and effective source of process supervision for RL post-training of image-to-code models.",
+    "authors": [
+      "Omri Kaduri",
+      "Kate Feingold",
+      "Phillip Isola",
+      "Tali Dekel"
+    ],
+    "published": "2026-09-28",
+    "updated": "2026-09-28",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.34587.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.34587",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "基于中间渲染的强化学习用于图像到代码生成",
+      "core_contribution": "提出IR4RL框架，利用中间代码前缀的可执行部分渲染作为密集的过程监督信号，通过token级别的渲染进度奖励改进图像到代码生成的强化学习后训练。",
+      "method": "论文观察到许多中间代码前缀不仅可执行，还能产生反映目标进展的有意义的部分渲染。基于此，IR4RL将中间渲染之间的变化转化为对生成序列的局部化token级反馈奖励，替代传统仅依赖最终渲染结果的稀疏终端奖励。该方法在Image-to-SVG和Image-to-TikZ两个任务上进行评估，并与监督微调和标准GRPO进行对比。",
+      "findings": "在Image-to-SVG和Image-to-TikZ两个任务上，该方法均优于监督微调和标准GRPO，取得了新的开源模型最优性能。这表明中间渲染为图像到代码模型的强化学习后训练提供了一种简单而有效的过程监督来源。"
+    }
+  },
+  {
+    "id": "2609.34539",
+    "title": "TSGate: Timestep-Aware Gated Attention for Diffusion Transformers",
+    "abstract": "Diffusion Transformers (DiTs) have emerged as the dominant architecture for high-fidelity image and video generation. Recent DiT systems increasingly use structured prompts for training, improving caption quality and prompt adherence. However, their generation quality can degrade severely under out-of-domain (OOD) prompts, including the free-form descriptions supplied by users at inference time. Although LLM-based rewriting can convert these prompts into structured formats, it does not guarantee that the rewritten prompts align with the training distribution. Our analysis links this degradation to attention sinks and reduced early-step image-to-text attention and shows that sink suppression alone is insufficient to restore generation quality. Despite effective sink suppression, models trained with standard gated attention exhibit reduced early-step image-to-text attention and suboptimal generation quality. Based on these insights, we propose Timestep-Aware Gated Attention (TSGate), which injects a timestep-conditioned bias into the gate signal so that gating behavior adapts across denoising steps. Extensive experiments show that TSGate consistently outperforms both the baseline and standard gated attention across multiple benchmarks, improving the raw-prompt DPG score by 9.5% over the baseline.",
+    "authors": [
+      "Boyu Zhang",
+      "Yifan Liu",
+      "Shuxia Lin",
+      "Qingjian Ni",
+      "Yinfei Xu",
+      "Xu Yang"
+    ],
+    "published": "2026-09-28",
+    "updated": "2026-09-28",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.34539.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.34539",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "TSGate：面向扩散Transformer的时间步感知门控注意力机制",
+      "core_contribution": "论文提出TSGate（时间步感知门控注意力），通过向门控信号注入时间步条件偏置，使门控行为能够随去噪步骤自适应调整，从而缓解扩散Transformer在域外提示下的生成质量退化问题。",
+      "method": "作者首先分析了扩散Transformer在域外提示下生成质量下降的原因，将其归因于注意力汇（attention sinks）以及早期去噪步骤中图像到文本注意力减弱的现象。研究发现，仅抑制注意力汇并不足以恢复生成质量，使用标准门控注意力的模型仍表现出早期图像到文本注意力不足的问题。基于此，TSGate在门控信号中引入时间步条件偏置，使门控机制在不同去噪步骤中具有差异化行为，从而在去噪早期保留更充分的图像到文本注意力。",
+      "findings": "在多个基准测试上，TSGate一致优于基线模型和标准门控注意力方法，在原始提示（raw-prompt）的DPG评分上相较基线提升了9.5%，有效改善了域外提示下的生成质量与提示遵循能力。"
+    }
+  }
+]
