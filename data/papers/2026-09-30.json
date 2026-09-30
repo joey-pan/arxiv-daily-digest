@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2609.37141",
+    "title": "MSTypography: Multi-character Semantic Typography via Balancing Word Legibility and Object Recognizability",
+    "abstract": "Semantic typography is a design technique where the visual representation of a word conveys its semantic meaning, while maintaining its legibility. Existing digital typography methods mainly focus on single-character scenarios. They suffer from a lack of legibility constraints and insufficient local deformation when extended to multi-character words, as the intricate structures among multiple characters are hardly preserved during the typography process. In this paper, we propose a global-to-local typography framework for multi-character scenarios. It performs mask-driven silhouette approximation at the global level, while semantic-guided refinement at the local level, with a culling step in between to improve efficiency. To preserve word legibility, we designed structural losses (including explicit collision constraints and implicit Jacobian singular value constraints) and an OCR constraint for character-level readability. To enhance the object recognizability, we leverage semantic guidance with diffusion priors, which drives the character glyph toward the target concept while preserving its structural integrity. To the best of our knowledge, this is the first multi-character semantic typography method that effectively balances word legibility and object recognizability. Evaluations on five representative languages (English, Chinese, Japanese, Korean, Arabic) demonstrate superiority over SOTA methods. Codes will be open-sourced.",
+    "authors": [
+      "Xinye Yang",
+      "Xinding Zhu",
+      "Kai Fang",
+      "Xinyi Ren",
+      "Mengjian Li",
+      "Bin Cao",
+      "Jiazhou Chen"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.37141.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.37141",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "MSTypography：通过平衡单词可读性与物体可识别性实现多字符语义排版",
+      "core_contribution": "本文提出了首个面向多字符场景的语义排版方法，能够在保持单词可读性的同时增强物体可识别性，有效平衡了两者之间的冲突。",
+      "method": "该方法采用从全局到局部的排版框架：在全局层面进行掩码驱动的轮廓近似，在局部层面进行语义引导的精细化调整，并在两者之间加入剔除步骤以提高效率。为保持单词可读性，设计了结构损失（包括显式碰撞约束和隐式雅可比奇异值约束）以及面向字符级可读性的OCR约束。为增强物体可识别性，利用扩散先验的语义引导，驱动字形向目标概念演化，同时保持其结构完整性。",
+      "findings": "在五种代表性语言（英语、中文、日语、韩语、阿拉伯语）上的评估表明，该方法优于现有最先进方法，能够有效平衡单词可读性与物体可识别性。"
+    }
+  },
+  {
+    "id": "2609.37016",
+    "title": "Back2Struct: Making Structured Images Editable Again",
+    "abstract": "Structured images, such as diagrams, charts, and flowcharts, are inherently symbolic and can be compactly represented in an editable format, yet in practice, they are often rendered as images, and therefore not graphically editable. This mismatch presents a significant challenge for researchers, engineers, and designers who wish to incorporate modified versions of existing graphic content into new materials without manually reconstructing it. In this study, we presentBack2Struct, which \"makes structured images editable again\" by directly recovering vector graphics code (SVG / XML) from image representations. Given an image of a structured graphic, Back2Struct predicts semantically object-level SVG / XML code that explicitly encodes text, shapes, topology, and layout, rather than performing low-level pixel vectorization. The generated code can be seamlessly imported into tools such as PowerPoint, allowing users to edit, refine, restyle, and reuse graphic content while preserving structural fidelity. Beyond supervised fine-tuning on ground-truth SVG token sequences, we further optimize Back2Struct with reward-based learning to better match deployment-time requirements: the output should be syntactically valid, properly concise, and visually faithful to the input diagram. Specifically, we design a composite reward that jointly encourages SVG / XML compilability, length consistency with the reference code, and structural or semantic similarity between the generated and ground-truth graphics. These complementary signals guide the model to produce SVGs that are not only closer to the training distribution, but also more complete, editable, and renderable in practice. Experiments show that Back2Struct improves accuracy, editability, validity, and user alignment over baselines. Dataset and code are available at: pengyu965.github.io/Back2Struct.github.io",
+    "authors": [
+      "Pengyu Yan",
+      "Yixin Wu",
+      "Yunjie Tian",
+      "David Doermann"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.37016.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.37016",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Back2Struct：让结构化图像重新可编辑",
+      "core_contribution": "提出Back2Struct方法，能够从结构化图像（如图表、流程图）中直接恢复出对象级SVG/XML矢量图形代码，使原本不可编辑的图像内容重新具备可编辑、可复用和可重新设计的能力。",
+      "method": "该方法以结构化图像为输入，预测语义化的对象级SVG/XML代码，显式编码文本、形状、拓扑和布局信息，而非进行低层次像素矢量化。在真实SVG token序列的监督微调基础上，进一步引入基于奖励的学习优化，设计复合奖励函数联合鼓励输出的SVG/XML可编译性、与参考代码的长度一致性以及生成图形与真实图形之间的结构或语义相似性。生成的代码可无缝导入PowerPoint等工具进行编辑和复用。",
+      "findings": "实验表明，Back2Struct在准确性、可编辑性、有效性和用户对齐度方面均优于基线方法，生成的SVG不仅更接近训练分布，而且在实际应用中更完整、更可编辑、更可渲染。数据集和代码已公开。"
+    }
+  },
+  {
+    "id": "2609.36638",
+    "title": "PE-OPSD: Internalizing Prompt Enhancement into Flow-matching Models via On-Policy Self-Distillation",
+    "abstract": "Text-to-image users often provide concise and underspecified prompts, whereas generative models benefit from detailed textual conditions for reliable instruction following. Existing systems bridge this gap with Prompt Enhancers (PEs) that rewrite raw prompts at inference time, introducing additional latency and leaving prompt elaboration external to the generator. We instead view enhanced prompts as privileged training information and ask whether their benefits can be internalized. We propose Prompt-Enhanced On-Policy Self-Distillation (PE-OPSD) for text-to-image flow-matching models. During training, a raw-prompt student follows its own generation trajectory, while an enhanced-prompt teacher provides vector-field targets at the states visited by the student. This on-policy supervision distills the behavior induced by enhanced prompts into the raw-prompt student without requiring additional text--image pairs. At inference, both the PE and teacher are removed, and the student generates directly from raw prompts. Across multiple model families, PEs, and benchmarks, PE-OPSD achieves the strongest aggregate prompt fidelity among the evaluated baselines, yields positive aggregate visual appeal gains, and retains the base-model inference efficiency.",
+    "authors": [
+      "Mingfeng Lin",
+      "Chengfei Cai",
+      "Lin Xu",
+      "Chengqian Ma",
+      "Yuxiang Wei",
+      "Liang Han"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.36638.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.36638",
+    "primary_category": "cs.LG",
+    "score": 88,
+    "summary": {
+      "title_zh": "PE-OPSD：通过在线策略自蒸馏将提示增强内化到流匹配模型中",
+      "core_contribution": "该论文提出PE-OPSD方法，将提示增强器（PE）带来的详细文本条件优势内化到流匹配生成模型中，使模型在推理时无需额外提示增强器或教师模型即可直接从原始简洁提示生成高质量图像，同时保持基础模型的推理效率。",
+      "method": "该方法采用在线策略自蒸馏框架：训练时，以原始提示作为输入的学生模型沿自身生成轨迹采样状态，而由增强提示驱动的教师模型在这些学生访问的状态上提供向量场目标。通过这种在线策略监督，将增强提示所诱导的生成行为蒸馏到原始提示学生模型中，且无需额外的文本-图像配对数据。推理时移除提示增强器和教师模型，学生模型直接从原始提示生成图像。",
+      "findings": "在多个模型家族、提示增强器和基准测试上，PE-OPSD在评估基线中取得了最强的综合提示保真度，同时在视觉吸引力上获得正向综合提升，并保持了基础模型的推理效率。"
+    }
+  },
+  {
+    "id": "2609.38170",
+    "title": "Adversarial Training for Pixel Diffusion",
+    "abstract": "Pixel diffusion models generate RGB images directly, avoiding the bottleneck of an autoencoder, yet their outputs still systematically underrepresent fine-scale natural-image statistics. We show that adversarial learning provides an effective post-training correction for this deficiency. Starting from a pretrained model, we retain its original diffusion or flow-matching objective and add an adversarial loss to the predicted output at non-high-noise timesteps, leaving the model architecture and sampling procedure unchanged. To our knowledge, this is the first systematic study of adversarial post-training for pixel diffusion. Across two pixel backbones, the method jointly improves distribution fidelity, coverage, prompt alignment, and perceptual quality. We further investigate why it works. Frequency-band and power-law analyses show that the original models systematically underproduce natural-image high-frequency content, while adversarial post-training restores this missing spectral power. In contrast, perceptual loss also increases high-frequency content but sacrifices distribution fidelity and prompt alignment. Nearest-neighbor, recall, and matched no-GAN SFT controls further rule out memorization, mode dropping, and additional optimization as simple explanations. Finally, we examine the boundary of this effect. Under the tested latent diffusion configurations, the same procedure does not produce comparable joint gains and adds almost no decoded high-frequency power. These results identify direct output access to the image statistics being corrected as a key factor governing when adversarial post-training succeeds.",
+    "authors": [
+      "Xin Lin",
+      "Zhifei Zhang",
+      "Yuqian Zhou",
+      "Haitian Zheng",
+      "Zhe Lin",
+      "Ming-Hsuan Yang",
+      "Truong Nguyen"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.38170.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.38170",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "像素扩散模型的对抗训练",
+      "core_contribution": "本文首次系统研究了针对像素扩散模型的对抗后训练方法，证明对抗学习能够有效纠正像素扩散模型对自然图像细粒度统计特征（尤其是高频内容）系统性表征不足的问题，并在多个维度上同时提升生成质量。",
+      "method": "从预训练的像素扩散模型出发，保留其原有的扩散或流匹配目标，在非高噪声时间步上对预测输出额外施加对抗损失，模型架构与采样过程均保持不变。该方法在两种像素骨干网络上进行了验证，并通过频带分析、幂律分析、最近邻检索、召回率以及匹配的无GAN监督微调对照实验，系统探究了其有效性来源及适用边界。",
+      "findings": "对抗后训练在两种像素骨干网络上同时提升了分布保真度、覆盖度、提示对齐和感知质量。频带与幂律分析表明，原始模型系统性地低估了自然图像的高频内容，而对抗后训练恢复了缺失的频谱功率；相比之下，感知损失虽也增加高频内容，却牺牲了分布保真度和提示对齐。最近邻、召回率及无GAN对照实验排除了记忆化、模式丢弃和额外优化等简单解释。此外，在测试的潜空间扩散配置下，相同方法未能产生可比的联合增益，几乎不增加解码后的高频功率，表明对图像统计特征的直接输出访问是决定对抗后训练能否成功的关键因素。"
+    }
+  },
+  {
+    "id": "2609.37569",
+    "title": "Decompose Radicals, Then Reward: Fine-Grained Inspection for Accurate Chinese Text Rendering",
+    "abstract": "Rendering accurate Chinese text remains challenging for text-to-image models. Existing OCR-based reinforcement-learning rewards compare decoded transcripts with target strings. Such rewards overlook the compositional nature of Chinese writing: an ideograph consists of reusable components arranged through explicit spatial relations, yet OCR evaluates it as an atomic character. Consequently, visually different radical-level errors may receive equally coarse feedback, encouraging glyphs that merely resemble the target instead of faithfully reproducing its internal structure. We employ Ideographic Description Sequences (IDS), which comprise spatial operators and character components, and train an expert IDS recognizer to transcribe rendered Chinese text into this representation. Building on this recognizer, we introduce IDSpect, which deterministically decomposes the target text into IDS tokens and aligns crop-level visual IDS predictions with the target sequence. Globally unique token credit makes this comparison robust to the order of detected text regions. Combined with a whole-character semantic reward, IDSpect supplies fine-grained credit with component and spatial-relation without changing the image generator or adding inference-time cost. Experiments with GRPO post-training of Qwen-Image demonstrate that IDSpect achieves leading structural quality and semantic alignment on LongText and GenTextEval.",
+    "authors": [
+      "Yazhen Xie",
+      "Xingsong Ye",
+      "Zhineng Chen"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.37569.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.37569",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "分解部首，再奖励：面向精准中文文本渲染的细粒度检测",
+      "core_contribution": "提出IDSpect，一种基于表意文字描述序列（IDS）的细粒度奖励方法，通过分解汉字为部件和空间关系来提供组件级监督，显著提升文本到图像模型生成中文文本的结构准确性和语义对齐。",
+      "method": "利用表意文字描述序列（IDS）表示汉字，训练专家IDS识别器将渲染的中文文本转录为IDS表示。基于该识别器，IDSpect将目标文本确定性地分解为IDS token，并将裁剪级别的视觉IDS预测与目标序列对齐，利用全局唯一token信用机制使比较对检测文本区域的顺序具有鲁棒性。该方法与整体字符语义奖励结合，在不改变图像生成器或增加推理成本的情况下提供细粒度信用。",
+      "findings": "在Qwen-Image上使用GRPO后训练的实验表明，IDSpect在LongText和GenTextEval数据集上实现了领先的结构质量和语义对齐。"
+    }
+  }
+]
