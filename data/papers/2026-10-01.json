@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2609.40305",
+    "title": "Looped Diffusion Transformer",
+    "abstract": "Improving text-to-image models has traditionally relied on increasing model size or the number of denoising steps. In this work, we explore an alternative way to scale computation by repeatedly running shared Transformer blocks within each denoising step, effectively increasing computational depth while keeping the parameter count fixed. This looped computation enables iterative refinement of internal representations without explicit reasoning tokens. However, naive looping fails to consistently improve image quality. We trace this problem to weak supervision across intermediate loops and unregulated attention updates that progressively erode local information. To overcome these challenges, we propose Looped Diffusion Transformer (Looped-DiT), which combines deep supervision across intermediate loops with self-modulating attention to stabilize looped feature updates. Under matched-parameter and matched-compute settings, Looped-DiT consistently outperforms non-looped baselines. Notably, a 260M-parameter looped model can surpass a model 6.5x larger across multiple text-to-image benchmarks while requiring 4.9x lower inference compute. Beyond this performance gain, we find that looped computation can offer a more effective form of iterative computation for diffusion models, with increasing loop depth yielding larger gains than adding more denoising steps under a fixed inference budget. Furthermore, deeper loops can progressively correct mistakes made in earlier loops, exhibiting behaviors suggestive of latent reasoning. Together, these results show that looped computation offers a promising way to scale visual generation models.",
+    "authors": [
+      "Yong Xien Chng",
+      "Tianyi Chen",
+      "Wenwen Tong",
+      "Haiwen Diao",
+      "Zhongang Cai",
+      "Lei Yang",
+      "Ziwei Liu",
+      "Lewei Lu",
+      "Dahua Lin",
+      "Gao Huang"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.40305.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.40305",
+    "primary_category": "cs.CV",
+    "score": 92,
+    "summary": {
+      "title_zh": "循环扩散Transformer",
+      "core_contribution": "提出Looped-DiT，通过在每个去噪步骤中重复运行共享Transformer块来增加计算深度而保持参数量不变，在匹配参数和计算量下持续优于非循环基线，且260M循环模型可超越6.5倍大的模型并降低4.9倍推理计算。",
+      "method": "在每个去噪步骤内重复执行共享的Transformer块，实现循环计算以迭代精炼内部表示。针对朴素循环导致的图像质量下降问题，引入中间循环的深度监督和自调制注意力机制，稳定循环特征更新。在匹配参数和匹配计算量的设置下进行对比实验。",
+      "findings": "Looped-DiT在多个文本到图像基准上持续优于非循环基线；260M循环模型超越6.5倍大模型且推理计算降低4.9倍；固定推理预算下增加循环深度比增加去噪步骤收益更大；更深的循环能逐步纠正早期循环的错误，表现出潜在推理行为。"
+    }
+  },
+  {
+    "id": "2609.39441",
+    "title": "CAST: Causal Advantage-Structured Training with Spatially Grounded Compositional Rewards for Diffusion Models",
+    "abstract": "Online reinforcement learning has been extended to flow matching for diffusion model (DM) image generation. However, this paradigm faces three limitations: (1) Window selection. Existing methods manually set the stochastic differential equation (SDE) sampling window, i.e., the denoising steps where exploration noise is injected. We instead determine it from each model's denoising trajectory. (2) Reward saturation. Current methods rely on scoring models trained on human annotations; we find that such scores are extremely high and nearly indistinguishable on the latest SOTA open-source DMs, making advantage estimation largely ineffective. (3) Sample inefficiency. A single scalar reward collapses different failure modes into almost identical scores, leaving minimal gradient guidance for targeted improvement. To address these issues, we propose CAST (Causal Advantage-Structured Training), an RL fine-tuning method for pretrained DMs, which (1) identifies the denoising step at which each model fixes the objects and their spatial arrangement in the image and uses that timing to set the SDE window, (2) decomposes each prompt via Causal Scene Graphs (CSG) into verifiable-atoms, i.e., minimal semantic units such as an object, count, attribute, or spatial relation that can each be checked independently, and rewards each atom separately, and (3) projects the signed atom-level advantages into pixel space through teacher-forced attention and uses them to spatially weight the SDE policy objective. We fine-tune two of the strongest open-source DMs, FLUX.2-dev and Qwen-Image-2512, with CAST, and evaluate them on GenEval 2, a compositional benchmark, and on Qwen-Image-Bench for overall quality. Within almost the same training budget, CAST's improvement over the base model on the most challenging GenEval 2 prompts is up to 3.07x that of Flow-GRPO, while overall generation quality also improves.",
+    "authors": [
+      "Shu Yu",
+      "Chaochao Lu"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.39441.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.39441",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "CAST：面向扩散模型的因果优势结构化训练与空间锚定组合奖励",
+      "core_contribution": "提出了一种面向预训练扩散模型的强化学习微调方法CAST，通过从模型自身去噪轨迹中确定SDE采样窗口、基于因果场景图分解原子级奖励、并将原子级优势投影到像素空间进行空间加权，解决了现有在线强化学习范式中的窗口选择、奖励饱和与样本低效三大问题。",
+      "method": "CAST首先识别每个模型在去噪过程中固定物体及其空间排布的特定步骤，并据此设置SDE窗口以注入探索噪声；其次通过因果场景图（CSG）将每个提示分解为可独立验证的原子单元（如物体、数量、属性或空间关系），并对每个原子分别给予奖励；最后将带符号的原子级优势通过教师强制注意力投影到像素空间，用于对SDE策略目标进行空间加权，从而实现对预训练扩散模型的强化学习微调。",
+      "findings": "在FLUX.2-dev和Qwen-Image-2512两个最强开源扩散模型上进行CAST微调，并在组合性基准GenEval 2和整体质量基准Qwen-Image-Bench上评估。在几乎相同的训练预算下，CAST在最具挑战性的GenEval 2提示上相对基座模型的提升最高可达Flow-GRPO的3.07倍，同时整体生成质量也有所提升。"
+    }
+  },
+  {
+    "id": "2609.39380",
+    "title": "InfoAgent: Traceable Generation and Repair of Evidence-Grounded Infographics",
+    "abstract": "Reliable infographic generation requires facts, symbols, and visual relations to remain consistent through rendering and revision. Correcting one element also requires tracking its supporting evidence and the dependencies affected by the change. We present \\textbf{InfoAgent}, a training-free framework for \\emph{evidence-bound visual-symbolic program synthesis}. Its Infographic Visual Description (IVD) records factual payloads, evidence provenance, execution routes, and verification obligations in a typed dependency graph. Retrieved design priors guide compilation, and layered execution combines raster synthesis with editable symbolic and binding objects while retaining their traces. Dependency-aware repair localizes corrections, rechecks affected dependencies, and requires protected obligations to remain satisfied under the declared checkers. Unresolved obligations remain explicit. On IGenBench, InfoAgent achieves 93.0 Q-ACC and 59.0 I-ACC. We also introduce InfoGraphicBench-Evidence, where complete-checklist pass rates on 200 test requests increase from 21.5\\% for Same-IVD Prompt to 23.5\\% for the initial layered output and 28.5\\% after repair, using the same evidence and initial IVD. On 120 audited repair cases, localized repair edits 12.4\\% of the canvas on average, compared with 67.3\\% for global regeneration.",
+    "authors": [
+      "Yifan Li",
+      "Tong Li",
+      "Qi Zeng",
+      "Lishuai Gao",
+      "Ruwei Pan",
+      "Cong Wei",
+      "Shaohua Kevin Zhou",
+      "Zhuoliang Kang",
+      "Xiaoming Wei"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.39380.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.39380",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "InfoAgent：可追溯的基于证据的信息图生成与修复",
+      "core_contribution": "提出了一个无需训练的证据绑定视觉-符号程序合成框架InfoAgent，通过类型化依赖图实现信息图的可追溯生成与依赖感知修复，确保事实、符号和视觉关系在渲染与修改过程中保持一致。",
+      "method": "InfoAgent通过信息图视觉描述（IVD）在类型化依赖图中记录事实载荷、证据来源、执行路径和验证义务。检索到的设计先验指导编译过程，分层执行结合光栅合成与可编辑的符号和绑定对象，同时保留其追踪信息。依赖感知修复定位修正点，重新检查受影响的依赖关系，并要求受保护义务在声明的检查器下保持满足，未解决的义务保持显式标记。",
+      "findings": "在IGenBench上，InfoAgent达到93.0的Q-ACC和59.0的I-ACC。在新提出的InfoGraphicBench-Evidence上，200个测试请求的完整清单通过率从Same-IVD Prompt的21.5%提升至初始分层输出的23.5%，修复后达到28.5%。在120个审计修复案例中，局部修复平均仅编辑12.4%的画布，而全局重新生成则需编辑67.3%。"
+    }
+  },
+  {
+    "id": "2609.39222",
+    "title": "DC-SAE: Deep Compression Semantic Autoencoder for Faster Diffusion Convergence",
+    "abstract": "High-compression tokenizers are essential for scaling latent image generative models. However, aggressive compression creates a fundamental tradeoff between reconstruction fidelity and generation efficiency: high compression image encoder always increases the learning difficulty of diffusion training, resulting in slow model convergence. Recent representation autoencoders speed up the diffusion training by improving the latent feature's expressive capability by replacing VAE encoders with pretrained semantic encoders, yet they are typically limited to moderate compression and lose pixel-level details necessary for faithful reconstruction. To achieve both high compression and fast diffusion training, we propose DC-SAE, a Decoupled Compact Semantic Autoencoder designed for high-compression image generation with accelerated diffusion model convergence. DC-SAE consists of two key components: (1) a macro-level architecture design that leverages semantic encoders to enable higher compression ratios, and (2) a pixel-level encoder that preserves low-level details, ensuring high-fidelity image reconstruction. We empirically demonstrate that DC-SAE performs strongly on image generation tasks, achieving both compact latent representations and efficient training dynamics. Specifically, on the ImageNet dataset with $512 \\times 512$ resolution, DC-SAE achieves $32\\times$ spatial compression, with 29.79 PSNR and 3.37 gFID, substantially outperforming the previous state-of-the-art high-compression tokenizer baselines DC-AE by 13.5% and 54.9% on PSNR and gFID, respectively, maintaining comparable throughput and faster diffusion model training convergence. Beyond class-conditional generation, a $1.6$B-parameter DiT using DC-SAE achieves 0.84 on GenEval and 86.007 on DPG-Bench for text-to-image generation at $1024\\times1024$ resolution.",
+    "authors": [
+      "Xu Huang",
+      "Ye Huang",
+      "Zijun Liao",
+      "Yuwei Niu",
+      "Xiaojie Li",
+      "Menghan Zhou",
+      "De Wen Soh",
+      "Xiaotong Li",
+      "Daquan Zhou"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.39222.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.39222",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "DC-SAE：用于加速扩散收敛的深度压缩语义自编码器",
+      "core_contribution": "提出DC-SAE，一种解耦紧凑语义自编码器，通过结合语义编码器实现高压缩比和像素级编码器保留细节，同时实现高压缩图像生成与快速扩散模型收敛。",
+      "method": "DC-SAE包含两个关键组件：宏观架构设计利用语义编码器实现更高压缩比；像素级编码器保留低层细节以确保高保真图像重建。该设计旨在平衡高压缩与快速扩散训练。",
+      "findings": "在ImageNet 512×512分辨率上，DC-SAE实现32倍空间压缩，PSNR达29.79，gFID为3.37，相比先前最先进的高压缩分词器DC-AE分别提升13.5%和54.9%，同时保持可比吞吐量和更快的扩散模型训练收敛。在文本到图像生成任务中，使用DC-SAE的1.6B参数DiT在1024×1024分辨率下达到GenEval 0.84和DPG-Bench 86.007。"
+    }
+  },
+  {
+    "id": "2609.38329",
+    "title": "ExploreNet: Learning Where to Explore in Diffusion GRPO",
+    "abstract": "Group-relative RL methods such as Flow-GRPO post-train image generators by exploring with isotropic Gaussian noise added at every denoising step. This noise decides which rollouts the model learns from, yet it perturbs every channel and spatial position of the latent equally. In this paper, we instead show that latent elements differ in how much they change the generated image, so exploration should adapt to these differences. We introduce EXPLORENET to learn an adaptive exploration distribution. EXPLORENET is a policy that predicts a noise scale for every latent element from the current latent, the denoising step, and the prompt, before any reward is observed; it is trained on the reward spread of each rollout group and discarded after training, leaving inference unchanged. On Stable Diffusion 3.5 Medium, EXPLORENET improves held-out GenEval2 by 14% over Flow-GRPO, transfers to two independent compositional benchmarks and five preference and image-quality models, and reaches a 67.2% human preference win-rate. Overall, across our group-relative diffusion RL experiments, we find that exploration is learnable, the shape of the exploration distribution outweighs its magnitude, and rollout quality is more effective than rollout quantity.",
+    "authors": [
+      "Shuyue Stella Li",
+      "Xiaochuang Han",
+      "Yulia Tsvetkov",
+      "Luke Zettlemoyer"
+    ],
+    "published": "2026-09-29",
+    "updated": "2026-09-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.38329.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.38329",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "ExploreNet：在扩散GRPO中学习何处探索",
+      "core_contribution": "论文提出ExploreNet，一种自适应探索策略，能够为扩散模型强化学习中的每个潜在元素预测噪声尺度，替代传统各向同性高斯噪声探索，从而显著提升图像生成质量。",
+      "method": "该方法基于Flow-GRPO等组相对强化学习方法，训练一个策略网络，根据当前潜在表示、去噪步骤和提示词，为每个潜在元素预测噪声尺度，且不依赖奖励信号。该策略通过每个rollout组的奖励分布进行训练，训练完成后即被丢弃，不改变推理过程。",
+      "findings": "在Stable Diffusion 3.5 Medium上，ExploreNet将GenEval2指标相比Flow-GRPO提升14%，并在两个组合性基准和五个偏好/图像质量模型上均有效，人类偏好胜率达67.2%。实验还表明：探索是可学习的，探索分布的形状比其幅度更重要，且rollout质量比数量更关键。"
+    }
+  }
+]
