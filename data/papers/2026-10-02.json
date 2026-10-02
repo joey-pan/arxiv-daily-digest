@@ -1,0 +1,158 @@
+[
+  {
+    "id": "2610.01331",
+    "title": "CLASP: Continual Low-rank Adapters for Spatially Placed Concepts from One Hypernetwork",
+    "abstract": "Continual personalization of text-to-image diffusion models requires sequentially acquiring new concepts while retaining previously learned ones. However, existing methods either suffer from catastrophic forgetting or rely on storing additional concept-specific parameters and spatial components, causing their parameter footprint to grow with the concept stream. This limits their ability to scale to long sequences of personalization tasks. We propose a rehearsal-free approach that uses a single fixed-size hypernetwork to continually personalize a frozen diffusion model. Instead of expanding the model as new concepts are acquired, the hypernetwork dynamically produces the concept-specific adaptations required for personalization while preserving previously learned concepts. Our framework further integrates spatial control into the personalization process, allowing users to specify where a personalized concept should appear without introducing additional per-concept components. This formulation enables continual personalization with a parameter footprint that remains independent of the number of learned concepts, aside from compact concept representations. Experiments demonstrate strong retention of previously learned concepts and reliable spatial grounding, matching or improving upon existing methods while scaling effectively to long streams of personalization tasks.",
+    "authors": [
+      "Wojciech Gromski",
+      "Patryk Krukowski",
+      "Jan Miksa",
+      "Maciej Zieba",
+      "Przemysław Spurek"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01331.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01331",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CLASP：用于空间放置概念的持续低秩适配器——基于单一超网络",
+      "core_contribution": "提出了一种无回放的持续个性化方法，使用单一固定大小的超网络为冻结的扩散模型动态生成概念特定的低秩适配，在参数占用不随概念数量增长的前提下实现持续个性化，并同时支持空间控制。",
+      "method": "该方法基于一个固定大小的超网络，为冻结的文本到图像扩散模型持续生成概念特定的适配参数，而非为每个新概念扩展模型或存储额外参数。超网络动态产生个性化所需的概念特定低秩适配，同时保留已学概念。框架进一步将空间控制集成到个性化过程中，用户可指定个性化概念出现的位置，且无需引入额外的逐概念组件。整个流程无需回放旧数据，参数占用仅取决于紧凑的概念表示，与已学概念数量无关。",
+      "findings": "实验表明，该方法能强有力地保留先前学习的概念，并实现可靠的空间定位，在性能上匹配或优于现有方法，同时能够有效扩展到长序列的个性化任务流。"
+    }
+  },
+  {
+    "id": "2610.02045",
+    "title": "Form and Void: Entangled Composition through an Autonomous AI Agent",
+    "abstract": "Positive and negative space is a fundamental principle in visual composition, supporting visually coherent forms and layered semantic relationships. Generating such compositions is challenging because it requires coordinated control over two semantic concepts that share a common boundary. Although recent text-to-image models and multimodal large language models (MLLMs) have achieved strong performance in image generation and visual understanding, positive-negative space generation remains difficult, particularly under direct single-pass prompting. In this work, we present the \\textbf{F}orm \\textbf{a}nd \\textbf{V}oid \\textbf{A}gent (\\textbf{FaV-A}), a multimodal agent designed for staged positive-negative space generation. FaV-A follows a progressive workflow: it first generates a base object, then analyzes its shape and spatial structure to identify candidate negative-space semantics, and finally produces compositional instructions for the final image generation stage. Experimental results and ablation analyses suggest that FaV-A provides a more effective framework than direct zero-shot MLLM baselines for producing visually coherent and semantically aligned positive-negative space compositions.",
+    "authors": [
+      "Shiwen Wang",
+      "Jian Yang",
+      "Xu Wang",
+      "Xincan Wang",
+      "Weiming Dong"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV",
+      "cs.MA"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02045.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02045",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "形与空：通过自主AI智能体实现纠缠式构图",
+      "core_contribution": "本文提出了Form and Void Agent（FaV-A），一种用于分阶段生成正负空间构图的多模态智能体，解决了单次直接提示难以协调生成共享边界的正负空间语义概念的难题。",
+      "method": "FaV-A采用渐进式工作流程：首先生成基础物体，然后分析其形状和空间结构以识别候选的负空间语义，最后生成构图指令用于最终图像生成阶段。该方法通过分阶段协调正空间与负空间的语义关系，实现视觉连贯且语义对齐的构图生成。",
+      "findings": "实验结果表明，与直接的零样本多模态大语言模型基线相比，FaV-A能够更有效地生成视觉连贯且语义对齐的正负空间构图，消融分析进一步验证了其分阶段框架的有效性。"
+    }
+  },
+  {
+    "id": "2610.00483",
+    "title": "PixelDense: Dense Prediction as Representation Alignment for Pixel Diffusion",
+    "abstract": "Representation alignment (REPA) accelerates diffusion transformer training, but its alignment targets are almost exclusively semantic encoders such as DINOv2 and CLIP. Recent analysis points to spatial structure, not global semantics, as the carrier of the alignment effect, yet dense-prediction foundation models trained to predict that structure remain overlooked as REPA targets. In pixel-space diffusion, SAM2, Depth Anything v2, and Metric3D v2 each outperform the DINOv2-only GenEval baseline, with the two geometric teachers leading the segmentation teacher. A flat sum of all four teachers, however, lands below the best single geometric teacher, as semantic and geometric gradients compete for one denoiser projection. We introduce PixelDense, which routes DINOv2 and SAM2 through a semantic projection stream, routes Depth Anything v2 and Metric3D v2 through a geometric projection stream, and adds a weight-space orthogonality penalty that keeps the two streams in disjoint subspaces. All four teachers are frozen during training and dropped at inference. Applied to PixelGen and DeCo with a single recipe, PixelDense improves GenEval, DPG-Bench, and HPS v2.1, raises PixelGen-XXL's GenEval Overall from 0.7927 to 0.8093, and beats every single-teacher and unfactored multi-teacher variant. In partial-noise reconstruction, independent panoptic, depth, and surface-normal probes show up to 53.1% PQ gain and 36.0% depth AbsRel reduction at $τ=0.5$ across COCO and Flickr30K. From random initialization, PixelDense also reaches the baseline's peak GenEval 1.23x faster. In SDEdit editing on PIE-Bench, PixelDense keeps more of the source background and layout at every edit strength, raising background PSNR by up to 2.2 dB.",
+    "authors": [
+      "Lehan Yang",
+      "Daiqing Qi",
+      "Wenhao Zhang",
+      "Avery Li",
+      "Yiqing Yang",
+      "Yifan Li",
+      "Yu Kong",
+      "Haitian Zheng",
+      "Zhifei Zhang",
+      "Zhe Lin",
+      "Varun Jampani",
+      "Sheng Li"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.00483.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.00483",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "PixelDense：将密集预测作为像素扩散的表征对齐",
+      "core_contribution": "论文提出PixelDense，将密集预测基础模型（SAM2、Depth Anything v2、Metric3D v2）作为像素扩散训练中的表征对齐目标，并通过语义与几何双流投影及权重空间正交惩罚解决多教师梯度冲突问题，在多个生成与编辑基准上取得一致提升。",
+      "method": "PixelDense在REPA框架基础上，将DINOv2和SAM2路由至语义投影流，将Depth Anything v2和Metric3D v2路由至几何投影流，并引入权重空间正交性惩罚使两条流处于不相交子空间。所有教师模型在训练中冻结、推理时丢弃。该方法以单一配方应用于PixelGen和DeCo两种像素扩散模型。",
+      "findings": "PixelDense在GenEval、DPG-Bench和HPS v2.1上均优于所有单教师和未分解的多教师变体，将PixelGen-XXL的GenEval Overall从0.7927提升至0.8093。在部分噪声重建中，全景分割PQ最高提升53.1%，深度AbsRel降低36.0%（τ=0.5）。从随机初始化训练时，达到基线峰值GenEval的速度快1.23倍。在PIE-Bench的SDEdit编辑中，背景PSNR最高提升2.2 dB，更好地保留了源背景与布局。"
+    }
+  },
+  {
+    "id": "2610.02188",
+    "title": "DMAD: Distribution Matching as Adversarial Distillation for Fast Visual Generation",
+    "abstract": "Distribution Matching Distillation (DMD) trains a few-step student from the difference between separately estimated target and student scores, so it must keep an auxiliary diffusion model fitted to the student's evolving distribution at extra memory and computation cost. We introduce DMAD, Distribution Matching as Adversarial Distillation, which recasts distribution matching as classification and learns the required log-density ratios directly. Two discriminator heads on a shared backbone distinguish real data and teacher samples from the student's, and linear losses on their logits train the student without auxiliary score fitting. We prove that at the discriminator optimum these losses recover the distribution-matching gradient underlying DMD, through the classical identity linking discriminator logits to log-density ratios. We further introduce gap-based reweighting, which adapts teacher supervision across noise levels from the real-data head's empirical logit gap between real and teacher samples. DMAD reaches a Fréchet Inception Distance (FID) of 1.04 with one-step generation on ImageNet-64x64, 14.47 with four-step SDXL on COCO-10K, and a VBench total score of 85.15 with four-step Wan2.1-T2V-14B, the best values among the compared few-step methods and the multi-step teachers. On MiniMax-H3-33B, our four-step student achieves overall human preference rates of 79.1% over DMD2 and 84.6% over rCM for joint audio-video generation, excluding ties. Our code, models and demos are available at https://yzmblog.github.io/projects/DMAD.",
+    "authors": [
+      "Zhengming Yu",
+      "Junkun Yuan",
+      "Haotian Yang",
+      "Gordon Guocheng Qian",
+      "Yizhi Wang",
+      "Angtian Wang",
+      "Yiding Yang",
+      "Bo Liu",
+      "Xin Li",
+      "Wenping Wang",
+      "Chongyang Ma"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02188.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02188",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "DMAD：将分布匹配作为对抗蒸馏用于快速视觉生成",
+      "core_contribution": "提出DMAD方法，将分布匹配重新表述为分类问题，通过判别器直接学习所需的对数密度比，无需额外训练辅助扩散模型即可实现少步快速生成，并在图像和视频生成任务上达到领先性能。",
+      "method": "DMAD在共享骨干网络上设置两个判别器头，分别区分真实数据与教师样本相对于学生样本的差异，并通过对判别器logits施加线性损失来训练学生模型，避免了辅助分数拟合。作者从理论上证明，在判别器最优时，这些损失能够恢复DMD所依赖的分布匹配梯度，其依据是判别器logits与对数密度比之间的经典恒等关系。此外，方法引入基于差距的重加权机制，利用真实数据头在真实与教师样本间的经验logit差距，自适应调整不同噪声水平下的教师监督强度。",
+      "findings": "DMAD在ImageNet-64x64上单步生成达到FID 1.04，在COCO-10K上四步SDXL达到FID 14.47，在Wan2.1-T2V-14B上四步生成取得VBench总分85.15，均为所比较的少步方法和多步教师模型中的最佳值。在MiniMax-H3-33B上，四步学生在联合音视频生成中相对DMD2取得79.1%的人类偏好率，相对rCM取得84.6%（排除平局）。"
+    }
+  },
+  {
+    "id": "2610.01499",
+    "title": "VTR-Bench: A Systematic Benchmark for Evaluating Visual Text Rendering in Video Generation",
+    "abstract": "Recent video generation models can produce highly realistic videos from natural language instructions, with visual quality approaching cinematic standards. Existing evaluation benchmarks, however, predominantly assess visual quality, aesthetic appeal and physical plausibility, while paying limited attention to text, an essential medium for conveying information in everyday scenes. A generated video may appear visually compelling and feature lifelike subjects, yet still render the text within the scene incorrectly. To address this overlooked dimension, we introduce \\textbf{VTR-Bench}, a systematic benchmark for evaluating the \\textbf{V}isual \\textbf{T}ext \\textbf{R}endering capabilities of video generation models. VTR-Bench situates text within concrete application scenarios, such as advertisements and scientific videos, with 300 carefully constructed prompts spanning five scenario categories. We develop an automated evaluation pipeline with human alignments that separately assesses text fidelity through carrier-specific transcription and scene and motion requirements through a prompt-specific chain of query. Beyond evaluation, we introduce a \\textbf{Keyframe-Guided Agentic Framework} in which a Director agent coordinates image and video generation with visual evaluation, guiding iterative refinement and candidate selection through visual feedback. Experiments on 11 state-of-the-art models reveal widespread difficulties in accurately rendering scene text, with the best-performing model recording an overall word error rate (WER) of 0.250. We further analyze text rendering failures to characterize the challenges faced by current video generation models. These findings highlight visual text rendering as a key challenge for video generation and demonstrate a practical path toward improvement. Code is available at https://github.com/hardenyu21/VTR-Bench.",
+    "authors": [
+      "Yu Huang",
+      "Jungang Li",
+      "Zhiyuan Wang",
+      "Yonghua Hei",
+      "Song Dai",
+      "Jiayu Yang",
+      "Deyuan Liu",
+      "Xiang Zheng",
+      "Xiaoshuang Shi",
+      "Hao Cheng",
+      "Kaidi Xu"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01499.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01499",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "VTR-Bench：评估视频生成中视觉文本渲染的系统性基准",
+      "core_contribution": "该论文提出了VTR-Bench，这是首个系统性评估视频生成模型视觉文本渲染能力的基准，填补了现有评测主要关注视觉质量而忽视场景文本正确性的空白，并提出了一个关键帧引导的智能体框架以改进文本渲染效果。",
+      "method": "VTR-Bench将文本置于广告、科学视频等具体应用场景中，构建了涵盖五个场景类别的300个精心设计的提示词。研究团队开发了一套自动化评估流程，通过载体特定的转录来评估文本保真度，并通过提示词特定的查询链来评估场景和运动要求，且与人工评估保持一致。此外，论文提出了关键帧引导的智能体框架，其中Director智能体协调图像与视频生成及视觉评估，通过视觉反馈引导迭代优化和候选选择。",
+      "findings": "在11个最先进模型上的实验表明，当前视频生成模型在准确渲染场景文本方面普遍存在困难，表现最佳的模型整体词错误率（WER）仍高达0.250。论文进一步分析了文本渲染失败的原因，揭示了当前视频生成模型面临的挑战，表明视觉文本渲染是视频生成的关键难题，并展示了切实可行的改进路径。"
+    }
+  }
+]
