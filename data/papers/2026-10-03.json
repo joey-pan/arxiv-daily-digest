@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2610.00582",
+    "title": "Discrete Annotation, Continuous Preference: Rethinking Supervision for Accurate and Generalizable Aesthetic Image Cropping",
+    "abstract": "Aesthetic image cropping aims to identify the optimal crop of an image in terms of aesthetics and composition. While supervision based on annotated data is fundamental, the field has been hindered by a long-standing problem: existing datasets suffer from (1) human subjectivity and (2) rigid discreteness confined to fixed sampling grids. These flawed annotations not only limit the accuracy and generalization of trained models but also severely distort fair evaluation. To overcome this, we propose to model human cropping preference as a multi-peaked, continuous, and sharp field over the crop space. We introduce the Continuous Preference Field (CPF), which recovers a dense preference landscape from discrete annotations through (1) peak clustering, (2) off-lattice refinement, (3) negative shaping, and (4) field assembly. Based on this, we train CPIC, a VLM-based cropping model optimized via GRPO with the CPF reward, which overcomes template collapse, achieving state-of-the-art performance and exceptional out-of-domain generalization. Finally, to resolve the long-standing benchmark evaluation crisis, we introduce CPICD, a comprehensive recalibration of existing ground-truth boxes. By leveraging the CPF to correct grid-bound artifacts across mainstream benchmarks, CPICD establishes a rigorous and reliable foundation for future cropping research. Extensive experiments and user studies demonstrate the superiority of our CPF, CPIC, and CPICD. Code, model, and data are available at https://github.com/zzqingz/CPIC.",
+    "authors": [
+      "Ziqing Zhang",
+      "Xiao Liu",
+      "Kai Liu",
+      "Jianze Li",
+      "Weihang Zhang",
+      "Linghe Kong",
+      "Yulun Zhang"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.00582.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.00582",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "离散标注，连续偏好：重新思考监督方式以实现准确且可泛化的美学图像裁剪",
+      "core_contribution": "该论文提出将人类裁剪偏好建模为裁剪空间上的多峰、连续且尖锐的偏好场（CPF），并基于此训练了VLM裁剪模型CPIC，同时构建了重新校准的基准数据集CPICD，以解决现有标注中主观性和离散性带来的准确性与泛化性问题。",
+      "method": "论文首先通过峰值聚类、离格精化、负向塑形和场组装四个步骤，从离散标注中恢复出密集的连续偏好场（CPF）。然后基于CPF奖励，使用GRPO优化训练了一个基于视觉语言模型（VLM）的裁剪模型CPIC。此外，利用CPF对主流基准中的真实标注框进行重新校准，构建了CPICD数据集。",
+      "findings": "实验和用户研究表明，CPF、CPIC和CPICD均具有优越性。CPIC克服了模板坍塌问题，取得了最先进的性能，并展现出卓越的域外泛化能力；CPICD为未来裁剪研究建立了严格可靠的评估基础。"
+    }
+  },
+  {
+    "id": "2609.39625",
+    "title": "D-Scope: Decomposing and Steering Diffusion Transformers with Sparse Autoencoders",
+    "abstract": "Sparse autoencoders (SAEs) reveal visual structure in diffusion transformers (DiTs), but interpreting a feature does not establish whether it can be used to control generation. We introduce D-Scope (Diffusion Scope), a framework that connects feature interpretation to generation control through shared visual evidence. D-Scope aggregates SigLIP~2 embeddings of highly activating image patches into visual centroids. Matching target text descriptions against these visual centroids in the shared image-text embedding space then enables retrieval of individual features without per-feature text annotations. The underlying patches provide evidence for inspecting each selection, while spatially masked interventions test the corresponding decoder direction at varying strengths under fixed generation conditions. We characterize 150 SAEs across two model families and five layers, and introduce a benchmark of 100 target concepts with ten contexts each spanning under-specified and explicit-conflict conditions. Our empirical results show that high reconstruction fidelity can coexist with low dictionary utilization and limited visual-evidence coverage. Under per-case best-of-sweep strength selection, contrastive retrieval yields larger mean regional SigLIP~2 gains than direct retrieval across the tested steering configurations, without consistently improving outside-region preservation. D-Scope provides an inspectable framework for evaluating sparse DiT features through their visual evidence and the effects of their decoder directions on generation. The demo is available at https://jiahaozhang-public.github.io/d-scope/.",
+    "authors": [
+      "Xinyue Xu",
+      "Jiahao Zhang",
+      "Lijie Hu",
+      "Peter Hase",
+      "Hao Wang"
+    ],
+    "published": "2026-09-30",
+    "updated": "2026-09-30",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2609.39625.pdf",
+    "abs_url": "https://arxiv.org/abs/2609.39625",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "D-Scope：用稀疏自编码器分解与引导扩散Transformer",
+      "core_contribution": "论文提出了D-Scope框架，将扩散Transformer中稀疏自编码器特征的可解释性与生成控制相连接，并通过共享视觉证据实现无需逐特征文本标注的特征检索与干预。",
+      "method": "D-Scope将高激活图像块的SigLIP 2嵌入聚合为视觉质心，并在共享图像-文本嵌入空间中将目标文本描述与这些视觉质心匹配，从而检索单个特征。检索到的图像块为特征选择提供可检查证据，同时通过空间掩码干预在固定生成条件下测试对应解码器方向在不同强度下的效果。作者在两种模型家族和五个层上表征了150个稀疏自编码器，并构建了包含100个目标概念、每个概念10种上下文的基准。",
+      "findings": "实验表明，高重建保真度可能与低字典利用率和有限的视觉证据覆盖并存。在逐案例最佳扫描强度选择下，对比检索在测试的引导配置中比直接检索带来更大的平均区域SigLIP 2增益，但并未持续改善区域外保持。D-Scope提供了一个可检查框架，用于通过视觉证据及其解码器方向对生成的影响来评估稀疏DiT特征。"
+    }
+  },
+  {
+    "id": "2610.02208",
+    "title": "Sphere Encoder 2",
+    "abstract": "Sphere Encoder is an autoencoder that generates images by decoding random points from a high-dimensional latent sphere. We identify two limitations of the original formulation that reduce its generation quality. First, random points concentrate near the equator relative to the pole on an encoded latent, but the training rotation never reaches this region, leaving a gap that limits one-step generation. Second, training for generation with pixel-wise reconstruction loss encourages the decoder to average over plausible images, producing blurry images that lack high-frequency details. We present Sphere Encoder 2 to address both limitations, substantially improving image generation quality while maintaining the speed and simplicity of a autoencoder. Models are released at \\href{https://github.com/kaiyuyue/sphere2}{github.com/kaiyuyue/sphere2}.",
+    "authors": [
+      "Kaiyu Yue",
+      "Sean McLeish",
+      "Ruchit Rawal",
+      "Brian Bartoldson",
+      "Menglin Jia",
+      "Tom Goldstein"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02208.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02208",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "球面编码器2",
+      "core_contribution": "本文提出Sphere Encoder 2，针对原始球面编码器在图像生成质量上的两个局限性进行改进，在保持自编码器速度和简洁性的同时显著提升了生成图像的质量。",
+      "method": "Sphere Encoder是一种通过从高维潜在球面中解码随机点来生成图像的自编码器。作者识别出原始公式的两个局限性：一是随机点集中在编码潜变量上相对于极点的赤道附近，但训练旋转从未到达该区域，留下限制单步生成的空白；二是使用逐像素重建损失进行生成训练会促使解码器对合理图像取平均，产生缺乏高频细节的模糊图像。Sphere Encoder 2针对这两个局限性分别进行改进。",
+      "findings": "Sphere Encoder 2成功解决了原始方法的两个局限性，在保持自编码器速度和简洁性的同时大幅提升了图像生成质量。模型已在github.com/kaiyuyue/sphere2上开源发布。"
+    }
+  },
+  {
+    "id": "2610.02203",
+    "title": "Embedding Prediction Helps Image Generation",
+    "abstract": "In diffusion transformers, a class label or a text prompt is embedded once, and the same condition is reused at every denoising step. We ask whether predicted embeddings can serve as this condition instead. Next-Embedding Predictive Autoregression (NEPA) trains a Transformer to predict the next continuous embedding in a sequence. In generation, the clean image follows the noisy image, so its embeddings are the next embeddings after the condition and the noisy image. We train a NEPA model to predict them all at once with Multi-Embedding Prediction, and in Embedding Conditioned Generation, a DiT generator is conditioned on these predictions, recomputed at every denoising step, so the conditioning signal adapts to the current noisy state. Experiments on class-conditional ImageNet $256\\times256$ study the condition of the generator, the design of Multi-Embedding Prediction, and the scaling of both models. The NEPA model adds a second network to every sampling step; with it, and combined with REPA, our final model, NEPA-DiT-XL, reaches an FID of 1.32 using about a third of the training compute of REPA.",
+    "authors": [
+      "Sihan Xu",
+      "Ji Xie",
+      "Zilin Wang",
+      "Hui Shen",
+      "Stella X. Yu"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02203.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02203",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "嵌入预测有助于图像生成",
+      "core_contribution": "论文提出NEPA（下一嵌入预测自回归）方法，用预测的连续嵌入替代传统静态条件（类别标签或文本提示）作为扩散Transformer的生成条件，使条件信号能在每个去噪步骤中自适应更新，从而提升图像生成质量并降低训练计算量。",
+      "method": "NEPA训练一个Transformer来预测序列中的下一个连续嵌入；在生成过程中，干净图像的嵌入被视为条件与噪声图像之后的下一个嵌入。通过多嵌入预测（Multi-Embedding Prediction）一次性预测所有嵌入，并在嵌入条件生成（Embedding Conditioned Generation）中，让DiT生成器以这些预测为条件，且在每个去噪步骤重新计算，使条件信号适应当前噪声状态。",
+      "findings": "在类别条件ImageNet 256×256上的实验研究了生成器条件、多嵌入预测设计及两个模型的扩展性。NEPA模型为每个采样步骤增加第二个网络，结合REPA后，最终模型NEPA-DiT-XL达到FID 1.32，仅使用REPA约三分之一的训练计算量。"
+    }
+  },
+  {
+    "id": "2610.01408",
+    "title": "Smoother Flow Matching via Contrastive Trajectory Repulsion",
+    "abstract": "Trajectory crossing remains a critical bottleneck in Flow Matching (FM), and previous works typically view these crossings from a theoretical optimization perspective causing velocity averaging. They attempt to address it indirectly by post-hoc distillation or endpoint coupling, without explicitly regulating the intermediate trajectories. In this paper, we introduce a new network learning perspective: crossing points inherently induce large local Lipschitz constants in the target velocity field, leading to two drawbacks. First, high Lipschitz constants correspond to high-frequency signals in the velocity field that neural networks struggle to fit due to spectral bias. Second, they also imply drastic velocity variations, leading to severe numerical integration errors in few-step inference. To alleviate this, we propose CoFlow, a framework that introduces the contrastive learning paradigm into FM to explicitly repel trajectories during training, thereby lowering the local Lipschitz constants of the velocity field. Specifically, we formulate CoFlow from a Stochastic Differential Equation (SDE) perspective by injecting a repulsive drift term. This drift actively guides the forward process of positive samples away from negative trajectories, effectively reducing the local Lipschitz constant. Furthermore, we derive an equivalent stochastic interpolant formulation from this SDE, providing a simple and tractable design space to control the influence of negative samples. Extensive experiments on ImageNet 256x256 demonstrate that CoFlow significantly reduces FID compared to standard FM in few-step inference (e.g., 20 steps), with no added training overhead. The code can be accessed at: https://github.com/HKUST-LongGroup/CoFlow",
+    "authors": [
+      "Ziqi Jiang",
+      "Zhenqi He",
+      "Long Chen"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01408.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01408",
+    "primary_category": "cs.CV",
+    "score": 75,
+    "summary": {
+      "title_zh": "通过对比轨迹排斥实现更平滑的流匹配",
+      "core_contribution": "本文从网络学习的视角揭示了流匹配中轨迹交叉导致目标速度场局部利普希茨常数过大的问题，并提出CoFlow框架，通过对比学习范式在训练中显式排斥轨迹，从而降低速度场的局部利普希茨常数，提升少步推理性能且不增加训练开销。",
+      "method": "作者从随机微分方程（SDE）视角出发，在正向过程中注入一个排斥漂移项，主动引导正样本的轨迹远离负样本轨迹，从而降低速度场的局部利普希茨常数。基于该SDE，作者进一步推导出等价的随机插值公式，提供了一个简单且可处理的设计空间来控制负样本的影响。该方法将对比学习范式引入流匹配训练中，在训练阶段显式地调节中间轨迹。",
+      "findings": "在ImageNet 256×256上的大量实验表明，与标准流匹配相比，CoFlow在少步推理（如20步）下显著降低了FID，且没有增加额外的训练开销。"
+    }
+  }
+]
