@@ -1,0 +1,134 @@
+[
+  {
+    "id": "2610.02210",
+    "title": "Moore, Escher, Penrose: A Conformal Golden Braid",
+    "abstract": "I don't think I have ever done anything as peculiar in my life. Among other things, it shows a young man looking with interest at a print on the wall of an exhibition that features himself. How can this be? Perhaps I am not far removed from Einstein's curved universe.'' So wrote M.C. Escher about his 1956 lithograph Print Gallery. Nearly half a century later, a mathematical analysis related its geometry to an untwisted source image through a conformal power map $z \\mapsto z^α$, $α\\in \\mathbb{C}$. Building on this construction, we use a frozen text-to-image diffusion model to generate new self-referential scenes. Prompting alone does not enforce the recursion, while a post-hoc transformation can leave structures poorly connected. Applying the transformation during sampling is also insufficient: the denoiser may \"repair\" the intended distortion or drift out of the prescribed geometry. We construct a generalized inverse $T^\\dagger$ of the non-invertible image transformation $T$, adapted to its recursive constraint. In the idealized formulation, the Penrose identity $TT^\\dagger T = T$ makes $TT^\\dagger$ an idempotent projection onto geometrically admissible images. Yet denoising only the transformed image remains an out-of-distribution task, even with projection. We therefore braid denoising steps with $T$ and $T^\\dagger$: source-space steps develop the untwisted scene, while transformed-space steps refine its appearance and connections in the final geometry. We generate Print Gallery-like compositions and explore further transformations. Rather than distorting a finished image, we let the scene and its distortion develop together.",
+    "authors": [
+      "Sophia Feldman",
+      "Assaf Shocher"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02210.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02210",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "摩尔、埃舍尔、彭罗斯：共形黄金编织",
+      "core_contribution": "论文提出了一种将去噪扩散模型的采样步骤与不可逆图像变换及其广义逆交替编织的方法，从而生成具有自指递归结构的《版画画廊》式图像，使场景与其几何畸变在生成过程中共同演化。",
+      "method": "论文以埃舍尔1956年石版画《版画画廊》的共形幂映射 z ↦ z^α 数学分析为基础，利用冻结的文本到图像扩散模型生成新的自指场景。作者构造了不可逆图像变换 T 的广义逆 T†，使其满足彭罗斯恒等式 TT†T = T，从而将 TT† 作为几何可容许图像上的幂等投影。由于仅在变换空间去噪仍属于分布外任务，作者将去噪步骤与 T 和 T† 交替编织：源空间步骤发展未扭曲的场景，变换空间步骤则精修其在最终几何中的外观与连接关系。",
+      "findings": "实验表明，仅靠提示词无法强制实现递归结构，事后变换会导致结构连接不良，而在采样过程中直接施加变换也不充分，因为去噪器可能“修复”预期畸变或偏离规定几何。通过将去噪与 T、T† 编织，论文成功生成了类《版画画廊》的构图，并探索了其他变换，证明让场景与畸变共同发展优于对完成图像进行事后扭曲。"
+    }
+  },
+  {
+    "id": "2610.01989",
+    "title": "Continual Concept Erasure in Diffusion Models by Suppressing Cross-Edit Interference",
+    "abstract": "Concept erasure removes copyright-protected, privacy-sensitive, or otherwise undesirable concepts from pretrained text-to-image diffusion models to support content governance and compliance. As erasure requests arrive over time, models must remove new targets without undoing prior erasures. Existing methods do not constrain interference across edits: residual perturbations outside the retain set interact and accumulate, degrading unrelated generations and sometimes collapsing previously erased targets into noise. We propose CEASE (Continual Erasure via Adaptive Subspace Editing), a training-free method that imposes two subspace constraints on a closed-form solver. CEASE adds the token representation of the shared replacement to the solver's invariance matrix and, when interference is detected, projects the current update onto the orthogonal complement of dominant output directions extracted from cumulative past updates. A closed-form decomposition attributes the accumulated interference to repeated activation of the shared replacement and overlap between successive update directions, showing that the two constraints suppress these respective sources. Across continual erasure of celebrities, artistic styles, and instances, CEASE achieves the most consistent erase-preserve trade-off, while existing methods either degrade general generation or insufficiently erase targets.",
+    "authors": [
+      "Yongliang Wu",
+      "Haori Lu",
+      "Jinqi Luo",
+      "Wei Cao",
+      "Xingyu Zhu",
+      "Yaoyao Liu"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01989.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01989",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "通过抑制交叉编辑干扰实现扩散模型中的持续概念擦除",
+      "core_contribution": "提出了一种免训练的持续概念擦除方法CEASE，通过对闭式求解器施加两个子空间约束来抑制跨编辑干扰，在多次擦除请求下同时保持擦除效果和模型生成质量。",
+      "method": "CEASE在闭式求解器的不变性矩阵中加入共享替换词的token表示，以稳定共享替换方向；当检测到干扰时，将当前更新投影到由累积历史更新中提取的主导输出方向的正交补空间上，从而避免新旧编辑方向重叠。作者还通过闭式分解将累积干扰归因于共享替换词的重复激活和连续更新方向之间的重叠，从理论上说明了两个约束分别抑制这两类干扰来源。",
+      "findings": "在名人、艺术风格和特定实例的持续擦除任务中，CEASE实现了一致性最好的擦除-保留权衡；而现有方法要么损害模型的通用生成能力，要么无法充分擦除目标概念，甚至有时会将先前已擦除的目标坍缩为噪声。"
+    }
+  },
+  {
+    "id": "2610.01969",
+    "title": "RASteer: Retain-Aware Activation Steering for Concept Erasure in Diffusion Models",
+    "abstract": "Concept erasure aims to remove a target concept, such as a copyrighted style, a recognizable character, or unsafe content, from a pretrained text-to-image diffusion model while preserving its ability to generate other content. Existing activation steering methods build an erasure direction mainly from the target concept and adjust model activations along it at inference time. However, target and retained concepts often overlap in the model's representation space, so this direction also contains shared components that retained concepts rely on. Steering directly along this direction can therefore suppress retained concepts and harm the generation of non-target content. To address this issue, we propose Retain-aware Activation Steering (RASteer), a training-free method. RASteer first builds a retain subspace from the concepts to preserve. Retain-Orthogonal Steering (ROS) then removes components aligned with this subspace from the erasure direction, making steering more specific to the target. Since fully removing the shared components can weaken erasure, we further introduce Overlap-Adaptive Calibration (OAC). At each layer and denoising step, OAC uses the overlap between the erasure direction and the retain subspace to control how much of each shared component is removed, balancing target erasure and concept preservation. Experiments on unsafe-content, instance, and artistic-style erasure across multiple backbones and benchmarks show that RASteer matches or outperforms the activation steering and weight editing baselines we evaluate, achieving a better balance between erasure and preservation.",
+    "authors": [
+      "Yongliang Wu",
+      "Haori Lu",
+      "Yulun Wu",
+      "Jinqi Luo",
+      "Xingyu Zhu",
+      "Yaoyao Liu"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01969.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01969",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "RASteer：面向扩散模型概念擦除的保留感知激活引导",
+      "core_contribution": "提出了一种无需训练的概念擦除方法RASteer，通过从擦除方向中去除与保留概念共享的成分，在有效擦除目标概念的同时更好地保留非目标内容的生成能力。",
+      "method": "RASteer首先根据需要保留的概念构建一个保留子空间，然后通过保留正交引导（ROS）从擦除方向中移除与该子空间对齐的分量，使引导更具目标特异性。由于完全移除共享分量可能削弱擦除效果，进一步引入重叠自适应校准（OAC），在每一层和每个去噪步骤中，利用擦除方向与保留子空间的重叠程度来控制共享分量的移除比例，从而平衡目标擦除与概念保留。",
+      "findings": "在多个骨干模型和基准上针对不安全内容、实例和艺术风格的擦除实验表明，RASteer达到或超越了所评估的激活引导和权重编辑基线方法，在擦除与保留之间实现了更好的平衡。"
+    }
+  },
+  {
+    "id": "2610.01723",
+    "title": "Rethinking Memorization Mitigation in Diffusion Models: Reinforcing Text Conditioning",
+    "abstract": "Text-to-image diffusion models have achieved remarkable progress in image synthesis, yet can exhibit memorization by closely reproducing individual training examples. Effective mitigation must preserve useful prompt information to guide alternative depictions. We introduce a training-free method that redistributes cross-attention with Gaussian smoothing before reinforcing content-token contributions and attenuating padding contributions, without additional denoiser evaluations. With this intervention, stronger content conditioning can improve prompt alignment at comparable training-image similarity. A local analysis identifies when reinforcement preserves shared value information while redistribution reduces localized attention mass. On Stable Diffusion v1.4 and v2.0, all evaluated smoothing widths lie on the empirical Pareto frontiers for training-image similarity versus both prompt alignment and image preference. A configuration selected on Stable Diffusion reduces template reproduction in DeepFloyd IF without further tuning. These findings support jointly controlling conditioning allocation and strength to generate prompt-consistent alternatives.",
+    "authors": [
+      "Hyungjun Joo",
+      "Sehwan Kim",
+      "Hyeonggeun Han",
+      "Sangwoo Hong",
+      "Jungwoo Lee"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01723.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01723",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "重新思考扩散模型中的记忆缓解：强化文本条件",
+      "core_contribution": "提出一种无需训练的方法，通过重新分配交叉注意力并强化内容标记贡献来缓解扩散模型的记忆问题，同时保持提示对齐。",
+      "method": "该方法在无额外去噪器评估的情况下，先对交叉注意力进行高斯平滑重分配，再强化内容标记的贡献并衰减填充标记的贡献。通过局部分析确定强化何时保留共享值信息，同时重分配减少局部注意力质量。",
+      "findings": "在Stable Diffusion v1.4和v2.0上，所有评估的平滑宽度均位于训练图像相似度与提示对齐及图像偏好之间的经验帕累托前沿上。在Stable Diffusion上选定的配置无需微调即可减少DeepFloyd IF中的模板复现，表明联合控制条件分配和强度可生成与提示一致的替代图像。"
+    }
+  },
+  {
+    "id": "2610.01681",
+    "title": "When Text-to-Image Helps Editing: The Effects of Conditioning During Denoising",
+    "abstract": "Unified models are trained for both instruction-based image editing and text-to-image (T2I) generation, but standard editing pipelines keep source-image conditioning throughout denoising. We ask whether editing can benefit from T2I, and study how the effects of conditioning vary across edits and denoising stages. In pure editing, source attention declines for some edits over the sampling trajectory. This observation led us to task switching, which lets the model draw on its T2I capabilities. Across three unified editors and four benchmarks, switching to the T2I task for bounded intervals improves edit quality, while mean perceptual preservation remains close to pure editing across all three models. Unified editors therefore benefit from using both conditioning modes they are trained for, and the timing of the switch sets the balance between quality and preservation.",
+    "authors": [
+      "Lidia Troeshestova",
+      "Alexander Ustyuzhanin",
+      "Sergey Kastryulin"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.01681.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.01681",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "当文本到图像生成助力图像编辑：去噪过程中条件控制的影响",
+      "core_contribution": "论文提出并验证了在统一编辑模型中通过任务切换（从图像编辑任务切换到文本到图像生成任务）来提升编辑质量的新思路，揭示了条件控制效果随编辑类型和去噪阶段变化的规律。",
+      "method": "研究首先观察了纯编辑模式下源图像注意力在采样轨迹中的变化，发现某些编辑任务中源注意力会逐渐下降。基于此，作者提出任务切换策略，即在去噪过程的特定区间内将模型切换到文本到图像生成任务，从而利用模型已训练的T2I能力。实验在三个统一编辑器和四个基准测试上进行，通过控制切换时机来调节编辑质量与感知保持之间的平衡。",
+      "findings": "在三个统一编辑器和四个基准测试中，有界区间内切换到T2I任务能提升编辑质量，同时平均感知保持度与纯编辑模式接近。这表明统一编辑器能够从两种训练条件模式中获益，而切换时机决定了质量与保持之间的平衡。"
+    }
+  }
+]
