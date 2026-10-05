@@ -1,0 +1,136 @@
+[
+  {
+    "id": "2610.02967",
+    "title": "Post-Training Frontier Text-to-Image Models by Composing Preference and Rubric Rewards",
+    "abstract": "Recent text-to-image generation models have achieved remarkable visual quality, but improving them through post-training remains challenging because no single reward signal captures the full range of human preference. In this work, we develop a simple and effective post-training recipe for open-domain text-to-image generation based on the composition of complementary reward signals. Our reward system consists of two main components: a preference reward, trained on large-scale human preference data using a Bradley-Terry objective to capture overall human aesthetic and perceptual preferences, and rubric-based rewards, which explicitly evaluate prompt faithfulness and other desirable properties while providing safeguards against reward hacking. A key challenge is how to combine these heterogeneous reward signals. We show that a naive weighted average leads to suboptimal optimization behavior, and propose a simple reward composition strategy that more effectively balances preference optimization with rubric satisfaction. In the Arena text-to-image leaderboard (https://arena.ai/), our RL-trained Flux2dev achieves an Elo rating 69 points above the base model, and our post-trained Ideogram-4 surpasses every open-source model on the leaderboard, reaching an Elo of 1223.5. (Claims of state-of-the-art performance are based on the Arena leaderboard snapshot as of September 4, 2026.) Our results suggest that effective rewards for frontier generative-model training require broad coverage of user intent and robustness to exploitation under optimization. To support reproducible research, we release Arena-T2I-Training, a 1K subset of training data that recovers some gains of full-scale training, providing a resource that we hope will facilitate future work on post-training for text-to-image models.",
+    "authors": [
+      "Yuanhao Ban",
+      "I-Hung Hsu",
+      "Anastasios Angelopoulos",
+      "Wei-Lin Chiang",
+      "Ion Stoica",
+      "Cho-Jui Hsieh"
+    ],
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02967.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02967",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "通过组合偏好奖励与评分标准奖励对前沿文本到图像模型进行后训练",
+      "core_contribution": "提出了一种简单有效的开放域文本到图像生成后训练方法，通过组合互补的奖励信号（偏好奖励与基于评分标准的奖励）来提升模型性能，并在Arena排行榜上取得了显著提升。",
+      "method": "该奖励系统由两部分组成：一是基于Bradley-Terry目标在大规模人类偏好数据上训练的偏好奖励，用于捕捉整体人类审美和感知偏好；二是基于评分标准的奖励，用于显式评估提示词忠实度及其他理想属性，同时防止奖励黑客行为。针对异构奖励信号的组合难题，作者发现简单的加权平均会导致次优优化行为，因此提出了一种简单的奖励组合策略，更有效地平衡偏好优化与评分标准满足。",
+      "findings": "在Arena文本到图像排行榜上，经强化学习训练的Flux2dev比基础模型Elo评分高出69分，后训练的Ideogram-4超越了排行榜上所有开源模型，达到Elo 1223.5（基于2026年9月4日的排行榜快照）。结果表明，有效的前沿生成模型训练奖励需要广泛覆盖用户意图并对优化过程中的利用行为具有鲁棒性。作者还发布了Arena-T2I-Training数据集（1K训练数据子集），可恢复部分全规模训练的增益，以支持可复现研究。"
+    }
+  },
+  {
+    "id": "2610.02468",
+    "title": "Windfoil: Closed-Form Coverage for Real-Time and Differentiable Vector Graphics",
+    "abstract": "We present Windfoil, a GPU-friendly algorithm that treats rasterisation and differentiable vector graphics as two sides of the same problem by evaluating the box-filtered winding number of quadratic Bézier contours in closed form. We implement this in WebGPU, allowing it to run across a range of environments, including a web browser on a consumer laptop, and apply the system to real-time 2D rendering, high-resolution rasterisation for print media, and a differentiable renderer. We compare our renderer against Skia, a production-grade engine, and Slug, a popular GPU rasterisation algorithm for games and real-time applications, measuring fidelity to a reference box-filtered coverage. Our renderer matches the reference more closely than either, at performance comparable to Slug. We also compare our optimiser against DiffVG and Bézier Splatting, where it reaches equivalent or better reconstruction quality at a fraction of the per-step cost, scaling to tens of thousands of shapes at interactive rates.",
+    "authors": [
+      "Matt DesLauriers"
+    ],
+    "published": "2026-10-01",
+    "updated": "2026-10-01",
+    "categories": [
+      "cs.GR",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02468.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02468",
+    "primary_category": "cs.GR",
+    "score": 88,
+    "summary": {
+      "title_zh": "Windfoil：面向实时与可微矢量图形的闭式覆盖计算",
+      "core_contribution": "提出了一种GPU友好的算法Windfoil，通过闭式求解二次贝塞尔轮廓的盒滤波环绕数，将光栅化与可微矢量图形统一为同一问题的两个方面，并在WebGPU上实现，可同时用于实时2D渲染、高分辨率打印光栅化和可微渲染。",
+      "method": "该方法将光栅化和可微矢量图形视为同一问题的两个侧面，核心是对二次贝塞尔轮廓的盒滤波环绕数进行闭式求值。算法在WebGPU上实现，因而可跨多种环境运行，包括消费级笔记本上的网页浏览器。作者将其应用于实时2D渲染、面向印刷媒体的高分辨率光栅化以及可微渲染器，并与Skia和Slug等现有方案进行了对比。",
+      "findings": "在保真度方面，Windfoil相比Skia（生产级引擎）和Slug（流行的GPU光栅化算法）更接近参考的盒滤波覆盖结果，同时性能与Slug相当。在可微渲染方面，其优化器与DiffVG和Bézier Splatting相比，以每步更低的开销达到相当或更好的重建质量，并可交互式地扩展到数万个形状。"
+    }
+  },
+  {
+    "id": "2610.03512",
+    "title": "ProgressNet: Sketching and Prompting with a Frozen Text-to-Image Model",
+    "abstract": "Humans draw progressively: a few strokes, a look at the result, a stroke erased, a prompt revised. Image generators do not work this way. They typically take a finished sketch and produce the image in a single pass, so every edit starts the picture again, and the models that do keep state across turns are driven by text, cannot take a stroke, and are too slow to draw with. We present ProgressNet, a training-free framework that lets a frozen text-to-image model follow a drawing session as it unfolds: strokes are added and erased, the prompt is revised, and the image keeps up at about a second per turn. It needs no new parameters because the frozen model already has what a progressive generator needs, a pathway through which the previous turn can be remembered, layers that can carry appearance forward without freezing structure, and an internal signal of how far to trust an unfinished sketch; three inference-time mechanisms (Previous-Concept Memory, Layer-Selective K/V Injection and Banded Adaptive Control) use each in turn. As a sketch fills in, every existing method degrades, the FID of the FLUX+ControlNet baseline doubling between 10% and 100% completion on FS-COCO, while ProgressNet's barely moves; it maintains strong fidelity and progressive coherence across three sketch domains and is preferred by users over five competitors, most widely on erasure.",
+    "authors": [
+      "Arkaprabha Basu",
+      "Chaitat Utintu",
+      "Yi-Zhe Song"
+    ],
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.03512.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.03512",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ProgressNet：用冻结的文本到图像模型进行素描与提示",
+      "core_contribution": "提出了一种无需训练的框架 ProgressNet，使冻结的文本到图像模型能够跟随绘画过程的逐步演变（增删笔画、修改提示），以约每秒一轮的速度实时生成图像，且无需新增任何参数。",
+      "method": "ProgressNet 利用冻结模型本身已有的能力——通过上一轮记忆的路径、可传递外观而不冻结结构的层，以及判断未完成素描可信度的内部信号——在推理阶段引入三种机制：Previous-Concept Memory（前概念记忆）、Layer-Selective K/V Injection（层选择性 K/V 注入）和 Banded Adaptive Control（分带自适应控制），分别对应上述三种能力，从而实现渐进式生成。",
+      "findings": "随着素描逐渐完成，现有方法性能均会下降：在 FS-COCO 数据集上，FLUX+ControlNet 基线的 FID 在完成度从 10% 到 100% 之间翻倍，而 ProgressNet 的 FID 几乎不变。ProgressNet 在三个素描领域均保持高保真度和渐进一致性，并在用户偏好测试中优于五个竞争对手，尤其在擦除操作上优势最为明显。"
+    }
+  },
+  {
+    "id": "2610.02753",
+    "title": "Correcting Guided Diffusion Trajectories with Spectral Alignment",
+    "abstract": "The practical success of conditional image generation hinges on fine-grained differences in condition alignment and visual fidelity. Classifier-free guidance (CFG) is central to this success, but its lack of an explicit criterion makes it difficult to assess whether the guided trajectory is progressing as intended. To address this gap, we show that spectral alignment provides a principled criterion for understanding guidance behavior and improving guided diffusion sampling through adaptive correction. Our analysis identifies the spectra of intermediate states as an indicator of consistency with the expected spectral evolution of the forward process. Based on this observation, we introduce Spectral Correction Guidance, a method that corrects deviations from an analytic reference spectrum during sampling. The proposed method is training-free and applicable across diffusion backbones and conditional generation tasks without modifying the underlying model. Experiments demonstrate consistent gains in preference-based metrics over baseline guidance methods in text-to-image generation and improved generation quality over CFG on ImageNet. These improvements persist across a range of guidance scales and with fewer denoising steps. Our analyses and ablations provide insight into guidance behavior and how the proposed method affects generation quality.",
+    "authors": [
+      "Gihoon Kim",
+      "Taesup Kim"
+    ],
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.02753.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.02753",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "用谱对齐校正引导扩散轨迹",
+      "core_contribution": "论文提出谱对齐作为理解无分类器引导（CFG）行为的准则，并据此设计了无需训练的谱校正引导方法，通过自适应校正采样过程中偏离参考谱的轨迹来提升条件生成质量。",
+      "method": "作者分析扩散模型中间状态的频谱，发现其可作为与前向过程预期谱演化一致性的指标。基于此提出谱校正引导（Spectral Correction Guidance），在采样过程中将中间状态的谱与解析参考谱对齐，从而校正引导轨迹的偏差。该方法无需训练，可直接应用于不同扩散骨干网络和条件生成任务，不修改底层模型。",
+      "findings": "在文本到图像生成中，该方法在基于偏好的指标上持续优于基线引导方法；在ImageNet上生成质量优于CFG。这些改进在多种引导尺度下以及更少去噪步数时依然保持。分析与消融实验进一步揭示了引导行为的机制以及该方法对生成质量的影响。"
+    }
+  },
+  {
+    "id": "2610.03577",
+    "title": "Rethinking What to Cache in Few-Step Diffusion Transformers: Solver-Aware Target Selection",
+    "abstract": "Diffusion Transformers (DiTs) can generate high-quality images and videos, but generating each sample requires multiple costly DiT forward passes. Two common ways to accelerate DiT sampling are step distillation, which reduces the number of sampling steps, and caching, which skips some DiT evaluations by reusing a tensor computed at an earlier step. Most caching methods decide in advance which tensor to reuse. After distillation, adjacent sampling steps are farther apart. Reusing a tensor across this larger gap introduces more error, so choosing what to cache becomes especially important. We therefore introduce AutoTarget, a method that chooses the cached tensor for a given model, solver, and reuse schedule. AutoTarget uses a small set of runs without cache reuse to measure the error caused by reusing each candidate tensor, then selects the candidate with the lowest error. We also analyze how an error at one reuse step affects the final sample. For Euler sampling, we identify cache targets that produce the same trajectory and show why a stored solver update may not. Experiments on distilled image and video DiTs show that the best cache target changes with the model, image resolution, and solver. AutoTarget reduces DiT evaluations and retained cache storage. Generation quality remains close to the corresponding uncached run. On the tested PixArt-LCM and FLUX.1-schnell settings, its calibration ranking matches the ranking from held-out cached runs. To help others reproduce the method, we provide its core implementation on GitHub at https://github.com/wali1024-offical/AutoTarget.",
+    "authors": [
+      "Shuo Yang",
+      "Lihao Fang",
+      "Yi Zhang",
+      "Haixiang Wang",
+      "Xincheng Ye",
+      "Shufan Chen",
+      "Jipeng Guo",
+      "Youqing Wang"
+    ],
+    "published": "2026-10-02",
+    "updated": "2026-10-02",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.03577.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.03577",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "重新思考少步扩散Transformer中应缓存什么：求解器感知的目标选择",
+      "core_contribution": "提出AutoTarget方法，针对给定模型、求解器和复用调度自动选择最优的缓存张量，从而在少步蒸馏扩散Transformer中减少计算量并保持生成质量。",
+      "method": "AutoTarget通过少量无缓存复用的运行来测量复用每个候选张量所引入的误差，然后选择误差最低的候选张量进行缓存。作者还分析了某一步复用误差如何影响最终样本，并针对Euler采样识别出能产生相同轨迹的缓存目标，同时解释了为何存储的求解器更新可能不适用。该方法在不同模型、图像分辨率和求解器下自动确定最佳缓存目标。",
+      "findings": "实验表明，最佳缓存目标随模型、图像分辨率和求解器而变化；AutoTarget能减少DiT评估次数和缓存存储需求，生成质量接近无缓存运行。在PixArt-LCM和FLUX.1-schnell设置上，其校准排名与留出缓存运行的排名一致。核心实现已在GitHub开源。"
+    }
+  }
+]
