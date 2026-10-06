@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2610.06852",
+    "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
+    "abstract": "Pipeline figures in ML papers must be repurposed across many canvases, including paper columns, 16:9 slides, portrait posters, 1:1 social teasers, 9:16 phone previews. Each format imposes a different aspect ratio on the same computational graph, where any silently broken connection misrepresents the method. We formulate aspect-ratio-adaptive flowchart relayout as a distinct task: given a raster flowchart and a target ratio, produce a structurally faithful, hallucination-free, editable layout. Existing methods fail characteristically: image-to-image models stretch blocks and reject extreme ratios, text-to-image agentic systems hallucinate content, and parse-then-render systems mis-route edges. We propose an agentic pipeline factored into Parse, Style, and Layout stages, each pairing a main agent with a critic that combines deterministic constraint checks with VLM visual feedback so connectivity is explicitly checked and prevented from being silently broken. Outputs are draw.io-editable mxGraph XML. On a curated benchmark of 100 flowcharts at five aspect ratios, evaluated by Gemini 3.1 Pro and validated against human judgments, our method reaches 68.6% Content Fidelity versus 11.2-41.4% for prior work. Project page: https://onefigureeverycanvas.vercel.app/",
+    "authors": [
+      "Shih-Chen Tseng",
+      "Chih-Hsuan Chen",
+      "Ryan Yang",
+      "Hsi-An Chen",
+      "Chun-Wei Tuan Mu",
+      "Yu-Lun Liu"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.06852.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.06852",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "一图适配万画布：基于智能体流水线的可编辑流程图重排版",
+      "core_contribution": "本文将宽高比自适应流程图重排版定义为一个独立任务，并提出一种智能体流水线方法，能够在给定栅格流程图和目标宽高比的情况下，生成结构忠实、无幻觉且可编辑的布局。",
+      "method": "该方法将流程分解为解析（Parse）、风格化（Style）和布局（Layout）三个阶段，每个阶段由一个主智能体与一个评论者（critic）配对协作。评论者结合确定性约束检查与VLM视觉反馈，显式验证连接关系，防止连接被静默破坏。最终输出为可在draw.io中编辑的mxGraph XML格式。",
+      "findings": "在包含100个流程图、5种宽高比的精选基准上，由Gemini 3.1 Pro评估并经人工判断验证，该方法的内容保真度达到68.6%，而先前工作仅为11.2%–41.4%。"
+    }
+  },
+  {
+    "id": "2610.06844",
+    "title": "Learning to Read the Contextual Tokens in Diffusion Transformers",
+    "abstract": "Multimodal Diffusion Transformers (MM-DiTs) jointly process visual and textual representations throughout generation. These models repeatedly update the text tokens through multimodal attention, forming dynamic contextual tokens whose function is not well understood. In this work, we introduce a framework for reading this contextual space through natural-language interrogation. We train a lightweight bottleneck network that maps intermediate contextual tokens into the input space of a frozen Large Language Model (LLM), allowing the LLM to answer questions about the emerging image directly from these hidden representations. Our reader reveals that contextual tokens encode a rich, global representation of the emerging scene: generation-specific semantics, including attributes left underspecified by the prompt, are accessible surprisingly early in denoising, while increasingly fine-grained details become readable over time. Remarkably, this information remains decodable even when the MM-DiT receives an empty prompt, showing that contextual tokens accumulate substantial image-specific information from the evolving visual representation itself. We further find that generations with more readable contextual representations tend to receive higher human-preference scores. Building on these observations, we introduce Contextual Alignment, a training technique that explicitly reinforces the visual-semantic information encoded in the contextual tokens, improving generation quality and distributional coverage. Together, our results establish contextual tokens as both an interpretable view into the internal dynamics of MM-DiTs and an effective target for improving generative models.",
+    "authors": [
+      "Omer Dahary",
+      "Etai Sella",
+      "Hadar Averbuch-Elor",
+      "Daniel Cohen-Or",
+      "Or Patashnik"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.06844.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.06844",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "学习解读扩散Transformer中的上下文Token",
+      "core_contribution": "本文提出了一个通过自然语言问答来解读多模态扩散Transformer（MM-DiT）中上下文Token的框架，揭示了这些Token编码了丰富的全局场景语义信息，并提出了一种名为“上下文对齐”的训练技术来提升生成质量。",
+      "method": "作者训练了一个轻量级瓶颈网络，将MM-DiT中间层的上下文Token映射到一个冻结的大语言模型（LLM）的输入空间中，使LLM能够直接从这些隐藏表示中回答关于正在生成图像的问题。通过这种方式，研究者系统地探查了上下文Token在不同去噪时间步中所编码的信息内容。此外，作者基于这些发现提出了“上下文对齐”训练技术，显式地强化上下文Token中编码的视觉-语义信息。",
+      "findings": "上下文Token编码了正在生成场景的丰富全局表示：与生成相关的语义（包括提示中未充分指定的属性）在去噪早期就可被读取，而越来越精细的细节随时间逐渐可读。即使MM-DiT接收空提示，这些信息仍可被解码，表明上下文Token从演化的视觉表示本身积累了大量的图像特定信息。此外，上下文表示可读性更高的生成结果往往获得更高的人类偏好评分。基于此提出的“上下文对齐”训练技术提升了生成质量和分布覆盖度。"
+    }
+  },
+  {
+    "id": "2610.05816",
+    "title": "Level-of-Token Diffusion",
+    "abstract": "Image and video diffusion models allocate equal computation to every region, even when the intended scene calls for varying levels of detail. The spatial distribution of detail can often be anticipated before generation, indicating where computation can be reduced. We introduce Level-of-Token (LoT) Diffusion, a framework that turns this knowledge into an explicit multiresolution token layout (Level-of-Token layout) for adaptive and efficient generation. Tokens represent rectangular patches of varying sizes and shapes, allocating finer tokens where detail is needed and coarser tokens elsewhere. We adapt pretrained diffusion transformers to LoT layouts through a patch-wise asymmetric flow parametrization and embeddings for multiresolution tokens, preserving full-resolution flow prediction at every denoising step while processing only a reduced token sequence. LoT Diffusion enables layout-adaptive generation while preserving pretrained generative priors. We demonstrate LoT with layouts derived from semantic masks, bounding boxes, texture variance, and depth-of-field cues, as well as agentic plans. Across image and video generation, LoT offers favorable quality-efficiency tradeoffs, with significant speedups determined by the layout's token budget. Our project website is at https://georgenakayama.github.io/lotdiffusion/.",
+    "authors": [
+      "Kiyohiro Nakayama",
+      "Brian Chao",
+      "Jan Ackermann",
+      "Hansheng Chen",
+      "Federico Tombari",
+      "Leonidas Guibas",
+      "Lior Yariv",
+      "Gordon Wetzstein"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.05816.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.05816",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Token层级扩散",
+      "core_contribution": "提出Level-of-Token (LoT) Diffusion框架，通过显式的多分辨率Token布局实现自适应高效生成，在需要细节的区域分配更细的Token、其他区域使用更粗的Token，从而在保持生成质量的同时显著提升计算效率。",
+      "method": "该方法将图像和视频表示为不同大小和形状的矩形Token块，构建多分辨率Token布局。通过逐块非对称流参数化和多分辨率Token嵌入，将预训练扩散Transformer适配到LoT布局上，在每一步去噪中保持全分辨率的流预测，同时仅处理缩减后的Token序列。布局可来源于语义掩码、边界框、纹理方差、景深线索以及智能体规划等多种先验信息。",
+      "findings": "在图像和视频生成任务中，LoT Diffusion实现了良好的质量-效率权衡，加速效果取决于布局的Token预算，能够在保留预训练生成先验的同时实现布局自适应生成，显著减少计算量。"
+    }
+  },
+  {
+    "id": "2610.04381",
+    "title": "Beyond Plausibility: Verifiable Fine-Grained Image Editing on Structured Assets",
+    "abstract": "Fine-grained image editing requires more than producing a visually plausible result: an editor must execute the requested attribute change precisely while leaving everything else intact. However, existing benchmarks leave a critical gap between realism and verifiability: benchmarks built on realistic images typically rely on human or vision--language model judgments, while deterministic evaluation has largely focused on synthetic shape canvases, with application-oriented extensions primarily limited to charts. This makes it difficult to determine precisely how much of a requested edit was executed, where unintended changes occurred, and whether small differences between models reflect genuine editing capability or evaluator uncertainty. To bridge this gap, we present VeriEdit-Bench, a benchmark for fine-grained, instruction-faithful image editing across realistic structured assets with deterministic, four-axis evaluation. Its 1,740 cases are compiled from the source code of 153 Scalable Vector Graphics (SVG) graphics, charts, web interfaces, and presentation slides. Controlled source-code edits preserve the original visual context while yielding exact target images, pixel-level edit masks, and explicit edit specifications, enabling reproducible scoring along four axes: edit fidelity, preservation, localization, and magnitude. Evaluating eleven editors, we find that even the strongest model remains far from full credit; rankings for the same recoloring operation reverse between charts and SVG graphics; and outputs with similar pixel-accuracy profiles can still differ substantially in localization and change magnitude. This decomposition yields graded, verifiable feedback and exposes model-specific capability and failure profiles that holistic scores or evaluator-dependent judgments may obscure.",
+    "authors": [
+      "Muyao Wang",
+      "Chen Zhu",
+      "Shiqi Yang",
+      "DongHyun Hwan",
+      "Hideki Nakayama"
+    ],
+    "published": "2026-10-03",
+    "updated": "2026-10-03",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.04381.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.04381",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "超越合理性：结构化资产上可验证的细粒度图像编辑",
+      "core_contribution": "本文提出了VeriEdit-Bench，一个面向真实结构化资产（SVG图形、图表、网页界面和演示幻灯片）的细粒度、指令忠实图像编辑基准，通过确定性的四轴评估弥合了现有基准在真实感与可验证性之间的关键鸿沟。",
+      "method": "该基准包含1,740个测试用例，通过对153个SVG图形、图表、网页界面和演示幻灯片的源代码进行受控编辑来构建，在保留原始视觉上下文的同时生成精确的目标图像、像素级编辑掩码和显式编辑规范。评估沿四个维度展开：编辑保真度、保持性、定位精度和变化幅度，从而实现可复现的确定性评分。作者对11种图像编辑模型进行了系统评估。",
+      "findings": "实验发现：即使最强的模型也远未达到满分；同一种重新着色操作在图表和SVG图形之间的模型排名会发生反转；具有相似像素精度特征的输出在定位精度和变化幅度上仍可能存在显著差异。该四轴分解方法能够提供分级的、可验证的反馈，并揭示整体评分或依赖评估者判断所掩盖的模型特定能力与失败模式。"
+    }
+  },
+  {
+    "id": "2610.06260",
+    "title": "CentriQ: Calibration-Free Quantization of Diffusion Transformers via Exact Mean Centering",
+    "abstract": "Diffusion transformers (DiTs) achieve state-of-the-art image generation, but their sampling cost limits deployment. Quantizing both weights and activations to 4 bits reduces this cost, yet existing methods fall short in one of two ways. Calibration-based methods are tied to a specific checkpoint and prompt distribution, whereas data-free Hadamard rotation, effective for LLMs, loses quality on DiTs. We show that this loss has a structural cause. Adaptive layer-norm conditioning adds a per-token mean to the activations, and at the widths of the evaluated DiTs, the Hadamard rotations used by data-free methods cannot spread this mean uniformly across coordinates. A single dominant direction therefore survives the rotation and sets the quantization range. We introduce CentriQ, a calibration-free quantizer that centers each token before rotation and restores the mean exactly through a rank-1 full-precision branch, so that per-token scales follow in closed form without data. Weights are fitted under a robust $\\ell_p$ objective that tracks the dense mode of each group and discounts heavy tails. Across three DiTs, CentriQ matches the quality of calibrated SVDQuant at 4 bits, whereas calibration-free weight quantizers with plain per-token activation quantization collapse or degrade substantially. CentriQ outperforms the strongest calibration-free method reported to date at 2-bit weights. It is also the first calibration-free method to retain usable image quality at 2-bit activations.",
+    "authors": [
+      "Nataša Jovanović",
+      "Mathieu Salzmann",
+      "Saqib Javed"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.RO"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.06260.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.06260",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "CentriQ：通过精确均值中心化实现扩散Transformer的无校准量化",
+      "core_contribution": "提出了一种无需校准数据的扩散Transformer量化方法CentriQ，通过精确均值中心化解决了无数据Hadamard旋转在DiT上失效的结构性问题，首次实现了2比特激活下仍可用的图像生成质量。",
+      "method": "作者发现自适应层归一化条件会为激活添加逐token均值，而Hadamard旋转在DiT宽度下无法将该均值均匀分散，导致单一主导方向主导量化范围。CentriQ在旋转前对每个token进行中心化，并通过秩-1全精度分支精确恢复均值，使逐token缩放可以无数据闭式求解。权重则在鲁棒ℓp目标下拟合，以跟踪每组的密集模式并抑制重尾分布。",
+      "findings": "在三个DiT模型上，CentriQ在4比特下达到了与校准方法SVDQuant相当的质量，而使用普通逐token激活量化的无校准权重量化器则崩溃或显著退化。在2比特权重下，CentriQ优于目前最强的无校准方法，并且是首个在2比特激活下仍能保持可用图像质量的无校准方法。"
+    }
+  }
+]
