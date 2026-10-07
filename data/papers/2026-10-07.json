@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2610.08772",
+    "title": "Backend-Agnostic Sparse Attention for Fast High-Resolution Visual Generation",
+    "abstract": "Diffusion Transformers (DiTs) have achieved strong performance in image and video generation, but the quadratic complexity of full attention makes high-resolution generation computationally expensive. Window attention offers an efficient alternative, yet existing methods face a practical trade-off: partitioned window attention typically achieves computational efficiency consistent with its theoretical complexity. However, isolated windows block cross-window interaction, often introducing visible grid-like artifacts in the generated results. Fine-grained sliding-window attention effectively restores interactions across neighboring windows and improves visual quality. However, its irregular computation patterns create a substantial gap between theoretical and practical speedups and require specialized kernels tailored to each hardware backend. To tackle these challenges, we propose BASA, a backend-agnostic sparse attention, which brings the best of both worlds: visual quality and practical acceleration. Specifically, BASA replaces visual self-attention with shifted local-window attention. By introducing a structured window-shifting scheme across DiT blocks, we allow tokens divided by window boundaries in one layer to communicate in the following layers, thereby achieving global information exchange and eliminating window-induced visual artifacts. Notably, our design introduces no additional irregular operators or customized kernels, making it readily deployable on existing attention backends and closing the gap between theoretical sparsity and practical acceleration. Experiments demonstrate that BASA achieves measured speedups exceeding 90\\% of the theoretical estimates on FLUX and delivers a 4.52$\\times$ attention speedup on Wan while maintaining competitive generation quality.",
+    "authors": [
+      "Liao Ma",
+      "Jiayi Song",
+      "Yunfeng Wu",
+      "Songhua Liu",
+      "Peilin Zhao"
+    ],
+    "published": "2026-10-06",
+    "updated": "2026-10-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.08772.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.08772",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "面向快速高分辨率视觉生成的后端无关稀疏注意力",
+      "core_contribution": "提出BASA，一种后端无关的稀疏注意力机制，通过移位局部窗口注意力在保持视觉质量的同时实现接近理论值的实际加速，无需定制内核即可部署于现有注意力后端。",
+      "method": "BASA用移位局部窗口注意力替代视觉自注意力，在DiT模块间引入结构化的窗口移位方案，使被窗口边界分隔的token能在后续层中通信，从而实现全局信息交换并消除窗口伪影。该设计不引入额外的不规则算子或定制内核，可直接部署于现有注意力后端，缩小了理论稀疏性与实际加速之间的差距。",
+      "findings": "实验表明，BASA在FLUX上实现的实测加速超过理论估计值的90%，在Wan上实现4.52倍的注意力加速，同时保持具有竞争力的生成质量。"
+    }
+  },
+  {
+    "id": "2610.07720",
+    "title": "RefRoute: Decoupling Conditioning Cost from References via Compact Residual Conditioning and Spatial Routing",
+    "abstract": "Multi-reference image generation requires preserving the appearance of multiple subjects while composing them into a coherent scene. However, existing diffusion transformers commonly encode references as dense visual token grids and jointly process them with global attention, making conditioning increasingly expensive as the number and resolution of references grow. We present RefRoute, a framework that addresses both reference representation cost and attention overhead through two complementary mechanisms. Compact residual conditioning combines low-resolution latent tokens with lightweight residual features extracted from full-resolution pixels, reducing reference token counts while retaining fine-grained appearance cues. Condition routing and attention routing align reference tokens with their assigned target regions and restrict cross-reference interactions, while allowing selective reference access beyond region boundaries for scene integration. We further introduce RefRoute-Data for training many-reference generation models and ManyRef100, a benchmark spanning human, object, and mixed compositions with 10-17 references. After many-reference fine-tuning, RefRoute achieves an overall Weighted-Ref-VIEScore of 36.06 on ManyRef100, compared with 8.88 for FLUX.2-Klein-9B. Separate inference-cost evaluations show substantially slower latency growth as the reference count increases: at 16 references, our 50-step and 4-step configurations achieve $18.3\\times$ and $14.2\\times$ speedups over their corresponding FLUX baselines, respectively. These results establish compact reference representations and spatially routed attention as an effective approach to scalable many-reference image generation.",
+    "authors": [
+      "Wanning He",
+      "Yuyao Zhang",
+      "Yu-Wing Tai"
+    ],
+    "published": "2026-10-06",
+    "updated": "2026-10-06",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.07720.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.07720",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "RefRoute：通过紧凑残差条件与空间路由将条件成本与参考解耦",
+      "core_contribution": "提出RefRoute框架，通过紧凑残差条件和空间路由两种机制，同时降低多参考图像生成中参考表示的token数量和注意力开销，实现可扩展的高效多参考图像生成。",
+      "method": "紧凑残差条件将低分辨率潜在token与从全分辨率像素中提取的轻量级残差特征相结合，在减少参考token数量的同时保留细粒度外观线索。条件路由和注意力路由将参考token与其分配的目标区域对齐，并限制跨参考交互，同时允许选择性访问区域边界之外的参考以实现场景整合。此外，作者构建了RefRoute-Data用于训练多参考生成模型，并提出了ManyRef100基准测试。",
+      "findings": "经过多参考微调后，RefRoute在ManyRef100上取得36.06的加权Ref-VIEScore，而FLUX.2-Klein-9B仅为8.88。推理成本评估显示，随着参考数量增加，延迟增长显著放缓：在16个参考时，50步和4步配置分别比对应的FLUX基线实现了18.3倍和14.2倍的加速。"
+    }
+  },
+  {
+    "id": "2610.08070",
+    "title": "Two Halves are More than One: Phase-wise Velocity Distillation for Fast and High-Quality Image Generation",
+    "abstract": "Recent diffusion-based image generation backbones have grown substantially in scale, making the network inference cost increase rapidly. While diffusion distillation techniques can reduce the number of inference steps, high-quality image generation within a single full-backbone-forward compute budget remains challenging. Existing one-step methods typically allocate this budget to a single evaluation of a monolithic student. However, approximating the heterogeneous coarse-to-fine transport with a single monolithic mapping is difficult and often leads to over-smoothed outputs. To address this issue, we propose Phase-wise Velocity Distillation (PVD), which partitions the generation timeline into a coarse and a fine phase, and models the transition within each phase via the average velocity. A dedicated half-sized expert is assigned to each phase, decoupling structural composition from detail refinement while keeping the cumulative computation equivalent to one full-backbone forward pass. We show that the use of two half-sized phase-specific experts outperforms a single full-size monolithic student. On class-conditional image generation, PVD achieves an FID of 1.48 on ImageNet 256 x 256. On more complex text-to-image (T2I) tasks, PVD-distilled models (Stable Diffusion 3.5-Medium, FLUX.1-dev, Qwen-Image) produce results competitive with their multi-step teachers, significantly outperforming prior distillation methods. Moreover, across the evaluated T2I backbones, PVD reduces active parameters by 49.10-50.89% and peak VRAM by 45.76-48.36% compared to the corresponding teachers. Source code and distilled models are available at https://github.com/PolyU-VCLab/PVD.",
+    "authors": [
+      "Zhen Guo",
+      "Rongyuan Wu",
+      "Qiaosi Yi",
+      "Chenxi Xie",
+      "Xinyu Wei",
+      "Lei Zhang"
+    ],
+    "published": "2026-10-06",
+    "updated": "2026-10-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.08070.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.08070",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "两半胜于一整：面向快速高质量图像生成的阶段性速度蒸馏",
+      "core_contribution": "提出阶段性速度蒸馏（PVD），将生成时间线划分为粗粒度与细粒度两个阶段，各阶段分别使用半尺寸专家模型，在总计算量等价于一次完整骨干前向传播的预算下，显著提升单步图像生成质量。",
+      "method": "PVD将扩散生成过程分为粗粒度和细粒度两个阶段，每个阶段用平均速度建模该阶段内的状态转移。每个阶段分配一个专用的半尺寸专家网络，将结构组合与细节精修解耦，同时保持累计计算量等同于一次完整骨干前向传播。该方法可应用于多种扩散骨干模型（如Stable Diffusion 3.5-Medium、FLUX.1-dev、Qwen-Image）的蒸馏。",
+      "findings": "在ImageNet 256×256类条件生成上，PVD达到FID 1.48；在文本到图像任务中，蒸馏模型效果与多步教师模型相当，显著优于先前蒸馏方法；相比教师模型，PVD减少活跃参数49.10%–50.89%，降低峰值显存45.76%–48.36%。实验表明两个半尺寸阶段专家优于单个全尺寸单体学生模型。"
+    }
+  },
+  {
+    "id": "2610.05954",
+    "title": "MEND: RL For Flow Models via Proximal Velocity Matching",
+    "abstract": "Reward post-training of flow models either reweights the model's own samples under a KL penalty or a frozen reference, often for thousands of updates, or backpropagates the reward and moves every sample without checking that the move is worth its size. We introduce MEND, a reinforcement learning method built on proximal velocity matching. MEND caps rewards within each prompt group, so samples that already score well receive no move. Below the cap, it proposes moves along the reward gradient and accepts one only when its capped reward gain exceeds a quadratic displacement price. The model then regresses onto the resulting velocity targets, with no KL term, frozen reference model, or advantage weights. In 100 updates, MEND outperforms Flow-GRPO (about 4k updates) on five of six evaluators at the same distance to base-model images. Under an equal-budget protocol, it surpasses ReFL and DiffusionNFT at every evaluated update across four training rewards, reaching PickScore 24.03 versus 23.92 and 23.43, respectively. A 300-update three-reward run also surpasses the five-reward DiffusionNFT model on all three rewards it trains on. MEND is general and easy to adopt: it applies to any flow backbone with a differentiable reward.",
+    "authors": [
+      "Shreshth Saini",
+      "Neil Birkbeck",
+      "Yilin Wang",
+      "Balu Adsumilli",
+      "Alan C. Bovik"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.05954.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.05954",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "MEND：通过近端速度匹配为流模型进行强化学习",
+      "core_contribution": "提出了一种基于近端速度匹配的强化学习方法MEND，通过奖励上限和位移代价约束来高效后训练流模型，仅需100次更新即可超越需要约4000次更新的Flow-GRPO等方法。",
+      "method": "MEND在每个提示组内对奖励设置上限，使已获得高分的样本不再移动。对于低于上限的样本，方法沿奖励梯度提出移动方向，仅当奖励增益超过二次位移代价时才接受该移动。模型随后回归到由此产生的速度目标上，无需KL项、冻结参考模型或优势权重。该方法适用于任何具有可微奖励的流模型骨干网络。",
+      "findings": "在100次更新内，MEND在六个评估器中的五个上超越了Flow-GRPO（约4000次更新），且与基础模型图像距离相同。在等预算协议下，MEND在四个训练奖励的每个评估更新点上都超越了ReFL和DiffusionNFT，PickScore达到24.03，而两者分别为23.92和23.43。一次300次更新的三奖励运行也在其训练的三个奖励上全面超越了五奖励的DiffusionNFT模型。"
+    }
+  },
+  {
+    "id": "2610.06831",
+    "title": "UniSlider: Perceptually Uniform Sliders for Continuous Image Editing",
+    "abstract": "Sliders provide an intuitive interface for continuous image editing. In current generative approaches, however, the slider is simply a rescaling of the method's strength parameter, such as an adapter coefficient, a prompt weight, or an interpolation factor. This strength relates poorly to perceptual change. The image can partially revert as the slider moves, long stretches of the range produce no visible difference, and short intervals transform the image abruptly. Remapping the strength could fix this uneven pace, but only if the trajectory is monotone, which current methods do not enforce. We therefore distinguish the slider from the strength, and require perceptual distance from the input to grow linearly with the slider value. We introduce UniSlider, a lightweight LoRA trained on a few-step editing backbone so that its strength approximates this ideal slider. Few-step sampling lets us impose this objective in pixel space without intermediate ground truth, and the backbone's output is preserved at full strength. However, a low-rank adapter cannot make the strength fully uniform. Our slider is thus an inference-time remapping of the strength, obtained by adaptive sampling. Since training optmizes to make the trajectory monotone, this remapping closes the remaining gap without extra training or parameters. On a new benchmark of 300 continuous edits evaluating uniformity, monotonicity, edit fidelity, and identity preservation, UniSlider outperforms all prior methods and is preferred in a user study.",
+    "authors": [
+      "David Serrano-Lozano",
+      "Duygu Ceylan",
+      "Yannick Hold-Geoffroy",
+      "Iliyan Georgiev",
+      "Javier Vazquez-Corral",
+      "Anna Frühstück"
+    ],
+    "published": "2026-10-05",
+    "updated": "2026-10-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.06831.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.06831",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "UniSlider：用于连续图像编辑的感知均匀滑块",
+      "core_contribution": "论文提出UniSlider，将滑块值与生成方法的强度参数解耦，使感知距离随滑块值线性增长，从而实现感知均匀的连续图像编辑。",
+      "method": "作者区分了滑块与强度参数，要求感知距离随滑块值线性增长。他们训练了一个轻量级LoRA适配器，基于少步编辑骨干网络，使强度近似理想滑块；少步采样允许在像素空间施加该目标而无需中间真值。由于低秩适配器无法完全均匀化强度，他们在推理时通过自适应采样对强度进行重映射，且训练优化使轨迹单调，从而无需额外训练或参数即可弥补剩余差距。",
+      "findings": "在包含300个连续编辑的新基准上，评估均匀性、单调性、编辑保真度和身份保持，UniSlider优于所有先前方法，并在用户研究中更受偏好。"
+    }
+  }
+]
