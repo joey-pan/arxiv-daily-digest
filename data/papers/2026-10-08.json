@@ -1,0 +1,157 @@
+[
+  {
+    "id": "2610.09841",
+    "title": "ORCA: Hunting Compositional Failures in Text-to-Image Diffusion",
+    "abstract": "Text-to-image diffusion models fail predictably on compositional prompts: attributes bind to the wrong objects, spatial relations invert, and multi-object scenes lose count. Recent architectures already augment CLIP with a T5 encoder precisely because CLIP's contrastive embedding loses compositional structure, yet these failures persist. We argue the binding problem is therefore not one of missing information but of misaligned information: a text encoder preserves compositional structure, but in a representation space shaped by language modelling rather than vision, and the denoising objective does not directly reward aligning the two. We show this correspondence can be supplied as an explicit training signal, that the relevant cross-modal information is concentrated in a low-rank subspace of self-supervised visual features, and that supplying it can be folded into diffusion training as a single auxiliary loss. Our method, ORCA (Orthogonal Residual Compositional Alignment), aligns the latent of a diffusion transformer with a low-rank target derived from a frozen visual encoder, through a predictor whose orthogonal basis is parameterised by a learned residual between T5 and CLIP embeddings, which provides a prompt-dependent signal for selecting the visual readout subspace. We prove that the cross-modal information recoverable at a given rank is bounded by the spectral mass of the visual encoder's covariance in the top components. Across three diffusion-transformer backbones (DiT-B/2, DiT-L/2, U-ViT-L), ORCA improves FID and GenEval over both vanilla and REPA baselines at zero inference-time cost; on DiT-L/2 it reaches FID 16.65 and GenEval 0.291 at 200K steps, exceeding the strongest 400K baseline at half the training cost, with the largest gains concentrated on attribute binding, spatial relations, and multi-object prompts.",
+    "authors": [
+      "Arshia Hemmat",
+      "Amirhossein Vahidi",
+      "Amitis Shidani",
+      "Mohammad Vali Sanian",
+      "Hesam Asadollahzadeh",
+      "Aryan Yazdan Parast",
+      "Mohammad Lotfollahi"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.09841.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.09841",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "ORCA：捕捉文本到图像扩散模型中的组合性失败",
+      "core_contribution": "论文指出文本到图像扩散模型的组合性失败并非源于信息缺失，而是文本编码器与视觉表示空间之间的信息错位，并提出ORCA方法通过显式训练信号对齐跨模态信息，在不增加推理成本的情况下显著提升组合生成能力。",
+      "method": "ORCA（正交残差组合对齐）将扩散Transformer的潜变量与来自冻结视觉编码器的低秩目标对齐，通过一个预测器实现，其正交基由T5与CLIP嵌入之间的学习残差参数化，从而提供依赖提示的信号来选择视觉读出子空间。该方法将跨模态对齐作为单一辅助损失融入扩散训练，并证明给定秩下可恢复的跨模态信息受视觉编码器协方差谱质量上界约束。",
+      "findings": "在三种扩散Transformer骨干网络（DiT-B/2、DiT-L/2、U-ViT-L）上，ORCA在零推理成本下同时改善了FID和GenEval指标，优于原始基线和REPA基线。在DiT-L/2上，200K步即达到FID 16.65和GenEval 0.291，以一半训练成本超过最强的400K步基线，最大增益集中在属性绑定、空间关系和多物体提示上。"
+    }
+  },
+  {
+    "id": "2610.09823",
+    "title": "UltraText Bench: A Comprehensive Bilingual Benchmark for Evaluating Visual Text Rendering in Image Generation",
+    "abstract": "Dense visual text requires image generators to reproduce long strings across multiple regions with correct placement and legibility. As short-string rendering improves, evaluation must test sustained performance across more demanding scenes. We introduce UltraText Bench, a bilingual benchmark for prompt-only generation of dense visual text. It contains 432 prompts spanning 24 real-world scene categories and three difficulty levels, split equally between English and Chinese. Each human-reviewed prompt supplies exact strings for four to twelve text regions, paired with structured references for their content, placement, and visual attributes. We use the Q-Judger vision-language model to assess each image against the complete reference, reporting text fidelity, text clarity, spatial quality, and scene quality. Across 24 model configurations, these dimensions reveal different strengths: Z-Image-Turbo gains 3.81 clarity points over Z-Image-Base while losing 14.76 fidelity points under the reported settings. Performance also varies with workload; Qwen-Image-2512's English composite falls from 86.50 at L1 to 42.86 at L3. Ten participants took part in human evaluation of the automatic scores. Repository: https://github.com/LINs-lab/UltraText_Bench.",
+    "authors": [
+      "Deyuan Liu",
+      "Yihao Hu",
+      "Jingxuan Zhang",
+      "Xingying Li",
+      "Jun Xie",
+      "Jiacheng Liu",
+      "Jungang Li",
+      "Yu Huang",
+      "Xuanyi Liu",
+      "Yue Ding",
+      "Zecheng Wang",
+      "Lei Zhao",
+      "Mingda Wang",
+      "Zhenglin Cheng",
+      "Peng Sun",
+      "Tao Lin"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.09823.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.09823",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "UltraText Bench：用于评估图像生成中视觉文本渲染的综合双语基准",
+      "core_contribution": "该论文提出了UltraText Bench，一个面向密集视觉文本生成的双语基准，包含432个中英文提示词，覆盖24个真实场景类别和三个难度等级，并配套结构化参考与Q-Judger自动评估体系，用于系统衡量图像生成模型在多区域长文本渲染中的表现。",
+      "method": "基准包含432个人工审核的提示词，中英文各占一半，每个提示词指定4至12个文本区域的精确字符串，并提供内容、位置和视觉属性的结构化参考。评估采用Q-Judger视觉语言模型，将生成图像与完整参考进行对比，从文本保真度、文本清晰度、空间质量和场景质量四个维度打分。作者在24种模型配置上进行了测试，并邀请10名参与者对自动评分进行人工评估验证。",
+      "findings": "不同模型在各评估维度上表现差异明显：Z-Image-Turbo相比Z-Image-Base清晰度提高3.81分，但保真度下降14.76分。性能随任务难度显著变化，Qwen-Image-2512的英文综合得分从L1的86.50降至L3的42.86。人工评估结果用于验证自动评分的可靠性。"
+    }
+  },
+  {
+    "id": "2610.09071",
+    "title": "OverLay++: Dense-Overlap Layout-to-Image Generation Dataset",
+    "abstract": "Layout-to-Image generation has made substantial progress in spatial and object-level control. However, existing methods still struggle with complex scenes containing many overlapping and interacting objects. We argue that training data is a particular bottleneck: existing datasets lack examples with dense, complex object interactions. To address this gap, we introduce OverLay++, a large-scale Layout-to-Image dataset with structurally complex scenes. OverLay++ contains approximately 500K images with an average of 6.6 objects per image, exceeding existing datasets by 1.67 times in annotation density. Beyond annotation density, OverLay++ provides rich semantic detail with object captions over six times longer than in current datasets. Our dataset generation pipeline is simple and produces dense, overlapping object annotations with rich per-object captions. Across multiple benchmarks, state-of-the-art Layout-to-Image methods trained on the OverLay++ dataset show consistent improvement and faster convergence, demonstrating the importance of dense, overlap-aware, and caption-rich supervision for controllable image generation.",
+    "authors": [
+      "Shivansh Aggarwal",
+      "Shresth Grover",
+      "Divyansh Srivastava",
+      "Haiyang Xu",
+      "Bingnan Li",
+      "Xiang Zhang",
+      "Ethan J. Armand",
+      "Chuan Li",
+      "Jianwen Xie",
+      "Zhuowen Tu"
+    ],
+    "published": "2026-10-06",
+    "updated": "2026-10-06",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.09071.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.09071",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "OverLay++：密集重叠布局到图像生成数据集",
+      "core_contribution": "该论文提出了OverLay++，一个大规模、结构复杂的布局到图像生成数据集，旨在解决现有数据集缺乏密集、复杂物体交互样本的问题，从而推动可控图像生成在重叠场景下的发展。",
+      "method": "作者构建了一个简单且可扩展的数据集生成流程，生成了约50万张图像，每张图像平均包含6.6个物体，标注密度是现有数据集的1.67倍。此外，每个物体都配有丰富的语义描述，描述长度是现有数据集的6倍以上。该数据集专注于提供密集、重叠的物体标注以及详细的逐物体描述。",
+      "findings": "在多个基准测试中，使用OverLay++训练的最先进布局到图像生成方法均表现出一致的性能提升和更快的收敛速度，表明密集、重叠感知且描述丰富的监督信号对可控图像生成至关重要。"
+    }
+  },
+  {
+    "id": "2610.10497",
+    "title": "QuadTok: Quadtree Visual Tokenizer for Autoregressive Image Generation",
+    "abstract": "We introduce QuadTok, a novel framework for visual tokenization and autoregressive image generation. Compared to traditional approaches using 2D grids or 1D token sequences, we propose a hierarchical quadtree structure, bridging the gap between 2D spatial binding and 1D sequence-level flexibility. The QuadTok tokenizer dynamically allocates representational capacity to visually intricate areas while leaving homogeneous regions at a coarse resolution. Compared with a fixed 256-token grid, our ImageNet-trained tokenizer saves approximately 10% of tokens on ImageNet and 9% when transferred zero-shot to the COCO dataset, while maintaining comparable reconstruction fidelity. Furthermore, the natural causality introduced by the tree structure seamlessly enables autoregressive image generation. Conditioned on a quadtree topology supplied before generation, our 947M GPT-style generative model achieves a 2.08 gFID on the ImageNet $256 \\times 256$ benchmark. Additionally, leveraging the strong spatial correlation preserved by the quadtree structure, the QuadTok generator enables zero-shot spatially controlled image generation capabilities. Code: https://github.com/myc634/QuadTok.",
+    "authors": [
+      "Yucheng Mao",
+      "Zeyuan Chen",
+      "Xiaojun Shan",
+      "Xiang Zhang",
+      "Divyansh Srivastava",
+      "Bingnan Li",
+      "Zhuowen Tu"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.10497.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.10497",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "QuadTok：用于自回归图像生成的四叉树视觉分词器",
+      "core_contribution": "提出了一种基于四叉树层次结构的视觉分词框架QuadTok，在2D空间绑定与1D序列灵活性之间建立桥梁，实现自适应token分配并支持高效自回归图像生成。",
+      "method": "QuadTok采用四叉树结构对图像进行层次化分词，动态地将表征容量分配给视觉复杂的区域，而对同质区域使用粗分辨率表示。该树结构天然引入因果性，使其可直接用于自回归生成。生成时以预先提供的四叉树拓扑为条件，使用947M参数的GPT风格生成模型进行图像合成。",
+      "findings": "在ImageNet上训练的tokenizer相比固定256-token网格节省约10%的token，零样本迁移到COCO时节省约9%，同时保持可比的 reconstruction fidelity。在ImageNet 256×256基准上达到2.08 gFID。此外，利用四叉树结构保留的强空间相关性，生成器还支持零样本空间可控图像生成。"
+    }
+  },
+  {
+    "id": "2610.09450",
+    "title": "Iris-3B: Going Beyond the Latent with Pixel-Space Diffusion Training, Conversion and Fine-Tuning",
+    "abstract": "Pixel-space diffusion models avoid the lossy VAE of latent models, which suggests an advantage on downstream tasks where fine-grained detail matters. We test this claim along both routes to a pixel-space backbone. We pretrain Iris-3B, a 3B-parameter pixel-space text-to-image transformer, from scratch through a $256\\to512\\to1024$ curriculum, after first ablating the prediction target and representation alignment at $256^2$ to decide what to scale. We also convert a pretrained latent model, FLUX.2 Klein base 4B, to pixel space. We fine-tune both families for monocular depth estimation and for image restoration/super-resolution. We find no significant improvement from using a pixel-space generative prior. Fine-tuned for depth with one matched direct-regression recipe, Iris-3B is level with the latent FLUX.2 Klein and the converted pixel FLUX.2 Klein falls behind it, and on $4\\times$ DIV2K restoration neither pixel model beats a latent FLUX.2 Klein fine-tune, the converted one trailing it slightly. We document the recipes, the failure modes and the remaining confounds behind this negative result. Nevertheless, Iris-3B shows that pixel-space pretraining with the pixel-transformer (PiT) head of PixelDiT scales to 3B parameters and to text-to-image quality competitive with latent models, matching Qwen-Image on OneIG under the official evaluators at $1024^2$. We release its weights and training code in the hope that they help pave the way for further work on pixel-space generation.",
+    "authors": [
+      "Hanqiu Li Cai",
+      "Chema Garabito"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.09450.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.09450",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "Iris-3B：超越潜空间——像素空间扩散的训练、转换与微调",
+      "core_contribution": "论文通过从头预训练3B参数的像素空间文本到图像Transformer（Iris-3B）并将预训练潜空间模型FLUX.2 Klein转换为像素空间，系统检验了像素空间扩散模型在下游细粒度任务上优于潜空间模型的假设，结果发现像素空间生成先验并未带来显著提升，但证明了像素空间预训练可扩展至3B参数并达到与潜空间模型相当的文生图质量。",
+      "method": "作者首先在256²分辨率下消融预测目标和表示对齐，以决定扩展策略，然后通过256→512→1024的课程学习从头预训练Iris-3B（采用PixelDiT的像素Transformer头部）；同时将预训练的潜空间模型FLUX.2 Klein base 4B转换为像素空间。随后对两个模型家族分别针对单目深度估计和图像恢复/超分辨率任务进行微调，并与潜空间FLUX.2 Klein微调版本进行对比。",
+      "findings": "在深度估计任务中，使用匹配的直接回归微调方案，Iris-3B与潜空间FLUX.2 Klein持平，而转换后的像素FLUX.2 Klein落后；在4× DIV2K图像恢复任务中，两个像素模型均未超过潜空间FLUX.2 Klein微调版本，转换版本略逊一筹。总体而言，使用像素空间生成先验未带来显著改进。但Iris-3B证明像素空间预训练可扩展至3B参数，在1024²下使用官方评估器时OneIG指标与Qwen-Image相当，达到与潜空间模型有竞争力的文生图质量。作者公开了权重和训练代码。"
+    }
+  }
+]
