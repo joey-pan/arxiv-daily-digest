@@ -1,0 +1,156 @@
+[
+  {
+    "id": "2610.12230",
+    "title": "From Prompting to Composing: A Spatial Canvas Interface for Poster Generation",
+    "abstract": "Text prompting is an indirect interface for poster generation, requiring users to encode inherently two-dimensional composition intent into a one-dimensional sequence of words. We introduce a Spatial Canvas Interface that enables users to directly compose generation intent in space through four complementary binding types: semantic, identity, text, and pixel, together with Text Specifications for individual elements and global appearance. Based on this interface, we develop Compo, a poster generation model adapted from a pretrained image editing model to understand Spatial Canvas inputs and Text Specifications. Compo supports both direct inference, where users explicitly construct the canvas, and agentic mode, where a high-level request is automatically translated into a planned Spatial Canvas. To train Compo, we develop a scalable pipeline that automatically constructs supervision data for different binding types and their combinations, enabling efficient adaptation without training a specialized poster generator from scratch. We further introduce a benchmark that evaluates adherence to individual binding types and their joint composition. Experiments show that Compo achieves stronger compositional controllability than both general-purpose image generation models and dedicated poster generation systems while maintaining high visual quality. By decoupling intent specification from visual generation, our work shifts poster generation from prompting toward composing.",
+    "authors": [
+      "Yitong Wang",
+      "Fangyun Wei",
+      "Jinjing Zhao",
+      "Sirui Zhang",
+      "Hongyang Zhang",
+      "Dong Chen",
+      "Bo Dai",
+      "Yan Lu"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12230.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12230",
+    "primary_category": "cs.CV",
+    "score": 95,
+    "summary": {
+      "title_zh": "从提示到构图：一种用于海报生成的空间画布界面",
+      "core_contribution": "提出了一种空间画布界面，让用户通过四种绑定类型（语义、身份、文本和像素）直接在空间中构图生成意图，并开发了Compo模型，将海报生成从文本提示转变为空间构图。",
+      "method": "该界面支持语义、身份、文本和像素四种互补的绑定类型，以及针对单个元素和全局外观的文本规范。基于此，研究者开发了Compo模型，该模型从预训练的图像编辑模型改编而来，能够理解空间画布输入和文本规范，并支持直接推理和智能体模式。为了训练Compo，他们构建了一个可扩展的流水线，自动生成不同绑定类型及其组合的监督数据，从而无需从头训练专用海报生成器即可高效适配。此外，他们还引入了一个基准来评估对单个绑定类型及其联合构图的遵循程度。",
+      "findings": "实验表明，Compo在构图可控性上优于通用图像生成模型和专用海报生成系统，同时保持了高视觉质量。通过将意图指定与视觉生成解耦，该工作将海报生成从提示转向了构图。"
+    }
+  },
+  {
+    "id": "2610.12307",
+    "title": "BudgetPix: Compute-Adaptive Tokenization for Pixel-Space Image Diffusion",
+    "abstract": "Most image generation models rely on uniform tokenization, allocating the exact same computational budget to equally-sized image patches. This static paradigm cannot adapt to different resource constraints at inference time, and yields suboptimal quality-cost tradeoff by devoting the same effort to both plain backgrounds and intricate details. We propose BudgetPix, an adaptive tokenization framework that dynamically allocates compute based on visual complexity and spatial layout, enabling flexible computational budgeting at inference time. BudgetPix comprises three key components: (1) an adaptive encoder that maps a fixed-size image to a variable-length token sequence using an entropy-guided quadtree alongside a multi-scale patch embedder; (2) a scale-aware decoder reconstructs fixed-resolution images from multi-scale token sets; and (3) a flexible training and sampling schedule that enables pixel-space denoisers to operate across variable token counts. BudgetPix seamlessly integrates with existing pixel-space diffusion architectures, enabling a single checkpoint to be operated at a wide range of compute budgets. Evaluated on text-to-image generation, BudgetPix matches the fidelity of MiniT2I-L at $512^2$ and PixelDiT at $1024^2$ using just 25% of the original compute budget. In class-conditional generation using a MeanFlow backbone, BudgetPix requires merely 60% of the full compute budget to produce images with near-zero quality degradation, observing a marginal 0.8-point increase in FID. Comprehensive assessments by human and VLM judges confirm that BudgetPix establishes a significantly improved quality-efficiency tradeoff over prior budget-adaptive baselines. More details are available at our project page: https://karaozgur.com/BudgetPix",
+    "authors": [
+      "Ozgur Kara",
+      "Yujia Chen",
+      "Daniel Watson",
+      "David Forsyth",
+      "James Matthew Rehg",
+      "Wen-Sheng Chu",
+      "Du Tran"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12307.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12307",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "BudgetPix：面向像素空间图像扩散的计算自适应分词方法",
+      "core_contribution": "提出了一种自适应分词框架BudgetPix，能够根据图像视觉复杂度和空间布局动态分配计算资源，使单一模型检查点可在推理时灵活适配多种计算预算，显著改善图像生成的质量-效率权衡。",
+      "method": "BudgetPix由三个关键组件构成：一是自适应编码器，利用熵引导的四叉树和多尺度图像块嵌入器，将固定尺寸图像映射为可变长度的token序列；二是尺度感知解码器，从多尺度token集合重建固定分辨率图像；三是灵活的训练与采样调度策略，使像素空间去噪器能够在不同token数量下运行。该框架可无缝集成到现有像素空间扩散架构中，实现单检查点多预算运行。",
+      "findings": "在文本到图像生成任务中，BudgetPix仅用原始计算预算的25%即可在512²分辨率下达到MiniT2I-L的保真度，在1024²下达到PixelDiT的水平；在基于MeanFlow骨干的类别条件生成中，仅需60%的完整计算预算即可实现近乎零质量退化，FID仅上升0.8个点。人类和VLM评审的综合评估证实，BudgetPix相比先前的预算自适应基线方法，在质量-效率权衡上取得了显著提升。"
+    }
+  },
+  {
+    "id": "2610.12229",
+    "title": "VibeEdit: Image Editing with Canvas Instructions",
+    "abstract": "In text-guided image editing, describing the desired change is often straightforward, but identifying the intended object or region can be cumbersome, especially when several objects look alike. We introduce a new image editing interface that lets users place spatial marks and optional short notes directly on the image. Together, these annotations form a canvas instruction that specifies where to edit and what to change. Our editor, VibeEdit, follows these instructions to perform object addition, removal, replacement, attribute modification, and movement without a separate text prompt. We construct 1.55 million source-target edit pairs with object masks and structured edit descriptions, from which we render canvas instructions during training. We adapt Qwen-Image-Edit with layer-decoupled conditioning that separately encodes source images and canvas instructions for image editing. We train the model with region-weighted supervised fine-tuning, followed by rubric-guided reinforcement learning to improve edit completion, local edit quality, and preservation of unedited regions. We evaluate VibeEdit on an independently constructed, human-curated benchmark of 419 cases emphasizing target selection among similar objects. VibeEdit achieves a VLM rubric score of 79.9 and an outside-region PSNR of 32.8 dB, compared with 67.4 and 24.0 dB for FireRed, the highest-scoring text-instructed baseline in our evaluation.",
+    "authors": [
+      "Jinjing Zhao",
+      "Fangyun Wei",
+      "Yitong Wang",
+      "Xiuyu Wu",
+      "Yunuo Chen",
+      "Yang Yue",
+      "Sirui Zhang",
+      "Wenbo Wang",
+      "Hongyang Zhang",
+      "Dong Chen",
+      "Yan Lu",
+      "Chang Xu"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12229.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12229",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "VibeEdit：基于画布指令的图像编辑",
+      "core_contribution": "提出了一种新的图像编辑交互方式，允许用户直接在图像上放置空间标记和简短注释，形成“画布指令”来指定编辑位置和内容，无需单独输入文本提示，从而解决了相似物体难以通过文本精确指代的问题。",
+      "method": "构建了155万对带有物体掩码和结构化编辑描述的源-目标编辑对，并在训练中渲染为画布指令。基于Qwen-Image-Edit进行适配，采用层解耦条件机制分别编码源图像和画布指令。训练分为两阶段：先进行区域加权监督微调，再进行评分标准引导的强化学习，以提升编辑完成度、局部编辑质量和未编辑区域的保持能力。",
+      "findings": "在独立构建的419个人工精选基准（强调相似物体间的目标选择）上，VibeEdit取得了VLM评分79.9和区域外PSNR 32.8 dB，显著优于文本指令基线中表现最好的FireRed（67.4和24.0 dB）。"
+    }
+  },
+  {
+    "id": "2610.10990",
+    "title": "Omni-Diffusion-Distill: Few-Step Distillation of Unified Multimodal Diffusion Large Language Models",
+    "abstract": "Unified multimodal diffusion large language models (dLLMs) offer a single architecture for both image generation and multimodal understanding, but their iterative decoding requires tens to hundreds of forward passes. Existing few-step distillation methods largely focus on either image generation or text generation, making it unclear how to compress a fully discrete multimodal dLLM into a single efficient student while preserving both generation and understanding. We introduce Omni-Diffusion-Distill, a unified two-stage distillation framework that retains strong generation and understanding capabilities while substantially reducing the inference cost of a unified multimodal dLLM. Omni-Diffusion-Distill aligns the distillation of both generation and understanding, for both images and text, in the discrete token space. In the first stage, the student is trained to skip decoding steps by replaying cached teacher trajectories, and in the second stage the student is refined on intermediate states along its own rollouts. We further remedy two sources of degradation in unified distillation with a pairwise collision penalty that reduces repetition under parallel text decoding, and entropy-matched guidance that prevents entropy collapse caused by fitting the sharpened teacher distribution in image generation. Omni-Diffusion-Distill achieves state-of-the-art trade-offs between decoding efficiency and generation and understanding performance for multimodal dLLMs, reducing image generation from 128 to 8 decoding steps and multimodal understanding from 512 to 64, giving 18.2x and 21.2x wall-clock speedups. Under these budgets, it scores 0.828 on GenEval and 83.0 on DPG-Bench for text-to-image generation, while reaching GPT judge scores of 20.0 on MM-Vet and 57.2 on COCO captioning (twice the teacher's 28.4 at the same steps) for multimodal understanding.",
+    "authors": [
+      "Hong Huang",
+      "Chenhongyi Yang",
+      "Junzhe Sun",
+      "Animesh Sinha",
+      "Wuyang Chen",
+      "Yifan Jiang"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.10990.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.10990",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Omni-Diffusion-Distill：统一多模态扩散大语言模型的少步蒸馏",
+      "core_contribution": "提出了一个统一的两阶段蒸馏框架 Omni-Diffusion-Distill，首次将统一多模态扩散大语言模型（同时涵盖图像生成与多模态理解）压缩为高效的少步学生模型，在离散 token 空间中同时对齐图像与文本的生成和理解能力。",
+      "method": "该框架在离散 token 空间中对图像和文本的生成与理解进行统一蒸馏。第一阶段通过回放缓存的教师轨迹训练学生模型跳步解码，第二阶段在学生模型自身 rollout 的中间状态上进行精炼。此外，引入成对碰撞惩罚以缓解并行文本解码中的重复问题，并采用熵匹配引导以防止拟合锐化教师分布时出现熵坍缩。",
+      "findings": "该方法在多模态扩散大语言模型的解码效率与生成/理解性能之间取得了最优权衡：图像生成从 128 步降至 8 步，多模态理解从 512 步降至 64 步，分别实现 18.2 倍和 21.2 倍的墙钟加速。在该预算下，文本到图像生成在 GenEval 上得分 0.828、DPG-Bench 上得分 83.0；多模态理解在 MM-Vet 上 GPT 评判得分 20.0，COCO 图像描述得分 57.2（相同步数下为教师模型 28.4 的两倍）。"
+    }
+  },
+  {
+    "id": "2610.10760",
+    "title": "DOGS: Design-Space Sampling for Prompt-Driven Logo Generation",
+    "abstract": "Prompt optimization for text-to-image (T2I) generation has been pursued almost entirely as text rewriting, in which a short user brief is expanded into a longer, model-preferred token sequence. We argue that such a language-space formulation is ill-suited to structured visual design tasks such as logo creation, where a one-line brief leaves most design decisions unspecified. These decisions depend on relational priors that a linear sequence cannot encode, and they leave an uncontrolled channel through which protected marks may be reproduced. We therefore recast logo prompting as sampling within a structured design space, and instantiate this idea as DOGS (Design-space prompting with an Originality-aware GFlowNet Sampler). From a large corpus of real-world logos, we mine a typed, graph-structured design grammar whose edges record empirical co-occurrence. A GFlowNet sampler then generates design graphs with probability proportional to a terminal reward that combines recognizability, aesthetics, and corpus-relative originality. Every slot draws only from a closed design-level vocabulary, and any infringement-inducing or harmful token is removed during parsing. The originality reward further penalizes proximity to existing logos, thereby incorporating infringement avoidance into the method by construction. On two open-source renderers and against nine baselines, DOGS produces logos that are more recognizable and aesthetic, substantially more diverse, and far less prone to trademark infringement.",
+    "authors": [
+      "Ganyu Zou",
+      "Chen Dai",
+      "Nathan Self",
+      "Kevin Piper",
+      "Ramachandra Rao Seethiraju",
+      "Karthik Shyamsunder",
+      "Chang-Tien Lu",
+      "Naren Ramakrishnan"
+    ],
+    "published": "2026-10-07",
+    "updated": "2026-10-07",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.10760.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.10760",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "DOGS：面向提示驱动Logo生成的设计空间采样",
+      "core_contribution": "该论文将Logo提示优化从传统的文本改写范式重新定义为结构化设计空间中的采样问题，提出了DOGS方法，通过设计空间采样在保证Logo可识别性和美观性的同时，显著提升多样性并降低商标侵权风险。",
+      "method": "论文从大规模真实Logo语料中挖掘出一个带类型的图结构设计语法，其边记录经验共现关系。随后使用GFlowNet采样器生成设计图，采样概率与综合了可识别性、美观性和语料相对原创性的终端奖励成正比。每个设计槽仅从封闭的设计级词汇表中抽取，解析过程中会移除任何可能引发侵权或有害的token。原创性奖励进一步惩罚与现有Logo的接近程度，从而在设计层面内建了侵权规避机制。",
+      "findings": "在两个开源渲染器和九个基线方法的对比实验中，DOGS生成的Logo具有更高的可识别性和美观性，多样性显著提升，且商标侵权倾向大幅降低。"
+    }
+  }
+]
