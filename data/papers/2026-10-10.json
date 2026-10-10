@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2610.11751",
+    "title": "Dino Forcing Flow Models: Do not denoise what you can predict",
+    "abstract": "Co-denoising pretrained representations such as DINO can substantially improve the training speed and quality of flow matching models, but it introduces a second denoising trajectory and requires carefully designed schedules. We propose a simpler alternative: predict the pretrained representation directly, then condition the model on its own prediction. This removes the need for a second ODE and any representation-specific denoising schedules, while retaining the benefits of representation guidance. Our approach converges substantially faster and achieves better generation quality as measured by FID score. On ImageNet, it outperforms the state of the art in latent space at 2x fewer epochs than prior methods; in pixel space, it improves FID over comparable prior methods by more than 20%. These results support a simple principle: do not denoise what you can predict. Our code is openly available at https://github.com/arijit-hub/dino_forcing.",
+    "authors": [
+      "Arijit Ghosh",
+      "Lucas Degeorge",
+      "Paul Couairon",
+      "Alexei A Efros",
+      "Vicky Kalogeiton",
+      "David Picard"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.11751.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.11751",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "DINO强制流模型：不要对可以预测的内容进行去噪",
+      "core_contribution": "提出了一种更简单的替代方案，直接预测预训练表示（如DINO）并以自身预测为条件，从而无需第二条ODE轨迹和表示特定的去噪调度，同时保留表示引导的收益，实现更快的收敛和更好的生成质量。",
+      "method": "该方法不再对预训练表示进行协同去噪，而是直接预测预训练表示，然后将模型条件化于其自身的预测结果上。这样做消除了对第二个ODE求解器和任何表示特定去噪调度的需求，同时仍能利用表示引导的优势。整个框架保持了流匹配模型的基本结构，但简化了训练流程。",
+      "findings": "该方法收敛速度显著更快，FID分数更优。在ImageNet上，以比先前方法少2倍的训练轮数超越了潜在空间中的最先进方法；在像素空间中，相比同类先前方法FID提升超过20%。结果支持一个简单原则：不要对可以预测的内容进行去噪。"
+    }
+  },
+  {
+    "id": "2610.12102",
+    "title": "Few-Step Generation via Data-Space Iteration",
+    "abstract": "Flow matching has emerged as a scalable paradigm for training high-quality generative models, but sampling from the learned probability flow requires many network evaluations. Distillation can reduce this cost to one or a few evaluations; however, one-step generation often sacrifices quality, making few-step generation the practical operating regime. Existing few-step methods perform their iterative computation along the probability flow and therefore require a fixed, manually chosen timestep discretization. This discretization is often chosen heuristically and is expensive to tune; it may also be restrictive when refinement difficulty differs across samples or spatial locations. We introduce data-space iteration, a few-step generation framework that removes flow discretization altogether. Starting from noise, a shared generator directly refines its prediction in data space, with every iteration trained to produce the best sample permitted by its capacity. Our formulation integrates with distribution matching distillation (DMD) with minimal changes, enabling a controlled comparison between iteration methods under matched training settings. On class-conditional ImageNet 256x256, data-space iteration outperforms standard discretization baselines and matches or improves upon variants selected through schedule search, without requiring schedule-specific training. These results show that data-space iteration provides a simple and effective alternative to discretized flow-space iteration for fast generation.",
+    "authors": [
+      "Shanchuan Lin",
+      "Yansong Peng",
+      "Fu-Yun Wang",
+      "Haoqi Fan"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12102.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12102",
+    "primary_category": "cs.LG",
+    "score": 75,
+    "summary": {
+      "title_zh": "通过数据空间迭代实现少步生成",
+      "core_contribution": "提出数据空间迭代（data-space iteration）框架，完全消除流匹配少步生成中的时间步离散化需求，在匹配训练设置下优于标准离散化基线。",
+      "method": "从噪声出发，共享生成器直接在数据空间中精炼其预测，每次迭代都被训练以产生其容量允许的最佳样本。该方法与分布匹配蒸馏（DMD）集成，仅需最小改动，从而在匹配训练条件下实现迭代方法的受控比较。",
+      "findings": "在类条件ImageNet 256x256上，数据空间迭代优于标准离散化基线，并匹配或超过通过调度搜索选出的变体，且无需针对特定调度进行训练，表明其为快速生成提供了一种简单有效的替代方案。"
+    }
+  },
+  {
+    "id": "2610.12469",
+    "title": "Rubric-CEPR: Self-Evolving Image Editing via Reward-Verified Self-Distillation",
+    "abstract": "Instruction-guided image editors have become highly capable, yet improving them further still depends on human-edited training pairs or external reward models. Such supervision is costly to obtain and can reward plausible failures: a realistic output may leave the requested change undone or alter content that should be preserved. In this work, we strive to improve a pretrained image editor using only its own generations, without human-edited targets or an external training-time reward model. To this end, we propose a self-evolving framework, named Rubric-CEPR, that verifies the editor's own samples with its internal representations through a rubric-augmented Contrastive Edit-Preservation Reward (CEPR). A Planner proposes structured edit instructions from unlabeled images, the Editor samples multiple candidate edits, and a frozen Critic scores each candidate with decomposed rubric checks for edit realization, removal of the old state, and content preservation, using features already exposed by the editor. Non-compensatory gates reject infeasible candidates, and the best verified candidate is distilled into the editor through lightweight adapter training. On Qwen-Image-Edit, Rubric-CEPR improves ImgEdit from 4.36 to 4.60 (+5.5%), with a +24.9% gain on object isolation, and transfers to GEdit-Bench and Complex-Edit. The same procedure also improves Step1X-Edit by +7.8% on ImgEdit. We hope our approach will serve as a solid baseline for image editors that improve themselves from their own verified samples. Our code is publicly available at $\\href{https://riteshthawkar.github.io/Rubric-CEPR/}{\\text{this URL}}$",
+    "authors": [
+      "Ritesh Thawkar",
+      "Shubham Patle",
+      "Shravan Venkatraman",
+      "Rao Muhammad Anwer"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12469.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12469",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "Rubric-CEPR：通过奖励验证的自蒸馏实现自进化图像编辑",
+      "core_contribution": "提出了一种无需人工编辑目标或外部奖励模型的自进化图像编辑框架，仅利用编辑器自身的生成样本，通过内部表示进行验证来持续提升编辑能力。",
+      "method": "该框架由Planner、Editor和冻结的Critic组成：Planner从无标签图像中提出结构化编辑指令，Editor采样多个候选编辑结果，Critic利用编辑器自身已有的特征，通过分解式评分标准（编辑实现、旧状态移除、内容保持）对候选进行打分。采用非补偿性门控拒绝不可行的候选，并将最佳验证候选通过轻量级适配器训练蒸馏回编辑器。",
+      "findings": "在Qwen-Image-Edit上，Rubric-CEPR将ImgEdit从4.36提升至4.60（+5.5%），其中物体隔离任务提升+24.9%，并可迁移至GEdit-Bench和Complex-Edit。相同流程在Step1X-Edit上使ImgEdit提升+7.8%，为图像编辑器的自进化提供了可靠基线。"
+    }
+  },
+  {
+    "id": "2610.12452",
+    "title": "BrickBench: Evaluating Agentic Brick Design",
+    "abstract": "We propose BrickBench, a benchmark for agentic text-conditioned LEGO-set design. Given a prompt, an agent is tasked with producing an assembly that not only satisfies semantic and design criteria, but that can also be physically built. To do so, it must select parts from a discrete library and reason jointly about local and global constraints. We score validity, alignment, and design across three settings that vary in scale and part availability. We provide BrickAgent, an environment for coding agents to construct, inspect, and validate their designs. We find that leading agents largely satisfy verifiable physical and semantic requirements, but fall short of human designs. We release our benchmark and environment at http://www.brickben.ch",
+    "authors": [
+      "Peter Kulits",
+      "Yiqing Xu",
+      "R. Kenny Jones",
+      "Cordelia Schmid",
+      "Jiajun Wu"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.AI",
+      "cs.CV",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12452.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12452",
+    "primary_category": "cs.AI",
+    "score": 72,
+    "summary": {
+      "title_zh": "BrickBench：评估智能体积木设计",
+      "core_contribution": "提出了BrickBench，一个用于评估智能体根据文本条件设计乐高积木套装的基准测试，要求智能体生成既满足语义和设计标准、又能实际拼搭的组装方案。",
+      "method": "智能体需要从离散零件库中选择零件，并同时推理局部和全局约束。基准在三种不同规模和零件可用性的设置下，从有效性、对齐度和设计质量三个维度进行评分。同时提供了BrickAgent环境，供编码智能体构建、检查和验证其设计方案。",
+      "findings": "领先的智能体在很大程度上能满足可验证的物理和语义要求，但在设计质量上仍不及人类设计。基准和环境已开源于http://www.brickben.ch。"
+    }
+  },
+  {
+    "id": "2610.12343",
+    "title": "Reasoning-Informed Visual Editing",
+    "abstract": "Large Multi-modality Models (LMMs) have made significant progress in visual understanding and generation, but still face challenges in visual editing, particularly in following complex instructions, preserving appearance consistency, and supporting flexible input formats. To study this gap, we introduce RISEBench, the first benchmark for evaluating Reasoning-Informed viSual Editing (RISE), and extend it to RISEBench++, a more comprehensive and fine-grained benchmark for this emerging task. RISEBench++ extends the taxonomy into a hierarchical scheme spanning six reasoning dimensions: Temporal, Causal, Spatial, Logical, and Counterfactual Reasoning, together with Hybrid Reasoning integrating multiple reasoning types across multi-turn edits. These dimensions are further decomposed into 12 subcategories and 65 fine-grained task types. We expand input formats to include multi-image conditioning and scale the benchmark to 1000 human-annotated test cases, released in English and Chinese. We also improve our evaluation framework, assessing Instruction Reasoning, Appearance Consistency, and Visual Plausibility with human judges and an LMM-as-a-judge approach for more reliable and calibrated judgements. Beyond benchmarking, we introduce RISE-Agent, a training-free agentic framework integrating reasoning-driven planning, tool-augmented execution, and verifier-guided refinement, outperforming most strong existing approaches across diverse RISE tasks. We evaluate 58 visual editing approaches, including 34 open-source models, 19 closed-source models, and 5 agentic methods. The results reveal substantial challenges in reasoning-based visual editing, with even the strongest evaluated approach, GPT-Image-2.5 Sunburst, achieving only 56.6% accuracy. RISEBench++ highlights the limitations of contemporary editing models, provides insights, and indicates future directions for reasoning-aware visual editing.",
+    "authors": [
+      "Xue Yang",
+      "Peiyuan Zhang",
+      "Yilun Zhu",
+      "Qihao Yang",
+      "Mingxin Liu",
+      "Xiangyu Zhao",
+      "Ziqian Fan",
+      "Zhaokai Wang",
+      "Yan Li",
+      "Yifan Yang",
+      "Xu Yang",
+      "Xiaosong Jia",
+      "Yue Zhou",
+      "Zhihang Zhong",
+      "Junchi Yan"
+    ],
+    "published": "2026-10-08",
+    "updated": "2026-10-08",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.12343.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.12343",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "推理驱动的视觉编辑",
+      "core_contribution": "本文提出了首个用于评估推理驱动视觉编辑（RISE）的基准测试RISEBench，并扩展为更全面细粒度的RISEBench++，同时提出免训练的智能体框架RISE-Agent，在多种推理编辑任务上超越大多数现有方法。",
+      "method": "作者构建了RISEBench++基准，将推理维度扩展为时间、因果、空间、逻辑、反事实及混合推理六大类，细分为12个子类和65种任务类型，并支持多图像输入，包含1000个中英双语人工标注测试用例。评估框架从指令推理、外观一致性和视觉合理性三个维度，结合人工评判与LMM-as-a-judge进行校准评估。此外，提出RISE-Agent，集成推理驱动的规划、工具增强执行和验证器引导的细化，无需训练即可工作。",
+      "findings": "对58种视觉编辑方法（34个开源模型、19个闭源模型和5种智能体方法）的评估显示，推理驱动的视觉编辑仍面临巨大挑战，即使最强的GPT-Image-2.5 Sunburst也仅达到56.6%的准确率，凸显了当前编辑模型在推理感知视觉编辑方面的局限性。"
+    }
+  }
+]
