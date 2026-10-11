@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-10</p>
-        <p class="stats">共 5 篇论文 | 人工智能: 1 | 计算机视觉: 3 | 机器学习: 1</p>
+        <p class="date">📅 2026-10-11</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.11751</span>
+          <span class="paper-id">2610.11320</span>
         </div>
-        <span class="score-badge">相关性 85/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11751" target="_blank">Dino Forcing Flow Models: Do not denoise what you can predict</a>
+        <a href="https://arxiv.org/abs/2610.11320" target="_blank">It's Always 10:10: Reference Images Break a Bias That Prompts Only Dent</a>
       </h3>
-      <p class="paper-title-zh">DINO强制流模型：不要对可以预测的内容进行去噪</p>
-      <p class="paper-authors">Arijit Ghosh, Lucas Degeorge, Paul Couairon, Alexei A Efros, Vicky Kalogeiton 等 (6 位作者)</p>
+      <p class="paper-title-zh">永远是10:10：参考图像打破了一个只会画凹痕的偏见</p>
+      <p class="paper-authors">Luca Cazzaniga</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种更简单的替代方案，直接预测预训练表示（如DINO）并以自身预测为条件，从而无需第二条ODE轨迹和表示特定的去噪调度，同时保留表示引导的收益，实现更快的收敛和更好的生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法不再对预训练表示进行协同去噪，而是直接预测预训练表示，然后将模型条件化于其自身的预测结果上。这样做消除了对第二个ODE求解器和任何表示特定去噪调度的需求，同时仍能利用表示引导的优势。整个框架保持了流匹配模型的基本结构，但简化了训练流程。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 该方法收敛速度显著更快，FID分数更优。在ImageNet上，以比先前方法少2倍的训练轮数超越了潜在空间中的最先进方法；在像素空间中，相比同类先前方法FID提升超过20%。结果支持一个简单原则：不要对可以预测的内容进行去噪。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文量化了文生图模型在生成模拟时钟时倾向于显示10:10的偏见，并系统比较了三种提示策略（数字时间、文字描述指针位置、附加参考表盘图像）在52个模型上克服该偏见的效果，证明附加参考表盘图像能显著提升时钟时间准确性。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究在Magnific平台的52个模型上进行测试，并在Higgsfield平台复现。每张图像要求生成三个相同的时钟，分别显示2:35、6:50和11:20，物体描述固定，仅改变时间请求方式：无时间（A）、数字时间（B）、用文字描述指针相对表盘数字的位置（C）、或相同描述加绘制的参考表盘（D）。两名AI读者对全部1,799张图像进行盲读，第三名读者与作者解决分歧（表盘级别一致率96.0%和97.3%）。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 不请求时间时，67%的图像三个时钟全部显示10:10。在20个当前模型上，数字时间（B）完全正确率为34%，文字描述指针（C）为30%，附加参考表盘（D）为75%（D-B：+37个百分点，95% CI +28至+45）；没有证据表明文字描述指针优于数字时间（C-B：-4个百分点，CI -10至+1）。在12个跨平台共享模型上的复现结果一致（B 54%，C 50%，D 81%）。写入时间可减少偏见，但20个当前模型中仍有三分之二的图像至少有一个时钟错误；附加绘制参考表盘将完全准确率提升至四分之三，并几乎消除了完全显示10:10的图像。所有图像、提示词、原始读数及可复现所有结果的脚本均已公开。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Co-denoising pretrained representations such as DINO can substantially improve the training speed and quality of flow matching models, but it introduces a second denoising trajectory and requires carefully designed schedules. We propose a simpler alternative: predict the pretrained representation directly, then condition the model on its own prediction. This removes the need for a second ODE and any representation-specific denoising schedules, while retaining the benefits of representation guidance. Our approach converges substantially faster and achieves better generation quality as measured by FID score. On ImageNet, it outperforms the state of the art in latent space at 2x fewer epochs than prior methods; in pixel space, it improves FID over comparable prior methods by more than 20%. These results support a simple principle: do not denoise what you can predict. Our code is openly available at https://github.com/arijit-hub/dino_forcing.</p>
+        <p>Text-to-image models appear to reproduce the habits of the photographs they learned from. Analog clocks are an extreme case: in advertising, watches almost always show 10:10, and generated clocks return to 10:10 even when another time is requested. We measure this bias and test three ways of overcoming it on 52 models available on the Magnific platform, with a replication on Higgsfield. Every image shows three identical clocks that must show 2:35, 6:50 and 11:20. The description of the object is fixed and only the request about the time changes: no time (A), the time in digits (B), the hand positions described by construction relative to the dial numerals (C), or the same description plus a drawn reference dial (D). Two AI readers read all 1,799 images blind from coded copies, with a third reader and the author settling disagreements (dial-level agreement 96.0% and 97.3%). With no time requested, 67% of the images have all three clocks at 10:10. On the 20 current models, all three clocks are correct in 34% of the images with digits, 30% with the hands described in words and 75% with the reference dial (D-B: +37 points, 95% CI +28 to +45); we found no evidence that describing the hands in words beats the digits (C-B: -4 points, CI -10 to +1). The replication on the 12 models shared by both platforms gives the same picture (B 54%, C 50%, D 81%). Writing the time reduces the bias but leaves two thirds of the images of the 20 current models with at least one wrong clock; adding a drawn reference raises full accuracy to three quarters and almost eliminates images entirely at 10:10. We release all images, prompts, raw readings and a script that recomputes every result.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11751" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11751.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.11320" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.11320.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">机器学习</span>
-          <span class="paper-id">2610.12102</span>
+          <span class="paper-id">2610.11315</span>
         </div>
-        <span class="score-badge">相关性 75/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12102" target="_blank">Few-Step Generation via Data-Space Iteration</a>
+        <a href="https://arxiv.org/abs/2610.11315" target="_blank">Deflating the Hessian: Rank-4 W4A4 Quantization for Multimodal Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">通过数据空间迭代实现少步生成</p>
-      <p class="paper-authors">Shanchuan Lin, Yansong Peng, Fu-Yun Wang, Haoqi Fan</p>
+      <p class="paper-title-zh">压缩Hessian：面向多模态扩散Transformer的秩-4 W4A4量化</p>
+      <p class="paper-authors">Shiwen Wang, Pengxiang Zhao, Xiaoming Yuan</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出数据空间迭代（data-space iteration）框架，完全消除流匹配少步生成中的时间步离散化需求，在匹配训练设置下优于标准离散化基线。</div>
-        <div class="summary-section"><strong>方法:</strong> 从噪声出发，共享生成器直接在数据空间中精炼其预测，每次迭代都被训练以产生其容量允许的最佳样本。该方法与分布匹配蒸馏（DMD）集成，仅需最小改动，从而在匹配训练条件下实现迭代方法的受控比较。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在类条件ImageNet 256x256上，数据空间迭代优于标准离散化基线，并匹配或超过通过调度搜索选出的变体，且无需针对特定调度进行训练，表明其为快速生成提供了一种简单有效的替代方案。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种统一的低秩辅助W4A4训练后量化框架，将低秩补偿与残差量化建模为耦合校准问题，并通过联合目标推导出基于优化的求解器，在秩仅为4的情况下显著优于现有方法。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法将低秩辅助的W4A4 PTQ建模为耦合校准问题，从联合目标函数中推导出优化求解器。通过消除输出侧的低秩因子，得到一个“压缩Hessian”，该Hessian对已被低秩分量捕获的残差误差进行折扣处理。同时引入激活噪声代理来抑制激活量化误差。整个框架在多个扩散骨干网络上进行验证，并与SVDQuant等方法进行对比。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在五个扩散骨干网络上，秩-4的本方法在PSNR和LPIPS上持续优于秩-4的SVDQuant。在SANA-1.6B、FLUX.1-schnell和FLUX.1-dev上，以8倍更小的秩和最高6.25倍更快的量化速度超越了秩-32的SVDQuant。在Qwen3-8B LLM上，秩-4的本方法将MMLU准确率从61.50%提升至68.17%（对比秩-32 SVDQuant）。总体而言，本方法以显著更低的秩和量化成本实现了更好的W4A4性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Flow matching has emerged as a scalable paradigm for training high-quality generative models, but sampling from the learned probability flow requires many network evaluations. Distillation can reduce this cost to one or a few evaluations; however, one-step generation often sacrifices quality, making few-step generation the practical operating regime. Existing few-step methods perform their iterative computation along the probability flow and therefore require a fixed, manually chosen timestep discretization. This discretization is often chosen heuristically and is expensive to tune; it may also be restrictive when refinement difficulty differs across samples or spatial locations. We introduce data-space iteration, a few-step generation framework that removes flow discretization altogether. Starting from noise, a shared generator directly refines its prediction in data space, with every iteration trained to produce the best sample permitted by its capacity. Our formulation integrates with distribution matching distillation (DMD) with minimal changes, enabling a controlled comparison between iteration methods under matched training settings. On class-conditional ImageNet 256x256, data-space iteration outperforms standard discretization baselines and matches or improves upon variants selected through schedule search, without requiring schedule-specific training. These results show that data-space iteration provides a simple and effective alternative to discretized flow-space iteration for fast generation.</p>
+        <p>In diffusion transformers, low-rank branches can mitigate 4-bit weight--activation (W4A4) post-training quantization (PTQ) loss by decomposing each weight into a low-bit residual and a high-precision low-rank component. Existing low-rank PTQ approaches, however, either optimize low-rank compensation and residual quantization separately, often requiring higher ranks, or rely on second-order weight updates without explicitly modeling activation quantization error, which becomes particularly pronounced under 4-bit quantization. To address these limitations, we present \method{}, a unified framework modeling low-rank-assisted W4A4 PTQ as a coupled calibration problem and deriving optimization-based solvers from the joint objective. Eliminating the output-side low-rank factor yields a \emph{deflated Hessian} that discounts residual errors already captured by the low-rank component, while an activation-noise surrogate is incorporated to suppress activation quantization error. Across five diffusion backbones, rank-4 \method{} consistently outperforms rank-4 SVDQuant in PSNR and LPIPS. It further surpasses rank-32 SVDQuant on SANA-1.6B, FLUX.1-schnell, and FLUX.1-dev with an $8\times$ smaller rank and up to $6.25\times$ faster quantization. Furthermore, on the Qwen3-8B LLM, rank-4 \method{} improves MMLU accuracy from 61.50\% to 68.17\% over rank-32 SVDQuant. Overall, \method{} achieves better W4A4 performance with substantially lower rank and quantization cost.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12102" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12102.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.11315" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.11315.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,62 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.12469</span>
+          <span class="paper-id">2610.11302</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12469" target="_blank">Rubric-CEPR: Self-Evolving Image Editing via Reward-Verified Self-Distillation</a>
+        <a href="https://arxiv.org/abs/2610.11302" target="_blank">iCATS: Fast Video Generation via Interaction-Aware Sparse Attention and Timestep-Adaptive Sparsity</a>
       </h3>
-      <p class="paper-title-zh">Rubric-CEPR：通过奖励验证的自蒸馏实现自进化图像编辑</p>
-      <p class="paper-authors">Ritesh Thawkar, Shubham Patle, Shravan Venkatraman, Rao Muhammad Anwer</p>
+      <p class="paper-title-zh">iCATS：基于交互感知稀疏注意力与时间步自适应稀疏性的快速视频生成</p>
+      <p class="paper-authors">Chengfeng Han, Baole Ai, Xianlu Bian, Jie Yao, Zilong Huang 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需人工编辑目标或外部奖励模型的自进化图像编辑框架，仅利用编辑器自身的生成样本，通过内部表示进行验证来持续提升编辑能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架由Planner、Editor和冻结的Critic组成：Planner从无标签图像中提出结构化编辑指令，Editor采样多个候选编辑结果，Critic利用编辑器自身已有的特征，通过分解式评分标准（编辑实现、旧状态移除、内容保持）对候选进行打分。采用非补偿性门控拒绝不可行的候选，并将最佳验证候选通过轻量级适配器训练蒸馏回编辑器。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Qwen-Image-Edit上，Rubric-CEPR将ImgEdit从4.36提升至4.60（+5.5%），其中物体隔离任务提升+24.9%，并可迁移至GEdit-Bench和Complex-Edit。相同流程在Step1X-Edit上使ImgEdit提升+7.8%，为图像编辑器的自进化提供了可靠基线。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种免训练的稀疏注意力框架iCATS，通过改进重要性估计、稀疏掩码构建和硬件执行策略，在保持高质量视频生成的同时显著加速Diffusion Transformers。</div>
+        <div class="summary-section"><strong>方法:</strong> iCATS首先基于查询-键点积交互进行聚类以更准确地估计注意力重要性，并将其重构为低成本的二次型计算；其次，利用信噪比引导的稀疏调度在不同去噪时间步动态调整稀疏度；最后，设计尾部合并策略以减少不规则聚类大小带来的填充开销，提升GPU内核利用率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在HunyuanVideo-T2V-13B上实现2.03倍加速且PSNR达31.017 dB，在Wan2.1-T2V-14B上实现1.55倍加速且PSNR达29.301 dB，达到了当前最优的效率-质量权衡。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Instruction-guided image editors have become highly capable, yet improving them further still depends on human-edited training pairs or external reward models. Such supervision is costly to obtain and can reward plausible failures: a realistic output may leave the requested change undone or alter content that should be preserved. In this work, we strive to improve a pretrained image editor using only its own generations, without human-edited targets or an external training-time reward model. To this end, we propose a self-evolving framework, named Rubric-CEPR, that verifies the editor's own samples with its internal representations through a rubric-augmented Contrastive Edit-Preservation Reward (CEPR). A Planner proposes structured edit instructions from unlabeled images, the Editor samples multiple candidate edits, and a frozen Critic scores each candidate with decomposed rubric checks for edit realization, removal of the old state, and content preservation, using features already exposed by the editor. Non-compensatory gates reject infeasible candidates, and the best verified candidate is distilled into the editor through lightweight adapter training. On Qwen-Image-Edit, Rubric-CEPR improves ImgEdit from 4.36 to 4.60 (+5.5%), with a +24.9% gain on object isolation, and transfers to GEdit-Bench and Complex-Edit. The same procedure also improves Step1X-Edit by +7.8% on ImgEdit. We hope our approach will serve as a solid baseline for image editors that improve themselves from their own verified samples. Our code is publicly available at $\href{https://riteshthawkar.github.io/Rubric-CEPR/}{\text{this URL}}$</p>
+        <p>Training-free sparse attention offers a practical acceleration solution to Diffusion Transformers (DiTs) via reducing computations without fine-tuning. It typically involves estimating the importance of query-key regions and deriving sparse masks to compute only the important candidates, which inevitably introduces approximation errors that may degrade generation quality. To better balance the efficiency-quality trade-off, we propose iCATS, integrating improved importance estimation and sparse mask construction with an efficient hardware execution strategy. Specifically, for importance estimation, unlike previous works that perform independent clustering over query and key tokens based on feature similarity to estimate attention scores, iCATS demonstrates that clustering based on query-key dot-product interactions is more accurate and further reformulates this objective as a simple quadratic form for low-cost computation. For sparse mask construction, instead of using a fixed top-p rule, we observe that tolerance to sparse approximation errors varies across denoising timesteps and therefore introduce an SNR-guided sparsity schedule to adjust sparsity dynamically, leading to higher accuracy. Finally, for hardware execution, we devise a tail-merging strategy to reduce padding overhead caused by irregular cluster sizes, improving GPU kernel utilization. Extensive experiments show that iCATS achieves $2.03\times$ acceleration with 31.017 dB PSNR on HunyuanVideo-T2V-13B and $1.55\times$ acceleration with 29.301 dB PSNR on Wan2.1-T2V-14B, delivering a state-of-the-art efficiency-quality trade-off.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12469" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12469.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">人工智能</span>
-          <span class="paper-id">2610.12452</span>
-        </div>
-        <span class="score-badge">相关性 72/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12452" target="_blank">BrickBench: Evaluating Agentic Brick Design</a>
-      </h3>
-      <p class="paper-title-zh">BrickBench：评估智能体积木设计</p>
-      <p class="paper-authors">Peter Kulits, Yiqing Xu, R. Kenny Jones, Cordelia Schmid, Jiajun Wu</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了BrickBench，一个用于评估智能体根据文本条件设计乐高积木套装的基准测试，要求智能体生成既满足语义和设计标准、又能实际拼搭的组装方案。</div>
-        <div class="summary-section"><strong>方法:</strong> 智能体需要从离散零件库中选择零件，并同时推理局部和全局约束。基准在三种不同规模和零件可用性的设置下，从有效性、对齐度和设计质量三个维度进行评分。同时提供了BrickAgent环境，供编码智能体构建、检查和验证其设计方案。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 领先的智能体在很大程度上能满足可验证的物理和语义要求，但在设计质量上仍不及人类设计。基准和环境已开源于http://www.brickben.ch。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>We propose BrickBench, a benchmark for agentic text-conditioned LEGO-set design. Given a prompt, an agent is tasked with producing an assembly that not only satisfies semantic and design criteria, but that can also be physically built. To do so, it must select parts from a discrete library and reason jointly about local and global constraints. We score validity, alignment, and design across three settings that vary in scale and part availability. We provide BrickAgent, an environment for coding agents to construct, inspect, and validate their designs. We find that leading agents largely satisfy verifiable physical and semantic requirements, but fall short of human designs. We release our benchmark and environment at http://www.brickben.ch</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12452" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12452.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.11302" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.11302.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +332,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.12343</span>
+          <span class="paper-id">2610.11286</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12343" target="_blank">Reasoning-Informed Visual Editing</a>
+        <a href="https://arxiv.org/abs/2610.11286" target="_blank">When Scene Text Hijacks the Scene: Uncovering, Exploiting, and Mitigating Rendered-Text Semantic Leakage in Image Generation Models</a>
       </h3>
-      <p class="paper-title-zh">推理驱动的视觉编辑</p>
-      <p class="paper-authors">Xue Yang, Peiyuan Zhang, Yilun Zhu, Qihao Yang, Mingxin Liu 等 (15 位作者)</p>
+      <p class="paper-title-zh">当场景文本劫持场景：图像生成模型中渲染文本语义泄漏的揭示、利用与缓解</p>
+      <p class="paper-authors">Feifei Li, Runjie Wang, Xiaohan Zhang, Zhenxing Qian, Mi Wen 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了首个用于评估推理驱动视觉编辑（RISE）的基准测试RISEBench，并扩展为更全面细粒度的RISEBench++，同时提出免训练的智能体框架RISE-Agent，在多种推理编辑任务上超越大多数现有方法。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者构建了RISEBench++基准，将推理维度扩展为时间、因果、空间、逻辑、反事实及混合推理六大类，细分为12个子类和65种任务类型，并支持多图像输入，包含1000个中英双语人工标注测试用例。评估框架从指令推理、外观一致性和视觉合理性三个维度，结合人工评判与LMM-as-a-judge进行校准评估。此外，提出RISE-Agent，集成推理驱动的规划、工具增强执行和验证器引导的细化，无需训练即可工作。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 对58种视觉编辑方法（34个开源模型、19个闭源模型和5种智能体方法）的评估显示，推理驱动的视觉编辑仍面临巨大挑战，即使最强的GPT-Image-2.5 Sunburst也仅达到56.6%的准确率，凸显了当前编辑模型在推理感知视觉编辑方面的局限性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示并系统研究了图像生成模型中的“渲染文本语义泄漏”现象，即本应仅作为局部视觉约束的渲染文本，其携带的语言语义会被模型当作指令的一部分进行解读，从而成为潜在的安全隐患控制通道。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者通过将主视觉提示与渲染文本解耦，分别测量二者对生成图像的独立效应与组合效应，量化语义泄漏程度与渲染保真度，并分析泄漏如何从模型中间层证据中产生。随后，他们验证了嵌入场景文本中的有害语义能够穿透基于LLM的提示增强流程，并操控非文本图像区域。最后，提出了一种初步缓解方法，在FLUX-2-dev上减少从渲染文本到非文本区域的不安全语义传递，同时保持预期的文本渲染行为。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 研究发现，即使主视觉提示本身无害，场景文本中嵌入的有害语义仍可通过LLM提示增强管道持续存在并引导非文本图像区域的内容生成。渲染文本因此被揭示为兼具可见数据与潜在语义的双用途载体，暴露了现代图像生成模型中以文本为中心的跨模态攻击面。所提出的缓解方法在FLUX-2-dev上有效降低了不安全语义转移，同时保留了文本渲染功能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Large Multi-modality Models (LMMs) have made significant progress in visual understanding and generation, but still face challenges in visual editing, particularly in following complex instructions, preserving appearance consistency, and supporting flexible input formats. To study this gap, we introduce RISEBench, the first benchmark for evaluating Reasoning-Informed viSual Editing (RISE), and extend it to RISEBench++, a more comprehensive and fine-grained benchmark for this emerging task. RISEBench++ extends the taxonomy into a hierarchical scheme spanning six reasoning dimensions: Temporal, Causal, Spatial, Logical, and Counterfactual Reasoning, together with Hybrid Reasoning integrating multiple reasoning types across multi-turn edits. These dimensions are further decomposed into 12 subcategories and 65 fine-grained task types. We expand input formats to include multi-image conditioning and scale the benchmark to 1000 human-annotated test cases, released in English and Chinese. We also improve our evaluation framework, assessing Instruction Reasoning, Appearance Consistency, and Visual Plausibility with human judges and an LMM-as-a-judge approach for more reliable and calibrated judgements. Beyond benchmarking, we introduce RISE-Agent, a training-free agentic framework integrating reasoning-driven planning, tool-augmented execution, and verifier-guided refinement, outperforming most strong existing approaches across diverse RISE tasks. We evaluate 58 visual editing approaches, including 34 open-source models, 19 closed-source models, and 5 agentic methods. The results reveal substantial challenges in reasoning-based visual editing, with even the strongest evaluated approach, GPT-Image-2.5 Sunburst, achieving only 56.6% accuracy. RISEBench++ highlights the limitations of contemporary editing models, provides insights, and indicates future directions for reasoning-aware visual editing.</p>
+        <p>The reliability and accountability of image generative models (IGMs) are essential for building responsible and trustworthy AI systems. Recent IGMs, such as Nano Banana and GPT-Image, now support complex instruction following, realistic image synthesis, and controllable scene-text rendering. As these capabilities expand, safety analysis must also account for new control channels introduced by complex prompts. In this work, we study rendered-text semantic leakage, a largely overlooked phenomenon in open-domain text rendering. Although rendered text is intended to serve as a local visual constraint that should be reproduced verbatim in the generated image, it also carries linguistic semantics that may be interpreted by the model as part of the input instruction. This makes rendered text a potential semantic control channel whose safety implications remain insufficiently understood. We systematically characterize this phenomenon by decoupling the main visual prompt from the rendered text and measuring their individual and compositional effects on generated images. We quantify semantic leakage and rendering fidelity, and further analyze how leakage emerges from intermediate model evidence. We then show that harmful semantics embedded in scene text can persist through LLM-based prompt enhancement pipelines and steer non-text image regions, even when the main visual prompt remains benign. Finally, we propose a preliminary mitigation approach that reduces unsafe semantic transfer from rendered text to non-text regions while preserving the intended text-rendering behavior on FLUX-2-dev. Our findings reveal rendered text as a dual-use carrier of visible data and latent semantics, exposing a text-centric cross-modal attack surface in modern IGMs.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12343" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12343.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.11286" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.11286.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.11067</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.11067" target="_blank">Diffusion Meta-Prompting and Steering for Generalizable Foundation Model Adaptation</a>
+      </h3>
+      <p class="paper-title-zh">扩散元提示与引导：面向可泛化基础模型适配</p>
+      <p class="paper-authors">Deepak Sridhar, Yi Li, Kartikeya Bhardwaj, Shuangjun Liu, Taotao Jing 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出扩散元提示（DMP）框架，通过学习提示的分布而非单个任务特定提示，实现对新类别、领域和任务组合的可泛化适配，并显著降低存储与推理成本。</div>
+        <div class="summary-section"><strong>方法:</strong> DMP利用扩散模型对已有提示库中的提示分布进行建模，训练和采样过程无需访问原始任务样本或任务损失，仅以自然语言任务描述为条件合成新提示。为提升采样稳定性，引入测试时引导策略，将提示库中经训练选择的最优提示作为扩散采样过程中的潜在锚点，无需重新训练或访问测试类别。</div>
+        <div class="summary-section"><strong>关键发现:</strong> DMP在分类、检索和文本到图像生成任务上提升了泛化能力，支持概念组合和负向提示且无需显式训练；相比提示检索方法，存储和推理成本降低超过90%。在组合分类任务中，跨55对数据集平均提升最高达2.0%，在Eurosat与Flowers等特定数据集对上提升达8.5%；在层次分类任务中实现约2-9%的跨任务泛化提升。此外，论文提供了DMP采样提示期望任务损失的理论界。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Prompt learning is a popular method for adapting foundation models, but learned prompts are typically task-specific and fail to generalize to new classes, domains, or compositions of tasks. In this paper, we introduce a Diffusion Meta-Prompt (DMP) model , a framework that models the distribution of learned prompts using diffusion models. Given a repository of previously learned prompts, DMP is trained and sampled without access to the original task examples or task losses, and synthesizes new prompts conditioned on natural language task descriptions. To improve the sampling stability, we introduce a test-time steering strategy for DMP, which uses the best training-selected prompt in the repository as a latent anchor during diffusion sampling, without retraining the DMP or accessing test classes. DMP improves generalization across classification, retrieval and text-to-image generation tasks, supports concept composition and negative prompting without explicit training. It reduces storage and inference costs by over 90% compared to prompt retrieval methods. For composite classification, DMP achieves upto 2.0% average gain over prior meta-learning methods across 55 pairs of datasets with gains as high as 8.5% on specific pairs such as Eurosat and Flowers. DMP also enhances cross-task generalization with ~2-9% improvement for hierarchical classification task. We further provide a theoretical guarantee bounding the expected task loss of prompts sampled from a DMP. Code is available: https://github.com/DeepakSridhar/dmp</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.11067" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.11067.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
