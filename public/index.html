@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-11</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="date">📅 2026-10-12</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,62 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.11320</span>
+          <span class="paper-id">2610.13941</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11320" target="_blank">It's Always 10:10: Reference Images Break a Bias That Prompts Only Dent</a>
+        <a href="https://arxiv.org/abs/2610.13941" target="_blank">Images Talk Back: Guiding MMDiTs by Suppressing Image-to-Text Feedback</a>
       </h3>
-      <p class="paper-title-zh">永远是10:10：参考图像打破了一个只会画凹痕的偏见</p>
-      <p class="paper-authors">Luca Cazzaniga</p>
+      <p class="paper-title-zh">图像回话：通过抑制图像到文本反馈来引导MMDiT</p>
+      <p class="paper-authors">Yucheng Yang, Xiaoxiao Sun, Shusheng Yang, Jiakang Chen, Serena Yeung-Levy</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文量化了文生图模型在生成模拟时钟时倾向于显示10:10的偏见，并系统比较了三种提示策略（数字时间、文字描述指针位置、附加参考表盘图像）在52个模型上克服该偏见的效果，证明附加参考表盘图像能显著提升时钟时间准确性。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究在Magnific平台的52个模型上进行测试，并在Higgsfield平台复现。每张图像要求生成三个相同的时钟，分别显示2:35、6:50和11:20，物体描述固定，仅改变时间请求方式：无时间（A）、数字时间（B）、用文字描述指针相对表盘数字的位置（C）、或相同描述加绘制的参考表盘（D）。两名AI读者对全部1,799张图像进行盲读，第三名读者与作者解决分歧（表盘级别一致率96.0%和97.3%）。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 不请求时间时，67%的图像三个时钟全部显示10:10。在20个当前模型上，数字时间（B）完全正确率为34%，文字描述指针（C）为30%，附加参考表盘（D）为75%（D-B：+37个百分点，95% CI +28至+45）；没有证据表明文字描述指针优于数字时间（C-B：-4个百分点，CI -10至+1）。在12个跨平台共享模型上的复现结果一致（B 54%，C 50%，D 81%）。写入时间可减少偏见，但20个当前模型中仍有三分之二的图像至少有一个时钟错误；附加绘制参考表盘将完全准确率提升至四分之三，并几乎消除了完全显示10:10的图像。所有图像、提示词、原始读数及可复现所有结果的脚本均已公开。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现多模态扩散Transformer中图像到文本（I2T）的反馈会固化演化图像中已有的物体和属性（包括错误），并据此提出语义反馈引导（SFG）及其原地变体iSFG，通过抑制I2T反馈、增强文本到图像条件来提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先通过干预实验验证I2T反馈对生成的影响，发现抑制该反馈可改善生成而反向操作会使其退化。基于此提出SFG，通过引导远离一个强化I2T反馈并削弱文本到图像条件的辅助分支来抑制I2T影响；其原地变体iSFG则直接抑制I2T反馈并增强文本到图像条件，无需额外模型评估。SFG分支仅在图像采样前20%的步骤中运行，在无CFG时约需1.2倍基础NFE。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在三种图像生成骨干网络上，SFG/iSFG均提升了对齐度和偏好模型分数：在FLUX上，将SFG加入CFG使GenEval从0.6661提升至0.7479；在SD3.5M上，iSFG在零额外NFE下比CFG提升HPSv2.1达+1.33。该控制方法还可迁移至文本到视频和图像到视频生成，提升VBench分数。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-to-image models appear to reproduce the habits of the photographs they learned from. Analog clocks are an extreme case: in advertising, watches almost always show 10:10, and generated clocks return to 10:10 even when another time is requested. We measure this bias and test three ways of overcoming it on 52 models available on the Magnific platform, with a replication on Higgsfield. Every image shows three identical clocks that must show 2:35, 6:50 and 11:20. The description of the object is fixed and only the request about the time changes: no time (A), the time in digits (B), the hand positions described by construction relative to the dial numerals (C), or the same description plus a drawn reference dial (D). Two AI readers read all 1,799 images blind from coded copies, with a third reader and the author settling disagreements (dial-level agreement 96.0% and 97.3%). With no time requested, 67% of the images have all three clocks at 10:10. On the 20 current models, all three clocks are correct in 34% of the images with digits, 30% with the hands described in words and 75% with the reference dial (D-B: +37 points, 95% CI +28 to +45); we found no evidence that describing the hands in words beats the digits (C-B: -4 points, CI -10 to +1). The replication on the 12 models shared by both platforms gives the same picture (B 54%, C 50%, D 81%). Writing the time reduces the bias but leaves two thirds of the images of the 20 current models with at least one wrong clock; adding a drawn reference raises full accuracy to three quarters and almost eliminates images entirely at 10:10. We release all images, prompts, raw readings and a script that recomputes every result.</p>
+        <p>Multimodal diffusion transformers (MMDiTs) allow the evolving image to update internal text representations through joint attention. These representations then guide subsequent image updates, raising a question: does this feedback help correct deviations from the prompt, or preserve them? We find that image-to-text (I2T) feedback can preserve the objects and attributes already represented in the evolving image, including errors. Transplanting I2T messages can rescue failures or disrupt successes. At matched intervention strengths, suppressing the influence of I2T feedback improves generation, whereas opposite controls degrade it. These findings motivate Semantic Feedback Guidance (SFG), which suppresses the influence of I2T feedback by guiding away from an auxiliary branch that strengthens this feedback and weakens text-to-image conditioning. The in-place variant, iSFG, directly suppresses I2T feedback and strengthens text-to-image conditioning, requiring no extra model evaluations. Temporal interventions motivate running the SFG branch during the first 20% of image sampling steps, requiring about $1.2\times$ the base NFE without classifier-free guidance (CFG). Experiments across three image-generation backbones show gains in alignment and preference-model scores. On FLUX, adding SFG to CFG raises GenEval from $0.6661$ to $0.7479$; on SD3.5M, iSFG adds $+1.33$ HPSv2.1 over CFG at zero extra NFE. The control also transfers to text-to-video and image-to-video generation, improving VBench scores. Code is available at https://github.com/yyc1215lll-creator/SFG.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11320" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11320.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">机器学习</span>
-          <span class="paper-id">2610.11315</span>
-        </div>
-        <span class="score-badge">相关性 72/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11315" target="_blank">Deflating the Hessian: Rank-4 W4A4 Quantization for Multimodal Diffusion Transformers</a>
-      </h3>
-      <p class="paper-title-zh">压缩Hessian：面向多模态扩散Transformer的秩-4 W4A4量化</p>
-      <p class="paper-authors">Shiwen Wang, Pengxiang Zhao, Xiaoming Yuan</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种统一的低秩辅助W4A4训练后量化框架，将低秩补偿与残差量化建模为耦合校准问题，并通过联合目标推导出基于优化的求解器，在秩仅为4的情况下显著优于现有方法。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法将低秩辅助的W4A4 PTQ建模为耦合校准问题，从联合目标函数中推导出优化求解器。通过消除输出侧的低秩因子，得到一个“压缩Hessian”，该Hessian对已被低秩分量捕获的残差误差进行折扣处理。同时引入激活噪声代理来抑制激活量化误差。整个框架在多个扩散骨干网络上进行验证，并与SVDQuant等方法进行对比。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在五个扩散骨干网络上，秩-4的本方法在PSNR和LPIPS上持续优于秩-4的SVDQuant。在SANA-1.6B、FLUX.1-schnell和FLUX.1-dev上，以8倍更小的秩和最高6.25倍更快的量化速度超越了秩-32的SVDQuant。在Qwen3-8B LLM上，秩-4的本方法将MMLU准确率从61.50%提升至68.17%（对比秩-32 SVDQuant）。总体而言，本方法以显著更低的秩和量化成本实现了更好的W4A4性能。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>In diffusion transformers, low-rank branches can mitigate 4-bit weight--activation (W4A4) post-training quantization (PTQ) loss by decomposing each weight into a low-bit residual and a high-precision low-rank component. Existing low-rank PTQ approaches, however, either optimize low-rank compensation and residual quantization separately, often requiring higher ranks, or rely on second-order weight updates without explicitly modeling activation quantization error, which becomes particularly pronounced under 4-bit quantization. To address these limitations, we present \method{}, a unified framework modeling low-rank-assisted W4A4 PTQ as a coupled calibration problem and deriving optimization-based solvers from the joint objective. Eliminating the output-side low-rank factor yields a \emph{deflated Hessian} that discounts residual errors already captured by the low-rank component, while an activation-noise surrogate is incorporated to suppress activation quantization error. Across five diffusion backbones, rank-4 \method{} consistently outperforms rank-4 SVDQuant in PSNR and LPIPS. It further surpasses rank-32 SVDQuant on SANA-1.6B, FLUX.1-schnell, and FLUX.1-dev with an $8\times$ smaller rank and up to $6.25\times$ faster quantization. Furthermore, on the Qwen3-8B LLM, rank-4 \method{} improves MMLU accuracy from 61.50\% to 68.17\% over rank-32 SVDQuant. Overall, \method{} achieves better W4A4 performance with substantially lower rank and quantization cost.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11315" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11315.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13941" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13941.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.11302</span>
+          <span class="paper-id">2610.13502</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11302" target="_blank">iCATS: Fast Video Generation via Interaction-Aware Sparse Attention and Timestep-Adaptive Sparsity</a>
+        <a href="https://arxiv.org/abs/2610.13502" target="_blank">Stride: Scale-Aware Multi-Agent Evolutionary Refinement for Infographic Generation</a>
       </h3>
-      <p class="paper-title-zh">iCATS：基于交互感知稀疏注意力与时间步自适应稀疏性的快速视频生成</p>
-      <p class="paper-authors">Chengfeng Han, Baole Ai, Xianlu Bian, Jie Yao, Zilong Huang 等 (7 位作者)</p>
+      <p class="paper-title-zh">Stride：面向信息图生成的尺度感知多智能体进化式精炼方法</p>
+      <p class="paper-authors">Yan Zhou, Yang Yang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种免训练的稀疏注意力框架iCATS，通过改进重要性估计、稀疏掩码构建和硬件执行策略，在保持高质量视频生成的同时显著加速Diffusion Transformers。</div>
-        <div class="summary-section"><strong>方法:</strong> iCATS首先基于查询-键点积交互进行聚类以更准确地估计注意力重要性，并将其重构为低成本的二次型计算；其次，利用信噪比引导的稀疏调度在不同去噪时间步动态调整稀疏度；最后，设计尾部合并策略以减少不规则聚类大小带来的填充开销，提升GPU内核利用率。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在HunyuanVideo-T2V-13B上实现2.03倍加速且PSNR达31.017 dB，在Wan2.1-T2V-14B上实现1.55倍加速且PSNR达29.301 dB，达到了当前最优的效率-质量权衡。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Stride框架，将信息图生成中的迭代精炼建模为历史感知的进化策略，通过尺度感知的任务路由解决局部编辑与全局重生成之间的尺度失配问题，在多个基准上超越现有智能体方法与部分专有系统。</div>
+        <div class="summary-section"><strong>方法:</strong> Stride将约束评估（判断每条要求是否满足）与视觉定位（判断违规发生的位置与方式）分离，并据此将全局修改路由给composer子智能体、局部修正路由给retoucher子智能体。每个子智能体进行内部规划并生成多个候选，仅当候选能提升验证器分数时才被接受，从而减少迭代中的性能回退。该框架可作用于任意冻结的生成器，结合尺度感知路由、单步冗余与单调接受机制实现跨迭代的稳定提升。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在完全开源权重的生成器-验证器系统下，Stride在BizGenEval上超越Nano-Banana-2.0和Seedream-5.0-Pro等专有系统，在IGenBench上追平GPT-Image-2.0并超过Seedream-5.0-Pro，在WISE上取得新的最优成绩，并在所有评测基准上大幅优于现有智能体方法。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Training-free sparse attention offers a practical acceleration solution to Diffusion Transformers (DiTs) via reducing computations without fine-tuning. It typically involves estimating the importance of query-key regions and deriving sparse masks to compute only the important candidates, which inevitably introduces approximation errors that may degrade generation quality. To better balance the efficiency-quality trade-off, we propose iCATS, integrating improved importance estimation and sparse mask construction with an efficient hardware execution strategy. Specifically, for importance estimation, unlike previous works that perform independent clustering over query and key tokens based on feature similarity to estimate attention scores, iCATS demonstrates that clustering based on query-key dot-product interactions is more accurate and further reformulates this objective as a simple quadratic form for low-cost computation. For sparse mask construction, instead of using a fixed top-p rule, we observe that tolerance to sparse approximation errors varies across denoising timesteps and therefore introduce an SNR-guided sparsity schedule to adjust sparsity dynamically, leading to higher accuracy. Finally, for hardware execution, we devise a tail-merging strategy to reduce padding overhead caused by irregular cluster sizes, improving GPU kernel utilization. Extensive experiments show that iCATS achieves $2.03\times$ acceleration with 31.017 dB PSNR on HunyuanVideo-T2V-13B and $1.55\times$ acceleration with 29.301 dB PSNR on Wan2.1-T2V-14B, delivering a state-of-the-art efficiency-quality trade-off.</p>
+        <p>Infographic generation challenges text-to-image models because a single image must satisfy numerous visual, textual, and semantic constraints. Iterative agentic refinement with a multimodal verifier is a natural remedy, but existing methods face a scale mismatch: local edits cannot correct global composition errors, while full regeneration may destroy already-correct regions. We introduce Stride, a constraint-grounded multi-agent framework that treats refinement over any frozen generator as a history-aware evolution strategy. Stride separates constraint evaluation - whether each requirement is satisfied - from visual grounding - where and how it is violated. It then routes global revisions to a composer subagent and local corrections to a retoucher subagent. Each subagent conducts internal planning and generates multiple candidates, while Stride accepts a candidate only when it improves the verifier score, reducing regression across iterations. Because stochastic generators and imperfect verifiers make any single step unreliable, it is this combination of scale-aware routing, per-step redundancy, and monotonic acceptance that yields stable improvement across iterations. With fully open-weight generator-verifier systems, Stride outperforms proprietary systems including Nano-Banana-2.0 and Seedream-5.0-Pro on BizGenEval, matches GPT-Image-2.0 and surpasses Seedream-5.0-Pro on IGenBench, and achieves a new state-of-the-art score on WISE, while substantially outperforming existing agentic methods across all evaluated benchmarks.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11302" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11302.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13502" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13502.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.11286</span>
+          <span class="paper-id">2610.13337</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11286" target="_blank">When Scene Text Hijacks the Scene: Uncovering, Exploiting, and Mitigating Rendered-Text Semantic Leakage in Image Generation Models</a>
+        <a href="https://arxiv.org/abs/2610.13337" target="_blank">Exploring Attention Sinks in Text-to-Image Transformers from Diffusion and Autoregressive Models</a>
       </h3>
-      <p class="paper-title-zh">当场景文本劫持场景：图像生成模型中渲染文本语义泄漏的揭示、利用与缓解</p>
-      <p class="paper-authors">Feifei Li, Runjie Wang, Xiaohan Zhang, Zhenxing Qian, Mi Wen 等 (6 位作者)</p>
+      <p class="paper-title-zh">探索文本到图像Transformer中的注意力汇聚现象：从扩散模型到自回归模型</p>
+      <p class="paper-authors">Binglei Li, Mengping Yang, Zhiyu Tan, Wenxu Qian, Junping Zhang 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文揭示并系统研究了图像生成模型中的“渲染文本语义泄漏”现象，即本应仅作为局部视觉约束的渲染文本，其携带的语言语义会被模型当作指令的一部分进行解读，从而成为潜在的安全隐患控制通道。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者通过将主视觉提示与渲染文本解耦，分别测量二者对生成图像的独立效应与组合效应，量化语义泄漏程度与渲染保真度，并分析泄漏如何从模型中间层证据中产生。随后，他们验证了嵌入场景文本中的有害语义能够穿透基于LLM的提示增强流程，并操控非文本图像区域。最后，提出了一种初步缓解方法，在FLUX-2-dev上减少从渲染文本到非文本区域的不安全语义传递，同时保持预期的文本渲染行为。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 研究发现，即使主视觉提示本身无害，场景文本中嵌入的有害语义仍可通过LLM提示增强管道持续存在并引导非文本图像区域的内容生成。渲染文本因此被揭示为兼具可见数据与潜在语义的双用途载体，暴露了现代图像生成模型中以文本为中心的跨模态攻击面。所提出的缓解方法在FLUX-2-dev上有效降低了不安全语义转移，同时保留了文本渲染功能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文首次系统性地研究了文本到图像Transformer中的注意力汇聚现象，揭示了其在双向扩散模型和因果自回归模型中的存在、分布模式及功能相关性，为理解T2I Transformer的注意力机制提供了机理层面的分析基础。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者对双向扩散模型和因果自回归模型进行系统性的注意力分析，识别注意力汇聚的位置和模式；通过针对性的干预实验（扰动汇聚相关注意力头和token位置）评估其功能重要性；并引入注册token（register tokens）来重新分配注意力汇聚，观察其对生成性能的影响。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 注意力汇聚在两种模型中均存在但模式不同：自回归模型集中于首个token和全局尺度token，双向模型则出现在模态边界、文本区域和空间角落附近；这些模式随生成阶段变化且局限于稀疏的层和注意力头。扰动汇聚排名靠前的注意力头比非汇聚头产生更大的平均变化，而某些汇聚位置扰动对双向模型评分影响有限。引入注册token可重新分配注意力汇聚，部分配置能保持甚至略微提升生成性能。总体而言，注意力汇聚是依赖于架构、推理阶段和组件的现象。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>The reliability and accountability of image generative models (IGMs) are essential for building responsible and trustworthy AI systems. Recent IGMs, such as Nano Banana and GPT-Image, now support complex instruction following, realistic image synthesis, and controllable scene-text rendering. As these capabilities expand, safety analysis must also account for new control channels introduced by complex prompts. In this work, we study rendered-text semantic leakage, a largely overlooked phenomenon in open-domain text rendering. Although rendered text is intended to serve as a local visual constraint that should be reproduced verbatim in the generated image, it also carries linguistic semantics that may be interpreted by the model as part of the input instruction. This makes rendered text a potential semantic control channel whose safety implications remain insufficiently understood. We systematically characterize this phenomenon by decoupling the main visual prompt from the rendered text and measuring their individual and compositional effects on generated images. We quantify semantic leakage and rendering fidelity, and further analyze how leakage emerges from intermediate model evidence. We then show that harmful semantics embedded in scene text can persist through LLM-based prompt enhancement pipelines and steer non-text image regions, even when the main visual prompt remains benign. Finally, we propose a preliminary mitigation approach that reduces unsafe semantic transfer from rendered text to non-text regions while preserving the intended text-rendering behavior on FLUX-2-dev. Our findings reveal rendered text as a dual-use carrier of visible data and latent semantics, exposing a text-centric cross-modal attack surface in modern IGMs.</p>
+        <p>Attention sinks are tokens or positions that consistently receive disproportionate attention mass, often beyond what their semantic content would suggest. Despite extensive study in large language models, their behavior and functional relevance in text-to-image (T2I) Transformers remain largely unexplored. To fill this gap and better understand how text-to-image Transformers allocate and route attention, we explore this phenomenon of text-to-image transformers across bidirectional diffusion models and causal autoregressive models. Specifically, we explore whether attention sinks exist, where they emerge, and how they functionally influence generation. Through systematic attention analysis and targeted interventions, we identify that attention sinks emerge in both bidirectional diffusion and autoregressive models but exhibit distinct patterns. The autoregressive model concentrates attention on the first and global-scale tokens, whereas the bidirectional models develop sinks near modality boundaries, within text regions, and at spatial corners. Moreover, these patterns vary across generation stages and are localized to a sparse subset of layers and heads. To assess their functional relevance, we perturb sink-related heads and token positions. It turns out that perturbing sink-ranked heads produces larger average changes than non-sink comparisons, while some sink-position perturbations have limited effects on bidirectional model scores. We further introduce register tokens to redistribute attention sinks and find that several configurations preserve or modestly improve generation performance. Overall, attention sinks are architecture-, inference-stage-, and component-dependent phenomena, providing a basis for mechanistic analysis and principled attention design in text-to-image transformers.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11286" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11286.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13337" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13337.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +332,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.11067</span>
+          <span class="paper-id">2610.13316</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.11067" target="_blank">Diffusion Meta-Prompting and Steering for Generalizable Foundation Model Adaptation</a>
+        <a href="https://arxiv.org/abs/2610.13316" target="_blank">ThinkDrag: Semantic Drag-Based Image Editing with Visual Reasoning</a>
       </h3>
-      <p class="paper-title-zh">扩散元提示与引导：面向可泛化基础模型适配</p>
-      <p class="paper-authors">Deepak Sridhar, Yi Li, Kartikeya Bhardwaj, Shuangjun Liu, Taotao Jing 等 (10 位作者)</p>
+      <p class="paper-title-zh">ThinkDrag：基于语义拖拽与视觉推理的图像编辑</p>
+      <p class="paper-authors">Armando Fortes, Tianyi Wei, Chindanai Trakantannarong, Shangchen Zhou, Xingang Pan</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出扩散元提示（DMP）框架，通过学习提示的分布而非单个任务特定提示，实现对新类别、领域和任务组合的可泛化适配，并显著降低存储与推理成本。</div>
-        <div class="summary-section"><strong>方法:</strong> DMP利用扩散模型对已有提示库中的提示分布进行建模，训练和采样过程无需访问原始任务样本或任务损失，仅以自然语言任务描述为条件合成新提示。为提升采样稳定性，引入测试时引导策略，将提示库中经训练选择的最优提示作为扩散采样过程中的潜在锚点，无需重新训练或访问测试类别。</div>
-        <div class="summary-section"><strong>关键发现:</strong> DMP在分类、检索和文本到图像生成任务上提升了泛化能力，支持概念组合和负向提示且无需显式训练；相比提示检索方法，存储和推理成本降低超过90%。在组合分类任务中，跨55对数据集平均提升最高达2.0%，在Eurosat与Flowers等特定数据集对上提升达8.5%；在层次分类任务中实现约2-9%的跨任务泛化提升。此外，论文提供了DMP采样提示期望任务损失的理论界。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出ThinkDrag，一个统一的多模态拖拽式图像编辑框架，通过视觉推理将稀疏的点约束与有意义的物体及场景级语义变换相关联，并可选地生成显式推理轨迹以解释编辑意图。</div>
+        <div class="summary-section"><strong>方法:</strong> ThinkDrag将拖拽指令从单纯的几何位移重新解释为语义变换，训练模型关联点约束与物体/场景级变换，并可选地先输出推理轨迹再生成图像。受跨图像注意力分析启发，引入拖拽端点标记（Drag Endpoint Markers）作为显式对应信号，将每次拖拽锚定在图像空间中。为支撑该框架，构建了配对的语义拖拽变换与推理轨迹监督数据集，并提出了面向挑战性场景的DragBench++基准。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明ThinkDrag达到最先进性能，在保持有竞争力的点跟随精度的同时，提升了生成质量和合理性，推理轨迹还增强了对模糊拖拽的可解释性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Prompt learning is a popular method for adapting foundation models, but learned prompts are typically task-specific and fail to generalize to new classes, domains, or compositions of tasks. In this paper, we introduce a Diffusion Meta-Prompt (DMP) model , a framework that models the distribution of learned prompts using diffusion models. Given a repository of previously learned prompts, DMP is trained and sampled without access to the original task examples or task losses, and synthesizes new prompts conditioned on natural language task descriptions. To improve the sampling stability, we introduce a test-time steering strategy for DMP, which uses the best training-selected prompt in the repository as a latent anchor during diffusion sampling, without retraining the DMP or accessing test classes. DMP improves generalization across classification, retrieval and text-to-image generation tasks, supports concept composition and negative prompting without explicit training. It reduces storage and inference costs by over 90% compared to prompt retrieval methods. For composite classification, DMP achieves upto 2.0% average gain over prior meta-learning methods across 55 pairs of datasets with gains as high as 8.5% on specific pairs such as Eurosat and Flowers. DMP also enhances cross-task generalization with ~2-9% improvement for hierarchical classification task. We further provide a theoretical guarantee bounding the expected task loss of prompts sampled from a DMP. Code is available: https://github.com/DeepakSridhar/dmp</p>
+        <p>Drag-based image editing provides an intuitive interface for spatially controlled image manipulation by allowing users to specify handle and target points. Existing methods have made substantial progress through optimization-based, one-step, and feed-forward formulations, but they often interpret drag instructions as geometric displacements. This limits their effectiveness when the desired edit depends on interpreting image content and inferring a plausible semantic transformation from sparse point constraints. We introduce ThinkDrag, a unified multimodal framework for drag-based image editing with visual reasoning. ThinkDrag is trained to associate point constraints with meaningful object- and scene-level transformations, and can optionally produce an explicit reasoning trace that interprets the intended edit before image generation. This reasoning trace improves interpretability, particularly for ambiguous drags. Drag Endpoint Markers, motivated by an analysis of cross-image attention, provide an explicit correspondence signal that grounds each drag in image space. To support this framework, we construct a supervised dataset of semantic drag transformations paired with reasoning traces and introduce DragBench++, a benchmark targeting challenging drag-based editing scenarios with reference edit solutions. Experiments show that ThinkDrag achieves state-of-the-art performance, improving generation quality and plausibility while maintaining competitive point-following precision.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.11067" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.11067.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13316" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13316.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.12899</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.12899" target="_blank">A Lightweight Velocity Correction Framework for Improving Instruction Following in Few-Step Text-to-Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">一种用于提升少步文本到图像生成指令遵循能力的轻量级速度校正框架</p>
+      <p class="paper-authors">Yating Gao, Zhenlong Zhu, Wen Zihao, Lenan Zhang, Jiexiong Wang 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种轻量级校正框架，在不改变冻结的60亿参数少步文本到图像生成器参数、不增加前向传播次数、不改变采样计划的前提下，显著提升其对复杂提示（多主体、交互、空间关系、计数、属性绑定）的指令遵循能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架在冻结的生成器上附加一个参数量少于2000万的校正器，在选定的采样步骤上学习对生成器预测速度的残差调整。由于早期校正会改变后续步骤所遇到的状态，作者提出“在轨流桥监督”（On-Trajectory Flow-Bridge Supervision），在实际校正生成过程中到达的状态上推导残差目标。单个校正器在选定步骤间共享，并与生成器并行运行，仅训练校正器，无需奖励优化或再蒸馏。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在目标复杂场景分布上，该框架在成对指令遵循评估中相较冻结的Z-Image-Turbo取得了+17.60个百分点的净胜率（NetWin），每张图像仅增加26.9毫秒（0.84%）的端到端延迟，且不增加主干网络的评估次数。据作者所知，这是首个针对完全冻结的少步文本到图像生成器进行轻量级速度残差适配、同时保持其原始采样计划和前向传播次数的框架。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Few-step text-to-image generators produce high-quality images with few network forward passes, yet struggle with complex prompts involving multiple subjects, interactions, spatial relations, counting, and attribute binding. Can these errors be reduced without changing the generator's parameters or increasing its forward-pass count? We propose a lightweight correction framework for a frozen 6B-parameter generator. The generator predicts velocities that determine how its intermediate image representation is updated; a corrector with fewer than 20M parameters learns residual adjustments at selected sampling steps. Because earlier corrections change the states encountered at later steps, our On-Trajectory Flow-Bridge Supervision derives residual targets at the states actually reached during corrected generation. A single corrector is shared across selected steps and runs in parallel with the generator. Only the corrector is trained, requiring neither reward optimization nor re-distillation. To our knowledge, this is the first framework for lightweight velocity-residual adaptation of fully frozen few-step text-to-image generators that preserves their original sampling schedule and forward-pass count. On our target complex-scene distribution, the framework achieves a +17.60-percentage-point NetWin over frozen Z-Image-Turbo in pairwise instruction-following evaluation, with only 26.9 ms (0.84%) additional end-to-end latency per image and no increase in backbone evaluations.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.12899" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.12899.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

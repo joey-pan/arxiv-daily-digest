@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-10-12</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.13941</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.13941" target="_blank">Images Talk Back: Guiding MMDiTs by Suppressing Image-to-Text Feedback</a>
+      </h3>
+      <p class="paper-title-zh">图像回话：通过抑制图像到文本反馈来引导MMDiT</p>
+      <p class="paper-authors">Yucheng Yang, Xiaoxiao Sun, Shusheng Yang, Jiakang Chen, Serena Yeung-Levy</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现多模态扩散Transformer中图像到文本（I2T）的反馈会固化演化图像中已有的物体和属性（包括错误），并据此提出语义反馈引导（SFG）及其原地变体iSFG，通过抑制I2T反馈、增强文本到图像条件来提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先通过干预实验验证I2T反馈对生成的影响，发现抑制该反馈可改善生成而反向操作会使其退化。基于此提出SFG，通过引导远离一个强化I2T反馈并削弱文本到图像条件的辅助分支来抑制I2T影响；其原地变体iSFG则直接抑制I2T反馈并增强文本到图像条件，无需额外模型评估。SFG分支仅在图像采样前20%的步骤中运行，在无CFG时约需1.2倍基础NFE。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在三种图像生成骨干网络上，SFG/iSFG均提升了对齐度和偏好模型分数：在FLUX上，将SFG加入CFG使GenEval从0.6661提升至0.7479；在SD3.5M上，iSFG在零额外NFE下比CFG提升HPSv2.1达+1.33。该控制方法还可迁移至文本到视频和图像到视频生成，提升VBench分数。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Multimodal diffusion transformers (MMDiTs) allow the evolving image to update internal text representations through joint attention. These representations then guide subsequent image updates, raising a question: does this feedback help correct deviations from the prompt, or preserve them? We find that image-to-text (I2T) feedback can preserve the objects and attributes already represented in the evolving image, including errors. Transplanting I2T messages can rescue failures or disrupt successes. At matched intervention strengths, suppressing the influence of I2T feedback improves generation, whereas opposite controls degrade it. These findings motivate Semantic Feedback Guidance (SFG), which suppresses the influence of I2T feedback by guiding away from an auxiliary branch that strengthens this feedback and weakens text-to-image conditioning. The in-place variant, iSFG, directly suppresses I2T feedback and strengthens text-to-image conditioning, requiring no extra model evaluations. Temporal interventions motivate running the SFG branch during the first 20% of image sampling steps, requiring about $1.2\times$ the base NFE without classifier-free guidance (CFG). Experiments across three image-generation backbones show gains in alignment and preference-model scores. On FLUX, adding SFG to CFG raises GenEval from $0.6661$ to $0.7479$; on SD3.5M, iSFG adds $+1.33$ HPSv2.1 over CFG at zero extra NFE. The control also transfers to text-to-video and image-to-video generation, improving VBench scores. Code is available at https://github.com/yyc1215lll-creator/SFG.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.13941" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13941.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.13502</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.13502" target="_blank">Stride: Scale-Aware Multi-Agent Evolutionary Refinement for Infographic Generation</a>
+      </h3>
+      <p class="paper-title-zh">Stride：面向信息图生成的尺度感知多智能体进化式精炼方法</p>
+      <p class="paper-authors">Yan Zhou, Yang Yang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Stride框架，将信息图生成中的迭代精炼建模为历史感知的进化策略，通过尺度感知的任务路由解决局部编辑与全局重生成之间的尺度失配问题，在多个基准上超越现有智能体方法与部分专有系统。</div>
+        <div class="summary-section"><strong>方法:</strong> Stride将约束评估（判断每条要求是否满足）与视觉定位（判断违规发生的位置与方式）分离，并据此将全局修改路由给composer子智能体、局部修正路由给retoucher子智能体。每个子智能体进行内部规划并生成多个候选，仅当候选能提升验证器分数时才被接受，从而减少迭代中的性能回退。该框架可作用于任意冻结的生成器，结合尺度感知路由、单步冗余与单调接受机制实现跨迭代的稳定提升。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在完全开源权重的生成器-验证器系统下，Stride在BizGenEval上超越Nano-Banana-2.0和Seedream-5.0-Pro等专有系统，在IGenBench上追平GPT-Image-2.0并超过Seedream-5.0-Pro，在WISE上取得新的最优成绩，并在所有评测基准上大幅优于现有智能体方法。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Infographic generation challenges text-to-image models because a single image must satisfy numerous visual, textual, and semantic constraints. Iterative agentic refinement with a multimodal verifier is a natural remedy, but existing methods face a scale mismatch: local edits cannot correct global composition errors, while full regeneration may destroy already-correct regions. We introduce Stride, a constraint-grounded multi-agent framework that treats refinement over any frozen generator as a history-aware evolution strategy. Stride separates constraint evaluation - whether each requirement is satisfied - from visual grounding - where and how it is violated. It then routes global revisions to a composer subagent and local corrections to a retoucher subagent. Each subagent conducts internal planning and generates multiple candidates, while Stride accepts a candidate only when it improves the verifier score, reducing regression across iterations. Because stochastic generators and imperfect verifiers make any single step unreliable, it is this combination of scale-aware routing, per-step redundancy, and monotonic acceptance that yields stable improvement across iterations. With fully open-weight generator-verifier systems, Stride outperforms proprietary systems including Nano-Banana-2.0 and Seedream-5.0-Pro on BizGenEval, matches GPT-Image-2.0 and surpasses Seedream-5.0-Pro on IGenBench, and achieves a new state-of-the-art score on WISE, while substantially outperforming existing agentic methods across all evaluated benchmarks.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.13502" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13502.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.13337</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.13337" target="_blank">Exploring Attention Sinks in Text-to-Image Transformers from Diffusion and Autoregressive Models</a>
+      </h3>
+      <p class="paper-title-zh">探索文本到图像Transformer中的注意力汇聚现象：从扩散模型到自回归模型</p>
+      <p class="paper-authors">Binglei Li, Mengping Yang, Zhiyu Tan, Wenxu Qian, Junping Zhang 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文首次系统性地研究了文本到图像Transformer中的注意力汇聚现象，揭示了其在双向扩散模型和因果自回归模型中的存在、分布模式及功能相关性，为理解T2I Transformer的注意力机制提供了机理层面的分析基础。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者对双向扩散模型和因果自回归模型进行系统性的注意力分析，识别注意力汇聚的位置和模式；通过针对性的干预实验（扰动汇聚相关注意力头和token位置）评估其功能重要性；并引入注册token（register tokens）来重新分配注意力汇聚，观察其对生成性能的影响。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 注意力汇聚在两种模型中均存在但模式不同：自回归模型集中于首个token和全局尺度token，双向模型则出现在模态边界、文本区域和空间角落附近；这些模式随生成阶段变化且局限于稀疏的层和注意力头。扰动汇聚排名靠前的注意力头比非汇聚头产生更大的平均变化，而某些汇聚位置扰动对双向模型评分影响有限。引入注册token可重新分配注意力汇聚，部分配置能保持甚至略微提升生成性能。总体而言，注意力汇聚是依赖于架构、推理阶段和组件的现象。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Attention sinks are tokens or positions that consistently receive disproportionate attention mass, often beyond what their semantic content would suggest. Despite extensive study in large language models, their behavior and functional relevance in text-to-image (T2I) Transformers remain largely unexplored. To fill this gap and better understand how text-to-image Transformers allocate and route attention, we explore this phenomenon of text-to-image transformers across bidirectional diffusion models and causal autoregressive models. Specifically, we explore whether attention sinks exist, where they emerge, and how they functionally influence generation. Through systematic attention analysis and targeted interventions, we identify that attention sinks emerge in both bidirectional diffusion and autoregressive models but exhibit distinct patterns. The autoregressive model concentrates attention on the first and global-scale tokens, whereas the bidirectional models develop sinks near modality boundaries, within text regions, and at spatial corners. Moreover, these patterns vary across generation stages and are localized to a sparse subset of layers and heads. To assess their functional relevance, we perturb sink-related heads and token positions. It turns out that perturbing sink-ranked heads produces larger average changes than non-sink comparisons, while some sink-position perturbations have limited effects on bidirectional model scores. We further introduce register tokens to redistribute attention sinks and find that several configurations preserve or modestly improve generation performance. Overall, attention sinks are architecture-, inference-stage-, and component-dependent phenomena, providing a basis for mechanistic analysis and principled attention design in text-to-image transformers.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.13337" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13337.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.13316</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.13316" target="_blank">ThinkDrag: Semantic Drag-Based Image Editing with Visual Reasoning</a>
+      </h3>
+      <p class="paper-title-zh">ThinkDrag：基于语义拖拽与视觉推理的图像编辑</p>
+      <p class="paper-authors">Armando Fortes, Tianyi Wei, Chindanai Trakantannarong, Shangchen Zhou, Xingang Pan</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出ThinkDrag，一个统一的多模态拖拽式图像编辑框架，通过视觉推理将稀疏的点约束与有意义的物体及场景级语义变换相关联，并可选地生成显式推理轨迹以解释编辑意图。</div>
+        <div class="summary-section"><strong>方法:</strong> ThinkDrag将拖拽指令从单纯的几何位移重新解释为语义变换，训练模型关联点约束与物体/场景级变换，并可选地先输出推理轨迹再生成图像。受跨图像注意力分析启发，引入拖拽端点标记（Drag Endpoint Markers）作为显式对应信号，将每次拖拽锚定在图像空间中。为支撑该框架，构建了配对的语义拖拽变换与推理轨迹监督数据集，并提出了面向挑战性场景的DragBench++基准。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明ThinkDrag达到最先进性能，在保持有竞争力的点跟随精度的同时，提升了生成质量和合理性，推理轨迹还增强了对模糊拖拽的可解释性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Drag-based image editing provides an intuitive interface for spatially controlled image manipulation by allowing users to specify handle and target points. Existing methods have made substantial progress through optimization-based, one-step, and feed-forward formulations, but they often interpret drag instructions as geometric displacements. This limits their effectiveness when the desired edit depends on interpreting image content and inferring a plausible semantic transformation from sparse point constraints. We introduce ThinkDrag, a unified multimodal framework for drag-based image editing with visual reasoning. ThinkDrag is trained to associate point constraints with meaningful object- and scene-level transformations, and can optionally produce an explicit reasoning trace that interprets the intended edit before image generation. This reasoning trace improves interpretability, particularly for ambiguous drags. Drag Endpoint Markers, motivated by an analysis of cross-image attention, provide an explicit correspondence signal that grounds each drag in image space. To support this framework, we construct a supervised dataset of semantic drag transformations paired with reasoning traces and introduce DragBench++, a benchmark targeting challenging drag-based editing scenarios with reference edit solutions. Experiments show that ThinkDrag achieves state-of-the-art performance, improving generation quality and plausibility while maintaining competitive point-following precision.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.13316" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13316.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.12899</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.12899" target="_blank">A Lightweight Velocity Correction Framework for Improving Instruction Following in Few-Step Text-to-Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">一种用于提升少步文本到图像生成指令遵循能力的轻量级速度校正框架</p>
+      <p class="paper-authors">Yating Gao, Zhenlong Zhu, Wen Zihao, Lenan Zhang, Jiexiong Wang 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种轻量级校正框架，在不改变冻结的60亿参数少步文本到图像生成器参数、不增加前向传播次数、不改变采样计划的前提下，显著提升其对复杂提示（多主体、交互、空间关系、计数、属性绑定）的指令遵循能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架在冻结的生成器上附加一个参数量少于2000万的校正器，在选定的采样步骤上学习对生成器预测速度的残差调整。由于早期校正会改变后续步骤所遇到的状态，作者提出“在轨流桥监督”（On-Trajectory Flow-Bridge Supervision），在实际校正生成过程中到达的状态上推导残差目标。单个校正器在选定步骤间共享，并与生成器并行运行，仅训练校正器，无需奖励优化或再蒸馏。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在目标复杂场景分布上，该框架在成对指令遵循评估中相较冻结的Z-Image-Turbo取得了+17.60个百分点的净胜率（NetWin），每张图像仅增加26.9毫秒（0.84%）的端到端延迟，且不增加主干网络的评估次数。据作者所知，这是首个针对完全冻结的少步文本到图像生成器进行轻量级速度残差适配、同时保持其原始采样计划和前向传播次数的框架。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Few-step text-to-image generators produce high-quality images with few network forward passes, yet struggle with complex prompts involving multiple subjects, interactions, spatial relations, counting, and attribute binding. Can these errors be reduced without changing the generator's parameters or increasing its forward-pass count? We propose a lightweight correction framework for a frozen 6B-parameter generator. The generator predicts velocities that determine how its intermediate image representation is updated; a corrector with fewer than 20M parameters learns residual adjustments at selected sampling steps. Because earlier corrections change the states encountered at later steps, our On-Trajectory Flow-Bridge Supervision derives residual targets at the states actually reached during corrected generation. A single corrector is shared across selected steps and runs in parallel with the generator. Only the corrector is trained, requiring neither reward optimization nor re-distillation. To our knowledge, this is the first framework for lightweight velocity-residual adaptation of fully frozen few-step text-to-image generators that preserves their original sampling schedule and forward-pass count. On our target complex-scene distribution, the framework achieves a +17.60-percentage-point NetWin over frozen Z-Image-Turbo in pairwise instruction-following evaluation, with only 26.9 ms (0.84%) additional end-to-end latency per image and no increase in backbone evaluations.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.12899" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.12899.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
