@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-12</p>
+        <p class="date">📅 2026-10-13</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13941</span>
+          <span class="paper-id">2610.12978</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 85/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13941" target="_blank">Images Talk Back: Guiding MMDiTs by Suppressing Image-to-Text Feedback</a>
+        <a href="https://arxiv.org/abs/2610.12978" target="_blank">Learning Representations to Guide Pixel Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">图像回话：通过抑制图像到文本反馈来引导MMDiT</p>
-      <p class="paper-authors">Yucheng Yang, Xiaoxiao Sun, Shusheng Yang, Jiakang Chen, Serena Yeung-Levy</p>
+      <p class="paper-title-zh">学习表征以引导像素扩散Transformer</p>
+      <p class="paper-authors">Zihao Pan, Mengting Chen, Cheng Shi, Taihang Hu, Zhengrong Yue 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文发现多模态扩散Transformer中图像到文本（I2T）的反馈会固化演化图像中已有的物体和属性（包括错误），并据此提出语义反馈引导（SFG）及其原地变体iSFG，通过抑制I2T反馈、增强文本到图像条件来提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先通过干预实验验证I2T反馈对生成的影响，发现抑制该反馈可改善生成而反向操作会使其退化。基于此提出SFG，通过引导远离一个强化I2T反馈并削弱文本到图像条件的辅助分支来抑制I2T影响；其原地变体iSFG则直接抑制I2T反馈并增强文本到图像条件，无需额外模型评估。SFG分支仅在图像采样前20%的步骤中运行，在无CFG时约需1.2倍基础NFE。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在三种图像生成骨干网络上，SFG/iSFG均提升了对齐度和偏好模型分数：在FLUX上，将SFG加入CFG使GenEval从0.6661提升至0.7479；在SD3.5M上，iSFG在零额外NFE下比CFG提升HPSv2.1达+1.33。该控制方法还可迁移至文本到视频和图像到视频生成，提升VBench分数。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了表征质量与生成效用之间的非等价关系，并提出表征引导（Representation Guidance, RG）方法，通过在普通Transformer架构中直接形成并利用内部表征来提升像素扩散Transformer的生成性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者在像素扩散Transformer中研究了视觉表征对生成的作用，发现外部对齐语义在像素合成过程中会逐渐丢失，且架构分离与专用像素解码器主要只是重新分配语义与空间建模。基于此，提出RG方法：通过低维瓶颈迫使生成相关信息压缩为紧凑表征，并根据其诱导的预测偏移修改流匹配目标，从而显式引导解码器生成，同时保持普通Transformer架构。</div>
+        <div class="summary-section"><strong>关键发现:</strong> RG能学习更清晰的语义与空间结构，并在参数和计算上高效扩展。在ImageNet 256x256上，仅459M参数的RG-L/16优于更大的像素扩散Transformer，RG-XL/16达到FID 1.55；在512x512上FID为1.74；在文本到图像生成中，GenEval达到0.89，DPG-Bench达到87.1。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Multimodal diffusion transformers (MMDiTs) allow the evolving image to update internal text representations through joint attention. These representations then guide subsequent image updates, raising a question: does this feedback help correct deviations from the prompt, or preserve them? We find that image-to-text (I2T) feedback can preserve the objects and attributes already represented in the evolving image, including errors. Transplanting I2T messages can rescue failures or disrupt successes. At matched intervention strengths, suppressing the influence of I2T feedback improves generation, whereas opposite controls degrade it. These findings motivate Semantic Feedback Guidance (SFG), which suppresses the influence of I2T feedback by guiding away from an auxiliary branch that strengthens this feedback and weakens text-to-image conditioning. The in-place variant, iSFG, directly suppresses I2T feedback and strengthens text-to-image conditioning, requiring no extra model evaluations. Temporal interventions motivate running the SFG branch during the first 20% of image sampling steps, requiring about $1.2\times$ the base NFE without classifier-free guidance (CFG). Experiments across three image-generation backbones show gains in alignment and preference-model scores. On FLUX, adding SFG to CFG raises GenEval from $0.6661$ to $0.7479$; on SD3.5M, iSFG adds $+1.33$ HPSv2.1 over CFG at zero extra NFE. The control also transfers to text-to-video and image-to-video generation, improving VBench scores. Code is available at https://github.com/yyc1215lll-creator/SFG.</p>
+        <p>Visual representations are largely developed for understanding, yet what makes them useful for generation remains unclear. We study this question in pixel diffusion transformers and uncover two key insights. First, better representation quality does not necessarily translate into greater generative utility, as externally aligned semantics can be progressively lost during pixel synthesis. Second, architectural separation with specialized pixel decoders mainly redistributes semantic and spatial modeling, without necessarily yielding representations better suited to generation. These insights suggest that a useful generative representation must be both properly formed and actively exploited. Motivated by these insights, we introduce Representation Guidance (RG), which directly forms and exploits internal representations while retaining a plain Transformer architecture. A low-dimensional bottleneck forces generation-relevant information into a compact representation, which is then explicitly used to guide decoder generation by modifying the flow-matching target according to its induced prediction offset. RG learns clearer semantic and spatial structure while scaling efficiently in both parameters and computation. On ImageNet 256x256, RG-L/16 with only 459M parameters outperforms substantially larger pixel diffusion transformers, while RG-XL/16 achieves an FID of 1.55. RG further reaches an FID of 1.74 at 512x512 and extends to text-to-image generation, achieving 0.89 on GenEval and 87.1 on DPG-Bench.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13941" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13941.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.12978" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.12978.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13502</span>
+          <span class="paper-id">2610.13322</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13502" target="_blank">Stride: Scale-Aware Multi-Agent Evolutionary Refinement for Infographic Generation</a>
+        <a href="https://arxiv.org/abs/2610.13322" target="_blank">CoVA: Composing VAE Representations for Generative Learning</a>
       </h3>
-      <p class="paper-title-zh">Stride：面向信息图生成的尺度感知多智能体进化式精炼方法</p>
-      <p class="paper-authors">Yan Zhou, Yang Yang</p>
+      <p class="paper-title-zh">CoVA：面向生成学习的VAE表示组合</p>
+      <p class="paper-authors">Zhaowei Chen, Yikai Ge, Linze Li, Yao Tang, Xiang Li</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Stride框架，将信息图生成中的迭代精炼建模为历史感知的进化策略，通过尺度感知的任务路由解决局部编辑与全局重生成之间的尺度失配问题，在多个基准上超越现有智能体方法与部分专有系统。</div>
-        <div class="summary-section"><strong>方法:</strong> Stride将约束评估（判断每条要求是否满足）与视觉定位（判断违规发生的位置与方式）分离，并据此将全局修改路由给composer子智能体、局部修正路由给retoucher子智能体。每个子智能体进行内部规划并生成多个候选，仅当候选能提升验证器分数时才被接受，从而减少迭代中的性能回退。该框架可作用于任意冻结的生成器，结合尺度感知路由、单步冗余与单调接受机制实现跨迭代的稳定提升。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在完全开源权重的生成器-验证器系统下，Stride在BizGenEval上超越Nano-Banana-2.0和Seedream-5.0-Pro等专有系统，在IGenBench上追平GPT-Image-2.0并超过Seedream-5.0-Pro，在WISE上取得新的最优成绩，并在所有评测基准上大幅优于现有智能体方法。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出CoVA框架，通过在线组合生成模型自身VAE的特征来为流匹配训练提供分阶段引导，无需辅助编码器即可显著提升扩散Transformer的生成质量，并揭示了软标签条件化中类别嵌入幅度衰减这一隐藏混杂因素。</div>
+        <div class="summary-section"><strong>方法:</strong> CoVA训练一个轻量级潜在组合器，将VAE特征在线组合为具有语义判别性和空间结构的密集特征，联合使用类别监督、掩码潜在重建和水平翻转一致性进行优化。训练早期将SiT中间特征与组合表示对齐，随后移除对齐并复用组合器的后验概率进行样本相关的软标签条件化。此外，CoVA通过恢复硬标签的幅度来纠正软标签条件化中类别嵌入平均化导致的幅度衰减问题，仅增加8.5M训练时辅助参数（占SiT-XL/2的1.3%），无推理时开销。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，CoVA将SiT-XL/2的FID从17.2降至7.4（降低57%），仅需400K步训练。配合无分类器引导，仅400个epoch即达到FID 2.03，而原始SiT-XL/2需1400个epoch才达到2.06。研究还发现，软标签条件化中类别嵌入平均化导致的幅度衰减本身就能大幅改善FID但会降低Recall，揭示了这一非语义来源的表观增益。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Infographic generation challenges text-to-image models because a single image must satisfy numerous visual, textual, and semantic constraints. Iterative agentic refinement with a multimodal verifier is a natural remedy, but existing methods face a scale mismatch: local edits cannot correct global composition errors, while full regeneration may destroy already-correct regions. We introduce Stride, a constraint-grounded multi-agent framework that treats refinement over any frozen generator as a history-aware evolution strategy. Stride separates constraint evaluation - whether each requirement is satisfied - from visual grounding - where and how it is violated. It then routes global revisions to a composer subagent and local corrections to a retoucher subagent. Each subagent conducts internal planning and generates multiple candidates, while Stride accepts a candidate only when it improves the verifier score, reducing regression across iterations. Because stochastic generators and imperfect verifiers make any single step unreliable, it is this combination of scale-aware routing, per-step redundancy, and monotonic acceptance that yields stable improvement across iterations. With fully open-weight generator-verifier systems, Stride outperforms proprietary systems including Nano-Banana-2.0 and Seedream-5.0-Pro on BizGenEval, matches GPT-Image-2.0 and surpasses Seedream-5.0-Pro on IGenBench, and achieves a new state-of-the-art score on WISE, while substantially outperforming existing agentic methods across all evaluated benchmarks.</p>
+        <p>Representation alignment with pretrained visual encoders improves diffusion transformer training but requires auxiliary encoders and extra training overhead. Recent approaches instead exploit representations from the generative model's own variational autoencoder (VAE). However, reconstruction-oriented VAE features are not optimized for the semantic discrimination and spatial structure needed for generative learning. We introduce \textbf{CoVA} (\textbf{Co}mposed \textbf{VA}E Representations), a lightweight framework that composes VAE features online into stage-wise guidance for flow-matching training. A small latent composer is jointly trained with class supervision, masked latent reconstruction, and horizontal-flip consistency, yielding semantically discriminative, spatially structured dense features and sample-dependent class posteriors. CoVA aligns intermediate SiT features with the composed representations early in training, then removes the increasingly detrimental alignment and reuses detached composer posteriors for sample-dependent soft label conditioning. We further uncover a hidden confound in soft label conditioning: averaging class embeddings attenuates their magnitude, coupling semantic interpolation with conditioning strength. This attenuation alone can substantially improve FID while degrading Recall, revealing a non-semantic source of the apparent gain. CoVA corrects this confound by restoring the hard-label magnitude, isolating posterior-dependent directional semantics. CoVA adds only 8.5M training-only auxiliary parameters (1.3\% of SiT-XL/2) and introduces no inference-time overhead. On ImageNet 256$\times$256, CoVA reduces SiT-XL/2 FID from 17.2 to 7.4 (\textbf{57\%}) in 400K steps. With classifier-free guidance, it achieves an FID of \textbf{2.03} in only 400 epochs, versus 2.06 after 1,400 epochs for vanilla SiT-XL/2.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13502" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13502.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13322" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13322.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13337</span>
+          <span class="paper-id">2610.13944</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 78/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13337" target="_blank">Exploring Attention Sinks in Text-to-Image Transformers from Diffusion and Autoregressive Models</a>
+        <a href="https://arxiv.org/abs/2610.13944" target="_blank">InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators</a>
       </h3>
-      <p class="paper-title-zh">探索文本到图像Transformer中的注意力汇聚现象：从扩散模型到自回归模型</p>
-      <p class="paper-authors">Binglei Li, Mengping Yang, Zhiyu Tan, Wenxu Qian, Junping Zhang 等 (6 位作者)</p>
+      <p class="paper-title-zh">InstantFusion：面向异构图像生成器的共享潜在接口</p>
+      <p class="paper-authors">Xuanlang Dai, Jiazi Bu, Yujie Zhou, Yuhong Liu, Beichen Zhang 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 该论文首次系统性地研究了文本到图像Transformer中的注意力汇聚现象，揭示了其在双向扩散模型和因果自回归模型中的存在、分布模式及功能相关性，为理解T2I Transformer的注意力机制提供了机理层面的分析基础。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者对双向扩散模型和因果自回归模型进行系统性的注意力分析，识别注意力汇聚的位置和模式；通过针对性的干预实验（扰动汇聚相关注意力头和token位置）评估其功能重要性；并引入注册token（register tokens）来重新分配注意力汇聚，观察其对生成性能的影响。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 注意力汇聚在两种模型中均存在但模式不同：自回归模型集中于首个token和全局尺度token，双向模型则出现在模态边界、文本区域和空间角落附近；这些模式随生成阶段变化且局限于稀疏的层和注意力头。扰动汇聚排名靠前的注意力头比非汇聚头产生更大的平均变化，而某些汇聚位置扰动对双向模型评分影响有限。引入注册token可重新分配注意力汇聚，部分配置能保持甚至略微提升生成性能。总体而言，注意力汇聚是依赖于架构、推理阶段和组件的现象。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种轻量级共享潜在接口InstantFusion，能够在无需为每对模型单独训练映射的情况下，连接异构扩散/流模型的去噪轨迹，实现跨模型状态转换与协同生成。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先观察到独立训练的生成器在潜在空间组织上具有相似性，且未对齐模型间直接传递中间状态仍能保留粗略视觉内容。基于此，InstantFusion为每个模型引入特定的潜在自编码器（LAE），将不同生成器的中间状态投影到共享潜在空间，再解码到目标生成器的潜在空间。该共享空间通过两个互补目标约束：对齐同一图像在匹配噪声水平下的中间状态，并同步其对应的局部去噪速度。训练完成后，去噪过程可在冻结的生成器之间无缝切换。</div>
+        <div class="summary-section"><strong>关键发现:</strong> InstantFusion在加速生成、多偏好组合、跨架构在线策略蒸馏以及跨模型组合等多种任务中均取得有竞争力的性能，验证了其通用性和有效性，表明异构生成器之间可以通过共享潜在接口实现灵活且高效的协同。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Attention sinks are tokens or positions that consistently receive disproportionate attention mass, often beyond what their semantic content would suggest. Despite extensive study in large language models, their behavior and functional relevance in text-to-image (T2I) Transformers remain largely unexplored. To fill this gap and better understand how text-to-image Transformers allocate and route attention, we explore this phenomenon of text-to-image transformers across bidirectional diffusion models and causal autoregressive models. Specifically, we explore whether attention sinks exist, where they emerge, and how they functionally influence generation. Through systematic attention analysis and targeted interventions, we identify that attention sinks emerge in both bidirectional diffusion and autoregressive models but exhibit distinct patterns. The autoregressive model concentrates attention on the first and global-scale tokens, whereas the bidirectional models develop sinks near modality boundaries, within text regions, and at spatial corners. Moreover, these patterns vary across generation stages and are localized to a sparse subset of layers and heads. To assess their functional relevance, we perturb sink-related heads and token positions. It turns out that perturbing sink-ranked heads produces larger average changes than non-sink comparisons, while some sink-position perturbations have limited effects on bidirectional model scores. We further introduce register tokens to redistribute attention sinks and find that several configurations preserve or modestly improve generation performance. Overall, attention sinks are architecture-, inference-stage-, and component-dependent phenomena, providing a basis for mechanistic analysis and principled attention design in text-to-image transformers.</p>
+        <p>Diffusion/flow models have emerged as the de facto paradigms for image generation, giving rise to a diverse family of modern generators with increasingly heterogeneous architectures and representations. Despite their remarkable generation capabilities, the cross-model alignment of latent representations and the consistency of their underlying denoising dynamics remain underexplored. In this work, we uncover an intriguing cross-model compatibility: independently trained generators exhibit similar latent spatial organization, while directly handing off intermediate states between unaligned models can still preserve coarse visual content. Motivated by these observations, we propose InstantFusion, a lightweight shared latent interface that connects the denoising trajectories of heterogeneous image generators. Specifically, to enable flexible cross-model state translation, model-specific Latent AutoEncoders (LAEs) are introduced to project intermediate states from different generators into a shared latent space and decode them into the latent space of a target generator. This shared space is constrained by two complementary objectives: aligning intermediate states derived from the same image at matched noise levels and synchronizing their corresponding local denoising velocities. Once trained, InstantFusion allows denoising to seamlessly transition across frozen generators without requiring a dedicated mapping for every model pair. The versatility of InstantFusion is demonstrated across acceleration, multi-preference composition, cross-architecture on-policy distillation, and cross-model composition, achieving competitive performance across these diverse settings.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13337" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13337.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13944" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13944.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13316</span>
+          <span class="paper-id">2610.13268</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 78/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13316" target="_blank">ThinkDrag: Semantic Drag-Based Image Editing with Visual Reasoning</a>
+        <a href="https://arxiv.org/abs/2610.13268" target="_blank">ConClick: Element-Wise Contrastive Learning Improves GUI Grounding</a>
       </h3>
-      <p class="paper-title-zh">ThinkDrag：基于语义拖拽与视觉推理的图像编辑</p>
-      <p class="paper-authors">Armando Fortes, Tianyi Wei, Chindanai Trakantannarong, Shangchen Zhou, Xingang Pan</p>
+      <p class="paper-title-zh">ConClick：逐元素对比学习提升GUI定位能力</p>
+      <p class="paper-authors">Ruotian Zhang, Yuhui Zhang, Junzhe Huang, Yu Xin, Hehe Fan 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出ThinkDrag，一个统一的多模态拖拽式图像编辑框架，通过视觉推理将稀疏的点约束与有意义的物体及场景级语义变换相关联，并可选地生成显式推理轨迹以解释编辑意图。</div>
-        <div class="summary-section"><strong>方法:</strong> ThinkDrag将拖拽指令从单纯的几何位移重新解释为语义变换，训练模型关联点约束与物体/场景级变换，并可选地先输出推理轨迹再生成图像。受跨图像注意力分析启发，引入拖拽端点标记（Drag Endpoint Markers）作为显式对应信号，将每次拖拽锚定在图像空间中。为支撑该框架，构建了配对的语义拖拽变换与推理轨迹监督数据集，并提出了面向挑战性场景的DragBench++基准。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明ThinkDrag达到最先进性能，在保持有竞争力的点跟随精度的同时，提升了生成质量和合理性，推理轨迹还增强了对模糊拖拽的可解释性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 本文系统分析了GUI定位模型的错误模式，发现错误点击主要集中于非目标界面元素而非背景，并据此提出了对比学习框架ConClick及配套数据集ConClick-Data，显著提升了GUI定位准确率。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先系统评估了10个定位模型在5个数据集上的表现，识别出模型反复选中相同干扰元素的错误模式。基于此，提出ConClick对比学习框架，构建了包含4,292个挑战性目标-干扰对的数据集ConClick-Data，并采用互补的列表排序和成对间隔目标训练模型。此外还提出ReClick推理时策略，通过重新审视候选区域并比较竞争候选的预测来进一步提升准确率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> ConClick将Qwen3-VL-8B在ScreenSpot-Pro上的定位准确率从54.71%提升至66.03%，在MMBench-GUI L2上从83.72%提升至86.28%，在OSWorld-G上从63.33%提升至70.20%，优于同等规模骨干网络的先前方法。ReClick推理策略在三个基准上进一步带来平均2.96个百分点的准确率提升。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Drag-based image editing provides an intuitive interface for spatially controlled image manipulation by allowing users to specify handle and target points. Existing methods have made substantial progress through optimization-based, one-step, and feed-forward formulations, but they often interpret drag instructions as geometric displacements. This limits their effectiveness when the desired edit depends on interpreting image content and inferring a plausible semantic transformation from sparse point constraints. We introduce ThinkDrag, a unified multimodal framework for drag-based image editing with visual reasoning. ThinkDrag is trained to associate point constraints with meaningful object- and scene-level transformations, and can optionally produce an explicit reasoning trace that interprets the intended edit before image generation. This reasoning trace improves interpretability, particularly for ambiguous drags. Drag Endpoint Markers, motivated by an analysis of cross-image attention, provide an explicit correspondence signal that grounds each drag in image space. To support this framework, we construct a supervised dataset of semantic drag transformations paired with reasoning traces and introduce DragBench++, a benchmark targeting challenging drag-based editing scenarios with reference edit solutions. Experiments show that ThinkDrag achieves state-of-the-art performance, improving generation quality and plausibility while maintaining competitive point-following precision.</p>
+        <p>GUI grounding, the task of locating the interface element specified by a user instruction, is a fundamental capability of GUI agents. However, existing grounding models remain error-prone, often causing downstream task failures. We systematically evaluate 10 grounding models across five datasets and identify a major error pattern: most incorrect clicks hit non-target interface elements rather than the background, with different models repeatedly selecting the same distractors. Motivated by these findings, we propose ConClick, a contrastive learning framework that teaches models to distinguish the target element from plausible distractors. We construct ConClick-Data, a dataset containing 4,292 challenging target-distractor pairs, and train the model using complementary listwise ranking and pairwise margin objectives. ConClick improves the grounding accuracy of Qwen3-VL-8B from 54.71% to 66.03% on ScreenSpot-Pro, from 83.72% to 86.28% on MMBench-GUI L2, and from 63.33% to 70.20% on OSWorld-G, outperforming prior methods built on the same or similarly sized backbones. We further introduce ReClick, an inference-time strategy that revisits promising regions and compares predictions across competing candidates, yielding an additional 2.96 percentage-point improvement in average accuracy across the three benchmarks. Together, our analysis, dataset, and methods provide both empirical insights and practical tools for building more reliable GUI agents. Data and code are available at https://github.com/zhangruotian/ConClick.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13316" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13316.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13268" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13268.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.12899</span>
+          <span class="paper-id">2610.13412</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12899" target="_blank">A Lightweight Velocity Correction Framework for Improving Instruction Following in Few-Step Text-to-Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.13412" target="_blank">TextVBench: Evaluating Text Rendering and Preservation in Video Generation</a>
       </h3>
-      <p class="paper-title-zh">一种用于提升少步文本到图像生成指令遵循能力的轻量级速度校正框架</p>
-      <p class="paper-authors">Yating Gao, Zhenlong Zhu, Wen Zihao, Lenan Zhang, Jiexiong Wang 等 (9 位作者)</p>
+      <p class="paper-title-zh">TextVBench：评估视频生成中的文本渲染与保持</p>
+      <p class="paper-authors">Ruiqiang Zhang, Hengyi Wang, Chang Liu, Guanjie Wang, Zehua Ma 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种轻量级校正框架，在不改变冻结的60亿参数少步文本到图像生成器参数、不增加前向传播次数、不改变采样计划的前提下，显著提升其对复杂提示（多主体、交互、空间关系、计数、属性绑定）的指令遵循能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架在冻结的生成器上附加一个参数量少于2000万的校正器，在选定的采样步骤上学习对生成器预测速度的残差调整。由于早期校正会改变后续步骤所遇到的状态，作者提出“在轨流桥监督”（On-Trajectory Flow-Bridge Supervision），在实际校正生成过程中到达的状态上推导残差目标。单个校正器在选定步骤间共享，并与生成器并行运行，仅训练校正器，无需奖励优化或再蒸馏。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在目标复杂场景分布上，该框架在成对指令遵循评估中相较冻结的Z-Image-Turbo取得了+17.60个百分点的净胜率（NetWin），每张图像仅增加26.9毫秒（0.84%）的端到端延迟，且不增加主干网络的评估次数。据作者所知，这是首个针对完全冻结的少步文本到图像生成器进行轻量级速度残差适配、同时保持其原始采样计划和前向传播次数的框架。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了TextVBench，一个将视觉文本评估形式化为多目标、多实例时空对应问题的基准与评估框架，包含T2V和Ref2V两个互补赛道，用于衡量视频生成中文本的创建、维持与保持能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架采用目标条件化的候选选择策略，而非无约束的VLM转录，并支持一个目标映射到多个OCR区域。它将帧级空间保真度与跨帧时间保真度分离评估，使用长度加权调和分数汇总各项因素，并通过额外文本诊断揭示单一OCR分数所掩盖的失败模式。基准围绕受控的文本、布局、载体和运动属性进行组织，使总体分数可追溯到具体的能力限制。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在评估的模型运行中，MiniMax-H3在T2V赛道取得68.32的TextVScore，而最强的Ref2V分数为56.51。属性切片分析显示，随着同时出现的参考文本区域数量增加，性能出现显著下降。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Few-step text-to-image generators produce high-quality images with few network forward passes, yet struggle with complex prompts involving multiple subjects, interactions, spatial relations, counting, and attribute binding. Can these errors be reduced without changing the generator's parameters or increasing its forward-pass count? We propose a lightweight correction framework for a frozen 6B-parameter generator. The generator predicts velocities that determine how its intermediate image representation is updated; a corrector with fewer than 20M parameters learns residual adjustments at selected sampling steps. Because earlier corrections change the states encountered at later steps, our On-Trajectory Flow-Bridge Supervision derives residual targets at the states actually reached during corrected generation. A single corrector is shared across selected steps and runs in parallel with the generator. Only the corrector is trained, requiring neither reward optimization nor re-distillation. To our knowledge, this is the first framework for lightweight velocity-residual adaptation of fully frozen few-step text-to-image generators that preserves their original sampling schedule and forward-pass count. On our target complex-scene distribution, the framework achieves a +17.60-percentage-point NetWin over frozen Z-Image-Turbo in pairwise instruction-following evaluation, with only 26.9 ms (0.84%) additional end-to-end latency per image and no increase in backbone evaluations.</p>
+        <p>Modern video generators can synthesize convincing scenes while rendering a few characters incorrectly, omitting requested text, or changing it across frames. Measuring these failures is harder than applying OCR independently to each frame: when a scene contains multiple text targets and multiple noisy OCR regions, the evaluator must first determine which observation belongs to which intended text. We introduce TextVBench, a benchmark and evaluation framework that formulates visual-text evaluation as a multi-target, multi-instance spatiotemporal correspondence problem. TextVBench contains two complementary tracks: TextVBench-T2V measures the creation and maintenance of prompt-specified text, while TextVBench-Ref2V measures preservation of text from reference images. Both tracks use target-conditioned candidate selection rather than unconstrained VLM transcription, support one target mapping to multiple OCR regions, and separate frame-level spatial fidelity from cross-frame temporal fidelity. A length-weighted harmonic score summarizes these factors, while extra-text diagnostics expose failure modes hidden by a single OCR score. The benchmark is organized around controlled text, layout, carrier, and motion attributes so that aggregate scores can be traced back to specific capability limits. Across the evaluated model runs, MiniMax-H3 reaches a T2V TextVScore of 68.32, while the strongest Ref2V score is 56.51; attribute slices reveal a pronounced drop as the number of simultaneous reference text regions increases.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12899" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12899.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.13412" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.13412.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
