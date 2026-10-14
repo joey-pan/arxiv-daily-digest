@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-10-14</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 图形学: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.18865</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.18865" target="_blank">PLAYGROUND: Progressive Layout Generation with Render-Grounded Planning</a>
+      </h3>
+      <p class="paper-title-zh">PlayGround：基于渲染感知规划的渐进式布局生成</p>
+      <p class="paper-authors">Jaeho Lee, Junhwan Heo, Junghyun Park, WonJun Moon, Eunju Yang 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种渐进式布局生成框架PlayGround，能够根据当前渲染画布动态调整设计规划，克服了现有MLLM方法中高层规划预先确定、难以适应设计演变的局限。</div>
+        <div class="summary-section"><strong>方法:</strong> PlayGround构建了一个由渐进式规划器、布局生成器和视觉验证器组成的渐进式设计循环，并以结构感知检索器为引导。给定初始无序元素集后，结构感知检索器首先推断粗略布局结构并检索结构相似的参考设计；随后每一轮中，渐进式规划器检查当前渲染画布与剩余元素，形成下一个功能组并规划其构图，布局生成器预测可编辑的布局属性，视觉验证器评估渲染候选并在需要时提供反馈。为训练渐进式规划器，作者构建了一个两阶段数据生成流程，从已完成设计中提取功能组和轮级规划轨迹。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在Crello和LICA数据集上的实验表明，PlayGround优于现有方法，验证了其有效性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Generating editable graphic designs requires arranging visual and textual elements into a coherent composition while preserving their content and editability. Although recent MLLM-based approaches employ iterative generation and visual refinement to reflect the real-world design workflows, their high-level plans are predetermined prior to execution, limiting their adaptability as the design evolves. To address this limitation, we propose PlayGround, a progressive layout generation framework that dynamically adapts to the current rendered canvas. PlayGround establishes a progressive design loop comprising a Progressive Planner, a Layout Generator, and a Visual Verifier, guided by a Structure-Aware Retriever. Given an initial set of unordered elements, the Structure-Aware Retriever initially infers a coarse layout structure to retrieve structurally similar reference designs. Subsequently, at each turn, the Progressive Planner examines the current rendered canvas alongside the remaining elements, forms the next functional group, and plans its composition. The Layout Generator then predicts editable layout attributes, while the Visual Verifier evaluates rendered candidates and provides feedback when refinement is necessary. To train the Progressive Planner with step-wise supervision, we construct a two-stage data generation pipeline that extracts functional groups and turn-level planning trajectories from completed designs. Experiments on Crello and LICA demonstrate the effectiveness of PlayGround over existing methods. Our code and weights will be publicly released.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.18865" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18865.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.18763</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.18763" target="_blank">LayerCanvas: Infographic Generation in AI Learning Assistants via Hybrid Layer-Set Diffusion</a>
+      </h3>
+      <p class="paper-title-zh">LayerCanvas：基于混合图层集扩散的AI学习助手信息图生成</p>
+      <p class="paper-authors">Keshav Gupta, Jeremy Owen, Christopher Lloyd, Shaunak Mishra, Manav Sharma</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出LayerCanvas，一种混合方法，保留SVG作为语义、结构和排版程序，同时利用扩散模型对非文本内容进行美学化处理，实现了兼具丰富视觉效果、精确排版和可编辑性的信息图自动生成。</div>
+        <div class="summary-section"><strong>方法:</strong> LayerCanvas将SVG元素按z序划分为互不重叠的元素集合，并通过通信的并行RGB生成流进行处理，而非生成单一扁平化栅格图像。生成的各图层可独立编辑并可确定性重组，文本则从保留的矢量元数据中渲染。该方法将丰富的视觉合成与精确排版及局部编辑能力相结合。</div>
+        <div class="summary-section"><strong>关键发现:</strong> LayerCanvas在文本保真度上大幅优于当前最先进的栅格图像生成器，同时实现了最高的整体美学质量。研究进一步展示了非破坏性内容编辑、本地化、素材复用和动画等应用能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Online learning platforms are increasingly deploying AI assistants to provide personalized, on-demand tutoring. These can leverage infographics to communicate complex information and improve the learning experience. However, automating effective infographic generation remains a challenging task, requiring a combination of visual richness with precise typography, structured layouts, and continued editability. Existing representation methods satisfy these goals only in part: Scalable Vector Graphics (SVG) representations preserve geometry, hierarchy, and text but provide limited aesthetic flexibility, while raster diffusion models produce richer appearances by flattening content and layout into a single image. Conditioning a diffusion model on a rasterized SVG does not resolve this conflict because the raster preserves approximate placement but discards element ownership, occlusion relationships, and the structure needed to modify and recompose the result. We introduce LayerCanvas, a hybrid approach that retains SVG as the semantic, structural, and typographic program while using diffusion to aestheticize non-text content. Rather than generating one flattened raster, LayerCanvas partitions SVG elements into z-ordered sets of mutually non-overlapping elements and processes them through communicating parallel RGB generation streams. The resulting layers are independently editable and deterministically recomposed, while text is rendered from preserved vector metadata. Our approach combines rich visual synthesis with accurate typography and localized editing. LayerCanvas substantially improves text fidelity over state-of-the-art raster image generators while achieving the highest overall aesthetic quality. We further demonstrate non-destructive content editing, localization, asset reuse, and animation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.18763" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18763.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">图形学</span>
+          <span class="paper-id">2610.17905</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.17905" target="_blank">Content-Edited Layout Generation for Graphic Design</a>
+      </h3>
+      <p class="paper-title-zh">面向平面设计的内容编辑式布局生成</p>
+      <p class="paper-authors">Shirong Yang, Zheyi Pan, Ying Cao</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种新的条件布局生成任务——内容编辑式布局生成（CELG），将输入图像视为可编辑的视觉资产，在文本设计意图和前景需求的条件下同时生成适配的背景及其布局，并构建了相应数据集InstructEdit和双流多模态流匹配模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先提出Search-Compare-Edit（SCE）数据构建框架，从专业设计画布出发合成编辑前的源图像和编辑指令，构建了包含对齐源图像、目标画布、指令和布局的InstructEdit数据集。然后训练了一个双流多模态流匹配模型，将预训练图像编辑器与布局流变换器耦合，在统一框架内同时实现背景编辑和布局生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验系统性地证明了CELG作为一个独立任务的价值，以及所提出模型在内容编辑式布局生成任务上的性能优势，表明该统一框架更贴近真实世界的设计工作流程。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>In this paper, we formulate a novel form of conditional layout generation for graphic design, termed content-edited layout generation(CELG). CELG extends conventional content-aware layout generation (CLG), which generates a foreground layout for a fixed background image. The key distinction is that CELG treats the input image as an editable visual asset and, conditioned on a textual design intention and a foreground requirement that may be empty, produces an adapted background together with its layout. To study this task, we introduce Search-Compare-Edit(SCE), a data construction framework that supplies the paired supervision missing from existing design datasets. Starting from professional design canvases and their layouts, SCE synthesizes plausible pre-edit source images and corresponding editing instructions, yielding InstructEdit, a dataset of aligned source images, target canvases, instructions, and layouts. Based on the generated data, we train a two-flow multimodal flow matching model that couples a pretrained image editor with a layout flow transformer, enabling background editing and layout generation simultaneously within a unified framework that more closely reflects real-world design workflows. Our experiments systematically demonstrate the value of CELG as a distinct task and the performance advantages of the proposed model.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.17905" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.17905.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.18857</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.18857" target="_blank">PixelMoE: Scaling Pixel-Space Diffusion with LLM-Style Mixture-of-Experts</a>
+      </h3>
+      <p class="paper-title-zh">PixelMoE：以LLM风格混合专家扩展像素空间扩散模型</p>
+      <p class="paper-authors">Ruixiao Dong, Jianmin Bao, Bozhi Luan, Zijie Meng, Xin Tao 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文证明标准LLM风格的混合专家（MoE）架构可有效迁移至像素空间扩散模型，并提出PixelMoE框架，在不依赖扩散专用路由机制或辅助路由目标的情况下，实现像素空间模型容量的稀疏扩展。</div>
+        <div class="summary-section"><strong>方法:</strong> PixelMoE采用标准Token-Choice路由与细粒度路由专家实现输入自适应的稀疏计算，同时引入共享专家捕获通用表示，并使用基于偏置的负载均衡策略。此外，论文提出像素空间层次化流匹配（Pixel-Space Hierarchical Flow Matching），在去噪轨迹中从全局结构形成到细粒度细节精炼逐步变化空间分辨率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在相近活跃参数量下，PixelMoE在不同模型规模上均持续优于稠密对应模型，证明了像素空间中稀疏容量扩展的有效性。在类别条件ImageNet-1K上，PixelMoE在256×256分辨率下取得FID 1.47，在512×512下取得FID 1.53，且未使用表示对齐或感知损失，与领先的像素空间和潜在空间生成模型相比具有竞争力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Pixel-space diffusion models provide an appealing alternative to latent-space diffusion models by directly modeling raw images without relying on a learned tokenizer. However, scaling pixel-space models has predominantly followed dense strategies, tightly coupling model capacity with active computation. In this work, we show that standard LLM-style Mixture-of-Experts (MoE) architectures can be effectively transferred to pixel-space diffusion. Building on this finding, we introduce PixelMoE, a pixel-space generative framework that sparsely scales model capacity with standard LLM-style MoE, without diffusion-specific routing mechanisms or auxiliary routing objectives. Specifically, PixelMoE combines standard Token-Choice (TC) routing with fine-grained routed experts for input-adaptive sparse computation, a shared expert for capturing common representations, and a bias-based load-balancing strategy. To complement sparse capacity scaling, PixelMoE further introduces Pixel-Space Hierarchical Flow Matching, which varies spatial resolution along the denoising trajectory from global structure formation to fine-grained detail refinement. At comparable active parameter counts, PixelMoE consistently outperforms its dense counterparts across model scales, demonstrating effective sparse capacity scaling in pixel space. On class-conditional ImageNet-1K, PixelMoE achieves FID scores of 1.47 at 256x256 and 1.53 at 512x512 without representation alignment or perceptual losses, comparing favorably with leading pixel-space and latent-space generative models. Code and models will be released soon.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.18857" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18857.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.18097</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.18097" target="_blank">APT: Feedback-Driven Agentic Post-Training for Text-to-Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">APT：面向文本到图像生成的反驱动机器人式后训练</p>
+      <p class="paper-authors">Sirui Zhang, Fangyun Wei, Dong Chen, Jinjing Zhao, Yitong Wang 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出APT（Agentic Post-Training），一个全自动后训练框架，能够根据基础模型不断演进的能力画像自适应地进行后训练，无需人工策划训练数据和固定训练分布。</div>
+        <div class="summary-section"><strong>方法:</strong> APT协调三个智能体：一个从用户需求构建评估集，一个诊断模型特有的优势与失败模式，另一个生成带有自适应提示分布的强化学习数据，重点强化表现不足的能力。通过反复评估、诊断和更新生成器，当前模型的行为塑造其下一轮训练任务，形成受递归自我改进启发的反馈闭环。针对无用户指定评估场景的通用设置，还开发了一个评估工具以支持广泛多样的评估集生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个基础模型、基准测试和生成架构上的实验表明，APT具有模型无关性、基准无关性、架构无关性，并且完全自动化。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Post-training is crucial for improving text-to-image models, yet existing pipelines typically rely on manually curated training data and fixed training distributions. We introduce APT (Agentic Post-Training), a fully automated framework that adaptively post-trains a base model according to its evolving capability profile. APT coordinates three agents to construct evaluation sets from user requirements, diagnose model-specific strengths and failure modes, and generate reinforcement learning data with an adaptive prompt distribution that emphasizes underperforming capabilities. By repeatedly evaluating, diagnosing, and updating the generator, APT lets the current model's behavior shape its next training tasks, forming a feedback loop inspired by recursive self-improvement. For general-purpose settings without user-specified evaluation scenarios, we further develop an evaluation harness that enables broad and diverse evaluation set generation. Experiments across multiple base models, benchmarks, and generation architectures demonstrate that APT is model-agnostic, benchmark-agnostic, architecture-agnostic, and fully automated.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.18097" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18097.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

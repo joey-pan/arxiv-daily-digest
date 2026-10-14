@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-13</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-10-14</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 图形学: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.12978</span>
+          <span class="paper-id">2610.18865</span>
         </div>
-        <span class="score-badge">相关性 85/100</span>
+        <span class="score-badge">相关性 92/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.12978" target="_blank">Learning Representations to Guide Pixel Diffusion Transformers</a>
+        <a href="https://arxiv.org/abs/2610.18865" target="_blank">PLAYGROUND: Progressive Layout Generation with Render-Grounded Planning</a>
       </h3>
-      <p class="paper-title-zh">学习表征以引导像素扩散Transformer</p>
-      <p class="paper-authors">Zihao Pan, Mengting Chen, Cheng Shi, Taihang Hu, Zhengrong Yue 等 (9 位作者)</p>
+      <p class="paper-title-zh">PlayGround：基于渲染感知规划的渐进式布局生成</p>
+      <p class="paper-authors">Jaeho Lee, Junhwan Heo, Junghyun Park, WonJun Moon, Eunju Yang 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了表征质量与生成效用之间的非等价关系，并提出表征引导（Representation Guidance, RG）方法，通过在普通Transformer架构中直接形成并利用内部表征来提升像素扩散Transformer的生成性能。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者在像素扩散Transformer中研究了视觉表征对生成的作用，发现外部对齐语义在像素合成过程中会逐渐丢失，且架构分离与专用像素解码器主要只是重新分配语义与空间建模。基于此，提出RG方法：通过低维瓶颈迫使生成相关信息压缩为紧凑表征，并根据其诱导的预测偏移修改流匹配目标，从而显式引导解码器生成，同时保持普通Transformer架构。</div>
-        <div class="summary-section"><strong>关键发现:</strong> RG能学习更清晰的语义与空间结构，并在参数和计算上高效扩展。在ImageNet 256x256上，仅459M参数的RG-L/16优于更大的像素扩散Transformer，RG-XL/16达到FID 1.55；在512x512上FID为1.74；在文本到图像生成中，GenEval达到0.89，DPG-Bench达到87.1。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种渐进式布局生成框架PlayGround，能够根据当前渲染画布动态调整设计规划，克服了现有MLLM方法中高层规划预先确定、难以适应设计演变的局限。</div>
+        <div class="summary-section"><strong>方法:</strong> PlayGround构建了一个由渐进式规划器、布局生成器和视觉验证器组成的渐进式设计循环，并以结构感知检索器为引导。给定初始无序元素集后，结构感知检索器首先推断粗略布局结构并检索结构相似的参考设计；随后每一轮中，渐进式规划器检查当前渲染画布与剩余元素，形成下一个功能组并规划其构图，布局生成器预测可编辑的布局属性，视觉验证器评估渲染候选并在需要时提供反馈。为训练渐进式规划器，作者构建了一个两阶段数据生成流程，从已完成设计中提取功能组和轮级规划轨迹。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在Crello和LICA数据集上的实验表明，PlayGround优于现有方法，验证了其有效性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Visual representations are largely developed for understanding, yet what makes them useful for generation remains unclear. We study this question in pixel diffusion transformers and uncover two key insights. First, better representation quality does not necessarily translate into greater generative utility, as externally aligned semantics can be progressively lost during pixel synthesis. Second, architectural separation with specialized pixel decoders mainly redistributes semantic and spatial modeling, without necessarily yielding representations better suited to generation. These insights suggest that a useful generative representation must be both properly formed and actively exploited. Motivated by these insights, we introduce Representation Guidance (RG), which directly forms and exploits internal representations while retaining a plain Transformer architecture. A low-dimensional bottleneck forces generation-relevant information into a compact representation, which is then explicitly used to guide decoder generation by modifying the flow-matching target according to its induced prediction offset. RG learns clearer semantic and spatial structure while scaling efficiently in both parameters and computation. On ImageNet 256x256, RG-L/16 with only 459M parameters outperforms substantially larger pixel diffusion transformers, while RG-XL/16 achieves an FID of 1.55. RG further reaches an FID of 1.74 at 512x512 and extends to text-to-image generation, achieving 0.89 on GenEval and 87.1 on DPG-Bench.</p>
+        <p>Generating editable graphic designs requires arranging visual and textual elements into a coherent composition while preserving their content and editability. Although recent MLLM-based approaches employ iterative generation and visual refinement to reflect the real-world design workflows, their high-level plans are predetermined prior to execution, limiting their adaptability as the design evolves. To address this limitation, we propose PlayGround, a progressive layout generation framework that dynamically adapts to the current rendered canvas. PlayGround establishes a progressive design loop comprising a Progressive Planner, a Layout Generator, and a Visual Verifier, guided by a Structure-Aware Retriever. Given an initial set of unordered elements, the Structure-Aware Retriever initially infers a coarse layout structure to retrieve structurally similar reference designs. Subsequently, at each turn, the Progressive Planner examines the current rendered canvas alongside the remaining elements, forms the next functional group, and plans its composition. The Layout Generator then predicts editable layout attributes, while the Visual Verifier evaluates rendered candidates and provides feedback when refinement is necessary. To train the Progressive Planner with step-wise supervision, we construct a two-stage data generation pipeline that extracts functional groups and turn-level planning trajectories from completed designs. Experiments on Crello and LICA demonstrate the effectiveness of PlayGround over existing methods. Our code and weights will be publicly released.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.12978" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.12978.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.18865" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18865.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13322</span>
+          <span class="paper-id">2610.18763</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 92/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13322" target="_blank">CoVA: Composing VAE Representations for Generative Learning</a>
+        <a href="https://arxiv.org/abs/2610.18763" target="_blank">LayerCanvas: Infographic Generation in AI Learning Assistants via Hybrid Layer-Set Diffusion</a>
       </h3>
-      <p class="paper-title-zh">CoVA：面向生成学习的VAE表示组合</p>
-      <p class="paper-authors">Zhaowei Chen, Yikai Ge, Linze Li, Yao Tang, Xiang Li</p>
+      <p class="paper-title-zh">LayerCanvas：基于混合图层集扩散的AI学习助手信息图生成</p>
+      <p class="paper-authors">Keshav Gupta, Jeremy Owen, Christopher Lloyd, Shaunak Mishra, Manav Sharma</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出CoVA框架，通过在线组合生成模型自身VAE的特征来为流匹配训练提供分阶段引导，无需辅助编码器即可显著提升扩散Transformer的生成质量，并揭示了软标签条件化中类别嵌入幅度衰减这一隐藏混杂因素。</div>
-        <div class="summary-section"><strong>方法:</strong> CoVA训练一个轻量级潜在组合器，将VAE特征在线组合为具有语义判别性和空间结构的密集特征，联合使用类别监督、掩码潜在重建和水平翻转一致性进行优化。训练早期将SiT中间特征与组合表示对齐，随后移除对齐并复用组合器的后验概率进行样本相关的软标签条件化。此外，CoVA通过恢复硬标签的幅度来纠正软标签条件化中类别嵌入平均化导致的幅度衰减问题，仅增加8.5M训练时辅助参数（占SiT-XL/2的1.3%），无推理时开销。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，CoVA将SiT-XL/2的FID从17.2降至7.4（降低57%），仅需400K步训练。配合无分类器引导，仅400个epoch即达到FID 2.03，而原始SiT-XL/2需1400个epoch才达到2.06。研究还发现，软标签条件化中类别嵌入平均化导致的幅度衰减本身就能大幅改善FID但会降低Recall，揭示了这一非语义来源的表观增益。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出LayerCanvas，一种混合方法，保留SVG作为语义、结构和排版程序，同时利用扩散模型对非文本内容进行美学化处理，实现了兼具丰富视觉效果、精确排版和可编辑性的信息图自动生成。</div>
+        <div class="summary-section"><strong>方法:</strong> LayerCanvas将SVG元素按z序划分为互不重叠的元素集合，并通过通信的并行RGB生成流进行处理，而非生成单一扁平化栅格图像。生成的各图层可独立编辑并可确定性重组，文本则从保留的矢量元数据中渲染。该方法将丰富的视觉合成与精确排版及局部编辑能力相结合。</div>
+        <div class="summary-section"><strong>关键发现:</strong> LayerCanvas在文本保真度上大幅优于当前最先进的栅格图像生成器，同时实现了最高的整体美学质量。研究进一步展示了非破坏性内容编辑、本地化、素材复用和动画等应用能力。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Representation alignment with pretrained visual encoders improves diffusion transformer training but requires auxiliary encoders and extra training overhead. Recent approaches instead exploit representations from the generative model's own variational autoencoder (VAE). However, reconstruction-oriented VAE features are not optimized for the semantic discrimination and spatial structure needed for generative learning. We introduce \textbf{CoVA} (\textbf{Co}mposed \textbf{VA}E Representations), a lightweight framework that composes VAE features online into stage-wise guidance for flow-matching training. A small latent composer is jointly trained with class supervision, masked latent reconstruction, and horizontal-flip consistency, yielding semantically discriminative, spatially structured dense features and sample-dependent class posteriors. CoVA aligns intermediate SiT features with the composed representations early in training, then removes the increasingly detrimental alignment and reuses detached composer posteriors for sample-dependent soft label conditioning. We further uncover a hidden confound in soft label conditioning: averaging class embeddings attenuates their magnitude, coupling semantic interpolation with conditioning strength. This attenuation alone can substantially improve FID while degrading Recall, revealing a non-semantic source of the apparent gain. CoVA corrects this confound by restoring the hard-label magnitude, isolating posterior-dependent directional semantics. CoVA adds only 8.5M training-only auxiliary parameters (1.3\% of SiT-XL/2) and introduces no inference-time overhead. On ImageNet 256$\times$256, CoVA reduces SiT-XL/2 FID from 17.2 to 7.4 (\textbf{57\%}) in 400K steps. With classifier-free guidance, it achieves an FID of \textbf{2.03} in only 400 epochs, versus 2.06 after 1,400 epochs for vanilla SiT-XL/2.</p>
+        <p>Online learning platforms are increasingly deploying AI assistants to provide personalized, on-demand tutoring. These can leverage infographics to communicate complex information and improve the learning experience. However, automating effective infographic generation remains a challenging task, requiring a combination of visual richness with precise typography, structured layouts, and continued editability. Existing representation methods satisfy these goals only in part: Scalable Vector Graphics (SVG) representations preserve geometry, hierarchy, and text but provide limited aesthetic flexibility, while raster diffusion models produce richer appearances by flattening content and layout into a single image. Conditioning a diffusion model on a rasterized SVG does not resolve this conflict because the raster preserves approximate placement but discards element ownership, occlusion relationships, and the structure needed to modify and recompose the result. We introduce LayerCanvas, a hybrid approach that retains SVG as the semantic, structural, and typographic program while using diffusion to aestheticize non-text content. Rather than generating one flattened raster, LayerCanvas partitions SVG elements into z-ordered sets of mutually non-overlapping elements and processes them through communicating parallel RGB generation streams. The resulting layers are independently editable and deterministically recomposed, while text is rendered from preserved vector metadata. Our approach combines rich visual synthesis with accurate typography and localized editing. LayerCanvas substantially improves text fidelity over state-of-the-art raster image generators while achieving the highest overall aesthetic quality. We further demonstrate non-destructive content editing, localization, asset reuse, and animation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13322" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13322.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.18763" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18763.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">图形学</span>
+          <span class="paper-id">2610.17905</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.17905" target="_blank">Content-Edited Layout Generation for Graphic Design</a>
+      </h3>
+      <p class="paper-title-zh">面向平面设计的内容编辑式布局生成</p>
+      <p class="paper-authors">Shirong Yang, Zheyi Pan, Ying Cao</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种新的条件布局生成任务——内容编辑式布局生成（CELG），将输入图像视为可编辑的视觉资产，在文本设计意图和前景需求的条件下同时生成适配的背景及其布局，并构建了相应数据集InstructEdit和双流多模态流匹配模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先提出Search-Compare-Edit（SCE）数据构建框架，从专业设计画布出发合成编辑前的源图像和编辑指令，构建了包含对齐源图像、目标画布、指令和布局的InstructEdit数据集。然后训练了一个双流多模态流匹配模型，将预训练图像编辑器与布局流变换器耦合，在统一框架内同时实现背景编辑和布局生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验系统性地证明了CELG作为一个独立任务的价值，以及所提出模型在内容编辑式布局生成任务上的性能优势，表明该统一框架更贴近真实世界的设计工作流程。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>In this paper, we formulate a novel form of conditional layout generation for graphic design, termed content-edited layout generation(CELG). CELG extends conventional content-aware layout generation (CLG), which generates a foreground layout for a fixed background image. The key distinction is that CELG treats the input image as an editable visual asset and, conditioned on a textual design intention and a foreground requirement that may be empty, produces an adapted background together with its layout. To study this task, we introduce Search-Compare-Edit(SCE), a data construction framework that supplies the paired supervision missing from existing design datasets. Starting from professional design canvases and their layouts, SCE synthesizes plausible pre-edit source images and corresponding editing instructions, yielding InstructEdit, a dataset of aligned source images, target canvases, instructions, and layouts. Based on the generated data, we train a two-flow multimodal flow matching model that couples a pretrained image editor with a layout flow transformer, enabling background editing and layout generation simultaneously within a unified framework that more closely reflects real-world design workflows. Our experiments systematically demonstrate the value of CELG as a distinct task and the performance advantages of the proposed model.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.17905" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.17905.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13944</span>
+          <span class="paper-id">2610.18857</span>
         </div>
-        <span class="score-badge">相关性 78/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13944" target="_blank">InstantFusion: A Shared Latent Interface for Heterogeneous Image Generators</a>
+        <a href="https://arxiv.org/abs/2610.18857" target="_blank">PixelMoE: Scaling Pixel-Space Diffusion with LLM-Style Mixture-of-Experts</a>
       </h3>
-      <p class="paper-title-zh">InstantFusion：面向异构图像生成器的共享潜在接口</p>
-      <p class="paper-authors">Xuanlang Dai, Jiazi Bu, Yujie Zhou, Yuhong Liu, Beichen Zhang 等 (8 位作者)</p>
+      <p class="paper-title-zh">PixelMoE：以LLM风格混合专家扩展像素空间扩散模型</p>
+      <p class="paper-authors">Ruixiao Dong, Jianmin Bao, Bozhi Luan, Zijie Meng, Xin Tao 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种轻量级共享潜在接口InstantFusion，能够在无需为每对模型单独训练映射的情况下，连接异构扩散/流模型的去噪轨迹，实现跨模型状态转换与协同生成。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先观察到独立训练的生成器在潜在空间组织上具有相似性，且未对齐模型间直接传递中间状态仍能保留粗略视觉内容。基于此，InstantFusion为每个模型引入特定的潜在自编码器（LAE），将不同生成器的中间状态投影到共享潜在空间，再解码到目标生成器的潜在空间。该共享空间通过两个互补目标约束：对齐同一图像在匹配噪声水平下的中间状态，并同步其对应的局部去噪速度。训练完成后，去噪过程可在冻结的生成器之间无缝切换。</div>
-        <div class="summary-section"><strong>关键发现:</strong> InstantFusion在加速生成、多偏好组合、跨架构在线策略蒸馏以及跨模型组合等多种任务中均取得有竞争力的性能，验证了其通用性和有效性，表明异构生成器之间可以通过共享潜在接口实现灵活且高效的协同。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文证明标准LLM风格的混合专家（MoE）架构可有效迁移至像素空间扩散模型，并提出PixelMoE框架，在不依赖扩散专用路由机制或辅助路由目标的情况下，实现像素空间模型容量的稀疏扩展。</div>
+        <div class="summary-section"><strong>方法:</strong> PixelMoE采用标准Token-Choice路由与细粒度路由专家实现输入自适应的稀疏计算，同时引入共享专家捕获通用表示，并使用基于偏置的负载均衡策略。此外，论文提出像素空间层次化流匹配（Pixel-Space Hierarchical Flow Matching），在去噪轨迹中从全局结构形成到细粒度细节精炼逐步变化空间分辨率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在相近活跃参数量下，PixelMoE在不同模型规模上均持续优于稠密对应模型，证明了像素空间中稀疏容量扩展的有效性。在类别条件ImageNet-1K上，PixelMoE在256×256分辨率下取得FID 1.47，在512×512下取得FID 1.53，且未使用表示对齐或感知损失，与领先的像素空间和潜在空间生成模型相比具有竞争力。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Diffusion/flow models have emerged as the de facto paradigms for image generation, giving rise to a diverse family of modern generators with increasingly heterogeneous architectures and representations. Despite their remarkable generation capabilities, the cross-model alignment of latent representations and the consistency of their underlying denoising dynamics remain underexplored. In this work, we uncover an intriguing cross-model compatibility: independently trained generators exhibit similar latent spatial organization, while directly handing off intermediate states between unaligned models can still preserve coarse visual content. Motivated by these observations, we propose InstantFusion, a lightweight shared latent interface that connects the denoising trajectories of heterogeneous image generators. Specifically, to enable flexible cross-model state translation, model-specific Latent AutoEncoders (LAEs) are introduced to project intermediate states from different generators into a shared latent space and decode them into the latent space of a target generator. This shared space is constrained by two complementary objectives: aligning intermediate states derived from the same image at matched noise levels and synchronizing their corresponding local denoising velocities. Once trained, InstantFusion allows denoising to seamlessly transition across frozen generators without requiring a dedicated mapping for every model pair. The versatility of InstantFusion is demonstrated across acceleration, multi-preference composition, cross-architecture on-policy distillation, and cross-model composition, achieving competitive performance across these diverse settings.</p>
+        <p>Pixel-space diffusion models provide an appealing alternative to latent-space diffusion models by directly modeling raw images without relying on a learned tokenizer. However, scaling pixel-space models has predominantly followed dense strategies, tightly coupling model capacity with active computation. In this work, we show that standard LLM-style Mixture-of-Experts (MoE) architectures can be effectively transferred to pixel-space diffusion. Building on this finding, we introduce PixelMoE, a pixel-space generative framework that sparsely scales model capacity with standard LLM-style MoE, without diffusion-specific routing mechanisms or auxiliary routing objectives. Specifically, PixelMoE combines standard Token-Choice (TC) routing with fine-grained routed experts for input-adaptive sparse computation, a shared expert for capturing common representations, and a bias-based load-balancing strategy. To complement sparse capacity scaling, PixelMoE further introduces Pixel-Space Hierarchical Flow Matching, which varies spatial resolution along the denoising trajectory from global structure formation to fine-grained detail refinement. At comparable active parameter counts, PixelMoE consistently outperforms its dense counterparts across model scales, demonstrating effective sparse capacity scaling in pixel space. On class-conditional ImageNet-1K, PixelMoE achieves FID scores of 1.47 at 256x256 and 1.53 at 512x512 without representation alignment or perceptual losses, comparing favorably with leading pixel-space and latent-space generative models. Code and models will be released soon.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13944" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13944.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.18857" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18857.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,62 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13268</span>
+          <span class="paper-id">2610.18097</span>
         </div>
-        <span class="score-badge">相关性 78/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13268" target="_blank">ConClick: Element-Wise Contrastive Learning Improves GUI Grounding</a>
+        <a href="https://arxiv.org/abs/2610.18097" target="_blank">APT: Feedback-Driven Agentic Post-Training for Text-to-Image Generation</a>
       </h3>
-      <p class="paper-title-zh">ConClick：逐元素对比学习提升GUI定位能力</p>
-      <p class="paper-authors">Ruotian Zhang, Yuhui Zhang, Junzhe Huang, Yu Xin, Hehe Fan 等 (6 位作者)</p>
+      <p class="paper-title-zh">APT：面向文本到图像生成的反驱动机器人式后训练</p>
+      <p class="paper-authors">Sirui Zhang, Fangyun Wei, Dong Chen, Jinjing Zhao, Yitong Wang 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文系统分析了GUI定位模型的错误模式，发现错误点击主要集中于非目标界面元素而非背景，并据此提出了对比学习框架ConClick及配套数据集ConClick-Data，显著提升了GUI定位准确率。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先系统评估了10个定位模型在5个数据集上的表现，识别出模型反复选中相同干扰元素的错误模式。基于此，提出ConClick对比学习框架，构建了包含4,292个挑战性目标-干扰对的数据集ConClick-Data，并采用互补的列表排序和成对间隔目标训练模型。此外还提出ReClick推理时策略，通过重新审视候选区域并比较竞争候选的预测来进一步提升准确率。</div>
-        <div class="summary-section"><strong>关键发现:</strong> ConClick将Qwen3-VL-8B在ScreenSpot-Pro上的定位准确率从54.71%提升至66.03%，在MMBench-GUI L2上从83.72%提升至86.28%，在OSWorld-G上从63.33%提升至70.20%，优于同等规模骨干网络的先前方法。ReClick推理策略在三个基准上进一步带来平均2.96个百分点的准确率提升。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出APT（Agentic Post-Training），一个全自动后训练框架，能够根据基础模型不断演进的能力画像自适应地进行后训练，无需人工策划训练数据和固定训练分布。</div>
+        <div class="summary-section"><strong>方法:</strong> APT协调三个智能体：一个从用户需求构建评估集，一个诊断模型特有的优势与失败模式，另一个生成带有自适应提示分布的强化学习数据，重点强化表现不足的能力。通过反复评估、诊断和更新生成器，当前模型的行为塑造其下一轮训练任务，形成受递归自我改进启发的反馈闭环。针对无用户指定评估场景的通用设置，还开发了一个评估工具以支持广泛多样的评估集生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个基础模型、基准测试和生成架构上的实验表明，APT具有模型无关性、基准无关性、架构无关性，并且完全自动化。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>GUI grounding, the task of locating the interface element specified by a user instruction, is a fundamental capability of GUI agents. However, existing grounding models remain error-prone, often causing downstream task failures. We systematically evaluate 10 grounding models across five datasets and identify a major error pattern: most incorrect clicks hit non-target interface elements rather than the background, with different models repeatedly selecting the same distractors. Motivated by these findings, we propose ConClick, a contrastive learning framework that teaches models to distinguish the target element from plausible distractors. We construct ConClick-Data, a dataset containing 4,292 challenging target-distractor pairs, and train the model using complementary listwise ranking and pairwise margin objectives. ConClick improves the grounding accuracy of Qwen3-VL-8B from 54.71% to 66.03% on ScreenSpot-Pro, from 83.72% to 86.28% on MMBench-GUI L2, and from 63.33% to 70.20% on OSWorld-G, outperforming prior methods built on the same or similarly sized backbones. We further introduce ReClick, an inference-time strategy that revisits promising regions and compares predictions across competing candidates, yielding an additional 2.96 percentage-point improvement in average accuracy across the three benchmarks. Together, our analysis, dataset, and methods provide both empirical insights and practical tools for building more reliable GUI agents. Data and code are available at https://github.com/zhangruotian/ConClick.</p>
+        <p>Post-training is crucial for improving text-to-image models, yet existing pipelines typically rely on manually curated training data and fixed training distributions. We introduce APT (Agentic Post-Training), a fully automated framework that adaptively post-trains a base model according to its evolving capability profile. APT coordinates three agents to construct evaluation sets from user requirements, diagnose model-specific strengths and failure modes, and generate reinforcement learning data with an adaptive prompt distribution that emphasizes underperforming capabilities. By repeatedly evaluating, diagnosing, and updating the generator, APT lets the current model's behavior shape its next training tasks, forming a feedback loop inspired by recursive self-improvement. For general-purpose settings without user-specified evaluation scenarios, we further develop an evaluation harness that enables broad and diverse evaluation set generation. Experiments across multiple base models, benchmarks, and generation architectures demonstrate that APT is model-agnostic, benchmark-agnostic, architecture-agnostic, and fully automated.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13268" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13268.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.13412</span>
-        </div>
-        <span class="score-badge">相关性 72/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.13412" target="_blank">TextVBench: Evaluating Text Rendering and Preservation in Video Generation</a>
-      </h3>
-      <p class="paper-title-zh">TextVBench：评估视频生成中的文本渲染与保持</p>
-      <p class="paper-authors">Ruiqiang Zhang, Hengyi Wang, Chang Liu, Guanjie Wang, Zehua Ma 等 (6 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了TextVBench，一个将视觉文本评估形式化为多目标、多实例时空对应问题的基准与评估框架，包含T2V和Ref2V两个互补赛道，用于衡量视频生成中文本的创建、维持与保持能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架采用目标条件化的候选选择策略，而非无约束的VLM转录，并支持一个目标映射到多个OCR区域。它将帧级空间保真度与跨帧时间保真度分离评估，使用长度加权调和分数汇总各项因素，并通过额外文本诊断揭示单一OCR分数所掩盖的失败模式。基准围绕受控的文本、布局、载体和运动属性进行组织，使总体分数可追溯到具体的能力限制。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在评估的模型运行中，MiniMax-H3在T2V赛道取得68.32的TextVScore，而最强的Ref2V分数为56.51。属性切片分析显示，随着同时出现的参考文本区域数量增加，性能出现显著下降。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Modern video generators can synthesize convincing scenes while rendering a few characters incorrectly, omitting requested text, or changing it across frames. Measuring these failures is harder than applying OCR independently to each frame: when a scene contains multiple text targets and multiple noisy OCR regions, the evaluator must first determine which observation belongs to which intended text. We introduce TextVBench, a benchmark and evaluation framework that formulates visual-text evaluation as a multi-target, multi-instance spatiotemporal correspondence problem. TextVBench contains two complementary tracks: TextVBench-T2V measures the creation and maintenance of prompt-specified text, while TextVBench-Ref2V measures preservation of text from reference images. Both tracks use target-conditioned candidate selection rather than unconstrained VLM transcription, support one target mapping to multiple OCR regions, and separate frame-level spatial fidelity from cross-frame temporal fidelity. A length-weighted harmonic score summarizes these factors, while extra-text diagnostics expose failure modes hidden by a single OCR score. The benchmark is organized around controlled text, layout, carrier, and motion attributes so that aggregate scores can be traced back to specific capability limits. Across the evaluated model runs, MiniMax-H3 reaches a T2V TextVScore of 68.32, while the strongest Ref2V score is 56.51; attribute slices reveal a pronounced drop as the number of simultaneous reference text regions increases.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.13412" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.13412.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.18097" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.18097.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
