@@ -1,0 +1,166 @@
+[
+  {
+    "id": "2610.20603",
+    "title": "CommerceGen-Studio: An End-to-End Framework for Commercial-Grade Main-Image Generation",
+    "abstract": "We present CommerceGen-Studio, an end-to-end framework for generating commercial-grade main images for e-commerce Stock Keeping Units (SKUs). Our framework is organized along a three-stage pipeline of information extraction, semantic rewriting, and multi-condition generation: Prompt-Eval-Refine-Loop Agent (PERL-Agent) distills heterogeneous SKU metadata into concise selling-point text lists through an iterative closed loop of VLM and LLM roles scored by a reference-free rubric. Layout Thinker Optimization (LTO) aligns the rewriter with both caption and rendered-image quality via alternating domain-specific policy optimization. SKU-DiT, trained under Reinforce-Distill-Reinforce (RDR) progressive training, conditions jointly on the white-background product image, the trademark crop, and the structured layout to hold subject fidelity, trademark integrity, and character-level text accuracy together. The framework runs in production at a scale of millions of main images per day with a latency of a few seconds per image, which we believe makes it among the first systems of this kind to operate at commercial scale. We also release CommerceGen-Bench, a benchmark of hard cases collected from live traffic across all product categories. On it, our framework achieves the highest overall scores among the evaluated open-source baselines on both editing tracks, with and without prompt enhancement. It also matches much larger closed-source models, and beats several of them at Instruction Following and Product Integration - the two properties that determine whether an image can be published.",
+    "authors": [
+      "Xiaoli Xu",
+      "Zhengtao Wu",
+      "Zhengze Xu",
+      "Tao Liu",
+      "Yongchao Du",
+      "Zuan Gao",
+      "Xingjian Wang",
+      "Hao Yan",
+      "Mengting Chen",
+      "Wei Li",
+      "Bo Zheng"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.20603.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.20603",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "CommerceGen-Studio：面向商业级主图生成的端到端框架",
+      "core_contribution": "提出了一个端到端的商业级电商主图生成框架CommerceGen-Studio，通过信息抽取、语义改写和多条件生成三阶段流水线，实现了每日百万级主图的生产部署，并发布了CommerceGen-Bench基准测试。",
+      "method": "框架由三阶段流水线组成：首先，PERL-Agent通过VLM与LLM角色的迭代闭环，将异构SKU元数据蒸馏为简洁卖点文本列表，并由无参考评分标准进行打分；其次，LTO通过交替的领域特定策略优化，使改写器同时对齐标题和渲染图像质量；最后，SKU-DiT在RDR渐进式训练下，联合以白底产品图、商标裁剪图和结构化布局为条件，同时保持主体保真度、商标完整性和字符级文本准确性。",
+      "findings": "该框架已在生产环境中以每天数百万张主图的规模运行，单张图像延迟仅为数秒。在CommerceGen-Bench上，该框架在两种编辑赛道（有/无提示增强）中均取得开源基线最高总分，并能与更大的闭源模型匹敌，在指令遵循和产品整合两个决定图像能否发布的关键指标上超越多个闭源模型。"
+    }
+  },
+  {
+    "id": "2610.20335",
+    "title": "Read, Parse, Describe: Unified Document Parsing with Visual Element Description Generation",
+    "abstract": "Document understanding systems are typically evaluated as separate components via layout analysis, optical text recognition, reading-order prediction, and image captioning. This separation leaves scientific figures, captions, and visual semantics weakly connected, and fails to measure whether a model can produce a single page-level parse that is both structurally faithful and semantically accessible. We introduce Read-Parse-Describe, a unified dataset for document parsing with visual element description generation. Given a page image, models are required to output an ordered list of layout elements containing bounding boxes, semantic labels, reading-order indices, recognized textual content, and alternative text descriptions for visual elements. The benchmark is built from 2,402 documents, comprising 18,163 continuous pages, 125,218 layout elements, and 11,338 visual instances. Besides, we further propose a plug-and-play space-awareness enhancer that reuses multi-layer visual features and injects grid-aware spatial guidance into vision-language tokens for layout-aware generation. Experiments across end-to-end VLMs and pipeline parsers show that existing systems still struggle to jointly recover reading order and visual semantics, while our enhanced model achieves strong joint performance. These results highlight the need to move beyond isolated document parsing modules toward unified models that jointly read, parse, and describe complex documents. The new dataset and code will be made publicly available at https://github.com/yufanchen96/RPD",
+    "authors": [
+      "Yuheng Chen",
+      "Yufan Chen",
+      "Zhuojun Cai",
+      "Ruiping Liu",
+      "Junwei Zheng",
+      "Jiale Wei",
+      "Di Wen",
+      "Weijia Fan",
+      "Kunyu Peng",
+      "Jiaming Zhang",
+      "Rainer Stiefelhagen"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.20335.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.20335",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "阅读、解析、描述：基于视觉元素描述生成的统一文档解析",
+      "core_contribution": "该论文提出了一个名为Read-Parse-Describe的统一数据集和基准，用于文档解析与视觉元素描述生成，并设计了一种即插即用的空间感知增强器，推动文档理解从孤立模块走向联合“阅读、解析、描述”的统一模型。",
+      "method": "论文构建了包含2,402份文档、18,163个连续页面、125,218个布局元素和11,338个视觉实例的统一数据集，要求模型在给定页面图像时输出包含边界框、语义标签、阅读顺序索引、文本内容及视觉元素替代文本描述的有序布局元素列表。此外，作者提出了一种即插即用的空间感知增强器，通过复用多层视觉特征并向视觉-语言令牌注入网格感知的空间引导，实现布局感知的生成。实验在端到端视觉语言模型和流水线解析器上进行评估。",
+      "findings": "实验表明，现有系统仍难以同时恢复阅读顺序和视觉语义，而所提出的增强模型在联合性能上表现强劲。结果凸显了从孤立的文档解析模块转向统一模型的必要性，该统一模型能够联合阅读、解析和描述复杂文档。新数据集和代码将在 https://github.com/yufanchen96/RPD 公开。"
+    }
+  },
+  {
+    "id": "2610.19882",
+    "title": "BluePixel: Toward Native 4K Agentic Image Editing",
+    "abstract": "Instruction-driven image editing has reached native 4K, yet how such editors are trained remains undisclosed, and pretraining one from scratch is beyond most teams. The task itself compounds the difficulty: a single end-to-end editor cannot make precise parametric adjustments, match specialized experts, or interpret the vague instructions users actually write. We argue that 4K editing is a system problem rather than a single-model problem, and present BluePixel, which couples a native-4K editing model with an agent harness; the complete training recipe is disclosed in this paper. The model makes 4K training practical: it turns a 1K-pretrained editor into a native-4K one through progressive VAE adaptation that keeps 4K training as affordable as 1K, absorbs a long tail of vertical editing skills through continual learning, and refines the aesthetic-fidelity trade-off with reinforcement learning. Distillation via source-anchored target projection (SATP) then compresses 50 denoising steps to 4, completing a 4K edit in 8.7 s on a single Kunlunxin P800 XPU while preserving task success rate and background consistency. The harness, BluePixel Agent, makes editing controllable: it decomposes user instructions into specialist and general operations, verifies every result with the same reward model that guided training, and retries within bounded attempts. On VINS-4KEval++ (3,305 native-4K cases), BluePixel ranks second among seven models, behind only GPT Image 2 in non-edited-region consistency.",
+    "authors": [
+      "Shanyan Guan",
+      "Shiyu Li",
+      "Xin Li",
+      "Zhizhou Chen",
+      "Yunzhe Xu",
+      "Yuehao Liu",
+      "Ruixue Shen",
+      "Shiju Zhang",
+      "Min Jin",
+      "Qiang Liu",
+      "Junbo Liu",
+      "Penggang Shi",
+      "Sheng Sun",
+      "Xiao Wang",
+      "Yong Zhang",
+      "Zhongang Qi",
+      "Wei Li",
+      "Chao Ma",
+      "Ying Tai",
+      "Yanhao Ge"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.19882.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.19882",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "BluePixel：迈向原生4K智能体图像编辑",
+      "core_contribution": "提出BluePixel系统，将原生4K图像编辑视为系统级问题而非单一模型问题，通过原生4K编辑模型与智能体框架相结合，并公开完整训练方案，使4K编辑训练成本与1K相当。",
+      "method": "通过渐进式VAE适配将1K预训练编辑器转化为原生4K模型，利用持续学习吸收长尾垂直编辑技能，并用强化学习优化美学与保真度的权衡；再通过源锚定目标投影（SATP）蒸馏将50步去噪压缩至4步。配套的BluePixel Agent将用户指令分解为专家与通用操作，用训练时的奖励模型验证结果并在有限次数内重试。",
+      "findings": "在单块昆仑芯P800 XPU上完成一次4K编辑仅需8.7秒，同时保持任务成功率和背景一致性。在VINS-4KEval++（3,305个原生4K案例）上，BluePixel在七个模型中排名第二，在非编辑区域一致性上仅次于GPT Image 2。"
+    }
+  },
+  {
+    "id": "2610.20608",
+    "title": "Representation Conditioning for Generation",
+    "abstract": "Representation-alignment methods effectively accelerate the diffusion transformer training. REPA, for example, uses a pretrained vision encoder to supervise an intermediate layer through an MLP projection head which is discarded after training. It aims to import semantics from the vision encoder to the diffusion backbone. While this objective is achieved at early layers by back-propagating the alignment loss, there is no guarantee that later layers, supervised by the velocity prediction loss alone, can well access such semantics. We propose a simple solution, representation conditioning (RECON), to improve semantics in later layers. During training, we feed the pretrained vision encoder tokens into later layers; during inference, because we no longer have the clean image, we reuse the MLP head (as a proxy to the vision encoder) and project its output tokens to the later layers. Our method adds no parameters and leads to much faster convergence: RECON is $63\\times$ faster than SiT and $25\\times$ faster than REPA. Code is available at https://github.com/saeidrazavi/RECON",
+    "authors": [
+      "Saeed Razavi",
+      "Xingjian Leng",
+      "Liang Zheng"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.20608.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.20608",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向生成的表示条件化",
+      "core_contribution": "提出表示条件化（RECON），通过将预训练视觉编码器的token注入扩散Transformer的后层，解决了表示对齐方法中后层难以获取语义信息的问题，在不增加参数的情况下显著加速了训练收敛。",
+      "method": "RECON在训练阶段将预训练视觉编码器的token直接馈入扩散Transformer的后层，使后层能够直接访问编码器提取的语义信息；在推理阶段，由于无法获取干净图像，复用训练时被丢弃的MLP投影头作为视觉编码器的代理，将其输出token投影到后层。该方法不引入额外参数，可与现有表示对齐方法（如REPA）结合使用。",
+      "findings": "RECON显著加快了收敛速度：相比SiT加速63倍，相比REPA加速25倍，同时不增加任何额外参数，有效提升了后层对语义信息的获取能力。"
+    }
+  },
+  {
+    "id": "2610.20533",
+    "title": "Generative Representation Learning for Scalable Latent Tokenization",
+    "abstract": "We introduce an approach for self-supervised representation learning designed to be used as a tokenizer for generative modeling. Our objective supervises a representation loss by factorizing the pointwise mutual information of the data, which we estimate by taking information differences between conditional predictions from a learned generative model. We justify our algorithm theoretically and empirically, demonstrating that our generative approach to representation learning avoids dimensional collapse and feature suppression in cases where commonly used methods like DINO and LeJEPA fail. Moreover, we show our representation learning technique is scalable; expending more compute leads to predictably better latent tokenization. For the first time, we perform a careful analysis of the combined flop efficiency of tokenizer and generative model and demonstrate that our approach is a compute-optimal improvement over direct diffusion for pixel-space generation, obtaining an FID-50K of 2.18 with JiT-L. Applied to ImageNet and the text-to-image dataset GPIC, we show tokenizer encoder scaling laws for diffusability, where extrapolating our approach achieves representations in 7x fewer FLOPs than DINOv2 on ImageNet and 8x fewer FLOPs than WebSSL on GPIC.",
+    "authors": [
+      "Alan Baade",
+      "Kyle Sargent",
+      "Vincent Sitzmann",
+      "Eric Ryan Chan",
+      "Justin Johnson",
+      "Li Fei-Fei",
+      "Gordon Wetzstein"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.20533.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.20533",
+    "primary_category": "cs.LG",
+    "score": 85,
+    "summary": {
+      "title_zh": "面向可扩展潜在标记化的生成式表示学习",
+      "core_contribution": "提出一种自监督表示学习方法，可作为生成建模的标记器，通过生成式建模视角避免维度坍缩和特征抑制，并首次系统分析了标记器与生成模型的联合计算效率，证明其在像素空间生成上优于直接扩散模型。",
+      "method": "该方法通过分解数据逐点互信息来监督表示损失，其中互信息由学习到的生成模型的条件预测之间的信息差估计得到。算法在理论和实验上均得到验证，能够避免DINO和LeJEPA等常用方法在特定情况下出现的维度坍缩和特征抑制问题。该表示学习技术具有可扩展性，增加计算量可预测地提升潜在标记化质量。",
+      "findings": "在ImageNet和文本到图像数据集GPIC上，该方法展现出标记器编码器的扩散性缩放定律。使用JiT-L模型在像素空间生成上取得FID-50K为2.18，优于直接扩散。外推表明，在ImageNet上达到相同表示所需FLOPs比DINOv2少7倍，在GPIC上比WebSSL少8倍。"
+    }
+  }
+]

@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-14</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 图形学: 1</p>
+        <p class="date">📅 2026-10-15</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,126 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.18865</span>
-        </div>
-        <span class="score-badge">相关性 92/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.18865" target="_blank">PLAYGROUND: Progressive Layout Generation with Render-Grounded Planning</a>
-      </h3>
-      <p class="paper-title-zh">PlayGround：基于渲染感知规划的渐进式布局生成</p>
-      <p class="paper-authors">Jaeho Lee, Junhwan Heo, Junghyun Park, WonJun Moon, Eunju Yang 等 (8 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种渐进式布局生成框架PlayGround，能够根据当前渲染画布动态调整设计规划，克服了现有MLLM方法中高层规划预先确定、难以适应设计演变的局限。</div>
-        <div class="summary-section"><strong>方法:</strong> PlayGround构建了一个由渐进式规划器、布局生成器和视觉验证器组成的渐进式设计循环，并以结构感知检索器为引导。给定初始无序元素集后，结构感知检索器首先推断粗略布局结构并检索结构相似的参考设计；随后每一轮中，渐进式规划器检查当前渲染画布与剩余元素，形成下一个功能组并规划其构图，布局生成器预测可编辑的布局属性，视觉验证器评估渲染候选并在需要时提供反馈。为训练渐进式规划器，作者构建了一个两阶段数据生成流程，从已完成设计中提取功能组和轮级规划轨迹。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Crello和LICA数据集上的实验表明，PlayGround优于现有方法，验证了其有效性。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Generating editable graphic designs requires arranging visual and textual elements into a coherent composition while preserving their content and editability. Although recent MLLM-based approaches employ iterative generation and visual refinement to reflect the real-world design workflows, their high-level plans are predetermined prior to execution, limiting their adaptability as the design evolves. To address this limitation, we propose PlayGround, a progressive layout generation framework that dynamically adapts to the current rendered canvas. PlayGround establishes a progressive design loop comprising a Progressive Planner, a Layout Generator, and a Visual Verifier, guided by a Structure-Aware Retriever. Given an initial set of unordered elements, the Structure-Aware Retriever initially infers a coarse layout structure to retrieve structurally similar reference designs. Subsequently, at each turn, the Progressive Planner examines the current rendered canvas alongside the remaining elements, forms the next functional group, and plans its composition. The Layout Generator then predicts editable layout attributes, while the Visual Verifier evaluates rendered candidates and provides feedback when refinement is necessary. To train the Progressive Planner with step-wise supervision, we construct a two-stage data generation pipeline that extracts functional groups and turn-level planning trajectories from completed designs. Experiments on Crello and LICA demonstrate the effectiveness of PlayGround over existing methods. Our code and weights will be publicly released.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.18865" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.18865.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.18763</span>
-        </div>
-        <span class="score-badge">相关性 92/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.18763" target="_blank">LayerCanvas: Infographic Generation in AI Learning Assistants via Hybrid Layer-Set Diffusion</a>
-      </h3>
-      <p class="paper-title-zh">LayerCanvas：基于混合图层集扩散的AI学习助手信息图生成</p>
-      <p class="paper-authors">Keshav Gupta, Jeremy Owen, Christopher Lloyd, Shaunak Mishra, Manav Sharma</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出LayerCanvas，一种混合方法，保留SVG作为语义、结构和排版程序，同时利用扩散模型对非文本内容进行美学化处理，实现了兼具丰富视觉效果、精确排版和可编辑性的信息图自动生成。</div>
-        <div class="summary-section"><strong>方法:</strong> LayerCanvas将SVG元素按z序划分为互不重叠的元素集合，并通过通信的并行RGB生成流进行处理，而非生成单一扁平化栅格图像。生成的各图层可独立编辑并可确定性重组，文本则从保留的矢量元数据中渲染。该方法将丰富的视觉合成与精确排版及局部编辑能力相结合。</div>
-        <div class="summary-section"><strong>关键发现:</strong> LayerCanvas在文本保真度上大幅优于当前最先进的栅格图像生成器，同时实现了最高的整体美学质量。研究进一步展示了非破坏性内容编辑、本地化、素材复用和动画等应用能力。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Online learning platforms are increasingly deploying AI assistants to provide personalized, on-demand tutoring. These can leverage infographics to communicate complex information and improve the learning experience. However, automating effective infographic generation remains a challenging task, requiring a combination of visual richness with precise typography, structured layouts, and continued editability. Existing representation methods satisfy these goals only in part: Scalable Vector Graphics (SVG) representations preserve geometry, hierarchy, and text but provide limited aesthetic flexibility, while raster diffusion models produce richer appearances by flattening content and layout into a single image. Conditioning a diffusion model on a rasterized SVG does not resolve this conflict because the raster preserves approximate placement but discards element ownership, occlusion relationships, and the structure needed to modify and recompose the result. We introduce LayerCanvas, a hybrid approach that retains SVG as the semantic, structural, and typographic program while using diffusion to aestheticize non-text content. Rather than generating one flattened raster, LayerCanvas partitions SVG elements into z-ordered sets of mutually non-overlapping elements and processes them through communicating parallel RGB generation streams. The resulting layers are independently editable and deterministically recomposed, while text is rendered from preserved vector metadata. Our approach combines rich visual synthesis with accurate typography and localized editing. LayerCanvas substantially improves text fidelity over state-of-the-art raster image generators while achieving the highest overall aesthetic quality. We further demonstrate non-destructive content editing, localization, asset reuse, and animation.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.18763" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.18763.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">图形学</span>
-          <span class="paper-id">2610.17905</span>
-        </div>
-        <span class="score-badge">相关性 92/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.17905" target="_blank">Content-Edited Layout Generation for Graphic Design</a>
-      </h3>
-      <p class="paper-title-zh">面向平面设计的内容编辑式布局生成</p>
-      <p class="paper-authors">Shirong Yang, Zheyi Pan, Ying Cao</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了一种新的条件布局生成任务——内容编辑式布局生成（CELG），将输入图像视为可编辑的视觉资产，在文本设计意图和前景需求的条件下同时生成适配的背景及其布局，并构建了相应数据集InstructEdit和双流多模态流匹配模型。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先提出Search-Compare-Edit（SCE）数据构建框架，从专业设计画布出发合成编辑前的源图像和编辑指令，构建了包含对齐源图像、目标画布、指令和布局的InstructEdit数据集。然后训练了一个双流多模态流匹配模型，将预训练图像编辑器与布局流变换器耦合，在统一框架内同时实现背景编辑和布局生成。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验系统性地证明了CELG作为一个独立任务的价值，以及所提出模型在内容编辑式布局生成任务上的性能优势，表明该统一框架更贴近真实世界的设计工作流程。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>In this paper, we formulate a novel form of conditional layout generation for graphic design, termed content-edited layout generation(CELG). CELG extends conventional content-aware layout generation (CLG), which generates a foreground layout for a fixed background image. The key distinction is that CELG treats the input image as an editable visual asset and, conditioned on a textual design intention and a foreground requirement that may be empty, produces an adapted background together with its layout. To study this task, we introduce Search-Compare-Edit(SCE), a data construction framework that supplies the paired supervision missing from existing design datasets. Starting from professional design canvases and their layouts, SCE synthesizes plausible pre-edit source images and corresponding editing instructions, yielding InstructEdit, a dataset of aligned source images, target canvases, instructions, and layouts. Based on the generated data, we train a two-flow multimodal flow matching model that couples a pretrained image editor with a layout flow transformer, enabling background editing and layout generation simultaneously within a unified framework that more closely reflects real-world design workflows. Our experiments systematically demonstrate the value of CELG as a distinct task and the performance advantages of the proposed model.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.17905" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.17905.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.18857</span>
+          <span class="paper-id">2610.20603</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.18857" target="_blank">PixelMoE: Scaling Pixel-Space Diffusion with LLM-Style Mixture-of-Experts</a>
+        <a href="https://arxiv.org/abs/2610.20603" target="_blank">CommerceGen-Studio: An End-to-End Framework for Commercial-Grade Main-Image Generation</a>
       </h3>
-      <p class="paper-title-zh">PixelMoE：以LLM风格混合专家扩展像素空间扩散模型</p>
-      <p class="paper-authors">Ruixiao Dong, Jianmin Bao, Bozhi Luan, Zijie Meng, Xin Tao 等 (9 位作者)</p>
+      <p class="paper-title-zh">CommerceGen-Studio：面向商业级主图生成的端到端框架</p>
+      <p class="paper-authors">Xiaoli Xu, Zhengtao Wu, Zhengze Xu, Tao Liu, Yongchao Du 等 (11 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 该论文证明标准LLM风格的混合专家（MoE）架构可有效迁移至像素空间扩散模型，并提出PixelMoE框架，在不依赖扩散专用路由机制或辅助路由目标的情况下，实现像素空间模型容量的稀疏扩展。</div>
-        <div class="summary-section"><strong>方法:</strong> PixelMoE采用标准Token-Choice路由与细粒度路由专家实现输入自适应的稀疏计算，同时引入共享专家捕获通用表示，并使用基于偏置的负载均衡策略。此外，论文提出像素空间层次化流匹配（Pixel-Space Hierarchical Flow Matching），在去噪轨迹中从全局结构形成到细粒度细节精炼逐步变化空间分辨率。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在相近活跃参数量下，PixelMoE在不同模型规模上均持续优于稠密对应模型，证明了像素空间中稀疏容量扩展的有效性。在类别条件ImageNet-1K上，PixelMoE在256×256分辨率下取得FID 1.47，在512×512下取得FID 1.53，且未使用表示对齐或感知损失，与领先的像素空间和潜在空间生成模型相比具有竞争力。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个端到端的商业级电商主图生成框架CommerceGen-Studio，通过信息抽取、语义改写和多条件生成三阶段流水线，实现了每日百万级主图的生产部署，并发布了CommerceGen-Bench基准测试。</div>
+        <div class="summary-section"><strong>方法:</strong> 框架由三阶段流水线组成：首先，PERL-Agent通过VLM与LLM角色的迭代闭环，将异构SKU元数据蒸馏为简洁卖点文本列表，并由无参考评分标准进行打分；其次，LTO通过交替的领域特定策略优化，使改写器同时对齐标题和渲染图像质量；最后，SKU-DiT在RDR渐进式训练下，联合以白底产品图、商标裁剪图和结构化布局为条件，同时保持主体保真度、商标完整性和字符级文本准确性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 该框架已在生产环境中以每天数百万张主图的规模运行，单张图像延迟仅为数秒。在CommerceGen-Bench上，该框架在两种编辑赛道（有/无提示增强）中均取得开源基线最高总分，并能与更大的闭源模型匹敌，在指令遵循和产品整合两个决定图像能否发布的关键指标上超越多个闭源模型。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Pixel-space diffusion models provide an appealing alternative to latent-space diffusion models by directly modeling raw images without relying on a learned tokenizer. However, scaling pixel-space models has predominantly followed dense strategies, tightly coupling model capacity with active computation. In this work, we show that standard LLM-style Mixture-of-Experts (MoE) architectures can be effectively transferred to pixel-space diffusion. Building on this finding, we introduce PixelMoE, a pixel-space generative framework that sparsely scales model capacity with standard LLM-style MoE, without diffusion-specific routing mechanisms or auxiliary routing objectives. Specifically, PixelMoE combines standard Token-Choice (TC) routing with fine-grained routed experts for input-adaptive sparse computation, a shared expert for capturing common representations, and a bias-based load-balancing strategy. To complement sparse capacity scaling, PixelMoE further introduces Pixel-Space Hierarchical Flow Matching, which varies spatial resolution along the denoising trajectory from global structure formation to fine-grained detail refinement. At comparable active parameter counts, PixelMoE consistently outperforms its dense counterparts across model scales, demonstrating effective sparse capacity scaling in pixel space. On class-conditional ImageNet-1K, PixelMoE achieves FID scores of 1.47 at 256x256 and 1.53 at 512x512 without representation alignment or perceptual losses, comparing favorably with leading pixel-space and latent-space generative models. Code and models will be released soon.</p>
+        <p>We present CommerceGen-Studio, an end-to-end framework for generating commercial-grade main images for e-commerce Stock Keeping Units (SKUs). Our framework is organized along a three-stage pipeline of information extraction, semantic rewriting, and multi-condition generation: Prompt-Eval-Refine-Loop Agent (PERL-Agent) distills heterogeneous SKU metadata into concise selling-point text lists through an iterative closed loop of VLM and LLM roles scored by a reference-free rubric. Layout Thinker Optimization (LTO) aligns the rewriter with both caption and rendered-image quality via alternating domain-specific policy optimization. SKU-DiT, trained under Reinforce-Distill-Reinforce (RDR) progressive training, conditions jointly on the white-background product image, the trademark crop, and the structured layout to hold subject fidelity, trademark integrity, and character-level text accuracy together. The framework runs in production at a scale of millions of main images per day with a latency of a few seconds per image, which we believe makes it among the first systems of this kind to operate at commercial scale. We also release CommerceGen-Bench, a benchmark of hard cases collected from live traffic across all product categories. On it, our framework achieves the highest overall scores among the evaluated open-source baselines on both editing tracks, with and without prompt enhancement. It also matches much larger closed-source models, and beats several of them at Instruction Following and Product Integration - the two properties that determine whether an image can be published.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.18857" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.18857.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.20603" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20603.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +268,126 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.18097</span>
+          <span class="paper-id">2610.20335</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.18097" target="_blank">APT: Feedback-Driven Agentic Post-Training for Text-to-Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.20335" target="_blank">Read, Parse, Describe: Unified Document Parsing with Visual Element Description Generation</a>
       </h3>
-      <p class="paper-title-zh">APT：面向文本到图像生成的反驱动机器人式后训练</p>
-      <p class="paper-authors">Sirui Zhang, Fangyun Wei, Dong Chen, Jinjing Zhao, Yitong Wang 等 (8 位作者)</p>
+      <p class="paper-title-zh">阅读、解析、描述：基于视觉元素描述生成的统一文档解析</p>
+      <p class="paper-authors">Yuheng Chen, Yufan Chen, Zhuojun Cai, Ruiping Liu, Junwei Zheng 等 (11 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出APT（Agentic Post-Training），一个全自动后训练框架，能够根据基础模型不断演进的能力画像自适应地进行后训练，无需人工策划训练数据和固定训练分布。</div>
-        <div class="summary-section"><strong>方法:</strong> APT协调三个智能体：一个从用户需求构建评估集，一个诊断模型特有的优势与失败模式，另一个生成带有自适应提示分布的强化学习数据，重点强化表现不足的能力。通过反复评估、诊断和更新生成器，当前模型的行为塑造其下一轮训练任务，形成受递归自我改进启发的反馈闭环。针对无用户指定评估场景的通用设置，还开发了一个评估工具以支持广泛多样的评估集生成。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多个基础模型、基准测试和生成架构上的实验表明，APT具有模型无关性、基准无关性、架构无关性，并且完全自动化。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文提出了一个名为Read-Parse-Describe的统一数据集和基准，用于文档解析与视觉元素描述生成，并设计了一种即插即用的空间感知增强器，推动文档理解从孤立模块走向联合“阅读、解析、描述”的统一模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 论文构建了包含2,402份文档、18,163个连续页面、125,218个布局元素和11,338个视觉实例的统一数据集，要求模型在给定页面图像时输出包含边界框、语义标签、阅读顺序索引、文本内容及视觉元素替代文本描述的有序布局元素列表。此外，作者提出了一种即插即用的空间感知增强器，通过复用多层视觉特征并向视觉-语言令牌注入网格感知的空间引导，实现布局感知的生成。实验在端到端视觉语言模型和流水线解析器上进行评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，现有系统仍难以同时恢复阅读顺序和视觉语义，而所提出的增强模型在联合性能上表现强劲。结果凸显了从孤立的文档解析模块转向统一模型的必要性，该统一模型能够联合阅读、解析和描述复杂文档。新数据集和代码将在 https://github.com/yufanchen96/RPD 公开。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Post-training is crucial for improving text-to-image models, yet existing pipelines typically rely on manually curated training data and fixed training distributions. We introduce APT (Agentic Post-Training), a fully automated framework that adaptively post-trains a base model according to its evolving capability profile. APT coordinates three agents to construct evaluation sets from user requirements, diagnose model-specific strengths and failure modes, and generate reinforcement learning data with an adaptive prompt distribution that emphasizes underperforming capabilities. By repeatedly evaluating, diagnosing, and updating the generator, APT lets the current model's behavior shape its next training tasks, forming a feedback loop inspired by recursive self-improvement. For general-purpose settings without user-specified evaluation scenarios, we further develop an evaluation harness that enables broad and diverse evaluation set generation. Experiments across multiple base models, benchmarks, and generation architectures demonstrate that APT is model-agnostic, benchmark-agnostic, architecture-agnostic, and fully automated.</p>
+        <p>Document understanding systems are typically evaluated as separate components via layout analysis, optical text recognition, reading-order prediction, and image captioning. This separation leaves scientific figures, captions, and visual semantics weakly connected, and fails to measure whether a model can produce a single page-level parse that is both structurally faithful and semantically accessible. We introduce Read-Parse-Describe, a unified dataset for document parsing with visual element description generation. Given a page image, models are required to output an ordered list of layout elements containing bounding boxes, semantic labels, reading-order indices, recognized textual content, and alternative text descriptions for visual elements. The benchmark is built from 2,402 documents, comprising 18,163 continuous pages, 125,218 layout elements, and 11,338 visual instances. Besides, we further propose a plug-and-play space-awareness enhancer that reuses multi-layer visual features and injects grid-aware spatial guidance into vision-language tokens for layout-aware generation. Experiments across end-to-end VLMs and pipeline parsers show that existing systems still struggle to jointly recover reading order and visual semantics, while our enhanced model achieves strong joint performance. These results highlight the need to move beyond isolated document parsing modules toward unified models that jointly read, parse, and describe complex documents. The new dataset and code will be made publicly available at https://github.com/yufanchen96/RPD</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.18097" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.18097.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.20335" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20335.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.19882</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.19882" target="_blank">BluePixel: Toward Native 4K Agentic Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">BluePixel：迈向原生4K智能体图像编辑</p>
+      <p class="paper-authors">Shanyan Guan, Shiyu Li, Xin Li, Zhizhou Chen, Yunzhe Xu 等 (20 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出BluePixel系统，将原生4K图像编辑视为系统级问题而非单一模型问题，通过原生4K编辑模型与智能体框架相结合，并公开完整训练方案，使4K编辑训练成本与1K相当。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过渐进式VAE适配将1K预训练编辑器转化为原生4K模型，利用持续学习吸收长尾垂直编辑技能，并用强化学习优化美学与保真度的权衡；再通过源锚定目标投影（SATP）蒸馏将50步去噪压缩至4步。配套的BluePixel Agent将用户指令分解为专家与通用操作，用训练时的奖励模型验证结果并在有限次数内重试。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在单块昆仑芯P800 XPU上完成一次4K编辑仅需8.7秒，同时保持任务成功率和背景一致性。在VINS-4KEval++（3,305个原生4K案例）上，BluePixel在七个模型中排名第二，在非编辑区域一致性上仅次于GPT Image 2。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Instruction-driven image editing has reached native 4K, yet how such editors are trained remains undisclosed, and pretraining one from scratch is beyond most teams. The task itself compounds the difficulty: a single end-to-end editor cannot make precise parametric adjustments, match specialized experts, or interpret the vague instructions users actually write. We argue that 4K editing is a system problem rather than a single-model problem, and present BluePixel, which couples a native-4K editing model with an agent harness; the complete training recipe is disclosed in this paper. The model makes 4K training practical: it turns a 1K-pretrained editor into a native-4K one through progressive VAE adaptation that keeps 4K training as affordable as 1K, absorbs a long tail of vertical editing skills through continual learning, and refines the aesthetic-fidelity trade-off with reinforcement learning. Distillation via source-anchored target projection (SATP) then compresses 50 denoising steps to 4, completing a 4K edit in 8.7 s on a single Kunlunxin P800 XPU while preserving task success rate and background consistency. The harness, BluePixel Agent, makes editing controllable: it decomposes user instructions into specialist and general operations, verifies every result with the same reward model that guided training, and retries within bounded attempts. On VINS-4KEval++ (3,305 native-4K cases), BluePixel ranks second among seven models, behind only GPT Image 2 in non-edited-region consistency.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.19882" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.19882.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.20608</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.20608" target="_blank">Representation Conditioning for Generation</a>
+      </h3>
+      <p class="paper-title-zh">面向生成的表示条件化</p>
+      <p class="paper-authors">Saeed Razavi, Xingjian Leng, Liang Zheng</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出表示条件化（RECON），通过将预训练视觉编码器的token注入扩散Transformer的后层，解决了表示对齐方法中后层难以获取语义信息的问题，在不增加参数的情况下显著加速了训练收敛。</div>
+        <div class="summary-section"><strong>方法:</strong> RECON在训练阶段将预训练视觉编码器的token直接馈入扩散Transformer的后层，使后层能够直接访问编码器提取的语义信息；在推理阶段，由于无法获取干净图像，复用训练时被丢弃的MLP投影头作为视觉编码器的代理，将其输出token投影到后层。该方法不引入额外参数，可与现有表示对齐方法（如REPA）结合使用。</div>
+        <div class="summary-section"><strong>关键发现:</strong> RECON显著加快了收敛速度：相比SiT加速63倍，相比REPA加速25倍，同时不增加任何额外参数，有效提升了后层对语义信息的获取能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Representation-alignment methods effectively accelerate the diffusion transformer training. REPA, for example, uses a pretrained vision encoder to supervise an intermediate layer through an MLP projection head which is discarded after training. It aims to import semantics from the vision encoder to the diffusion backbone. While this objective is achieved at early layers by back-propagating the alignment loss, there is no guarantee that later layers, supervised by the velocity prediction loss alone, can well access such semantics. We propose a simple solution, representation conditioning (RECON), to improve semantics in later layers. During training, we feed the pretrained vision encoder tokens into later layers; during inference, because we no longer have the clean image, we reuse the MLP head (as a proxy to the vision encoder) and project its output tokens to the later layers. Our method adds no parameters and leads to much faster convergence: RECON is $63\times$ faster than SiT and $25\times$ faster than REPA. Code is available at https://github.com/saeidrazavi/RECON</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.20608" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20608.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2610.20533</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.20533" target="_blank">Generative Representation Learning for Scalable Latent Tokenization</a>
+      </h3>
+      <p class="paper-title-zh">面向可扩展潜在标记化的生成式表示学习</p>
+      <p class="paper-authors">Alan Baade, Kyle Sargent, Vincent Sitzmann, Eric Ryan Chan, Justin Johnson 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种自监督表示学习方法，可作为生成建模的标记器，通过生成式建模视角避免维度坍缩和特征抑制，并首次系统分析了标记器与生成模型的联合计算效率，证明其在像素空间生成上优于直接扩散模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法通过分解数据逐点互信息来监督表示损失，其中互信息由学习到的生成模型的条件预测之间的信息差估计得到。算法在理论和实验上均得到验证，能够避免DINO和LeJEPA等常用方法在特定情况下出现的维度坍缩和特征抑制问题。该表示学习技术具有可扩展性，增加计算量可预测地提升潜在标记化质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet和文本到图像数据集GPIC上，该方法展现出标记器编码器的扩散性缩放定律。使用JiT-L模型在像素空间生成上取得FID-50K为2.18，优于直接扩散。外推表明，在ImageNet上达到相同表示所需FLOPs比DINOv2少7倍，在GPIC上比WebSSL少8倍。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We introduce an approach for self-supervised representation learning designed to be used as a tokenizer for generative modeling. Our objective supervises a representation loss by factorizing the pointwise mutual information of the data, which we estimate by taking information differences between conditional predictions from a learned generative model. We justify our algorithm theoretically and empirically, demonstrating that our generative approach to representation learning avoids dimensional collapse and feature suppression in cases where commonly used methods like DINO and LeJEPA fail. Moreover, we show our representation learning technique is scalable; expending more compute leads to predictably better latent tokenization. For the first time, we perform a careful analysis of the combined flop efficiency of tokenizer and generative model and demonstrate that our approach is a compute-optimal improvement over direct diffusion for pixel-space generation, obtaining an FID-50K of 2.18 with JiT-L. Applied to ImageNet and the text-to-image dataset GPIC, we show tokenizer encoder scaling laws for diffusability, where extrapolating our approach achieves representations in 7x fewer FLOPs than DINOv2 on ImageNet and 8x fewer FLOPs than WebSSL on GPIC.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.20533" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20533.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
