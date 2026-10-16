@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-10-16</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22282</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22282" target="_blank">Routing Policy Optimization for Online Diffusion Reinforcement Learning</a>
+      </h3>
+      <p class="paper-title-zh">面向在线扩散强化学习的路由策略优化</p>
+      <p class="paper-authors">Qiuhong Shen, Yiding Yang, Yuxin Zhang, Xinwei Huang, Minxuan Lin 等 (11 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出路由策略优化（RPO），将注意力路由转化为随机探索动作，在保留原始确定性采样器的前提下实现扩散模型的在线强化学习对齐，训练效率较Flow-GRPO类方法提升近4倍。</div>
+        <div class="summary-section"><strong>方法:</strong> RPO在少量选定的去噪层级上，让每个查询块保留自身块，并按生成器原生注意力权重采样其他关键块，或保持稠密注意力，从而引入随机探索。采样的路由扰动该过渡的速度场，并用稠密速度周围的高斯似然以得分函数目标对扰动进行评分。进一步采用受控双轨迹估计器：两条轨迹共享相同提示、初始隐变量、路由去噪层级和稠密锚定层，仅采样注意力路由不同，其奖励差异为路由过渡提供优势信号。由于似然对稠密速度本身求导，去除路由后学习到的更新仍然有效，推理时恢复稠密注意力并保留原始确定性采样器。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在文本到图像和文本到视频生成任务上，RPO提升了生成质量，同时训练效率比Flow-GRPO风格的方法高出近4倍。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement learning can align visual generators with reward signals beyond their pretraining objectives, but existing score-function methods typically introduce stochasticity by perturbing the reverse denoising trajectory, leading to costly rollout-based optimization. We instead ask whether stochastic exploration can be introduced inside the generator while preserving its original sampler. Routing Policy Optimization (RPO) answers this question by turning attention routing into a stochastic exploration action. At a few selected denoising levels, each query block keeps its own block and samples further key blocks in proportion to the generator's native attention mass, or keeps dense attention. The sampled route perturbs the velocity of that transition, and a Gaussian likelihood around the dense velocity scores the perturbation with a score-function objective. RPO further uses a controlled two-rollout estimator: two rollouts share the same prompt, initial latent, routed denoising levels, and dense anchor layers, differing only in their sampled attention routes. Their reward difference provides an advantage signal for the routed transitions. Because the likelihood differentiates the dense velocity itself, the learned updates remain effective after routing is removed. At inference, RPO restores dense attention and retains the original deterministic sampler. Experiments on text-to-image and text-to-video generation show that RPO improves generation quality while achieving nearly 4x higher training efficiency than Flow-GRPO-style methods. Please see our project page at https://velox-world.com/rpo for visual results.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22282" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22282.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22264</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22264" target="_blank">SCOPE: Semantic Bounded Credit Optimization for Prompt Engineering in Text-to-image Generation</a>
+      </h3>
+      <p class="paper-title-zh">SCOPE：面向文本到图像生成的提示工程语义边界信用优化</p>
+      <p class="paper-authors">Yufei Jiao, Jinfa Huang, Zeyue Xue, Tianyu Xie, Yuexiao Ma 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SCOPE，一种基于组相对策略优化（GRPO）的目标函数，通过将更新权重与提示中连贯的语义片段（如对象、数量、属性、关系）对齐，提升强化学习驱动的提示改写效果，且无需额外的片段奖励或图像渲染。</div>
+        <div class="summary-section"><strong>方法:</strong> SCOPE让提示改写器在生成增强提示的同时输出其语义划分；对每个语义片段内的策略对数概率变化进行池化，得到该片段内所有token损失的共享系数，同时为每个完整生成保留单一优势值。该方法建立在GRPO之上，将信用分配从单个子词token扩展到语义片段级别，无需单独训练片段奖励模型，也不增加额外的图像生成开销。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在Qwen-Image、SD3和FLUX.1-dev上，SCOPE相比原始GRPO在GeneVal上平均相对提升9.48%，在T2I-CompBench上平均相对提升7.62%。消融实验表明，语义边界划分与片段内池化操作均对性能提升有贡献，说明语义结构可作为强化学习提示工程中有效的归纳偏置。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement learning (RL) enables language models to improve text-to-image (T2I) generation by rewriting prompts for a frozen image generator. Existing methods typically apply a single signal derived from the image to individual subword tokens, although objects, counts, attributes, and relations form coherent semantic spans. We propose SCOPE, an objective based on Group Relative Policy Optimization (GRPO) that aligns update weighting with this structure. The rewriter jointly generates an enhanced prompt and its semantic partition. SCOPE pools shifts in policy log probabilities within each span to derive a shared coefficient for its token losses while retaining a single advantage for each completion. It requires neither separate span rewards nor additional image renders. Across Qwen-Image, SD3, and FLUX.1-dev, SCOPE achieves average relative gains over vanilla GRPO of 9.48% on GeneVal and 7.62% on T2I-CompBench. Ablation studies show that both semantic boundaries and pooling within spans contribute to these gains, supporting semantic structure as a practical inductive bias for prompt engineering with RL.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22264" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22264.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22060</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22060" target="_blank">FeaTok: Feature-Loss Tokenization for Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">FeaTok：面向图像生成的特征损失离散化分词</p>
+      <p class="paper-authors">Zhang Xiaofeng, Samuel Lavoie, Nicolas Beltran-Velez, Jianhao Yuan, Felix Friedrich 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出FeaTok，一种通过重建预训练特征而非像素来训练离散图像token的方法，使token表示更易于生成模型建模，从而提升生成质量与计算效率。</div>
+        <div class="summary-section"><strong>方法:</strong> 受特征预测式自监督学习启发，FeaTok将图像tokenizer的训练目标从像素重建改为重建预训练视觉特征（如SigLIP、DINOv2等提取的特征）。该方法在保持离散token表示的同时，优化其结构以利于下游生成模型学习分布。作者在SigLIP、SigLIP2、DINOv2和DINOv3四种特征提取器上进行了消融实验，并在类条件生成和文本条件生成任务中验证效果。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在类条件生成中，FeaTok推进了质量-计算帕累托前沿，256×256下gFDr6相比最强离散基线降低最多29%，并以少38倍的采样计算量超越最强无引导连续基线RAEv2。FeaTok在无奖励训练下取得高于先前工作的人类偏好奖励模型分数，并在预训练后仅需500次微调更新即在三个文本条件生成基准上超越连续与离散基线。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Discrete image generators learn the distribution of tokens produced by an image tokenizer. These token representations should be easy for generators to model, not merely enable faithful image reconstruction. Yet these tokenizers are commonly trained to reconstruct pixels, which prioritizes low-level fidelity and may disrupt representation structure useful for generation. Motivated by feature-predictive self-supervised learning, we introduce feature-loss tokenization (FeaTok), which trains discrete tokens by reconstructing pretrained features rather than pixels. Ablations across SigLIP, SigLIP2, DINOv2, and DINOv3 show better generative performance with FeaTok. In class-conditional generation, FeaTok advances the quality-compute Pareto frontier, reducing gFDr6 at 256x256 by up to 29 percent over the strongest discrete baselines and outperforming the strongest unguided continuous baseline (RAEv2) with 38 times less sampling compute. FeaTok also achieves higher human-preference reward-model scores than prior art without reward-based training and surpasses continuous and discrete text-conditional baselines on three benchmarks with only 500 fine-tuning updates after pre-training.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22060" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22060.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.21250</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.21250" target="_blank">FocusOPD: Structure-Guided On-Policy Distillation for Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">FocusOPD：面向扩散模型的结构引导在线策略蒸馏</p>
+      <p class="paper-authors">Xinrui Lin, Shumin Wang, Suqi Song, Fan Li, Yanyong Zhang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文发现多教师在线策略蒸馏中教师与学生模型的特征不匹配主要集中在深层Transformer模块和早期去噪阶段，并提出FocusOPD方法，通过在深层和早期去噪步骤施加token级方向性特征对齐来增强能力迁移。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析了教师-学生模型在Transformer各层和去噪各时间步的特征不匹配情况，发现不匹配集中在深层模块的早期去噪阶段且蒸馏后依然存在。基于此，FocusOPD在基础在线策略蒸馏目标上增加了受限的特征对齐损失，仅作用于深层Transformer模块和早期去噪步骤，采用token级方向性对齐。该方法在两种rectified-flow骨干网络和多种OPD目标上进行了验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> FocusOPD在组合生成、文本渲染和基于偏好的评估中均提升了能力迁移效果。在主要基准上，GenEval从0.953提升至0.967，PickScore从23.797提升至23.944，LAION-Aesthetic从6.052提升至6.199。消融实验表明，选择性地对深层和早期阶段进行监督比在全网络和全轨迹上对齐更有效且更高效。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Multi-teacher on-policy distillation enables rectified-flow models with diffusion-transformer architectures to combine task-specific capabilities within a single student. However, matching model outputs does not guarantee that their internal representations are aligned, and it remains unclear where and when additional feature supervision is most useful. We analyze the teacher-student feature mismatch across Transformer blocks and denoising timesteps, and find that the mismatch is concentrated in deeper Transformer blocks during early denoising and persists after OPD distillation, indicating ineffective distillation. Motivated by this observation, we introduce FocusOPD, which augments the base OPD objective with token-wise directional feature alignment restricted to deep layers and early denoising steps. Across two rectified-flow backbones and multiple OPD objectives, FocusOPD improves capability transfer in compositional generation, text rendering, and preference-based evaluation. On the primary benchmark, it improves over DiffusionOPD from 0.953 to 0.967 on GenEval, from 23.797 to 23.944 on PickScore, and from 6.052 to 6.199 on LAION-Aesthetic. Ablations show that selective deep and early supervision is more effective and efficient than alignment over the full network and trajectory.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.21250" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.21250.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.20818</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.20818" target="_blank">Intern Lumina U2: A Multi-Codebook Diffusion Large Language Model for Omni-Visual Understanding and Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">Intern Lumina U2：面向全视觉理解与图像生成的多码本扩散大语言模型</p>
+      <p class="paper-authors">Qian Yu, Zongyang Qiu, Juncheng Yan, Hongliang Li, Qi Qin 等 (43 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个在完全离散空间中表示多码本视觉token的扩散语言模型，在单一骨干网络中统一建模文本与高容量视觉表示，并在视觉理解、图像生成和图像编辑任务上达到统一模型的领先性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法将每个视觉位置表示为一组来自互补码本的编码，以提升表示容量并保持与离散文本建模的兼容性。输入阶段在每个位置拼接嵌入，输出阶段使用轻量级多码本自回归头依次预测位置内的编码，同时扩散骨干并行处理所有位置。模型基于AToken的统一4D表示，支持图像、视频和3D输入，并构建了跨Ascend与NVIDIA平台的全栈训练、推理与评估系统。此外，采用稳定性感知采样策略（置信度平台引导解掩码与漂移触发缓存刷新）提升推理效率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> Intern Lumina U2在视觉理解、图像生成和图像编辑方面均取得统一模型中的领先性能，验证了跨平台有效性，并通过稳定性感知采样策略将图像生成速度提升4.45倍。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Unified multimodal generation covers discrete, continuous, and hybrid paradigms. Discrete approaches with single-codebook visual tokenizers align naturally with text modeling but have limited representational capacity. Continuous and hybrid approaches retain richer visual representations, but they model text and images in heterogeneous spaces with different training objectives, potentially introducing optimization conflicts between modalities with misaligned representation spaces. These choices expose a central question: how to efficiently model high-capacity visual representations alongside textual content in a shared optimization space within a single backbone. We present Intern Lumina U2, to our knowledge the first diffusion language model to represent multi-codebook visual tokens in a fully discrete space. Each visual position is represented by a group of codes from complementary codebooks, increasing its representational capacity while preserving compatibility with discrete text modeling. At the input, the embeddings are concatenated at each position; at the output, a lightweight multi-codebook autoregressive head predicts the codes within each position sequentially, while the diffusion backbone processes all positions in parallel. Built on the unified 4D representation of AToken, Intern Lumina U2 supports image, video, and 3D inputs within a single backbone and achieves leading performance among unified models in visual understanding, image generation, and image editing. We further build a full-stack training, inference, and evaluation system on both Ascend and NVIDIA platforms to verify the cross-platform effectiveness of our model. We also improve the inference efficiency through a stability-aware sampling strategy, which combines confidence-plateau-guided unmasking approach with drift-triggered cache refreshing mechanisms, accelerating image generation by 4.45x.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.20818" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20818.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
