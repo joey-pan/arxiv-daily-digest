@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-10-18</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.20794</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.20794" target="_blank">Blame Errant Words, Not the Canvas: Defect-Aware Spatial Credit Assignment for Visual Text Generation</a>
+      </h3>
+      <p class="paper-title-zh">责备错误单词而非画布：面向视觉文本生成的缺陷感知空间信用分配</p>
+      <p class="paper-authors">Sujie Hu, Huaisong Zhang, Pujing Yang, Qian Wang, Xiaomin Li 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种缺陷感知的空间信用分配方法，通过区域级奖励模型和空间差异化策略反馈，解决了视觉文本生成中字形缺陷被忽视和整图标量反馈掩盖局部质量差异的问题，显著提升了文本准确性和字形保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先引入TextDART，一个缺陷感知的区域目标奖励模型，定位单个文本区域并独立评估其语义正确性和字形质量，提供细粒度、区域精确的反馈。基于TextDART，提出SCANNER，将区域判断转化为空间差异化的策略反馈，对每个文本目标在采样图像间的奖励进行归一化，并将区域优势映射到对应的潜在令牌上。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在现有基准和新建的PolyText-Bench上的大量实验表明，该方法在文本准确性和字形保真度方面达到了最先进的性能。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent reinforcement learning approaches have improved visual text generation, yet generated images still suffer from incorrect wording and malformed glyphs. We identify two coupled limitations: recognition-based rewards often overlook visible glyph defects, while whole-image scalar feedback obscures the uneven quality of individual text regions. These limitations motivate our central principle: $\textit{Blame errant words, not the canvas}$, to effectively preserve local quality distinctions. First, we introduce $\mathbf{TextDART}$, a defect-aware region-targeted reward model that localizes individual text regions and independently evaluates their semantic correctness and glyph quality, providing fine-grained, region-precise feedback. Building on TextDART, we propose $\mathbf{SCANNER}$, which turns these regional judgments into spatially differentiated policy feedback. It normalizes rewards for each text target across sampled images and casts the resulting regional advantages onto the corresponding latent tokens. Extensive experiments on existing benchmarks and our newly established $\textbf{PolyText-Bench}$ demonstrate that our approach achieves state-of-the-art performance in text accuracy and glyph fidelity. Project page: https://sujiehu.github.io/textdart-scanner</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.20794" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20794.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22370</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22370" target="_blank">Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">哪些Token应该合并？面向高效图像生成的扩散动力学</p>
+      <p class="paper-authors">SeungJu Cha, Ye-Chan Kim, HyunGee Kim, Sungho Koh, Dong-Jin Kim</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种无需训练的Token合并框架DaTMe，利用扩散模型的去噪动力学来判定Token的重要性，从而在加速生成的同时保持全图视觉保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> DaTMe从Tweedie去噪估计中构建动力学感知的重要性图，该图结合了衡量预测干净图像跨步变化的时间信号和捕捉边界与细节等局部高频内容的结构信号。基于该重要性图，在给定压缩比下自适应地为Token分配合并角色：重要Token作为锚点保留，而时间上已稳定且结构上均匀的Token被选为安全的合并候选。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在PixArt-α和FLUX上的实验表明，DaTMe能够在整幅图像上保持视觉保真度，优于仅依赖文本相关性的现有方法，验证了扩散动力学可作为高效的Token级合并决策依据。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Token merging has emerged as an effective training-free strategy for accelerating diffusion models by reducing redundant token computation while minimizing generation degradation. A key challenge is determining which tokens can be safely merged and which should be preserved for subsequent computation. Existing method addresses this by preserving prompt-aligned foreground regions, thereby protecting semantically relevant structures. However, this text-relevance criterion overlooks background objects, local details that are not explicitly mentioned in the prompt, leading to degraded structural coherence. In this work, we propose Dynamics-aware Token Merging (DaTMe), a training-free framework that grounds token merging in the underlying diffusion dynamics. Our key insight is that token importance should reflect whether a token remains unresolved during denoising and whether it carries structural information. To this end, DaTMe constructs a dynamics- aware importance map from the Tweedie denoised estimate. The map combines a temporal signal, measuring inter-step changes in the predicted clean image, with a structural signal, capturing local high-frequency content such as boundaries and fine details. Using this map, DaTMe adaptively assigns tokens into merging roles under a given compression ratio: important tokens are preserved as anchors, while tokens that are both temporally stabilized and structurally homogeneous are selected as safe merge candidates. Experiments on PixArt-a and FLUX demonstrate that DaTMe maintains visual fidelity across the entire image, highlighting diffusion dynamics as an effective token-level merging decision in efficient generation. Our code is available at https://github.com/SeungJuCha/DaTMe.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22370" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22370.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22369</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22369" target="_blank">SoftCache: Adaptive Step Size Caching for Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">SoftCache：面向扩散Transformer的自适应步长缓存</p>
+      <p class="paper-authors">Shimon Malnick, Nadav Orenstein, Ohad Fried, Shai Avidan</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SoftCache，将动态缓存中的二值刷新/复用信号转化为连续的自适应步长控制，利用信号相对阈值的余量预测复用误差并据此决定缓存步的跳跃距离，从而在无需训练的情况下显著加速扩散与流模型生成。</div>
+        <div class="summary-section"><strong>方法:</strong> 扩散和流模型逐步迭代生成样本，每步都需完整网络前向，开销巨大；免训练缓存通过复用近期激活来加速。动态缓存方法将网络输入的廉价探针累积为陈旧度信号，超过阈值时执行一次新评估，但仅做二值硬切换，且每步都按固定步长推进。SoftCache观察到该信号相对阈值的余量可预测复用误差，于是用余量设定每个缓存步的前进距离：余量大时采样器跳过多个预定节点，接近刷新时步长收缩回原始步长，自适应跳跃可落在预定节点之间，使采样器偏离固定网格。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在图像模型FLUX以及视频模型HunyuanVideo和Wan2.1上，SoftCache在3.5倍至6.9倍加速下，于全部四项保真度指标上均优于所有基线，且无需训练、无需针对不同骨干网络单独调参。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Diffusion and flow models generate a sample over iterative steps, each a full pass through a large network, and that pass dominates generation cost. Training-free caching accelerates them by reusing activations from recent evaluations instead of recomputing them. Dynamic caching methods decide when to refresh by accumulating a cheap probe of the network input into a staleness signal and spending a fresh evaluation once it crosses a threshold. They perform hard caching: the signal is a binary switch between refresh and reuse, and every step, fresh or cached, advances by the prescribed step size. We observe that the signal carries much more than this switch. How far it sits below the threshold, its headroom, predicts the error induced by reuse. We propose SoftCache, which performs soft caching: instead of a binary switch, the headroom sets how far each cached step goes. Where the headroom is large, the sampler jumps past several scheduled nodes, and as a refresh nears, its steps shrink back toward the original step. These adaptive jumps may land between the scheduled nodes, taking the sampler off its fixed grid. SoftCache requires no training and adds no per-backbone settings: on FLUX for images and on HunyuanVideo and Wan2.1 for video, at speedups from $3.5\times$ to $6.9\times$, it is ahead of every baseline on all four fidelity metrics.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22369" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22369.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.22328</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.22328" target="_blank">ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning</a>
+      </h3>
+      <p class="paper-title-zh">ACEedit：通过非对称条件实现稳定的多轮图像编辑</p>
+      <p class="paper-authors">Sara Dorfman, Nir Goren, Gal Barak, Daniel Cohen-Or, Or Patashnik</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种训练方案，使多轮图像编辑在累积分布偏移下保持稳定，显著减少长序列编辑中的质量退化。</div>
+        <div class="summary-section"><strong>方法:</strong> 训练时强制编辑器基于自身前一轮输出进行操作（自强制原则），以模拟多轮推理中的分布偏移。由于自生成轨迹偏离真实轨迹导致直接监督不可靠，采用蒸馏目标，利用教师图像编辑器在模型基于自身输出时提供可靠训练信号。引入非对称条件方案：学生模型顺序编辑自身输出，教师模型始终锚定原始干净图像并接收复合编辑指令。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，在长多轮编辑序列中质量退化大幅减少，同时保持编辑质量和指令遵循能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Image editing models produce impressive results for individual edits, but their quality often deteriorates over multiple editing turns. Each editing turn introduces small distribution shifts that accumulate over successive edits, creating a gap between the input distributions encountered during the editor's original training and multi-turn inference. We introduce a training scheme that makes multi-turn image editing stable under this accumulating distribution shift. A key is to force the editor to operate on its own outputs from previous editing turns during training, bringing the principle of Self-Forcing to image editing. The main challenge is that self-generated editing trajectories deviate from ground-truth trajectories, making direct supervision unreliable. We address this challenge through a distillation objective that leverages a teacher image editor to provide a reliable training signal when the model operates on its own previous outputs. We introduce an asymmetric conditioning scheme: while the student performs edits sequentially on its own outputs, the teacher remains anchored to the original clean image and receives a compound editing instruction. Experiments show substantially reduced degradation over long multi-turn sequences while maintaining editing quality and instruction adherence.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.22328" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22328.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.21202</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.21202" target="_blank">UltraDiff: Transferring High-Fidelity Priors to Compressed Latent Spaces for High-Resolution Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">UltraDiff：将高保真先验迁移至压缩潜空间以实现高分辨率图像生成</p>
+      <p class="paper-authors">Jingjing Ren, Haitian Zheng, Haoyu Chen, Connelly Barnes, Zhifei Zhang 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出UltraDiff框架，通过联合潜扩散学习与边缘分数蒸馏，在保持f32压缩效率的同时达到接近f8模型的生成质量，实现高效高分辨率图像合成。</div>
+        <div class="summary-section"><strong>方法:</strong> 将高分辨率合成问题重构为联合潜扩散学习加边缘分数蒸馏的两阶段框架。引入MixTeacher双分支DiT模型，联合建模f8-f32分布，利用共享注意力机制以高保真f8先验消解压缩空间中的歧义。关键地在原生f32空间中提出向量场蒸馏，理论上迫使学生模型学习教师轨迹的条件期望，从而有效滤除压缩伪影。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在1K至4K的评估设置中，UltraDiff在保持f32效率的同时接近f8级别的生成质量。在单张A100 GPU上以20步采样生成2K图像仅需6.2秒，比f8基线快40倍以上。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>High-resolution synthesis with Latent Diffusion Models (LDMs) faces a fundamental trade-off between computational cost and generative fidelity. This trade off is largely governed by the latent compression factor f (e.g. f8 denotes f=8 and f32 f=32). While aggressive compression (f32) significantly improves efficiency, it suffers from severe information loss and ambiguity compared to standard f8 models. We propose UltraDiff, a framework that reformulates this challenge as joint latent diffusion learning followed by marginal score distillation. We introduce MixTeacher, a dual branch DiT that models the joint f8-f32 distribution, utilizing shared attention to resolve the ambiguity of the compressed space with high fidelity f8 priors. Crucially, we propose vector field distillation in the native f32 space. Theoretically, this compels the student to learn the conditional expectation of the teacher trajectory, effectively filtering out compression artifacts. Across the evaluated 1K to 4K settings, UltraDiff approaches f8 level quality while preserving f32 efficiency. With 20 sampling steps on a single A100 GPU, it generates a 2K image in 6.2 seconds over 40 times faster than our f8 baseline.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.21202" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.21202.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

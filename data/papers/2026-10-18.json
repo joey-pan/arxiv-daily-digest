@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2610.20794",
+    "title": "Blame Errant Words, Not the Canvas: Defect-Aware Spatial Credit Assignment for Visual Text Generation",
+    "abstract": "Recent reinforcement learning approaches have improved visual text generation, yet generated images still suffer from incorrect wording and malformed glyphs. We identify two coupled limitations: recognition-based rewards often overlook visible glyph defects, while whole-image scalar feedback obscures the uneven quality of individual text regions. These limitations motivate our central principle: $\\textit{Blame errant words, not the canvas}$, to effectively preserve local quality distinctions. First, we introduce $\\mathbf{TextDART}$, a defect-aware region-targeted reward model that localizes individual text regions and independently evaluates their semantic correctness and glyph quality, providing fine-grained, region-precise feedback. Building on TextDART, we propose $\\mathbf{SCANNER}$, which turns these regional judgments into spatially differentiated policy feedback. It normalizes rewards for each text target across sampled images and casts the resulting regional advantages onto the corresponding latent tokens. Extensive experiments on existing benchmarks and our newly established $\\textbf{PolyText-Bench}$ demonstrate that our approach achieves state-of-the-art performance in text accuracy and glyph fidelity. Project page: https://sujiehu.github.io/textdart-scanner",
+    "authors": [
+      "Sujie Hu",
+      "Huaisong Zhang",
+      "Pujing Yang",
+      "Qian Wang",
+      "Xiaomin Li",
+      "Xinhang Leng",
+      "Chen Li",
+      "Jing Lyu",
+      "Xiu Li",
+      "Ling Pan"
+    ],
+    "published": "2026-10-14",
+    "updated": "2026-10-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.20794.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.20794",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "责备错误单词而非画布：面向视觉文本生成的缺陷感知空间信用分配",
+      "core_contribution": "论文提出了一种缺陷感知的空间信用分配方法，通过区域级奖励模型和空间差异化策略反馈，解决了视觉文本生成中字形缺陷被忽视和整图标量反馈掩盖局部质量差异的问题，显著提升了文本准确性和字形保真度。",
+      "method": "首先引入TextDART，一个缺陷感知的区域目标奖励模型，定位单个文本区域并独立评估其语义正确性和字形质量，提供细粒度、区域精确的反馈。基于TextDART，提出SCANNER，将区域判断转化为空间差异化的策略反馈，对每个文本目标在采样图像间的奖励进行归一化，并将区域优势映射到对应的潜在令牌上。",
+      "findings": "在现有基准和新建的PolyText-Bench上的大量实验表明，该方法在文本准确性和字形保真度方面达到了最先进的性能。"
+    }
+  },
+  {
+    "id": "2610.22370",
+    "title": "Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation",
+    "abstract": "Token merging has emerged as an effective training-free strategy for accelerating diffusion models by reducing redundant token computation while minimizing generation degradation. A key challenge is determining which tokens can be safely merged and which should be preserved for subsequent computation. Existing method addresses this by preserving prompt-aligned foreground regions, thereby protecting semantically relevant structures. However, this text-relevance criterion overlooks background objects, local details that are not explicitly mentioned in the prompt, leading to degraded structural coherence. In this work, we propose Dynamics-aware Token Merging (DaTMe), a training-free framework that grounds token merging in the underlying diffusion dynamics. Our key insight is that token importance should reflect whether a token remains unresolved during denoising and whether it carries structural information. To this end, DaTMe constructs a dynamics- aware importance map from the Tweedie denoised estimate. The map combines a temporal signal, measuring inter-step changes in the predicted clean image, with a structural signal, capturing local high-frequency content such as boundaries and fine details. Using this map, DaTMe adaptively assigns tokens into merging roles under a given compression ratio: important tokens are preserved as anchors, while tokens that are both temporally stabilized and structurally homogeneous are selected as safe merge candidates. Experiments on PixArt-a and FLUX demonstrate that DaTMe maintains visual fidelity across the entire image, highlighting diffusion dynamics as an effective token-level merging decision in efficient generation. Our code is available at https://github.com/SeungJuCha/DaTMe.",
+    "authors": [
+      "SeungJu Cha",
+      "Ye-Chan Kim",
+      "HyunGee Kim",
+      "Sungho Koh",
+      "Dong-Jin Kim"
+    ],
+    "published": "2026-10-15",
+    "updated": "2026-10-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.22370.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.22370",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "哪些Token应该合并？面向高效图像生成的扩散动力学",
+      "core_contribution": "论文提出了一种无需训练的Token合并框架DaTMe，利用扩散模型的去噪动力学来判定Token的重要性，从而在加速生成的同时保持全图视觉保真度。",
+      "method": "DaTMe从Tweedie去噪估计中构建动力学感知的重要性图，该图结合了衡量预测干净图像跨步变化的时间信号和捕捉边界与细节等局部高频内容的结构信号。基于该重要性图，在给定压缩比下自适应地为Token分配合并角色：重要Token作为锚点保留，而时间上已稳定且结构上均匀的Token被选为安全的合并候选。",
+      "findings": "在PixArt-α和FLUX上的实验表明，DaTMe能够在整幅图像上保持视觉保真度，优于仅依赖文本相关性的现有方法，验证了扩散动力学可作为高效的Token级合并决策依据。"
+    }
+  },
+  {
+    "id": "2610.22369",
+    "title": "SoftCache: Adaptive Step Size Caching for Diffusion Transformers",
+    "abstract": "Diffusion and flow models generate a sample over iterative steps, each a full pass through a large network, and that pass dominates generation cost. Training-free caching accelerates them by reusing activations from recent evaluations instead of recomputing them. Dynamic caching methods decide when to refresh by accumulating a cheap probe of the network input into a staleness signal and spending a fresh evaluation once it crosses a threshold. They perform hard caching: the signal is a binary switch between refresh and reuse, and every step, fresh or cached, advances by the prescribed step size. We observe that the signal carries much more than this switch. How far it sits below the threshold, its headroom, predicts the error induced by reuse. We propose SoftCache, which performs soft caching: instead of a binary switch, the headroom sets how far each cached step goes. Where the headroom is large, the sampler jumps past several scheduled nodes, and as a refresh nears, its steps shrink back toward the original step. These adaptive jumps may land between the scheduled nodes, taking the sampler off its fixed grid. SoftCache requires no training and adds no per-backbone settings: on FLUX for images and on HunyuanVideo and Wan2.1 for video, at speedups from $3.5\\times$ to $6.9\\times$, it is ahead of every baseline on all four fidelity metrics.",
+    "authors": [
+      "Shimon Malnick",
+      "Nadav Orenstein",
+      "Ohad Fried",
+      "Shai Avidan"
+    ],
+    "published": "2026-10-15",
+    "updated": "2026-10-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.22369.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.22369",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "SoftCache：面向扩散Transformer的自适应步长缓存",
+      "core_contribution": "提出SoftCache，将动态缓存中的二值刷新/复用信号转化为连续的自适应步长控制，利用信号相对阈值的余量预测复用误差并据此决定缓存步的跳跃距离，从而在无需训练的情况下显著加速扩散与流模型生成。",
+      "method": "扩散和流模型逐步迭代生成样本，每步都需完整网络前向，开销巨大；免训练缓存通过复用近期激活来加速。动态缓存方法将网络输入的廉价探针累积为陈旧度信号，超过阈值时执行一次新评估，但仅做二值硬切换，且每步都按固定步长推进。SoftCache观察到该信号相对阈值的余量可预测复用误差，于是用余量设定每个缓存步的前进距离：余量大时采样器跳过多个预定节点，接近刷新时步长收缩回原始步长，自适应跳跃可落在预定节点之间，使采样器偏离固定网格。",
+      "findings": "在图像模型FLUX以及视频模型HunyuanVideo和Wan2.1上，SoftCache在3.5倍至6.9倍加速下，于全部四项保真度指标上均优于所有基线，且无需训练、无需针对不同骨干网络单独调参。"
+    }
+  },
+  {
+    "id": "2610.22328",
+    "title": "ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning",
+    "abstract": "Image editing models produce impressive results for individual edits, but their quality often deteriorates over multiple editing turns. Each editing turn introduces small distribution shifts that accumulate over successive edits, creating a gap between the input distributions encountered during the editor's original training and multi-turn inference. We introduce a training scheme that makes multi-turn image editing stable under this accumulating distribution shift. A key is to force the editor to operate on its own outputs from previous editing turns during training, bringing the principle of Self-Forcing to image editing. The main challenge is that self-generated editing trajectories deviate from ground-truth trajectories, making direct supervision unreliable. We address this challenge through a distillation objective that leverages a teacher image editor to provide a reliable training signal when the model operates on its own previous outputs. We introduce an asymmetric conditioning scheme: while the student performs edits sequentially on its own outputs, the teacher remains anchored to the original clean image and receives a compound editing instruction. Experiments show substantially reduced degradation over long multi-turn sequences while maintaining editing quality and instruction adherence.",
+    "authors": [
+      "Sara Dorfman",
+      "Nir Goren",
+      "Gal Barak",
+      "Daniel Cohen-Or",
+      "Or Patashnik"
+    ],
+    "published": "2026-10-15",
+    "updated": "2026-10-15",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.GR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.22328.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.22328",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "ACEedit：通过非对称条件实现稳定的多轮图像编辑",
+      "core_contribution": "提出一种训练方案，使多轮图像编辑在累积分布偏移下保持稳定，显著减少长序列编辑中的质量退化。",
+      "method": "训练时强制编辑器基于自身前一轮输出进行操作（自强制原则），以模拟多轮推理中的分布偏移。由于自生成轨迹偏离真实轨迹导致直接监督不可靠，采用蒸馏目标，利用教师图像编辑器在模型基于自身输出时提供可靠训练信号。引入非对称条件方案：学生模型顺序编辑自身输出，教师模型始终锚定原始干净图像并接收复合编辑指令。",
+      "findings": "实验表明，在长多轮编辑序列中质量退化大幅减少，同时保持编辑质量和指令遵循能力。"
+    }
+  },
+  {
+    "id": "2610.21202",
+    "title": "UltraDiff: Transferring High-Fidelity Priors to Compressed Latent Spaces for High-Resolution Image Generation",
+    "abstract": "High-resolution synthesis with Latent Diffusion Models (LDMs) faces a fundamental trade-off between computational cost and generative fidelity. This trade off is largely governed by the latent compression factor f (e.g. f8 denotes f=8 and f32 f=32). While aggressive compression (f32) significantly improves efficiency, it suffers from severe information loss and ambiguity compared to standard f8 models. We propose UltraDiff, a framework that reformulates this challenge as joint latent diffusion learning followed by marginal score distillation. We introduce MixTeacher, a dual branch DiT that models the joint f8-f32 distribution, utilizing shared attention to resolve the ambiguity of the compressed space with high fidelity f8 priors. Crucially, we propose vector field distillation in the native f32 space. Theoretically, this compels the student to learn the conditional expectation of the teacher trajectory, effectively filtering out compression artifacts. Across the evaluated 1K to 4K settings, UltraDiff approaches f8 level quality while preserving f32 efficiency. With 20 sampling steps on a single A100 GPU, it generates a 2K image in 6.2 seconds over 40 times faster than our f8 baseline.",
+    "authors": [
+      "Jingjing Ren",
+      "Haitian Zheng",
+      "Haoyu Chen",
+      "Connelly Barnes",
+      "Zhifei Zhang",
+      "Yuqian Zhou",
+      "Zhe Lin",
+      "Lei Zhu"
+    ],
+    "published": "2026-10-15",
+    "updated": "2026-10-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.21202.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.21202",
+    "primary_category": "cs.CV",
+    "score": 85,
+    "summary": {
+      "title_zh": "UltraDiff：将高保真先验迁移至压缩潜空间以实现高分辨率图像生成",
+      "core_contribution": "提出UltraDiff框架，通过联合潜扩散学习与边缘分数蒸馏，在保持f32压缩效率的同时达到接近f8模型的生成质量，实现高效高分辨率图像合成。",
+      "method": "将高分辨率合成问题重构为联合潜扩散学习加边缘分数蒸馏的两阶段框架。引入MixTeacher双分支DiT模型，联合建模f8-f32分布，利用共享注意力机制以高保真f8先验消解压缩空间中的歧义。关键地在原生f32空间中提出向量场蒸馏，理论上迫使学生模型学习教师轨迹的条件期望，从而有效滤除压缩伪影。",
+      "findings": "在1K至4K的评估设置中，UltraDiff在保持f32效率的同时接近f8级别的生成质量。在单张A100 GPU上以20步采样生成2K图像仅需6.2秒，比f8基线快40倍以上。"
+    }
+  }
+]

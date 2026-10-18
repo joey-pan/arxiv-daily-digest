@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-16</p>
+        <p class="date">📅 2026-10-18</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.22282</span>
+          <span class="paper-id">2610.20794</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.22282" target="_blank">Routing Policy Optimization for Online Diffusion Reinforcement Learning</a>
+        <a href="https://arxiv.org/abs/2610.20794" target="_blank">Blame Errant Words, Not the Canvas: Defect-Aware Spatial Credit Assignment for Visual Text Generation</a>
       </h3>
-      <p class="paper-title-zh">面向在线扩散强化学习的路由策略优化</p>
-      <p class="paper-authors">Qiuhong Shen, Yiding Yang, Yuxin Zhang, Xinwei Huang, Minxuan Lin 等 (11 位作者)</p>
+      <p class="paper-title-zh">责备错误单词而非画布：面向视觉文本生成的缺陷感知空间信用分配</p>
+      <p class="paper-authors">Sujie Hu, Huaisong Zhang, Pujing Yang, Qian Wang, Xiaomin Li 等 (10 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出路由策略优化（RPO），将注意力路由转化为随机探索动作，在保留原始确定性采样器的前提下实现扩散模型的在线强化学习对齐，训练效率较Flow-GRPO类方法提升近4倍。</div>
-        <div class="summary-section"><strong>方法:</strong> RPO在少量选定的去噪层级上，让每个查询块保留自身块，并按生成器原生注意力权重采样其他关键块，或保持稠密注意力，从而引入随机探索。采样的路由扰动该过渡的速度场，并用稠密速度周围的高斯似然以得分函数目标对扰动进行评分。进一步采用受控双轨迹估计器：两条轨迹共享相同提示、初始隐变量、路由去噪层级和稠密锚定层，仅采样注意力路由不同，其奖励差异为路由过渡提供优势信号。由于似然对稠密速度本身求导，去除路由后学习到的更新仍然有效，推理时恢复稠密注意力并保留原始确定性采样器。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在文本到图像和文本到视频生成任务上，RPO提升了生成质量，同时训练效率比Flow-GRPO风格的方法高出近4倍。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种缺陷感知的空间信用分配方法，通过区域级奖励模型和空间差异化策略反馈，解决了视觉文本生成中字形缺陷被忽视和整图标量反馈掩盖局部质量差异的问题，显著提升了文本准确性和字形保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先引入TextDART，一个缺陷感知的区域目标奖励模型，定位单个文本区域并独立评估其语义正确性和字形质量，提供细粒度、区域精确的反馈。基于TextDART，提出SCANNER，将区域判断转化为空间差异化的策略反馈，对每个文本目标在采样图像间的奖励进行归一化，并将区域优势映射到对应的潜在令牌上。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在现有基准和新建的PolyText-Bench上的大量实验表明，该方法在文本准确性和字形保真度方面达到了最先进的性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reinforcement learning can align visual generators with reward signals beyond their pretraining objectives, but existing score-function methods typically introduce stochasticity by perturbing the reverse denoising trajectory, leading to costly rollout-based optimization. We instead ask whether stochastic exploration can be introduced inside the generator while preserving its original sampler. Routing Policy Optimization (RPO) answers this question by turning attention routing into a stochastic exploration action. At a few selected denoising levels, each query block keeps its own block and samples further key blocks in proportion to the generator's native attention mass, or keeps dense attention. The sampled route perturbs the velocity of that transition, and a Gaussian likelihood around the dense velocity scores the perturbation with a score-function objective. RPO further uses a controlled two-rollout estimator: two rollouts share the same prompt, initial latent, routed denoising levels, and dense anchor layers, differing only in their sampled attention routes. Their reward difference provides an advantage signal for the routed transitions. Because the likelihood differentiates the dense velocity itself, the learned updates remain effective after routing is removed. At inference, RPO restores dense attention and retains the original deterministic sampler. Experiments on text-to-image and text-to-video generation show that RPO improves generation quality while achieving nearly 4x higher training efficiency than Flow-GRPO-style methods. Please see our project page at https://velox-world.com/rpo for visual results.</p>
+        <p>Recent reinforcement learning approaches have improved visual text generation, yet generated images still suffer from incorrect wording and malformed glyphs. We identify two coupled limitations: recognition-based rewards often overlook visible glyph defects, while whole-image scalar feedback obscures the uneven quality of individual text regions. These limitations motivate our central principle: $\textit{Blame errant words, not the canvas}$, to effectively preserve local quality distinctions. First, we introduce $\mathbf{TextDART}$, a defect-aware region-targeted reward model that localizes individual text regions and independently evaluates their semantic correctness and glyph quality, providing fine-grained, region-precise feedback. Building on TextDART, we propose $\mathbf{SCANNER}$, which turns these regional judgments into spatially differentiated policy feedback. It normalizes rewards for each text target across sampled images and casts the resulting regional advantages onto the corresponding latent tokens. Extensive experiments on existing benchmarks and our newly established $\textbf{PolyText-Bench}$ demonstrate that our approach achieves state-of-the-art performance in text accuracy and glyph fidelity. Project page: https://sujiehu.github.io/textdart-scanner</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.22282" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.22282.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.20794" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.20794.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.22264</span>
+          <span class="paper-id">2610.22370</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 85/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.22264" target="_blank">SCOPE: Semantic Bounded Credit Optimization for Prompt Engineering in Text-to-image Generation</a>
+        <a href="https://arxiv.org/abs/2610.22370" target="_blank">Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation</a>
       </h3>
-      <p class="paper-title-zh">SCOPE：面向文本到图像生成的提示工程语义边界信用优化</p>
-      <p class="paper-authors">Yufei Jiao, Jinfa Huang, Zeyue Xue, Tianyu Xie, Yuexiao Ma 等 (8 位作者)</p>
+      <p class="paper-title-zh">哪些Token应该合并？面向高效图像生成的扩散动力学</p>
+      <p class="paper-authors">SeungJu Cha, Ye-Chan Kim, HyunGee Kim, Sungho Koh, Dong-Jin Kim</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出SCOPE，一种基于组相对策略优化（GRPO）的目标函数，通过将更新权重与提示中连贯的语义片段（如对象、数量、属性、关系）对齐，提升强化学习驱动的提示改写效果，且无需额外的片段奖励或图像渲染。</div>
-        <div class="summary-section"><strong>方法:</strong> SCOPE让提示改写器在生成增强提示的同时输出其语义划分；对每个语义片段内的策略对数概率变化进行池化，得到该片段内所有token损失的共享系数，同时为每个完整生成保留单一优势值。该方法建立在GRPO之上，将信用分配从单个子词token扩展到语义片段级别，无需单独训练片段奖励模型，也不增加额外的图像生成开销。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Qwen-Image、SD3和FLUX.1-dev上，SCOPE相比原始GRPO在GeneVal上平均相对提升9.48%，在T2I-CompBench上平均相对提升7.62%。消融实验表明，语义边界划分与片段内池化操作均对性能提升有贡献，说明语义结构可作为强化学习提示工程中有效的归纳偏置。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种无需训练的Token合并框架DaTMe，利用扩散模型的去噪动力学来判定Token的重要性，从而在加速生成的同时保持全图视觉保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> DaTMe从Tweedie去噪估计中构建动力学感知的重要性图，该图结合了衡量预测干净图像跨步变化的时间信号和捕捉边界与细节等局部高频内容的结构信号。基于该重要性图，在给定压缩比下自适应地为Token分配合并角色：重要Token作为锚点保留，而时间上已稳定且结构上均匀的Token被选为安全的合并候选。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在PixArt-α和FLUX上的实验表明，DaTMe能够在整幅图像上保持视觉保真度，优于仅依赖文本相关性的现有方法，验证了扩散动力学可作为高效的Token级合并决策依据。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reinforcement learning (RL) enables language models to improve text-to-image (T2I) generation by rewriting prompts for a frozen image generator. Existing methods typically apply a single signal derived from the image to individual subword tokens, although objects, counts, attributes, and relations form coherent semantic spans. We propose SCOPE, an objective based on Group Relative Policy Optimization (GRPO) that aligns update weighting with this structure. The rewriter jointly generates an enhanced prompt and its semantic partition. SCOPE pools shifts in policy log probabilities within each span to derive a shared coefficient for its token losses while retaining a single advantage for each completion. It requires neither separate span rewards nor additional image renders. Across Qwen-Image, SD3, and FLUX.1-dev, SCOPE achieves average relative gains over vanilla GRPO of 9.48% on GeneVal and 7.62% on T2I-CompBench. Ablation studies show that both semantic boundaries and pooling within spans contribute to these gains, supporting semantic structure as a practical inductive bias for prompt engineering with RL.</p>
+        <p>Token merging has emerged as an effective training-free strategy for accelerating diffusion models by reducing redundant token computation while minimizing generation degradation. A key challenge is determining which tokens can be safely merged and which should be preserved for subsequent computation. Existing method addresses this by preserving prompt-aligned foreground regions, thereby protecting semantically relevant structures. However, this text-relevance criterion overlooks background objects, local details that are not explicitly mentioned in the prompt, leading to degraded structural coherence. In this work, we propose Dynamics-aware Token Merging (DaTMe), a training-free framework that grounds token merging in the underlying diffusion dynamics. Our key insight is that token importance should reflect whether a token remains unresolved during denoising and whether it carries structural information. To this end, DaTMe constructs a dynamics- aware importance map from the Tweedie denoised estimate. The map combines a temporal signal, measuring inter-step changes in the predicted clean image, with a structural signal, capturing local high-frequency content such as boundaries and fine details. Using this map, DaTMe adaptively assigns tokens into merging roles under a given compression ratio: important tokens are preserved as anchors, while tokens that are both temporally stabilized and structurally homogeneous are selected as safe merge candidates. Experiments on PixArt-a and FLUX demonstrate that DaTMe maintains visual fidelity across the entire image, highlighting diffusion dynamics as an effective token-level merging decision in efficient generation. Our code is available at https://github.com/SeungJuCha/DaTMe.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.22264" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.22264.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.22370" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22370.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.22060</span>
+          <span class="paper-id">2610.22369</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 85/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.22060" target="_blank">FeaTok: Feature-Loss Tokenization for Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.22369" target="_blank">SoftCache: Adaptive Step Size Caching for Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">FeaTok：面向图像生成的特征损失离散化分词</p>
-      <p class="paper-authors">Zhang Xiaofeng, Samuel Lavoie, Nicolas Beltran-Velez, Jianhao Yuan, Felix Friedrich 等 (9 位作者)</p>
+      <p class="paper-title-zh">SoftCache：面向扩散Transformer的自适应步长缓存</p>
+      <p class="paper-authors">Shimon Malnick, Nadav Orenstein, Ohad Fried, Shai Avidan</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出FeaTok，一种通过重建预训练特征而非像素来训练离散图像token的方法，使token表示更易于生成模型建模，从而提升生成质量与计算效率。</div>
-        <div class="summary-section"><strong>方法:</strong> 受特征预测式自监督学习启发，FeaTok将图像tokenizer的训练目标从像素重建改为重建预训练视觉特征（如SigLIP、DINOv2等提取的特征）。该方法在保持离散token表示的同时，优化其结构以利于下游生成模型学习分布。作者在SigLIP、SigLIP2、DINOv2和DINOv3四种特征提取器上进行了消融实验，并在类条件生成和文本条件生成任务中验证效果。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在类条件生成中，FeaTok推进了质量-计算帕累托前沿，256×256下gFDr6相比最强离散基线降低最多29%，并以少38倍的采样计算量超越最强无引导连续基线RAEv2。FeaTok在无奖励训练下取得高于先前工作的人类偏好奖励模型分数，并在预训练后仅需500次微调更新即在三个文本条件生成基准上超越连续与离散基线。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SoftCache，将动态缓存中的二值刷新/复用信号转化为连续的自适应步长控制，利用信号相对阈值的余量预测复用误差并据此决定缓存步的跳跃距离，从而在无需训练的情况下显著加速扩散与流模型生成。</div>
+        <div class="summary-section"><strong>方法:</strong> 扩散和流模型逐步迭代生成样本，每步都需完整网络前向，开销巨大；免训练缓存通过复用近期激活来加速。动态缓存方法将网络输入的廉价探针累积为陈旧度信号，超过阈值时执行一次新评估，但仅做二值硬切换，且每步都按固定步长推进。SoftCache观察到该信号相对阈值的余量可预测复用误差，于是用余量设定每个缓存步的前进距离：余量大时采样器跳过多个预定节点，接近刷新时步长收缩回原始步长，自适应跳跃可落在预定节点之间，使采样器偏离固定网格。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在图像模型FLUX以及视频模型HunyuanVideo和Wan2.1上，SoftCache在3.5倍至6.9倍加速下，于全部四项保真度指标上均优于所有基线，且无需训练、无需针对不同骨干网络单独调参。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Discrete image generators learn the distribution of tokens produced by an image tokenizer. These token representations should be easy for generators to model, not merely enable faithful image reconstruction. Yet these tokenizers are commonly trained to reconstruct pixels, which prioritizes low-level fidelity and may disrupt representation structure useful for generation. Motivated by feature-predictive self-supervised learning, we introduce feature-loss tokenization (FeaTok), which trains discrete tokens by reconstructing pretrained features rather than pixels. Ablations across SigLIP, SigLIP2, DINOv2, and DINOv3 show better generative performance with FeaTok. In class-conditional generation, FeaTok advances the quality-compute Pareto frontier, reducing gFDr6 at 256x256 by up to 29 percent over the strongest discrete baselines and outperforming the strongest unguided continuous baseline (RAEv2) with 38 times less sampling compute. FeaTok also achieves higher human-preference reward-model scores than prior art without reward-based training and surpasses continuous and discrete text-conditional baselines on three benchmarks with only 500 fine-tuning updates after pre-training.</p>
+        <p>Diffusion and flow models generate a sample over iterative steps, each a full pass through a large network, and that pass dominates generation cost. Training-free caching accelerates them by reusing activations from recent evaluations instead of recomputing them. Dynamic caching methods decide when to refresh by accumulating a cheap probe of the network input into a staleness signal and spending a fresh evaluation once it crosses a threshold. They perform hard caching: the signal is a binary switch between refresh and reuse, and every step, fresh or cached, advances by the prescribed step size. We observe that the signal carries much more than this switch. How far it sits below the threshold, its headroom, predicts the error induced by reuse. We propose SoftCache, which performs soft caching: instead of a binary switch, the headroom sets how far each cached step goes. Where the headroom is large, the sampler jumps past several scheduled nodes, and as a refresh nears, its steps shrink back toward the original step. These adaptive jumps may land between the scheduled nodes, taking the sampler off its fixed grid. SoftCache requires no training and adds no per-backbone settings: on FLUX for images and on HunyuanVideo and Wan2.1 for video, at speedups from $3.5\times$ to $6.9\times$, it is ahead of every baseline on all four fidelity metrics.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.22060" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.22060.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.22369" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22369.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.21250</span>
+          <span class="paper-id">2610.22328</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 85/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.21250" target="_blank">FocusOPD: Structure-Guided On-Policy Distillation for Diffusion Models</a>
+        <a href="https://arxiv.org/abs/2610.22328" target="_blank">ACEdit: Stable Multi-Turn Image Editing via Asymmetric Conditioning</a>
       </h3>
-      <p class="paper-title-zh">FocusOPD：面向扩散模型的结构引导在线策略蒸馏</p>
-      <p class="paper-authors">Xinrui Lin, Shumin Wang, Suqi Song, Fan Li, Yanyong Zhang</p>
+      <p class="paper-title-zh">ACEedit：通过非对称条件实现稳定的多轮图像编辑</p>
+      <p class="paper-authors">Sara Dorfman, Nir Goren, Gal Barak, Daniel Cohen-Or, Or Patashnik</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 该论文发现多教师在线策略蒸馏中教师与学生模型的特征不匹配主要集中在深层Transformer模块和早期去噪阶段，并提出FocusOPD方法，通过在深层和早期去噪步骤施加token级方向性特征对齐来增强能力迁移。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先分析了教师-学生模型在Transformer各层和去噪各时间步的特征不匹配情况，发现不匹配集中在深层模块的早期去噪阶段且蒸馏后依然存在。基于此，FocusOPD在基础在线策略蒸馏目标上增加了受限的特征对齐损失，仅作用于深层Transformer模块和早期去噪步骤，采用token级方向性对齐。该方法在两种rectified-flow骨干网络和多种OPD目标上进行了验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> FocusOPD在组合生成、文本渲染和基于偏好的评估中均提升了能力迁移效果。在主要基准上，GenEval从0.953提升至0.967，PickScore从23.797提升至23.944，LAION-Aesthetic从6.052提升至6.199。消融实验表明，选择性地对深层和早期阶段进行监督比在全网络和全轨迹上对齐更有效且更高效。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种训练方案，使多轮图像编辑在累积分布偏移下保持稳定，显著减少长序列编辑中的质量退化。</div>
+        <div class="summary-section"><strong>方法:</strong> 训练时强制编辑器基于自身前一轮输出进行操作（自强制原则），以模拟多轮推理中的分布偏移。由于自生成轨迹偏离真实轨迹导致直接监督不可靠，采用蒸馏目标，利用教师图像编辑器在模型基于自身输出时提供可靠训练信号。引入非对称条件方案：学生模型顺序编辑自身输出，教师模型始终锚定原始干净图像并接收复合编辑指令。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，在长多轮编辑序列中质量退化大幅减少，同时保持编辑质量和指令遵循能力。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Multi-teacher on-policy distillation enables rectified-flow models with diffusion-transformer architectures to combine task-specific capabilities within a single student. However, matching model outputs does not guarantee that their internal representations are aligned, and it remains unclear where and when additional feature supervision is most useful. We analyze the teacher-student feature mismatch across Transformer blocks and denoising timesteps, and find that the mismatch is concentrated in deeper Transformer blocks during early denoising and persists after OPD distillation, indicating ineffective distillation. Motivated by this observation, we introduce FocusOPD, which augments the base OPD objective with token-wise directional feature alignment restricted to deep layers and early denoising steps. Across two rectified-flow backbones and multiple OPD objectives, FocusOPD improves capability transfer in compositional generation, text rendering, and preference-based evaluation. On the primary benchmark, it improves over DiffusionOPD from 0.953 to 0.967 on GenEval, from 23.797 to 23.944 on PickScore, and from 6.052 to 6.199 on LAION-Aesthetic. Ablations show that selective deep and early supervision is more effective and efficient than alignment over the full network and trajectory.</p>
+        <p>Image editing models produce impressive results for individual edits, but their quality often deteriorates over multiple editing turns. Each editing turn introduces small distribution shifts that accumulate over successive edits, creating a gap between the input distributions encountered during the editor's original training and multi-turn inference. We introduce a training scheme that makes multi-turn image editing stable under this accumulating distribution shift. A key is to force the editor to operate on its own outputs from previous editing turns during training, bringing the principle of Self-Forcing to image editing. The main challenge is that self-generated editing trajectories deviate from ground-truth trajectories, making direct supervision unreliable. We address this challenge through a distillation objective that leverages a teacher image editor to provide a reliable training signal when the model operates on its own previous outputs. We introduce an asymmetric conditioning scheme: while the student performs edits sequentially on its own outputs, the teacher remains anchored to the original clean image and receives a compound editing instruction. Experiments show substantially reduced degradation over long multi-turn sequences while maintaining editing quality and instruction adherence.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.21250" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.21250.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.22328" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.22328.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.20818</span>
+          <span class="paper-id">2610.21202</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 85/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.20818" target="_blank">Intern Lumina U2: A Multi-Codebook Diffusion Large Language Model for Omni-Visual Understanding and Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.21202" target="_blank">UltraDiff: Transferring High-Fidelity Priors to Compressed Latent Spaces for High-Resolution Image Generation</a>
       </h3>
-      <p class="paper-title-zh">Intern Lumina U2：面向全视觉理解与图像生成的多码本扩散大语言模型</p>
-      <p class="paper-authors">Qian Yu, Zongyang Qiu, Juncheng Yan, Hongliang Li, Qi Qin 等 (43 位作者)</p>
+      <p class="paper-title-zh">UltraDiff：将高保真先验迁移至压缩潜空间以实现高分辨率图像生成</p>
+      <p class="paper-authors">Jingjing Ren, Haitian Zheng, Haoyu Chen, Connelly Barnes, Zhifei Zhang 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个在完全离散空间中表示多码本视觉token的扩散语言模型，在单一骨干网络中统一建模文本与高容量视觉表示，并在视觉理解、图像生成和图像编辑任务上达到统一模型的领先性能。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法将每个视觉位置表示为一组来自互补码本的编码，以提升表示容量并保持与离散文本建模的兼容性。输入阶段在每个位置拼接嵌入，输出阶段使用轻量级多码本自回归头依次预测位置内的编码，同时扩散骨干并行处理所有位置。模型基于AToken的统一4D表示，支持图像、视频和3D输入，并构建了跨Ascend与NVIDIA平台的全栈训练、推理与评估系统。此外，采用稳定性感知采样策略（置信度平台引导解掩码与漂移触发缓存刷新）提升推理效率。</div>
-        <div class="summary-section"><strong>关键发现:</strong> Intern Lumina U2在视觉理解、图像生成和图像编辑方面均取得统一模型中的领先性能，验证了跨平台有效性，并通过稳定性感知采样策略将图像生成速度提升4.45倍。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出UltraDiff框架，通过联合潜扩散学习与边缘分数蒸馏，在保持f32压缩效率的同时达到接近f8模型的生成质量，实现高效高分辨率图像合成。</div>
+        <div class="summary-section"><strong>方法:</strong> 将高分辨率合成问题重构为联合潜扩散学习加边缘分数蒸馏的两阶段框架。引入MixTeacher双分支DiT模型，联合建模f8-f32分布，利用共享注意力机制以高保真f8先验消解压缩空间中的歧义。关键地在原生f32空间中提出向量场蒸馏，理论上迫使学生模型学习教师轨迹的条件期望，从而有效滤除压缩伪影。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在1K至4K的评估设置中，UltraDiff在保持f32效率的同时接近f8级别的生成质量。在单张A100 GPU上以20步采样生成2K图像仅需6.2秒，比f8基线快40倍以上。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified multimodal generation covers discrete, continuous, and hybrid paradigms. Discrete approaches with single-codebook visual tokenizers align naturally with text modeling but have limited representational capacity. Continuous and hybrid approaches retain richer visual representations, but they model text and images in heterogeneous spaces with different training objectives, potentially introducing optimization conflicts between modalities with misaligned representation spaces. These choices expose a central question: how to efficiently model high-capacity visual representations alongside textual content in a shared optimization space within a single backbone. We present Intern Lumina U2, to our knowledge the first diffusion language model to represent multi-codebook visual tokens in a fully discrete space. Each visual position is represented by a group of codes from complementary codebooks, increasing its representational capacity while preserving compatibility with discrete text modeling. At the input, the embeddings are concatenated at each position; at the output, a lightweight multi-codebook autoregressive head predicts the codes within each position sequentially, while the diffusion backbone processes all positions in parallel. Built on the unified 4D representation of AToken, Intern Lumina U2 supports image, video, and 3D inputs within a single backbone and achieves leading performance among unified models in visual understanding, image generation, and image editing. We further build a full-stack training, inference, and evaluation system on both Ascend and NVIDIA platforms to verify the cross-platform effectiveness of our model. We also improve the inference efficiency through a stability-aware sampling strategy, which combines confidence-plateau-guided unmasking approach with drift-triggered cache refreshing mechanisms, accelerating image generation by 4.45x.</p>
+        <p>High-resolution synthesis with Latent Diffusion Models (LDMs) faces a fundamental trade-off between computational cost and generative fidelity. This trade off is largely governed by the latent compression factor f (e.g. f8 denotes f=8 and f32 f=32). While aggressive compression (f32) significantly improves efficiency, it suffers from severe information loss and ambiguity compared to standard f8 models. We propose UltraDiff, a framework that reformulates this challenge as joint latent diffusion learning followed by marginal score distillation. We introduce MixTeacher, a dual branch DiT that models the joint f8-f32 distribution, utilizing shared attention to resolve the ambiguity of the compressed space with high fidelity f8 priors. Crucially, we propose vector field distillation in the native f32 space. Theoretically, this compels the student to learn the conditional expectation of the teacher trajectory, effectively filtering out compression artifacts. Across the evaluated 1K to 4K settings, UltraDiff approaches f8 level quality while preserving f32 efficiency. With 20 sampling steps on a single A100 GPU, it generates a 2K image in 6.2 seconds over 40 times faster than our f8 baseline.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.20818" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.20818.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.21202" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.21202.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
