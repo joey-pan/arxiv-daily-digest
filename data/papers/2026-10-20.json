@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2610.26863",
+    "title": "Text-to-Image Generative Modeling Without Language Pretraining",
+    "abstract": "Modern text-to-image (T2I) systems use internet-scale language pretraining for text-conditioned image generation. We ask whether language pretraining is necessary for strong T2I generation. We introduce Halcyon, a family of early-fusion multimodal autoregressive models pretrained entirely from scratch on GPIC, a dataset of 100M image-text pairs. Halcyon-0.52B outperforms LlamaGen-XL/8 (48.0 vs. 63.3 gFD) with 18.2$\\times$ less pretraining compute. Further, Halcyon-1.6B outperforms JiT-T2I-XXL/8++ (35.3 vs. 41.0 gFD) with 275$\\times$ less pretraining compute. Controlled experiments show that text-only pretraining does not improve T2I generation. Halcyon also learns image captioning by replacing caption dropout with I2T supervision, maintaining competitive T2I generation quality under the same pretraining budget. We show that strong T2I systems can be trained from scratch without internet-scale language pretraining. Code and models are available at https://cs.stanford.edu/~keshik/halcyon",
+    "authors": [
+      "Keshigeyan Chandrasegaran",
+      "Yue Zhao",
+      "Armin W. Thomas",
+      "Ehsan Adeli",
+      "Jiajun Wu",
+      "Juan Carlos Niebles",
+      "Li Fei-Fei",
+      "Michael Poli"
+    ],
+    "published": "2026-10-19",
+    "updated": "2026-10-19",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.26863.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.26863",
+    "primary_category": "cs.LG",
+    "score": 88,
+    "summary": {
+      "title_zh": "无需语言预训练的文本到图像生成建模",
+      "core_contribution": "论文提出Halcyon系列模型，证明无需互联网规模的语言预训练，仅从零开始在图文对数据集上训练即可实现强文本到图像生成，且计算效率显著优于现有方法。",
+      "method": "作者构建了GPIC数据集（1亿图文对），并设计了Halcyon系列早期融合的多模态自回归模型，完全从零开始预训练。通过控制实验比较有无文本预训练的效果，并用图像到文本监督替代标题丢弃来学习图像描述。",
+      "findings": "Halcyon-0.52B以18.2倍更少的预训练计算量超越LlamaGen-XL/8（gFD 48.0 vs. 63.3）；Halcyon-1.6B以275倍更少计算量超越JiT-T2I-XXL/8++（gFD 35.3 vs. 41.0）。控制实验表明纯文本预训练不能提升T2I生成，且模型能同时学习图像描述并保持竞争性生成质量。"
+    }
+  },
+  {
+    "id": "2610.26837",
+    "title": "SpecKCast: Spectral Kalman Forecasting for Diffusion Acceleration",
+    "abstract": "Diffusion Transformers (DiTs) achieve high-fidelity image and video generation, but they suffer from substantial inference costs due to repeated transformer evaluations across many denoising steps. Feature caching reduces this cost by reusing features across denoising steps. Recent forecasting methods extend this idea by extrapolating features to skipped steps instead of reusing them. However, existing forecasting methods extrapolate the features they predict uniformly, even though the spatial-frequency components of these features change most at different stages of denoising. They also overlook that denoising progresses nonuniformly, so equal step intervals can correspond to very different amounts of change. These mismatches amplify forecast errors as more steps are skipped, limiting the achievable acceleration. We propose SpecKCast, a training-free method that forecasts the model output in the frequency domain. SpecKCast applies a 2D discrete cosine transform (DCT) to the output and tracks each coefficient with a lightweight Kalman filter along a band-specific time coordinate derived from the noise schedule. The filter tracks each coefficient's value and rate of change, and the transformer is evaluated only when the filter's forecast uncertainty exceeds a threshold. Experiments on FLUX.1-dev, Qwen-Image, Wan2.1-14B, and HunyuanVideo show that SpecKCast achieves a better trade-off between acceleration and fidelity than existing caching and forecasting methods, reaching up to 6x speedup with less than 0.05 GiB of additional memory.",
+    "authors": [
+      "Javad Rajabi",
+      "Hakki Can Karaimer",
+      "David B. Lindell",
+      "Babak Taati",
+      "Michael S. Brown"
+    ],
+    "published": "2026-10-19",
+    "updated": "2026-10-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.26837.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.26837",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "SpecKCast：用于扩散加速的频谱卡尔曼预测",
+      "core_contribution": "提出一种无需训练的方法SpecKCast，在频域中对扩散Transformer的模型输出进行预测，通过频谱分解与卡尔曼滤波实现自适应步长跳过，从而在加速与保真度之间取得更优权衡。",
+      "method": "SpecKCast对模型输出施加二维离散余弦变换（DCT），将特征分解为空间频率系数；随后为每个系数沿由噪声调度推导出的频带特定时间坐标配置轻量级卡尔曼滤波器，跟踪其数值与变化率；仅当滤波器预测不确定性超过阈值时才真正评估Transformer，从而实现非均匀、频率自适应的跳步预测。",
+      "findings": "在FLUX.1-dev、Qwen-Image、Wan2.1-14B和HunyuanVideo上的实验表明，SpecKCast相比现有缓存与预测方法在加速与保真度之间取得更好权衡，最高实现6倍加速，额外内存占用低于0.05 GiB。"
+    }
+  },
+  {
+    "id": "2610.26826",
+    "title": "RefCraft: Benchmarking Visual-Reference-Conditioned Agentic Generation through Web Development",
+    "abstract": "Beyond basic tool use and coding skills, effectively incorporating visual references into agentic generation is equally essential for applying AI agents to real-world productivity tasks. We study this crucial capability through webpage development, a practical and readily evaluable setting in which existing benchmarks remain largely idealized: they typically focus on reconstructing visual targets or generating webpages from textual instructions alone, overlooking the more common workflow of developing from visual examples. Specifically, we introduce RefCraft, a benchmark comprising 300 realistic multimodal webpage-development tasks that combine natural-language instructions with screenshots from one to five reference webpages. Agents must selectively interpret and utilize these references while rendering, visually inspecting, and iteratively refining their outputs. We evaluate the resulting open-ended artifacts using independently verifiable keypoints and complementary programmatic and VLM judges. Across nine frontier (M)LLMs, the strongest system achieves an overall score of only 52.12 out of 100, revealing that visual-reference-conditioned agentic generation remains a substantial challenge for current models in practical webpage-development settings.",
+    "authors": [
+      "Yuchi Wang",
+      "Rongyao Fang",
+      "Weihao Yu",
+      "Xilin Wei",
+      "Tiancheng Gu",
+      "Dingkang Yang",
+      "Hang Zhang",
+      "Dayiheng Liu",
+      "Hongsheng Li",
+      "Shuai Bai"
+    ],
+    "published": "2026-10-19",
+    "updated": "2026-10-19",
+    "categories": [
+      "cs.CL",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.26826.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.26826",
+    "primary_category": "cs.CL",
+    "score": 88,
+    "summary": {
+      "title_zh": "RefCraft：通过网页开发基准测试视觉参考条件下的智能体生成",
+      "core_contribution": "论文提出了RefCraft基准，包含300个结合自然语言指令与1至5个参考网页截图的多模态网页开发任务，用于评估AI智能体在真实工作流中选择性利用视觉参考进行迭代生成的能力。",
+      "method": "通过网页开发这一可评估的实际场景构建基准，任务要求智能体解读参考截图、渲染输出、视觉检查并迭代优化。采用可独立验证的关键点以及程序化评判和VLM评判相结合的方式，对开放式生成产物进行评估，并在九个前沿（多模态）大语言模型上进行了测试。",
+      "findings": "最强系统在100分制下仅获得52.12分，表明当前模型在实用网页开发场景中处理视觉参考条件下的智能体生成仍面临重大挑战。"
+    }
+  },
+  {
+    "id": "2610.26216",
+    "title": "RoAR-VAE: Improving Latent Diffusability through Robust Prediction",
+    "abstract": "An effective visual tokenizer must preserve image fidelity while producing latents that downstream diffusion models can learn efficiently. Prior work improves latent diffusability through semantic alignment or joint tokenizer--diffusion training. Revisiting REPA-E, a representative approach, we find that removing its diffusion objective and dedicated generative blocks while retaining semantic prediction from corrupted latents yields comparable downstream generation performance under a matched setting. This observation motivates a general principle of robust prediction: generation-relevant information should remain recoverable from corrupted latents. We instantiate this principle with two complementary objectives. RobustAlign predicts pretrained semantic features from corrupted latents to preserve high-level structure, while RobustRecon reconstructs the clean image to retain fine-grained spatial and appearance information. Together, they form Robust Alignment and Reconstruction VAE (RoAR-VAE). Our analysis suggests that robust prediction improves diffusability by making useful information more accessible in high-variance latent directions, which diffusion models tend to learn earlier. Empirically, RoAR-VAE improves average generation benchmark performance by 2.19 points over the strongest baseline tokenizer under the same training budget, while improving small-text reconstruction accuracy by 16.93 percentage points over FLUX.1-VAE. These results demonstrate that RoAR-VAE achieves a favorable balance between reconstruction fidelity and downstream generative learnability.",
+    "authors": [
+      "Yang Yue",
+      "Fangyun Wei",
+      "Yitong Wang",
+      "Jinjing Zhao",
+      "Henry Zheng",
+      "Dong Chen",
+      "Gao Huang"
+    ],
+    "published": "2026-10-19",
+    "updated": "2026-10-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.26216.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.26216",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "RoAR-VAE：通过鲁棒预测提升潜在可扩散性",
+      "core_contribution": "论文提出了一种通用原则——生成相关信息应能从损坏的潜在表示中恢复，并基于此设计了RoAR-VAE，在重建保真度和下游生成可学习性之间取得了良好平衡。",
+      "method": "作者首先重新审视REPA-E方法，发现仅保留从损坏潜在表示中预测语义特征的目标即可达到可比的下游生成性能。基于此提出鲁棒预测原则，并实例化为两个互补目标：RobustAlign从损坏潜在表示预测预训练语义特征以保留高层结构，RobustRecon重建干净图像以保留细粒度空间和外观信息，二者共同构成RoAR-VAE。",
+      "findings": "分析表明鲁棒预测通过使有用信息在高方差潜在方向上更易获取（扩散模型倾向于更早学习这些方向）来提升可扩散性。实验上，在相同训练预算下，RoAR-VAE在生成基准上平均比最强基线分词器提升2.19分，小文本重建准确率比FLUX.1-VAE提升16.93个百分点。"
+    }
+  },
+  {
+    "id": "2610.25479",
+    "title": "Test-Time Scaling of Text-to-Image Flow Matching Models with Noise-Rejuvenated Sequential Monte Carlo",
+    "abstract": "Test-time scaling of diffusion models with sequential Monte Carlo (SMC) has become a promising strategy for sampling under user-specified rewards, such as human preference scores. However, the standard SMC framework typically relies on stochastic proposals and therefore does not directly transfer to flow matching models, in which inference is governed by deterministic ODEs. In this work, we introduce noise-rejuvenated SMC, an inference-time scaling method tailored for text-to-image flow matching models. Our key idea is to perturb each resampled particle by changing its source noise and constructing a new intermediate state using its current endpoint estimate. This moves the particle to another state that remains representable under the flow-matching interpolation form, enabling particle exploration without converting the sampler to an SDE. We further introduce a look-ahead mechanism to refine resampled particles before weighting. Experiments on Stable Diffusion 3, FLUX.1-dev, and Z-Image demonstrate consistent improvements in reward-guided generation, while ablation studies validate the contributions of noise rejuvenation and look-ahead refinement. Code is available at https://github.com/shermanlian/NR-SMC.",
+    "authors": [
+      "Wenyi Lian",
+      "Zheng Zhao",
+      "Thomas B. Sch{ö}n"
+    ],
+    "published": "2026-10-18",
+    "updated": "2026-10-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.25479.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.25479",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "噪声复兴序列蒙特卡洛的文本到图像流匹配模型测试时缩放",
+      "core_contribution": "提出噪声复兴序列蒙特卡洛（NR-SMC），一种专为文本到图像流匹配模型设计的推理时缩放方法，解决了标准SMC因依赖随机提议而无法直接应用于确定性ODE流匹配模型的问题。",
+      "method": "通过改变重采样粒子的源噪声并利用其当前端点估计构建新的中间状态，将粒子移动到流匹配插值形式下仍可表示的状态，从而在不将采样器转换为SDE的情况下实现粒子探索；进一步引入前瞻机制在加权前细化重采样粒子。",
+      "findings": "在Stable Diffusion 3、FLUX.1-dev和Z-Image上的实验表明，该方法在奖励引导生成中取得一致改进，消融研究验证了噪声复兴和前瞻细化的贡献。"
+    }
+  }
+]
