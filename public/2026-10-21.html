@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-10-21</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.28171</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.28171" target="_blank">DocLayout-YOLO: Axis-Attentive Document Layout Detector with Mesh-Guided Synthetic Pretraining</a>
+      </h3>
+      <p class="paper-title-zh">DocLayout-YOLO：基于网格引导合成预训练的轴注意力文档布局检测器</p>
+      <p class="paper-authors">Zhiyuan Zhao, Hengrui Kang, Guang Liang, Bin Wang, Conghui He</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出DocLayout-YOLO，一种文档专用的实时布局检测器，通过大规模合成文档预训练和页面轴上下文建模，提升对异构文档的适应能力，并在多个基准上实现最先进的性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 从数据角度，提出Mesh-candidate BestFit算法生成MeshLayout-1M合成预训练语料库，提供大规模多样化的文档布局用于预训练；从模型角度，设计Page-Axis Layout Attention (PALA)模块，沿水平和垂直页面轴捕获长距离依赖，同时保持计算高效；基于YOLO框架进行文档特化改造。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在四个异构文档基准上取得最先进性能：D4LA上mAP50:95为72.4%，M6Doc为75.5%，HJDataset为96.0%，PRIMA-LAD为73.1%；与现有实时检测器相比，在文档布局分析中实现了更优的精度-效率权衡。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Accurate and efficient document layout analysis is critical for modern document parsing systems. However, although the YOLO framework represents a leading paradigm for the real-time detector, its adaptation to heterogeneous documents remains underexplored. To address this gap, we propose DocLayout-YOLO, a document-specialized real-time detector that integrates diverse synthetic document pretraining and page-axis context modeling. From the data perspective, we introduce MeshLayout-1M, a synthetic pretraining corpus generated by the proposed Mesh-candidate BestFit algorithm, which provides large-scale and diverse document layouts for pretraining and improves adaptation to heterogeneous document scenarios. From the model perspective, we propose Page-Axis Layout Attention (PALA), which captures long-range dependencies along the horizontal and vertical page axes while remaining computationally efficient. Extensive experiments demonstrate that DocLayout-YOLO achieves state-of-the-art performance on four heterogeneous document benchmarks, obtaining 72.4%/75.5%/96.0%/73.1% mAP50:95 on D4LA, M6Doc, HJDataset, and PRIMA-LAD, respectively. Compared with existing real-time detectors, DocLayout-YOLO establishes a superior accuracy-efficiency trade-off in document layout analysis. Code, model, and data are available at https://github.com/opendatalab/DocLayout-YOLO/tree/release-v2.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.28171" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.28171.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.28086</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.28086" target="_blank">MoDDiT: Simple Token Routing in Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">MoDDiT：扩散Transformer中的简单令牌路由</p>
+      <p class="paper-authors">Jarek Liesen, Matthew T. Jackson, Benjamin Ellis, Shimon Whiteson, Jakob N. Foerster</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出MoDDiT，一种简单的架构修改，通过独立路由令牌经过MLP和自注意力操作，实现动态计算分配，显著降低训练和推理成本，同时提升生成性能。</div>
+        <div class="summary-section"><strong>方法:</strong> MoDDiT在扩散Transformer中学习路由令牌，独立决定每个令牌是否经过MLP和自注意力块。通过这种路由，MLP的计算量可随令牌、图像和去噪时间步动态变化。模型从零开始训练图像生成模型，仅处理少至12.5%的令牌。</div>
+        <div class="summary-section"><strong>关键发现:</strong> MoDDiT显著降低训练和推理计算成本，增加稀疏性和模型深度可进一步降低成本并提升生成性能。学习到的分配具有可解释性，反映计算随视觉内容和噪声水平的变化；在视频生成中，分配与运动相关，并能将密集双向视频模型蒸馏为稀疏自回归学生模型。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Real-time video generation, interactive world models, and on-device image synthesis are almost a reality. Diffusion Transformers (DiT) achieve excellent sample quality, shifting the bottleneck to the throughput of the models themselves. Natural images are inherently sparse, as large portions of an image are often background, contribute little to the scene content, and are easy to denoise. DiTs fail to exploit this sparsity, as they process image tokens statically and uniformly. We propose MoDDiT, a simple architecture modification that learns to route tokens through both MLP and self-attention operations. By routing tokens through both blocks independently, MoDDiT allows for dynamic compute allocation in MLPs that varies across tokens, images, and denoising timesteps. Using MoDDiT to train image generation models from scratch significantly reduces computational costs of training and inference, processing as few as 12.5% of the tokens. By increasing sparsity and model depth, MoDDiT reduces costs and improves generation performance over unrouted baselines. The learned allocation is interpretable, revealing how computation varies with visual content and noise level. We also use MoDDiT to train video generation models, where allocation correlates with motion, and to distill a dense bidirectional video model into a sparse autoregressive student.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.28086" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.28086.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.27146</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.27146" target="_blank">PRIMFLOW: Learning Trajectory Primitives for Few-Step Distillation</a>
+      </h3>
+      <p class="paper-title-zh">PRIMFLOW：学习轨迹基元用于少步蒸馏</p>
+      <p class="paper-authors">Hongyi Fang, Benjia Zhou</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出PRIMFLOW方法，直接学习表示沿教师采样轨迹累积位移的连续轨迹基元，从而摆脱对特定时间参数化或固定查询网格的依赖，实现少步轨迹蒸馏；并建立局部到全局误差界及端点吸收机制以保持单次网络评估推理。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法用一个连续轨迹基元表示沿教师轨迹的累积位移，通过对基元的有限差分施加局部教师速度监督来学习累积运动，并利用端点差分获得全局更新。该形式化避免了预设时间基或固定查询网格，而是从局部监督中学习累积位移的时间演化。作者进一步建立了局部到全局误差界，刻画局部回归误差如何影响全区间位移精度，并引入端点吸收以消除辅助基元分支，同时保留单网络评估推理。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在大规模文本到图像生成实验中，PRIMFLOW在单次NFE下取得T-FID 20.92和HPSv2 28.35，两项指标均优于轨迹蒸馏基线；经端点吸收后性能保持相当，T-FID为20.86，HPSv2为28.33。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Few-step trajectory distillation aims to learn accurate global updates from dense local supervision along a teacher's sampling trajectory. Existing approaches construct within-step dynamics using specific trajectory parameterizations or discrete interval predictions, tying the learned update to a prescribed temporal structure. We propose \method, which directly learns a continuous trajectory primitive representing cumulative displacement along the teacher trajectory. By supervising finite differences of the primitive with local teacher velocities, \method learns the accumulated motion directly, while obtaining global updates through endpoint differences. This formulation avoids prescribing a temporal basis or fixed query grid and instead learns the temporal evolution of cumulative displacement from local supervision. We further establish a local-to-global error bound to characterize how local regression errors affect full-interval displacement accuracy, and introduce endpoint absorption to eliminate the auxiliary primitive branch while preserving one-network-evaluation inference. Experiments on large-scale text-to-image generation show that \method achieves a T-FID of 20.92 and an HPSv2 score of 28.35 at one NFE, improving both metrics over a trajectory-distillation baseline. After endpoint absorption, it retains comparable performance, achieving a T-FID of 20.86 and an HPSv2 score of 28.33.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.27146" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.27146.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.25918</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.25918" target="_blank">LEAP: Accelerating ODE-based Diffusion Sampling with Optimal Linear Leaps</a>
+      </h3>
+      <p class="paper-title-zh">LEAP：利用最优线性跳跃加速基于ODE的扩散采样</p>
+      <p class="paper-authors">Haowei Zheng, Zhenyu Zhou, Jiawei Chen, Can Wang, Defang Chen</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种名为LEAP的专用采样方法，通过对采样轨迹几何特性的理论与实证研究，实现无需模型评估即可精确近似未来状态，从而加速扩散模型的免训练采样。</div>
+        <div class="summary-section"><strong>方法:</strong> LEAP基于采样轨迹的低维性和跨轨迹一致性，在局部轨迹子空间内构建监督最小二乘优化问题，通过求解该问题直接预测未来状态而无需调用模型。该方法可作为插件无缝集成到现有基于求解器的采样方法中，对现代扩散模型提供即插即用的增强。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明LEAP在多种模态上优于先前方法，包括文本到图像生成（Stable Diffusion 3.5、FLUX.1-dev）和图像到3D生成（TRELLIS.2），并能与现有求解器方法结合使用，实现即插即用的性能提升。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Diffusion models primarily rely on general-purpose ODE-based numerical methods for training-free accelerated sampling, but performance degrades with coarse time discretization. In this paper, we propose optimal linear leaps (LEAP), a specialized method grounded in theoretical and empirical investigations of sampling trajectory geometry. Built upon low-dimensionality and cross-trajectory consistency, LEAP formulates a supervised least-squares optimization problem within the local trajectory subspace, achieving a precise approximation of future states without model evaluations. Extensive experiments demonstrate that LEAP outperforms previous methods across diverse modalities, including text-to-image (Stable Diffusion 3.5, FLUX.1-dev) and image-to-3D (TRELLIS.2) generation. Furthermore, LEAP can be seamlessly integrated into existing solver-based methods, offering a plug-and-play enhancement for modern diffusion models. Code is available at https://github.com/zju-pi/LEAP.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.25918" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.25918.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.25742</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.25742" target="_blank">Functional Cross-layer Experts Routing for One-step Diffusion Distillation</a>
+      </h3>
+      <p class="paper-title-zh">面向单步扩散蒸馏的功能性跨层专家路由</p>
+      <p class="paper-authors">Zile Huang, Ser-nam Lim</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出将单步扩散蒸馏中的内部容量分配形式化为“功能分配”问题，并据此设计DeMoE架构，通过共享骨干加条件路由残差的方式，在仅激活部分FFN宽度的情况下实现优于稠密单步基线、匹配甚至超越多步教师的生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析单步蒸馏中参数需同时保留通用生成先验与解析提示特定细节的矛盾，指出仅当专家干扰超过共享迁移收益时解耦表示才有益。据此提出DeMoE：在图像FFN中配备一个始终激活的共享专家，并叠加条件路由的专家切片，形成跨层功能性路由结构。模型在单步分布匹配目标下训练，并引入执行路由监督以稳定路由学习。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在单步FLUX.2-4B生成任务上，DeMoE取得GenEval分数0.8220，仅激活80.5%的图像FFN宽度，显著优于稠密单步基线，整体匹配50步教师模型，并在复杂组合与计数任务上超越教师。在COCO-10K上，DeMoE在单步模型中取得最优的保真度与多样性，表明结构化内部计算重分配是扩散模型压缩的优越范式。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>One-step distillation compresses diffusion trajectories into a single forward evaluation, yet how internal capacity should be structured within that remaining pass remains largely unexplored. In this setting, identical parameters must simultaneously preserve general generative priors and resolve prompt-specific details without iterative refinement. We formalize this challenge as functional allocation. Our analysis reveals that decoupling representations is beneficial only when expert interference outweighs shared transfer, favoring an always-active shared backbone augmented with conditionally routed residuals over standard isolated MoE architectures. We propose DeMoE, which pairs a persistent shared expert with conditionally routed expert slices across image FFNs, trained under a one-step distribution-matching objective with executed-route supervision. On one-step FLUX.2-4B generation, DeMoE achieves a GenEval score of 0.8220 while activating only 80.5% of the image-FFN width, substantially outperforming dense one-step baselines, matching the 50-step teacher overall, and surpassing it on complex composition and counting. Across COCO-10K, DeMoE establishes state-of-the-art fidelity and diversity among single-step models, demonstrating that structured internal computation reallocation provides a superior compression paradigm for diffusion models. Code is available at https://github.com/toffeecat/demoe-ttt-router.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.25742" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.25742.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
