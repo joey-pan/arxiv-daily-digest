@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-22</p>
+        <p class="date">📅 2026-10-23</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29581</span>
+          <span class="paper-id">2610.31565</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29581" target="_blank">Unlocking Spatial Grounding in Flow-Matching Models via SNR Tuning</a>
+        <a href="https://arxiv.org/abs/2610.31565" target="_blank">Squaring-the-Sphere: Distortion-Free and Seamless Panorama Generation via CubeAtlas</a>
       </h3>
-      <p class="paper-title-zh">通过SNR调优解锁流匹配模型中的空间定位能力</p>
-      <p class="paper-authors">Martin Thißen, Elke Hergenröther</p>
+      <p class="paper-title-zh">化球为方：基于CubeAtlas的无畸变无缝全景图生成</p>
+      <p class="paper-authors">Xuhui Zuo, Chenjie Cao, Tengfei Wang, Junta Wu, Yisu Zhang 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了信噪比（SNR）分布是流匹配模型中空间定位能力的关键决定因素，仅通过调整训练时的噪声分布即可显著提升布局遵循度，无需修改模型架构或引入辅助适配器。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者构建了一个由几何图元组成的合成基准，将结构机制从自然图像的纹理复杂性中分离出来，并提出了一个严格的颜色感知布局度量来量化空间保真度。通过在中心化SNR分布与高噪声区间之间调整训练重点，系统评估不同噪声调度对空间定位的影响。实验进一步在COCO数据集上验证了方法的泛化性，并与FLUX.1等模型的噪声调度进行了对比分析。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在中心化SNR分布下训练时布局遵循度仅为25.9%，而将训练重点转向高噪声阶段（关键学习期）后可提升至80.8%，接近底层VAE的83.6%重建上限。该调整的必要性随分辨率和宽高比变化而增强，且FLUX.1等模型采用的保守噪声调度不足以实现精确布局遵循。在COCO数据集上，仅通过分布调优即将平均精度从1.0提升至57.3，达到了最先进的布局遵循水平。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种名为CubeAtlas的全新全景图表示方法，将立方体贴图的六个面展开为单一紧凑画布，在保持透视几何的同时实现无缝全景生成，并引入布局感知的稀疏注意力机制以降低计算成本。</div>
+        <div class="summary-section"><strong>方法:</strong> CubeAtlas将立方体贴图的赤道面与经过旋转对齐的极区面排列在同一画布上，保留跨面关系以支持无缝拼接。基于此表示，预训练扩散Transformer可在单次前向中联合建模完整全景图，无需修改骨干架构或位置编码。针对CubeAtlas的结构化布局，设计了布局感知的稀疏注意力掩码，移除几何无关的token对，保留全景连续性所需的交互。此外，引入免训练超分辨率技术和融合方案，在无畸变透视空间中增强细节后再生成最终ERP全景图。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，该方法在几何保真度、跨视角一致性和高分辨率视觉质量上优于先前方法；CubeAtlas在token数量与ERP相当的情况下，以更低的注意力计算量实现了优于ERP建模的质量。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Despite the success of foundation models in image synthesis, achieving fine-grained spatial control remains a significant challenge, typically requiring auxiliary structural adapters or complex inference-time steering. While modern vision-language (VLM) text encoders possess the latent capacity to represent spatial coordinates, generative models often fail to leverage this information. We demonstrate that the signal-to-noise ratio (SNR) distribution is a critical determinant of spatial grounding in flow-matching models. Using a novel synthetic benchmark of geometric primitives, we isolate structural mechanics from textural complexity inherent in natural imagery and introduce a rigorous color-aware layout metric to quantify spatial fidelity. We show that training on a centered SNR distribution results in poor layout adherence (25.9%). Instead, we identify high-noise regimes as a "critical learning phase" for spatial grounding. Shifting the training focus toward these stages increases layout adherence to 80.8%, effectively reaching the 83.6% reconstruction ceiling of the underlying variational autoencoder. We find that the necessity for this shift scales with resolution and aspect ratio variance, and that the conservative noise schedules employed by models like FLUX.1 are insufficient for precise layout adherence. Finally, we show that these findings translate to real-world imagery via the COCO dataset (1.0 vs. 57.3 Average Precision), where state-of-the-art layout adherence is unlocked through distribution tuning alone, without architectural modifications.</p>
+        <p>Generating 360-degree panoramas requires both local perspective fidelity and global spherical continuity. Existing representations face a trade-off: equirectangular projection (ERP) enables seamless panorama modeling but suffers from severe distortion and a domain gap to pre-trained image generators, whereas cubemaps preserve perspective geometry but often produce inconsistent faces and visible seams. We present Squaring-the-Sphere, a panoramic image generation framework built on a novel representation CubeAtlas, which unfolds all cubemap faces into a single compact canvas. By arranging orientation-aligned, rotated polar regions alongside the equatorial faces, this representation preserves the perspective geometry of cubemaps while organizing the cross-face relationships required for seamless panorama assembly. It further enables a pretrained diffusion transformer to model the complete panorama jointly in a single pass, without altering the backbone architecture or positional encoding. While CubeAtlas has a token count comparable to ERP, its structured layout makes many dense attention interactions unnecessary. We therefore introduce a layout-aware sparse attention mask that preserves the interactions required for panorama continuity while removing geometrically irrelevant token pairs. As a result, CubeAtlas achieves better quality than ERP modeling with lower attention computation. Furthermore, we introduce a training-free super-resolution technique and a fusion scheme that enhance fine details in distortion-free perspective space before achieving the final ERP panorama. Experiments on various benchmarks demonstrate that our method improves geometric fidelity, cross-view consistency, and high-resolution visual quality over previous methods.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29581" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29581.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.31565" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.31565.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29415</span>
+          <span class="paper-id">2610.30875</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29415" target="_blank">CCG Diffusion: Combinatory Categorial Grammar-Driven Compositional and Syntactically Disambiguated Text-to-Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.30875" target="_blank">HimmBO: High-Dimensional Interactive Model-Merging Bayesian Optimization for Image Generation</a>
       </h3>
-      <p class="paper-title-zh">CCG Diffusion：基于组合范畴语法的组合式与句法消歧文本到图像生成</p>
-      <p class="paper-authors">Ryosuke Yamaki, Daichi Mochihashi, Nobutaka Shimada, Seitaro Shinagawa, Tadahiro Taniguchi</p>
+      <p class="paper-title-zh">HimmBO：面向图像生成的高维交互式模型合并贝叶斯优化</p>
+      <p class="paper-authors">Jinyuan Mao, Zhihao Shen, Chenxi Liu</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需训练的文本到图像生成控制方法CCG Diffusion，利用组合范畴语法（CCG）的句法信息同时解决属性绑定、空间关系、数量控制以及介词短语附着歧义等问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法基于组合范畴语法，其中每个词的范畴携带丰富的句法信息，可直接从CCG解析中读取词间修饰关系，并通过固定介词范畴来消解介词短语附着歧义。CCG Diffusion采用提示重写和注意力引导两种基于CCG的机制，统一用于控制属性绑定、空间关系和数量，以及解决句法歧义。方法在Stable Diffusion和Sana两种架构不同的骨干模型上进行了验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在属性绑定和二维空间关系任务上，CCG Diffusion在两种骨干模型上均取得了对比方法中的最高分，并在介词短语歧义消解方面显著优于所有对比方法。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种两阶段方法HimmBO，将偏好驱动的适配器合并扩展到更大规模的适配器集合，同时大幅降低图像生成成本。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法分为筛选阶段和精炼阶段。筛选阶段通过对预生成图像进行水平集估计来恢复活跃适配器集合，无需生成新图像；精炼阶段在恢复的低维子空间中优化合并系数。两个阶段均使用风格感知核，使偏好信息能在视觉相似的适配器之间迁移。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在模拟用户图像匹配实验中，HimmBO的最终相似度高于所有对比方法，且达到给定相似度所需的图像生成次数不到先前方法的十分之一。当适配器集合增长到1080个时，其性能保持稳定，而竞争方法则显著退化。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-to-image generation models do not explicitly receive the syntactic structure of the prompt, i.e., which word modifies which and where each phrase attaches. Consequently, they often struggle to bind attributes to the correct objects, to depict spatial relations and counts correctly, and to render syntactically ambiguous prompts in the intended interpretation. Existing syntax-based control methods mainly address attribute binding and have limited ability to control spatial relations and counts or to specify the interpretation of syntactically ambiguous prompts. They rely on phrase-structure or dependency grammars and require additional rules or constraints on the tree structure to extract modification relations between words or to specify a syntactic interpretation. We propose CCG Diffusion, a training-free method that controls image generation using Combinatory Categorial Grammar (CCG). In CCG, the category of each word carries rich syntactic information: it specifies what the word combines with and what phrase it forms. Modification relations between words can therefore be read directly from a CCG parse. Moreover, prepositional phrase (PP) attachment ambiguity, a representative syntactic ambiguity, can be resolved simply by fixing the preposition's category. CCG Diffusion applies the same two CCG-based mechanisms, prompt rewriting and attention guidance, both to controlling attribute binding, spatial relations, and counts and to resolving PP ambiguity. On two architecturally different backbones, Stable Diffusion and Sana, CCG Diffusion achieves the highest scores among the compared methods in attribute binding and 2D spatial relations and significantly outperforms all of them in PP ambiguity resolution.</p>
+        <p>Fine-tuning has become a common way to customize text-to-image models, leading to community collections of over 100K lightweight adapters. Adapters sharing a base model can be merged with continuous coefficients. This turns a large collection into a high-dimensional continuous design space, which recent work explores interactively using preferential Bayesian optimization (PBO). However, existing approaches are limited to a few dozen preselected adapters and require expensive image generation in every interaction round. We introduce HimmBO, a two-stage method that scales preference-driven adapter merging to much larger collections while reducing image-generation cost. Its screening stage recovers the active adapter set through level-set estimation over pre-generated images, requiring no image generation. The refinement stage then optimizes merge coefficients in the recovered low-dimensional subspace. Both stages use a style-aware kernel, allowing preference information to transfer between visually similar adapters. In simulated-user image-matching experiments, HimmBO achieves higher final similarity than all comparisons while reaching a given similarity with under one tenth of the image generations required by prior work. Its performance remains stable as the collection grows to 1080 adapters, while competing methods degrade substantially.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29415" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29415.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.30875" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.30875.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,94 +300,94 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29003</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29003" target="_blank">T-DIG: Text-Conditioned Diversity for Image Generation</a>
-      </h3>
-      <p class="paper-title-zh">T-DIG：面向图像生成的文本条件多样性</p>
-      <p class="paper-authors">Simran Khanuja, Rohit Gandikota, Gaurav Parmar, Graham Neubig</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出T-DIG框架，使用户能够通过自然语言指定期望的变化维度（如背景、风格、服装），在保持与原始提示对齐的同时显著提升多图像生成的多样性，且无需访问生成器权重。</div>
-        <div class="summary-section"><strong>方法:</strong> T-DIG是一个迭代式框架，用户输入提示后查看默认生成结果，再用自然语言请求变化并持续优化。其核心是一个LLM策略，为冻结的生成器或编辑器生成K个轴条件提示或编辑指令。该策略使用GRPO训练，奖励函数包含文本条件多样性奖励和对齐惩罚。由于生成器保持冻结，该方法适用于开放权重、蒸馏和专有模型。</div>
-        <div class="summary-section"><strong>关键发现:</strong> T-DIG在提升文本条件多样性方面远超基线方法，同时在多种指标和人工评判下保持与原始提示的对齐。研究表明，用户导向的多样性探索可以添加到广泛的图像生成模型中（无论开源还是闭源），而无需访问其权重。此外，论文发布了首个用于图像生成中文本条件提示多样性的数据集。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Text-to-image (T2I) platforms typically return several images per prompt so users can explore different visual interpretations and choose one that matches their intent. However, T2I models are usually optimized for single-image quality which comes at a cost of multi-image diversity, limiting this exploration. Diversity is also contextual: one user wants variations in background, while another wants them in artistic style, and the same user may later want variations in clothing. The generated images should differ along whatever axis the user cares about. In this paper, we introduce T-DIG, a text-conditioned diversity framework for image generation and editing. T-DIG is an iterative framework comprising multiple modules that lets users type prompts, inspect default generations, request variations using natural language, and continue refining outputs until they're satisfied. At its core, T-DIG uses an LLM policy that produces K axis-conditioned prompts or edit instructions for a frozen generator or editor. We train this policy with GRPO using a text-conditioned diversity reward and alignment penalties. Because the image generator remains frozen, T-DIG applies to open-weight, distilled, and proprietary models. We also release the first dataset for text-conditioned prompt diversity in image generation, with the training and validation splits built from human-written axes and a test set drawn from real user interactions with T-DIG. T-DIG far exceeds baselines in improving text-conditioned diversity, while preserving base-prompt alignment across a variety of metrics and human judgements. We show that user-directed diversity exploration can be added to a wide range of image generation models, open and closed, without the need to access their weights. Website: https://image-study.org/t-dig/</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29003" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29003.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29380</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29380" target="_blank">AdvFidelity: Unifying Preference Alignment and Few-Step Image Generation within Reinforcement Learning</a>
-      </h3>
-      <p class="paper-title-zh">AdvFidelity：在强化学习中统一偏好对齐与少步图像生成</p>
-      <p class="paper-authors">Sicong Kang, Fangao Zeng, Yuhan Li, Hao Zhou, Mengfei Xu 等 (9 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出AdvFidelity，通过在线对抗奖励将伪影敏感的保真度监督集成到强化学习中，在单一RL阶段内实现偏好对齐与高保真少步图像生成，无需显式蒸馏目标。</div>
-        <div class="summary-section"><strong>方法:</strong> 训练判别器将高质量参考图像（正样本）排在当前生成器产生的、内容匹配的重建图像（负样本）之上；负样本由对参考图像施加中等噪声后重建得到，以保留风格和场景布局同时暴露低层退化，促使判别器关注伪影而非内容差异；负样本在线重建，交替更新使保真度监督适应生成器不断变化的失败模式；基于LeapAlign，将两种奖励的梯度通过推理时使用的少步采样轨迹反向传播。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在两个模型骨干和三种任务设置下，AdvFidelity在对齐、任务性能和整体生成质量上与全步LeapAlign相当，并与其他评估的全步RL方法保持高度竞争力，仅需4或8步且无需CFG。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Practical image generation requires both human preference alignment and few-step efficiency, yet combining reinforcement learning (RL) with distillation is often multi-stage and may erode RL gains We observe that few-step RL progressively improves structural coherence, even with specialized rewards, but leaves low-level artifacts that these rewards may fail to penalize. To address this gap, we propose AdvFidelity, which integrates artifact-sensitive fidelity supervision into RL through an online adversarial reward. This enables joint reward alignment and high-fidelity few-step generation within a single RL stage, without distribution matching distillation (DMD) or other explicit distillation objectives. We train a discriminator to rank high-quality references (positives) above content-matched reconstructions (negatives) produced by the current generator. Reconstructing moderately noised references largely preserves style and scene layout while exposing low-level degradations. This encourages the discriminator to assess artifacts rather than content differences. With negatives reconstructed online, alternating updates adapt fidelity supervision to the generator's evolving failure modes. References can come from existing target-domain data or full-step model samples. Built on LeapAlign, AdvFidelity backpropagates gradients from both rewards through the few-step sampling trajectories used at inference. Across two model backbones and three task settings, AdvFidelity matches full-step LeapAlign in alignment, task performance, and overall generation quality and remains highly competitive with other evaluated full-step RL methods, using only 4 or 8 steps without CFG.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29380" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29380.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29854</span>
+          <span class="paper-id">2610.31651</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29854" target="_blank">How Do DiTs Denoise? An Aggregator-Predictor View of Attention and MLPs</a>
+        <a href="https://arxiv.org/abs/2610.31651" target="_blank">BrickWright: Agentic Creation of Physically Feasible Brick Builds</a>
       </h3>
-      <p class="paper-title-zh">DiTs是如何去噪的？注意力与MLP的聚合器-预测器视角</p>
-      <p class="paper-authors">Gyeonghun Kang, William Xingxu Chen, Xiang Cheng</p>
+      <p class="paper-title-zh">BrickWright：智能体驱动的物理可行乐高积木构建生成</p>
+      <p class="paper-authors">Ava Pun, Kevin Dai, Sally Chen, Maxwell Jones, Ruixuan Liu 等 (10 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出“聚合器-预测器”视角，将扩散Transformer（DiTs）理解为输入自适应的局部去噪器，为注意力机制和MLP分别赋予上下文聚合与图块预测的功能角色，从而在组件层面解释DiT的去噪与泛化机制。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先在高斯马尔可夫随机场（GMRF）先验下证明全局贝叶斯去噪器可仅用部分上下文图块近似，且误差随上下文半径指数衰减；进而说明逐图块线性去噪器在充分信息聚合下可恢复经验局部去噪器。基于此视角，AdaLN调制的注意力被解释为输入与噪声相关的聚合器，MLP则被解释为学习键值表示以进行逐token图块预测。作者通过真实图像上训练DiTs的上下文分析、CelebA64受控实验（用共享记忆图块预测器替代MLP）以及跨数据集组件移植实验来验证该观点。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，真实图像上训练的DiTs呈现出与解析GMRF设定相似的噪声相关去噪上下文，注意力质量也表现出定性对应的展宽模式；在CelebA64上以共享记忆图块预测器替代DiT的MLP可获得有竞争力的去噪与生成性能；跨数据集组件移植的兼容性模式与QK负责空间加权、VO负责特征传输、MLP负责图块预测的假设一致。这些结果为DiT去噪提供了组件级解释，并支持面向架构的微调与受控干预。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出BrickWright框架，通过为预训练编码智能体提供积木组装工具和物理可行性验证器，使其能够根据文本或图像提示生成物理上可行的乐高积木构建，在512个提示样本上实现100%的物理有效性。</div>
+        <div class="summary-section"><strong>方法:</strong> BrickWright引导智能体使用BrickLayer（一个Python工具包）编写代码来创建构建。BrickLayer包含两个主要组件：一个符合人体工程学的积木组装API（相比直接使用原始LDraw格式将推理成本减半）和一个提供物理可行性反馈的验证器。物理可行性定义为仅使用真实零件、无碰撞或悬浮零件、并尽可能形成连通结构。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 基线智能体的物理有效性率仅为9%（GPT-6 Luna）到69%（GPT-6 Astra），而BrickWright引导的智能体在512个提示样本上达到100%有效性，同时提升了轻量级智能体的提示遵循度并保持了强智能体的提示遵循度。此外，在文本到积木任务上，该方法优于专用模型。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>How do diffusion transformers (DiTs) represent image content and learn rules for reusing it to generalize? We develop an aggregator--predictor view of DiTs as input-adaptive local denoisers, in which context aggregation and patch prediction provide functional roles for interpreting attention and MLPs. We first establish that, for Gaussian Markov random field (GMRF) priors, the global Bayes denoiser can be approximated using only a subset of context patches, with error decaying exponentially in context radius. We further show that patchwise linear denoisers, often invoked to explain diffusion generalization, recover the empirical local denoiser with sufficiently informative aggregation. Within this view, AdaLN-modulated attention naturally parameterizes an input- and noise-dependent aggregator, while the MLP admits a learned key--value representation for tokenwise patch prediction. Our experiments support this view. DiTs trained on real images exhibit noise-dependent denoising contexts resembling those in the analytic GMRF setting, while attention mass exhibits a qualitatively corresponding broadening pattern. In a controlled CelebA64 study, shared-memory patch predictors used in place of DiT MLPs achieve competitive denoising and generative performance. Finally, cross-dataset component transplantation reveals compatibility patterns consistent with the proposed roles of QK in spatial weighting, VO in feature transport, and MLPs in patch prediction. Together, these results provide a component-level account of DiT denoising and motivate architecture-specific fine-tuning and controlled intervention.</p>
+        <p>Frontier coding agents are becoming increasingly adept at 3D modeling. Yet, they still face challenges when building objects meant to be assembled in the physical world, often creating invalid assemblies with floating, colliding, or disconnected parts. We argue that providing agents with tools for assembling builds and verifying their physical feasibility is sufficient for them to produce physically valid assemblies that still adhere to input prompts. Focusing on the domain of LEGO brick builds, we present BrickWright, a framework for generating physically feasible brick builds from text or image prompts using pre-trained agents, where a build is physically feasible if it uses only real parts, has no colliding or floating parts, and forms a connected structure if possible. BrickWright guides agents to create builds by writing code with BrickLayer, a Python toolkit with two main components: an ergonomic brick assembly API that halves inference cost compared to working in raw LDraw, and a validator that provides feedback on physical feasibility. Whereas baseline agents achieve physical validity rates ranging from only 9% (GPT-6 Luna) to 69% (GPT-6 Astra), BrickWright-guided agents achieve 100% validity on a sample of 512 prompts, while improving prompt adherence for lightweight agents and maintaining it for stronger agents. Additionally, they outperform specialized models on the text-to-brick task. Code is available on our project page: https://avalovelace1.github.io/brickwright/</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29854" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29854.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.31651" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.31651.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.30827</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.30827" target="_blank">One Evaluation Is Enough: Inversion-Free Image Editing with Trajectory Correction</a>
+      </h3>
+      <p class="paper-title-zh">一次评估足矣：基于轨迹校正的无反演图像编辑</p>
+      <p class="paper-authors">Lifan Jiang, Taiyang Chen, Senlin cheng, Bolei Xu, Xiaobo Li 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出端点校准传输（ECT），一种无需训练、闭式的图像编辑器，仅需单次时间场评估即可实现可靠的无反演编辑，避免了图像反演、轨迹积分和迭代优化。</div>
+        <div class="summary-section"><strong>方法:</strong> 利用方差保持（VP）一步模型中源-目标查询在共享噪声状态下的对偶性，同时确定局部角度语义切线和干净端点位移。将切线沿解析已知的剩余VP角度积分得到名义一步传输，并用端点位移通过约束投影校正其长程外推。该“先传输后校正”的构造形成闭式、免训练的编辑器，仅需一个噪声水平、两个文本条件打包进一个去噪器批次和一次潜在更新。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在报告的基准设置中，ECT在极短的编辑时间内稳定提升了编辑质量，且无需图像反演、轨迹积分、第二次时间观测或迭代优化，可直接应用于预训练的epsilon预测VP一步生成器。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Real-image editing commonly relies on inversion and iterative sampling, while efficient one-step editors often stabilize a large update by estimating and averaging editing fields at multiple noise levels. We ask a stricter question: is a single temporal field evaluation sufficient for reliable inversion-free editing? Our answer rests on a previously underused duality in a variance-preserving (VP) one-step model: one source-target query at a shared noisy state simultaneously determines a local angular semantic tangent and a clean endpoint displacement. We integrate the tangent over the analytically known remaining VP angle to obtain a nominal one-step transport, and use the endpoint displacement to correct its long-horizon extrapolation through a constrained projection. This transport-first, correction-second construction yields Endpoint-Calibrated Transport (ECT), a closed-form, training-free editor requiring only one noise level, two text conditions packed into one denoiser batch, and one latent update. ECT requires no image inversion, trajectory integration, second temporal observation, or iterative optimization, and can be directly applied to pretrained epsilon-prediction VP one-step generators. Across the reported benchmark settings, ECT delivers stable gains in editing quality within an extremely short editing time.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.30827" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.30827.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.30704</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.30704" target="_blank">ParaLin++: Accelerating Parallel Diffusion Integrator via Intrinsic Partially Linear Structure</a>
+      </h3>
+      <p class="paper-title-zh">ParaLin++：通过内在部分线性结构加速并行扩散积分器</p>
+      <p class="paper-authors">Jianrong Lu, Zhiyu Zhu, Hui Liu, Junhui Hou</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文系统性地揭示了现有免训练少步采样器在FID/CLIP类指标下看似无损、但在语义组合和长文本渲染等复杂基准上存在显著质量退化的问题，并提出ParaLin++——一种保持全步离散化、仅去除求解器时间依赖性的步数对齐并行采样器，在保持全步Euler质量的同时实现显著加速。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先系统化梳理了用于评估扩散与流匹配模型免训练采样加速的质量指标，并在GenEval、DPG-Bench、LongTextBench等复杂基准上对比了代表性少步采样方法。基于并行采样能保留全步离散化、仅消除求解器时间依赖从而保持近无损质量的观察，提出ParaLin++并行采样器，在保持全步Euler质量剖面的前提下加速求解器迭代。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，代表性免训练步数缩短方法在FID/CLIP类指标下近乎无损，但在语义组合、密集指令和长文本渲染基准上质量明显下降；并行采样是显著例外。ParaLin++在Stable Diffusion-v2、LSUN Church上实现2.6倍至4.8倍加速，在FLUX.1-dev上实现1.68倍加速，在Ming-Flash-Omni 2.0上实现1.21倍加速，同时保持全步Euler的质量剖面。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Training-free few-step samplers are often described as nearly quality-lossless under conventional FID/CLIP-style evaluation. It remains unclear whether that conclusion transfers to more realistic and complex generation-quality benchmarks. We first systematize the quality metrics used to evaluate training-free sampling acceleration for diffusion and flow-matching models. We find that representative training-free step-shortening methods often remain nearly lossless under FID/CLIP-class metrics, yet can suffer substantial quality degradation when evaluated with semantic-composition, dense-instruction, and long-text-rendering benchmarks such as GenEval, DPG-Bench, and LongTextBench. Parallel sampling is a notable exception: by retaining the full-step discretization and removing only the solver's temporal dependency, it can preserve near-lossless quality while accelerating sampling. Building on this observation, we propose \textit{ParaLin++}, a step-parity parallel sampler that preserves the full-step discretization while accelerating the solver iterations. Experiments across Stable Diffusion-v2, LSUN Church, FLUX.1-dev, and Ming-Flash-Omni 2.0 show that ParaLin++ preserves the full-step Euler quality profile at $2.6\times$--$4.8\times$, $1.68\times$ on FLUX, and $1.21\times$ on Ming. Project page: https://paralinplus.github.io/.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.30704" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.30704.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
