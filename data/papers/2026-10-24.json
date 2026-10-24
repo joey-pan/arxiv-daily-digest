@@ -1,0 +1,146 @@
+[
+  {
+    "id": "2610.30390",
+    "title": "Latent Space Jam: Layout Guided Video Synthesis",
+    "abstract": "Adding control to video generation often requires training, which demands additional computational resources, data, or architectural changes. We propose a training-free approach that utilizes pretrained video diffusion models to control object layout and motion using coarse layouts. Our method operates in two passes: first, it steers spatiotemporal placement through prompt-guided cross-attention to produce a coarse visual guide; second, this guide conditions the same model to generate a high-quality, layoutconsistent video. The approach enables coordinated motion with strong temporal consistency, supporting diverse trajectories and object interactions without additional training. Extensive experiments show that our method consistently outperforms prior work in overlap and trajectory accuracy, as well as visual quality across static, dynamic, and multi-object scene settings.",
+    "authors": [
+      "Asaf Joseph",
+      "Moshe Mandel",
+      "Ohad Fried"
+    ],
+    "published": "2026-10-21",
+    "updated": "2026-10-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.30390.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.30390",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "潜空间拥堵：布局引导的视频合成",
+      "core_contribution": "提出一种无需训练的、基于预训练视频扩散模型的方法，利用粗粒度布局控制视频中物体的布局与运动，在重叠与轨迹精度以及视觉质量上优于先前工作。",
+      "method": "该方法分两阶段运行：首先通过提示引导的交叉注意力来引导时空布局，生成粗略的视觉引导；然后以该引导作为条件，驱动同一模型生成高质量、布局一致且具有强时间一致性的视频，支持多样轨迹与物体交互，无需额外训练。",
+      "findings": "大量实验表明，该方法在静态、动态及多物体场景设置下，于重叠精度、轨迹精度和视觉质量方面均持续优于先前工作。"
+    }
+  },
+  {
+    "id": "2610.29651",
+    "title": "Spatially Gated Demographic Steering for Debiasing Multi-Person Text-to-Image Generation",
+    "abstract": "Text-to-Image models reproduce societal stereotypes, and existing mitigation applies one demographic correction to the whole scene. In multi-person scene generation this creates a trade-off: global steering improves aggregate balance only by homogenizing the people within an image. Steering-based methods like Embedding Arithmetic drive the intra-image diversity below the unsteered baseline. Text- and latent-projection approaches shift the aggregate skew with only marginal gains in intra-image diversity. We present Spatially Gated Steering (SGS), which steers the demographics of each person independently by extracting per-person masks from the Diffusion Transformer's (DiT) internal attention maps at a critical denoising timestep and applying a distinct demographic vector within each mask for the remaining steps. SGS needs no fine-tuning, inversion or layout specifications, and uses a lightweight segmentor over frozen DiT attention features to localize subjects at early timesteps. On skewed occupational prompts, SGS reaches high intra-image racial and gender diversity while keeping aggregate balance competitive and image quality near baseline, a result we validate on two architecturally distinct diffusion transformers, FLUX.1-Dev and SD3.5-Large. Codebase and model weights are available at https://github.com/cvims/spatially-gated-steering",
+    "authors": [
+      "Venkatesh Thirugnana Sambandham",
+      "Torsten Schon"
+    ],
+    "published": "2026-10-21",
+    "updated": "2026-10-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.29651.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.29651",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "面向多人文本到图像生成去偏的空间门控人口统计引导",
+      "core_contribution": "提出空间门控引导（SGS）方法，通过对图像中每个人物独立进行人口统计引导，解决了现有多人场景生成中全局引导导致图像内人物同质化的权衡问题，在保持图像质量和总体平衡的同时显著提升图像内种族与性别多样性。",
+      "method": "SGS在关键去噪时间步从扩散Transformer（DiT）的内部注意力图中提取每个人物的掩码，并在后续步骤中在每个掩码内应用不同的人口统计向量，从而实现逐人独立引导。该方法无需微调、反演或布局规范，仅使用一个轻量级分割器在早期时间步对冻结的DiT注意力特征进行主体定位。",
+      "findings": "在偏斜的职业提示词上，SGS实现了较高的图像内种族和性别多样性，同时保持总体平衡具有竞争力且图像质量接近基线水平。该结果在FLUX.1-Dev和SD3.5-Large两种架构不同的扩散Transformer上均得到验证。"
+    }
+  },
+  {
+    "id": "2610.29248",
+    "title": "ER-Chord: Spatially Consistent One-Step Image Editing via Equal-Energy Reliability Redistribution",
+    "abstract": "One-step generative models enable fast text-guided image editing, yet they often introduce unintended changes to regions that should remain unchanged. Temporal aggregation stabilizes editing fields across noise levels, but leaves their spatial allocation insensitive to local variations in reliability. Consequently, temporal stability alone does not ensure spatially consistent editing. To address this lim- itation, we propose ER-Chord, a training-free and inversion-free framework for reliability-guided spatial redistribution. Our key insight is that agreement between editing fields at neighboring noise levels provides a local reliability signal for allocating editing strength. We formulate this allocation as an equal-energy op- timization that redistributes control energy according to local reliability while preserving the original editing directions and total control energy. This formu- lation admits a unique global solution that can be efficiently computed using existing field evaluations, requiring no additional denoiser calls. Experiments on two benchmarks, PIE-Bench and TEdBench, demonstrate improvements over state-of-the-art one-step editing baselines, achieving superior source preservation alongside consistent gains across multiple generative backbones.The project page is at https://github.com/Peizeli1/ER-Chord.",
+    "authors": [
+      "Peize Li",
+      "Hanzhen Zhao",
+      "Xingguo Xu",
+      "Yilong Fan",
+      "Zhen Tao",
+      "Bo Yin",
+      "Zhifei Liu",
+      "Qingdong He",
+      "Xiaobin Hu"
+    ],
+    "published": "2026-10-21",
+    "updated": "2026-10-21",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.29248.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.29248",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "ER-Chord：通过等能量可靠性重分配实现空间一致的单步图像编辑",
+      "core_contribution": "提出了一种无需训练、无需反演的框架ER-Chord，通过将编辑强度按局部可靠性进行空间重分配，解决了单步生成模型在文本引导图像编辑中空间不一致的问题，在保持源图像的同时实现更一致的编辑效果。",
+      "method": "该方法基于一个关键洞察：相邻噪声层级上编辑场之间的一致性可作为局部可靠性信号，用于分配编辑强度。作者将这一分配形式化为等能量优化问题，在保持原始编辑方向和总控制能量的前提下，根据局部可靠性重新分配控制能量。该优化问题具有唯一全局解，可利用现有编辑场评估高效计算，无需额外调用去噪器。",
+      "findings": "在PIE-Bench和TEdBench两个基准上的实验表明，ER-Chord优于最先进的单步编辑基线，在源图像保持方面表现更优，并在多种生成骨干网络上取得一致提升。"
+    }
+  },
+  {
+    "id": "2610.28858",
+    "title": "DualHeads: Reward-tilted few-step diffusion made simple",
+    "abstract": "Distilled diffusion models generate high-quality images in a few sampling steps, but aligning them with task requirements and human preferences is difficult. Methods developed for multi-step diffusion models rely on differentiable rewards, or on score fields and stochastic trajectories that distilled generators may lack. We ask whether a few-step generator can be adapted using only external reward evaluations and reference samples, and show that two binary classifiers suffice. Our method, DualHeads, implements them as lightweight heads on a frozen diffusion backbone. The reward head learns which samples of the same prompt score higher, the reference head separates reference images from generated ones, and the generator maximizes a weighted sum of their logits. When the heads are optimal, this objective is KL-regularized maximization of the learned reward, and the ratio of head weights sets the regularization strength. Empirically, with both rule-based and model-based rewards, a few-step DualHeads generator reaches task rewards close to those of 40-step reinforcement learning methods while preserving image quality, at no extra inference cost. We hope that this simple and elegant dual-head formulation will help advance few-step reward-tilted generation.",
+    "authors": [
+      "Yuanzhi Zhu",
+      "Eleftherios Tsonis",
+      "Simo Alami Chehboune",
+      "Xi Wang",
+      "Stéphane Lathuilière",
+      "Vicky Kalogeiton"
+    ],
+    "published": "2026-10-20",
+    "updated": "2026-10-20",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.28858.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.28858",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "双头：让奖励倾斜的少步扩散变得简单",
+      "core_contribution": "提出DualHeads方法，仅利用外部奖励评估和参考样本（两个二元分类器）即可将少步蒸馏扩散生成器与任务要求和人类偏好对齐，无需可微奖励或随机轨迹。",
+      "method": "在冻结的扩散骨干网络上添加两个轻量级分类头：奖励头学习区分同一提示下得分高低的样本，参考头区分参考图像与生成图像；生成器最大化两个头logits的加权和。当头最优时，该目标等价于对学习到的奖励进行KL正则化最大化，头权重之比设定正则化强度。",
+      "findings": "在基于规则和基于模型的奖励下，少步DualHeads生成器达到的任务奖励接近40步强化学习方法，同时保持图像质量，且不增加额外推理成本。"
+    }
+  },
+  {
+    "id": "2610.28801",
+    "title": "JUICE: Unified Multimodal Modeling in Pretrained Representation Spaces",
+    "abstract": "Most unified multimodal models treat images and text asymmetrically: a pretrained language model generates text, an attached diffusion head generates images, and outputs that contain both are produced in a fixed order, so the first output cannot adapt to the second. We ask whether both modalities can instead be generated by one process that is trained on them jointly from scratch. Pretrained encoder spaces hold both modalities in one continuous form and carry knowledge learned at scale, and recent work finds them effective as generative targets for vision and language. We therefore model the joint distribution directly in these spaces. We introduce JUICE (Joint Unified multimodal modeling In Continuous Encoder spaces), a single flow matching Transformer over frozen image and text representations, in which each modality has its own noise level. Which modalities are clean and which are generated then decides the task: image generation, captioning, visual question answering, or joint generation. Controlled pretraining runs test each design choice. At equal guidance, generating text as continuous states leaves image generation intact (48.41 GenEval, against 47.86 for a model trained only for text-to-image generation), while captions lose some exact wording. Training on joint and conditional denoising together beats either alone, and semantic encoder spaces beat VAE latents and raw pixels as targets. At 2.1B parameters, with no language model initialization and at 224x224, JUICE reaches up to 0.88 on GenEval and 73.1 on VQAv2. By sampling both modalities from the joint distribution (coupled sampling), it can also draw a route on a map while writing out the matching moves. On mazes with several valid solutions, joint success rises from 54.6% with independent sampling to 93.7%, and no modality has to go first. On visual spatial planning, JUICE solves 99.8% of maps at its training sizes.",
+    "authors": [
+      "Jiahan Li",
+      "Huangyuan Su",
+      "Shengbang Tong",
+      "Shusheng Yang",
+      "Ruihan Guo",
+      "Suozhi Huang",
+      "Hexu Zhao",
+      "Pratyusha Sharma",
+      "Sherry Yang",
+      "Jiatao Gu",
+      "Rob Fergus",
+      "Kyunghyun Cho"
+    ],
+    "published": "2026-10-20",
+    "updated": "2026-10-20",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.28801.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.28801",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "JUICE：预训练表示空间中的统一多模态建模",
+      "core_contribution": "提出JUICE，一种在冻结的图像和文本预训练编码器表示空间中、用单一流匹配Transformer联合建模两种模态的方法，使图像与文本可由同一过程联合生成，且无需固定生成顺序。",
+      "method": "将图像和文本都映射到预训练编码器的连续表示空间，并在该空间上训练一个流匹配Transformer来建模联合分布。每个模态拥有独立的噪声水平，通过指定哪些模态保持干净、哪些模态被生成，即可统一实现图像生成、图像描述、视觉问答和联合生成等任务。模型从零开始联合训练，不依赖语言模型初始化。",
+      "findings": "在同等引导强度下，将文本作为连续状态生成不影响图像生成质量（GenEval 48.41，对比纯文生图模型的47.86），但描述文本会损失部分精确措辞；联合去噪与条件去噪一起训练优于单独训练，语义编码器空间优于VAE潜变量和原始像素。2.1B参数、224x224分辨率下，GenEval达0.88，VQAv2达73.1。采用联合分布的耦合采样后，可在绘制地图路线的同时写出对应走法；在多解迷宫任务中，联合成功率从独立采样的54.6%提升到93.7%，且无需任一模态先行；在视觉空间规划任务上，训练规模地图的求解率达99.8%。"
+    }
+  }
+]
