@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-24</p>
+        <p class="date">📅 2026-10-25</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.30390</span>
+          <span class="paper-id">2610.28630</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.30390" target="_blank">Latent Space Jam: Layout Guided Video Synthesis</a>
+        <a href="https://arxiv.org/abs/2610.28630" target="_blank">SolarRenderer: Few-Step Generative Reference Rendering</a>
       </h3>
-      <p class="paper-title-zh">潜空间拥堵：布局引导的视频合成</p>
-      <p class="paper-authors">Asaf Joseph, Moshe Mandel, Ohad Fried</p>
+      <p class="paper-title-zh">SolarRenderer：少步生成式参考渲染</p>
+      <p class="paper-authors">Guian Fang, Shengju Qian, Dongyue Lu, Junchao Huang, Lutao Jiang 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的、基于预训练视频扩散模型的方法，利用粗粒度布局控制视频中物体的布局与运动，在重叠与轨迹精度以及视觉质量上优于先前工作。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法分两阶段运行：首先通过提示引导的交叉注意力来引导时空布局，生成粗略的视觉引导；然后以该引导作为条件，驱动同一模型生成高质量、布局一致且具有强时间一致性的视频，支持多样轨迹与物体交互，无需额外训练。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，该方法在静态、动态及多物体场景设置下，于重叠精度、轨迹精度和视觉质量方面均持续优于先前工作。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种结构条件视频渲染器SolarRenderer，通过两个轻量LoRA适配冻结的MiniMax-H3 33B骨干网络，实现仅需四步的高效渲染，并具备对多种未见结构表示的强泛化能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 将结构视频以纯文本描述、无类型标识的方式输入骨干网络原生的参考通路，使单一控制LoRA可跟随任意结构表示；从预训练的四步LoRA出发，采用结构引导的分布匹配实现四步渲染；并设计块因果变体以支持流式实时渲染768p视频；训练数据为从游戏引擎、模拟器和YouTube构建的136K帧对齐片段语料。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 四步渲染比50步采样快12.3倍且保持所学控制能力；在分布内测试集和包含16种结构表示的泛化基准上均达到最先进水平，并成功泛化到11种未见表示，包括姿态骨架、手绘草图和点云。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Adding control to video generation often requires training, which demands additional computational resources, data, or architectural changes. We propose a training-free approach that utilizes pretrained video diffusion models to control object layout and motion using coarse layouts. Our method operates in two passes: first, it steers spatiotemporal placement through prompt-guided cross-attention to produce a coarse visual guide; second, this guide conditions the same model to generate a high-quality, layoutconsistent video. The approach enables coordinated motion with strong temporal consistency, supporting diverse trajectories and object interactions without additional training. Extensive experiments show that our method consistently outperforms prior work in overlap and trajectory accuracy, as well as visual quality across static, dynamic, and multi-object scene settings.</p>
+        <p>Game engines and coding agents can specify the layout, motion, and camera of a scene, yet turning such coarse structure into realistic video requires a renderer that follows the structure and completes the appearance it leaves open. Existing renderers are tied to the representation of one engine, need tens of denoising steps or a costly distillation of their own, and learn from conditions that are not aligned with their target videos. We present SolarRenderer, a structure-conditioned video renderer that adapts a frozen MiniMax-H3 33B backbone with two lightweight LoRAs. Structural videos enter the native reference pathway of the backbone at the positions of the frames they describe, without a type identifier and described only in plain text, so that a single control LoRA follows arbitrary structural representations. Starting from a pretrained four-step LoRA, structure-guided distribution matching renders in four steps, 12.3 times faster than 50-step sampling, while preserving the learned control. A block-causal variant extends the same design to streaming and renders 768p video in real time. To train the model, we build a frame-aligned corpus of 136K clips from game engines, simulators, and YouTube videos. Experiments on an in-distribution test set and a generalization benchmark of 16 structural representations show that SolarRenderer achieves state-of-the-art results across both, and generalizes to 11 unseen representations, including pose skeletons, drawings, and point clouds.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.30390" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.30390.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.28630" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.28630.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29651</span>
+          <span class="paper-id">2610.28567</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29651" target="_blank">Spatially Gated Demographic Steering for Debiasing Multi-Person Text-to-Image Generation</a>
+        <a href="https://arxiv.org/abs/2610.28567" target="_blank">Continual Concept Personalization in Diffusion Models via Residual-Space Adaptation</a>
       </h3>
-      <p class="paper-title-zh">面向多人文本到图像生成去偏的空间门控人口统计引导</p>
-      <p class="paper-authors">Venkatesh Thirugnana Sambandham, Torsten Schon</p>
+      <p class="paper-title-zh">通过残差空间适配实现扩散模型中的持续概念个性化</p>
+      <p class="paper-authors">Yuzhi Liu, Enis Simsar, Giulia Lanzillotta, Thomas Hofmann</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出空间门控引导（SGS）方法，通过对图像中每个人物独立进行人口统计引导，解决了现有多人场景生成中全局引导导致图像内人物同质化的权衡问题，在保持图像质量和总体平衡的同时显著提升图像内种族与性别多样性。</div>
-        <div class="summary-section"><strong>方法:</strong> SGS在关键去噪时间步从扩散Transformer（DiT）的内部注意力图中提取每个人物的掩码，并在后续步骤中在每个掩码内应用不同的人口统计向量，从而实现逐人独立引导。该方法无需微调、反演或布局规范，仅使用一个轻量级分割器在早期时间步对冻结的DiT注意力特征进行主体定位。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在偏斜的职业提示词上，SGS实现了较高的图像内种族和性别多样性，同时保持总体平衡具有竞争力且图像质量接近基线水平。该结果在FLUX.1-Dev和SD3.5-Large两种架构不同的扩散Transformer上均得到验证。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出将残差空间适配扩展到预训练扩散模型的随机适配过程中，以解决概念按顺序到达时的持续个性化问题，在保持近乎零遗忘的同时实现了最高的概念保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者将残差空间适配方法应用于预训练扩散模型的随机适配过程，使模型能够持续学习新概念（主体、物体或风格）而不干扰已学概念。通过学习到的残差空间动态分析适配容量在扩散模型中的分布位置，并据此限制适配层以提升参数效率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 该方法在竞争性持续个性化方法中实现了最高的概念保真度，同时保持近乎零遗忘。残差空间动态揭示了适配容量集中于扩散模型的特定层，仅在这些层进行适配可将可训练参数减少高达72%而性能几乎不变，表明残差空间动态能有效识别对持续概念个性化贡献最大的层并指导参数高效适配。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-to-Image models reproduce societal stereotypes, and existing mitigation applies one demographic correction to the whole scene. In multi-person scene generation this creates a trade-off: global steering improves aggregate balance only by homogenizing the people within an image. Steering-based methods like Embedding Arithmetic drive the intra-image diversity below the unsteered baseline. Text- and latent-projection approaches shift the aggregate skew with only marginal gains in intra-image diversity. We present Spatially Gated Steering (SGS), which steers the demographics of each person independently by extracting per-person masks from the Diffusion Transformer's (DiT) internal attention maps at a critical denoising timestep and applying a distinct demographic vector within each mask for the remaining steps. SGS needs no fine-tuning, inversion or layout specifications, and uses a lightweight segmentor over frozen DiT attention features to localize subjects at early timesteps. On skewed occupational prompts, SGS reaches high intra-image racial and gender diversity while keeping aggregate balance competitive and image quality near baseline, a result we validate on two architecturally distinct diffusion transformers, FLUX.1-Dev and SD3.5-Large. Codebase and model weights are available at https://github.com/cvims/spatially-gated-steering</p>
+        <p>Text-to-image personalization aims to equip pretrained diffusion models with the ability to learn user-specific concepts from only a few reference images. Existing methods, however, typically train each concept independently or assume that all concepts are available simultaneously. In practical applications, concepts often arrive sequentially, requiring models to continually learn new subjects, objects, or styles while minimizing interference with previously acquired concepts. We address this continual concept personalization setting by extending residual-space adaptation to the stochastic adaptation process of pretrained diffusion models. Our work achieves the highest concept fidelity among competing continual personalization methods while maintaining near-zero forgetting. Beyond these empirical gains, the learned residual-space dynamics reveal where adaptation capacity is concentrated within the diffusion model. Restricting adaptation to the identified layers by our method preserves nearly the same performance while reducing the number of trainable parameters by up to 72\%, demonstrating that residual-space dynamics can identify the layers that contribute most to continual concept personalization and directly guide more parameter-efficient adaptation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29651" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29651.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.28567" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.28567.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.29248</span>
+          <span class="paper-id">2610.28416</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.29248" target="_blank">ER-Chord: Spatially Consistent One-Step Image Editing via Equal-Energy Reliability Redistribution</a>
+        <a href="https://arxiv.org/abs/2610.28416" target="_blank">Code2Video-Compass: A Comprehensive Benchmark for General-Purpose Code-Based Video Generation across T2V, I2V, and V2V</a>
       </h3>
-      <p class="paper-title-zh">ER-Chord：通过等能量可靠性重分配实现空间一致的单步图像编辑</p>
-      <p class="paper-authors">Peize Li, Hanzhen Zhao, Xingguo Xu, Yilong Fan, Zhen Tao 等 (9 位作者)</p>
+      <p class="paper-title-zh">Code2Video-Compass：面向T2V、I2V和V2V的通用代码视频生成综合基准</p>
+      <p class="paper-authors">Zhenghan Chen, Zekai Shao, Xin Lin, Leting Cheng, Siming Chen</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需训练、无需反演的框架ER-Chord，通过将编辑强度按局部可靠性进行空间重分配，解决了单步生成模型在文本引导图像编辑中空间不一致的问题，在保持源图像的同时实现更一致的编辑效果。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法基于一个关键洞察：相邻噪声层级上编辑场之间的一致性可作为局部可靠性信号，用于分配编辑强度。作者将这一分配形式化为等能量优化问题，在保持原始编辑方向和总控制能量的前提下，根据局部可靠性重新分配控制能量。该优化问题具有唯一全局解，可利用现有编辑场评估高效计算，无需额外调用去噪器。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在PIE-Bench和TEdBench两个基准上的实验表明，ER-Chord优于最先进的单步编辑基线，在源图像保持方面表现更优，并在多种生成骨干网络上取得一致提升。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个覆盖文本到视频（T2V）、图像到视频（I2V）和视频到视频（V2V）三种输入模态的通用代码视频生成基准，包含2104个任务和双层评估框架，系统评估了15个多模态大模型在完整视频创作上的能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了涵盖10个类别、24个子类型和三个复杂度维度（构建、动态动画、状态依赖）的2104个任务，任务来源于文本指令和视觉参考，并衍生出对应的T2V、I2V和V2V任务。提出双层评估框架，结合12个客观指标（操作性能、视频质量、文本-视频对齐、参考保真度）和5个主观指标（由MLLM评判指令遵循和整体视频质量）。对来自9个模型家族的15个最新专有和开源多模态大模型进行了广泛评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 即使领先的模型在可靠生成高质量、符合文本和视觉要求的完整视频方面仍面临挑战，且性能通常随着构建、动态动画和状态依赖复杂度的增加而下降。该基准有望推动可靠、连贯、可控的代码视频生成发展。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>One-step generative models enable fast text-guided image editing, yet they often introduce unintended changes to regions that should remain unchanged. Temporal aggregation stabilizes editing fields across noise levels, but leaves their spatial allocation insensitive to local variations in reliability. Consequently, temporal stability alone does not ensure spatially consistent editing. To address this lim- itation, we propose ER-Chord, a training-free and inversion-free framework for reliability-guided spatial redistribution. Our key insight is that agreement between editing fields at neighboring noise levels provides a local reliability signal for allocating editing strength. We formulate this allocation as an equal-energy op- timization that redistributes control energy according to local reliability while preserving the original editing directions and total control energy. This formu- lation admits a unique global solution that can be efficiently computed using existing field evaluations, requiring no additional denoiser calls. Experiments on two benchmarks, PIE-Bench and TEdBench, demonstrate improvements over state-of-the-art one-step editing baselines, achieving superior source preservation alongside consistent gains across multiple generative backbones.The project page is at https://github.com/Peizeli1/ER-Chord.</p>
+        <p>Code-based video generation offers fine-grained control, targeted editing, and component reuse compared with direct video generation. This approach requires multimodal large language models (MLLMs) to translate visual and temporal requirements into executable programs that produce complete videos. However, existing code-based benchmarks primarily target specialized tasks, leaving complete video creation across diverse creative categories and input modalities insufficiently evaluated. We introduce Code2Video-Compass, a general-purpose benchmark for code-based video generation across text-to-video (T2V), image-to-video (I2V), and video-to-video (V2V) settings. Code2Video-Compass comprises 2,104 tasks spanning 10 categories, 24 subtypes, and three complexity dimensions covering construction, dynamic animation, and state dependency. It combines tasks curated from textual instructions and visual references with corresponding T2V, I2V, and V2V tasks derived from complete professional and user-created videos. We propose a dual-level evaluation framework combining 12 objective metrics and five subjective metrics. Objective evaluation covers operational performance, video quality, text-video alignment, and reference fidelity, while subjective evaluation uses an MLLM judge to evaluate instruction following and holistic video quality. Extensive evaluation of 15 recent proprietary and open-weight MLLMs from nine families reveals that even leading models face challenges in reliably generating high-quality complete videos aligned with textual and visual requirements, with performance generally declining as construction, dynamic animation, and state-dependency complexity increases. We anticipate that Code2Video-Compass will advance reliable, coherent, and controllable code-based video generation and inspire broader progress in programmatic visual creation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.29248" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.29248.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.28416" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.28416.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.28858</span>
+          <span class="paper-id">2610.31466</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 62/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.28858" target="_blank">DualHeads: Reward-tilted few-step diffusion made simple</a>
+        <a href="https://arxiv.org/abs/2610.31466" target="_blank">AnyGameRenderer: Entity-Consistent Generative Rendering Across Games and an Entity-Level Benchmark</a>
       </h3>
-      <p class="paper-title-zh">双头：让奖励倾斜的少步扩散变得简单</p>
-      <p class="paper-authors">Yuanzhi Zhu, Eleftherios Tsonis, Simo Alami Chehboune, Xi Wang, Stéphane Lathuilière 等 (6 位作者)</p>
+      <p class="paper-title-zh">AnyGameRenderer：跨游戏实体一致的生成式渲染及实体级基准</p>
+      <p class="paper-authors">Ruicong Liu, Liangyang Ouyang, Fengbo Lan, Zhixiang Wang, Kaipeng Zhang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出DualHeads方法，仅利用外部奖励评估和参考样本（两个二元分类器）即可将少步蒸馏扩散生成器与任务要求和人类偏好对齐，无需可微奖励或随机轨迹。</div>
-        <div class="summary-section"><strong>方法:</strong> 在冻结的扩散骨干网络上添加两个轻量级分类头：奖励头学习区分同一提示下得分高低的样本，参考头区分参考图像与生成图像；生成器最大化两个头logits的加权和。当头最优时，该目标等价于对学习到的奖励进行KL正则化最大化，头权重之比设定正则化强度。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在基于规则和基于模型的奖励下，少步DualHeads生成器达到的任务奖励接近40步强化学习方法，同时保持图像质量，且不增加额外推理成本。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出AnyGameRenderer，一种视频到视频的生成式渲染器，能将AI智能体生成的粗糙游戏画面转化为高质量视觉效果，同时严格保持布局、相机及每个实体的位置与时间一致性，并构建了实体级评测基准。</div>
+        <div class="summary-section"><strong>方法:</strong> 以普通视频作为游戏状态输入，无需引擎G-buffer、逐对象类别标签或低模代理，灰度块、彩色图元、语义图和线框均可作为输入。通过LoRA微调33B的参考视频条件视频生成模型MiniMax-H3 ref2va实现。训练数据约1万对片段，来自三个来源：GEAR工具导出的38个智能体制作游戏的多流渲染数据、Unreal Engine中程序化控制人群与实体规模的双流渲染数据，以及通过3D框检测重建配对真实游戏录像。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在包含59个留出案例、753个实体的实体级基准上，相比基座模型，AnyGameRenderer的时间匹配率从50.9%提升至62.9%，漏检数量变化率从34.7%降至21.3%，幻觉或未渲染实体更少，实体对应保持能力显著更优。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Distilled diffusion models generate high-quality images in a few sampling steps, but aligning them with task requirements and human preferences is difficult. Methods developed for multi-step diffusion models rely on differentiable rewards, or on score fields and stochastic trajectories that distilled generators may lack. We ask whether a few-step generator can be adapted using only external reward evaluations and reference samples, and show that two binary classifiers suffice. Our method, DualHeads, implements them as lightweight heads on a frozen diffusion backbone. The reward head learns which samples of the same prompt score higher, the reference head separates reference images from generated ones, and the generator maximizes a weighted sum of their logits. When the heads are optimal, this objective is KL-regularized maximization of the learned reward, and the ratio of head weights sets the regularization strength. Empirically, with both rule-based and model-based rewards, a few-step DualHeads generator reaches task rewards close to those of 40-step reinforcement learning methods while preserving image quality, at no extra inference cost. We hope that this simple and elegant dual-head formulation will help advance few-step reward-tilted generation.</p>
+        <p>AI coding agents can now build small playable games in minutes, but the results usually look like programmer art: gray blockouts, colored geometric primitives, and flat semantic blobs. We present AnyGameRenderer, a video-to-video generative renderer that turns such footage into high-quality visuals with characters, motion detail, and effects. Throughout, it keeps the layout, camera, and every entity's position and timing intact. Our AnyGameRenderer generalizes across a wide range of genres that agents build, such as tower defense, auto-battlers, top-down survivors, turn-based battles, kart racing, and crowd runners. AnyGameRenderer takes plain video as its game-state input, with no complex representations such as engine G-buffers, per-object class labels, or low-poly proxies. Gray blockouts, colored primitives, semantic maps, and wireframes all work as input. It also preserves entity correspondence: group counts stay correct, and entities appear and disappear on the right frame. We implement AnyGameRenderer by LoRA fine-tuning MiniMax-H3 ref2va, a 33B reference-video-conditioned video generation model. Training uses $\sim$10k paired clips from three sources: (i) multi-stream rendering data from 38 agent-made games exported from GEAR, an AI game-creation tool; (ii) two-stream rendering data from Unreal Engine, with programmatically controlled crowds, count changes, and entity scales; and (iii) real gameplay recordings, with pairs reconstructed via 3D-box detection. To evaluate the entity correspondence, we propose an entity-level benchmark of 59 held-out cases with 753 entities, scored against ground-truth boxes. Compared with the base model, AnyGameRenderer better preserves entity correspondence: temporal match rises from 50.9\% to 62.9\%, missed count changes fall from 34.7\% to 21.3\%, and fewer entities are hallucinated or left unrendered.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.28858" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.28858.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.31466" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.31466.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.28801</span>
+          <span class="paper-id">2610.30861</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 62/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.28801" target="_blank">JUICE: Unified Multimodal Modeling in Pretrained Representation Spaces</a>
+        <a href="https://arxiv.org/abs/2610.30861" target="_blank">Direct Forcing: A Single-Stage Training Recipe for Few-Step Autoregressive Text-to-Video Generation</a>
       </h3>
-      <p class="paper-title-zh">JUICE：预训练表示空间中的统一多模态建模</p>
-      <p class="paper-authors">Jiahan Li, Huangyuan Su, Shengbang Tong, Shusheng Yang, Ruihan Guo 等 (12 位作者)</p>
+      <p class="paper-title-zh">直接强制：面向少步自回归文本到视频生成的单阶段训练配方</p>
+      <p class="paper-authors">Haojun Xu, Jie Huang, Xin Lu, Mingchen Zhong, Zihao Fan 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出JUICE，一种在冻结的图像和文本预训练编码器表示空间中、用单一流匹配Transformer联合建模两种模态的方法，使图像与文本可由同一过程联合生成，且无需固定生成顺序。</div>
-        <div class="summary-section"><strong>方法:</strong> 将图像和文本都映射到预训练编码器的连续表示空间，并在该空间上训练一个流匹配Transformer来建模联合分布。每个模态拥有独立的噪声水平，通过指定哪些模态保持干净、哪些模态被生成，即可统一实现图像生成、图像描述、视觉问答和联合生成等任务。模型从零开始联合训练，不依赖语言模型初始化。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在同等引导强度下，将文本作为连续状态生成不影响图像生成质量（GenEval 48.41，对比纯文生图模型的47.86），但描述文本会损失部分精确措辞；联合去噪与条件去噪一起训练优于单独训练，语义编码器空间优于VAE潜变量和原始像素。2.1B参数、224x224分辨率下，GenEval达0.88，VQAv2达73.1。采用联合分布的耦合采样后，可在绘制地图路线的同时写出对应走法；在多解迷宫任务中，联合成功率从独立采样的54.6%提升到93.7%，且无需任一模态先行；在视觉空间规划任务上，训练规模地图的求解率达99.8%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Direct Forcing单阶段训练框架，将因果适配与分布匹配统一到一个训练阶段中，无需单独的初始化阶段或在线扩散分数监督，即可从双向预训练视频模型直接学习少步自回归视频生成器。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法将参考视频同时用作历史延续的配对样本和自生成rollout的目标分布。因果延续对齐（Causal Continuation Alignment）在参考历史条件下学习配对的时空对应关系；Rollout分布匹配（Rollout Distribution Matching）利用最大均值差异（MMD）对齐自生成视频与参考视频的表示分布。动态梯度平衡（Dynamic Gradient Balancing）在训练过程中自适应调整两种信号的相对梯度贡献。从双向Wan2.1-1.3B模型出发，仅用250次更新即学到四步自回归生成器。</div>
+        <div class="summary-section"><strong>关键发现:</strong> Direct Forcing在250次更新内实现四步自回归生成，取得84.63的VBench总分和86.01的质量分，且无需单独初始化阶段或在线扩散分数监督。消融实验验证了动态梯度平衡的有效性，并揭示了不同的表示偏好：更深层特征有利于因果延续对齐，而中间层特征对rollout分布匹配效果更佳。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Most unified multimodal models treat images and text asymmetrically: a pretrained language model generates text, an attached diffusion head generates images, and outputs that contain both are produced in a fixed order, so the first output cannot adapt to the second. We ask whether both modalities can instead be generated by one process that is trained on them jointly from scratch. Pretrained encoder spaces hold both modalities in one continuous form and carry knowledge learned at scale, and recent work finds them effective as generative targets for vision and language. We therefore model the joint distribution directly in these spaces. We introduce JUICE (Joint Unified multimodal modeling In Continuous Encoder spaces), a single flow matching Transformer over frozen image and text representations, in which each modality has its own noise level. Which modalities are clean and which are generated then decides the task: image generation, captioning, visual question answering, or joint generation. Controlled pretraining runs test each design choice. At equal guidance, generating text as continuous states leaves image generation intact (48.41 GenEval, against 47.86 for a model trained only for text-to-image generation), while captions lose some exact wording. Training on joint and conditional denoising together beats either alone, and semantic encoder spaces beat VAE latents and raw pixels as targets. At 2.1B parameters, with no language model initialization and at 224x224, JUICE reaches up to 0.88 on GenEval and 73.1 on VQAv2. By sampling both modalities from the joint distribution (coupled sampling), it can also draw a route on a map while writing out the matching moves. On mazes with several valid solutions, joint success rises from 54.6% with independent sampling to 93.7%, and no modality has to go first. On visual spatial planning, JUICE solves 99.8% of maps at its training sizes.</p>
+        <p>Few-step autoregressive video generation enables low-latency streaming, yet prevailing training pipelines separate causal adaptation from distribution matching. Recent representation-based text-to-video methods retain this separation by starting from ODE-initialized checkpoints, even when the target distribution is defined directly by reference videos. We introduce Direct Forcing, a single-stage framework that uses reference videos both as paired examples of how a history continues and as a target population for self-generated rollouts. Causal Continuation Alignment learns paired spatiotemporal correspondence under reference histories, while Rollout Distribution Matching uses maximum mean discrepancy to align the representation distributions of self-generated and reference videos. Together, these complementary signals allow a pretrained video model to learn causal continuation and the target video distribution in a single training stage. Dynamic Gradient Balancing adapts the relative gradient contributions of continuation alignment and distribution matching during training. Starting from bidirectional Wan2.1-1.3B, Direct Forcing learns a four-step autoregressive generator in 250 updates without a separate initialization stage or online diffusion-score supervision, achieving 84.63 VBench Total and 86.01 Quality. Ablation studies further demonstrate the benefits of dynamic gradient balancing and reveal distinct representation preferences: deeper features benefit continuation alignment, whereas intermediate features yield better performance for rollout distribution matching.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.28801" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.28801.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.30861" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.30861.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
