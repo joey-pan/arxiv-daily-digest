@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-27</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-10-28</p>
+        <p class="stats">共 5 篇论文 | 人工智能: 1 | 计算机视觉: 4</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.33472</span>
+          <span class="paper-id">2610.37626</span>
         </div>
-        <span class="score-badge">相关性 92/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.33472" target="_blank">Qwen-Image-PE: Learning Visual Design for Text-to-Image Prompt Enhancement</a>
+        <a href="https://arxiv.org/abs/2610.37626" target="_blank">Know, then Draw: A New Learning Paradigm for Visual Generation</a>
       </h3>
-      <p class="paper-title-zh">Qwen-Image-PE：面向文生图提示增强的视觉设计学习</p>
-      <p class="paper-authors">Zekai Zhang, Yanran Zhang, Shengming Yin, Yan Shu, Zhening Liu 等 (29 位作者)</p>
+      <p class="paper-title-zh">先知晓，再绘制：一种面向视觉生成的新学习范式</p>
+      <p class="paper-authors">Yucheng Mao, Chongjian Ge, Zhuowen Tu, Hao Tan, Hanwen Jiang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Qwen-Image-PE，通过两阶段训练让提示增强模型显式学习细粒度视觉设计维度，将欠明确的用户请求转化为连贯的视觉规格，从而提升文生图生成效果。</div>
-        <div class="summary-section"><strong>方法:</strong> 采用两阶段训练：第一阶段使用基于描述的反向蒸馏（CRD），以设计良好图像的密集描述作为设计监督进行监督微调；第二阶段使用组内设计奖励（GDR）的强化学习，对同一请求的所有候选图像进行联合比较，以优化光照、构图、布局和细节。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Qwen-Image-Bench上，Qwen-Image-PE-397B较原始请求提升7.81分，Qwen-Image-PE-9B优于所有评估的PE基线；在视觉设计、美学、图像质量和人类偏好上均有提升。研究发现PE沿训练数据、模型规模和信息密度三个轴扩展，且足够的信息密度是有效增强的前提；此外该模型可泛化到四个额外T2I骨干网络，在HunyuanImage-2.1和FLUX 3 Image Klein上甚至超越原生提示增强器。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出将视觉生成拆分为两个阶段——用自回归预训练获取高层语义知识、用扩散后训练实现高保真渲染，并系统研究了该范式下的目标函数、表示方式和缩放规律，最终以较低算力训练出高性能文生图模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者通过受控对比实验比较自回归与扩散作为预训练目标的效果，发现自回归更适合下游渲染任务；进而提出仅用语言监督训练的纯语义分词器，不依赖图像解码器和重建损失；随后建立知识获取与渲染两阶段的算力最优缩放定律，并据此训练了一个30亿参数的文本到图像模型。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 自回归预训练在学习效率和最终生成质量上均优于其他预训练目标，且仅自回归生成的质量与最终渲染性能并不必然相关，语义质量更为关键；自回归预训练相比从零训练的像素扩散模型能降低拟合的渐近渲染损失；按缩放定律训练的3B模型仅用6600个H100 GPU小时即达到GenEval 86分和DPG-Bench 87分，验证了该范式在大规模下的有效性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Learning visual design is essential for prompt enhancement (PE) to turn underspecified user requests into coherent visual specifications for text-to-image (T2I) generation. Existing methods preserve user intent and improve overall visual appeal, with less explicit emphasis on fine-grained design dimensions. To address this gap, we introduce Qwen-Image-PE, which learns visual design through two-stage training. Supervised fine-tuning with Caption-Based Reverse Distillation (CRD) uses dense captions of well-designed images as design supervision. Reinforcement learning with Groupwise Design Reward (GDR) jointly compares all candidate images for the same request to refine lighting, composition, layout, and detail. On Qwen-Image-Bench with Qwen-Image-2.1, Qwen-Image-PE-397B improves over original requests by 7.81 points, while Qwen-Image-PE-9B outperforms all evaluated PE baselines. Further evaluations show gains in visual design, aesthetics, image quality, and human preference. We find that PE scales along three axes: training data, model size, and information density, with sufficient information density as a prerequisite for effective enhancement. Moreover, we demonstrate that Qwen-Image-PE generalizes to four additional T2I backbones, even surpassing native prompt enhancers on HunyuanImage-2.1 and FLUX 3 Image Klein. We release Qwen-Image-PE-9B at https://huggingface.co/Qwen/Qwen-Image-2.1-PE-T2I.</p>
+        <p>Visual generation requires both high-level semantic knowledge and fine-grained pixel details. We propose a learning paradigm that assigns these roles to autoregressive pretraining for knowledge acquisition and diffusion post-training for high-fidelity rendering. Within this framework, we study the objective, representation, and scaling of knowledge acquisition and rendering. Controlled comparisons identify autoregression as the stronger pretraining objective for downstream rendering, improving both learning efficiency and final generation quality. We further find that AR-only generation quality does not necessarily correlate with final performance; semantic quality matters more. This motivates a purely semantic tokenizer trained with language supervision alone, without an image decoder or reconstruction loss. We establish compute-optimal scaling laws for knowledge acquisition and rendering, and find that autoregressive pretraining lowers the fitted asymptotic rendering loss compared with pixel diffusion models trained from scratch. Guided by the laws, we train a 3B-parameter text-to-image model with only 6,600 H100 GPU-hours, achieving 86 on GenEval and 87 on DPG-Bench and validating the proposed paradigm at scale.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.33472" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.33472.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.37626" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.37626.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.34191</span>
+          <span class="paper-id">2610.36419</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.36419" target="_blank">SpeeDiff: Scalable Pixel-Anchored End-to-End Latent Diffusion Model</a>
+      </h3>
+      <p class="paper-title-zh">SpeeDiff：可扩展的像素锚定端到端潜在扩散模型</p>
+      <p class="paper-authors">Bingliang Zhang, Wenda Chu, Yizhuo Li, Linjie Yang, Yisong Yue 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SpeeDiff，一种从零开始联合训练VAE和扩散模型的潜在扩散方法，通过Tweedie像素重建损失解决朴素端到端训练中的潜在空间坍缩问题，实现比两阶段方法更快的收敛速度。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法联合训练VAE编码器和扩散模型，使扩散损失梯度直接引导VAE编码器形成有利于生成的潜在空间。核心技术是Tweedie像素重建（TPR）损失，利用Tweedie公式从中间噪声状态解码预测的干净潜在表示，提供额外的像素级反馈以缓解潜在空间坍缩。此外，该方法支持完全基于Transformer架构的联合扩展，并在端到端框架内增强表示对齐。</div>
+        <div class="summary-section"><strong>关键发现:</strong> SpeeDiff-XL在ImageNet 256×256生成任务上无引导条件下达到FID 1.50，训练速度分别比Vanilla SiT和REPA快140倍和61倍。使用更高效的32倍压缩VAE时，模型在ImageNet 512×512生成任务上无引导条件下进一步达到FID 1.53。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present Scalable Pixel-anchored End-to-end Diffusion (SpeeDiff), a latent diffusion method that jointly trains the VAE and the diffusion model from scratch. In principle, joint training allows the diffusion loss gradient to directly guide the VAE encoder, encouraging the formation of a generation-friendly latent space and potentially yielding faster convergence than the conventional two-stage approach with a pretrained frozen VAE. However, a naive end-to-end implementation severely degrades performance, as unrestricted backpropagation of the diffusion loss leads to latent space collapse. Our main technical contribution is a simple yet effective Tweedie Pixel Reconstruction (TPR) loss, which provides additional pixel-level feedback by decoding a predicted clean latent from an intermediate noisy state using Tweedie's formula, thereby alleviating collapse. Furthermore, our method enables jointly scaling a fully transformer-based architecture and enhances representation alignment within the end-to-end framework. Our SpeeDiff-XL model achieves over 140x and 61x faster training compared to Vanilla SiT and REPA, respectively, while attaining an FID of 1.50 without guidance on ImageNet 256x256 generation. With a more efficient 32x compressed VAE, our model further reaches an FID of 1.53 without guidance on ImageNet 512x512 generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.36419" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.36419.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.37110</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.34191" target="_blank">Timing Matters Twice: When to Query and When to Skip in Flow-Matching On-Policy Distillation</a>
+        <a href="https://arxiv.org/abs/2610.37110" target="_blank">A First-Step Bias Restores Lost Diversity in Diffusion Model Distillation</a>
       </h3>
-      <p class="paper-title-zh">时机至关重要：流匹配在线策略蒸馏中何时查询与何时跳过</p>
-      <p class="paper-authors">Renye Yan, Junyi Zhan, Jikang Cheng, Wei Peng</p>
+      <p class="paper-title-zh">第一步偏置恢复扩散模型蒸馏中丢失的多样性</p>
+      <p class="paper-authors">Wenwu Tang, Dong Wang, Yun Cheng, Olga Saukh</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出PhaseOPD框架，通过在线识别生成阶段来自适应决定何时查询教师模型进行监督以及何时跳过剩余轨迹以节省计算，在保持单次查询速度蒸馏目标的同时显著提升训练效率与生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> PhaseOPD利用学生模型已有的速度预测，从预测干净潜变量的修正中在线识别生成阶段，无需额外模型评估。针对每个任务分配的教师模型，根据其阶段偏好选择监督状态，并在所有查询决策确定后跳过未使用的轨迹后缀。该方法保持了单次查询速度蒸馏目标，避免了预定义时间步分布带来的阶段差异忽视和计算浪费。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在SD3.5-M上，PhaseOPD每个本地批次仅执行16个展开位置中的5.56个，相比DanceOPD减少41.3%的训练时间，同时提升了Aesthetic、GenEval和OCR分数。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现扩散模型蒸馏中多样性丢失主要发生在第一步高噪声采样阶段，并提出ReSeed方法，仅通过轻量级调整第一步的种子响应偏置来恢复多样性，无需微调整个学生模型。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先沿采样轨迹比较教师和学生模型对初始噪声的响应，定位多样性损失最大的步骤。然后提出ReSeed，一种蒸馏后方法，仅在学生模型的第一步添加种子响应偏置适配器，并将其速度与教师第一步的割线速度对齐，同时保持所有学生权重和后续去噪步骤不变。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SD3-Medium、SD3.5-Medium、FLUX.1-dev和Wan2.1-T2V-1.3B上评估，对于4步FLUX.1-dev蒸馏模型，ReSeed仅需额外0.00196%可训练参数，在8000个提示-噪声对上训练，无需目标图像、感知损失或对抗损失，将DINO多样性提升48.3%同时保持竞争性视觉质量，表明仅通过第一步的轻量数据高效调优即可恢复大量多样性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>On-policy distillation (OPD) enables flow-matching models to acquire complementary capabilities from specialized teachers through supervision on student-generated trajectories. However, different evaluation dimensions, such as aesthetics and OCR accuracy, and different tasks, such as image generation and editing, emphasize different aspects of the denoising process, suggesting that their effective supervision may occur at different stages. Existing methods typically select supervision states from predefined timestep distributions, which may overlook these phase-dependent differences and incur unnecessary computational overhead. This motivates two critical timing decisions: when to adaptively query teachers for effective supervision based on the evolving generative process, and when to skip the remaining rollout to avoid redundant computation. In this paper, we introduce PhaseOPD, a phase-aware query-and-skip framework that identifies generative phases online from revisions of predicted-clean latents, using existing student velocity predictions without additional model evaluations. For each task-assigned teacher, PhaseOPD selects a supervision state based on its phase preference and skips the unused rollout suffix once all query decisions are finalized, preserving the single-query velocity-distillation objective. On SD3.5-M, PhaseOPD executes only 5.56 of 16 rollout positions per local batch, reducing training time by 41.3% relative to DanceOPD while improving Aesthetic, GenEval, and OCR scores.</p>
+        <p>Distribution-matching distillation enables high-quality image generation in only a few denoising steps. However, distilled student models often map different initial noise samples to similar outputs under the same prompt. To locate where diversity is lost, we compare the teacher and student along the sampling trajectory. The largest measured reduction in the response to different initial noises occurs during the first, high-noise step. When we replace the first step with the teacher's corresponding trajectory and leave the final three student steps unchanged, most of the output diversity returns. This suggests that the first step is a key point for restoring diversity. Motivated by this finding, we introduce \emph{ReSeed}, a post-distillation method that adds a seed-response bias adapter only to the first student step and aligns its velocity with the teacher's first-interval secant velocity. All student weights and later denoising steps remain unchanged. We evaluate ReSeed on three text-to-image models (SD3-Medium, SD3.5-Medium, and FLUX.1-dev) and one text-to-video model (Wan2.1-T2V-1.3B). For a distilled 4-step FLUX.1-dev model, \emph{ReSeed} requires only $0.00196\%$ additional trainable parameters relative to the base model and is trained on 8,000 prompt--noise pairs, while keeping the distilled student fully frozen and requiring no target images, perceptual losses, or adversarial losses. It improves DINO diversity by $48.3\%$ while maintaining competitive visual quality. These results show that substantial diversity can be recovered through a lightweight, data-efficient tuning of only the first denoising step, without finetuning the full student model.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.34191" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.34191.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.37110" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.37110.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,94 +332,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.33581</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.33581" target="_blank">UltraFlash: Accelerating Megapixel Visual Synthesis</a>
-      </h3>
-      <p class="paper-title-zh">UltraFlash：加速百万像素级视觉合成</p>
-      <p class="paper-authors">Phuc Lai, Anh Nguyen, Phong Nguyen, Anh Tran</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文识别出级联式潜在扩散模型在百万像素视觉合成中被忽视的瓶颈——VAE相关的像素空间转换操作，并提出UltraFlash方法显著加速这些操作，在提升图像质量的同时将4K生成延迟降低约2倍。</div>
-        <div class="summary-section"><strong>方法:</strong> UltraFlash包含两个组件：Latent Hyperloop用学习到的潜在空间捷径替代中间RGB往返转换，近似解码-缩放-编码变换而无需重复VAE编解码；Sparse Patch-based Decoding通过解决GroupNorm统计不一致导致的拼接缝问题并跨块复用缓存统计量，实现更小重叠的稀疏VAE解码以加速最终重建。该方法集成到先进的级联基线中。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 集成UltraFlash后，4K生成延迟降低约2倍，同时图像质量得到提升。结果表明优化像素空间转换可同时改善效率与保真度，为快速高质量的百万像素视觉合成提供了有效路径。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Megapixel visual synthesis with latent diffusion models requires operating far beyond the resolutions at which these models are typically trained. Cascade refinement is a leading strategy for this setting: it starts from a base image at a native resolution and progressively upsamples it to the target resolution through multiple refinement stages. Each stage typically performs a pixel-space resolution transition followed by latent-space denoising. While prior acceleration efforts mainly focus on reducing denoising cost, we identify a complementary and underexplored bottleneck: the repeated movement of representations through the VAE. We call these operations pixel-space transitions. In cascade pipelines, intermediate latents are often decoded to RGB, resized, and re-encoded before refinement, while final latents are decoded patch by patch with dense overlap to suppress boundary artifacts. We propose UltraFlash, a transition-efficient approach that accelerates these VAE-heavy operations. UltraFlash has two components. Latent Hyperloop replaces intermediate RGB round trips with a learned latent-space shortcut that approximates the decode-resize-encode transformation without repeated VAE decoding and encoding. Sparse Patch-based Decoding accelerates final reconstruction by addressing patch seams caused by inconsistent GroupNorm statistics and reusing cached statistics across patches, enabling sparse VAE decoding with much smaller overlap. Integrated into a state-of-the-art cascade baseline, UltraFlash reduces 4K generation latency by approximately 2x while improving image quality. These results show that optimizing pixel-space transitions can improve both efficiency and fidelity, offering an effective route toward fast, high-quality megapixel visual synthesis.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.33581" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.33581.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.34782</span>
-        </div>
-        <span class="score-badge">相关性 78/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.34782" target="_blank">ToDoPro: Faster and Better Reference-Based Generation: Early Token Reduction via Downsampled Self-Probing</a>
-      </h3>
-      <p class="paper-title-zh">ToDoPro：更快更好的参考图像生成：通过下采样自探测实现早期令牌缩减</p>
-      <p class="paper-authors">Caiyi Sun, Yujing Sun, Siu-Ming Yiu</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出ToDoPro方法，在不引入额外参数且兼容模型内加速技术的前提下，通过早期令牌缩减实现参考图像生成加速并降低峰值显存，同时提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 先对参考图像进行空间2倍下采样并执行少量去噪步骤，利用DiT模型自身高效探测参考令牌的重要性；然后根据探测到的重要性进行分层缩减：完全丢弃低重要性令牌，用下采样对应令牌替代中等重要性令牌以低成本保留全局上下文，保留高重要性令牌；最后在主去噪阶段前完成缩减。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在三个基础模型和两个基准上的实验表明，早期缩减显著加速推理并降低峰值GPU显存；同时通过安全过滤噪声、无信息参考令牌，使模型将有限注意力集中于真正有用的令牌，从而提升生成质量。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Recent generic reference-based image generation models natively support multiple conditions by concatenating all reference image and text tokens into a joint sequence processed by a single Diffusion Transformer (DiT). However, this versatile paradigm comes at an efficiency cost: accommodating multiple references leads to a token explosion, incurring massive $\mathcal{O}(N^2)$ computational complexity. Most acceleration methods operate inside the DiT, showing limited capability in reducing spatial redundancy and failing to alleviate peak VRAM. While some pre-model token reduction alternatives exist, they inevitably introduce external models. This raises a question: Is it possible to achieve acceleration and memory savings while preserving compatibility with in-model techniques and requiring no additional parameters? In this work, we realize this goal by proposing the early Token reduction via Downsampled self-Probing (ToDoPro). By executing a few denoising steps on spatially $2\times$ downsampled reference images, this cheap probing stage utilizes the DiT model itself to effectively and efficiently extract reference token importance. Using the probed importance, we apply a hierarchical reduction before the main denoising stage: we completely discard low-importance tokens, substitute mid-importance tokens with their downsampled counterparts to cheaply preserve global context, and keep high-importance tokens. Experiments across three base models and two benchmarks demonstrate that our early reduction accelerates inference significantly and mitigates peak GPU memory. Furthermore, we can improve generation quality by safely filtering out noisy, uninformative reference tokens, enabling the model to concentrate its limited attention capacity on genuinely useful tokens. The code will be released at https://github.com/scy639/ToDoPro</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.34782" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.34782.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.35566</span>
+          <span class="paper-id">2610.37599</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.35566" target="_blank">Copying As Defense: Protecting Images from Editing By Eliciting Model Copying</a>
+        <a href="https://arxiv.org/abs/2610.37599" target="_blank">MoI-Bench: A Benchmark for Image Generation and Editing on Mobile Devices</a>
       </h3>
-      <p class="paper-title-zh">以复制为防御：通过诱导模型复制来保护图像免遭编辑</p>
-      <p class="paper-authors">Salma Abdel Magid, Sanghyuk Chun, Eric Slyman, Kushal Kafle, Olga Russakovsky</p>
+      <p class="paper-title-zh">MoI-Bench：移动设备上图像生成与编辑的基准测试</p>
+      <p class="paper-authors">Kailai Feng, Haoxiang Rao, Yuxiang Wei, Bo Chen, Junsong Li 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种名为Copying-as-Defense（CaD）的主动防御方法，通过诱导基于扩散变换器（DiT）的图像编辑器复制受保护图像而非执行编辑指令，从而有效阻止恶意或未经同意的图像篡改。</div>
-        <div class="summary-section"><strong>方法:</strong> 现有防御方法试图让模型减少对受保护参考图像的关注，但模型仍可依据文本指令和自身生成的token完成编辑。作者反其道而行之，通过受控注意力干预发现，仅在少数早期Transformer块中将目标token的注意力集中于参考图像，即可使编辑行为崩溃，令模型复现输入图像而非执行变换。基于此，CaD在早期Transformer块中最大化每个目标token对参考图像的注意力质量，由于注意力行经过归一化，增加对参考图像的注意力会自然抑制分配给文本和生成画布的注意力；同时将优化目标限制在早期块还可截断反向传播路径，降低优化成本。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多种编辑器和基准测试上，CaD将平均编辑成功率从无保护图像的81.4%降至24.0%（相对降低70.6%），相比最强基线DeContext（43.0%）进一步相对降低44.3%；此外，CaD每步优化速度比同类方法快约1.8至2.0倍。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个基于移动用户需求的基准测试MoI-Bench，包含64个子任务和1150个样本，并引入MoI-Eval评估方法，以细粒度方式指导紧凑模型的能力改进，同时提出了二维质量-可部署性能力图来评估模型的实际移动应用价值。</div>
+        <div class="summary-section"><strong>方法:</strong> MoI-Bench定义了16种操作（如移除、替换）和8个视觉目标类别（如人像、文本），形成两个正交轴，其组合定义具体任务（如去除面部妆容）。MoI-Eval引入任务特定标准，涵盖指令遵循、视觉质量和细节保持，并构建样本级评估问题，将分数聚合为沿操作、目标和标准轴的整体质量和能力概况。研究评估了代表性的设备端和服务器端模型，并测量了移动部署成本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 解耦的操作×目标设计为改进紧凑模型提供了更细粒度的指导，例如突出需要优先解决特定能力差距（如文本替换）而非宽泛的应用级目标（如改进文本编辑）。二维质量-可部署性能力图显示，当前设备端模型能实现高效的生成或编辑，但扩大任务覆盖范围比进一步提高部署效率更值得关注。未来进展需要提升编辑质量，特别是身份保持和文本渲染，同时拓宽任务覆盖范围。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Image editors built on diffusion transformers (DiTs), such as Flux Kontext, make it possible to turn a single photograph into a convincing manipulated image, including harmful and non-consensual edits. Proactive defenses aim to prevent such manipulations by adding an imperceptible perturbation before an image is shared. Existing defenses for DiT-based in-context editors make the output attend less to the protected reference image. But this leaves the model free to follow the edit instruction using the text and its own generated tokens, often producing a new, weakly grounded image rather than preventing the edit. We find that the opposite strategy is more effective: instead of leading the model to ignore the reference, we encourage it to copy it. Through controlled attention interventions, we show that concentrating target-token attention on the reference image in only a few early blocks is sufficient to collapse the editing behavior, causing the model to reproduce its input, often as a lossy copy, rather than execute the requested transformation. Based on this insight, we introduce Copying-as-Defense (CaD), which maximizes per-token target-to-reference attention mass in early transformer blocks. Since attention rows are normalized, increasing reference attention suppresses the attention allocated to the text and generated canvas. Restricting the objective to early blocks also lets us truncate the backpropagation path, keeping optimization cheap. Across editors and benchmarks, CaD reduces average edit success from 81.4% on unprotected images to 24.0%, a 70.6% relative reduction, and by a further 44.3% relative to DeContext, the strongest baseline (43.0%). CaD is also roughly 1.8-2.0x faster per optimization step than comparable methods.</p>
+        <p>Developing on-device image models requires considering practical user needs, task types and device resource constraints. However, existing benchmarks provide limited guidance on identifying capability gaps between on-device models and server-side models. We introduce MoI-Bench, a benchmark grounded in mobile user needs, comprising 64 subtasks and 1150 samples. It defines 16 operations, such as removal and replacement, and eight visual target categories covering content such as portraits and text. These form two orthogonal axes whose applicable combinations define specific tasks, such as removing facial makeup. To better guide model improvement, we further propose MoI-Eval, which introduces task-specific criteria covering instruction following, visual quality and detail preservation. We further construct sample-level evaluation questions and aggregate their scores into overall quality and capability profiles along the operation, target and criteria axes. We evaluate representative on-device and server-side models and measure mobile deployment costs. Results show that this decoupled Operation x Target design provides finer-grained guidance for improving compact models. For example, it highlights the need to prioritize specific capability gaps (e.g., text-replacement) over broad application-level goals (e.g., improving text editing). Unlike conventional benchmarks that rank models using a single score, we introduce a two-dimensional Quality-Deployability capability map to assess models for practical mobile use. The map shows that current on-device models can achieve efficient generation or editing but expanding their task coverage deserves greater attention than further improving deployment efficiency. Further progress requires improving editing quality, particularly identity preservation and text rendering, while broadening task coverage.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.35566" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.35566.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.37599" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.37599.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">人工智能</span>
+          <span class="paper-id">2610.36877</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.36877" target="_blank">GUI-JEPA: Candidate-Conditioned JEPA Latents as a Fast Action Policy for Mobile GUI Agents</a>
+      </h3>
+      <p class="paper-title-zh">GUI-JEPA：以候选条件化的JEPA潜在表示作为移动GUI智能体的快速动作策略</p>
+      <p class="paper-authors">Bingchao Wang, Yongcheng Jing, Shunyu Liu, Chengyu Wang, Jun Huang 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个基于联合嵌入预测架构（JEPA）的无解码器GUI智能体策略，通过在预训练于无标注GUI截图的JEPA编码器潜在空间中直接选择动作，避免了逐token解码，显著提升了推理速度并大幅降低了参数量。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于在无标注GUI截图上预训练的JEPA编码器，将屏幕编码为潜在表示；其动作与区域条件化的潜在预测器将屏幕潜在表示转换为每个候选动作对应的潜在表示，使轻量级头部能够在单次批量前向传播中对所有候选动作与指令进行评分，全程无需解码任何token。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在AndroidControl上，GUI-JEPA在相同GPU上比用相同输入微调的Qwen2.5-VL-7B智能体快2.8-4.0倍，仅用6%的参数量即可达到其分布内准确率的86-92%；此外，评分器依赖该潜在通路，且随机初始化的预测器与在屏幕动态上预训练的预测器表现相当，说明预测器是为决策本身而训练的。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Mobile GUI agents are typically fine-tuned 7B-scale vision-language models (VLMs) that generate each action as text. However, these VLMs decode every action token by token, and even agents that score candidate actions keep a large language model or VLM in the loop, making them slow and memory-hungry. To address these issues, we propose GUI-JEPA, to our knowledge the first decoder-free GUI agent policy built on a Joint-Embedding Predictive Architecture (JEPA), which selects actions in the latent space of a JEPA encoder pretrained on unlabelled GUI screenshots. Its action- and region-conditioned latent predictor turns the screen latent into one latent per candidate action, letting lightweight heads score all candidates against the instruction in a single batched pass, without decoding a token. We further show that the scorer relies on this latent pathway and that the predictor is trained for the decision itself: a randomly initialised predictor does just as well as one pretrained on screen dynamics. On AndroidControl, GUI-JEPA is 2.8-4.0x faster on the same GPU than a Qwen2.5-VL-7B agent we fine-tune with the same inputs, while reaching 86-92% of its in-distribution accuracy with 6% of its parameters. Code is available at https://github.com/bcwang-sjtu/GUI-JEPA</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.36877" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.36877.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

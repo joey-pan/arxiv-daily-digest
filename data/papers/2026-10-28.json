@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2610.37626",
+    "title": "Know, then Draw: A New Learning Paradigm for Visual Generation",
+    "abstract": "Visual generation requires both high-level semantic knowledge and fine-grained pixel details. We propose a learning paradigm that assigns these roles to autoregressive pretraining for knowledge acquisition and diffusion post-training for high-fidelity rendering. Within this framework, we study the objective, representation, and scaling of knowledge acquisition and rendering. Controlled comparisons identify autoregression as the stronger pretraining objective for downstream rendering, improving both learning efficiency and final generation quality. We further find that AR-only generation quality does not necessarily correlate with final performance; semantic quality matters more. This motivates a purely semantic tokenizer trained with language supervision alone, without an image decoder or reconstruction loss. We establish compute-optimal scaling laws for knowledge acquisition and rendering, and find that autoregressive pretraining lowers the fitted asymptotic rendering loss compared with pixel diffusion models trained from scratch. Guided by the laws, we train a 3B-parameter text-to-image model with only 6,600 H100 GPU-hours, achieving 86 on GenEval and 87 on DPG-Bench and validating the proposed paradigm at scale.",
+    "authors": [
+      "Yucheng Mao",
+      "Chongjian Ge",
+      "Zhuowen Tu",
+      "Hao Tan",
+      "Hanwen Jiang"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.37626.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.37626",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "先知晓，再绘制：一种面向视觉生成的新学习范式",
+      "core_contribution": "论文提出将视觉生成拆分为两个阶段——用自回归预训练获取高层语义知识、用扩散后训练实现高保真渲染，并系统研究了该范式下的目标函数、表示方式和缩放规律，最终以较低算力训练出高性能文生图模型。",
+      "method": "作者通过受控对比实验比较自回归与扩散作为预训练目标的效果，发现自回归更适合下游渲染任务；进而提出仅用语言监督训练的纯语义分词器，不依赖图像解码器和重建损失；随后建立知识获取与渲染两阶段的算力最优缩放定律，并据此训练了一个30亿参数的文本到图像模型。",
+      "findings": "自回归预训练在学习效率和最终生成质量上均优于其他预训练目标，且仅自回归生成的质量与最终渲染性能并不必然相关，语义质量更为关键；自回归预训练相比从零训练的像素扩散模型能降低拟合的渐近渲染损失；按缩放定律训练的3B模型仅用6600个H100 GPU小时即达到GenEval 86分和DPG-Bench 87分，验证了该范式在大规模下的有效性。"
+    }
+  },
+  {
+    "id": "2610.36419",
+    "title": "SpeeDiff: Scalable Pixel-Anchored End-to-End Latent Diffusion Model",
+    "abstract": "We present Scalable Pixel-anchored End-to-end Diffusion (SpeeDiff), a latent diffusion method that jointly trains the VAE and the diffusion model from scratch. In principle, joint training allows the diffusion loss gradient to directly guide the VAE encoder, encouraging the formation of a generation-friendly latent space and potentially yielding faster convergence than the conventional two-stage approach with a pretrained frozen VAE. However, a naive end-to-end implementation severely degrades performance, as unrestricted backpropagation of the diffusion loss leads to latent space collapse. Our main technical contribution is a simple yet effective Tweedie Pixel Reconstruction (TPR) loss, which provides additional pixel-level feedback by decoding a predicted clean latent from an intermediate noisy state using Tweedie's formula, thereby alleviating collapse. Furthermore, our method enables jointly scaling a fully transformer-based architecture and enhances representation alignment within the end-to-end framework. Our SpeeDiff-XL model achieves over 140x and 61x faster training compared to Vanilla SiT and REPA, respectively, while attaining an FID of 1.50 without guidance on ImageNet 256x256 generation. With a more efficient 32x compressed VAE, our model further reaches an FID of 1.53 without guidance on ImageNet 512x512 generation.",
+    "authors": [
+      "Bingliang Zhang",
+      "Wenda Chu",
+      "Yizhuo Li",
+      "Linjie Yang",
+      "Yisong Yue",
+      "Katherine L. Bouman",
+      "Yang Song",
+      "Qiushan Guo"
+    ],
+    "published": "2026-10-26",
+    "updated": "2026-10-26",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36419.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36419",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "SpeeDiff：可扩展的像素锚定端到端潜在扩散模型",
+      "core_contribution": "提出SpeeDiff，一种从零开始联合训练VAE和扩散模型的潜在扩散方法，通过Tweedie像素重建损失解决朴素端到端训练中的潜在空间坍缩问题，实现比两阶段方法更快的收敛速度。",
+      "method": "该方法联合训练VAE编码器和扩散模型，使扩散损失梯度直接引导VAE编码器形成有利于生成的潜在空间。核心技术是Tweedie像素重建（TPR）损失，利用Tweedie公式从中间噪声状态解码预测的干净潜在表示，提供额外的像素级反馈以缓解潜在空间坍缩。此外，该方法支持完全基于Transformer架构的联合扩展，并在端到端框架内增强表示对齐。",
+      "findings": "SpeeDiff-XL在ImageNet 256×256生成任务上无引导条件下达到FID 1.50，训练速度分别比Vanilla SiT和REPA快140倍和61倍。使用更高效的32倍压缩VAE时，模型在ImageNet 512×512生成任务上无引导条件下进一步达到FID 1.53。"
+    }
+  },
+  {
+    "id": "2610.37110",
+    "title": "A First-Step Bias Restores Lost Diversity in Diffusion Model Distillation",
+    "abstract": "Distribution-matching distillation enables high-quality image generation in only a few denoising steps. However, distilled student models often map different initial noise samples to similar outputs under the same prompt. To locate where diversity is lost, we compare the teacher and student along the sampling trajectory. The largest measured reduction in the response to different initial noises occurs during the first, high-noise step. When we replace the first step with the teacher's corresponding trajectory and leave the final three student steps unchanged, most of the output diversity returns. This suggests that the first step is a key point for restoring diversity. Motivated by this finding, we introduce \\emph{ReSeed}, a post-distillation method that adds a seed-response bias adapter only to the first student step and aligns its velocity with the teacher's first-interval secant velocity. All student weights and later denoising steps remain unchanged. We evaluate ReSeed on three text-to-image models (SD3-Medium, SD3.5-Medium, and FLUX.1-dev) and one text-to-video model (Wan2.1-T2V-1.3B). For a distilled 4-step FLUX.1-dev model, \\emph{ReSeed} requires only $0.00196\\%$ additional trainable parameters relative to the base model and is trained on 8,000 prompt--noise pairs, while keeping the distilled student fully frozen and requiring no target images, perceptual losses, or adversarial losses. It improves DINO diversity by $48.3\\%$ while maintaining competitive visual quality. These results show that substantial diversity can be recovered through a lightweight, data-efficient tuning of only the first denoising step, without finetuning the full student model.",
+    "authors": [
+      "Wenwu Tang",
+      "Dong Wang",
+      "Yun Cheng",
+      "Olga Saukh"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.37110.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.37110",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "第一步偏置恢复扩散模型蒸馏中丢失的多样性",
+      "core_contribution": "论文发现扩散模型蒸馏中多样性丢失主要发生在第一步高噪声采样阶段，并提出ReSeed方法，仅通过轻量级调整第一步的种子响应偏置来恢复多样性，无需微调整个学生模型。",
+      "method": "作者首先沿采样轨迹比较教师和学生模型对初始噪声的响应，定位多样性损失最大的步骤。然后提出ReSeed，一种蒸馏后方法，仅在学生模型的第一步添加种子响应偏置适配器，并将其速度与教师第一步的割线速度对齐，同时保持所有学生权重和后续去噪步骤不变。",
+      "findings": "在SD3-Medium、SD3.5-Medium、FLUX.1-dev和Wan2.1-T2V-1.3B上评估，对于4步FLUX.1-dev蒸馏模型，ReSeed仅需额外0.00196%可训练参数，在8000个提示-噪声对上训练，无需目标图像、感知损失或对抗损失，将DINO多样性提升48.3%同时保持竞争性视觉质量，表明仅通过第一步的轻量数据高效调优即可恢复大量多样性。"
+    }
+  },
+  {
+    "id": "2610.37599",
+    "title": "MoI-Bench: A Benchmark for Image Generation and Editing on Mobile Devices",
+    "abstract": "Developing on-device image models requires considering practical user needs, task types and device resource constraints. However, existing benchmarks provide limited guidance on identifying capability gaps between on-device models and server-side models. We introduce MoI-Bench, a benchmark grounded in mobile user needs, comprising 64 subtasks and 1150 samples. It defines 16 operations, such as removal and replacement, and eight visual target categories covering content such as portraits and text. These form two orthogonal axes whose applicable combinations define specific tasks, such as removing facial makeup. To better guide model improvement, we further propose MoI-Eval, which introduces task-specific criteria covering instruction following, visual quality and detail preservation. We further construct sample-level evaluation questions and aggregate their scores into overall quality and capability profiles along the operation, target and criteria axes. We evaluate representative on-device and server-side models and measure mobile deployment costs. Results show that this decoupled Operation x Target design provides finer-grained guidance for improving compact models. For example, it highlights the need to prioritize specific capability gaps (e.g., text-replacement) over broad application-level goals (e.g., improving text editing). Unlike conventional benchmarks that rank models using a single score, we introduce a two-dimensional Quality-Deployability capability map to assess models for practical mobile use. The map shows that current on-device models can achieve efficient generation or editing but expanding their task coverage deserves greater attention than further improving deployment efficiency. Further progress requires improving editing quality, particularly identity preservation and text rendering, while broadening task coverage.",
+    "authors": [
+      "Kailai Feng",
+      "Haoxiang Rao",
+      "Yuxiang Wei",
+      "Bo Chen",
+      "Junsong Li",
+      "Yang Pan",
+      "Chengkun Cai",
+      "Jagmohan Chauhan"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.37599.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.37599",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "MoI-Bench：移动设备上图像生成与编辑的基准测试",
+      "core_contribution": "提出了一个基于移动用户需求的基准测试MoI-Bench，包含64个子任务和1150个样本，并引入MoI-Eval评估方法，以细粒度方式指导紧凑模型的能力改进，同时提出了二维质量-可部署性能力图来评估模型的实际移动应用价值。",
+      "method": "MoI-Bench定义了16种操作（如移除、替换）和8个视觉目标类别（如人像、文本），形成两个正交轴，其组合定义具体任务（如去除面部妆容）。MoI-Eval引入任务特定标准，涵盖指令遵循、视觉质量和细节保持，并构建样本级评估问题，将分数聚合为沿操作、目标和标准轴的整体质量和能力概况。研究评估了代表性的设备端和服务器端模型，并测量了移动部署成本。",
+      "findings": "解耦的操作×目标设计为改进紧凑模型提供了更细粒度的指导，例如突出需要优先解决特定能力差距（如文本替换）而非宽泛的应用级目标（如改进文本编辑）。二维质量-可部署性能力图显示，当前设备端模型能实现高效的生成或编辑，但扩大任务覆盖范围比进一步提高部署效率更值得关注。未来进展需要提升编辑质量，特别是身份保持和文本渲染，同时拓宽任务覆盖范围。"
+    }
+  },
+  {
+    "id": "2610.36877",
+    "title": "GUI-JEPA: Candidate-Conditioned JEPA Latents as a Fast Action Policy for Mobile GUI Agents",
+    "abstract": "Mobile GUI agents are typically fine-tuned 7B-scale vision-language models (VLMs) that generate each action as text. However, these VLMs decode every action token by token, and even agents that score candidate actions keep a large language model or VLM in the loop, making them slow and memory-hungry. To address these issues, we propose GUI-JEPA, to our knowledge the first decoder-free GUI agent policy built on a Joint-Embedding Predictive Architecture (JEPA), which selects actions in the latent space of a JEPA encoder pretrained on unlabelled GUI screenshots. Its action- and region-conditioned latent predictor turns the screen latent into one latent per candidate action, letting lightweight heads score all candidates against the instruction in a single batched pass, without decoding a token. We further show that the scorer relies on this latent pathway and that the predictor is trained for the decision itself: a randomly initialised predictor does just as well as one pretrained on screen dynamics. On AndroidControl, GUI-JEPA is 2.8-4.0x faster on the same GPU than a Qwen2.5-VL-7B agent we fine-tune with the same inputs, while reaching 86-92% of its in-distribution accuracy with 6% of its parameters. Code is available at https://github.com/bcwang-sjtu/GUI-JEPA",
+    "authors": [
+      "Bingchao Wang",
+      "Yongcheng Jing",
+      "Shunyu Liu",
+      "Chengyu Wang",
+      "Jun Huang",
+      "Jie Yang",
+      "Wei Liu",
+      "Dacheng Tao"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.AI",
+      "cs.CL",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36877.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36877",
+    "primary_category": "cs.AI",
+    "score": 72,
+    "summary": {
+      "title_zh": "GUI-JEPA：以候选条件化的JEPA潜在表示作为移动GUI智能体的快速动作策略",
+      "core_contribution": "提出了首个基于联合嵌入预测架构（JEPA）的无解码器GUI智能体策略，通过在预训练于无标注GUI截图的JEPA编码器潜在空间中直接选择动作，避免了逐token解码，显著提升了推理速度并大幅降低了参数量。",
+      "method": "该方法基于在无标注GUI截图上预训练的JEPA编码器，将屏幕编码为潜在表示；其动作与区域条件化的潜在预测器将屏幕潜在表示转换为每个候选动作对应的潜在表示，使轻量级头部能够在单次批量前向传播中对所有候选动作与指令进行评分，全程无需解码任何token。",
+      "findings": "在AndroidControl上，GUI-JEPA在相同GPU上比用相同输入微调的Qwen2.5-VL-7B智能体快2.8-4.0倍，仅用6%的参数量即可达到其分布内准确率的86-92%；此外，评分器依赖该潜在通路，且随机初始化的预测器与在屏幕动态上预训练的预测器表现相当，说明预测器是为决策本身而训练的。"
+    }
+  }
+]
