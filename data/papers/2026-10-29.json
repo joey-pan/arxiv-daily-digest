@@ -1,0 +1,142 @@
+[
+  {
+    "id": "2610.36874",
+    "title": "AdaGround: Token-Normalized Adaptive Zooming with Verifier-in-the-Loop Refinement for GUI Grounding",
+    "abstract": "GUI grounding on high-resolution screens fails mostly on small targets, and zooming in is a common training-free remedy. However, most existing zooming pipelines do not match the zoom to the target's size, accept the zoomed answer unconditionally and never revisit a wrong answer. To address these issues, we propose AdaGround, a training-free framework with three components: (1) Token-Normalized Adaptive Zooming, which sets the magnification, field of view and zoom depth of each sample from the model's own estimate of the target size; (2) Verifier-in-the-Loop Refinement, which uses one marked-click Yes/No verifier to keep or reject each zoom, choose between zoom chains, trigger re-grounding and, with an existence query, decide when to abstain; and (3) Compositional Structure Grounding, which composes spreadsheet cells from their headers. On Qwen3-VL models, AdaGround surpasses state-of-the-art training-free zooming methods and many trained GUI models, improving accuracy over the backbone by 7.4 to 20.6 points on OSWorld-G and ScreenSpot-Pro, and its gains carry over to held-out UI-Vision. Code is available at https://github.com/bcwang-sjtu/AdaGround",
+    "authors": [
+      "Bingchao Wang",
+      "Yongcheng Jing",
+      "Chengyu Wang",
+      "Jun Huang",
+      "Jie Yang",
+      "Wei Liu",
+      "Dacheng Tao"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.CL"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36874.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36874",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "AdaGround：面向GUI定位的令牌归一化自适应缩放与验证器在环精炼",
+      "core_contribution": "提出AdaGround，一个无需训练的框架，通过令牌归一化自适应缩放、验证器在环精炼和组合结构定位三个组件，显著提升高分辨率屏幕GUI定位中小目标的准确性。",
+      "method": "AdaGround包含三个组件：(1) 令牌归一化自适应缩放，根据模型对目标尺寸的估计设置每个样本的放大倍数、视野和缩放深度；(2) 验证器在环精炼，使用一个标记点击的Yes/No验证器来保留或拒绝每次缩放、选择缩放链、触发重新定位，并通过存在性查询决定何时弃权；(3) 组合结构定位，从表头组合电子表格单元格。",
+      "findings": "在Qwen3-VL模型上，AdaGround超越了最先进的无训练缩放方法和许多训练过的GUI模型，在OSWorld-G和ScreenSpot-Pro上比骨干模型准确率提升7.4到20.6个百分点，且增益在留出的UI-Vision上同样有效。"
+    }
+  },
+  {
+    "id": "2610.36793",
+    "title": "Visual Autoregressive Generation with Next Token Imagination",
+    "abstract": "The space of possible visual content is enormous, and arguably unbounded. Any training set, however large, therefore covers only a tiny fraction of it. Yet generative models are typically trained to fit only the images they are given. In visual autoregressive (AR) generation, for example, each token is predicted from the preceding ground-truth (GT) tokens and supervised solely by the GT next token. Confining learning to observed data in this way limits how much of the visual distribution a model can capture. In this work, we hypothesize that letting a model imagine beyond its training data, by exploring plausible visual realizations it has never observed, can ease this limitation. We use visual AR generation as a proof of concept, since its fixed, discrete token space makes imagination easier to steer and constrain. We propose Next Token Imagination (NTI), a method that allows the model to explore beyond the GT next token, subject to a carefully designed criterion that keeps this imagination bounded by the underlying visual distribution. Extensive experiments on ImageNet show that NTI substantially and consistently improves the fidelity of generated images, approaching state-of-the-art diffusion and AR models while using a smaller model and lower training cost.",
+    "authors": [
+      "Ruihang Jiang",
+      "Zongyao Zhao",
+      "Zhaolin Wang",
+      "Yuanwei Liu",
+      "Xiatian Zhu"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36793.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36793",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "基于下一词元想象的视觉自回归生成",
+      "core_contribution": "论文提出让视觉自回归模型在训练数据之外进行“想象”，探索从未观测到但合理的视觉实现，从而突破仅拟合训练样本的局限，更充分地捕捉视觉分布。",
+      "method": "作者以视觉自回归生成为概念验证，利用其固定离散的词元空间便于引导和约束想象。提出“下一词元想象”（NTI）方法，使模型不再仅以真实下一词元为监督目标，而是在精心设计的准则约束下探索真实下一词元之外的候选，使想象保持在底层视觉分布范围内。",
+      "findings": "在ImageNet上的大量实验表明，NTI能够显著且稳定地提升生成图像的保真度，在使用更小模型和更低训练成本的情况下，逼近当前最先进的扩散模型和自回归模型。"
+    }
+  },
+  {
+    "id": "2610.36665",
+    "title": "Haste Makes Waste? Towards Safe Few-Step Text-to-Image Models",
+    "abstract": "While few-step distilled text-to-image models have gained traction due to their fast generation times, the speed-up implications on their unsafe generation rates remain unknown. We uncover an inherent tension between speed and safety: few-step models are often more unsafe than their teachers, and reducing the number of inference steps consistently raises unsafe generation rates. We further find that acceleration makes unsafe concepts harder to erase in few-step models, with existing concept-erasure methods markedly less effective than in teachers. We offer a mechanistic diagnosis for why erasure methods fail on few-step models, finding that the fragility of few-step models' generation process and the way generation guidance is usually distilled into those models may hinder established concept-erasure methods. To address the speed-safety trade-off, we propose DICE (Distillation-Integrated Concept Erasure), a post-distillation erasure method tailored for few-step models. DICE aligns both its latent construction and its generation-preservation loss with the distillation method that produced the model, keeping erasure faithful to few-step models. DICE demonstrates strong results in our evaluation. For example, on FLUX Schnell, DICE reduces unsafe-generation rate to 0.046 (vs. at least 0.161 for prior erasure methods we test), while mostly preserving benign generation quality.",
+    "authors": [
+      "Lior Ziv",
+      "Mahmood Sharif"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV",
+      "cs.CR"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36665.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36665",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "欲速则不达？迈向安全的少步文本到图像模型",
+      "core_contribution": "论文揭示了少步蒸馏文本到图像模型中速度与安全性之间的内在矛盾，即少步模型往往比其教师模型更不安全，且减少推理步数会持续提高不安全生成率；并提出了一种针对少步模型的概念擦除方法DICE，以缓解这一速度-安全权衡问题。",
+      "method": "作者首先分析了少步模型不安全生成率与推理步数的关系，并诊断了现有概念擦除方法在少步模型上失效的机制原因，发现少步模型生成过程的脆弱性以及引导蒸馏方式可能阻碍了既有擦除方法。为此，他们提出了DICE（蒸馏集成概念擦除），一种后蒸馏擦除方法，其潜在构建和生成保持损失均与产生该模型的蒸馏方法对齐，从而保持擦除对少步模型的忠实性。",
+      "findings": "实验表明，少步模型比教师模型更不安全，减少推理步数会一致地提高不安全生成率，且现有概念擦除方法在少步模型上效果显著下降。DICE在评估中表现强劲，例如在FLUX Schnell上，DICE将不安全生成率降至0.046（而所测试的先前擦除方法至少为0.161），同时基本保持了良性生成质量。"
+    }
+  },
+  {
+    "id": "2610.36593",
+    "title": "WithinVAE: Compact Visual Autoencoding with Self-Distilled Semantics",
+    "abstract": "Visual autoencoders must balance reconstruction fidelity, compactness, and semantic structure. Existing semantic tokenizers typically inherit semantics from pretrained recognition encoders, whose invariances can discard the appearance detail required for inversion. We show that this inheritance is unnecessary: semantic structure can be learned inside an autoencoder's own reconstructive representation. We introduce WithinVAE, a compact variational visual autoencoder with a sequential bottleneck, DINO/iBOT-style self-distillation from an exponential-moving-average copy of the autoencoder itself, and position-dependent token masking to achieve a 4-fold compression ratio, which is free of pretrained representation encoder or external semantic target. On ImageNet-1K at $256\\times256$, WithinVAE improves all four reported reconstruction metrics over RPiAE including PSNR by 1.36 dB, while using half its latent scalar capacity. Under frozen evaluation, the same latents improve linear probing by 6.5 points over RPiAE and 5.1 points over our reconstruction-only baseline, attributing the semantic gains to self-distillation rather than architecture or external supervision. An auxiliary latent-to-latent model reproduces the ordered-compression trend, and a pixel-to-latent model transfers the objective to a pretrained generative space. These results separate the origin of semantic supervision from its use: a compact visual autoencoder can organize semantic structure without borrowing a recognition representation.",
+    "authors": [
+      "Yuzhou Ji",
+      "Jiepeng Wang",
+      "Tianyu Jin",
+      "Lizhuang Ma",
+      "Haibin Huang",
+      "Chi Zhang",
+      "Xuelong Li"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36593.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36593",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "WithinVAE：具有自蒸馏语义的紧凑视觉自编码器",
+      "core_contribution": "论文提出WithinVAE，一种无需预训练识别编码器或外部语义目标的紧凑变分视觉自编码器，证明语义结构可以在自编码器自身的重建表示内部学习得到。",
+      "method": "WithinVAE采用顺序瓶颈结构实现4倍压缩比，通过从自编码器自身的指数移动平均副本进行DINO/iBOT风格的自蒸馏，并引入位置相关的token掩码。整个方法不依赖预训练表示编码器或外部语义目标，仅在自编码器内部完成语义结构的组织与学习。",
+      "findings": "在ImageNet-1K 256×256上，WithinVAE以一半的潜在标量容量在全部四项重建指标上优于RPiAE，PSNR提升1.36 dB；冻结评估下线性探测分别比RPiAE和仅重建基线高6.5和5.1个点，表明语义增益来自自蒸馏而非架构或外部监督。辅助的潜在到潜在模型复现了有序压缩趋势，像素到潜在模型将目标迁移至预训练生成空间，说明紧凑视觉自编码器无需借用识别表示即可组织语义结构。"
+    }
+  },
+  {
+    "id": "2610.36545",
+    "title": "FrameForge: Harnessing Priors of Video Foundation Models for Unified Image Generation",
+    "abstract": "Unified conditional image generation requires a single model to preserve different aspects of a visual input while producing a target image that follows textual guidance. Pretrained video models provide a promising foundation by encoding visual transformations across time, yet existing approaches typically assign the condition and target to fixed temporal positions. We observe that condition-target relationships vary substantially across generation tasks, while video models naturally encode visual transformations at different temporal scales. This motivates us to model conditional generation through input-adaptive virtual temporal relations. We propose FrameForge, which captures two complementary aspects of such relations. Mixture of Temporal Experts (MoTE) models how far the target lies from the condition by dynamically selecting temporal RoPE experts with different virtual intervals. Chain of Temporal Reasoning (CoTR) models how the condition is transformed into the target through a latent intermediate state, with a reasoning-bottleneck attention mask encouraging information propagation through this pathway. Experiments on DreamBench, COCO2017, and GEdit-Bench show that FrameForge achieves superior performance in subject-driven generation, canny-to-image generation, and image editing among the compared methods.",
+    "authors": [
+      "Yijing Lin",
+      "Zhendong Mao",
+      "Mengqi Huang",
+      "Yuxin Wang",
+      "Yongdong Zhang"
+    ],
+    "published": "2026-10-27",
+    "updated": "2026-10-27",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.36545.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.36545",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "FrameForge：利用视频基础模型的先验实现统一图像生成",
+      "core_contribution": "提出FrameForge框架，通过输入自适应的虚拟时间关系建模条件图像生成，统一处理主体驱动生成、边缘到图像生成和图像编辑等多种任务。",
+      "method": "该方法基于预训练视频模型，将条件图像和目标图像映射为虚拟时间序列中的不同位置。提出时间专家混合（MoTE）模块，通过动态选择具有不同虚拟时间间隔的时间RoPE专家来建模目标与条件之间的时间距离；同时提出时间推理链（CoTR）模块，通过潜在中间状态建模条件到目标的变换过程，并采用推理瓶颈注意力掩码引导信息沿该路径传播。",
+      "findings": "在DreamBench、COCO2017和GEdit-Bench上的实验表明，FrameForge在主体驱动生成、canny到图像生成和图像编辑任务上均优于对比方法，验证了输入自适应虚拟时间关系建模的有效性。"
+    }
+  }
+]
