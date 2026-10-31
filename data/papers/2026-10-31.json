@@ -1,0 +1,145 @@
+[
+  {
+    "id": "2610.39664",
+    "title": "EditAgent: Rethinking Agentic Image Editing",
+    "abstract": "Agentic image editors decompose complex requests into steps, but when a step fails, they mostly retry with the same narrow set of tools and a judge that scores each output by eye directly. We argue that such agents are bounded by two spaces: the action space of what the agent can do, and the observation space of what its judge can see. On our expert-annotated benchmark, a general-purpose editor yields no usable result in over 40% of the cases, and no judge is reliable across edit types. We present EditAgent, which expands both spaces. It routes each step to general editors and specialized methods, and attaches to each candidate a verification record. With these records, off-the-shelf VLM judges outperform finetuned reward models. Candidates are generated in parallel and judged in one listwise call: experts prefer this to sequential refinement in 78.5% of decided comparisons, at no more than half the judge calls. EditAgent improves two open-weight editors on three benchmarks and serves as a data engine for training stronger editors.",
+    "authors": [
+      "Haiyang Xu",
+      "Tianyu Wang",
+      "Jialu Li",
+      "Jiteng Mu",
+      "Yuanjun Xiong",
+      "Jianming Zhang",
+      "Zhuowen Tu",
+      "Mingze Xu"
+    ],
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.39664.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.39664",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "EditAgent：重新思考智能体图像编辑",
+      "core_contribution": "论文指出智能体图像编辑器受限于动作空间和观察空间两个维度，提出EditAgent通过扩展这两个空间来提升编辑能力，并在多个基准上改进开源编辑器，同时可作为训练更强编辑器的数据引擎。",
+      "method": "EditAgent将每个编辑步骤路由到通用编辑器和专用方法，并为每个候选结果附加验证记录；借助这些记录，现成的VLM评判器可优于微调奖励模型。候选结果并行生成，并通过一次listwise调用统一评判，从而在减少评判调用次数的同时提升效果。",
+      "findings": "在专家标注基准上，通用编辑器超过40%的情况下无法给出可用结果，且没有评判器能在所有编辑类型上可靠工作。专家在78.5%的有判定比较中更偏好该并行生成加listwise评判的方式而非顺序精炼，且评判调用不超过后者一半。EditAgent在三个基准上改进了两个开源权重编辑器。"
+    }
+  },
+  {
+    "id": "2610.39539",
+    "title": "ROAD: Modern Adversarial Training for Simple One-Step Distillation at Scale",
+    "abstract": "One-step distillation turns pretrained diffusion models into fast generators, but strong results often require substantial training machinery and compute. Pure adversarial distillation offers a simpler route, yet has struggled at modern text-to-image scale. To address this limitation, we propose ROAD (Representation-grounded One-step Adversarial Distillation), a one-stage framework that distills text-to-image models with one adversarial objective and a lightweight representation-space critic. First, we replace the classical convolutional head with a Lipschitz-controlled Transformer head with token-level text conditioning, which matches the semantic tokens of modern visual encoders. Second, we observed a fixed random feature mixing leads to long-horizon degradation. We attribute it to generator-critic co-adaptation around one realization-specific view, and periodically re-draw the mixing to keep the randomization effective. Third, for our dense and vector-valued logits, we introduce Jacobian R1 which penalizes the full input-logit Jacobian, overcoming pooled R1's limitation of neglecting most of logit sensitivities. A single adversarial objective then suffices: in one step, ROAD reaches 11.03 FID on SDXL and 13.73 on SD3.5-M on COCO-10K, surpassing the multi-step teachers at a fraction of distribution matching's training compute.",
+    "authors": [
+      "Xiaoou Li",
+      "Shan You",
+      "Tao Huang"
+    ],
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.39539.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.39539",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "ROAD：面向大规模简单一步蒸馏的现代对抗训练",
+      "core_contribution": "提出ROAD框架，仅用一个对抗目标和轻量级表示空间判别器，即可将现代文本到图像扩散模型蒸馏为高质量的一步生成器，大幅降低训练复杂度和计算量。",
+      "method": "采用单阶段对抗蒸馏框架，将经典卷积判别头替换为具有token级文本条件控制的Lipschitz约束Transformer头，以匹配现代视觉编码器的语义token；针对固定随机特征混合导致的长程退化问题，周期性重新抽取混合以保持随机化有效性；并引入Jacobian R1正则项，惩罚完整的输入-对数几率雅可比矩阵，克服池化R1忽略大部分对数几率敏感性的局限。",
+      "findings": "在COCO-10K上，ROAD一步生成在SDXL上达到11.03 FID，在SD3.5-M上达到13.73 FID，以远低于分布匹配的训练计算量超越了多步教师模型。"
+    }
+  },
+  {
+    "id": "2610.39158",
+    "title": "VEvo-Harness: Causally-Guarded Self-Evolving Harness for Agentic Image Generation",
+    "abstract": "The central bottleneck in visual generation and editing has migrated from achieving pixel-level fidelity to satisfying densely constrained user specifications through increasingly agentic workflows. Prevailing agentic generation pipelines remain shallow generate-verify-rewrite loops treating VLM judgments as coarse visual feedback, either discarding repair experience or admitting ungated updates that poison skill library. With memorize and govern periods left open, they degrade into ungoverned iterators of repeated trial-and-error rather than continual self-evolving harness. Towards this issue, we present \\textbf{VEvo-Harness}, the first causally-guarded continual self-evolving harness system for agentic visual generation. VEvo-Harness introduces four coupled innovations: (1) \\textit{a visual traceback} that densifies sparse judgments into root-cause attributions with a hierarchical verification tree; (2) \\textit{a visual continual governance} that admits only causally valid skill patches through counterfactual dual-arm image generation replay; (3) \\textit{a lifecycle-managed harness state} that hierarchically distills root-cause-anchored episodes across working, experience, and pattern tiers into a persistent skill library of routable and causally verified capabilities; (4) \\textit{a heterogeneous sandbox policy} that orchestrates a diverse action space of repair primitives, dynamically routing cost-aware interventions based on root causes to select the most effective strategy. VEvo-Harness surpasses state-of-the-art agentic methods and rivals proprietary generators (\\textit{e.g.}, GPT-Image, Nano-Pro) while maintaining the continual harness evolution and generalization.",
+    "authors": [
+      "Yuan Wang",
+      "Yuhang Yu",
+      "Mengting Chen",
+      "Tianrun Xu",
+      "Zihao Pan",
+      "Xuetao Feng",
+      "Wei Li"
+    ],
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.39158.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.39158",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "VEvo-Harness：面向智能体图像生成的因果守护式自演化框架",
+      "core_contribution": "提出首个因果守护的持续自演化框架VEvo-Harness，将智能体图像生成从浅层“生成-验证-重写”循环升级为具备根因归因、因果验证与生命周期管理的持续演化系统，在超越现有智能体方法的同时媲美专有生成器。",
+      "method": "该方法包含四项耦合创新：一是视觉回溯机制，利用分层验证树将稀疏判断稠密化为根因归因；二是视觉持续治理机制，通过反事实双臂图像生成重放仅接纳因果有效的技能补丁；三是生命周期管理的框架状态，将根因锚定的经验按工作、经验、模式三层级蒸馏为可路由、因果验证的持久技能库；四是异构沙箱策略，编排多样化修复原语动作空间，依据根因动态路由成本感知的干预以选择最优策略。",
+      "findings": "实验表明VEvo-Harness优于当前最先进的智能体方法，并可媲美GPT-Image、Nano-Pro等专有生成器，同时保持持续的框架演化能力与泛化性能。"
+    }
+  },
+  {
+    "id": "2610.39913",
+    "title": "TokenRepel: Generating Diverse Image Sets Without Compromising Quality",
+    "abstract": "We present an inference-time approach that enhances the visual diversity of image sets generated by text-to-image models, without compromising the average image quality. Our method leverages the intrinsic geometry of hidden representations in pretrained models to diversify images generated from the same prompt. First, we introduce a token repulsion mechanism that increases the angle between feature tokens across samples. It takes a negative Riemannian gradient step on a von Mises-Fisher mixture distribution of tokens on the unit hypersphere. Second, to preserve the quality of each output image, we propose a token density preservation mechanism that projects the repulsion-induced prediction change onto a half-space aligned with the model's score direction. This encourages the updates to remain within the high-density regions learned by the generative model. We further extend this mechanism to the output of each intermediate layer, enabling finer-grained iterative guidance. We evaluate our method on three types of pretrained text-to-image models. Experiments show substantial gains in visual diversity under identical prompts, while maintaining a comparable level of image fidelity.",
+    "authors": [
+      "Qingtao Yu",
+      "Zhen Wang",
+      "Ning Lai",
+      "Boyang Hu",
+      "Hongdong Li",
+      "Dylan Campbell"
+    ],
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.39913.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.39913",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "TokenRepel：在不牺牲质量的前提下生成多样化的图像集",
+      "core_contribution": "提出一种推理时方法，通过利用预训练模型隐藏表示的内在几何结构，在不降低平均图像质量的情况下增强文本到图像模型生成图像集的视觉多样性。",
+      "method": "首先，引入token排斥机制，在单位超球面上对token的von Mises-Fisher混合分布采取负黎曼梯度步，增大不同样本间特征token的夹角。其次，提出token密度保持机制，将排斥引起的预测变化投影到与模型得分方向对齐的半空间上，使更新保持在生成模型学习到的高密度区域内。进一步将该机制扩展到每个中间层的输出，实现更细粒度的迭代引导。",
+      "findings": "在三种预训练文本到图像模型上的实验表明，在相同提示下视觉多样性显著提升，同时保持与基线相当的图像保真度。"
+    }
+  },
+  {
+    "id": "2610.40453",
+    "title": "PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions",
+    "abstract": "We present PhysInsert, a framework for physically plausible reference-based object insertion that jointly adapts objects and their surrounding scenes. Existing methods often rely on masked inputs, generation-based pairs, or training pairs with limited viewpoint variation, leaving pose and illumination adaptation and bidirectional object-scene interactions insufficiently constrained. We construct the Insert World dataset with strictly aligned Blender-rendered counterfactual pairs and object references across viewpoints and lighting conditions. Building on these data, Geometry-Guided Adaptation couples a VGGT geometry stream with image and text streams under target-scene feature supervision to guide spatially consistent insertion. Complementary 2D Object-Scene Spatial Supervision jointly supervises object occupancy and environmental changes while grounding spatial instructions in object regions through image-text attention. We introduce PhysInsert-Bench with dedicated cross-environment and cross-view cases requiring illumination and pose adaptation beyond appearance copying. Experiments on PhysInsert-Bench and DreamBooth demonstrate improved image fidelity; a user study further shows more accurate placement and improved lighting integration, perspective, and pose plausibility.",
+    "authors": [
+      "Yue Gong",
+      "Le Zhang",
+      "Rui Chen",
+      "Song Chang",
+      "Xiaochao Qu",
+      "Luoqi Liu",
+      "Ting Liu",
+      "Yebin Liu"
+    ],
+    "published": "2026-10-29",
+    "updated": "2026-10-29",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.40453.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.40453",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "PhysInsert：基于几何先验与双向对象-场景交互的物理合理对象插入",
+      "core_contribution": "提出PhysInsert框架，实现基于参考图像的物理合理对象插入，同时自适应调整对象及其周围场景，并通过构建Insert World数据集和PhysInsert-Bench基准，解决了现有方法在姿态与光照适应以及双向对象-场景交互约束不足的问题。",
+      "method": "构建了严格对齐的Blender渲染反事实配对数据集Insert World，包含跨视角和光照条件的对象参考；提出几何引导自适应模块，将VGGT几何流与图像、文本流在目标场景特征监督下耦合，引导空间一致的插入；引入2D对象-场景空间监督，联合监督对象占用和环境变化，并通过图像-文本注意力将空间指令定位到对象区域；构建PhysInsert-Bench基准，包含需要光照和姿态适应的跨环境和跨视角案例。",
+      "findings": "在PhysInsert-Bench和DreamBooth上的实验表明图像保真度提升；用户研究进一步显示该方法在放置准确性以及光照整合、透视和姿态合理性方面表现更优。"
+    }
+  }
+]

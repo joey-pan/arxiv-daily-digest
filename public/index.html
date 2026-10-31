@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-10-30</p>
+        <p class="date">📅 2026-10-31</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,126 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.40190</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.40190" target="_blank">AdMuse: Skill-Guided Creative Advertising Image Generation</a>
-      </h3>
-      <p class="paper-title-zh">AdMuse：技能引导的创意广告图像生成</p>
-      <p class="paper-authors">Minyan Luo, Yuxin Zhang, Meng Zhao, Xincan Wang, Fuzhang Wu 等 (9 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出AdMuse——一个技能引导的多智能体框架，将高质量广告提炼为可复用的创意技能，用于跨领域广告策略生成，把广告创意视为结构化决策过程而非单一步骤的提示词写作。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架首先将高质量广告中反复出现的“概念桥梁”模式抽象为可复用的技能库，而非检索孤立样例。生成时，AdMuse协调技能路由、多候选创意构思与筛选，以及VLM引导的视觉精炼：多样化技能提出备选概念，相对判断选出最有前景的方向，视觉-语言反馈帮助在最终图像中实现所选意图。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多种产品和品牌定位上的实验表明，AdMuse能够生成视觉上具有吸引力、且忠实传达产品定位的广告图像。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>An outstanding creative advertising image should both attract attention and communicate a product's positioning. How to choose a persuasive conceptual bridge before rendering begins is challenging for advertising generation. We present AdMuse, a skill-guided multi-agent framework that distills high-quality advertisements into reusable creative skills for cross-domain advertising strategy. Rather than retrieving isolated exemplars, AdMuse abstracts recurring bridge patterns into a skill library that can guide new product briefs. At generation time, AdMuse coordinates skill routing, multi-candidate ideation and selection, and VLM-guided visual refinement: diverse skills propose alternative concepts, relative judgment selects the most promising direction, and vision-language feedback helps realize the selected intent in the final image. This design treats advertising creativity as a structured decision process rather than a single prompt-writing step. Experiments across diverse product and brand positionings show that AdMuse produces visually compelling advertisements that faithfully communicate product positioning.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.40190" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.40190.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39889</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39889" target="_blank">sDMD: Sinkhorn Distribution Matching Distillation</a>
-      </h3>
-      <p class="paper-title-zh">sDMD：Sinkhorn分布匹配蒸馏</p>
-      <p class="paper-authors">Jaihoon Kim, Lingxiao Li, Soshi Shimada, Roshni Cooper, Minhyuk Sung 等 (6 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出sDMD方法，通过将分布匹配蒸馏（DMD）与Wasserstein梯度流联系，并引入基于Sinkhorn散度的最优传输项，解决了DMD中教师分数在低密度区域不可靠以及模式寻求行为导致模式坍塌的问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先将DMD与Wasserstein梯度流关联，表明其梯度来自以积分KL（IKL）为能量泛函的不动点公式。然后，在IKL中加入最优传输项，用有限批次估计的Sinkhorn散度实现，以引导离群样本并促进模式覆盖。为避免估计的Sinkhorn速度扰动域内样本，引入sDMD，根据判别器输出自适应激活Sinkhorn校正，专注于IKL可能不可靠的离群样本。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1-dev、Qwen-Image-20B和Wan2.1-14B上使用2-4步采样，sDMD在GenEval、DPG、WISE和VBench上优于蒸馏基线，同时相比DMD2提高了样本多样性。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Distribution Matching Distillation (DMD) distills multi-step diffusion models into few-step generators by minimizing reverse KL divergence. Despite its strong performance, DMD guides samples by local density alone, which introduces two limitations: teacher scores can be unreliable in regions of low teacher density, and the mode-seeking behavior of reverse KL can collapse the student onto a subset of the teacher modes. We first connect DMD to Wasserstein gradient flow, showing that its gradient follows from a fixed-point formulation with integral KL (IKL) as the energy functional. This perspective motivates augmenting IKL with an optimal transport term that addresses these limitations by guiding outlier samples toward the target and promoting mode coverage. We realize this term using Sinkhorn divergence estimated from finite batches. In practice, however, errors in the estimated Sinkhorn velocity can perturb in-domain samples for which IKL guidance is already accurate. To this end, we introduce sDMD, which adaptively activates the Sinkhorn correction based on discriminator outputs, focusing on outlier samples where IKL may be unreliable. With 2--4 sampling steps on FLUX.1-dev, Qwen-Image-20B, and Wan2.1-14B, sDMD outperforms distillation baselines on GenEval, DPG, WISE, and VBench while improving sample diversity over DMD2.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39889" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39889.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39633</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39633" target="_blank">Intrinsic Distribution Matching</a>
-      </h3>
-      <p class="paper-title-zh">内在分布匹配</p>
-      <p class="paper-authors">Deyuan Liu, Yansen Han, Kaiwen Zheng, Jun Xie, Jiacheng Liu 等 (10 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出内在分布匹配（IDM）方法，在分布匹配蒸馏（DMD）框架中引入显式的矩约束（特征均值与逐坐标标准差），以改进少步文本到图像生成中的得分监督质量，无需外部特征编码器。</div>
-        <div class="summary-section"><strong>方法:</strong> 将反向KL场分解为高斯矩分量与非高斯残差，识别出可显式约束的统计量。IDM在保留完整DMD校正的同时，利用生成器的指数滑动平均（EMA）副本匹配特征均值和逐坐标标准差，避免引入外部特征编码器。实验在Z-Image-Turbo 6B和Qwen-Image 20B上分别采用全参数微调和LoRA微调进行验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在两次网络评估预算下，IDM在中英文LongText-Bench上分别达到94.25%和90.20%，为同预算对比方法中最高分。消融实验表明新增矩损失带来性能提升，且生成器EMA特征在五项报告指标上与外部DINOv2编码器表现相当。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>One-step and few-step text-to-image generation must accurately render the details specified in the prompt despite limited opportunities for refinement. Distribution matching distillation (DMD) uses score differences to bring the generated distribution closer to a reference distribution. Following prior work, we estimate this difference with internal velocity branches, avoiding a separate fake-score network. We ask whether an explicit moment constraint improves this learned score supervision. A decomposition of the reverse-KL field into a Gaussian moment component and a non-Gaussian residual identifies statistics that can be constrained explicitly. We introduce Intrinsic Distribution Matching (IDM), which retains the full DMD correction and matches feature means and per-coordinate standard deviations using the generator's exponential-moving-average (EMA) copy, requiring no external feature encoder. Experiments use full-parameter and low-rank adaptation (LoRA) tuning on Z-Image-Turbo 6B and Qwen-Image 20B. At two network evaluations, IDM reaches 94.25% and 90.20% on Chinese and English LongText-Bench, the highest scores among the compared methods at this budget. Controlled ablations show gains from the added moment loss, while generator EMA features perform competitively with an external DINOv2 encoder across the five reported metrics. Code is available at https://github.com/inclusionAI/IDM.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39633" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39633.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.40647</span>
+          <span class="paper-id">2610.39664</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.40647" target="_blank">Read, Allocate, Route: Role-Coupled Tokenization for Pixel-Space Generative Transformers</a>
+        <a href="https://arxiv.org/abs/2610.39664" target="_blank">EditAgent: Rethinking Agentic Image Editing</a>
       </h3>
-      <p class="paper-title-zh">读、分配、路由：面向像素空间生成式Transformer的角色耦合分词</p>
-      <p class="paper-authors">Jiongfan Yang, Weichen Fan, Haiwen Diao, Zhongang Cai, Ziwei Liu</p>
+      <p class="paper-title-zh">EditAgent：重新思考智能体图像编辑</p>
+      <p class="paper-authors">Haiyang Xu, Tianyu Wang, Jialu Li, Jiteng Mu, Yuanjun Xiong 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出SpecSlot，一种像素空间整流流Transformer，通过将每个空间锚点扩展为多个分配不同DCT频带的槽位，将输出细节与全局注意力序列长度解耦，从而在不增加全局计算量的情况下提升生成细节。</div>
-        <div class="summary-section"><strong>方法:</strong> SpecSlot将每个空间锚点扩展为多个槽位，每个槽位分配一组不相交的DCT系数频带，从而将锚点密度与频谱细分分离。每个锚点仅最低频槽位参与全局注意力，所有槽位在局部进行交互。空间头对频谱预测添加局部修正，而生成状态、目标和损失均保持在像素空间。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上，SpecSlot达到与FLOPs匹配的JiT控制模型相当的最终FID且收敛更快；在ImageNet-512上，FID比控制模型提升2.84且FLOPs减少3.9%，与JiT-B/16的FID差距仅0.69而成本低38.2%；在文本到图像生成中，SpecSlot在DPG-Bench上以低40.6%的前向成本超过JiT-B/8达1.06。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文指出智能体图像编辑器受限于动作空间和观察空间两个维度，提出EditAgent通过扩展这两个空间来提升编辑能力，并在多个基准上改进开源编辑器，同时可作为训练更强编辑器的数据引擎。</div>
+        <div class="summary-section"><strong>方法:</strong> EditAgent将每个编辑步骤路由到通用编辑器和专用方法，并为每个候选结果附加验证记录；借助这些记录，现成的VLM评判器可优于微调奖励模型。候选结果并行生成，并通过一次listwise调用统一评判，从而在减少评判调用次数的同时提升效果。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在专家标注基准上，通用编辑器超过40%的情况下无法给出可用结果，且没有评判器能在所有编辑类型上可靠工作。专家在78.5%的有判定比较中更偏好该并行生成加listwise评判的方式而非顺序精炼，且评判调用不超过后者一半。EditAgent在三个基准上改进了两个开源权重编辑器。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Pixel-space generative Transformers typically use one token per image patch, so capturing finer detail requires more tokens and makes global attention increasingly expensive. We observe that finer detail does not necessarily require more global communication: low-frequency structure benefits from global exchange, while high-frequency detail can be modeled locally. Based on this insight, we introduce SpecSlot, a pixel-space rectified-flow Transformer that decouples output detail from the length of the global attention sequence. SpecSlot expands each spatial anchor into multiple slots, each assigned a disjoint band of DCT coefficients; this separates anchor density from spectral subdivision. Only the lowest-frequency slot from each anchor participates in global attention, while all slots interact locally. This allows the model to increase spectral detail without enlarging the global sequence. A spatial head further adds a local correction to the spectral prediction, while the generative state, target, and loss remain in pixel space. On ImageNet-256, SpecSlot achieves a comparable final FID to a FLOPs-matched JiT control while converging faster. On ImageNet-512, it improves FID by 2.84 over the control with 3.9% fewer FLOPs, and comes within only 0.69 FID of JiT-B/16 at 38.2% lower cost. On text-to-image generation, SpecSlot surpasses JiT-B/8 on DPG-Bench by 1.06 at 40.6% lower forward cost.</p>
+        <p>Agentic image editors decompose complex requests into steps, but when a step fails, they mostly retry with the same narrow set of tools and a judge that scores each output by eye directly. We argue that such agents are bounded by two spaces: the action space of what the agent can do, and the observation space of what its judge can see. On our expert-annotated benchmark, a general-purpose editor yields no usable result in over 40% of the cases, and no judge is reliable across edit types. We present EditAgent, which expands both spaces. It routes each step to general editors and specialized methods, and attaches to each candidate a verification record. With these records, off-the-shelf VLM judges outperform finetuned reward models. Candidates are generated in parallel and judged in one listwise call: experts prefer this to sequential refinement in 78.5% of decided comparisons, at no more than half the judge calls. EditAgent improves two open-weight editors on three benchmarks and serves as a data engine for training stronger editors.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.40647" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.40647.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.39664" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.39664.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +268,126 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39948</span>
+          <span class="paper-id">2610.39539</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39948" target="_blank">UniRA: Unified Representation Alignment and Auto-Encoding for Efficient Diffusion Generation</a>
+        <a href="https://arxiv.org/abs/2610.39539" target="_blank">ROAD: Modern Adversarial Training for Simple One-Step Distillation at Scale</a>
       </h3>
-      <p class="paper-title-zh">UniRA：面向高效扩散生成的统一表示对齐与自编码框架</p>
-      <p class="paper-authors">An Lanji, Dawei Liu, Jin Li, Haoran Xu, Mei Chen 等 (6 位作者)</p>
+      <p class="paper-title-zh">ROAD：面向大规模简单一步蒸馏的现代对抗训练</p>
+      <p class="paper-authors">Xiaoou Li, Shan You, Tao Huang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出UniRA统一框架，将表示对齐（REPA）与表示自编码（RAE）耦合为单一目标，使表示空间分词器的输出同时充当扩散目标和对外部表示模型的对齐锚点，从而实现分词器、扩散主干与外部表示模型的联合优化。</div>
-        <div class="summary-section"><strong>方法:</strong> UniRA学习一个基于自监督特征（如DINOv2）的表示空间分词器，其输出既作为扩散模型的生成目标，又作为与外部表示模型对齐的锚点，从而将重建、对齐和生成三个目标统一到一个联合优化框架中。作者给出了理论分析，证明该联合优化在保持外部模型表示质量的同时加速扩散收敛，并推导出一种有原则的权重分配方案来平衡重建、对齐与生成损失。在ImageNet 256×256和512×512类条件生成任务上进行验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256和512×512类条件生成上，UniRA的FID匹配或超越当前最先进的DiT方法（SD3、REPA、RAE），同时将训练步数最多减少5倍。此外，统一表示空间还支持更好的零样本分类和线性探测性能，表明生成与理解任务能够从共享的对齐潜在空间中共同受益。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出ROAD框架，仅用一个对抗目标和轻量级表示空间判别器，即可将现代文本到图像扩散模型蒸馏为高质量的一步生成器，大幅降低训练复杂度和计算量。</div>
+        <div class="summary-section"><strong>方法:</strong> 采用单阶段对抗蒸馏框架，将经典卷积判别头替换为具有token级文本条件控制的Lipschitz约束Transformer头，以匹配现代视觉编码器的语义token；针对固定随机特征混合导致的长程退化问题，周期性重新抽取混合以保持随机化有效性；并引入Jacobian R1正则项，惩罚完整的输入-对数几率雅可比矩阵，克服池化R1忽略大部分对数几率敏感性的局限。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在COCO-10K上，ROAD一步生成在SDXL上达到11.03 FID，在SD3.5-M上达到13.73 FID，以远低于分布匹配的训练计算量超越了多步教师模型。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Diffusion transformers (DiTs) have become the dominant architecture for high-fidelity image synthesis, yet they suffer from slow training convergence and high computational cost. Two recent lines of work address this from complementary angles: Representation Alignment (REPA) accelerates DiT training by aligning intermediate features with a pretrained external representation model (e.g., DINOv2), while Representation Auto-Encoders (RAE) replace the pixel-space VAE with a compact representation-space tokenizer learned from self-supervised features. However, these approaches are developed and applied in isolation: REPA still relies on a pixel-space VAE for latent diffusion, and RAE does not exploit the alignment signal that accelerates the diffusion backbone. We present \textbf{UniRA}, a unified framework that couples representation alignment and representation auto-encoding into a single objective. UniRA learns a representation-space tokenizer whose output serves simultaneously as the diffusion target and the alignment anchor, so the tokenizer, the diffusion backbone, and the external representation model are co-optimized. We give a theoretical result showing that this joint optimization preserves the representation quality of the external model while accelerating diffusion convergence, and we derive a principled weighting that balances the reconstruction, alignment, and generation objectives. On ImageNet class-conditional generation at 256*256 and 512*512, UniRA matches or surpasses state-of-the-art DiTs (SD3, REPA, RAE) in FID while reducing training steps by up to 5*. We further show that the unified representation space supports improved zero-shot classification and linear probing, confirming that generation and understanding benefit from a shared, aligned latent space.</p>
+        <p>One-step distillation turns pretrained diffusion models into fast generators, but strong results often require substantial training machinery and compute. Pure adversarial distillation offers a simpler route, yet has struggled at modern text-to-image scale. To address this limitation, we propose ROAD (Representation-grounded One-step Adversarial Distillation), a one-stage framework that distills text-to-image models with one adversarial objective and a lightweight representation-space critic. First, we replace the classical convolutional head with a Lipschitz-controlled Transformer head with token-level text conditioning, which matches the semantic tokens of modern visual encoders. Second, we observed a fixed random feature mixing leads to long-horizon degradation. We attribute it to generator-critic co-adaptation around one realization-specific view, and periodically re-draw the mixing to keep the randomization effective. Third, for our dense and vector-valued logits, we introduce Jacobian R1 which penalizes the full input-logit Jacobian, overcoming pooled R1's limitation of neglecting most of logit sensitivities. A single adversarial objective then suffices: in one step, ROAD reaches 11.03 FID on SDXL and 13.73 on SD3.5-M on COCO-10K, surpassing the multi-step teachers at a fraction of distribution matching's training compute.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39948" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39948.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.39539" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.39539.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.39158</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.39158" target="_blank">VEvo-Harness: Causally-Guarded Self-Evolving Harness for Agentic Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">VEvo-Harness：面向智能体图像生成的因果守护式自演化框架</p>
+      <p class="paper-authors">Yuan Wang, Yuhang Yu, Mengting Chen, Tianrun Xu, Zihao Pan 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出首个因果守护的持续自演化框架VEvo-Harness，将智能体图像生成从浅层“生成-验证-重写”循环升级为具备根因归因、因果验证与生命周期管理的持续演化系统，在超越现有智能体方法的同时媲美专有生成器。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法包含四项耦合创新：一是视觉回溯机制，利用分层验证树将稀疏判断稠密化为根因归因；二是视觉持续治理机制，通过反事实双臂图像生成重放仅接纳因果有效的技能补丁；三是生命周期管理的框架状态，将根因锚定的经验按工作、经验、模式三层级蒸馏为可路由、因果验证的持久技能库；四是异构沙箱策略，编排多样化修复原语动作空间，依据根因动态路由成本感知的干预以选择最优策略。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明VEvo-Harness优于当前最先进的智能体方法，并可媲美GPT-Image、Nano-Pro等专有生成器，同时保持持续的框架演化能力与泛化性能。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>The central bottleneck in visual generation and editing has migrated from achieving pixel-level fidelity to satisfying densely constrained user specifications through increasingly agentic workflows. Prevailing agentic generation pipelines remain shallow generate-verify-rewrite loops treating VLM judgments as coarse visual feedback, either discarding repair experience or admitting ungated updates that poison skill library. With memorize and govern periods left open, they degrade into ungoverned iterators of repeated trial-and-error rather than continual self-evolving harness. Towards this issue, we present \textbf{VEvo-Harness}, the first causally-guarded continual self-evolving harness system for agentic visual generation. VEvo-Harness introduces four coupled innovations: (1) \textit{a visual traceback} that densifies sparse judgments into root-cause attributions with a hierarchical verification tree; (2) \textit{a visual continual governance} that admits only causally valid skill patches through counterfactual dual-arm image generation replay; (3) \textit{a lifecycle-managed harness state} that hierarchically distills root-cause-anchored episodes across working, experience, and pattern tiers into a persistent skill library of routable and causally verified capabilities; (4) \textit{a heterogeneous sandbox policy} that orchestrates a diverse action space of repair primitives, dynamically routing cost-aware interventions based on root causes to select the most effective strategy. VEvo-Harness surpasses state-of-the-art agentic methods and rivals proprietary generators (\textit{e.g.}, GPT-Image, Nano-Pro) while maintaining the continual harness evolution and generalization.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.39158" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.39158.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.39913</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.39913" target="_blank">TokenRepel: Generating Diverse Image Sets Without Compromising Quality</a>
+      </h3>
+      <p class="paper-title-zh">TokenRepel：在不牺牲质量的前提下生成多样化的图像集</p>
+      <p class="paper-authors">Qingtao Yu, Zhen Wang, Ning Lai, Boyang Hu, Hongdong Li 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种推理时方法，通过利用预训练模型隐藏表示的内在几何结构，在不降低平均图像质量的情况下增强文本到图像模型生成图像集的视觉多样性。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先，引入token排斥机制，在单位超球面上对token的von Mises-Fisher混合分布采取负黎曼梯度步，增大不同样本间特征token的夹角。其次，提出token密度保持机制，将排斥引起的预测变化投影到与模型得分方向对齐的半空间上，使更新保持在生成模型学习到的高密度区域内。进一步将该机制扩展到每个中间层的输出，实现更细粒度的迭代引导。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在三种预训练文本到图像模型上的实验表明，在相同提示下视觉多样性显著提升，同时保持与基线相当的图像保真度。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present an inference-time approach that enhances the visual diversity of image sets generated by text-to-image models, without compromising the average image quality. Our method leverages the intrinsic geometry of hidden representations in pretrained models to diversify images generated from the same prompt. First, we introduce a token repulsion mechanism that increases the angle between feature tokens across samples. It takes a negative Riemannian gradient step on a von Mises-Fisher mixture distribution of tokens on the unit hypersphere. Second, to preserve the quality of each output image, we propose a token density preservation mechanism that projects the repulsion-induced prediction change onto a half-space aligned with the model's score direction. This encourages the updates to remain within the high-density regions learned by the generative model. We further extend this mechanism to the output of each intermediate layer, enabling finer-grained iterative guidance. We evaluate our method on three types of pretrained text-to-image models. Experiments show substantial gains in visual diversity under identical prompts, while maintaining a comparable level of image fidelity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.39913" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.39913.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2610.40453</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2610.40453" target="_blank">PhysInsert: Physically Plausible Object Insertion with Geometric Priors and Bidirectional Object-Scene Interactions</a>
+      </h3>
+      <p class="paper-title-zh">PhysInsert：基于几何先验与双向对象-场景交互的物理合理对象插入</p>
+      <p class="paper-authors">Yue Gong, Le Zhang, Rui Chen, Song Chang, Xiaochao Qu 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出PhysInsert框架，实现基于参考图像的物理合理对象插入，同时自适应调整对象及其周围场景，并通过构建Insert World数据集和PhysInsert-Bench基准，解决了现有方法在姿态与光照适应以及双向对象-场景交互约束不足的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了严格对齐的Blender渲染反事实配对数据集Insert World，包含跨视角和光照条件的对象参考；提出几何引导自适应模块，将VGGT几何流与图像、文本流在目标场景特征监督下耦合，引导空间一致的插入；引入2D对象-场景空间监督，联合监督对象占用和环境变化，并通过图像-文本注意力将空间指令定位到对象区域；构建PhysInsert-Bench基准，包含需要光照和姿态适应的跨环境和跨视角案例。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在PhysInsert-Bench和DreamBooth上的实验表明图像保真度提升；用户研究进一步显示该方法在放置准确性以及光照整合、透视和姿态合理性方面表现更优。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present PhysInsert, a framework for physically plausible reference-based object insertion that jointly adapts objects and their surrounding scenes. Existing methods often rely on masked inputs, generation-based pairs, or training pairs with limited viewpoint variation, leaving pose and illumination adaptation and bidirectional object-scene interactions insufficiently constrained. We construct the Insert World dataset with strictly aligned Blender-rendered counterfactual pairs and object references across viewpoints and lighting conditions. Building on these data, Geometry-Guided Adaptation couples a VGGT geometry stream with image and text streams under target-scene feature supervision to guide spatially consistent insertion. Complementary 2D Object-Scene Spatial Supervision jointly supervises object occupancy and environmental changes while grounding spatial instructions in object regions through image-text attention. We introduce PhysInsert-Bench with dedicated cross-environment and cross-view cases requiring illumination and pose adaptation beyond appearance copying. Experiments on PhysInsert-Bench and DreamBooth demonstrate improved image fidelity; a user study further shows more accurate placement and improved lighting integration, perspective, and pose plausibility.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2610.40453" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.40453.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
