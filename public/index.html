@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-01</p>
+        <p class="date">📅 2026-11-02</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.40061</span>
+          <span class="paper-id">2610.42149</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.40061" target="_blank">Localizing Concepts in Visual Autoregressive Models</a>
+        <a href="https://arxiv.org/abs/2610.42149" target="_blank">Latent Reasoning in Continuous Space for Unified Multimodal Models</a>
       </h3>
-      <p class="paper-title-zh">视觉自回归模型中的概念定位</p>
-      <p class="paper-authors">Nanxiang Jiang, Yang Liu, Yuanhao Wang, Min Xu</p>
+      <p class="paper-title-zh">面向统一多模态模型的连续空间潜在推理</p>
+      <p class="paper-authors">Byungwoo Jeon, Yoonwoo Jeong, Hyunseok Lee, Minsu Cho, Jinwoo Shin</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文提出了LoCo，首个与模型无关的框架，用于定位自回归模型中特定概念出现的位置和时机，并构建了LoCoBench数据集以系统评估概念路由。</div>
-        <div class="summary-section"><strong>方法:</strong> 利用下一尺度生成固有的由粗到细特性，该方法从层、尺度、位置三个维度精确映射概念知识。为消除上下文偏差，作者构建了涵盖10个类别的LoCoBench数据集，并在Infinity、HunyuanImage-3.0和InfinityStar等图像与视频自回归模型上进行了广泛探测。基于定位结果，方法被应用于概念擦除、模型个性化和对抗性概念注入三个场景。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，定位到的位置具有可解释性且与概念涌现存在因果关系；基于该定位的定向干预在概念擦除、个性化和对抗注入任务上达到最先进性能，同时大幅降低计算开销并保持良性效用，为更可解释、高效和安全的模型适配提供了实用路径。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出LARC框架，将统一多模态模型中的推理从离散token空间迁移到连续隐藏状态空间，以弥合推理与图像生成之间的模态不匹配，从而提升图像生成质量并实现测试时缩放。</div>
+        <div class="summary-section"><strong>方法:</strong> LARC采用两阶段训练框架：首先通过课程式监督微调（curriculum SFT）逐步将token级推理转化为潜在推理；随后利用信息增益强化学习（information-gain RL）在无真实标注监督下自演化潜在推理能力。该方法在连续隐藏状态上进行推理，避免token级瓶颈。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个文本到图像生成基准上，LARC一致提升了生成质量、提示跟随和组合保真度；在GenEval上达到最先进性能，较BAGEL提升7个百分点，并展现出明显的测试时缩放行为，在并行和顺序测试时缩放策略下均优于基于token的生成方法。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Understanding the internal routing of visual concepts is crucial for the safe and controllable adaptation of generative models. While concept localization has been widely studied in diffusion models, the emerging paradigm of next-scale visual autoregressive models remains largely unexplored. In this paper, we introduce LoCo, the first model-agnostic framework to localize where and when specific concepts emerge within autoregressive models. Driven by the native coarse-to-fine nature of next-scale generation, our method precisely maps conceptual knowledge across three distinct dimensions: Layer, Scale, and Position. To systematically localize and evaluate concept routing without context bias, we propose LoCoBench, a comprehensive dataset spanning 10 diverse categories. Extensive probing on image and video autoregressive models like Infinity, HunyuanImage-3.0, and InfinityStar shows that the localized positions are both interpretable and causally related to concept emergence. Building on these insights, we apply our localization method to three key applications: concept erasure, model personalization, and adversarial concept injection. Experiments demonstrate that our targeted intervention achieves state-of-the-art performance, substantially reducing computational overhead while preserving benign utility. Overall, our findings offer insights into how conceptual knowledge is routed during autoregressive generation, introducing a practical pathway for more interpretable, efficient, and secure adaptation.</p>
+        <p>Unified Multimodal Models (UMMs) achieve remarkable success on diverse multimodal understanding and generation tasks, yet they still struggle to effectively leverage language-based chain-of-thought reasoning for image generation. As a result, existing reasoning-augmented UMMs often fail to inherit the test-time scaling and fine-grained controllability observed in large language models. We attribute this failure to a fundamental modality mismatch: reasoning is performed in a discrete token space, whereas image generation operates in a continuous space. To bridge this gap, we introduce a Latent Reasoning framework in Continuous space (LARC), which alleviates the token-level bottleneck by reasoning over continuous hidden states. Specifically, the training framework consists of two stages: (i) curriculum supervised fine-tuning (SFT), and (ii) information-gain reinforcement learning (RL). First, the curriculum SFT stage gradually converts token-level reasoning into latent reasoning. Subsequently, the information-gain RL stage self-evolves latent reasoning without ground truth supervision. Experiments across diverse text-to-image generation benchmarks show that LARC consistently improves generation quality, prompt following, and compositional fidelity. Notably, LARC achieves state-of-the-art performance on GenEval with a 7%p gain over BAGEL and demonstrates clear test-time scaling behavior, outperforming token-based generation under both parallel and sequential test-time scaling strategies.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.40061" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.40061.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.42149" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.42149.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39530</span>
+          <span class="paper-id">2610.41260</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39530" target="_blank">MorphSIG: Subject-Driven Image Generation via Decoupled Anchoring and Feature Transport</a>
+        <a href="https://arxiv.org/abs/2610.41260" target="_blank">SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement</a>
       </h3>
-      <p class="paper-title-zh">MorphSIG：通过解耦锚定与特征传输的主体驱动图像生成</p>
-      <p class="paper-authors">Hailong Yan, Yongrui Zhang, Xiangtao Zhang, Le Zhang</p>
+      <p class="paper-title-zh">SketchDirector：通过智能体布局推理与细节精炼的复杂场景素描生成</p>
+      <p class="paper-authors">Yiqi Liang, Xiaodong Cun</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出MorphSIG，一个无需训练的框架，将主体驱动图像生成重新表述为伪视频特征传输，在无需额外训练的情况下显著提升姿态多样性和主体保真度。</div>
-        <div class="summary-section"><strong>方法:</strong> MorphSIG包含两个核心模块：渐进式解耦锚定模块，在早期去噪阶段利用频域解耦和结构扰乱来打破结构锁定，实现从自由构图到身份对齐的逐步过渡；伪流引导特征传输模块，构建潜在空间伪流场以模拟图像到视频的时间一致性，并精确传输主体语义。此外，引入了一个包含多样风格化主体的基准测试。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，MorphSIG在无需额外训练的情况下，相比基线显著提升了姿态多样性和主体保真度，弥合了静态生成与动态传播之间的差距，为高保真主体一致性提供了一种经济有效的范式。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SketchDirector，一个模拟人类素描工作流的智能体框架，实现文本引导的多概念复杂场景素描自动生成，并构建了MCSketch8K数据集以支持该任务的研究。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先利用大语言模型将场景级文本提示分解为多个以贝塞尔曲线表示的草稿资产；然后通过智能体推理循环，在自进化记忆引导下迭代规划并执行这些资产的空间布局；最后采用细节精炼模块，借助扩散先验在保持几何结构的同时提升素描质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，SketchDirector在语义和构图质量上优于现有最先进基线方法，并在精炼过程中有效保持整体轮廓组织；同时发布了包含可编辑矢量资产、构图布局和对象级操作标注的MCSketch8K数据集。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>We propose MorphSIG, a training-free framework that reformulates subject-driven image generation (SIG) as pseudo-video feature transport. MorphSIG contains two core modules: Progressive Decoupled Anchoring, which uses frequency-domain decoupling and structural scrambling during early denoising to break structural locking and enable a gradual transition from free composition to identity alignment; and Pseudo-flow Guided Feature Transport, which constructs a latent-space pseudo-flow field to mimic Image-to-Video temporal coherence and transport subject semantics precisely. To address stylistic homogeneity and the lack of ground truth in existing benchmarks, we further introduce a benchmark with diverse stylized subjects. Extensive experiments show that MorphSIG significantly improves pose diversity and subject fidelity over baselines without additional training. Overall, MorphSIG bridges static generation and dynamic propagation, providing a cost-effective paradigm for high-fidelity subject consistency.</p>
+        <p>Existing sketch generation methods often rely on image guidance and are largely limited to individual objects or simplified scenes, leaving text-guided complex scene sketching underexplored. We present SketchDirector, an agentic framework that mimics the human sketching workflow for automatic multi-concept scene sketching. Given a scene-level text prompt, SketchDirector first employs a large language model~(LLM) to decompose the scene into multiple draft assets, where each is represented by a set of Bézier curves. Then, an agentic reasoning loop iteratively plans and executes their spatial arrangement, guided by self-evolving memory. Finally, a detail refinement module leverages diffusion priors to enhance sketch quality while preserving geometric structure. To support future research and applications in multi-concept scene sketch generation, we further introduce the \textit{MCSketch8K} dataset, comprising editable vector assets, compositional layouts, and object-level manipulation annotations. Extensive experiments show that SketchDirector outperforms state-of-the-art baselines in semantic and compositional quality while effectively preserving overall contour organization during refinement. The project page is: \href{https://yiki77.github.io/SketchDirector/}{https://yiki77.github.io/SketchDirector/}.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39530" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39530.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.41260" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.41260.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39467</span>
+          <span class="paper-id">2610.42135</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39467" target="_blank">Calibrating Attention-Based Token Pruning for Efficient Multi-Image Synthesis in UMMs</a>
+        <a href="https://arxiv.org/abs/2610.42135" target="_blank">A Better Critic Matters for Distribution Matching Distillation</a>
       </h3>
-      <p class="paper-title-zh">校准基于注意力的Token剪枝以实现统一多模态模型中高效的多图像合成</p>
-      <p class="paper-authors">Zimeng Wu, Qijian Tian, Penghui Du, Changqian Yu, Jiaxin Chen 等 (6 位作者)</p>
+      <p class="paper-title-zh">更好的评论家对分布匹配蒸馏至关重要</p>
+      <p class="paper-authors">Zongze Wu, Xianbang Wang, Zhengyang Geng, Mingdeng Cao, Zhoutong Zhang 等 (8 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了CATP，首个专为统一多模态模型（UMM）生成任务设计的免训练上下文压缩方法，通过校准通用注意力Token剪枝中的偏差，在多图像合成中实现更优的质量-效率权衡。</div>
-        <div class="summary-section"><strong>方法:</strong> 在去噪过程中逐层独立剪枝的基础上，引入引导一致性剪枝（GCP）以同步条件分支间的剪枝决策，并提出泰勒校准注意力度量（TCAM），从理论上推导出针对池化引入偏差的二阶校正。此外，设计快速评分算子（FSO）将校准融合到分块在线Softmax中以降低剪枝开销。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多个代表性UMM和基准测试上的大量实验表明，CATP持续优于最先进的Token缩减方法，注意力核心部分最高实现2.09倍加速。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文系统研究了分布匹配蒸馏（DMD）中评论家（critic）所需的能力与信息，提出联合缩放（joint scaling）和步感知评论家（STAC）两项改进，显著提升了少步蒸馏的效果。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者在ImageNet上通过七种SiT模型规模的受控实验，分析评论家容量与教师模型规模之间的关系；提出让评论家与教师同步扩大的联合缩放策略；并设计步感知评论家（STAC），以学生生成步为条件估计步特定分数，而非建模与步无关的学生输出混合分布。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，固定小评论家而增大教师模型会降低学生质量甚至导致训练崩溃，联合缩放可防止崩溃并使学生受益于更大教师；STAC与联合缩放结合后在类条件ImageNet生成、基于SDXL和FLUX.2的文本到图像生成以及基于Wan2.1的文本到视频生成中均持续改善少步蒸馏效果。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified Multimodal Models (UMMs) enable powerful multi-image synthesis but incur substantial computation from long visual contexts. While token pruning offers a direct route to accelerating inference, existing methods are primarily adapted from understanding tasks, suffering from insufficient reference image exploration, confused conditional guidance, and pooling-induced ambiguity that degrades generation quality. To address these issues, we propose CATP, the first training-free context-compression method tailored to UMM generation, which \textbf{C}alibrates the discrepancies of general \textbf{A}ttention-based \textbf{T}oken \textbf{P}runing for better quality-efficiency trade-off. Concretely, building on independent layer-wise pruning during denoising, we introduce Guidance-Consistent Pruning (GCP) to synchronize pruning decisions across conditioning branches, and a Taylor-Calibrated Attention Metric (TCAM) that derives a theoretically grounded second-order correction for pooling-induced bias. In addition, a Fast Scoring Operator (FSO) fuses the calibration into tiled online Softmax to reduce pruning cost. Extensive experiments across representative UMMs and benchmarks demonstrate that CATP consistently outperforms state-of-the-art token-reduction methods, achieving up to 2.09$\times$ attention-core speedup.</p>
+        <p>Distribution Matching Distillation (DMD) trains a few-step student using the difference between a teacher's score and an online critic's estimate of the student distribution's score. We investigate what the critic needs, in capacity and in information, to provide a reliable training signal. On the capacity side, controlled experiments across seven SiT model sizes on ImageNet show that increasing teacher size while keeping a small critic fixed can degrade student quality and cause training collapse. Scaling the critic alongside the teacher, a strategy we call joint scaling, prevents collapse in our experiments and allows the student to benefit from larger teachers. On the information side, rather than forcing the critic to model a step-agnostic mixture of student outputs, we introduce a step-aware critic (STAC) that conditions on the student's generation step to estimate step-specific scores. Together, joint scaling and STAC consistently improve few-step distillation across class-conditional ImageNet generation, text-to-image generation with SDXL and FLUX.2, and text-to-video generation with Wan2.1.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39467" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39467.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.42135" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.42135.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39330</span>
+          <span class="paper-id">2610.41992</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39330" target="_blank">Can Image Agents Complete Visual Commissions? A Benchmark and Modular Framework</a>
+        <a href="https://arxiv.org/abs/2610.41992" target="_blank">MoETok: Sparse Expert Routing for 1D Visual Tokenizers</a>
       </h3>
-      <p class="paper-title-zh">图像智能体能否完成视觉委托？一个基准与模块化框架</p>
-      <p class="paper-authors">Tong Li, Lishuai Gao, Qi Zeng, Yifan Li, Cong Wei 等 (7 位作者)</p>
+      <p class="paper-title-zh">MoETok：面向一维视觉分词器的稀疏专家路由</p>
+      <p class="paper-authors">Jiahao Guo, Bao Tang, Haoxiang Cao, Jingfeng Yao, Bo Li 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了视觉委托基准VCB（包含600个任务、12个类别和三个层级）以及模块化参考智能体V-Protocol，用于系统评估图像智能体端到端完成复杂视觉委托任务的能力。</div>
-        <div class="summary-section"><strong>方法:</strong> VCB使用5,039项需求检查和独立的视觉质量评分，从内容正确性、视觉实现、约束保持和交付完整性四个维度评估任务完成情况，且不限定内部工作流程。V-Protocol在推理时动态组合可复用的任务模块、认知模块和表达模块：任务模块组织交付流程，认知模块推导内容，表达模块指导视觉实现。各模块之间交换结构化中间产物，并由共享执行框架跟踪产物修订与依赖关系、管理工具执行并检查完成状态。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在与智能体基线使用相同控制器和图像生成器的条件下，V-Protocol在VCB上取得69.0%的严格任务成功率，而SCOPE为42.0%；在Mind-Bench上，严格准确率从39.2%提升至45.4%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了基于查询的一维视觉分词器中可学习查询在语义监督下会自发分化出内容查询与细节查询两类互补角色，并提出MoETok——一种通过稀疏激活专家对token进行角色特化路由的一维视觉分词器，在同等监督和激活计算量下持续优于稠密分词器。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析查询式一维分词器中查询的功能分化现象，发现少量内容查询捕获高层语义、大量细节查询保留细粒度视觉细节。基于此，MoETok引入稀疏激活的专家混合（MoE）路由机制，让每个token根据其表征被路由到特化的专家处理路径，并与重建目标和语义目标联合优化。该方法在不同模型规模和token预算下均适用，并可扩展到统一自回归模型中联合训练理解与生成任务。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet上，MoETok在重建、语义表征和自回归生成方面均优于稠密分词器，并在一维分词器家族中实现最优的类条件生成。在统一自回归模型中，该模型在DPG-Bench（87.61）、GenEval2（40.04 GM）和WISE（0.49）等基准上达到统一离散模型中的最优生成性能，匹配或超越BAGEL、Qwen-Image等扩散模型，同时保持有竞争力的视觉理解能力。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Visual commissions require image agents to integrate heterogeneous source materials, preserve requirements across dependent stages, and produce coordinated deliverables. Existing evaluations examine specific capabilities and execution settings, leaving end-to-end commission completion less understood. We introduce Visual Commission Bench (VCB), comprising 600 tasks across 12 categories and three complementary tiers, from capability-focused tasks to complete commissions. VCB uses 5,039 requirement checks and separate visual quality ratings to assess content correctness, visual realization, constraint preservation, and delivery completeness without prescribing an internal workflow. We present V-Protocol, a reference agent that dynamically composes reusable task, cognitive, and expression modules at inference time. Task modules organize delivery, cognitive modules derive content, and expression modules guide visual realization. The modules exchange structured intermediate artifacts, while a shared execution harness tracks artifact revisions and dependencies, manages tool execution, and checks completion. With the same controller and image generator as the agent baselines, V-Protocol achieves 69.0\% strict task success on VCB, compared with 42.0\% for SCOPE. On Mind-Bench, strict accuracy increases from 39.2\% to 45.4\%.</p>
+        <p>Modern visual tokenizers aim to preserve fine-grained visual details while learning high-level semantic representations for downstream generation and understanding. Query-based 1D visual tokenizers encode images into flexible latent sequences, yet how individual learnable queries gather and encode image information remains poorly understood. We reveal that these queries spontaneously develop complementary roles under semantic supervision: a small set of Content queries captures high-level semantic information, while a larger set of Detail queries preserves fine-grained visual details for reconstruction. To adapt token processing to these heterogeneous roles, we introduce MoETok, a 1D visual tokenizer that routes tokens through sparsely activated experts. Jointly optimized with reconstruction and semantic objectives, the router learns role-specialized processing paths adapted to each token's representation. Across model scales and token budgets, MoETok consistently improves reconstruction, semantic representation, and autoregressive generation over dense tokenizers under matched supervision and active computation. On ImageNet, it combines strong reconstruction and semantic representation with state-of-the-art class-conditional generation within the 1D tokenizer family. We further validate MoETok at scale in a unified autoregressive model jointly trained for understanding and generation with a next-token cross-entropy objective. The resulting model combines competitive visual understanding with state-of-the-art generation among unified discrete models, matching or surpassing diffusion-based models such as BAGEL and Qwen-Image on benchmarks including DPG-Bench (87.61), GenEval2 (40.04 GM), and WISE (0.49).</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39330" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39330.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.41992" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.41992.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2610.39293</span>
+          <span class="paper-id">2610.41598</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2610.39293" target="_blank">Unlocking Any-Order Generation in Pretrained Autoregressive Image Models</a>
+        <a href="https://arxiv.org/abs/2610.41598" target="_blank">Scout-Refine-Correct: Teaching Flow Models to Refine Their Own Samples</a>
       </h3>
-      <p class="paper-title-zh">解锁预训练自回归图像模型的任意顺序生成能力</p>
-      <p class="paper-authors">Rishav Pramanik, Marco Pedersoli, Zhaozheng Yin</p>
+      <p class="paper-title-zh">侦察-精炼-校正：教流模型精炼自身样本</p>
+      <p class="paper-authors">Sergey Karpukhin, Aibek Alanov</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出一种低成本适配方案，将预训练的栅格扫描自回归图像模型转化为支持任意顺序生成的模型，从而在不重新训练、不改变标准AR推理栈的前提下实现图像修复、外扩和编辑等灵活生成能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者认为预训练栅格扫描AR模型已学到图像token的联合分布，缺的只是通过非顺序条件路径表达该知识的能力。为此提出两个组件：一是未来感知位置嵌入，以极小开销解决目标位置可识别性问题；二是顺序课程学习，引导模型从预训练解稳定优化到良好的任意顺序解空间。该方法应用于LlamaGen-L/XL和RAR-L/XL四个基座模型进行验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet图像修复任务上，该方法FID为6.21，显著优于MaskGIT的10.44，并在图像外扩任务上同样表现优异；与MAR-L相比具有竞争力，仅以类别条件FID增加1.2-1.9为代价换取灵活性；额外计算开销仅为预训练的13-33%，且完全兼容KV缓存、vLLM等标准AR推理生态。结果表明，自回归图像模型的修复、外扩和编辑能力无需额外添加，可直接从现有模型中解锁。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种名为Scout-Refine-Correct（SRC）的训练方法，使流匹配生成器在推理时具备真正的样本精炼能力，无需外部验证器或奖励信号即可显著提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 在采样每一步，模型沿自身轨迹向前侦察K步，外推得到全样本估计，并将其作为自条件信号反馈给自身，再进行实际采样步，该过程可重复R轮精炼。训练时在模型自身轨迹实际到达的状态（而非仅真实路径）上应用两种校正损失，教会模型利用该信号到达新样本而非坍缩到次优样本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上，SRC将LightningDiT-B在NFE~550时的FID从14.5提升至7.26，匹配使用oracle FID验证器的最佳N基线；与最佳N结合可进一步将FID降至3.81（NFE~4400），表明两者互补。消融实验验证了侦察信号架构路径、侦察视野、各校正损失及训练调度等关键设计组件的有效性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Autoregressive (AR) image generators are powerful in principle but inflexible in practice: training with a fixed raster-scan order hardcodes a single factorization of the image distribution into the model, leaving it unable to inpaint, outpaint, or edit at inference time. Existing solutions, including the modern discrete-diffusion family, train from scratch on a mixture of token orderings, paying roughly 3x the compute of standard raster-scan training; discrete diffusion further sacrifices compatibility with the AR inference ecosystem (KV caching, vLLM) by construction. We argue that this cost is unnecessary. A pretrained raster-scan AR model has already learned the joint distribution over image tokens; what it lacks is not knowledge but the ability to express that knowledge through non-sequential conditional pathways. We propose a recipe for adapting pretrained raster-scan models into any-order generators using two components: future-aware positional embeddings that resolve a target-position identifiability problem at negligible overhead, and an ordering curriculum that traces a stable optimization path from the pretrained solution to a good any-order basin. Applied to four base models across two architectures and two scales (LlamaGen-L/XL, RAR-L/XL), the recipe substantially outperforms MaskGIT on ImageNet inpainting (FID 6.21 vs. 10.44) and outpainting, is competitive with MAR-L, trades a 1.2-1.9 increase in class-conditional FID for this flexibility, and costs 13-33% additional compute beyond pretraining, while leaving the standard AR inference stack untouched. Inpainting, outpainting, and editing, our results suggest, need not be added to autoregressive image models. They can be unlocked from the ones that exist. Code is available at https://github.com/Ordered-AR/unlockedadaptation.</p>
+        <p>The quality of image generation models trained with diffusion or flow matching is largely fixed by the training budget: at inference, the only available lever is the number of sampling steps, and additional steps improve quality only up to a point. We present a training recipe, Scout-Refine-Correct (SRC), that instead gives a flow-matching generator a genuine inference-time refinement capability. At each sampling step the model takes a scout rollout -- $K$ steps ahead along its own trajectory -- extrapolates a full-sample estimate, and feeds that estimate back to itself as a self-conditioning signal before taking the real step. This can be repeated for $R$ refinement rounds. Two correction losses, applied during training at states the model's own rollouts actually reach rather than only on the ground-truth path, teach the model to use this signal to reach new samples instead of collapsing to a suboptimal one. On ImageNet-256, SRC improves LightningDiT-B from FID~14.5 to FID~7.26 at NFE~550, matching a privileged best-of-$N$ baseline that uses an oracle FID verifier to choose among samples. SRC uses no external verifier, no reward signal, and, after ablation, almost no extra parameters over the base architecture. Combining SRC with best-of-$N$ improves the result further, to FID~3.81 at NFE~4400, showing that the two axes are complementary. We ablate the main design choices -- the architectural pathway for the scout signal, the scout horizon, each correction loss, and the training schedule to demonstrate key working components of training.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2610.39293" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2610.39293.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2610.41598" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2610.41598.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

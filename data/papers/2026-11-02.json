@@ -1,0 +1,141 @@
+[
+  {
+    "id": "2610.42149",
+    "title": "Latent Reasoning in Continuous Space for Unified Multimodal Models",
+    "abstract": "Unified Multimodal Models (UMMs) achieve remarkable success on diverse multimodal understanding and generation tasks, yet they still struggle to effectively leverage language-based chain-of-thought reasoning for image generation. As a result, existing reasoning-augmented UMMs often fail to inherit the test-time scaling and fine-grained controllability observed in large language models. We attribute this failure to a fundamental modality mismatch: reasoning is performed in a discrete token space, whereas image generation operates in a continuous space. To bridge this gap, we introduce a Latent Reasoning framework in Continuous space (LARC), which alleviates the token-level bottleneck by reasoning over continuous hidden states. Specifically, the training framework consists of two stages: (i) curriculum supervised fine-tuning (SFT), and (ii) information-gain reinforcement learning (RL). First, the curriculum SFT stage gradually converts token-level reasoning into latent reasoning. Subsequently, the information-gain RL stage self-evolves latent reasoning without ground truth supervision. Experiments across diverse text-to-image generation benchmarks show that LARC consistently improves generation quality, prompt following, and compositional fidelity. Notably, LARC achieves state-of-the-art performance on GenEval with a 7%p gain over BAGEL and demonstrates clear test-time scaling behavior, outperforming token-based generation under both parallel and sequential test-time scaling strategies.",
+    "authors": [
+      "Byungwoo Jeon",
+      "Yoonwoo Jeong",
+      "Hyunseok Lee",
+      "Minsu Cho",
+      "Jinwoo Shin"
+    ],
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "categories": [
+      "cs.CV",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.42149.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.42149",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "面向统一多模态模型的连续空间潜在推理",
+      "core_contribution": "论文提出LARC框架，将统一多模态模型中的推理从离散token空间迁移到连续隐藏状态空间，以弥合推理与图像生成之间的模态不匹配，从而提升图像生成质量并实现测试时缩放。",
+      "method": "LARC采用两阶段训练框架：首先通过课程式监督微调（curriculum SFT）逐步将token级推理转化为潜在推理；随后利用信息增益强化学习（information-gain RL）在无真实标注监督下自演化潜在推理能力。该方法在连续隐藏状态上进行推理，避免token级瓶颈。",
+      "findings": "在多个文本到图像生成基准上，LARC一致提升了生成质量、提示跟随和组合保真度；在GenEval上达到最先进性能，较BAGEL提升7个百分点，并展现出明显的测试时缩放行为，在并行和顺序测试时缩放策略下均优于基于token的生成方法。"
+    }
+  },
+  {
+    "id": "2610.41260",
+    "title": "SketchDirector: Complex Scene Sketching via Agentic Layout Reasoning and Detail Refinement",
+    "abstract": "Existing sketch generation methods often rely on image guidance and are largely limited to individual objects or simplified scenes, leaving text-guided complex scene sketching underexplored. We present SketchDirector, an agentic framework that mimics the human sketching workflow for automatic multi-concept scene sketching. Given a scene-level text prompt, SketchDirector first employs a large language model~(LLM) to decompose the scene into multiple draft assets, where each is represented by a set of Bézier curves. Then, an agentic reasoning loop iteratively plans and executes their spatial arrangement, guided by self-evolving memory. Finally, a detail refinement module leverages diffusion priors to enhance sketch quality while preserving geometric structure. To support future research and applications in multi-concept scene sketch generation, we further introduce the \\textit{MCSketch8K} dataset, comprising editable vector assets, compositional layouts, and object-level manipulation annotations. Extensive experiments show that SketchDirector outperforms state-of-the-art baselines in semantic and compositional quality while effectively preserving overall contour organization during refinement. The project page is: \\href{https://yiki77.github.io/SketchDirector/}{https://yiki77.github.io/SketchDirector/}.",
+    "authors": [
+      "Yiqi Liang",
+      "Xiaodong Cun"
+    ],
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.41260.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.41260",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "SketchDirector：通过智能体布局推理与细节精炼的复杂场景素描生成",
+      "core_contribution": "提出SketchDirector，一个模拟人类素描工作流的智能体框架，实现文本引导的多概念复杂场景素描自动生成，并构建了MCSketch8K数据集以支持该任务的研究。",
+      "method": "首先利用大语言模型将场景级文本提示分解为多个以贝塞尔曲线表示的草稿资产；然后通过智能体推理循环，在自进化记忆引导下迭代规划并执行这些资产的空间布局；最后采用细节精炼模块，借助扩散先验在保持几何结构的同时提升素描质量。",
+      "findings": "实验表明，SketchDirector在语义和构图质量上优于现有最先进基线方法，并在精炼过程中有效保持整体轮廓组织；同时发布了包含可编辑矢量资产、构图布局和对象级操作标注的MCSketch8K数据集。"
+    }
+  },
+  {
+    "id": "2610.42135",
+    "title": "A Better Critic Matters for Distribution Matching Distillation",
+    "abstract": "Distribution Matching Distillation (DMD) trains a few-step student using the difference between a teacher's score and an online critic's estimate of the student distribution's score. We investigate what the critic needs, in capacity and in information, to provide a reliable training signal. On the capacity side, controlled experiments across seven SiT model sizes on ImageNet show that increasing teacher size while keeping a small critic fixed can degrade student quality and cause training collapse. Scaling the critic alongside the teacher, a strategy we call joint scaling, prevents collapse in our experiments and allows the student to benefit from larger teachers. On the information side, rather than forcing the critic to model a step-agnostic mixture of student outputs, we introduce a step-aware critic (STAC) that conditions on the student's generation step to estimate step-specific scores. Together, joint scaling and STAC consistently improve few-step distillation across class-conditional ImageNet generation, text-to-image generation with SDXL and FLUX.2, and text-to-video generation with Wan2.1.",
+    "authors": [
+      "Zongze Wu",
+      "Xianbang Wang",
+      "Zhengyang Geng",
+      "Mingdeng Cao",
+      "Zhoutong Zhang",
+      "Richard Zhang",
+      "Eli Shechtman",
+      "Ruiming Cao"
+    ],
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.42135.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.42135",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "更好的评论家对分布匹配蒸馏至关重要",
+      "core_contribution": "论文系统研究了分布匹配蒸馏（DMD）中评论家（critic）所需的能力与信息，提出联合缩放（joint scaling）和步感知评论家（STAC）两项改进，显著提升了少步蒸馏的效果。",
+      "method": "作者在ImageNet上通过七种SiT模型规模的受控实验，分析评论家容量与教师模型规模之间的关系；提出让评论家与教师同步扩大的联合缩放策略；并设计步感知评论家（STAC），以学生生成步为条件估计步特定分数，而非建模与步无关的学生输出混合分布。",
+      "findings": "实验表明，固定小评论家而增大教师模型会降低学生质量甚至导致训练崩溃，联合缩放可防止崩溃并使学生受益于更大教师；STAC与联合缩放结合后在类条件ImageNet生成、基于SDXL和FLUX.2的文本到图像生成以及基于Wan2.1的文本到视频生成中均持续改善少步蒸馏效果。"
+    }
+  },
+  {
+    "id": "2610.41992",
+    "title": "MoETok: Sparse Expert Routing for 1D Visual Tokenizers",
+    "abstract": "Modern visual tokenizers aim to preserve fine-grained visual details while learning high-level semantic representations for downstream generation and understanding. Query-based 1D visual tokenizers encode images into flexible latent sequences, yet how individual learnable queries gather and encode image information remains poorly understood. We reveal that these queries spontaneously develop complementary roles under semantic supervision: a small set of Content queries captures high-level semantic information, while a larger set of Detail queries preserves fine-grained visual details for reconstruction. To adapt token processing to these heterogeneous roles, we introduce MoETok, a 1D visual tokenizer that routes tokens through sparsely activated experts. Jointly optimized with reconstruction and semantic objectives, the router learns role-specialized processing paths adapted to each token's representation. Across model scales and token budgets, MoETok consistently improves reconstruction, semantic representation, and autoregressive generation over dense tokenizers under matched supervision and active computation. On ImageNet, it combines strong reconstruction and semantic representation with state-of-the-art class-conditional generation within the 1D tokenizer family. We further validate MoETok at scale in a unified autoregressive model jointly trained for understanding and generation with a next-token cross-entropy objective. The resulting model combines competitive visual understanding with state-of-the-art generation among unified discrete models, matching or surpassing diffusion-based models such as BAGEL and Qwen-Image on benchmarks including DPG-Bench (87.61), GenEval2 (40.04 GM), and WISE (0.49).",
+    "authors": [
+      "Jiahao Guo",
+      "Bao Tang",
+      "Haoxiang Cao",
+      "Jingfeng Yao",
+      "Bo Li",
+      "Wenyu Liu",
+      "Kun Gai",
+      "Changqian Yu",
+      "Xinggang Wang"
+    ],
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.41992.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.41992",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "MoETok：面向一维视觉分词器的稀疏专家路由",
+      "core_contribution": "论文揭示了基于查询的一维视觉分词器中可学习查询在语义监督下会自发分化出内容查询与细节查询两类互补角色，并提出MoETok——一种通过稀疏激活专家对token进行角色特化路由的一维视觉分词器，在同等监督和激活计算量下持续优于稠密分词器。",
+      "method": "作者首先分析查询式一维分词器中查询的功能分化现象，发现少量内容查询捕获高层语义、大量细节查询保留细粒度视觉细节。基于此，MoETok引入稀疏激活的专家混合（MoE）路由机制，让每个token根据其表征被路由到特化的专家处理路径，并与重建目标和语义目标联合优化。该方法在不同模型规模和token预算下均适用，并可扩展到统一自回归模型中联合训练理解与生成任务。",
+      "findings": "在ImageNet上，MoETok在重建、语义表征和自回归生成方面均优于稠密分词器，并在一维分词器家族中实现最优的类条件生成。在统一自回归模型中，该模型在DPG-Bench（87.61）、GenEval2（40.04 GM）和WISE（0.49）等基准上达到统一离散模型中的最优生成性能，匹配或超越BAGEL、Qwen-Image等扩散模型，同时保持有竞争力的视觉理解能力。"
+    }
+  },
+  {
+    "id": "2610.41598",
+    "title": "Scout-Refine-Correct: Teaching Flow Models to Refine Their Own Samples",
+    "abstract": "The quality of image generation models trained with diffusion or flow matching is largely fixed by the training budget: at inference, the only available lever is the number of sampling steps, and additional steps improve quality only up to a point. We present a training recipe, Scout-Refine-Correct (SRC), that instead gives a flow-matching generator a genuine inference-time refinement capability. At each sampling step the model takes a scout rollout -- $K$ steps ahead along its own trajectory -- extrapolates a full-sample estimate, and feeds that estimate back to itself as a self-conditioning signal before taking the real step. This can be repeated for $R$ refinement rounds. Two correction losses, applied during training at states the model's own rollouts actually reach rather than only on the ground-truth path, teach the model to use this signal to reach new samples instead of collapsing to a suboptimal one. On ImageNet-256, SRC improves LightningDiT-B from FID~14.5 to FID~7.26 at NFE~550, matching a privileged best-of-$N$ baseline that uses an oracle FID verifier to choose among samples. SRC uses no external verifier, no reward signal, and, after ablation, almost no extra parameters over the base architecture. Combining SRC with best-of-$N$ improves the result further, to FID~3.81 at NFE~4400, showing that the two axes are complementary. We ablate the main design choices -- the architectural pathway for the scout signal, the scout horizon, each correction loss, and the training schedule to demonstrate key working components of training.",
+    "authors": [
+      "Sergey Karpukhin",
+      "Aibek Alanov"
+    ],
+    "published": "2026-10-30",
+    "updated": "2026-10-30",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2610.41598.pdf",
+    "abs_url": "https://arxiv.org/abs/2610.41598",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "侦察-精炼-校正：教流模型精炼自身样本",
+      "core_contribution": "提出一种名为Scout-Refine-Correct（SRC）的训练方法，使流匹配生成器在推理时具备真正的样本精炼能力，无需外部验证器或奖励信号即可显著提升生成质量。",
+      "method": "在采样每一步，模型沿自身轨迹向前侦察K步，外推得到全样本估计，并将其作为自条件信号反馈给自身，再进行实际采样步，该过程可重复R轮精炼。训练时在模型自身轨迹实际到达的状态（而非仅真实路径）上应用两种校正损失，教会模型利用该信号到达新样本而非坍缩到次优样本。",
+      "findings": "在ImageNet-256上，SRC将LightningDiT-B在NFE~550时的FID从14.5提升至7.26，匹配使用oracle FID验证器的最佳N基线；与最佳N结合可进一步将FID降至3.81（NFE~4400），表明两者互补。消融实验验证了侦察信号架构路径、侦察视野、各校正损失及训练调度等关键设计组件的有效性。"
+    }
+  }
+]
