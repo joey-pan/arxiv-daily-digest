@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-03</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.00926</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.00926" target="_blank">UI-UG 2: Advancing Mobile UI Understanding and Generation with Fine-Grained Supervision and Reinforcement Learning</a>
+      </h3>
+      <p class="paper-title-zh">UI-UG 2：通过细粒度监督与强化学习推进移动UI理解与生成</p>
+      <p class="paper-authors">Hao Yang, Shuoyang Liu, Xiaoyu Lin, Zhou Fang, Maji Huang 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一个紧凑的4B参数多模态大语言模型UI-UG 2，通过更广泛的任务覆盖、前端对齐的分类体系和在线渲染感知强化学习，同时提升移动UI理解与生成能力，并揭示了理解到生成的有效迁移现象。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了来自RICO、VINS、Android in the Wild和Android Control的多源理解语料，采用与前端组件语义对齐的80类两级UI分类体系进行标注，并配套5000余个需求-截图-JSON元组用于基于领域特定语言（DSL）的渐进式结构化UI生成。理解任务上引入类别预测、OCR保真度、颜色识别、稠密定位和GUI定位的分解奖励；生成任务上采用端到端在线GRPO优化，通过基于Playwright的服务端渲染管线渲染采样的DSL输出，并用LLM-as-a-Judge和对比偏好排序进行评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> UI-UG 2在80类基准上取得了所评估模型中最强的指代和稠密定位结果，并在4B紧凑规模下取得最佳综合生成得分。更重要的是，实验观察到一致的“理解到生成”迁移：在固定训练预算下，加入细粒度UI感知监督可提升生成质量，表明组件级语义为两项任务提供了共享的表征基础。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Mobile UI understanding and generation require both fine-grained component perception and reliable structured synthesis. Inspired by the unified direction introduced by UI-UG, we present UI-UG 2, a compact 4B-parameter multimodal large language model (MLLM) that advances mobile UI Understanding and Generation with broader task coverage, a front-end-aligned taxonomy, and online render-aware reinforcement learning. UI-UG 2 constructs a multi-source understanding corpus from RICO, VINS, Android in the Wild, and Android Control, annotated with an 80-category two-level UI taxonomy aligned with front-end component semantics, and pairs it with over 5,000 requirement-screenshot-JSON tuples for progressive structured UI generation through a domain-specific language (DSL). For understanding, UI-UG 2 introduces decomposed rewards for category prediction, OCR fidelity, color recognition, dense grounding, and GUI grounding. Unlike the offline Direct Preference Optimization (DPO)-style generation optimization in UI-UG, UI-UG 2 optimizes generation through end-to-end online Group Relative Policy Optimization (GRPO): sampled DSL outputs are rendered with a Playwright-based server-side pipeline and evaluated using LLM-as-a-Judge and contrastive preference ranking. Experiments show that UI-UG 2 achieves the strongest referring and dense-grounding results among the evaluated models on our 80-category benchmark, and achieves the best composite generation score among compared models at a compact scale (4B). More importantly, we observe a consistent understanding-to-generation transfer: adding fine-grained UI perception supervision improves generation quality under a fixed training budget, suggesting that component-level semantics provide a shared representational foundation for both tasks.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.00926" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.00926.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.02551</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.02551" target="_blank">Flat Features, Detailed Images? Simple Detail Control for Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">平坦特征，精细图像？面向扩散Transformer的简单细节控制</p>
+      <p class="paper-authors">Qingtao Yu, Zhen Wang, Jiyang Zheng, Minghao Sun, Hongdong Li 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现增强细节的提示词会提高每个token能量分布的熵而基本保持其排序不变，据此提出一种无需训练的简单方法，通过一个标量连续调节扩散Transformer生成图像的细节程度。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者分析了六种扩散Transformer在有无细节增强提示下产生的特征token，发现细节增强与token能量分布熵增（分布变平坦）相关。基于此，提出将每个token的通道平方幅值向更高熵分布偏移，并采用时间感知调度器将干预集中在中间采样步骤，从而以标量连续控制细节水平。该方法无需训练，仅需几行代码，推理开销可忽略。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多种扩散Transformer上的大量实验表明，该方法能够连续控制细节指标，同时基本保持图像质量和语义结构，且实现简单、推理时间开销极小。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Prompt engineering is commonly used to encourage text-to-image models to generate more detailed images. However, it does not provide reliable, continuous, or disentangled control. We analyze feature tokens produced with and without detail-enhancing prompts across six diffusion transformers and observe a common pattern: these prompts tend to increase the entropy of each token's energy distribution while largely preserving its ordering. That is, flattening the distribution increases the level of detail. Motivated by this counter-intuitive finding, we introduce a simple training-free approach that continuously adjusts the level of detail according to a scalar. Specifically, it shifts the squared channel magnitudes of each token toward a higher entropy distribution with a time-aware scheduler to concentrate the intervention at intermediate sampling steps. Across extensive experiments on different types of diffusion transformers, we show that our approach provides continuous control over detail metrics while largely preserving image quality and semantic structure. It requires only a few lines of code and adds negligible inference time overhead.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.02551" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.02551.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.01696</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.01696" target="_blank">Restoring Semantic Fidelity for Training-Free High-Resolution Image Generation in Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">恢复语义保真度：面向扩散Transformer的无训练高分辨率图像生成</p>
+      <p class="paper-authors">Junjie Li, Zengbin Wang, Gaoxiang Li, Muyi Sun, Yixin Zhang 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一个无训练框架，解决基于DiT的文本到图像模型在超出训练分辨率时出现的语义退化问题，显著提升了高分辨率生成的结构连贯性和细节保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先设计文本-视觉尺度解耦注意力（TVSDA）模块，在保留文本token全局感受野的同时，将图像token的感受野对齐到训练分辨率，从而恢复模型在高分辨率下生成语义内容的能力。其次提出结构-细节引导（SDG）策略，通过尺度维度和时间维度的引导显式建模结构信息与精细细节，克服传统低分辨率引导的局限。整个框架无需额外训练。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，该方法在结构连贯性和细节保真度上显著优于现有的基于DiT的无训练高分辨率生成方法，有效缓解了高分辨率下的语义退化问题。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Diffusion Transformer (DiT)-based text-to-image models have recently achieved remarkable success in image synthesis. However, when directly applied beyond their training resolution, these models often suffer from severe semantic degradation, where meaningful semantic content disappears. Although existing training-free high-resolution generation methods can mitigate this issue, the inherent semantic degradation at high resolutions remains largely unresolved, leading to degraded fine-grained details. Furthermore, widely used structural guidance methods lack modeling of the structure and details in the intermediate trajectory, which degrades the quality of the generated results. In this paper, we propose a training-free framework for high-resolution image generation to address these challenges. First, we propose a text-visual scale-decoupled attention (TVSDA) module, which restores the model's ability to generate semantically meaningful content at high resolutions by preserving the global receptive field of text tokens while aligning the receptive field of image tokens with the training resolution. Second, we propose a structure-detail guidance (SDG) strategy that explicitly models structural information and fine details through scale-wise and temporal-wise guidance, overcoming the limitations of conventional low-resolution guidance. Extensive experiments demonstrate that our method significantly improves both structural coherence and detail fidelity over existing training-free DiT-based high-resolution generation approaches. The code is available at https://github.com/ljjcoder/Restoring-Semantic-Fidelity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.01696" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.01696.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.00819</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.00819" target="_blank">ODC: Orthogonal Drift Correction for Improved Text-to-Image Semantic Alignment at Inference</a>
+      </h3>
+      <p class="paper-title-zh">ODC：用于改进推理时文本到图像语义对齐的正交漂移校正</p>
+      <p class="paper-authors">Kasra Kamali, Basim Azam, Tuan Duong Trinh, Jean Honorio, Naveed Akhtar</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种名为正交漂移校正（ODC）的推理时引导方法，无需模型重训练或额外用户输入即可缓解文本到图像生成中的语义漂移问题，从而提升提示-图像语义对齐。</div>
+        <div class="summary-section"><strong>方法:</strong> ODC采用两阶段过程：第一阶段在共享视觉-语言嵌入空间中评估初始生成图像与用户提示之间的语义漂移，分离出与提示方向正交的漂移分量，并通过基于词汇表的代理机制将其转换回文本；第二阶段将初始文本嵌入与重新嵌入的漂移表示输入自适应降秩概念移除模块，生成精炼的文本条件用于第二次生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，ODC在COALBench-300和PartiPrompts基准上相比基线将CLIP分数最高提升5.4%；在T2I-CompBench复杂子集上，平均3-in-1分数比竞争方法提升4.5%。作为一种即插即用模块，ODC为提升文本到图像模型的可靠性提供了实用高效的方法。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-image models have achieved remarkable success in generating high-quality images from textual descriptions. However, they often struggle with "semantic drift," where the generated output fails to precisely align with complex or nuanced text prompts. While recent approaches have attempted to address semantic errors regarding attribute binding or object presence, there remains a gap for a more holistic method that addresses these issues by directly refining the text embeddings of the initial user prompt. In this work, we introduce Orthogonal Drift Correction (ODC), an inference-time guidance method designed to mitigate semantic drift without requiring model retraining or additional user inputs. ODC guides image generation through a two-stage process. In the first stage, it identifies the semantic drift by evaluating the initially generated image against the user prompt in a shared vision-language embedding space. It then isolates the component of this drift vector that is orthogonal to the prompt's direction and translates it back into text via a vocabulary-based surrogate mechanism. In the second stage, it produces refined text conditioning for a second generation pass by feeding both the initial text embedding and the re-embedded drift representation into an adaptive rank-reduced concept removal module. Our experiments demonstrate that ODC consistently improves prompt-image alignment, increasing CLIP scores by up to 5.4% over the baseline on the COALBench-300 and PartiPrompts benchmarks. Furthermore, on the T2I-CompBench complex subset, ODC improves the average 3-in-1 score by 4.5% over the competing methods. As a plug-and-play module, ODC offers a practical and efficient method for improving the reliability of text-to-image models. Code is available at https://github.com/kasrakamali/ODC.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.00819" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.00819.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.02941</span>
+        </div>
+        <span class="score-badge">相关性 85/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.02941" target="_blank">RouteREPA: Routed Representation Alignment for Just Image Transformers</a>
+      </h3>
+      <p class="paper-title-zh">RouteREPA：面向纯图像Transformer的路由式表征对齐</p>
+      <p class="paper-authors">Yi Tan, Beier Zhu, Sirui Chen, Cheng Chen, Xingyu Zhu 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了判别式表征对齐与像素空间生成之间的表征冲突，并提出RouteREPA方法，通过轻量级路由机制自适应地为对齐和生成任务分配表征，从而成功将REPA应用于像素空间模型JiT。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析了REPA在像素空间JiT上失效的原因，发现JiT需要同时编码判别性语义和重建相关的视觉信息，导致表征冲突。为此，提出RouteREPA，使用依赖表征的轻量级路由器，将对齐用和生成用的表征自适应地分流。同时在不同网络深度上应用路由，以适应各层对表征的不同需求。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-1K 256×256分辨率上的大量实验表明，RouteREPA在不同模型规模和训练预算下均稳定提升JiT性能，优于标准REPA。在JiT-H/16上，RouteREPA仅用三分之一的训练轮次且无需无分类器引导，即超越了PixelREPA。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Representation alignment (REPA) is widely used to accelerate the training of latent-space diffusion transformers (DiTs). However, applying it to pixel-space models such as Just Image Transformers (JiT) is challenging. Our analysis reveals a pronounced representation conflict between discriminative alignment and pixel-space generation. Compared with its latent counterpart, JiT learns representations that are substantially less aligned with DINOv2. Applying REPA to JiT consistently reduces the reconstructability of its intermediate representations, whereas this effect is not observed in Latent JiT. We attribute this conflict to JiT directly reconstructing pixels, which requires its representations to hierarchically encode discriminative semantics and reconstruction-relevant visual information across network depths. To address these challenges, we propose Routed Representation Alignment (RouteREPA), which uses lightweight, representation-dependent routers to adaptively route task-oriented representations for alignment and generation. We further apply routing across multiple network depths to accommodate their depth-dependent representation requirements. Extensive experiments on ImageNet-1K at 256x256 resolution show that RouteREPA consistently improves JiT across model scales and training budgets, outperforming standard REPA. On JiT-H/16, RouteREPA further surpasses PixelREPA using only one-third of its training epochs without classifier-free guidance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.02941" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.02941.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
