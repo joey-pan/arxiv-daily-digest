@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-04</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.04386</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.04386" target="_blank">StepX-OPD: Rethinking Multi-Teacher On-Policy Distillation in Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">StepX-OPD：重新审视扩散模型中的多教师在线策略蒸馏</p>
+      <p class="paper-authors">Chenru Wang, Xuanyang Zhang, Yucheng Han, Wenbo Nie, Wei Cheng 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出StepX-OPD方法，将多教师在线策略蒸馏与少步采样蒸馏两个阶段合并为单一阶段，使学生模型在同时学习多种能力的过程中完成少步采样学习，从而避免顺序训练的低效与性能损失。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法让一个学生模型在自身rollout所访问的状态上接受多个冻结专家教师的监督，而非在它从未运行过的更长轨迹上监督；由于rollout的KL分解显示速度不匹配在接近干净端最为严重，作者还对rollout低噪声部分的学生速度进行回归；此外，作者发现能力整合会导致模型在未要求文字的提示上把提示词写入图像，并给出一个降低该问题的变体。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SD3.5-Medium和FLUX.1-dev上，StepX-OPD在指令遵循、文字渲染、图像质量和人类偏好方面均表现优异，在四步方法中取得最高归一化平均分，并超过四十步的Flow-OPD模型；在SD3.5-Medium上，其训练GPU时数比先做DiffusionOPD再做步蒸馏的顺序方案减少约37%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>A deployable text-to-image diffusion model must hold several capabilities at once, such as instruction following, text rendering and human preference, and must sample in a few steps. Capabilities and few-step sampling are built in separate stages: a full-step model first consolidates capabilities through multi-teacher on-policy distillation, then serves as a fixed teacher for step distillation. Every full-step model we evaluate scores lower once compressed, and the second stage cannot begin until the first finishes. We introduce StepX-OPD, which merges the two stages: one student acquires every capability while learning to sample in a few steps, so frozen specialists supervise it on the states its own rollout visits rather than on a longer trajectory it never runs. Because a decomposition of the rollout's KL weights velocity mismatch most heavily near the clean end, we also regress the student's velocity on the low-noise part of the rollout. Separately, we find that capability integration makes models write prompt words into images on prompts that never asked for text, and we give a variant that lowers it. We evaluate on SD3.5-Medium and FLUX.1-dev across instruction following, text rendering, image quality and human preference. On both architectures, StepX-OPD attains the highest normalized average score among the four-step methods compared and exceeds the forty-step Flow-OPD model, and on SD3.5-Medium it trains with about 37% fewer GPU-hours than sequential DiffusionOPD followed by step distillation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.04386" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.04386.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.02366</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.02366" target="_blank">Do Visual RL Gains Scale at Test Time? A Quantile View of Post-Training</a>
+      </h3>
+      <p class="paper-title-zh">视觉强化学习的增益在测试时能规模化吗？训练后优化的分位数视角</p>
+      <p class="paper-authors">Austin Wang, Lexing Ying</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 系统性地识别并刻画了视觉强化学习后训练中缩放迁移的失败模式：更高的单样本奖励并不必然意味着更好的质量-计算前沿，RL增益在大采样预算下可能衰减、饱和甚至反转。</div>
+        <div class="summary-section"><strong>方法:</strong> 论文通过跨多种RL方法、模型骨干和评估任务（组合生成、文本渲染、偏好对齐）的实验分析，提出分位数迁移框架来解释Best-of-N采样随N增大而越来越依赖奖励分布上尾的机制，并据此提出分位数效用策略优化（QUPO），优化对应不同推理预算的可控分位数效用混合。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明RL后训练可能提升典型样本质量却压缩或损害测试时缩放所依赖的稀有高质量结果，基础模型在大采样预算下最终可能超越后训练模型；QUPO在SD3.5-M和BAGEL上更好地保留了上尾质量，并在困难留出提示上显著改善了缩放效果，表明视觉生成模型应同时针对单样本质量和后训练对完整奖励分布的重塑进行评估与优化。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement learning (RL) post-training improves the single-sample quality of visual generative models, but deployment often provides additional inference compute through Best-of-N sampling. Whether RL gains transfer under such test-time scaling, particularly on difficult held-out tasks, remains poorly understood in the visual domain. Our central contribution is to systematically identify and characterize a failure mode of scaling transfer in visual RL: across multiple RL methods, model backbones, and evaluations spanning compositional generation, text rendering, and preference alignment, higher single-sample reward does not necessarily imply a better quality-compute frontier. RL gains may attenuate, saturate, or even reverse at large sampling budgets, with the base model eventually outperforming its post-trained counterpart. We explain these regimes through a quantile-transfer framework, showing that Best-of-N places increasing weight on the upper tail of the reward distribution as N grows. Consequently, RL can improve typical samples while compressing or degrading the rare high-quality outcomes that test-time scaling exploits. As a simple intervention motivated by this analysis, we introduce Quantile Utility Policy Optimization (QUPO), which optimizes a controllable mixture of quantile utilities corresponding to different inference budgets. Experiments on SD3.5-M and BAGEL show that QUPO better preserves upper-tail quality and substantially improves scaling on challenging held-out prompts relative to standard RL post-training. Our results suggest that visual generative models should be evaluated and optimized not only for single-sample quality, but for how post-training reshapes the full reward distribution that inference-time scaling exploits.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.02366" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.02366.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.05280</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.05280" target="_blank">YANAMI: A Large-Scale Multimodal Dataset and Benchmark for Multiturn Stateful Interaction</a>
+      </h3>
+      <p class="paper-title-zh">YANAMI：面向多轮状态化交互的大规模多模态数据集与基准</p>
+      <p class="paper-authors">Shengyu Wang, Tengyue Nong, Junming Liu, Haosong Peng, Siyu Li 等 (13 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个面向多模态状态化交互的大规模多轮对话数据集YANAMI-400K及评测基准YANAMI-Bench，填补了现有统一多模态模型数据与基准以单轮任务为主的空白，要求模型跨轮理解、维护、更新并忠实实现不断演变的多模态对话状态。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了包含40万多轮多模态对话、200多万张图像和260万对话轮次的YANAMI-400K数据集，覆盖多图像融合、图像编辑、世界建模和视觉推理四类场景。同时设计YANAMI-Bench基准，包含400个多轮对话，联合评估对话状态理解与视觉实现两个维度。通过在BAGEL模型上进行微调实验，并与其他统一多模态模型在基准上对比评测。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在YANAMI-400K上微调BAGEL后，图像编辑、生成和多模态状态化交互能力分别提升10.3%、2.0%和13.23%，同时保持通用视觉理解能力。YANAMI-Bench评测表明，现有统一多模态模型在跨轮维护、更新并视觉实现演变中的多模态对话状态方面仍存在明显不足。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Unified Multimodal Models (UMMs) integrate visual understanding, generation, and editing within a single unified framework. However, existing unified multimodal datasets and benchmarks remain dominated by single-turn tasks. Even in recent multi-turn datasets, many turns can be solved independently without tracking information across turns. Consequently, they provide limited supervision and evaluation for multimodal stateful interaction, which requires models to understand, maintain, update, and faithfully realize evolving dialogue states across turns. To address this gap, we introduce YANAMI, the first large-scale multimodal dialogue dataset and benchmark for stateful interaction, comprising YANAMI-400K and YANAMI-Bench. YANAMI-400K contains 400K multi-turn multimodal dialogues, with more than 2M images and 2.6M dialogue turns. The dialogues span four representative scenarios: Multi-Image Fusion, Image Editing, World Modeling, and Visual Reasoning, and require models to continuously track, preserve, and revise evolving multimodal dialogue states across turns. YANAMI-Bench comprises 400 multi-turn dialogues for systematically evaluating multimodal stateful interaction. It jointly evaluates Dialogue State Understanding and Visual Realization, characterizing the gap between models' ability to understand evolving dialogue states and their ability to faithfully realize them in visual outputs. Experiments show that fine-tuning BAGEL on YANAMI-400K improves image editing, generation, and multimodal stateful interaction by 10.3%, 2.0%, and 13.23%, respectively, while preserving its general visual understanding capabilities. Evaluations on YANAMI-Bench further reveal that existing UMMs still struggle to maintain, update, and visually realize evolving multimodal dialogue states.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.05280" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.05280.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.05004</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.05004" target="_blank">ScoreDial: Precise Control of Visual Attributes in Image Generation via Regressor Guidance from Limited Human Ratings</a>
+      </h3>
+      <p class="paper-title-zh">ScoreDial：通过有限人工评分训练回归器引导实现图像生成中视觉属性的精确控制</p>
+      <p class="paper-authors">Jianbo Tang, Keita Ishii, Hiroki Sakamoto, Manabu Kikuchi, Katsuma Kitamura 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出ScoreDial方法，仅利用100-479张人工评分图像拟合可微分回归器，实现对生成图像特定视觉属性在人工评分尺度上请求值的精确控制，并在多个属性上达到评估协议下的最优精度。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先用有限的人工评分图像拟合一个可微分回归器R，固定后将请求值c定义在R的输出尺度上；然后结合学习到的目标条件化与误差自适应引导，在采样过程中反复减小|R(x)-c|，从而将生成图像推向请求的评分值。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在轮胎抗滑性、室内视觉复杂度、食物食欲感和肥皂半透明度四个属性上，使用同一套采样器设置，ScoreDial均达到请求值，R-MAE不超过0.013（范围宽度0.8），Spearman ρ=0.980，为评估协议下可达到的最大值；盲评实验中人类评分均值随c变化（轮胎R²=0.665，肥皂R²=0.786），在匹配扫描的强制选择比较中，评分者至少84%的情况下认为ScoreDial呈现更清晰的渐进变化；消融实验表明移除目标条件化虽保持低R-MAE但审计器位移减半以上，区分了精确分数校正与属性移动。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Requested-value control is stricter than continuous steering: given $c$ on a human-rating scale, the generated image should attain that value from only limited ratings. We present ScoreDial, which fits a differentiable regressor $R$ to 100-479 human-rated images; once $R$ is fixed, a requested value $c$ is defined on its output scale, and learned target conditioning is paired with error-adaptive guidance that repeatedly reduces $|R(\mathbf{x})-c|$ during sampling. Across tire slip resistance, interior visual complexity, food desire-to-eat, and soap translucency, using one set of sampler settings shared across all four, ScoreDial reaches requested values and achieves, on all four attributes, $R$-MAE at most 0.013 over a range of width 0.8 and Spearman $ρ=0.980$, the maximum attainable under our evaluation protocol. Because $R$ also drives sampling, we evaluate agreement with $R$ separately from matched sweeps, an independent auditor fitted to the same ratings on a backbone none of the deployed regressors uses, and blinded human judgments. MPGD-flow also reaches the requested values under $R$, but ScoreDial has larger auditor displacement on every attribute, the largest among all compared methods, and a stronger MPGD-flow setting gives up target agreement without closing this gap. On every attribute, removing target conditioning leaves low $R$-MAE but more than halves auditor displacement, separating precise score correction from attribute movement. Blinded rating studies with 15 raters per attribute show that mean human ratings track $c$ on tire and soap, with linear $R^2=0.665$ and $R^2=0.786$, and in forced-choice comparisons of matched sweeps, raters chose ScoreDial's as the clearer progression in at least 84% of judgments against every baseline.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.05004" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.05004.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.04948</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.04948" target="_blank">PATTS: Parallel-Aware Test-Time Scaling for Thought-Image Generation in Multimodal Discrete Diffusion LLMs</a>
+      </h3>
+      <p class="paper-title-zh">PATTS：面向多模态离散扩散大语言模型中思维-图像生成的并行感知测试时扩展</p>
+      <p class="paper-authors">Yasong Dai, Zeeshan Hayder, David Ahmedt-Aristizabal, Hongdong Li</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出PATTS框架，针对并行多模态离散扩散语言模型中推理令牌与图像令牌联合解码的特性，利用跨模态验证信号在中间思维-图像状态上进行搜索，以改进测试时扩展的选择效果。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先诊断出传统最终图像选择方法的局限：CLIP风格图像-提示分数与提示内组合正确性对齐较弱，验证器选择与理想选择之间存在较大差距。PATTS在生成过程中对中间思维-图像状态进行搜索，使用跨模态验证信号，并引入基于模型内部轨迹诊断得到的状态相关可靠性权重，来调节外部语义验证在生成过程中的影响。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在MMaDA-Parallel上固定N=32的评估中，PATTS达到GenEval分数0.844，而无TTS为0.628，Best-of-N为0.787，FKD为0.810。结果表明，在评估的搜索预算下，可靠性感知的轨迹验证能够改善并行思维-图像协同生成的测试时选择。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Test-time scaling (TTS) improves generative models by allocating additional inference-time computation to sampling, search, and verification. Existing image generation approaches, however, typically rank completed images or image-centric intermediate states. We study TTS for parallel multimodal discrete diffusion language models, in which reasoning tokens and image tokens are decoded jointly within a single generation trajectory. We first diagnose a limitation of conventional final-image selection: on GenEval, a CLIP-style image-prompt score is weakly aligned with within-prompt compositional correctness, leaving substantial headroom between verifier selection and oracle selection. We then propose PATTS, a novel parallel-aware TTS framework that searches over intermediate thought-image states using cross-modal verifier signals. PATTS uses a state-dependent reliability weight, derived from model-internal trajectory diagnostics, to modulate the influence of external semantic verification during generation. In the fixed N=32 evaluation on MMaDA-Parallel, the PATTS reaches a GenEval score of 0.844, compared with 0.628 without TTS, 0.787 for Best-of-N, and 0.810 for FKD. These results show that reliability-aware trajectory verification can improve test-time selection for parallel thought-image co-generation under the evaluated search budget. Our code release is at https://github.com/Ringo-Star/PATTS.git</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.04948" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.04948.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
