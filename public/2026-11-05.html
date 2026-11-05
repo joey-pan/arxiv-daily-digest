@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-05</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06796</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06796" target="_blank">VA-TDM: A Unified View for Improving Few-Step Diffusion Models by Velocity Adversarial Distillation</a>
+      </h3>
+      <p class="paper-title-zh">VA-TDM：通过速度对抗蒸馏改进少步扩散模型的统一视角</p>
+      <p class="paper-authors">Yihong Luo, Tianyu Pang, Tianyang Hu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出速度对抗蒸馏（VAD）框架，统一了分数蒸馏、Fisher匹配和矩匹配等多种分布匹配方法，并基于此构建VA-TDM，实现了高质量的少步扩散/流模型生成。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者从流匹配的角度出发，利用从学生采样过程构建的速度场进行监督，引入学习到的critic比较学生与教师的速度场，并将其分歧转化为学习反馈。VAD统一了分数蒸馏、Fisher匹配和矩匹配，同时解释了现有的启发式MMD更新并导出新的训练目标。在此基础上，VA-TDM采用轨迹分布匹配，对学生轨迹上的部分去噪过程提供监督，并结合过渡感知的在线速度学习与双形式VAD监督。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明VA-TDM在少步生成器学习上表现强劲，在多种骨干网络的文本到图像和文本到视频生成中均达到四步生成的当前最优性能，并可有效扩展至33B的MiniMax-H3。其中VA-TDM-H3显著优于少步的Fast-H3，根据人类偏好更接近原始多步H3。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Few-step distillation offers efficient generation with diffusion and flow models, but preserving quality with only a few sampling steps remains challenging. Distribution-matching methods via score distillation provide a strong foundation, yet they rely on accurately tracking the student's changing distribution. At intermediate generation steps in few-step sampling, student-score estimation can be difficult, and commonly used estimators may describe a different distribution from the one used to update the student. Flow matching allows a more flexible approach to supervision through velocity fields constructed from the student's sampling process. Building on this perspective, we introduce Velocity Adversarial Distillation (VAD), which uses a learned critic to compare student and teacher fields and turn their disagreement into feedback for learning. VAD unifies score distillation, Fisher-based matching, and moment matching, also explaining existing heuristic MMD updates and delivering new training objectives. We further develop VA-TDM, which follows trajectory distribution matching: providing supervision for partial denoising along the student trajectory. Beyond this, VA-TDM combines transition-aware online velocity learning and dual-form VAD supervision across intermediate student transitions. Extensive results show that VA-TDM is powerful for learning few-step generators, achieving state-of-the-art four-step performance in both text-to-image and text-to-video generation across various backbones and scaling effectively to 33B MiniMax-H3. In particular, our VA-TDM-H3 notably outperforms the few-step Fast-H3 and is closer to the original many-step H3 according to human preference.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06796" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06796.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06741</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06741" target="_blank">TailSteer: Trajectory-Tail Steering for Drift-Resistant Multi-turn Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">TailSteer：面向抗漂移多轮图像编辑的轨迹尾部引导</p>
+      <p class="paper-authors">Ruikang Li, Zixuan Chen, Jiarui Wu, Mingde Yao, Yiyuan Zhang 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出TailSteer——一种末阶段训练框架，通过将保持性修正集中在去噪轨迹尾部，在不改变基础模型已有生成与编辑能力的前提下显著提升多轮图像编辑的长期抗漂移鲁棒性。</div>
+        <div class="summary-section"><strong>方法:</strong> TailSteer遵循“保持早期去噪动态接近基模型、将修正集中于轨迹尾部”的原则，在尾部阶段抑制细粒度偏差。修正信号从编辑器自身的在线策略去噪 rollout 中学习，以未改动的源内容作为保持参考，无需人工标注的真实编辑配对数据。该框架作为最终阶段训练应用于FLUX、SenseNova和Qwen等模型家族。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在15-20轮连续编辑中，TailSteer大幅降低了累积视觉漂移，同时在广泛的文生图与单图编辑基准上基本保持了基模型原有性能。结果表明，基础模型的长程编辑鲁棒性可通过TailSteer在训练末段解锁，而无需重新学习其已有能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Strong single-turn editing performance does not guarantee reliable multi-turn interaction: as edited outputs are repeatedly reused, small unintended changes can accumulate into severe visual drift. This long-term drift is often mitigated through training on multi-turn data or cross-turn rollouts, potentially altering pretrained priors, or through specialized inference-time mechanisms that are difficult to scale to foundation models. We introduce TailSteer, a final-stage training framework that improves multi-turn robustness while retaining the generative and editing capabilities acquired through earlier training. TailSteer follows a simple principle: keep early denoising dynamics close to those of the base model and concentrate preservation corrections near the trajectory tail, where fine-grained deviations can be suppressed. These corrections are learned from the editor's own on-policy denoising rollouts, using unchanged source content as a preservation reference without requiring curated ground-truth editing pairs. Experiments across the FLUX, SenseNova, and Qwen families show that TailSteer substantially reduces cumulative drift over 15-20 editing turns while largely preserving base-model performance on extensive text-to-image and single-image editing benchmarks. These results demonstrate that long-horizon editing robustness can be unlocked in foundation models after TailSteer, rather than by relearning their existing capabilities.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06741" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06741.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.05648</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.05648" target="_blank">NitroFusion2: Bringing Adversarial Loss to the Text Stream of Multimodal Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">NitroFusion2：将对抗损失引入多模态扩散Transformer的文本流</p>
+      <p class="paper-authors">Dar-Yen Chen, Yi-Zhe Song</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出文本流对抗蒸馏（TSAD），首次利用多模态扩散Transformer（MMDiT）的中间文本token状态作为对抗表示，并结合方面提示判别（ACD）实现对生成属性的可控引导，将少步蒸馏从4-8步压缩至1-2步且保持可比质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者观察到MMDiT的文本流通过联合注意力变得依赖图像，因而可作为新的对抗表示；据此提出TSAD，用文本token的中间状态进行判别。进一步提出ACD，以排版、物体、风格等不同方面对判别器进行条件化，从而引导对抗训练中强调的属性。在NitroFusion的专家判别器设计基础上，将TSAD与ACD集成到NitroFusion2中。</div>
+        <div class="summary-section"><strong>关键发现:</strong> NitroFusion2在质量可比的情况下将少步蒸馏从常规4-8步降至仅1-2步；单步即可生成清晰的渲染文字和丰富的细粒度细节，使单步生成具备实用性；两步生成在各项评测基准上仍具竞争力，确立了MMDiT文本流作为强大且可引导的对抗蒸馏表示。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Adversarial diffusion distillation has conventionally relied on image features for discrimination. We revisit this choice for multimodal diffusion transformers (MMDiTs), whose text stream becomes image-dependent through joint attention. We introduce Text-Stream Adversarial Distillation (TSAD), which exploits intermediate text-token states as a new adversarial representation. Because the text stream has already read the image while remaining tied to the text condition, changing that condition changes what information it extracts from the image. Building on this property, we introduce Aspect-Cued Discrimination (ACD), which conditions the discriminator on different aspects of the sample, such as typography, objects, or style, to steer which properties are emphasized during adversarial training. Building on the expert-discriminator design of NitroFusion, we integrate TSAD and ACD in NitroFusion2. NitroFusion2 brings few-step distillation from the conventional 4-8-step regime down to just 1-2 steps at comparable quality. At one step, it produces sharp rendered text and rich fine-grained details, making one-step generation practical rather than merely a stress test for distillation. At two steps, it remains competitive across the evaluated benchmarks. These results establish the MMDiT text stream as a powerful and steerable representation for adversarial diffusion distillation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.05648" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.05648.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06838</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06838" target="_blank">Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties</a>
+      </h3>
+      <p class="paper-title-zh">面向新兴推理特性的上下文感知自回归图像生成</p>
+      <p class="paper-authors">Jixuan Ying, Haoyu Liu, Timing Yang, Tingyu Zhu, Predrag Neskovic 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种上下文感知的自回归图像生成框架，让模型根据全局上下文和当前局部信息动态决定下一个token的生成位置，从而提升结构鲁棒性和推理能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法摒弃预定义或启发式的生成顺序（如下一patch预测、随机顺序或特定尺度的一步生成），改为在生成过程中自适应地选择下一个token位置，使生成顺序与图像结构和语义依赖相匹配。研究在掩码自回归和尺度自回归等多种图像自回归范式上进行了广泛实验验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 上下文感知生成显著提升了不同图像自回归范式下的结构鲁棒性；此外，模型涌现出推理特性，能够更好地理解复杂语义指令并生成更忠实遵循给定引导的图像。结果表明生成顺序是图像自回归建模中关键但尚未被充分探索的因素，上下文感知解码可释放更强的推理感知视觉生成能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Autoregressive image generation has recently emerged as a competitive visual generation paradigm, yet its generation order is often predefined or heuristic, such as next-patch prediction, random-order prediction, or one-step generation for specific scales. We observe that these strategies can cause models to overlook important structural dependencies in images, thereby limiting both structural robustness and reasoning capability. In this work, we propose a context-aware autoregressive generation framework, where the model dynamically determines the next token location based on global context and current local information. Rather than following a fixed or random order, our method allows the generation process to adapt to image structure and semantic dependencies. Extensive experiments show that context-aware generation significantly improves structural robustness across different image AR paradigms, including masked autoregressive and scale-wise autoregressive models. Beyond quantitative improvements, we further observe emerging reasoning properties: the model can better understand complex semantic instructions and generate images that more faithfully follow the given guidance. These findings suggest that generation order is a critical yet underexplored factor in image autoregressive modeling, and that context-aware decoding can unlock stronger reasoning-aware visual generation capabilities. Code is available at https://github.com/Hpesojyjx/Saccades-AR.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06838" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06838.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06856</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06856" target="_blank">LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis</a>
+      </h3>
+      <p class="paper-title-zh">LongBanana：一个经专家验证的长上下文多参考图像合成基准</p>
+      <p class="paper-authors">Haoxiang Cao, Yuxuan Zhang, Penghui Du, Bo Li, Jiajiong Cao 等 (19 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个由专家设计并验证的长上下文多参考图像合成基准LongBanana，包含90个任务和4,670个原子评估项，并引入智能体框架LongBanana-Gen以评估和提升长程图像生成能力。</div>
+        <div class="summary-section"><strong>方法:</strong> LongBanana按3×3分类法组织90个任务，每个任务约含32张参考图像、20个约束和50个评估项。采用基于图的评估设计，将实体-关系图中的节点、边和全图义务转化为内容保真度、关系绑定和全局约束满足的检查表项。专家标注包含15%双标子集，精确一致率89.4%，二次加权kappa为0.83。此外提出LongBanana-Gen智能体框架，并实验了ReAct-Plan-Exec-Reflect（RPR）工作流。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，最小智能体框架优于直接生成，而RPR工作流通过增强证据基础和修复能力带来依赖框架的增益。LongBanana为衡量密集视觉证据使用提供了可审计的测试平台，并为开发更强的智能体驱动图像生成系统提供了共享目标。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of agent-driven image generation. The task requires retrieving dispersed visual evidence, rejecting distractors, binding entities and relations, and composing one coherent final image from multiple references. LongBanana contains 90 carefully designed tasks organized by a 3-by-3 taxonomy; each task includes about 32 reference images, 20 constraints, and 50 evaluation items, yielding 4,670 expert-specified atomic evaluation items in total. Its graph-grounded evaluation design instantiates each task with reference images and an entity-relation graph, then converts node, edge, and whole-graph obligations into checklist items for Content Fidelity, Relational Binding, and Global Constraint Satisfaction. Reviewed expert labels include a 15% double-labeled subset with 89.4% exact agreement and 0.83 quadratic weighted kappa. We further introduce LongBanana-Gen, an agent-harness framework for long-horizon image generation; experiments show that minimal agent harnesses improve over direct generation, while a ReAct-Plan-Exec-Reflect (RPR) workflow yields harness-dependent gains by strengthening evidence grounding and repair. Together, LongBanana provides an auditable testbed for measuring dense visual evidence use and a shared target for developing stronger agent-driven image-generation systems. Code and data are available at the project page: https://long-banana.com/.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06856" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06856.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
