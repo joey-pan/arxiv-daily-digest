@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-06</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 机器学习: 2</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07392</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07392" target="_blank">WeLM-Image: A Unified Image Generation Model towards Visual Intelligence</a>
+      </h3>
+      <p class="paper-title-zh">WeLM-Image：面向视觉智能的统一图像生成模型</p>
+      <p class="paper-authors">Canmiao Fu, Chen Li, Guohui Zhang, Hao Lu, Hongyang Wei 等 (16 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一个统一图像基础模型WeLM-Image，将多模态理解融入文生图、指令引导编辑和多参考合成，并针对微信大规模消费级应用实现单GPU部署。</div>
+        <div class="summary-section"><strong>方法:</strong> 模型将文本、参考图像和目标潜变量作为一条交错序列处理，采用Mixture-of-Transformers（MoT）骨干，结合共享注意力与独立的理解/生成参数以减少优化干扰。每条路径配备Mixture-of-Experts（MoE）模块提供稀疏容量，存储参数31.7B，每个目标潜变量token约激活5.4B生成参数。构建面向生成的数据引擎，结合知识驱动的视觉词表与大规模视觉聚类以平衡语义覆盖和编辑任务，并用训练时评估引导迭代数据精炼；支持双语标注和经校验的编辑监督，渐进训练至原生1.5K分辨率。生成与编辑分别用评分标准和检查表奖励优化，再通过噪声感知的在线策略蒸馏整合专用策略。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在报告的总体比较中，1536分辨率模型在PRISM-Bench、Qwen-Image-Bench和UnicBench上位列所评估开源模型第一。基于MeanFlow的少步蒸馏得到WeLM-Image-Turbo，在单张NVIDIA H20 GPU上以8步无引导生成，4.98秒即可生成1024×1024图像。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present \textbf{WeLM-Image}, a unified image foundation model that integrates multimodal understanding into text-to-image generation, instruction-guided editing, and multi-reference synthesis. Designed for single-GPU deployment in WeChat's large-scale consumer applications, the model processes text, reference images, and target latents as one interleaved sequence. A Mixture-of-Transformers (MoT) backbone combines shared attention with independent understanding and generation parameters to limit optimization interference. Equipping each path with Mixture-of-Experts (MoE) modules provides sparse capacity, with 31.7B stored parameters and approximately 5.4B generation parameters activated per target latent token. A generation-oriented data engine combines a knowledge-grounded visual vocabulary with large-scale visual clustering to balance semantic coverage and editing tasks, while training-time evaluation guides iterative data refinement. Bilingual annotations and verified editing supervision support progressive training up to native 1.5K resolution. We optimize generation and editing separately with rubric- and checklist-based rewards, then consolidate the specialized policies through noise-aware on-policy distillation. In the reported overall comparisons, the 1536-resolution model ranks first among the evaluated open-source models on PRISM-Bench, Qwen-Image-Bench, and UnicBench. MeanFlow-based few-step distillation yields WeLM-Image-Turbo, which generates a $1024\times1024$ image in 4.98\,s on a single NVIDIA H20 GPU using eight guidance-free steps.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07392" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07392.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07604</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07604" target="_blank">FisherDistill: Diffusion Distribution Distillation via Closed-Form Fisher Critics</a>
+      </h3>
+      <p class="paper-title-zh">FisherDistill：基于闭式Fisher判别器的扩散分布蒸馏</p>
+      <p class="paper-authors">Mahesh Bhosale, Yuanhao Zhai, Siwei Lyu, Junsong Yuan, David Doermann 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出FisherDistill，一种无需学习对抗判别器的扩散蒸馏精炼方法，利用闭式Fisher线性判别分析从冻结教师模型的中间表示中提取轻量级精炼信号，以弥补蒸馏生成器与多步教师之间的分布差距。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于Fisher线性判别分析，利用冻结教师模型的中间表示估计真实样本与生成样本的一阶和二阶统计量，推导出一个闭式Fisher方向，使两类特征分布相对于类内变异最大化分离。该方向提供轻量级精炼信号，补充原始蒸馏目标，无需额外对抗判别器及其优化循环。方法可跨多种蒸馏框架使用。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个蒸馏框架上，FisherDistill一致优于各自的蒸馏基线，显著缩小了与对抗精炼方法的差距，同时避免了对抗判别器带来的额外训练开销。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent advances in diffusion distillation have enabled high-quality image generation in only one or a few network function evaluations (NFEs). Despite their efficiency, aggressively distilled generators often retain a residual distribution gap from their multi-step teachers, motivating recent methods to introduce adversarial refinement with a learned discriminator. In this work, we ask whether such refinement necessarily requires a learned adversarial discriminator. We introduce \textbf{FisherDistill}, a simple alternative based on Fisher linear discriminant analysis. Using intermediate representations from the frozen teacher, we estimate the first- and second-order statistics of real and generated samples and derive a closed-form Fisher direction that maximally separates their feature distributions relative to within-class variation. This direction provides a lightweight refinement signal that complements the original distillation objective without requiring an additional adversarial discriminator or its optimization loop. Across multiple distillation frameworks, our approach consistently improves generation quality over their respective distilled baselines and substantially closes the gap to adversarially refined counterparts. Code: https://bhosalems.github.io/FisherDistill/</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07604" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07604.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.06255</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06255" target="_blank">Learning Noise Optimization for Reward Alignment in Few-Step Generative Models</a>
+      </h3>
+      <p class="paper-title-zh">面向少步生成模型奖励对齐的学习噪声优化</p>
+      <p class="paper-authors">Hongeun Kim, Jeongsol Kim, Jong Chul Ye</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出LeNO方法，将奖励引导的初始噪声优化摊销为学习到的残差传输，在保持预训练生成器冻结的情况下，实现少步生成模型的高效奖励对齐，推理时仅需单次噪声校正而无需迭代搜索。</div>
+        <div class="summary-section"><strong>方法:</strong> LeNO学习一个以锚点为条件的噪声校正分布，使用Local GRPO和标量奖励进行训练，将奖励引导的初始噪声优化从推理时搜索转化为可学习的残差传输。针对高斯初始噪声，采用保范投影，推导出校正噪声分布与原始先验之间KL散度的可处理上界，作为原则性正则化目标。预训练生成器保持冻结，仅学习噪声校正。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在少步文本到图像生成和蛋白质结构生成任务上评估LeNO，包括昂贵的黑盒可设计性奖励。结果表明，LeNO在推理时通过单次噪声校正即可提升目标奖励，同时基本保持生成质量和多样性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reward alignment for diffusion- and flow-based generative models is often formulated over stochastic trajectories, making it less suitable for few-step deterministic generators. Initial noise optimization provides a trajectory-free alternative, but existing gradient-free methods require costly per-sample search at inference. We introduce LeNO (Learning Noise Optimization), which amortizes reward-guided initial noise optimization into a learned residual transport while keeping the pretrained generator frozen. LeNO learns an anchor-conditioned distribution over noise corrections using Local GRPO and scalar rewards, eliminating iterative test-time optimization. For Gaussian initial noise with norm-preserving projection, we derive a tractable upper bound on the KL divergence between the corrected noise distribution and the original prior, providing a principled regularization objective. We evaluate LeNO on few-step text-to-image and protein structure generation, including expensive black-box designability rewards. Across both domains, LeNO improves target rewards with a single noise correction at inference while largely preserving generation quality and diversity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06255" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06255.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.08486</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.08486" target="_blank">Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI</a>
+      </h3>
+      <p class="paper-title-zh">你还怀念我们熬夜画图的日子吗？生成式AI时代下对预告图与框架图的再思考</p>
+      <p class="paper-authors">Xiaoqi Zhao, Youwei Pang, Kailai Zhou</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文通过大规模视觉回顾性分析，系统考察了生成式AI辅助修改科研论文中动机图与框架图对表达清晰度和视觉设计的影响，主张AI应作为辅助工具、研究者仍需对解释目的与构图负责。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者构建了包含200篇论文中371幅动机图与框架图的语料库，其中主样本160篇按四个时间段配额抽取，另设40篇风格对比样本。采用单一多模态评判模型对每幅图从沟通与设计六个维度进行三次重复评分，并对全部371幅图尝试源约束条件下的修订，其中369幅通过保真度检查。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 原始图评分在各时间段间未出现一致性下降；AI修订使清晰度平均提升0.428分，但审美连贯性平均下降0.111分（五分制）。六维度平均增益在动机图上大于框架图。案例分析显示，增加的说明能改善比较阐释，但排版层级与视觉经济性问题仍未解决。研究支持以研究者为主导的设计，AI仅辅助探索，作者仍需对解释目的、构图和科学关系负责。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive style-contrast sample of 40 papers. A single multimodal judge evaluates six dimensions of communication and design, with three repeated judgments per figure. We attempt source-constrained revisions of all 371 figures, of which 369 pass the recorded fidelity checks. Original-figure ratings show no uniform decline across periods. Revisions increase mean clarity ratings by 0.428 points and decrease aesthetic coherence ratings by 0.111 points on a five-point scale. Gains in the six-dimension average are larger for main-sample motivation figures than for frameworks. Case analyses show that added explanation can clarify comparisons while leaving typographic hierarchy and visual economy unresolved. These model-based findings support researcher-led design, with AI assisting exploration and authors retaining responsibility for explanatory purpose, composition, and scientific relationships. The accompanying atlas and evaluation records are available at https://ntu-ai4x.github.io/Rethinking_Figures/index_en.html.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.08486" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.08486.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.08240</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.08240" target="_blank">FewStepRL: Fine-tuning Few-step Diffusion Models with Reinforcement Learning</a>
+      </h3>
+      <p class="paper-title-zh">FewStepRL：用强化学习微调少步扩散模型</p>
+      <p class="paper-authors">Haitao Lin, Minsi Ren, Yang Li, Xingtong Ge, Zheyuan Hu 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文系统性地将强化学习目标适配到少步扩散模型，提出“变换—分解—适配”三阶段框架，将多种主流RL目标统一为少步版本，并在一个模块化代码库中实现。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先通过变换将基于密度、速度或奖励的目标统一表达为x空间中的共同策略预测；然后分解将各目标的梯度写成向参考的自回归项与奖励增强项之和，使方法在梯度层面归结为锚点与权重的选择；最后适配阶段从少步模型的传输终点或切线上计算锚点，瞬时速度可由网络自身或辅助网络恢复。由此得到FlowGRPO、AWM、DiffusionNFT、DiffusionOPSD和ReFL的少步版本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，当奖励可微且梯度计算代价可接受时，基于奖励梯度的方法最有效；否则DiffusionNFT类方法通常能在较少迭代内达到较高奖励，尽管单次迭代成本有时更高。额外增加推理步数在总体上没有系统性收益，但部分输出在采样步数为训练时的2至4倍时可见改善。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement learning (RL) has become a standard post-training method for diffusion models, but most RL objectives roll out the current policy at every iteration, and with a many-step sampler these rollouts typically dominate the cost of training. Few-step models cut this cost, yet they model an average velocity over an interval, whereas existing RL objectives are built for an instantaneous velocity with a many-step sampler. We adapt RL objectives to few-step models systematically in three phases, namely a transformation, a decomposition and an adaptation. The transformation to $x$-space expresses each objective we consider through a common policy prediction, at the clean end by default and at an explicitly marked level for transition or flow-map objectives, so that objectives stated over densities, velocities or rewards become comparable. The decomposition writes the gradient of each of these objectives as the sum of a self-regression toward a reference and a reward augmentation, so that a method reduces, at the gradient level, to a choice of anchors and weights. The adaptation computes each anchor from a few-step model at the end of its transport or along its tangent, with the instantaneous velocity recovered from the network itself or from an auxiliary network. This yields few-step versions of FlowGRPO, AWM, DiffusionNFT, DiffusionOPSD and ReFL in one modular codebase. In our experiments, reward-gradient-based methods are the most effective when the reward is differentiable and its gradient is affordable; otherwise DiffusionNFT-style methods generally reach high rewards in relatively few iterations despite a sometimes higher per-iteration cost. Extra inference steps show no systematic aggregate benefit in our experiments, although selected outputs visibly improve with two to four times as many sampling steps as in training.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.08240" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.08240.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

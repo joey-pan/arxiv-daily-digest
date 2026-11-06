@@ -1,0 +1,152 @@
+[
+  {
+    "id": "2611.07392",
+    "title": "WeLM-Image: A Unified Image Generation Model towards Visual Intelligence",
+    "abstract": "We present \\textbf{WeLM-Image}, a unified image foundation model that integrates multimodal understanding into text-to-image generation, instruction-guided editing, and multi-reference synthesis. Designed for single-GPU deployment in WeChat's large-scale consumer applications, the model processes text, reference images, and target latents as one interleaved sequence. A Mixture-of-Transformers (MoT) backbone combines shared attention with independent understanding and generation parameters to limit optimization interference. Equipping each path with Mixture-of-Experts (MoE) modules provides sparse capacity, with 31.7B stored parameters and approximately 5.4B generation parameters activated per target latent token. A generation-oriented data engine combines a knowledge-grounded visual vocabulary with large-scale visual clustering to balance semantic coverage and editing tasks, while training-time evaluation guides iterative data refinement. Bilingual annotations and verified editing supervision support progressive training up to native 1.5K resolution. We optimize generation and editing separately with rubric- and checklist-based rewards, then consolidate the specialized policies through noise-aware on-policy distillation. In the reported overall comparisons, the 1536-resolution model ranks first among the evaluated open-source models on PRISM-Bench, Qwen-Image-Bench, and UnicBench. MeanFlow-based few-step distillation yields WeLM-Image-Turbo, which generates a $1024\\times1024$ image in 4.98\\,s on a single NVIDIA H20 GPU using eight guidance-free steps.",
+    "authors": [
+      "Canmiao Fu",
+      "Chen Li",
+      "Guohui Zhang",
+      "Hao Lu",
+      "Hongyang Wei",
+      "Huadong Wu",
+      "Huaisong Zhang",
+      "Hubery Yin",
+      "Liyuan Cui",
+      "Qixin Yan",
+      "Tong Shao",
+      "Xiaoqiang Zhou",
+      "Xinhang Leng",
+      "Ying Zhang",
+      "Zhenhai Liu",
+      "Zhipeng Huang"
+    ],
+    "published": "2026-11-05",
+    "updated": "2026-11-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.07392.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.07392",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "WeLM-Image：面向视觉智能的统一图像生成模型",
+      "core_contribution": "提出一个统一图像基础模型WeLM-Image，将多模态理解融入文生图、指令引导编辑和多参考合成，并针对微信大规模消费级应用实现单GPU部署。",
+      "method": "模型将文本、参考图像和目标潜变量作为一条交错序列处理，采用Mixture-of-Transformers（MoT）骨干，结合共享注意力与独立的理解/生成参数以减少优化干扰。每条路径配备Mixture-of-Experts（MoE）模块提供稀疏容量，存储参数31.7B，每个目标潜变量token约激活5.4B生成参数。构建面向生成的数据引擎，结合知识驱动的视觉词表与大规模视觉聚类以平衡语义覆盖和编辑任务，并用训练时评估引导迭代数据精炼；支持双语标注和经校验的编辑监督，渐进训练至原生1.5K分辨率。生成与编辑分别用评分标准和检查表奖励优化，再通过噪声感知的在线策略蒸馏整合专用策略。",
+      "findings": "在报告的总体比较中，1536分辨率模型在PRISM-Bench、Qwen-Image-Bench和UnicBench上位列所评估开源模型第一。基于MeanFlow的少步蒸馏得到WeLM-Image-Turbo，在单张NVIDIA H20 GPU上以8步无引导生成，4.98秒即可生成1024×1024图像。"
+    }
+  },
+  {
+    "id": "2611.07604",
+    "title": "FisherDistill: Diffusion Distribution Distillation via Closed-Form Fisher Critics",
+    "abstract": "Recent advances in diffusion distillation have enabled high-quality image generation in only one or a few network function evaluations (NFEs). Despite their efficiency, aggressively distilled generators often retain a residual distribution gap from their multi-step teachers, motivating recent methods to introduce adversarial refinement with a learned discriminator. In this work, we ask whether such refinement necessarily requires a learned adversarial discriminator. We introduce \\textbf{FisherDistill}, a simple alternative based on Fisher linear discriminant analysis. Using intermediate representations from the frozen teacher, we estimate the first- and second-order statistics of real and generated samples and derive a closed-form Fisher direction that maximally separates their feature distributions relative to within-class variation. This direction provides a lightweight refinement signal that complements the original distillation objective without requiring an additional adversarial discriminator or its optimization loop. Across multiple distillation frameworks, our approach consistently improves generation quality over their respective distilled baselines and substantially closes the gap to adversarially refined counterparts. Code: https://bhosalems.github.io/FisherDistill/",
+    "authors": [
+      "Mahesh Bhosale",
+      "Yuanhao Zhai",
+      "Siwei Lyu",
+      "Junsong Yuan",
+      "David Doermann",
+      "Defang Chen"
+    ],
+    "published": "2026-11-05",
+    "updated": "2026-11-05",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.07604.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.07604",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "FisherDistill：基于闭式Fisher判别器的扩散分布蒸馏",
+      "core_contribution": "论文提出FisherDistill，一种无需学习对抗判别器的扩散蒸馏精炼方法，利用闭式Fisher线性判别分析从冻结教师模型的中间表示中提取轻量级精炼信号，以弥补蒸馏生成器与多步教师之间的分布差距。",
+      "method": "该方法基于Fisher线性判别分析，利用冻结教师模型的中间表示估计真实样本与生成样本的一阶和二阶统计量，推导出一个闭式Fisher方向，使两类特征分布相对于类内变异最大化分离。该方向提供轻量级精炼信号，补充原始蒸馏目标，无需额外对抗判别器及其优化循环。方法可跨多种蒸馏框架使用。",
+      "findings": "在多个蒸馏框架上，FisherDistill一致优于各自的蒸馏基线，显著缩小了与对抗精炼方法的差距，同时避免了对抗判别器带来的额外训练开销。"
+    }
+  },
+  {
+    "id": "2611.06255",
+    "title": "Learning Noise Optimization for Reward Alignment in Few-Step Generative Models",
+    "abstract": "Reward alignment for diffusion- and flow-based generative models is often formulated over stochastic trajectories, making it less suitable for few-step deterministic generators. Initial noise optimization provides a trajectory-free alternative, but existing gradient-free methods require costly per-sample search at inference. We introduce LeNO (Learning Noise Optimization), which amortizes reward-guided initial noise optimization into a learned residual transport while keeping the pretrained generator frozen. LeNO learns an anchor-conditioned distribution over noise corrections using Local GRPO and scalar rewards, eliminating iterative test-time optimization. For Gaussian initial noise with norm-preserving projection, we derive a tractable upper bound on the KL divergence between the corrected noise distribution and the original prior, providing a principled regularization objective. We evaluate LeNO on few-step text-to-image and protein structure generation, including expensive black-box designability rewards. Across both domains, LeNO improves target rewards with a single noise correction at inference while largely preserving generation quality and diversity.",
+    "authors": [
+      "Hongeun Kim",
+      "Jeongsol Kim",
+      "Jong Chul Ye"
+    ],
+    "published": "2026-11-04",
+    "updated": "2026-11-04",
+    "categories": [
+      "cs.LG",
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.06255.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.06255",
+    "primary_category": "cs.LG",
+    "score": 78,
+    "summary": {
+      "title_zh": "面向少步生成模型奖励对齐的学习噪声优化",
+      "core_contribution": "提出LeNO方法，将奖励引导的初始噪声优化摊销为学习到的残差传输，在保持预训练生成器冻结的情况下，实现少步生成模型的高效奖励对齐，推理时仅需单次噪声校正而无需迭代搜索。",
+      "method": "LeNO学习一个以锚点为条件的噪声校正分布，使用Local GRPO和标量奖励进行训练，将奖励引导的初始噪声优化从推理时搜索转化为可学习的残差传输。针对高斯初始噪声，采用保范投影，推导出校正噪声分布与原始先验之间KL散度的可处理上界，作为原则性正则化目标。预训练生成器保持冻结，仅学习噪声校正。",
+      "findings": "在少步文本到图像生成和蛋白质结构生成任务上评估LeNO，包括昂贵的黑盒可设计性奖励。结果表明，LeNO在推理时通过单次噪声校正即可提升目标奖励，同时基本保持生成质量和多样性。"
+    }
+  },
+  {
+    "id": "2611.08486",
+    "title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+    "abstract": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive style-contrast sample of 40 papers. A single multimodal judge evaluates six dimensions of communication and design, with three repeated judgments per figure. We attempt source-constrained revisions of all 371 figures, of which 369 pass the recorded fidelity checks. Original-figure ratings show no uniform decline across periods. Revisions increase mean clarity ratings by 0.428 points and decrease aesthetic coherence ratings by 0.111 points on a five-point scale. Gains in the six-dimension average are larger for main-sample motivation figures than for frameworks. Case analyses show that added explanation can clarify comparisons while leaving typographic hierarchy and visual economy unresolved. These model-based findings support researcher-led design, with AI assisting exploration and authors retaining responsibility for explanatory purpose, composition, and scientific relationships. The accompanying atlas and evaluation records are available at https://ntu-ai4x.github.io/Rethinking_Figures/index_en.html.",
+    "authors": [
+      "Xiaoqi Zhao",
+      "Youwei Pang",
+      "Kailai Zhou"
+    ],
+    "published": "2026-11-05",
+    "updated": "2026-11-05",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.08486.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.08486",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "你还怀念我们熬夜画图的日子吗？生成式AI时代下对预告图与框架图的再思考",
+      "core_contribution": "论文通过大规模视觉回顾性分析，系统考察了生成式AI辅助修改科研论文中动机图与框架图对表达清晰度和视觉设计的影响，主张AI应作为辅助工具、研究者仍需对解释目的与构图负责。",
+      "method": "作者构建了包含200篇论文中371幅动机图与框架图的语料库，其中主样本160篇按四个时间段配额抽取，另设40篇风格对比样本。采用单一多模态评判模型对每幅图从沟通与设计六个维度进行三次重复评分，并对全部371幅图尝试源约束条件下的修订，其中369幅通过保真度检查。",
+      "findings": "原始图评分在各时间段间未出现一致性下降；AI修订使清晰度平均提升0.428分，但审美连贯性平均下降0.111分（五分制）。六维度平均增益在动机图上大于框架图。案例分析显示，增加的说明能改善比较阐释，但排版层级与视觉经济性问题仍未解决。研究支持以研究者为主导的设计，AI仅辅助探索，作者仍需对解释目的、构图和科学关系负责。"
+    }
+  },
+  {
+    "id": "2611.08240",
+    "title": "FewStepRL: Fine-tuning Few-step Diffusion Models with Reinforcement Learning",
+    "abstract": "Reinforcement learning (RL) has become a standard post-training method for diffusion models, but most RL objectives roll out the current policy at every iteration, and with a many-step sampler these rollouts typically dominate the cost of training. Few-step models cut this cost, yet they model an average velocity over an interval, whereas existing RL objectives are built for an instantaneous velocity with a many-step sampler. We adapt RL objectives to few-step models systematically in three phases, namely a transformation, a decomposition and an adaptation. The transformation to $x$-space expresses each objective we consider through a common policy prediction, at the clean end by default and at an explicitly marked level for transition or flow-map objectives, so that objectives stated over densities, velocities or rewards become comparable. The decomposition writes the gradient of each of these objectives as the sum of a self-regression toward a reference and a reward augmentation, so that a method reduces, at the gradient level, to a choice of anchors and weights. The adaptation computes each anchor from a few-step model at the end of its transport or along its tangent, with the instantaneous velocity recovered from the network itself or from an auxiliary network. This yields few-step versions of FlowGRPO, AWM, DiffusionNFT, DiffusionOPSD and ReFL in one modular codebase. In our experiments, reward-gradient-based methods are the most effective when the reward is differentiable and its gradient is affordable; otherwise DiffusionNFT-style methods generally reach high rewards in relatively few iterations despite a sometimes higher per-iteration cost. Extra inference steps show no systematic aggregate benefit in our experiments, although selected outputs visibly improve with two to four times as many sampling steps as in training.",
+    "authors": [
+      "Haitao Lin",
+      "Minsi Ren",
+      "Yang Li",
+      "Xingtong Ge",
+      "Zheyuan Hu",
+      "Peiyan Hu",
+      "Tailin Wu"
+    ],
+    "published": "2026-11-05",
+    "updated": "2026-11-05",
+    "categories": [
+      "cs.LG",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.08240.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.08240",
+    "primary_category": "cs.LG",
+    "score": 72,
+    "summary": {
+      "title_zh": "FewStepRL：用强化学习微调少步扩散模型",
+      "core_contribution": "论文系统性地将强化学习目标适配到少步扩散模型，提出“变换—分解—适配”三阶段框架，将多种主流RL目标统一为少步版本，并在一个模块化代码库中实现。",
+      "method": "首先通过变换将基于密度、速度或奖励的目标统一表达为x空间中的共同策略预测；然后分解将各目标的梯度写成向参考的自回归项与奖励增强项之和，使方法在梯度层面归结为锚点与权重的选择；最后适配阶段从少步模型的传输终点或切线上计算锚点，瞬时速度可由网络自身或辅助网络恢复。由此得到FlowGRPO、AWM、DiffusionNFT、DiffusionOPSD和ReFL的少步版本。",
+      "findings": "实验表明，当奖励可微且梯度计算代价可接受时，基于奖励梯度的方法最有效；否则DiffusionNFT类方法通常能在较少迭代内达到较高奖励，尽管单次迭代成本有时更高。额外增加推理步数在总体上没有系统性收益，但部分输出在采样步数为训练时的2至4倍时可见改善。"
+    }
+  }
+]

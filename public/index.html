@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-05</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-11-06</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 机器学习: 2</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.06796</span>
+          <span class="paper-id">2611.07392</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.06796" target="_blank">VA-TDM: A Unified View for Improving Few-Step Diffusion Models by Velocity Adversarial Distillation</a>
+        <a href="https://arxiv.org/abs/2611.07392" target="_blank">WeLM-Image: A Unified Image Generation Model towards Visual Intelligence</a>
       </h3>
-      <p class="paper-title-zh">VA-TDM：通过速度对抗蒸馏改进少步扩散模型的统一视角</p>
-      <p class="paper-authors">Yihong Luo, Tianyu Pang, Tianyang Hu</p>
+      <p class="paper-title-zh">WeLM-Image：面向视觉智能的统一图像生成模型</p>
+      <p class="paper-authors">Canmiao Fu, Chen Li, Guohui Zhang, Hao Lu, Hongyang Wei 等 (16 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出速度对抗蒸馏（VAD）框架，统一了分数蒸馏、Fisher匹配和矩匹配等多种分布匹配方法，并基于此构建VA-TDM，实现了高质量的少步扩散/流模型生成。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者从流匹配的角度出发，利用从学生采样过程构建的速度场进行监督，引入学习到的critic比较学生与教师的速度场，并将其分歧转化为学习反馈。VAD统一了分数蒸馏、Fisher匹配和矩匹配，同时解释了现有的启发式MMD更新并导出新的训练目标。在此基础上，VA-TDM采用轨迹分布匹配，对学生轨迹上的部分去噪过程提供监督，并结合过渡感知的在线速度学习与双形式VAD监督。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明VA-TDM在少步生成器学习上表现强劲，在多种骨干网络的文本到图像和文本到视频生成中均达到四步生成的当前最优性能，并可有效扩展至33B的MiniMax-H3。其中VA-TDM-H3显著优于少步的Fast-H3，根据人类偏好更接近原始多步H3。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一个统一图像基础模型WeLM-Image，将多模态理解融入文生图、指令引导编辑和多参考合成，并针对微信大规模消费级应用实现单GPU部署。</div>
+        <div class="summary-section"><strong>方法:</strong> 模型将文本、参考图像和目标潜变量作为一条交错序列处理，采用Mixture-of-Transformers（MoT）骨干，结合共享注意力与独立的理解/生成参数以减少优化干扰。每条路径配备Mixture-of-Experts（MoE）模块提供稀疏容量，存储参数31.7B，每个目标潜变量token约激活5.4B生成参数。构建面向生成的数据引擎，结合知识驱动的视觉词表与大规模视觉聚类以平衡语义覆盖和编辑任务，并用训练时评估引导迭代数据精炼；支持双语标注和经校验的编辑监督，渐进训练至原生1.5K分辨率。生成与编辑分别用评分标准和检查表奖励优化，再通过噪声感知的在线策略蒸馏整合专用策略。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在报告的总体比较中，1536分辨率模型在PRISM-Bench、Qwen-Image-Bench和UnicBench上位列所评估开源模型第一。基于MeanFlow的少步蒸馏得到WeLM-Image-Turbo，在单张NVIDIA H20 GPU上以8步无引导生成，4.98秒即可生成1024×1024图像。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Few-step distillation offers efficient generation with diffusion and flow models, but preserving quality with only a few sampling steps remains challenging. Distribution-matching methods via score distillation provide a strong foundation, yet they rely on accurately tracking the student's changing distribution. At intermediate generation steps in few-step sampling, student-score estimation can be difficult, and commonly used estimators may describe a different distribution from the one used to update the student. Flow matching allows a more flexible approach to supervision through velocity fields constructed from the student's sampling process. Building on this perspective, we introduce Velocity Adversarial Distillation (VAD), which uses a learned critic to compare student and teacher fields and turn their disagreement into feedback for learning. VAD unifies score distillation, Fisher-based matching, and moment matching, also explaining existing heuristic MMD updates and delivering new training objectives. We further develop VA-TDM, which follows trajectory distribution matching: providing supervision for partial denoising along the student trajectory. Beyond this, VA-TDM combines transition-aware online velocity learning and dual-form VAD supervision across intermediate student transitions. Extensive results show that VA-TDM is powerful for learning few-step generators, achieving state-of-the-art four-step performance in both text-to-image and text-to-video generation across various backbones and scaling effectively to 33B MiniMax-H3. In particular, our VA-TDM-H3 notably outperforms the few-step Fast-H3 and is closer to the original many-step H3 according to human preference.</p>
+        <p>We present \textbf{WeLM-Image}, a unified image foundation model that integrates multimodal understanding into text-to-image generation, instruction-guided editing, and multi-reference synthesis. Designed for single-GPU deployment in WeChat's large-scale consumer applications, the model processes text, reference images, and target latents as one interleaved sequence. A Mixture-of-Transformers (MoT) backbone combines shared attention with independent understanding and generation parameters to limit optimization interference. Equipping each path with Mixture-of-Experts (MoE) modules provides sparse capacity, with 31.7B stored parameters and approximately 5.4B generation parameters activated per target latent token. A generation-oriented data engine combines a knowledge-grounded visual vocabulary with large-scale visual clustering to balance semantic coverage and editing tasks, while training-time evaluation guides iterative data refinement. Bilingual annotations and verified editing supervision support progressive training up to native 1.5K resolution. We optimize generation and editing separately with rubric- and checklist-based rewards, then consolidate the specialized policies through noise-aware on-policy distillation. In the reported overall comparisons, the 1536-resolution model ranks first among the evaluated open-source models on PRISM-Bench, Qwen-Image-Bench, and UnicBench. MeanFlow-based few-step distillation yields WeLM-Image-Turbo, which generates a $1024\times1024$ image in 4.98\,s on a single NVIDIA H20 GPU using eight guidance-free steps.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.06796" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.06796.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.07392" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07392.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,94 +268,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.06741</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.06741" target="_blank">TailSteer: Trajectory-Tail Steering for Drift-Resistant Multi-turn Image Editing</a>
-      </h3>
-      <p class="paper-title-zh">TailSteer：面向抗漂移多轮图像编辑的轨迹尾部引导</p>
-      <p class="paper-authors">Ruikang Li, Zixuan Chen, Jiarui Wu, Mingde Yao, Yiyuan Zhang 等 (9 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出TailSteer——一种末阶段训练框架，通过将保持性修正集中在去噪轨迹尾部，在不改变基础模型已有生成与编辑能力的前提下显著提升多轮图像编辑的长期抗漂移鲁棒性。</div>
-        <div class="summary-section"><strong>方法:</strong> TailSteer遵循“保持早期去噪动态接近基模型、将修正集中于轨迹尾部”的原则，在尾部阶段抑制细粒度偏差。修正信号从编辑器自身的在线策略去噪 rollout 中学习，以未改动的源内容作为保持参考，无需人工标注的真实编辑配对数据。该框架作为最终阶段训练应用于FLUX、SenseNova和Qwen等模型家族。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在15-20轮连续编辑中，TailSteer大幅降低了累积视觉漂移，同时在广泛的文生图与单图编辑基准上基本保持了基模型原有性能。结果表明，基础模型的长程编辑鲁棒性可通过TailSteer在训练末段解锁，而无需重新学习其已有能力。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Strong single-turn editing performance does not guarantee reliable multi-turn interaction: as edited outputs are repeatedly reused, small unintended changes can accumulate into severe visual drift. This long-term drift is often mitigated through training on multi-turn data or cross-turn rollouts, potentially altering pretrained priors, or through specialized inference-time mechanisms that are difficult to scale to foundation models. We introduce TailSteer, a final-stage training framework that improves multi-turn robustness while retaining the generative and editing capabilities acquired through earlier training. TailSteer follows a simple principle: keep early denoising dynamics close to those of the base model and concentrate preservation corrections near the trajectory tail, where fine-grained deviations can be suppressed. These corrections are learned from the editor's own on-policy denoising rollouts, using unchanged source content as a preservation reference without requiring curated ground-truth editing pairs. Experiments across the FLUX, SenseNova, and Qwen families show that TailSteer substantially reduces cumulative drift over 15-20 editing turns while largely preserving base-model performance on extensive text-to-image and single-image editing benchmarks. These results demonstrate that long-horizon editing robustness can be unlocked in foundation models after TailSteer, rather than by relearning their existing capabilities.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.06741" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.06741.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.05648</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.05648" target="_blank">NitroFusion2: Bringing Adversarial Loss to the Text Stream of Multimodal Diffusion Transformers</a>
-      </h3>
-      <p class="paper-title-zh">NitroFusion2：将对抗损失引入多模态扩散Transformer的文本流</p>
-      <p class="paper-authors">Dar-Yen Chen, Yi-Zhe Song</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出文本流对抗蒸馏（TSAD），首次利用多模态扩散Transformer（MMDiT）的中间文本token状态作为对抗表示，并结合方面提示判别（ACD）实现对生成属性的可控引导，将少步蒸馏从4-8步压缩至1-2步且保持可比质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者观察到MMDiT的文本流通过联合注意力变得依赖图像，因而可作为新的对抗表示；据此提出TSAD，用文本token的中间状态进行判别。进一步提出ACD，以排版、物体、风格等不同方面对判别器进行条件化，从而引导对抗训练中强调的属性。在NitroFusion的专家判别器设计基础上，将TSAD与ACD集成到NitroFusion2中。</div>
-        <div class="summary-section"><strong>关键发现:</strong> NitroFusion2在质量可比的情况下将少步蒸馏从常规4-8步降至仅1-2步；单步即可生成清晰的渲染文字和丰富的细粒度细节，使单步生成具备实用性；两步生成在各项评测基准上仍具竞争力，确立了MMDiT文本流作为强大且可引导的对抗蒸馏表示。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Adversarial diffusion distillation has conventionally relied on image features for discrimination. We revisit this choice for multimodal diffusion transformers (MMDiTs), whose text stream becomes image-dependent through joint attention. We introduce Text-Stream Adversarial Distillation (TSAD), which exploits intermediate text-token states as a new adversarial representation. Because the text stream has already read the image while remaining tied to the text condition, changing that condition changes what information it extracts from the image. Building on this property, we introduce Aspect-Cued Discrimination (ACD), which conditions the discriminator on different aspects of the sample, such as typography, objects, or style, to steer which properties are emphasized during adversarial training. Building on the expert-discriminator design of NitroFusion, we integrate TSAD and ACD in NitroFusion2. NitroFusion2 brings few-step distillation from the conventional 4-8-step regime down to just 1-2 steps at comparable quality. At one step, it produces sharp rendered text and rich fine-grained details, making one-step generation practical rather than merely a stress test for distillation. At two steps, it remains competitive across the evaluated benchmarks. These results establish the MMDiT text stream as a powerful and steerable representation for adversarial diffusion distillation.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.05648" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.05648.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.06838</span>
+          <span class="paper-id">2611.07604</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.06838" target="_blank">Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties</a>
+        <a href="https://arxiv.org/abs/2611.07604" target="_blank">FisherDistill: Diffusion Distribution Distillation via Closed-Form Fisher Critics</a>
       </h3>
-      <p class="paper-title-zh">面向新兴推理特性的上下文感知自回归图像生成</p>
-      <p class="paper-authors">Jixuan Ying, Haoyu Liu, Timing Yang, Tingyu Zhu, Predrag Neskovic 等 (10 位作者)</p>
+      <p class="paper-title-zh">FisherDistill：基于闭式Fisher判别器的扩散分布蒸馏</p>
+      <p class="paper-authors">Mahesh Bhosale, Yuanhao Zhai, Siwei Lyu, Junsong Yuan, David Doermann 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种上下文感知的自回归图像生成框架，让模型根据全局上下文和当前局部信息动态决定下一个token的生成位置，从而提升结构鲁棒性和推理能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法摒弃预定义或启发式的生成顺序（如下一patch预测、随机顺序或特定尺度的一步生成），改为在生成过程中自适应地选择下一个token位置，使生成顺序与图像结构和语义依赖相匹配。研究在掩码自回归和尺度自回归等多种图像自回归范式上进行了广泛实验验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 上下文感知生成显著提升了不同图像自回归范式下的结构鲁棒性；此外，模型涌现出推理特性，能够更好地理解复杂语义指令并生成更忠实遵循给定引导的图像。结果表明生成顺序是图像自回归建模中关键但尚未被充分探索的因素，上下文感知解码可释放更强的推理感知视觉生成能力。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出FisherDistill，一种无需学习对抗判别器的扩散蒸馏精炼方法，利用闭式Fisher线性判别分析从冻结教师模型的中间表示中提取轻量级精炼信号，以弥补蒸馏生成器与多步教师之间的分布差距。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于Fisher线性判别分析，利用冻结教师模型的中间表示估计真实样本与生成样本的一阶和二阶统计量，推导出一个闭式Fisher方向，使两类特征分布相对于类内变异最大化分离。该方向提供轻量级精炼信号，补充原始蒸馏目标，无需额外对抗判别器及其优化循环。方法可跨多种蒸馏框架使用。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个蒸馏框架上，FisherDistill一致优于各自的蒸馏基线，显著缩小了与对抗精炼方法的差距，同时避免了对抗判别器带来的额外训练开销。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Autoregressive image generation has recently emerged as a competitive visual generation paradigm, yet its generation order is often predefined or heuristic, such as next-patch prediction, random-order prediction, or one-step generation for specific scales. We observe that these strategies can cause models to overlook important structural dependencies in images, thereby limiting both structural robustness and reasoning capability. In this work, we propose a context-aware autoregressive generation framework, where the model dynamically determines the next token location based on global context and current local information. Rather than following a fixed or random order, our method allows the generation process to adapt to image structure and semantic dependencies. Extensive experiments show that context-aware generation significantly improves structural robustness across different image AR paradigms, including masked autoregressive and scale-wise autoregressive models. Beyond quantitative improvements, we further observe emerging reasoning properties: the model can better understand complex semantic instructions and generate images that more faithfully follow the given guidance. These findings suggest that generation order is a critical yet underexplored factor in image autoregressive modeling, and that context-aware decoding can unlock stronger reasoning-aware visual generation capabilities. Code is available at https://github.com/Hpesojyjx/Saccades-AR.</p>
+        <p>Recent advances in diffusion distillation have enabled high-quality image generation in only one or a few network function evaluations (NFEs). Despite their efficiency, aggressively distilled generators often retain a residual distribution gap from their multi-step teachers, motivating recent methods to introduce adversarial refinement with a learned discriminator. In this work, we ask whether such refinement necessarily requires a learned adversarial discriminator. We introduce \textbf{FisherDistill}, a simple alternative based on Fisher linear discriminant analysis. Using intermediate representations from the frozen teacher, we estimate the first- and second-order statistics of real and generated samples and derive a closed-form Fisher direction that maximally separates their feature distributions relative to within-class variation. This direction provides a lightweight refinement signal that complements the original distillation objective without requiring an additional adversarial discriminator or its optimization loop. Across multiple distillation frameworks, our approach consistently improves generation quality over their respective distilled baselines and substantially closes the gap to adversarially refined counterparts. Code: https://bhosalems.github.io/FisherDistill/</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.06838" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.06838.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.07604" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07604.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.06255</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06255" target="_blank">Learning Noise Optimization for Reward Alignment in Few-Step Generative Models</a>
+      </h3>
+      <p class="paper-title-zh">面向少步生成模型奖励对齐的学习噪声优化</p>
+      <p class="paper-authors">Hongeun Kim, Jeongsol Kim, Jong Chul Ye</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出LeNO方法，将奖励引导的初始噪声优化摊销为学习到的残差传输，在保持预训练生成器冻结的情况下，实现少步生成模型的高效奖励对齐，推理时仅需单次噪声校正而无需迭代搜索。</div>
+        <div class="summary-section"><strong>方法:</strong> LeNO学习一个以锚点为条件的噪声校正分布，使用Local GRPO和标量奖励进行训练，将奖励引导的初始噪声优化从推理时搜索转化为可学习的残差传输。针对高斯初始噪声，采用保范投影，推导出校正噪声分布与原始先验之间KL散度的可处理上界，作为原则性正则化目标。预训练生成器保持冻结，仅学习噪声校正。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在少步文本到图像生成和蛋白质结构生成任务上评估LeNO，包括昂贵的黑盒可设计性奖励。结果表明，LeNO在推理时通过单次噪声校正即可提升目标奖励，同时基本保持生成质量和多样性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reward alignment for diffusion- and flow-based generative models is often formulated over stochastic trajectories, making it less suitable for few-step deterministic generators. Initial noise optimization provides a trajectory-free alternative, but existing gradient-free methods require costly per-sample search at inference. We introduce LeNO (Learning Noise Optimization), which amortizes reward-guided initial noise optimization into a learned residual transport while keeping the pretrained generator frozen. LeNO learns an anchor-conditioned distribution over noise corrections using Local GRPO and scalar rewards, eliminating iterative test-time optimization. For Gaussian initial noise with norm-preserving projection, we derive a tractable upper bound on the KL divergence between the corrected noise distribution and the original prior, providing a principled regularization objective. We evaluate LeNO on few-step text-to-image and protein structure generation, including expensive black-box designability rewards. Across both domains, LeNO improves target rewards with a single noise correction at inference while largely preserving generation quality and diversity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06255" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06255.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +332,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.06856</span>
+          <span class="paper-id">2611.08486</span>
         </div>
-        <span class="score-badge">相关性 78/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.06856" target="_blank">LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis</a>
+        <a href="https://arxiv.org/abs/2611.08486" target="_blank">Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI</a>
       </h3>
-      <p class="paper-title-zh">LongBanana：一个经专家验证的长上下文多参考图像合成基准</p>
-      <p class="paper-authors">Haoxiang Cao, Yuxuan Zhang, Penghui Du, Bo Li, Jiajiong Cao 等 (19 位作者)</p>
+      <p class="paper-title-zh">你还怀念我们熬夜画图的日子吗？生成式AI时代下对预告图与框架图的再思考</p>
+      <p class="paper-authors">Xiaoqi Zhao, Youwei Pang, Kailai Zhou</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个由专家设计并验证的长上下文多参考图像合成基准LongBanana，包含90个任务和4,670个原子评估项，并引入智能体框架LongBanana-Gen以评估和提升长程图像生成能力。</div>
-        <div class="summary-section"><strong>方法:</strong> LongBanana按3×3分类法组织90个任务，每个任务约含32张参考图像、20个约束和50个评估项。采用基于图的评估设计，将实体-关系图中的节点、边和全图义务转化为内容保真度、关系绑定和全局约束满足的检查表项。专家标注包含15%双标子集，精确一致率89.4%，二次加权kappa为0.83。此外提出LongBanana-Gen智能体框架，并实验了ReAct-Plan-Exec-Reflect（RPR）工作流。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，最小智能体框架优于直接生成，而RPR工作流通过增强证据基础和修复能力带来依赖框架的增益。LongBanana为衡量密集视觉证据使用提供了可审计的测试平台，并为开发更强的智能体驱动图像生成系统提供了共享目标。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文通过大规模视觉回顾性分析，系统考察了生成式AI辅助修改科研论文中动机图与框架图对表达清晰度和视觉设计的影响，主张AI应作为辅助工具、研究者仍需对解释目的与构图负责。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者构建了包含200篇论文中371幅动机图与框架图的语料库，其中主样本160篇按四个时间段配额抽取，另设40篇风格对比样本。采用单一多模态评判模型对每幅图从沟通与设计六个维度进行三次重复评分，并对全部371幅图尝试源约束条件下的修订，其中369幅通过保真度检查。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 原始图评分在各时间段间未出现一致性下降；AI修订使清晰度平均提升0.428分，但审美连贯性平均下降0.111分（五分制）。六维度平均增益在动机图上大于框架图。案例分析显示，增加的说明能改善比较阐释，但排版层级与视觉经济性问题仍未解决。研究支持以研究者为主导的设计，AI仅辅助探索，作者仍需对解释目的、构图和科学关系负责。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>We introduce LongBanana, to our knowledge the first expert-designed and expert-verified benchmark for long-context multi-reference image synthesis in the age of agent-driven image generation. The task requires retrieving dispersed visual evidence, rejecting distractors, binding entities and relations, and composing one coherent final image from multiple references. LongBanana contains 90 carefully designed tasks organized by a 3-by-3 taxonomy; each task includes about 32 reference images, 20 constraints, and 50 evaluation items, yielding 4,670 expert-specified atomic evaluation items in total. Its graph-grounded evaluation design instantiates each task with reference images and an entity-relation graph, then converts node, edge, and whole-graph obligations into checklist items for Content Fidelity, Relational Binding, and Global Constraint Satisfaction. Reviewed expert labels include a 15% double-labeled subset with 89.4% exact agreement and 0.83 quadratic weighted kappa. We further introduce LongBanana-Gen, an agent-harness framework for long-horizon image generation; experiments show that minimal agent harnesses improve over direct generation, while a ReAct-Plan-Exec-Reflect (RPR) workflow yields harness-dependent gains by strengthening evidence grounding and repair. Together, LongBanana provides an auditable testbed for measuring dense visual evidence use and a shared target for developing stronger agent-driven image-generation systems. Code and data are available at the project page: https://long-banana.com/.</p>
+        <p>Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive style-contrast sample of 40 papers. A single multimodal judge evaluates six dimensions of communication and design, with three repeated judgments per figure. We attempt source-constrained revisions of all 371 figures, of which 369 pass the recorded fidelity checks. Original-figure ratings show no uniform decline across periods. Revisions increase mean clarity ratings by 0.428 points and decrease aesthetic coherence ratings by 0.111 points on a five-point scale. Gains in the six-dimension average are larger for main-sample motivation figures than for frameworks. Case analyses show that added explanation can clarify comparisons while leaving typographic hierarchy and visual economy unresolved. These model-based findings support researcher-led design, with AI assisting exploration and authors retaining responsibility for explanatory purpose, composition, and scientific relationships. The accompanying atlas and evaluation records are available at https://ntu-ai4x.github.io/Rethinking_Figures/index_en.html.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.06856" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.06856.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.08486" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.08486.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.08240</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.08240" target="_blank">FewStepRL: Fine-tuning Few-step Diffusion Models with Reinforcement Learning</a>
+      </h3>
+      <p class="paper-title-zh">FewStepRL：用强化学习微调少步扩散模型</p>
+      <p class="paper-authors">Haitao Lin, Minsi Ren, Yang Li, Xingtong Ge, Zheyuan Hu 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文系统性地将强化学习目标适配到少步扩散模型，提出“变换—分解—适配”三阶段框架，将多种主流RL目标统一为少步版本，并在一个模块化代码库中实现。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先通过变换将基于密度、速度或奖励的目标统一表达为x空间中的共同策略预测；然后分解将各目标的梯度写成向参考的自回归项与奖励增强项之和，使方法在梯度层面归结为锚点与权重的选择；最后适配阶段从少步模型的传输终点或切线上计算锚点，瞬时速度可由网络自身或辅助网络恢复。由此得到FlowGRPO、AWM、DiffusionNFT、DiffusionOPSD和ReFL的少步版本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，当奖励可微且梯度计算代价可接受时，基于奖励梯度的方法最有效；否则DiffusionNFT类方法通常能在较少迭代内达到较高奖励，尽管单次迭代成本有时更高。额外增加推理步数在总体上没有系统性收益，但部分输出在采样步数为训练时的2至4倍时可见改善。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement learning (RL) has become a standard post-training method for diffusion models, but most RL objectives roll out the current policy at every iteration, and with a many-step sampler these rollouts typically dominate the cost of training. Few-step models cut this cost, yet they model an average velocity over an interval, whereas existing RL objectives are built for an instantaneous velocity with a many-step sampler. We adapt RL objectives to few-step models systematically in three phases, namely a transformation, a decomposition and an adaptation. The transformation to $x$-space expresses each objective we consider through a common policy prediction, at the clean end by default and at an explicitly marked level for transition or flow-map objectives, so that objectives stated over densities, velocities or rewards become comparable. The decomposition writes the gradient of each of these objectives as the sum of a self-regression toward a reference and a reward augmentation, so that a method reduces, at the gradient level, to a choice of anchors and weights. The adaptation computes each anchor from a few-step model at the end of its transport or along its tangent, with the instantaneous velocity recovered from the network itself or from an auxiliary network. This yields few-step versions of FlowGRPO, AWM, DiffusionNFT, DiffusionOPSD and ReFL in one modular codebase. In our experiments, reward-gradient-based methods are the most effective when the reward is differentiable and its gradient is affordable; otherwise DiffusionNFT-style methods generally reach high rewards in relatively few iterations despite a sometimes higher per-iteration cost. Extra inference steps show no systematic aggregate benefit in our experiments, although selected outputs visibly improve with two to four times as many sampling steps as in training.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.08240" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.08240.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
