@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-07</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07922</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07922" target="_blank">StitchEdit: Stitching Depth Priors into Image Editors via Per-Layer Gradient Probing</a>
+      </h3>
+      <p class="paper-title-zh">StitchEdit：通过逐层梯度探测将深度先验缝合到图像编辑器中</p>
+      <p class="paper-authors">Qin Guo, Dan Xu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出StitchEdit方法，通过逐层梯度探测发现编辑与深度目标在早期Transformer层兼容、在后期层冲突，并据此设计轻量适配器与逐层学习率调度，将预训练扩散骨干中的几何先验有效注入文本引导图像编辑，显著提升空间编辑的几何保真度与感知质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先通过逐层梯度探测分析编辑目标与深度估计目标在各Transformer层中的兼容性；然后利用轻量深度去噪适配器激活骨干网络的几何能力；接着采用探测引导的逐层学习率调度对该适配器进行选择性微调，在有益层保留深度知识、在冲突层剪除深度知识；最后在自建的StitchEditBench基准上评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 逐层梯度探测表明编辑与深度目标在早期层兼容、后期层冲突，解释了朴素深度条件编辑要么忽略几何要么降低视觉质量的原因；在包含150个几何依赖编辑（空间变换、遮挡操作、视角变化）的StitchEditBench上，StitchEdit在感知质量和几何保真度上均持续优于基于指令和基于深度条件的基线方法。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-guided image editing with diffusion models struggles with spatial edits (e.g. manipulating objects, changing viewpoints, manipulating occlusions) that depend on the 3D structure understanding of a scene. Marigold and follow-up work demonstrate that a pretrained diffusion backbone already harbors strong geometric priors that can be activated for depth estimation, yet how to redirect these priors toward editing remains unresolved. Through per-layer gradient probing, we discover that the editing and depth objectives are compatible in early transformer layers but actively conflict in late layers, explaining why naive depth-conditioned editing either ignores geometry or degrades visual quality. We present StitchEdit, which first activates the backbone's geometric capability via a lightweight depth-denoising adapter, then selectively fine-tunes this adapter for editing using a probe-guided per-layer learning rate schedule that preserves depth knowledge where it helps and prunes it where it conflicts. On the proposed StitchEditBench, a benchmark of 150 geometry-dependent edits spanning spatial transformation, occlusion manipulation, and viewpoint change, StitchEdit consistently surpasses both instruction-based and depth-conditioned baselines on perceptual quality and geometric fidelity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07922" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07922.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07648</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07648" target="_blank">Generator-Aligned Reward Modeling with Target-Aware Bounded Optimization for Visual Generation</a>
+      </h3>
+      <p class="paper-title-zh">面向视觉生成的生成器对齐奖励建模与目标感知有界优化</p>
+      <p class="paper-authors">Ziqiao Weng, Yuanzhi Liang, Haibing Huang, Weidong Cai, Xuelong Li</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出结合生成器对齐奖励建模（GARM）与目标感知有界优化（TABO）的框架，解决奖励引导后训练中数据分布不匹配、属性监督混淆及无界奖励最大化导致的过优化问题，并引入目标感知GRPO（TA-GRPO）用于流式视频优化。</div>
+        <div class="summary-section"><strong>方法:</strong> GARM通过生成器支持匹配缓解分布不匹配，并利用内容匹配的真实对比减少内容混淆，产生与生成器相关且聚焦属性的奖励监督；TABO将学习到的奖励映射为基于真实目标正例校准的平滑有上界函数，该变换独立于优化算法，支持直接奖励梯度和基于策略的优化；进一步提出TA-GRPO，结合固定阶段优势缩放、生成器到目标的课程学习以及时间步平衡的信用分配，适配Flow-GRPO用于流式视频优化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，GARM在保持竞争性生成质量的同时提升了目标属性表达；TABO比无约束奖励最大化更好地平衡了属性增强与视觉质量；TA-GRPO相比原始Flow-GRPO提升了目标增强效果，并减少了中性提示上的意外属性泄漏。结果凸显了生成器对齐奖励监督和受控、数据校准优化对目标视觉生成的重要性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Post-training aims to enhance desired attributes in visual generative models while preserving their general generation capabilities. Reward-guided post-training faces two challenges: real training data may mismatch the generator's output distribution, and attribute supervision may be confounded by unrelated content. Unbounded reward maximization can also cause overoptimization and degrade generation quality. We propose a framework combining Generator-Aligned Reward Modeling (GARM) and Target-Aware Bounded Optimization (TABO). GARM mitigates distribution mismatch through generator-support matching and reduces content confounding using content-matched real contrasts, yielding generator-relevant, attribute-focused reward supervision. TABO maps the learned reward to a smooth, upper-bounded function calibrated from real target-positive examples. This transformation is independent of the optimization algorithm and supports both direct reward-gradient and policy-based optimization. We further introduce Target-Aware GRPO (TA-GRPO), an adaptation of Flow-GRPO that combines fixed stage-wise advantage scaling, a generator-to-target curriculum, and timestep-balanced credit assignment for flow-based video optimization. Experiments show that GARM improves target-attribute expression while maintaining competitive generation quality. TABO better balances attribute enhancement and visual quality than unconstrained reward maximization, while TA-GRPO improves target enhancement over vanilla Flow-GRPO and reduces unintended attribute leakage on neutral prompts. These results highlight the importance of generator-aligned reward supervision and controlled, data-calibrated optimization for targeted visual generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07648" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07648.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07553</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07553" target="_blank">Improving Long-Tail Detection via Layout-Instruction Conditioned Diffusion Synthesis</a>
+      </h3>
+      <p class="paper-title-zh">通过布局-指令条件扩散合成改进长尾检测</p>
+      <p class="paper-authors">Xinyu Zhang, Xiaodi Wang, Yanpeng Sun, Lingfeng Yang, Jingdong Wang 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Tail-SD框架，利用布局-指令条件扩散模型支持文本、布局或混合条件输入，实现可控合成以覆盖长尾目标，从而提升长尾目标检测性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架基于稳定扩散模型，接受边界框、掩码和/或提示作为条件输入，支持文本、布局或混合条件。为在异构条件下训练单一模型，引入多任务交叉注意力模块和多任务嵌入令牌，提高生成质量和多样性。在COCO和LVIS数据集上进行大量实验验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 混合条件扩散合成持续有利于目标检测，在LVIS验证集上，稀有类别的Box AP和Mask AP分别提升+4.89%和+5.68%，显示出解决长尾问题的强大潜力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Synthetic data from diffusion models can improve object detection, but long-tail performance is still limited by scarce rare classes and inflexible conditioning (e.g., text-only or layout-only inputs). In this paper, we propose Tail-SD, a layout-instruction conditioned stable diffusion framework that supports text, layouts, or their hybrid, enabling controllable synthesis from boxes, masks, and/or prompts to better cover the long-tail objects. To train a single model across heterogeneous conditions, we introduce a multi-task cross-attention module and multi-task embedding tokens, improving generation quality and diversity. Extensive experiments on COCO and LVIS demonstrate that diffusion synthesis with hybrid conditioning consistently benefits detection, e.g., on LVIS val, it achieves +4.89% / +5.68% rare Box/Mask AP, highlighting strong potential for addressing long-tail challenges.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07553" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07553.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.07055</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.07055" target="_blank">Expanding the Quality-Coverage Frontier with Competitive Flow Matching</a>
+      </h3>
+      <p class="paper-title-zh">通过竞争性流匹配扩展质量-覆盖前沿</p>
+      <p class="paper-authors">Wenxuan Peng, Richard Zhang, Haitian Zheng, Jaskirat Singh, Tsai-Shien Chen 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出在流匹配训练中引入竞争机制，让多个候选预测竞争解释目标，从而缓解质量与覆盖之间的权衡，并扩展了质量-覆盖前沿。</div>
+        <div class="summary-section"><strong>方法:</strong> 在流匹配训练中，为预测器增加一个随机采样的低维条件编码z，每个训练样本采样K个z值生成K个候选速度，采用赢家通吃损失仅对最佳匹配候选计算损失。该方法还自然衍生出一种新的引导方式——辅助条件缩放，可与传统引导方法互补。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上使用SiT和RAEv2验证，仅用不到原始SiT预训练3%的计算量进行后训练，在67%召回率下将FD_r,6从19.22降至5.91；在RAEv2上70%召回率下将FD_r,6从16.83降至3.18，显著改善了质量-覆盖前沿。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Flow matching (FM) generators often face a quality-coverage tradeoff. Inference-time techniques such as classifier-free guidance raise quality, but at the cost of coverage. We hypothesize this limitation stems from a basic property of the objective: an intermediate noisy image could correspond to many clean images, yet the model can only predict a single velocity, at best averaging over the multiple possibilities. To mitigate this, we introduce competition among predictions during training. We achieve this by augmenting the predictor with a randomly drawn low-dimensional conditioning code $z$. For each training example, we sample $K$ values of $z$ to produce $K$ candidate velocities that compete to explain the target, and apply the loss only to the best-matching candidate. This winner-take-all objective allows different modes to shape different predictions, rather than being averaged into a single compromise. Furthermore, this term naturally enables a new form of guidance, auxiliary conditioning scaling, which complements traditional guidance methods. Together, these two guidance mechanisms show that our method substantially improves the quality-coverage frontier. We validate on ImageNet-256, using two different testbeds, SiT and RAEv2. Given less than 3% of the original SiT pretraining compute for post-training, at the 67% Recall point, our method reduces $\mathrm{FD}_{r,6}$ from 19.22 to 5.91. On RAEv2, at the 70% Recall point, it reduces $\mathrm{FD}_{r,6}$ from 16.83 to 3.18.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.07055" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.07055.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06840</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06840" target="_blank">Same Layout, Different Count: What Number Words Do Past Ten in Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">相同布局，不同数量：文本到图像模型中超过十的数字词起什么作用</p>
+      <p class="paper-authors">Liang Yue, Eric A. Vance</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文系统研究了五个开源文本到图像模型在物体数量超过约十个后对数字词的处理能力，揭示了模型存在“跟随上限”（reach），并指出超过该上限后起始噪声的粗粒度部分决定图像布局而非物体数量，数字词虽仍影响去噪过程却无法给出明确方向。</div>
+        <div class="summary-section"><strong>方法:</strong> 在五个开源文本到图像模型中，固定物体和起始噪声，逐一改变单个变量进行受控实验，并由未见过原始请求的标注者对3,088张图像进行计数。通过比较不同噪声粒度重绘、将数量以带噪网格形式嵌入起始潜变量等方式，分析数字词对生成结果的影响，并对比精确匹配分数与相对误差分数等评价指标。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 所有模型在小数量时能跟随数字词，但存在跟随上限：SD3.5-M和FLUX.1-dev在十之后不久便停止跟随，FLUX.2 [klein]和Qwen-Image可松散跟随至二十五。超过上限后，起始噪声的粗粒度部分固定了图像构图但不决定物体数量；仅重绘比八分之一图像更细的噪声即可保持布局，且已使计数偏移达三分之二。数字词仍能到达去噪器并在最初几步起作用，但无法产生明确方向。以带噪网格形式呈现数量时，59%的图像可被识别出数量，而仅用文字告知时仅4%。超过十后，精确匹配分数难以区分松散跟随与忽略数字词的模型，相对误差分数甚至可能偏好恒定猜测十六，需采用同噪声少样本测试加以区分。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Ask SD3.5-Medium for twelve of an object and then, from the same starting noise, for twenty-five. The picture keeps its layout, but the count changes about as much as it would under a new random seed, and in no consistent direction. We study what number words do once a request passes about ten objects, in five open text-to-image models. Holding the object and the starting noise fixed, we change one thing at a time, and people who never see the request count 3,088 of the images. Every model follows the number for small crowds, but only up to a point, its reach: SD3.5-M and FLUX.1-dev stop following it soon after ten, while FLUX.2 [klein] and Qwen-Image follow it loosely up to twenty-five. Beyond SD3.5-M's reach, the coarse part of the starting noise fixes the composition of the picture but not how many objects it holds: redrawing only the noise finer than an eighth of the image keeps the layout as well as a new number does, and already moves the count two-thirds as far. The number word still reaches the denoiser and acts in its first steps, but nothing we tried gives it a clear direction. Shown instead as a noised grid in the starting latent, the count is drawn: people find it in 59% of images, against 4% when it is only told. Past ten, an exact-match score barely separates a model that follows the number loosely from one that ignores it, and a relative-error score can even prefer a constant guess of sixteen. A same-noise test with a few requests per object tells them apart.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06840" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06840.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
