@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-08</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06343</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06343" target="_blank">Prism: Bidirectional Self-Teaching for Unified Multimodal Models</a>
+      </h3>
+      <p class="paper-title-zh">Prism：面向统一多模态模型的双向自教学</p>
+      <p class="paper-authors">Peng Zhang, Qian Chen, Xianyin Zhang, Yimin Tian, Ruite Fei 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Prism，一种面向统一多模态模型的双向自教学后训练方法，通过从模型自生成的交错轨迹中解耦文本链与图像链并依据其可靠性构建训练目标，实现理解与生成能力的协同提升，且无需外部验证器或人工标注的修正轨迹。</div>
+        <div class="summary-section"><strong>方法:</strong> Prism将模型自生成的耦合交错轨迹分解为文本链和图像链，分别评估两条链的可靠性，并根据二者的可靠性状态构建相应的训练目标，从而形成双向监督信号。该方法不依赖固定的理解教师模型，也不依赖真实轨迹监督，而是从自生成rollout中挖掘监督信息。作者在SenseNova-U1和BAGEL两个统一多模态模型上进行了实验验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SenseNova-U1上，生成侧GenEval从85.8提升至89.2（+3.4），DPG从86.1提升至87.3（+1.2）；理解侧MME总分从2282.6提升至2311.6，MMVP从58.0提升至62.0。在BAGEL上观察到一致的提升。结果表明，Prism通过从自生成轨迹构建可靠性引导的自训练目标，在不依赖外部验证器或外部标注修正轨迹的情况下，实现了生成与理解的协同改进。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Unified Multimodal Models (UMMs) aim to support visual understanding and generation within a single model. Existing post-training methods either use understanding as a fixed teacher to improve generation, or rely on ground-truth trajectories to supervise both understanding and generation. Prism instead derives bidirectional supervision from self-generated interleaved rollouts, constructing training targets according to the reliability of their text and image chains. We propose Prism, a bidirectional self-teaching post-training method for UMMs. Like a prism decomposing mixed light, Prism decouples a coupled interleaved trajectory into a text chain and an image chain, assesses the reliability of each chain, and constructs a corresponding training target from their reliability states. Experiments on both SenseNova-U1 and BAGEL show that Prism improves both understanding and generation. On the generation side, GenEval improves from 85.8 to 89.2 (+3.4), and DPG improves from 86.1 to 87.3 (+1.2) on SenseNova-U1. On the understanding side, the total MME score improves from 2282.6 to 2311.6, and MMVP improves from 58.0 to 62.0. Consistent improvements are observed on BAGEL. These results highlight that Prism enables coordinated improvements in generation and understanding by constructing reliability-guided self-training targets from self-generated trajectories, without relying on an external verifier or externally annotated corrected trajectories during target construction.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06343" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06343.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06270</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06270" target="_blank">NextGAN: Towards Simple and Scalable GAN Training for Image and Video Generation</a>
+      </h3>
+      <p class="paper-title-zh">NextGAN：面向图像与视频生成的简单可扩展GAN训练</p>
+      <p class="paper-authors">Xinhao Lou, Dongye Xie, Peng Sun, Chenyi Zhuang, Kaicheng Yu 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出NextGAN，通过回归critic输入梯度到参考特征与生成特征之间的位移来训练标量critic，实现简单且可扩展的对抗训练，支持图像和视频的一步/少步生成。</div>
+        <div class="summary-section"><strong>方法:</strong> 在冻结表示空间的插值位置上，独立配对参考特征和生成特征，训练标量critic回归其输入梯度到两者之间的位移。对固定生成器，该回归等价于带梯度能量惩罚的对抗目标，而生成器保持标准的基于势能的GAN更新。该目标无需辅助损失、在线教师分数或轨迹，即可适配预训练的图像和视频生成器。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，NEXTGAN使用像素空间JiT-B实现一步FID 2.87，使用潜空间DiT-XL/1实现一步FID 1.54，其对抗形式进一步达到1.36。在文本到视频生成中，单个训练的Wan2.1-1.3B模型支持一步、两步和四步采样，在一步和两步采样下，VBench总分在对比的1.3B方法中最高；两步采样得分为83.13，分别超过rCM和AnyFlow 1.25和0.47分。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Adversarial training enables one- and few-step image and video generation, but conventional adversarial losses supervise critic values without directly specifying the gradients used to update the generator. We present NEXTGAN, which trains a scalar critic by regressing its input gradient onto displacements between independently paired reference and generated features at interpolated locations in frozen representation spaces. For a fixed generator, this regression is equivalent to an adversarial objective with a gradient-energy penalty, while the generator retains the standard potential-based GAN update. The same objective adapts pre-trained image and video generators with up to 14B parameters, without auxiliary losses, online teacher scores, or trajectories. On ImageNet $256 \times 256$, NEXTGAN achieves one-step FIDs of 2.87 with pixel-space JiT-B and 1.54 with latent-space DiT-XL/1; its adversarial form further reaches 1.36. For text-to-video generation, a single trained Wan2.1-1.3B model supports one-, two-, and four-step sampling, achieving the highest VBench total scores among the compared 1.3B methods at one and two steps. At two steps, NEXTGAN scores 83.13, exceeding rCM and AnyFlow by 1.25 and 0.47 points, respectively. Code is available at https://github.com/LINs-lab/NextGAN.git.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06270" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06270.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.06048</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.06048" target="_blank">SVGFaith: A Two-Layer Meta-Evaluation of Faithfulness Metrics for Text-to-SVG Generation</a>
+      </h3>
+      <p class="paper-title-zh">SVGFaith：面向文本到SVG生成忠实度指标的两层元评估框架</p>
+      <p class="paper-authors">Guotao Liang, Haitao Zhou, Biao Liu, Huanxuan Liao, Lingfeng Qiao 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了SVGFaith两层元评估框架，系统检验现有栅格图像指标能否捕捉文本到SVG生成的细粒度提示忠实度，并提出了可解释的逐点指标SVGFaith-Score。</div>
+        <div class="summary-section"><strong>方法:</strong> SVGFaith包含两个评估层：SVGFaith-Diagnostic由1,842个受控对比对组成，覆盖八个能力维度，分为“同一提示比较两个渲染结果”和“同一渲染结果比较两个描述”两个方向；SVGFaith-Arena包含1,327个人工标注的真实生成器输出对比。此外，作者提出SVGFaith-Score，通过领域微调的解构器将提示转化为原子视觉需求的依赖图，用视觉问答模型逐项打分，并在前置需求得分低时对相关需求得分进行折扣。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SVGFaith-Diagnostic上，CLIP等四种图像-文本嵌入指标在物体身份上达到至少0.789的成对准确率，但在空间关系和属性绑定上最高仅0.672（随机水平为0.5）。SVGFaith-Score在Arena和Diagnostic两个方向上均显著优于全部九个基线（包括Qwen3.5-122B-A10B评判模型），并能给出哪些需求未满足及哪些需求因前置条件而继承折扣的可解释信息。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-SVG systems are commonly evaluated by applying raster-image metrics to rasterised outputs, yet whether these scores capture fine-grained prompt faithfulness remains unclear. We introduce SVGFaith, a two-layer meta-evaluation framework in which the more faithful candidate of each pair is determined by construction or by human judgment. SVGFaith-Diagnostic contains 1,842 controlled contrastive pairs across eight capability axes, split evenly between two directions: two renderings compared against one prompt, and two descriptions compared against one rendering. SVGFaith-Arena contains 1,327 human-annotated comparisons of real generator outputs. On SVGFaith-Diagnostic, CLIP and three other image--text embedding metrics reach at least 0.789 pairwise accuracy on object identity but at most 0.672 on spatial relations and attribute binding, where chance is 0.5. We further introduce SVGFaith-Score, an interpretable pointwise metric. A domain-tuned decomposer turns each prompt into a dependency graph of atomic visual requirements, a visual question answering model scores whether each requirement is satisfied, and a requirement's score is discounted when its prerequisites score low. In addition to the overall score, the per-requirement scores show which requirements are judged unsatisfied and which inherit discounts from their prerequisites. SVGFaith-Score significantly outperforms all nine baselines, including a Qwen3.5-122B-A10B judge, on Arena and in both Diagnostic directions. Code and data: https://github.com/Yukinonooo/SVGFaith.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.06048" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.06048.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.05755</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.05755" target="_blank">Decompose the Distillation: Interpretable Single-Pass Guidance for Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">解构蒸馏：面向扩散模型的可解释单次引导</p>
+      <p class="paper-authors">Wuyang Zhang, Xiaolin Xu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出CtrlFlow，一种单次前向传播的引导方法，在保持无分类器引导（CFG）可分离的基流与引导方向接口的同时，将每步采样成本从两次前向传播降至一次，且训练后的单一检查点可在推理时任意调整引导强度。</div>
+        <div class="summary-section"><strong>方法:</strong> 在冻结的扩散模型主干上附加两个轻量LoRA适配器（各增加2.5%参数），通过一次共享主干前向传播同时预测基流和引导方向；引导强度仅在传播后乘以引导方向，从而实现任意尺度下的单次评估。为对齐推理时复合误差，采用统一的多尺度蒸馏损失进行训练；进一步引入尺度自适应调制抑制速度场误差，并利用时间网格扭曲将求解器评估集中在轨迹变化最快的区域。</div>
+        <div class="summary-section"><strong>关键发现:</strong> CtrlFlow在单次前向传播成本下保留了CFG的可分离引导接口，支持推理时无需重训练即可调整引导强度，并通过多尺度蒸馏损失、尺度自适应调制和时间网格扭曲有效降低了极端尺度下的残差引导误差，提升了生成质量与诊断能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Classifier-Free Guidance is a widely used inference-time guidance rule for conditional image generation with diffusion models, which exposes a guidance scale that adjusts conditioning strength after training. This flexibility requires conditional and unconditional model evaluations at every sampling step, so an N-step trajectory takes 2N forward passes. Single-pass alternatives reduce such cost, yet most collapse CFG's two components into one opaque guided prediction, losing the separable base flow and guidance direction that support per-step control and diagnostics, even when the scale remains adjustable. This work introduces CtrlFlow, a single-pass guidance method that preserves CFG's separable base-flow and guidance-direction interface. To preserve both components at one-pass cost, CtrlFlow attaches two lightweight LoRA adapters to a frozen backbone, each adding 2.5% parameters, and predicts the base flow and guidance direction from one pass of the shared frozen backbone. Because the guidance scale multiplies the guidance direction only after the forward pass, one evaluation yields the guided velocity at any scale, so a single trained checkpoint remains adjustable at inference without retraining. Preserving two outputs introduces a training mismatch: inference amplifies guidance-direction errors by the chosen scale, while naive component-wise losses weight both outputs equally. To align training with this composed inference-time error, CtrlFlow uses a unified multi-scale distillation loss. Residual guidance errors can still persist at extreme scales, where even small guidance-direction errors are amplified by the guidance scale. To reduce this inference-time error, CtrlFlow applies scale-adaptive modulation to damp velocity-field errors and time-grid warping to concentrate solver evaluations where the trajectory changes most rapidly.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.05755" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.05755.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.05451</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.05451" target="_blank">From Tokens to Trajectories: Parameter-Efficient Continuous Adaptation of Unified Multimodal Models</a>
+      </h3>
+      <p class="paper-title-zh">从离散标记到连续轨迹：统一多模态模型的参数高效连续适配</p>
+      <p class="paper-authors">Gayatri Deshmukh, Onkar Susladkar, Adheesh Juvekar, Halil Kilicoglu, Ismini Lourentzou</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出FlowShift框架，将预训练的离散统一多模态模型（UMM）转化为连续整流流生成器，在不牺牲语义理解能力的前提下突破离散量化的视觉细节瓶颈，显著提升生成图像的感知质量。</div>
+        <div class="summary-section"><strong>方法:</strong> FlowShift用连续潜在投影替换离散视觉接口，并对注意力层应用LoRA以实现参数高效适配；同时提出双目标速度向量蒸馏（DOVD），使模型同时对齐高保真连续教师模型和真实连续轨迹，从而在避免语义漂移的同时提升视觉质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在主流离散UMM上应用FlowShift后，COCO-30K的FID和美学评分显著提升，同时保留超过99.5%的多模态理解能力；消融实验证实DOVD是生成质量提升的关键驱动因素，最终实现了不牺牲预训练语义基础的高保真连续生成。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>While discrete tokenization in Unified Multimodal Models (UMMs) establishes strong semantic reasoning, it introduces a strict quantization bottleneck that degrades fine-grained visual details, often resulting in structurally accurate but artifact-heavy images. We introduce FlowShift, a parameter-efficient post-training framework that bypasses this bottleneck by converting pre-trained discrete UMMs into continuous rectified-flow generators. Instead of discarding the backbone's semantic priors, FlowShift replaces discrete visual interfaces with continuous latent projections and applies LoRA to the attention layers. To efficiently boost visual quality without semantic drift, we propose Dual-Objective Velocity Vector Distillation (DOVD), which aligns the model with a high-fidelity continuous teacher and ground-truth continuous trajectories. This approach drastically improves perceptual quality while preserving prompt adherence and reasoning. When applied to leading discrete UMMs, FlowShift significantly improves COCO-30K FID and aesthetic scores, while retaining over 99.5% of multimodal understanding capabilities. Ablations confirm DOVD drives generation quality. Ultimately, FlowShift achieves high-fidelity continuous generation without sacrificing pre-trained semantic grounding.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.05451" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.05451.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
