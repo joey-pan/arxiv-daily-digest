@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-09</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 机器学习: 1 | cs.SE: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">cs.SE</span>
+          <span class="paper-id">2611.09769</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.09769" target="_blank">AnimWeb-Bench: Benchmarking Animated Webpage Code Generation from Videos</a>
+      </h3>
+      <p class="paper-title-zh">AnimWeb-Bench：基于视频的动画网页代码生成基准测试</p>
+      <p class="paper-authors">Zhongyi Zhang, Jingyu Xiao, Shuqing Li, Michael R. Lyu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了首个面向视频到动画网页代码生成的基准测试AnimWeb-Bench，填补了现有基准仅关注静态截图、用户触发交互或孤立动效图形的空白，系统评估了多模态大模型和编码智能体重建完整动画网页的能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了包含124个真实网页的基准数据集，覆盖7个应用领域和33种动画类型（91.9%的页面组合多种动画类型），每个页面配有参考视频和原始静态资源。提出与人类判断对齐的二维评估协议：静态外观保真度在关键帧上衡量结构、文本、颜色和视觉相似度，动画保真度则跨帧追踪UI组件并比较其位置、尺寸、速度和外观。基于该基准评估了14个多模态大模型和3个编码智能体。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明：(1) 重现网页动画比重现静态外观困难得多；(2) 显式的帧检查和渲染反馈能提升编码智能体的重建质量；(3) 快速连续的变化比离散状态转换更难复现。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Animation is pervasive on the Web, the CSS animation property alone appears on over three-quarters of webpages. Yet existing webpage code generation benchmarks target static screenshots, user-triggered interactions, or isolated motion graphics, leaving the ability of multimodal large language models (MLLMs) and coding agents to reconstruct complete animated webpages largely unexplored. To fill this gap, we introduce AnimWeb-Bench, the first benchmark for animated webpage code generation from videos. It comprises 124 real-world webpages spanning 7 application domains and 33 animation types, with 91.9% of pages combining multiple types, each paired with a reference video and the static assets of the original webpage. We further propose a human-aligned, two-dimensional evaluation protocol: Static Appearance Fidelity measures structure, text, color, and visual similarity on aligned keyframes, while Animation Fidelity tracks UI components across frames and compares their position, size, velocity, and appearance with those in the reference video. Evaluating 14 MLLMs and three coding agents reveals: (1) reproducing webpage animations is substantially more difficult than reproducing static appearance; (2) explicit frame inspection and render feedback improve the reconstruction quality of coding agents; and (3) rapid, continuous changes are harder to reproduce than discrete state transitions. Our code and dataset are available at https://starry1001.github.io/AnimWeb-Bench-website/ .</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.09769" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.09769.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.08802</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.08802" target="_blank">Scale as a Modality: Multi-Scale Pixel-Space Diffusion Transformers</a>
+      </h3>
+      <p class="paper-title-zh">尺度作为一种模态：多尺度像素空间扩散Transformer</p>
+      <p class="paper-authors">Ruibo Chen, Kaishen Wang, Tianyi Xiong, Chenxi Liu, Yanshuo Chen 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出MS-pDiT，一种将空间尺度视为模态的多尺度像素空间扩散Transformer，通过多尺度并行流和双向跨尺度交互，将尺度数量确立为新的架构扩展维度，显著提升图像生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> MS-pDiT在多个patch大小上对同一噪声图像进行token化，每个尺度在专用的transformer流中处理，并通过紧凑的MM-DiT风格联合注意力实现双向信息交换，且注意力成本与最细patch大小无关。该设计支持从粗到细的多尺度处理，并允许灵活调整尺度数量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，将尺度数从2增加到5，FID从4.39持续降至2.19；增加中间尺度在同等参数预算下显著优于增加深度。MS-pDiT在ImageNet 256×256和512×512上分别达到FID 1.43和1.44，并自然扩展到文本到图像生成，在GenEval上达到0.86，DPG-Bench上达到83.9。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Latent diffusion models rely on pretrained autoencoders that introduce lossy compression and constrain spatial granularity. Pixel-space diffusion avoids this bottleneck and enables flexible tokenization at multiple spatial scales, yet existing approaches largely adopt two-level coarse-to-fine architectures with limited cross-scale interaction. We introduce MS-pDiT, a multi-scale pixel-space diffusion transformer that treats spatial scale as a modality. MS-pDiT tokenizes the same noisy image at multiple patch sizes, processes each scale in a dedicated transformer stream, and enables bidirectional information exchange through compacted MM-DiT-style joint attention, with attention cost independent of the finest patch size. This design establishes the number of scales as a new architectural scaling dimension. On ImageNet $256\times256$, increasing the number of scales from two to five consistently improves FID from 4.39 to 2.31, 2.26, and 2.19, while adding an intermediate scale substantially outperforms increasing depth under comparable parameter budgets. Further analysis highlights the importance of bidirectional cross-scale interaction and late introduction of fine-grained streams. MS-pDiT achieves FID scores of 1.43 and 1.44 on ImageNet $256\times256$ and $512\times512$, respectively, and naturally extends to text-to-image generation, achieving 0.86 on GenEval and 83.9 on DPG-Bench.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.08802" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.08802.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.09387</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.09387" target="_blank">A Bridge from Paste to Place: Physics-Guided One-Step Image Composition via Object-Scene Interaction</a>
+      </h3>
+      <p class="paper-title-zh">从粘贴到放置之桥：基于物体-场景交互的物理引导一步式图像合成</p>
+      <p class="paper-authors">Hongzhen Li, Youwei Pan, Yingfang Zhu, Sen Zhu, Fengjie Zhu 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Paste2Place，一个端到端、物理引导的流模型，能够从粘贴输入一步式生成逼真的合成图像，并构建了大规模高质量的训练数据集与评测基准，填补了图像合成任务在数据与基准方面的空白。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于流模型学习从粘贴输入到真实合成图像的直接一步式潜空间桥接，并在模型内部显式进行反照率-阴影-残差的分解与重组以引入物理引导。为支持训练与评测，作者开发了Blender渲染与验证流水线来生成带物理标注的成对合成数据，并从开源物体移除数据中构建真实场景配对，最终得到86,273个训练对和1,500个样例的基准。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量定性与定量实验表明，Paste2Place在图像合成质量和推理速度上均取得显著优势，同时该工作为图像合成提供了清晰的任务定义和有效解决方案。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Realistic image composition must make a pasted object appear naturally present in a scene while preserving the fine details of both foreground and background. Reference-based insertion methods can change object pose and appearance, while foreground harmonization methods and shadow-specific synthesis methods each address only part of this task. An efficient, unified solution to this task remains an open challenge. We introduce Paste2Place, an end-to-end, physics-guided flow-based model that learns a direct, one-step latent bridge from pasted inputs to realistic composites, guided by explicit albedo-shading-residual decomposition and recomposition within the model. To support model training and evaluation, we develop a Blender rendering and validation pipeline to generate paired composites with physical annotations, and construct real-scene pairs from open-source object-removal data. This effort yields 86,273 training pairs and a 1,500-example benchmark. Extensive qualitative and quantitative experiments demonstrate that Paste2Place achieves substantial advantages in image composition quality and inference speed. Overall, our work provides a clear task definition and an effective solution for image composition, and fills a gap in large-scale, high-quality datasets and benchmarks for training and evaluating image composition.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.09387" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.09387.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.09304</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.09304" target="_blank">T2I Models Rarely Invert Negation but Often Fail to Suppress Negated Concepts: Benchmarking Negation Suppression in Text-to-Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">文本到图像模型很少反转否定，但常常无法抑制被否定的概念：文本到图像生成中否定抑制的基准测试</p>
+      <p class="paper-authors">Akansha Gautam, Aparna Bharati, Mayank Vatsa, Richa Singh</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了T2I-NSI基准和指标，用于系统衡量文本到图像生成中的否定敏感性，揭示模型的主要失败模式是抑制不足而非反转理解。</div>
+        <div class="summary-section"><strong>方法:</strong> 构建了包含759,869对提示原子、覆盖5,082个对象目录的基准，每个否定提示配对一个规范肯定对应提示，并按语言形式（词汇/语义、形态、句法）和目标类型（对象、属性、关系、组合、嵌套）分解否定。收集了916,272张图像（开源权重模型911,982张，闭源模型4,290张），使用Basic CLIP估计器和由CLIP、VQA及开放词汇检测组成的Robust集成进行评分，并辅以420个原子的盲测人工研究和匹配提示对比实验。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 否定敏感性普遍偏低：开源权重生成器NSI≤0.038，GPT-Image-1.5和Gemini-2.5-Flash-Image约0.09。主要失败模式是抑制不足而非误导，反转解释几乎不存在（超过45万次原子-模型评估中为0.00%），而模型在8-19%的原子中对两个提示都渲染了该概念，另有9-25%仅部分抑制。盲测人工研究证实了反转几乎不存在和高持续率，匹配提示对比表明开源与闭源约3.5倍的差距并非提示生成器伪影。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-image diffusion models often fail to suppress explicitly negated concepts, such as a lamp for "a desk without a lamp." We introduce T2I-NSI, a benchmark and metric for measuring negation sensitivity in text-to-image generation. It pairs each negated prompt with a canonical positive counterpart and factorizes negation by linguistic form (lexical/semantic, morphological, syntactic) and target type (objects, attributes, relations, compositions, and nested cases). The benchmark contains 759,869 paired prompt atoms over a 5,082-object catalog, with 916,272 images (911,982 open-weights, 4,290 closed-source), scored by a Basic CLIP estimator and a Robust ensemble of CLIP, VQA and open-vocabulary detection. Negation sensitivity is low: open-weights generators score NSI <= 0.038, while GPT-Image-1.5 and Gemini-2.5-Flash-Image reach about 0.09. The dominant failure is under-suppression rather than misdirection. Inverse interpretation is essentially absent (0.00% across over 450K atom-model evaluations), whereas models render the concept under both prompts on 8-19% of atoms and only partly suppress it on a further 9-25%; most remaining atoms are too weakly rendered to label. A blinded human study (420 atoms, nine annotators) corroborates the near-absence of inversion and the high persistence rate, and a matched-prompt comparison shows the open-versus-closed gap (~3.5x) is not a prompt-generator artifact. Code and data: https://github.com/IAB-IITJ/T2I-NSI</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.09304" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.09304.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.09175</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.09175" target="_blank">SIFR: Stable Signed Flow Reinforcement</a>
+      </h3>
+      <p class="paper-title-zh">SIFR：稳定符号流强化学习</p>
+      <p class="paper-authors">Runlong Liao, Xingqian Xu, Lizhang Chen, Baiyu Su, Yufan Huang 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SIFR方法，通过用符号优势替代奖励权重来提供缺失的“不拟合”信号，并约束相对于参考模型的速度漂移以稳定训练，解决了流模型奖励微调中反复重加权导致的分布集中和崩溃问题。</div>
+        <div class="summary-section"><strong>方法:</strong> SIFR将奖励权重替换为符号优势（signed advantages），从而显式提供对低奖励样本的抑制信号；同时约束模型相对于参考模型的速度漂移，并利用拉格朗日乘子根据预设的漂移预算自适应调整正则化强度。作者进一步证明现有流强化学习方法均属于该框架，它们隐式地最小化符号损失，区别仅在于正则化选择不同。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SD3.5 Medium（2.5B）、FLUX.2 Klein（9B）以及扩展至Cosmos 3 Super Text2Image（64B）上验证，SIFR在全部12个骨干网络-奖励组合（涵盖偏好奖励和规则奖励）中达到或超越现有方法，更快达到其峰值奖励，并且在现有方法趋于平台或崩溃的长时间训练中持续改进。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reward-based fine-tuning of flow models requires effectively promoting high-reward and suppressing low-reward samples, while maintaining training stability over many rounds of iterative updates. Iterative reward fine-tuning provides a simple starting point, but the positive reward weights give no explicit unfitting signal, and repeated reweighting concentrates the distribution and causes collapse. We propose Stable Signed Flow Reinforcement (SIFR), which replaces the reward weights by signed advantages to supply the missing unfitting signal, and constrains the velocity drift from a reference model to stabilize the updates, with a Lagrange multiplier that adapts the regularization strength to a prescribed drift budget. We further show that existing flow RL methods fall within this framework: they implicitly minimize the signed loss, differing in their regularization choices. We validate SIFR on SD3.5 Medium (2.5B) and FLUX.2 Klein (9B) and scale it to Cosmos 3 Super Text2Image (64B): across all 12 backbone--reward pairs with preference and rule-based rewards, it matches or exceeds existing methods, reaches their peak rewards much faster, and keeps improving over long training where they plateau or collapse.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.09175" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.09175.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
