@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-10</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-11-11</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.12042</span>
+          <span class="paper-id">2611.13004</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.12042" target="_blank">Four-Step Text-Bearing Image Generation via Distillation with Local Response Regularization and Teacher-Guided Training</a>
+        <a href="https://arxiv.org/abs/2611.13004" target="_blank">G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation</a>
       </h3>
-      <p class="paper-title-zh">基于局部响应正则化与教师引导训练的四步蒸馏文本图像生成</p>
-      <p class="paper-authors">Kairui Wen, Sheng Ye, Yong-Jin Liu</p>
+      <p class="paper-title-zh">G-STAR：用于深度压缩自回归生成的组缩放令牌容量</p>
+      <p class="paper-authors">Xu Huang, Ye Huang, Xiaotong Li, Zhengrong Yue, Jialv Zou 等 (11 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种四步蒸馏框架，将局部响应正则化与教师引导的文本训练相结合，在显著降低采样成本的同时保持文本图像中场景的连贯性与字符的准确性。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法基于分布匹配，对GLM-Image DiT进行蒸馏，同时保留其自回归视觉先验、字形编码器和VAE。通过路径长度惩罚促进条件去噪场的局部响应一致性，并采用渐进式训练，将合成字符串与教师生成的图像相结合，以保持字符准确性和场景融合的排版效果。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 学生模型在GenEval上取得0.84的总体得分，CVTG-2K词准确率为0.5045，而四步TDM分别为0.81和0.1690；系数研究显示10^-5较优，Qwen-Image实验表明响应正则化和文本监督可带来额外增益。单图推理耗时1.742秒，相比教师的5.818秒实现3.34倍加速，且GPU显存需求相同（40 GB）。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种基于乘积量化的空间-组协同缩放框架G-STAR，在固定信息预算下通过组大小随空间压缩因子二次缩放的原则，实现了32倍甚至有效64倍的图像压缩，同时保持强重建、理解和生成性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 基于乘积量化理论，推导出在固定名义信息预算下组大小应随每轴空间压缩因子二次缩放。提出G-STAR框架进行空间与组的协同缩放，并针对大组内依赖问题引入半自回归解码器，结合并行特征计算与轻量因果建模以平衡推理延迟和生成质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在五个文本到图像基准（GenEval、DPG-Bench、PRISM、LongText-Bench、Qwen-Image-Bench）上，高度压缩模型与领先模型性能相当。在1024×1024分辨率下，相比先前离散自回归模型实现20倍加速，单张NVIDIA H200上每张图像生成仅需2.5秒，表明高度压缩的离散表示可实现低延迟的高质量自回归生成。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Generating text-bearing images requires coherent scenes and accurate characters. Large text-to-image models improve both capabilities through repeated denoising, at substantial sampling cost. Few-step distillation reduces this cost but requires the student to organize scenes and refine glyphs within a short trajectory. We present a four-step distillation framework combining local response regularization with teacher-guided text training. Built on distribution matching, the framework distills the GLM-Image DiT while retaining its autoregressive visual prior, glyph encoder, and VAE. A path-length penalty promotes consistent local responses of the conditional denoising field. Progressive training combines synthetic strings with teacher-generated imagery to preserve character accuracy and scene-integrated typography. The student achieves GenEval Overall 0.84 and CVTG-2K word accuracy 0.5045, compared with 0.81 and 0.1690 for four-step TDM. A coefficient study favors $10^{-5}$, and Qwen-Image experiments show additional gains from response regularization and text supervision. Single-image inference takes 1.742 s, compared with 5.818 s for the teacher, yielding a $3.34\times$ speedup at the same 40 GB GPU memory requirement.</p>
+        <p>Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve representation quality but slow generation, while aggressive spatial compression reduces representation capacity. Based on product quantization, we show that, under a fixed nominal information budget, group size should scale quadratically with the per-axis spatial compression factor. Building on this principle, we propose GSTAR, a spatial--group co-scaling framework that enables \(32\times\) and even effective \(64\times\) compression while preserving strong reconstruction, understanding, and generation performance. Since larger groups introduce intra-group dependencies that must be modeled efficiently, we analyze their impact on inference latency and generation quality and introduce a semi-autoregressive decoder that combines parallel feature computation with lightweight causal modeling. With these designs, our highly compressed models perform competitively with leading models across five representative text-to-image benchmarks (GenEval, DPG-Bench, PRISM, LongText-Bench, and Qwen-Image-Bench). At \(1024\times1024\) resolution, our model delivers a \(20\times\) speedup over prior discrete autoregressive models, generating each image in 2.5 seconds on a single NVIDIA H200. Together, these results show that highly compressed discrete representations can enable high-quality autoregressive generation at low latency.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.12042" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.12042.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.13004" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13004.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.10592</span>
+          <span class="paper-id">2611.12978</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.10592" target="_blank">MotionGraphicsBench: Evaluating Motion Graphics Generation with Programmatic Verification</a>
+        <a href="https://arxiv.org/abs/2611.12978" target="_blank">Trajectory-Regularized Distribution Distillation for One-Step Generation</a>
       </h3>
-      <p class="paper-title-zh">MotionGraphicsBench：基于程序化验证的运动图形生成评估基准</p>
-      <p class="paper-authors">Jiaju Ma, Ashvini Kumar Jindal, Chuhua Wang, Sumithra Bhakthavatsalam</p>
+      <p class="paper-title-zh">轨迹正则化分布蒸馏用于单步生成</p>
+      <p class="paper-authors">An Zhao, Yixiang Zhou, Zejian Li, Yi Guo, Pei Chen 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了MotionGraphicsBench，一个包含100个专家精选实例的基准，用于评估大语言模型根据结合空间、外观和时间要求的提示生成运动图形的能力，并通过确定性的、人类可读的验证程序而非参考动画或VLM评判来进行评估。</div>
-        <div class="summary-section"><strong>方法:</strong> 该基准基于真实世界的Lottie运动设计，每个实例将输入静态SVG和运动编辑提示与一个验证程序配对，该程序接受不同的有效实现并报告哪些提示要求通过或失败。验证程序通过多智能体流水线构建，使用人工标注的动画和合成测试用例。评估时，在180个动画的平衡测试集上，将程序的判断与人类判断进行比较，并测试了来自32个LLM和12个提供商的47种配置。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 验证程序与人类判断的原始一致率达到93.3%，优于GPT-6 Astra VLM基线的83.3%，并在批准和拒绝召回率上均优于基线。在47种配置中，pass@1范围从6.0%到67.7%；在15个模型以最高推理努力和每实例32次尝试评估时，额外尝试能提升所有模型，但pass@32仍从38.0%到95.0%不等。分析表明，生成的动画经常无法匹配参考姿势、遵循请求的运动轨迹或协调相关事件。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出轨迹正则化分布蒸馏（TRD），通过单次学生前向预测的动量混合策略，同时结合分布级和轨迹级监督，无需额外可训练网络即可实现高效的单步生成蒸馏。</div>
+        <div class="summary-section"><strong>方法:</strong> TRD在单次学生前向中预测一个动量混合策略，该策略同时充当单步生成器、学生边缘速度估计器（替代分布匹配中所需的第二个可训练网络）以及沿教师ODE轨迹监督的闭式时间相关速度场。通过这种方式，将分布匹配与轨迹对齐两种范式统一在一个框架中。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SANA-1.6B和Stable Diffusion 3.5上的实验表明，TRD在单步和少步生成中，生成质量和训练效率均优于代表性的一致性蒸馏和分布匹配基线，但在样本多样性上存在权衡。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Large language models can generate motion graphics from static images and natural language requests, but it remains difficult to evaluate how well models can follow requests that combine spatial, appearance, and temporal requirements. We introduce MotionGraphicsBench, an expert-curated benchmark of 100 instances for animating an input static SVG with a motion edit prompt. By supplying all required visual elements, our editing task reflects a designer-like workflow and isolates motion generation from graphic generation. Derived from real-world Lottie motion designs, our benchmark contains diverse combinations of spatio-temporal animation behaviors. Each benchmark instance pairs its model input with a deterministic, human-readable verification program that accepts different valid implementations and reports which prompt requirements pass or fail, rather than comparing against a reference animation or using a VLM judge. We construct these programs with a multi-agent pipeline using human-labeled animations and synthesized test cases. On a balanced test set of 180 animations, our programs achieve 93.3% raw agreement with human judgments, compared with 83.3% for a GPT-6 Astra VLM baseline, and outperform the baseline in both approval and rejection recall. Across 47 configurations from 32 LLMs and 12 providers, pass@1 ranges from 6.0% to 67.7%. Across 15 models evaluated at their highest available reasoning effort with 32 attempts per instance, additional attempts improve every model, but pass@32 still ranges from 38.0% to 95.0%. Our analysis of verification programs reveals that generated animations often fail to match reference poses, follow requested motion trajectories, or coordinate related events. We release our benchmark at https://huggingface.co/datasets/figma-ai/motion-graphics-bench.</p>
+        <p>Distilling flow matching models for one-step generation generally follows two paradigms. Trajectory alignment supervises the student with the teacher's probability flow ODE, but its performance degrades under very small sampling budgets. Distribution matching directly optimizes the generated distribution, but estimating its reverse Kullback-Leibler gradient typically requires a separate network to track the evolving student score. We propose trajectory-regularized distribution distillation (TRD), which combines distribution-level and trajectory-level supervision through a momentum-mixture policy predicted in a single student forward pass. This policy serves simultaneously as a one-step generator, an estimator of the student's marginal velocity that removes the need for a second trainable network in distribution matching, and a closed-form time-dependent velocity field supervised along the teacher ODE trajectory. Experiments on SANA-1.6B and Stable Diffusion 3.5 show that TRD outperforms representative consistency and distribution matching baselines in generation quality and training efficiency for both one-step and few-step generation, with a trade-off in sample diversity.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.10592" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.10592.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.12978" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.12978.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -299,63 +299,31 @@
     <article class="paper-card">
       <div class="paper-header">
         <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.11821</span>
-        </div>
-        <span class="score-badge">相关性 78/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.11821" target="_blank">Direct Trajectory Optimization for Inference-Time Alignment of Text-to-Image Diffusion Models</a>
-      </h3>
-      <p class="paper-title-zh">面向文本到图像扩散模型推理时对齐的直接轨迹优化</p>
-      <p class="paper-authors">Huixuan Zhang, Xiaojun Wan</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需训练的直接轨迹优化框架（DTO），通过直接优化扩散模型的采样轨迹来实现与奖励函数的对齐，避免了通过大型去噪网络进行昂贵的反向传播。</div>
-        <div class="summary-section"><strong>方法:</strong> DTO将中间去噪分数和采样噪声作为优化变量，无需通过去噪网络计算梯度。为缓解分布外问题，引入奖励优化分数引导，在优化分数与预训练模型预测之间进行插值以稳定采样，并在约束分布下提供奖励提升的可证明理论保证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在三个扩散模型和两个基准测试上，DTO均提升了 compat 对齐性能，优于现有的推理时对齐方法，同时保持高效率。结果表明轨迹级优化是实现高效且有效的扩散模型对齐的有前景方向。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Alignment of text-to-image diffusion models with reward functions is a key challenge in controllable generation. Existing approaches typically rely on optimizing model inputs or fine-tuning denoising networks, which requires computationally expensive backpropagation through large denoising models. In this work, we propose Direct Trajectory Optimization (DTO), a training-free framework that performs alignment by directly optimizing the sampling trajectory of diffusion models. Specifically, DTO treats intermediate denoising scores and sampled noise as the optimization variables, eliminating the need for gradients through the denoising network. To mitigate the out-of-distribution problem, we introduce Reward-Optimized Score Guidance, which interpolates between the optimized scores and the pretrained model predictions to stabilize sampling, while providing a provable theoretical guarantee of reward improvement under constrained distributions. Empirically, DTO improves alignment performance across three diffusion models on two benchmarks, outperforming existing inference-time alignment methods while maintaining high efficiency. These results suggest that trajectory-level optimization is a promising direction for efficient and effective diffusion model alignment.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.11821" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.11821.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.12852</span>
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.13955</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.12852" target="_blank">What kills $v$-prediction? A Patch-wise PCA Perspective on Pixel-Space Flow Matching</a>
+        <a href="https://arxiv.org/abs/2611.13955" target="_blank">RB-LDC: Redundancy-Balanced Latent Coding for Noise-Robust Diffusion Latents</a>
       </h3>
-      <p class="paper-title-zh">是什么扼杀了v-预测？基于分块PCA视角的像素空间流匹配研究</p>
-      <p class="paper-authors">Tianze Luo, Haofeng Huang, Yuan Yao</p>
+      <p class="paper-title-zh">RB-LDC：面向噪声鲁棒扩散潜变量的冗余平衡潜编码</p>
+      <p class="paper-authors">Hyunseok Jeong, Jaeho Jeon, Young-Sik Kim</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文通过分块主成分分析揭示了像素空间流匹配中v-预测目标训练困难的本质原因——带宽瓶颈，并据此提出Raw-injected Transformer（RiT），恢复了有效的v-预测训练，在ImageNet 256×256上取得有竞争力的性能。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者采用分块PCA对噪声目标进行分析，发现次要成分中的速度主要由原始噪声输入决定，需要深层骨干网络保留与主成分建模相竞争的信息，从而形成带宽瓶颈。通过受控实验和表示分析，进一步解释了x-预测的有效性来源：其参数化提供了原始输入旁路，且学习到的输入表示能自发集中于主方向。基于此分析，提出RiT架构，将轻量级原始条件解码器与输出侧捷径相结合，分离语义建模与原始状态传播。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 研究发现v-预测的困难源于分块PCA下的带宽瓶颈：次要成分的速度信息依赖原始噪声输入，与主成分建模形成竞争。x-预测之所以有效，是因为其参数化提供了原始输入旁路，且学习表示自发聚焦主方向；在低秩观测下，x-预测可被刻画为隐式条件均值解码器，能从保留信息中重建被丢弃的成分。RiT方法成功恢复了有效的v-预测，并在ImageNet 256×256上达到有竞争力的性能，揭示了预测目标与架构带宽之间的交互关系。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种可逆线性层RB-LDC，通过在编码器与扩散过程之间重新分配各方向的信噪比（SNR），使潜编码在解码器敏感度不均的情况下实现冗余平衡，从而提升噪声潜变量的重建质量和扩散采样鲁棒性。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者将编码器与扩散过程之间的可逆线性层建模为对各方向log-SNR的偏移，并利用线性最小均方误差（LMMSE）恢复风险的精确谱表达式，在能量预算和可逆性约束下最小化解码器敏感度加权的LMMSE风险积分，得到唯一最优分配。该分配与解码器的期望拉回度量对齐，并通过确定性谱求解器均衡各方向的边际风险降低。作者用基于雅可比的敏感度估计实例化为RB-LDC，并在ImageNet 256×256上使用SD-VAE和VA-VAE进行验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在15个SNR和3个流水线种子的平均结果上，RB-LDC在全部四种指标和五种编码配置下均优于预算匹配的各向同性编码，将VA-VAE块局部编码的平均扰动FID降低17.1，同时保持干净重建。在冻结扩散模型下，RB-LDC在采样过程中受 corruption 影响的全部12种采样进度与通道SNR组合中均给出更低的FID点估计。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Latent Diffusion Models dominate generative modeling but face two-stage training complexity and the inherent reconstruction limits of pre-trained autoencoders. Pixel-space Flow Matching offers a simplified end-to-end alternative yet often encounters training difficulties when using the standard $v$-prediction objective. Recent research attributes this difficulty to the off-manifold nature of noised targets, motivating a shift toward $x$-prediction. In this paper, we investigate this explanation through patch-wise Principal Component Analysis (PCA) and identify a bandwidth bottleneck. The velocity in minor components is largely determined by the raw noisy input, requiring deep backbones to preserve information that competes with principal-component modeling. Through controlled experiments and representation analysis, we further examine why $x$-prediction remains effective: its parameterization provides a raw-input bypass, while its learned input representation can spontaneously concentrate on principal directions. Under low-rank observations, our analysis of the induced flow characterizes $x$-prediction as an implicit conditional-mean decoder, reconstructing discarded components from the retained information. These observations motivate the Raw-injected Transformer (RiT), which combines a lightweight raw-conditioned decoder with an output-side shortcut to separate semantic modeling from raw-state propagation. Our method restores effective $v$-prediction and achieves competitive performance on ImageNet $256\times256$, providing a perspective on the interaction between prediction objectives and architectural bandwidth.</p>
+        <p>Latent diffusion models decode approximately correct latents, making decoder sensitivity to perturbations relevant to image quality. After whitening, forward diffusion corrupts every direction at the same signal-to-noise ratio (SNR), despite unequal decoder sensitivities. We study an invertible linear layer between the encoder and diffusion process that shifts each direction's log-SNR. Its linear minimum mean-square-error (LMMSE) recovery risk has an exact spectral expression for any whitened latent distribution. Under an energy budget and a floor ensuring invertibility, minimizing decoder-sensitivity-weighted LMMSE risk integrated over the diffusion schedule yields a unique optimal allocation. The layer aligns with the decoder's expected pullback metric and equalizes marginal risk reduction across directions, computed by a deterministic spectral solver. At large budgets, the allocation follows a power law in sensitivity whose exponent is determined by the low-SNR tail of the loss weighting: one half for noise prediction and two thirds for data prediction under the cosine schedule, with a crossover on truncated schedules. We instantiate this principle as RB-LDC using Jacobian-based sensitivity estimates. On ImageNet at 256 x 256 resolution with SD-VAE and VA-VAE, trained RB-LDC improves reconstruction from noisy latents over budget-matched isotropic coding in all four metrics and five coding configurations, averaged over 15 SNRs and three pipeline seeds. It reduces average perturbed FID by 17.1 for VA-VAE block-local coding while preserving clean reconstruction. We also report intermediate SNRs where perturbed FID worsens. With a frozen diffusion model, RB-LDC yields lower FID point estimates in all 12 tested combinations of sampling progress and channel SNR under corruption during sampling.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.12852" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.12852.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.13955" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13955.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +332,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.12426</span>
+          <span class="paper-id">2611.13530</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.12426" target="_blank">dNaViT: Discrete Codes are General-Purpose Visual Representations</a>
+        <a href="https://arxiv.org/abs/2611.13530" target="_blank">UniWeaver: Harnessing Unified Multimodal Models for Interleaved Text-Image Generation</a>
       </h3>
-      <p class="paper-title-zh">dNaViT：离散码是通用视觉表示</p>
-      <p class="paper-authors">Xiaotong Li, Zhengrong Yue, Xu Huang, Jialv Zou, Minhao Jing 等 (12 位作者)</p>
+      <p class="paper-title-zh">UniWeaver：利用统一多模态模型进行交错文本-图像生成</p>
+      <p class="paper-authors">Hongxu Chen, Zixuan Zhong, Donghao Zhou, Haodong Li, Xiaomin Yu 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出dNaViT，一种离散原生分辨率视觉Transformer，将视觉世界表示为类似语言token的离散视觉基元，证明了紧凑的离散词汇表可作为通用视觉货币，支撑统一的多模态方法。</div>
-        <div class="summary-section"><strong>方法:</strong> dNaViT基于冻结的预训练编码器，通过轻量级残差调制和双分支目标将重建感知线索注入语义特征；利用分组乘积量化扩展离散容量而不增加空间序列长度；采用平衡训练策略同时保留语义和像素级信息，从而作为通用的离散视觉分词器，统一编码下游任务并支持高保真图像解码。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在12个视觉理解基准、4个生成基准和1个图像编辑基准上，dNaViT匹配或超越了任务特定基线，表明紧凑的离散词汇表能够作为通用视觉表示，释放完全统一的原生多模态方法的潜力。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出UniWeaver框架，通过结构化规划、生成与视觉反馈的整合，使统一多模态模型能够生成连贯的交错文本-图像内容，并构建了训练数据集和评估基准。</div>
+        <div class="summary-section"><strong>方法:</strong> UniWeaver是一个模型无关的框架，集成了多模态规划、生成和视觉反馈模块，以产生连贯的交错输出。为训练UMMs，构建了UniWeaver-10K数据集，包含20个任务家族的10,000个任务及执行轨迹。同时引入UniWeaver-Bench基准，系统评估文本覆盖度、写作质量、视觉覆盖度和图文对齐。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，UniWeaver在多个UMM骨干模型上实现了最先进的性能，并显著提升了交错文本-图像生成的质量。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Discrete autoregressive modeling, notably through next-token prediction, has become a cornerstone of modern language models. Extending this paradigm to vision allows visual and language models to converge on a unified framework, thereby fostering shared methodology and infrastructure. This work investigates a central question: how far can a finite discrete vocabulary go in representing the richness of the visual world? We present dNaViT, a Discrete Native-resolution Vision Transformer that produces discrete visual primitives analogous to language tokens. Built upon a frozen pretrained encoder, dNaViT applies lightweight residual modulation with a dual-branch objective to inject reconstruction-aware cues into semantic features. By leveraging grouped product quantization, it scales discrete capacity without inflating spatial sequence lengths, while a balanced training recipe maintains both semantic and pixel-level information. Consequently, dNaViT functions as a versatile discrete visual tokenizer, enabling unified encoding across downstream tasks alongside high-fidelity image decoding. Extensive evaluations show that dNaViT matches or exceeds task-specific baselines across 12 visual understanding benchmarks, 4 generation benchmarks, and an image editing benchmark. These findings demonstrate that a compact discrete vocabulary can serve as a universal visual currency and unlock the full potential of fully unified, native multimodal methodology.</p>
+        <p>Unified multimodal models (UMMs) have opened up new possibilities for generating rich interleaved text-image content. However, they generally lack native support for coordinating the two modalities, and translating coarse user requests into coherent multimodal compositions also requires explicit planning. We propose UniWeaver, a structured, model-agnostic harness framework that integrates multimodal planning, generation, and visual feedback to produce coherent interleaved outputs. To train UMMs for this task, we construct UniWeaver-10K, a dataset of 10,000 tasks across 20 task families, paired with execution trajectories guided by UniWeaver. We also introduce UniWeaver-Bench, a task-oriented benchmark systematically assessing text coverage, writing quality, visual coverage, and image-text alignment. Experiments show that UniWeaver achieves state-of-the-art performance and improves interleaved text-image generation across multiple UMM backbones.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.12426" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.12426.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.13530" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13530.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13177</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13177" target="_blank">GroundCascade: Selective Second Opinions for GUI Grounding</a>
+      </h3>
+      <p class="paper-title-zh">GroundCascade：面向GUI定位的选择性二次意见</p>
+      <p class="paper-authors">Adrian Phoulady, Hady Ahmady Phoulady</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的控制器GroundCascade，通过比较定位模型在全屏与缩放视图下预测的一致性，决定何时引入互补模型进行二次判断，从而在提升GUI元素定位精度的同时减少模型调用开销。</div>
+        <div class="summary-section"><strong>方法:</strong> GroundCascade利用定位器在全屏和缩放视图下预测结果的一致性作为触发信号：当两者一致时保留经佐证的全屏位置，当存在分歧时选择缩放预测或调用互补模型。可选的精修器（Finalizer）在仍存在分歧时基于未标注的联合裁剪区域进行预测，省略该模块则得到两阶段的选择性变体（Selective）。整个方法无需额外训练，可直接应用于现有定位模型。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ScreenSpot-Pro上达到85.33%，在OSWorld-G-Refined可见目标子集上达到88.43%，分别比更强的独立两遍定位器提升2.66和2.35个百分点；在UI-Vision上类别均衡准确率达72.20%（Selective为72.28%）。Full模式每次请求使用2.42-2.73次调用，比无条件获取两个模型的两遍预测少31-39%；在相同第二模型调用预算下，选择性获取比独立两遍方法提升1.52-2.56个百分点，显著优于分层随机获取（0.22-0.69个百分点）。该方法在官方ScreenSpot-Pro排行榜上领先，并在OSWorld-G-Refined和UI-Vision上超过已报道的GUI专用模型对比结果（受外部评估协议差异影响）。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Graphical user interface (GUI) grounding maps a screenshot and a natural-language instruction to the screen location where an agent should act. Zoomed views can reveal small targets but may lose the context needed to identify them. We introduce GroundCascade, a training-free controller that uses agreement between a grounder's full-screen and zoomed predictions to decide when to consult a complementary model. It selects between zoomed predictions while preserving corroborated full-screen locations. An optional Finalizer predicts from an unmarked joint crop when disagreement remains (Full); omitting it yields the two-stage Selective variant. GroundCascade reaches 85.33% on ScreenSpot-Pro with Indeed-UI-32B/8B/32B and 88.43% on the visible-target OSWorld-G-Refined subset with Qwen3.6-27B/3.8-27B/3.8-27B, gains of 2.66 and 2.35 percentage points over the stronger standalone two-pass grounder. On UI-Vision, GroundCascade reaches 72.20% category-balanced accuracy, with Selective slightly higher at 72.28%. Across these three evaluations, GroundCascade in Full mode uses 2.42-2.73 calls per request, 31-39% fewer than unconditionally acquiring both models' two-pass predictions. At matched second-model call budgets, selective acquisition gains 1.52-2.56 points over standalone Two-pass, compared with 0.22-0.69 points from stratified random acquisition. GroundCascade leads the official ScreenSpot-Pro leaderboard and exceeds reported GUI-specialist comparisons on OSWorld-G-Refined and UI-Vision, subject to differences in external evaluation protocols.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13177" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13177.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

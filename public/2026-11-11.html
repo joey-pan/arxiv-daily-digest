@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-11</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13004</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13004" target="_blank">G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation</a>
+      </h3>
+      <p class="paper-title-zh">G-STAR：用于深度压缩自回归生成的组缩放令牌容量</p>
+      <p class="paper-authors">Xu Huang, Ye Huang, Xiaotong Li, Zhengrong Yue, Jialv Zou 等 (11 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种基于乘积量化的空间-组协同缩放框架G-STAR，在固定信息预算下通过组大小随空间压缩因子二次缩放的原则，实现了32倍甚至有效64倍的图像压缩，同时保持强重建、理解和生成性能。</div>
+        <div class="summary-section"><strong>方法:</strong> 基于乘积量化理论，推导出在固定名义信息预算下组大小应随每轴空间压缩因子二次缩放。提出G-STAR框架进行空间与组的协同缩放，并针对大组内依赖问题引入半自回归解码器，结合并行特征计算与轻量因果建模以平衡推理延迟和生成质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在五个文本到图像基准（GenEval、DPG-Bench、PRISM、LongText-Bench、Qwen-Image-Bench）上，高度压缩模型与领先模型性能相当。在1024×1024分辨率下，相比先前离散自回归模型实现20倍加速，单张NVIDIA H200上每张图像生成仅需2.5秒，表明高度压缩的离散表示可实现低延迟的高质量自回归生成。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve representation quality but slow generation, while aggressive spatial compression reduces representation capacity. Based on product quantization, we show that, under a fixed nominal information budget, group size should scale quadratically with the per-axis spatial compression factor. Building on this principle, we propose GSTAR, a spatial--group co-scaling framework that enables \(32\times\) and even effective \(64\times\) compression while preserving strong reconstruction, understanding, and generation performance. Since larger groups introduce intra-group dependencies that must be modeled efficiently, we analyze their impact on inference latency and generation quality and introduce a semi-autoregressive decoder that combines parallel feature computation with lightweight causal modeling. With these designs, our highly compressed models perform competitively with leading models across five representative text-to-image benchmarks (GenEval, DPG-Bench, PRISM, LongText-Bench, and Qwen-Image-Bench). At \(1024\times1024\) resolution, our model delivers a \(20\times\) speedup over prior discrete autoregressive models, generating each image in 2.5 seconds on a single NVIDIA H200. Together, these results show that highly compressed discrete representations can enable high-quality autoregressive generation at low latency.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13004" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13004.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.12978</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.12978" target="_blank">Trajectory-Regularized Distribution Distillation for One-Step Generation</a>
+      </h3>
+      <p class="paper-title-zh">轨迹正则化分布蒸馏用于单步生成</p>
+      <p class="paper-authors">An Zhao, Yixiang Zhou, Zejian Li, Yi Guo, Pei Chen 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出轨迹正则化分布蒸馏（TRD），通过单次学生前向预测的动量混合策略，同时结合分布级和轨迹级监督，无需额外可训练网络即可实现高效的单步生成蒸馏。</div>
+        <div class="summary-section"><strong>方法:</strong> TRD在单次学生前向中预测一个动量混合策略，该策略同时充当单步生成器、学生边缘速度估计器（替代分布匹配中所需的第二个可训练网络）以及沿教师ODE轨迹监督的闭式时间相关速度场。通过这种方式，将分布匹配与轨迹对齐两种范式统一在一个框架中。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SANA-1.6B和Stable Diffusion 3.5上的实验表明，TRD在单步和少步生成中，生成质量和训练效率均优于代表性的一致性蒸馏和分布匹配基线，但在样本多样性上存在权衡。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Distilling flow matching models for one-step generation generally follows two paradigms. Trajectory alignment supervises the student with the teacher's probability flow ODE, but its performance degrades under very small sampling budgets. Distribution matching directly optimizes the generated distribution, but estimating its reverse Kullback-Leibler gradient typically requires a separate network to track the evolving student score. We propose trajectory-regularized distribution distillation (TRD), which combines distribution-level and trajectory-level supervision through a momentum-mixture policy predicted in a single student forward pass. This policy serves simultaneously as a one-step generator, an estimator of the student's marginal velocity that removes the need for a second trainable network in distribution matching, and a closed-form time-dependent velocity field supervised along the teacher ODE trajectory. Experiments on SANA-1.6B and Stable Diffusion 3.5 show that TRD outperforms representative consistency and distribution matching baselines in generation quality and training efficiency for both one-step and few-step generation, with a trade-off in sample diversity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.12978" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.12978.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.13955</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13955" target="_blank">RB-LDC: Redundancy-Balanced Latent Coding for Noise-Robust Diffusion Latents</a>
+      </h3>
+      <p class="paper-title-zh">RB-LDC：面向噪声鲁棒扩散潜变量的冗余平衡潜编码</p>
+      <p class="paper-authors">Hyunseok Jeong, Jaeho Jeon, Young-Sik Kim</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种可逆线性层RB-LDC，通过在编码器与扩散过程之间重新分配各方向的信噪比（SNR），使潜编码在解码器敏感度不均的情况下实现冗余平衡，从而提升噪声潜变量的重建质量和扩散采样鲁棒性。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者将编码器与扩散过程之间的可逆线性层建模为对各方向log-SNR的偏移，并利用线性最小均方误差（LMMSE）恢复风险的精确谱表达式，在能量预算和可逆性约束下最小化解码器敏感度加权的LMMSE风险积分，得到唯一最优分配。该分配与解码器的期望拉回度量对齐，并通过确定性谱求解器均衡各方向的边际风险降低。作者用基于雅可比的敏感度估计实例化为RB-LDC，并在ImageNet 256×256上使用SD-VAE和VA-VAE进行验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在15个SNR和3个流水线种子的平均结果上，RB-LDC在全部四种指标和五种编码配置下均优于预算匹配的各向同性编码，将VA-VAE块局部编码的平均扰动FID降低17.1，同时保持干净重建。在冻结扩散模型下，RB-LDC在采样过程中受 corruption 影响的全部12种采样进度与通道SNR组合中均给出更低的FID点估计。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Latent diffusion models decode approximately correct latents, making decoder sensitivity to perturbations relevant to image quality. After whitening, forward diffusion corrupts every direction at the same signal-to-noise ratio (SNR), despite unequal decoder sensitivities. We study an invertible linear layer between the encoder and diffusion process that shifts each direction's log-SNR. Its linear minimum mean-square-error (LMMSE) recovery risk has an exact spectral expression for any whitened latent distribution. Under an energy budget and a floor ensuring invertibility, minimizing decoder-sensitivity-weighted LMMSE risk integrated over the diffusion schedule yields a unique optimal allocation. The layer aligns with the decoder's expected pullback metric and equalizes marginal risk reduction across directions, computed by a deterministic spectral solver. At large budgets, the allocation follows a power law in sensitivity whose exponent is determined by the low-SNR tail of the loss weighting: one half for noise prediction and two thirds for data prediction under the cosine schedule, with a crossover on truncated schedules. We instantiate this principle as RB-LDC using Jacobian-based sensitivity estimates. On ImageNet at 256 x 256 resolution with SD-VAE and VA-VAE, trained RB-LDC improves reconstruction from noisy latents over budget-matched isotropic coding in all four metrics and five coding configurations, averaged over 15 SNRs and three pipeline seeds. It reduces average perturbed FID by 17.1 for VA-VAE block-local coding while preserving clean reconstruction. We also report intermediate SNRs where perturbed FID worsens. With a frozen diffusion model, RB-LDC yields lower FID point estimates in all 12 tested combinations of sampling progress and channel SNR under corruption during sampling.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13955" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13955.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13530</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13530" target="_blank">UniWeaver: Harnessing Unified Multimodal Models for Interleaved Text-Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">UniWeaver：利用统一多模态模型进行交错文本-图像生成</p>
+      <p class="paper-authors">Hongxu Chen, Zixuan Zhong, Donghao Zhou, Haodong Li, Xiaomin Yu 等 (9 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出UniWeaver框架，通过结构化规划、生成与视觉反馈的整合，使统一多模态模型能够生成连贯的交错文本-图像内容，并构建了训练数据集和评估基准。</div>
+        <div class="summary-section"><strong>方法:</strong> UniWeaver是一个模型无关的框架，集成了多模态规划、生成和视觉反馈模块，以产生连贯的交错输出。为训练UMMs，构建了UniWeaver-10K数据集，包含20个任务家族的10,000个任务及执行轨迹。同时引入UniWeaver-Bench基准，系统评估文本覆盖度、写作质量、视觉覆盖度和图文对齐。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，UniWeaver在多个UMM骨干模型上实现了最先进的性能，并显著提升了交错文本-图像生成的质量。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Unified multimodal models (UMMs) have opened up new possibilities for generating rich interleaved text-image content. However, they generally lack native support for coordinating the two modalities, and translating coarse user requests into coherent multimodal compositions also requires explicit planning. We propose UniWeaver, a structured, model-agnostic harness framework that integrates multimodal planning, generation, and visual feedback to produce coherent interleaved outputs. To train UMMs for this task, we construct UniWeaver-10K, a dataset of 10,000 tasks across 20 task families, paired with execution trajectories guided by UniWeaver. We also introduce UniWeaver-Bench, a task-oriented benchmark systematically assessing text coverage, writing quality, visual coverage, and image-text alignment. Experiments show that UniWeaver achieves state-of-the-art performance and improves interleaved text-image generation across multiple UMM backbones.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13530" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13530.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13177</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13177" target="_blank">GroundCascade: Selective Second Opinions for GUI Grounding</a>
+      </h3>
+      <p class="paper-title-zh">GroundCascade：面向GUI定位的选择性二次意见</p>
+      <p class="paper-authors">Adrian Phoulady, Hady Ahmady Phoulady</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的控制器GroundCascade，通过比较定位模型在全屏与缩放视图下预测的一致性，决定何时引入互补模型进行二次判断，从而在提升GUI元素定位精度的同时减少模型调用开销。</div>
+        <div class="summary-section"><strong>方法:</strong> GroundCascade利用定位器在全屏和缩放视图下预测结果的一致性作为触发信号：当两者一致时保留经佐证的全屏位置，当存在分歧时选择缩放预测或调用互补模型。可选的精修器（Finalizer）在仍存在分歧时基于未标注的联合裁剪区域进行预测，省略该模块则得到两阶段的选择性变体（Selective）。整个方法无需额外训练，可直接应用于现有定位模型。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ScreenSpot-Pro上达到85.33%，在OSWorld-G-Refined可见目标子集上达到88.43%，分别比更强的独立两遍定位器提升2.66和2.35个百分点；在UI-Vision上类别均衡准确率达72.20%（Selective为72.28%）。Full模式每次请求使用2.42-2.73次调用，比无条件获取两个模型的两遍预测少31-39%；在相同第二模型调用预算下，选择性获取比独立两遍方法提升1.52-2.56个百分点，显著优于分层随机获取（0.22-0.69个百分点）。该方法在官方ScreenSpot-Pro排行榜上领先，并在OSWorld-G-Refined和UI-Vision上超过已报道的GUI专用模型对比结果（受外部评估协议差异影响）。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Graphical user interface (GUI) grounding maps a screenshot and a natural-language instruction to the screen location where an agent should act. Zoomed views can reveal small targets but may lose the context needed to identify them. We introduce GroundCascade, a training-free controller that uses agreement between a grounder's full-screen and zoomed predictions to decide when to consult a complementary model. It selects between zoomed predictions while preserving corroborated full-screen locations. An optional Finalizer predicts from an unmarked joint crop when disagreement remains (Full); omitting it yields the two-stage Selective variant. GroundCascade reaches 85.33% on ScreenSpot-Pro with Indeed-UI-32B/8B/32B and 88.43% on the visible-target OSWorld-G-Refined subset with Qwen3.6-27B/3.8-27B/3.8-27B, gains of 2.66 and 2.35 percentage points over the stronger standalone two-pass grounder. On UI-Vision, GroundCascade reaches 72.20% category-balanced accuracy, with Selective slightly higher at 72.28%. Across these three evaluations, GroundCascade in Full mode uses 2.42-2.73 calls per request, 31-39% fewer than unconditionally acquiring both models' two-pass predictions. At matched second-model call budgets, selective acquisition gains 1.52-2.56 points over standalone Two-pass, compared with 0.22-0.69 points from stratified random acquisition. GroundCascade leads the official ScreenSpot-Pro leaderboard and exceeds reported GUI-specialist comparisons on OSWorld-G-Refined and UI-Vision, subject to differences in external evaluation protocols.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13177" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13177.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
