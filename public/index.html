@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-11</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="date">📅 2026-11-12</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 图形学: 1 | 人机交互: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.13004</span>
+          <span class="paper-id">2611.13172</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13004" target="_blank">G-STAR: Group-Scaled Token Capacity for Deeply Compressed Autoregressive Generation</a>
+        <a href="https://arxiv.org/abs/2611.13172" target="_blank">Continuous Angular Control in Text-to-Image Generation via Geometric Token Encoding</a>
       </h3>
-      <p class="paper-title-zh">G-STAR：用于深度压缩自回归生成的组缩放令牌容量</p>
-      <p class="paper-authors">Xu Huang, Ye Huang, Xiaotong Li, Zhengrong Yue, Jialv Zou 等 (11 位作者)</p>
+      <p class="paper-title-zh">通过几何令牌编码实现文本到图像生成中的连续角度控制</p>
+      <p class="paper-authors">Furkan Güzelant, Basavaraj Sunagad, Aysegul Dundar, Adam Kortylewski</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种基于乘积量化的空间-组协同缩放框架G-STAR，在固定信息预算下通过组大小随空间压缩因子二次缩放的原则，实现了32倍甚至有效64倍的图像压缩，同时保持强重建、理解和生成性能。</div>
-        <div class="summary-section"><strong>方法:</strong> 基于乘积量化理论，推导出在固定名义信息预算下组大小应随每轴空间压缩因子二次缩放。提出G-STAR框架进行空间与组的协同缩放，并针对大组内依赖问题引入半自回归解码器，结合并行特征计算与轻量因果建模以平衡推理延迟和生成质量。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在五个文本到图像基准（GenEval、DPG-Bench、PRISM、LongText-Bench、Qwen-Image-Bench）上，高度压缩模型与领先模型性能相当。在1024×1024分辨率下，相比先前离散自回归模型实现20倍加速，单张NVIDIA H200上每张图像生成仅需2.5秒，表明高度压缩的离散表示可实现低延迟的高质量自回归生成。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种几何令牌编码框架，使文本到图像扩散模型能够精确控制生成对象中的连续角度变量（如模拟时钟的指针角度和圆形物体的分割比例），解决了现有模型无法遵循角度指令的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法将每个角度分量编码为周期性的正弦-余弦特征，并投影为角色特定的令牌嵌入，在冻结的文本编码器之前注入提示中。为了在推理时无需定位输入即可实现空间接地，作者引入了随机定位松弛（SLR），在训练过程中将注意力监督从组件级随机松弛到对象级再到无约束定位。针对时钟任务，还引入了指针交换偏好目标，以防止将正确角度分配给错误的指针角色。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在模拟时钟生成任务上，该方法在多种评估方法下达到63-78%的Acc@6度，而基线模型低于1%。在圆形比例生成任务上，达到89.5%的Acc@0.10，同时在未见过的对象类别上保持88.8%、在未见过的目标值上保持84.9%的准确率，而预训练基线仅约20%。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Discrete autoregressive models offer a scalable framework for image generation. However, they face a fundamental trade-off: long token sequences preserve representation quality but slow generation, while aggressive spatial compression reduces representation capacity. Based on product quantization, we show that, under a fixed nominal information budget, group size should scale quadratically with the per-axis spatial compression factor. Building on this principle, we propose GSTAR, a spatial--group co-scaling framework that enables \(32\times\) and even effective \(64\times\) compression while preserving strong reconstruction, understanding, and generation performance. Since larger groups introduce intra-group dependencies that must be modeled efficiently, we analyze their impact on inference latency and generation quality and introduce a semi-autoregressive decoder that combines parallel feature computation with lightweight causal modeling. With these designs, our highly compressed models perform competitively with leading models across five representative text-to-image benchmarks (GenEval, DPG-Bench, PRISM, LongText-Bench, and Qwen-Image-Bench). At \(1024\times1024\) resolution, our model delivers a \(20\times\) speedup over prior discrete autoregressive models, generating each image in 2.5 seconds on a single NVIDIA H200. Together, these results show that highly compressed discrete representations can enable high-quality autoregressive generation at low latency.</p>
+        <p>Text-to-image diffusion models can render a photorealistic analog clock but cannot control the time it displays. Across four pretrained models, fewer than 1% of generated clocks place both hands within 6 degrees of the requested time; the models instead collapse onto visually dominant configurations such as the canonical 10:10 pose. The same failure appears when a specific fraction of a circular object is requested, where models return complete or conventionally sliced objects. We observe that these two failures share a geometric structure: both target quantities can be parameterized by angular variables. We introduce a geometric token encoding framework that conditions generation directly on these angles. Each angular component is encoded as a periodic sine-cosine feature and projected into a role-specific token embedding that is injected into the prompt before a frozen text encoder. To spatially ground these tokens without requiring localization input at inference, we introduce Stochastic Localization Relaxation (SLR), which stochastically relaxes attention supervision from component-level to object-level to unconstrained localization during training. For clocks, we additionally introduce a hand-swap preference objective that discourages assigning the correct angles to the wrong hand roles. On analog clocks our method reaches 63-78% Acc@6 degrees across evaluation methods, compared with below 1% for the baselines. On circular-fraction generation, it achieves 89.5% Acc@0.10, while maintaining 88.8% on unseen object categories and 84.9% on unseen target values, compared with roughly 20% for pretrained baselines.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13004" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13004.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.13172" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13172.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.12978</span>
+          <span class="paper-id">2611.13120</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.12978" target="_blank">Trajectory-Regularized Distribution Distillation for One-Step Generation</a>
+        <a href="https://arxiv.org/abs/2611.13120" target="_blank">Just Image Transformers with Late-Stage Pixel Refinement</a>
       </h3>
-      <p class="paper-title-zh">轨迹正则化分布蒸馏用于单步生成</p>
-      <p class="paper-authors">An Zhao, Yixiang Zhou, Zejian Li, Yi Guo, Pei Chen 等 (6 位作者)</p>
+      <p class="paper-title-zh">仅用图像Transformer与后期像素精炼</p>
+      <p class="paper-authors">Denis Lukovnikov, Andreas Müller, Asja Fischer</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出轨迹正则化分布蒸馏（TRD），通过单次学生前向预测的动量混合策略，同时结合分布级和轨迹级监督，无需额外可训练网络即可实现高效的单步生成蒸馏。</div>
-        <div class="summary-section"><strong>方法:</strong> TRD在单次学生前向中预测一个动量混合策略，该策略同时充当单步生成器、学生边缘速度估计器（替代分布匹配中所需的第二个可训练网络）以及沿教师ODE轨迹监督的闭式时间相关速度场。通过这种方式，将分布匹配与轨迹对齐两种范式统一在一个框架中。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在SANA-1.6B和Stable Diffusion 3.5上的实验表明，TRD在单步和少步生成中，生成质量和训练效率均优于代表性的一致性蒸馏和分布匹配基线，但在样本多样性上存在权衡。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出在无潜在变量的扩散Transformer（JiT）训练后阶段，加入简单的卷积像素路径，显著提升图像生成质量，且无需额外损失函数。</div>
+        <div class="summary-section"><strong>方法:</strong> 在JiT模型训练完成后，添加卷积像素路径层进行后期精炼；该像素路径仅在去噪过程的最后20%阶段激活，不参与早期去噪；在ImageNet@256上进行实验验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet@256上，FID从原始JiT的2.34（校正采样后）降至1.78，生成质量显著提升，且未使用额外损失。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Distilling flow matching models for one-step generation generally follows two paradigms. Trajectory alignment supervises the student with the teacher's probability flow ODE, but its performance degrades under very small sampling budgets. Distribution matching directly optimizes the generated distribution, but estimating its reverse Kullback-Leibler gradient typically requires a separate network to track the evolving student score. We propose trajectory-regularized distribution distillation (TRD), which combines distribution-level and trajectory-level supervision through a momentum-mixture policy predicted in a single student forward pass. This policy serves simultaneously as a one-step generator, an estimator of the student's marginal velocity that removes the need for a second trainable network in distribution matching, and a closed-form time-dependent velocity field supervised along the teacher ODE trajectory. Experiments on SANA-1.6B and Stable Diffusion 3.5 show that TRD outperforms representative consistency and distribution matching baselines in generation quality and training efficiency for both one-step and few-step generation, with a trade-off in sample diversity.</p>
+        <p>Recent work on latent-free diffusion transformers has demonstrated the feasibility of training image generators without a latent VAE. This avoids compression artifacts from the VAE and simplifies the training pipeline. In particular, JiT showed that even a standard transformer can be trained to generate images when the model is trained to predict the final image ($x$-prediction). Even though JiT unlocks training efficiency comparable to latent models, it still suffers from reduced image quality likely arising from modeling the image as a collection of large patches. In this work, we revisit JiT and show that adding simple convolutional pixel-pathway layers in a post-training phase significantly improves generation quality. Moreover, we show that the added pixel-pathway does not need to be active in the early denoising stages, and can be activated as late as in the last $20\%$ of the denoising process. Our experiments on ImageNet@256 show improvements compared to the original JiT results, achieving an FID of $1.78$ (from $2.34$ with corrected sampling), without using additional losses.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.12978" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.12978.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.13120" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13120.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -299,31 +299,63 @@
     <article class="paper-card">
       <div class="paper-header">
         <div class="left-header">
-          <span class="category-badge">机器学习</span>
-          <span class="paper-id">2611.13955</span>
+          <span class="category-badge">人机交互</span>
+          <span class="paper-id">2611.11561</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13955" target="_blank">RB-LDC: Redundancy-Balanced Latent Coding for Noise-Robust Diffusion Latents</a>
+        <a href="https://arxiv.org/abs/2611.11561" target="_blank">From Sketch to Design: A Cross-scale Workflow for Procedural Generative Urban Design</a>
       </h3>
-      <p class="paper-title-zh">RB-LDC：面向噪声鲁棒扩散潜变量的冗余平衡潜编码</p>
-      <p class="paper-authors">Hyunseok Jeong, Jaeho Jeon, Young-Sik Kim</p>
+      <p class="paper-title-zh">从草图到设计：面向程序化生成式城市设计的跨尺度工作流</p>
+      <p class="paper-authors">Jin Gao, Sayjel Vijay Patel</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种可逆线性层RB-LDC，通过在编码器与扩散过程之间重新分配各方向的信噪比（SNR），使潜编码在解码器敏感度不均的情况下实现冗余平衡，从而提升噪声潜变量的重建质量和扩散采样鲁棒性。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者将编码器与扩散过程之间的可逆线性层建模为对各方向log-SNR的偏移，并利用线性最小均方误差（LMMSE）恢复风险的精确谱表达式，在能量预算和可逆性约束下最小化解码器敏感度加权的LMMSE风险积分，得到唯一最优分配。该分配与解码器的期望拉回度量对齐，并通过确定性谱求解器均衡各方向的边际风险降低。作者用基于雅可比的敏感度估计实例化为RB-LDC，并在ImageNet 256×256上使用SD-VAE和VA-VAE进行验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在15个SNR和3个流水线种子的平均结果上，RB-LDC在全部四种指标和五种编码配置下均优于预算匹配的各向同性编码，将VA-VAE块局部编码的平均扰动FID降低17.1，同时保持干净重建。在冻结扩散模型下，RB-LDC在采样过程中受 corruption 影响的全部12种采样进度与通道SNR组合中均给出更低的FID点估计。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种跨尺度工作流及基于网页的原型系统，将设计师的符号化草图转化为可控的程序化城市生成过程，弥合了视觉化草图输入与数值化生成参数之间的鸿沟。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过分析城市设计图解示例和研究生草图练习，构建了一套编码网络结构、密度和功能等属性的形状词汇表；原型系统使用$1 Unistroke Recognizer将手势映射为符号，并将其位置和大小转化为张量场吸引子和加权参数网格；网格和张量场引导街道网络生成，参数网格控制建筑高度和功能；系统基于JavaScript/TypeScript、React和Three.js实现，支持交互式草图绘制、可视化和城市体量生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 原型系统能够实现交互式草图输入与城市体量生成的联动，验证了从符号草图到程序化城市设计的可行性；论文还讨论了与建筑尺度生成工具的下游集成，以支持进一步细化与分析，从而将设计师的符号化输入与显式的程序化生成过程连接起来。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Latent diffusion models decode approximately correct latents, making decoder sensitivity to perturbations relevant to image quality. After whitening, forward diffusion corrupts every direction at the same signal-to-noise ratio (SNR), despite unequal decoder sensitivities. We study an invertible linear layer between the encoder and diffusion process that shifts each direction's log-SNR. Its linear minimum mean-square-error (LMMSE) recovery risk has an exact spectral expression for any whitened latent distribution. Under an energy budget and a floor ensuring invertibility, minimizing decoder-sensitivity-weighted LMMSE risk integrated over the diffusion schedule yields a unique optimal allocation. The layer aligns with the decoder's expected pullback metric and equalizes marginal risk reduction across directions, computed by a deterministic spectral solver. At large budgets, the allocation follows a power law in sensitivity whose exponent is determined by the low-SNR tail of the loss weighting: one half for noise prediction and two thirds for data prediction under the cosine schedule, with a crossover on truncated schedules. We instantiate this principle as RB-LDC using Jacobian-based sensitivity estimates. On ImageNet at 256 x 256 resolution with SD-VAE and VA-VAE, trained RB-LDC improves reconstruction from noisy latents over budget-matched isotropic coding in all four metrics and five coding configurations, averaged over 15 SNRs and three pipeline seeds. It reduces average perturbed FID by 17.1 for VA-VAE block-local coding while preserving clean reconstruction. We also report intermediate SNRs where perturbed FID worsens. With a frozen diffusion model, RB-LDC yields lower FID point estimates in all 12 tested combinations of sampling progress and channel SNR under corruption during sampling.</p>
+        <p>Urban designers use sketches and symbols to express spatial intentions, while many generative urban design tools rely on numeric parameters that are difficult to relate to this visual process. We propose a cross-scale workflow and a web-based prototype that translates symbolic sketches into controllable procedural urban generation. A vocabulary of shapes, informed by examples of urban design diagrams and sketching exercises with graduate urban design students, encodes attributes such as network structure, density, and program. The prototype uses the \$1 Unistroke Recognizer to map gestures to symbols and translates their locations and sizes into tensor-field attractors and weighted parameter grids. Grid and radial tensor fields guide street-network generation, while the parameter grids control building heights and programs. Implemented in JavaScript and TypeScript with React and Three.js, the prototype supports interactive sketching, visualization, and urban massing generation. We describe the methodology and illustrate prototype interactions, then discuss downstream integration with architectural-scale generative tools for further refinement and analysis. The work connects designers' symbolic input with an explicit procedural generation process.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13955" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13955.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.11561" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.11561.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">图形学</span>
+          <span class="paper-id">2611.13677</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13677" target="_blank">Deformable Texture Maps: Compiling Dynamic Microgeometry into Neural Textures</a>
+      </h3>
+      <p class="paper-title-zh">可变形纹理贴图：将动态微观几何编译为神经纹理</p>
+      <p class="paper-authors">Antonio Arian Silaghi, Zhen Chen, Danny Kaufman, Élie Michel, Jean-Marc Thiery 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出可变形纹理贴图（DTM），一种将形变驱动的微观几何编译为连续紧凑神经纹理的表示方法，能够在粗糙形变表面上直接评估细尺度结构，并保持光照与材质响应与学习模型解耦。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先将可平铺的纱线块在形变空间中扫描，然后将细节几何渲染到规范纹理空间，最后将所得贴图压缩为单一神经表示。该模型将纹理坐标和局部形变映射为描述不透明度、表面法线、深度和材质身份的本征贴图，并引入持久化纹理空间渲染策略，缓存本征贴图并随形变变化选择性更新。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在纱线基纺织品上验证了方法有效性，非线性材料拉伸和剪切引起的纱线几何、间距和遮挡变化被成功捕获。由于编码几何属性而非辐射度，可实现重光照、着色和材质编辑而无需重新训练，且神经评估与帧渲染解耦，支持跨帧复用和传统渲染效果集成。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Deformable material surfaces, such as cloth, owe their appearance to fine-scale geometries that restructure under deformation. Even when coarse simulation models efficiently recover this microstructure, explicitly instantiating and rendering it remains expensive. We introduce Deformable Texture Maps (DTM), a representation that compiles deformation-driven microgeometry into a continuous and compact neural texture. Our model maps texture coordinates and local deformations to intrinsic maps describing opacity, surface normals, depth, and material identity. This captures the occlusion and visibility changes generated by deformation. At runtime, these maps provide a common texture-space representation of deformation-driven fine-scale structure that can be evaluated directly on coarse deforming surfaces. Since our representation encodes geometric attributes rather than radiance, lighting and material response remain decoupled from the learned model. This allows us to apply relighting, as well as shading and material editing without retraining. We further introduce a persistent texture-space rendering strategy that caches these intrinsic maps and selectively updates them as deformation changes. This effectively decouples neural evaluation from frame rendering and enables their reuse across frames and conventional rendering effects. We demonstrate our approach on yarn-based textiles, where non-linear material stretch and shear induce changes in yarn geometry, spacing and occlusion. We build our model by, first, sweeping tileable yarn patches through deformation space, then, rendering the detailed geometry into a canonical texture-space, and finally, compressing the resulting maps into a single neural representation. Our resulting model can be evaluated directly on arbitrary coarse garment meshes and integrated with conventional shading pipelines, keeping appearance authorable at render time.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13677" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13677.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,62 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.13530</span>
+          <span class="paper-id">2611.14097</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 62/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13530" target="_blank">UniWeaver: Harnessing Unified Multimodal Models for Interleaved Text-Image Generation</a>
+        <a href="https://arxiv.org/abs/2611.14097" target="_blank">Stylization as Geodesic Navigation on Diffusion Manifolds</a>
       </h3>
-      <p class="paper-title-zh">UniWeaver：利用统一多模态模型进行交错文本-图像生成</p>
-      <p class="paper-authors">Hongxu Chen, Zixuan Zhong, Donghao Zhou, Haodong Li, Xiaomin Yu 等 (9 位作者)</p>
+      <p class="paper-title-zh">风格化作为扩散流形上的测地线导航</p>
+      <p class="paper-authors">Yan Li, Zehao Li, Xinlong Sun, Fuchen Long, Xi Chen 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出UniWeaver框架，通过结构化规划、生成与视觉反馈的整合，使统一多模态模型能够生成连贯的交错文本-图像内容，并构建了训练数据集和评估基准。</div>
-        <div class="summary-section"><strong>方法:</strong> UniWeaver是一个模型无关的框架，集成了多模态规划、生成和视觉反馈模块，以产生连贯的交错输出。为训练UMMs，构建了UniWeaver-10K数据集，包含20个任务家族的10,000个任务及执行轨迹。同时引入UniWeaver-Bench基准，系统评估文本覆盖度、写作质量、视觉覆盖度和图文对齐。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，UniWeaver在多个UMM骨干模型上实现了最先进的性能，并显著提升了交错文本-图像生成的质量。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Stylus，一个无需训练的框架，将人脸风格迁移视为在预训练扩散模型的弯曲潜在流形上的导航，实现了在保持身份的同时进行强风格化。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法不采用平坦欧几里得空间中的插值，而是通过降低拉回度量下的比率加权离散测地线能量来精化插值的内容-风格点，并利用雅可比矩阵的秩一幂迭代近似使其可处理。该原理驱动两个互补控制：内容-风格潜在插值实现平滑语义融合，以及自注意力查询优化实现空间自适应风格注入。由此产生的双控制机制提供了对风格化强度的连续、细粒度控制，同时保留身份关键的面部结构，且无需额外训练。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Stylus在具有竞争力的风格化强度下实现了最强的身份和内容保持。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified multimodal models (UMMs) have opened up new possibilities for generating rich interleaved text-image content. However, they generally lack native support for coordinating the two modalities, and translating coarse user requests into coherent multimodal compositions also requires explicit planning. We propose UniWeaver, a structured, model-agnostic harness framework that integrates multimodal planning, generation, and visual feedback to produce coherent interleaved outputs. To train UMMs for this task, we construct UniWeaver-10K, a dataset of 10,000 tasks across 20 task families, paired with execution trajectories guided by UniWeaver. We also introduce UniWeaver-Bench, a task-oriented benchmark systematically assessing text coverage, writing quality, visual coverage, and image-text alignment. Experiments show that UniWeaver achieves state-of-the-art performance and improves interleaved text-image generation across multiple UMM backbones.</p>
+        <p>Facial stylization asks for a delicate transformation: the image should look unmistakably artistic, yet the person should remain unmistakably the same. Existing training-free and instruction-driven methods often fail to expose such control, either drifting away from identity or producing only weak stylization. We introduce Stylus, a training-free framework that treats facial style transfer as navigation on the curved latent manifold of a pretrained diffusion model. Rather than interpolating in flat Euclidean space, \method refines the interpolated content--style point by lowering a ratio-weighted discrete geodesic energy under the pullback metric, made tractable by a rank-one power-iteration approximation of the Jacobian. This principle drives two complementary controls: content--style latent interpolation for smooth semantic fusion, and self-attention query optimization for spatially adaptive style injection. The resulting dual-control mechanism provides continuous, fine-grained control over stylization strength while preserving identity-critical facial structure, all without additional training. Experiments show that Stylus achieves the strongest identity and content preservation at competitive stylization strength.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13530" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13530.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.13177</span>
-        </div>
-        <span class="score-badge">相关性 72/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13177" target="_blank">GroundCascade: Selective Second Opinions for GUI Grounding</a>
-      </h3>
-      <p class="paper-title-zh">GroundCascade：面向GUI定位的选择性二次意见</p>
-      <p class="paper-authors">Adrian Phoulady, Hady Ahmady Phoulady</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的控制器GroundCascade，通过比较定位模型在全屏与缩放视图下预测的一致性，决定何时引入互补模型进行二次判断，从而在提升GUI元素定位精度的同时减少模型调用开销。</div>
-        <div class="summary-section"><strong>方法:</strong> GroundCascade利用定位器在全屏和缩放视图下预测结果的一致性作为触发信号：当两者一致时保留经佐证的全屏位置，当存在分歧时选择缩放预测或调用互补模型。可选的精修器（Finalizer）在仍存在分歧时基于未标注的联合裁剪区域进行预测，省略该模块则得到两阶段的选择性变体（Selective）。整个方法无需额外训练，可直接应用于现有定位模型。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ScreenSpot-Pro上达到85.33%，在OSWorld-G-Refined可见目标子集上达到88.43%，分别比更强的独立两遍定位器提升2.66和2.35个百分点；在UI-Vision上类别均衡准确率达72.20%（Selective为72.28%）。Full模式每次请求使用2.42-2.73次调用，比无条件获取两个模型的两遍预测少31-39%；在相同第二模型调用预算下，选择性获取比独立两遍方法提升1.52-2.56个百分点，显著优于分层随机获取（0.22-0.69个百分点）。该方法在官方ScreenSpot-Pro排行榜上领先，并在OSWorld-G-Refined和UI-Vision上超过已报道的GUI专用模型对比结果（受外部评估协议差异影响）。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Graphical user interface (GUI) grounding maps a screenshot and a natural-language instruction to the screen location where an agent should act. Zoomed views can reveal small targets but may lose the context needed to identify them. We introduce GroundCascade, a training-free controller that uses agreement between a grounder's full-screen and zoomed predictions to decide when to consult a complementary model. It selects between zoomed predictions while preserving corroborated full-screen locations. An optional Finalizer predicts from an unmarked joint crop when disagreement remains (Full); omitting it yields the two-stage Selective variant. GroundCascade reaches 85.33% on ScreenSpot-Pro with Indeed-UI-32B/8B/32B and 88.43% on the visible-target OSWorld-G-Refined subset with Qwen3.6-27B/3.8-27B/3.8-27B, gains of 2.66 and 2.35 percentage points over the stronger standalone two-pass grounder. On UI-Vision, GroundCascade reaches 72.20% category-balanced accuracy, with Selective slightly higher at 72.28%. Across these three evaluations, GroundCascade in Full mode uses 2.42-2.73 calls per request, 31-39% fewer than unconditionally acquiring both models' two-pass predictions. At matched second-model call budgets, selective acquisition gains 1.52-2.56 points over standalone Two-pass, compared with 0.22-0.69 points from stratified random acquisition. GroundCascade leads the official ScreenSpot-Pro leaderboard and exceeds reported GUI-specialist comparisons on OSWorld-G-Refined and UI-Vision, subject to differences in external evaluation protocols.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13177" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13177.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.14097" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.14097.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

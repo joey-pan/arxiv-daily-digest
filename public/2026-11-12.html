@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-12</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 图形学: 1 | 人机交互: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13172</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13172" target="_blank">Continuous Angular Control in Text-to-Image Generation via Geometric Token Encoding</a>
+      </h3>
+      <p class="paper-title-zh">通过几何令牌编码实现文本到图像生成中的连续角度控制</p>
+      <p class="paper-authors">Furkan Güzelant, Basavaraj Sunagad, Aysegul Dundar, Adam Kortylewski</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种几何令牌编码框架，使文本到图像扩散模型能够精确控制生成对象中的连续角度变量（如模拟时钟的指针角度和圆形物体的分割比例），解决了现有模型无法遵循角度指令的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法将每个角度分量编码为周期性的正弦-余弦特征，并投影为角色特定的令牌嵌入，在冻结的文本编码器之前注入提示中。为了在推理时无需定位输入即可实现空间接地，作者引入了随机定位松弛（SLR），在训练过程中将注意力监督从组件级随机松弛到对象级再到无约束定位。针对时钟任务，还引入了指针交换偏好目标，以防止将正确角度分配给错误的指针角色。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在模拟时钟生成任务上，该方法在多种评估方法下达到63-78%的Acc@6度，而基线模型低于1%。在圆形比例生成任务上，达到89.5%的Acc@0.10，同时在未见过的对象类别上保持88.8%、在未见过的目标值上保持84.9%的准确率，而预训练基线仅约20%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-image diffusion models can render a photorealistic analog clock but cannot control the time it displays. Across four pretrained models, fewer than 1% of generated clocks place both hands within 6 degrees of the requested time; the models instead collapse onto visually dominant configurations such as the canonical 10:10 pose. The same failure appears when a specific fraction of a circular object is requested, where models return complete or conventionally sliced objects. We observe that these two failures share a geometric structure: both target quantities can be parameterized by angular variables. We introduce a geometric token encoding framework that conditions generation directly on these angles. Each angular component is encoded as a periodic sine-cosine feature and projected into a role-specific token embedding that is injected into the prompt before a frozen text encoder. To spatially ground these tokens without requiring localization input at inference, we introduce Stochastic Localization Relaxation (SLR), which stochastically relaxes attention supervision from component-level to object-level to unconstrained localization during training. For clocks, we additionally introduce a hand-swap preference objective that discourages assigning the correct angles to the wrong hand roles. On analog clocks our method reaches 63-78% Acc@6 degrees across evaluation methods, compared with below 1% for the baselines. On circular-fraction generation, it achieves 89.5% Acc@0.10, while maintaining 88.8% on unseen object categories and 84.9% on unseen target values, compared with roughly 20% for pretrained baselines.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13172" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13172.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.13120</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13120" target="_blank">Just Image Transformers with Late-Stage Pixel Refinement</a>
+      </h3>
+      <p class="paper-title-zh">仅用图像Transformer与后期像素精炼</p>
+      <p class="paper-authors">Denis Lukovnikov, Andreas Müller, Asja Fischer</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出在无潜在变量的扩散Transformer（JiT）训练后阶段，加入简单的卷积像素路径，显著提升图像生成质量，且无需额外损失函数。</div>
+        <div class="summary-section"><strong>方法:</strong> 在JiT模型训练完成后，添加卷积像素路径层进行后期精炼；该像素路径仅在去噪过程的最后20%阶段激活，不参与早期去噪；在ImageNet@256上进行实验验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet@256上，FID从原始JiT的2.34（校正采样后）降至1.78，生成质量显著提升，且未使用额外损失。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent work on latent-free diffusion transformers has demonstrated the feasibility of training image generators without a latent VAE. This avoids compression artifacts from the VAE and simplifies the training pipeline. In particular, JiT showed that even a standard transformer can be trained to generate images when the model is trained to predict the final image ($x$-prediction). Even though JiT unlocks training efficiency comparable to latent models, it still suffers from reduced image quality likely arising from modeling the image as a collection of large patches. In this work, we revisit JiT and show that adding simple convolutional pixel-pathway layers in a post-training phase significantly improves generation quality. Moreover, we show that the added pixel-pathway does not need to be active in the early denoising stages, and can be activated as late as in the last $20\%$ of the denoising process. Our experiments on ImageNet@256 show improvements compared to the original JiT results, achieving an FID of $1.78$ (from $2.34$ with corrected sampling), without using additional losses.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13120" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13120.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">人机交互</span>
+          <span class="paper-id">2611.11561</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.11561" target="_blank">From Sketch to Design: A Cross-scale Workflow for Procedural Generative Urban Design</a>
+      </h3>
+      <p class="paper-title-zh">从草图到设计：面向程序化生成式城市设计的跨尺度工作流</p>
+      <p class="paper-authors">Jin Gao, Sayjel Vijay Patel</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种跨尺度工作流及基于网页的原型系统，将设计师的符号化草图转化为可控的程序化城市生成过程，弥合了视觉化草图输入与数值化生成参数之间的鸿沟。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过分析城市设计图解示例和研究生草图练习，构建了一套编码网络结构、密度和功能等属性的形状词汇表；原型系统使用$1 Unistroke Recognizer将手势映射为符号，并将其位置和大小转化为张量场吸引子和加权参数网格；网格和张量场引导街道网络生成，参数网格控制建筑高度和功能；系统基于JavaScript/TypeScript、React和Three.js实现，支持交互式草图绘制、可视化和城市体量生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 原型系统能够实现交互式草图输入与城市体量生成的联动，验证了从符号草图到程序化城市设计的可行性；论文还讨论了与建筑尺度生成工具的下游集成，以支持进一步细化与分析，从而将设计师的符号化输入与显式的程序化生成过程连接起来。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Urban designers use sketches and symbols to express spatial intentions, while many generative urban design tools rely on numeric parameters that are difficult to relate to this visual process. We propose a cross-scale workflow and a web-based prototype that translates symbolic sketches into controllable procedural urban generation. A vocabulary of shapes, informed by examples of urban design diagrams and sketching exercises with graduate urban design students, encodes attributes such as network structure, density, and program. The prototype uses the \$1 Unistroke Recognizer to map gestures to symbols and translates their locations and sizes into tensor-field attractors and weighted parameter grids. Grid and radial tensor fields guide street-network generation, while the parameter grids control building heights and programs. Implemented in JavaScript and TypeScript with React and Three.js, the prototype supports interactive sketching, visualization, and urban massing generation. We describe the methodology and illustrate prototype interactions, then discuss downstream integration with architectural-scale generative tools for further refinement and analysis. The work connects designers' symbolic input with an explicit procedural generation process.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.11561" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.11561.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">图形学</span>
+          <span class="paper-id">2611.13677</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.13677" target="_blank">Deformable Texture Maps: Compiling Dynamic Microgeometry into Neural Textures</a>
+      </h3>
+      <p class="paper-title-zh">可变形纹理贴图：将动态微观几何编译为神经纹理</p>
+      <p class="paper-authors">Antonio Arian Silaghi, Zhen Chen, Danny Kaufman, Élie Michel, Jean-Marc Thiery 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出可变形纹理贴图（DTM），一种将形变驱动的微观几何编译为连续紧凑神经纹理的表示方法，能够在粗糙形变表面上直接评估细尺度结构，并保持光照与材质响应与学习模型解耦。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先将可平铺的纱线块在形变空间中扫描，然后将细节几何渲染到规范纹理空间，最后将所得贴图压缩为单一神经表示。该模型将纹理坐标和局部形变映射为描述不透明度、表面法线、深度和材质身份的本征贴图，并引入持久化纹理空间渲染策略，缓存本征贴图并随形变变化选择性更新。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在纱线基纺织品上验证了方法有效性，非线性材料拉伸和剪切引起的纱线几何、间距和遮挡变化被成功捕获。由于编码几何属性而非辐射度，可实现重光照、着色和材质编辑而无需重新训练，且神经评估与帧渲染解耦，支持跨帧复用和传统渲染效果集成。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Deformable material surfaces, such as cloth, owe their appearance to fine-scale geometries that restructure under deformation. Even when coarse simulation models efficiently recover this microstructure, explicitly instantiating and rendering it remains expensive. We introduce Deformable Texture Maps (DTM), a representation that compiles deformation-driven microgeometry into a continuous and compact neural texture. Our model maps texture coordinates and local deformations to intrinsic maps describing opacity, surface normals, depth, and material identity. This captures the occlusion and visibility changes generated by deformation. At runtime, these maps provide a common texture-space representation of deformation-driven fine-scale structure that can be evaluated directly on coarse deforming surfaces. Since our representation encodes geometric attributes rather than radiance, lighting and material response remain decoupled from the learned model. This allows us to apply relighting, as well as shading and material editing without retraining. We further introduce a persistent texture-space rendering strategy that caches these intrinsic maps and selectively updates them as deformation changes. This effectively decouples neural evaluation from frame rendering and enables their reuse across frames and conventional rendering effects. We demonstrate our approach on yarn-based textiles, where non-linear material stretch and shear induce changes in yarn geometry, spacing and occlusion. We build our model by, first, sweeping tileable yarn patches through deformation space, then, rendering the detailed geometry into a canonical texture-space, and finally, compressing the resulting maps into a single neural representation. Our resulting model can be evaluated directly on arbitrary coarse garment meshes and integrated with conventional shading pipelines, keeping appearance authorable at render time.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.13677" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.13677.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.14097</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.14097" target="_blank">Stylization as Geodesic Navigation on Diffusion Manifolds</a>
+      </h3>
+      <p class="paper-title-zh">风格化作为扩散流形上的测地线导航</p>
+      <p class="paper-authors">Yan Li, Zehao Li, Xinlong Sun, Fuchen Long, Xi Chen 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Stylus，一个无需训练的框架，将人脸风格迁移视为在预训练扩散模型的弯曲潜在流形上的导航，实现了在保持身份的同时进行强风格化。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法不采用平坦欧几里得空间中的插值，而是通过降低拉回度量下的比率加权离散测地线能量来精化插值的内容-风格点，并利用雅可比矩阵的秩一幂迭代近似使其可处理。该原理驱动两个互补控制：内容-风格潜在插值实现平滑语义融合，以及自注意力查询优化实现空间自适应风格注入。由此产生的双控制机制提供了对风格化强度的连续、细粒度控制，同时保留身份关键的面部结构，且无需额外训练。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Stylus在具有竞争力的风格化强度下实现了最强的身份和内容保持。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Facial stylization asks for a delicate transformation: the image should look unmistakably artistic, yet the person should remain unmistakably the same. Existing training-free and instruction-driven methods often fail to expose such control, either drifting away from identity or producing only weak stylization. We introduce Stylus, a training-free framework that treats facial style transfer as navigation on the curved latent manifold of a pretrained diffusion model. Rather than interpolating in flat Euclidean space, \method refines the interpolated content--style point by lowering a ratio-weighted discrete geodesic energy under the pullback metric, made tractable by a rank-one power-iteration approximation of the Jacobian. This principle drives two complementary controls: content--style latent interpolation for smooth semantic fusion, and self-attention query optimization for spatially adaptive style injection. The resulting dual-control mechanism provides continuous, fine-grained control over stylization strength while preserving identity-critical facial structure, all without additional training. Experiments show that Stylus achieves the strongest identity and content preservation at competitive stylization strength.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.14097" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.14097.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
