@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-13</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.16442</span>
+        </div>
+        <span class="score-badge">相关性 92/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.16442" target="_blank">DesignTaste: Benchmarking AI-Generator Visual Design Against Award-Wining Works</a>
+      </h3>
+      <p class="paper-title-zh">DesignTaste：以获奖作品为基准评估AI生成视觉设计</p>
+      <p class="paper-authors">Zhou Chen, JiaXiang Li, DanYing Pan, Ye Li, TianRui Yang 等 (17 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了DesignTaste这一视觉设计基准，通过将AI生成图像与获奖设计作品进行对比，评估文本到图像模型在开放式设计简报下的设计能力，揭示了生成美观图像并不等同于能产出优秀设计方案。</div>
+        <div class="summary-section"><strong>方法:</strong> 从100 Beste Plakate 2025和ADC 2026获奖作品及其公开背景信息中提炼出403个设计简报（100个海报任务和303个跨20个类别的任务）。六个领先的商业文本到图像模型分别根据相同简报生成图像，再由单一模型评判者对每个生成结果和对应获奖作品在五个评估维度上独立打分。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在两个数据集上，仅ArtArk的平均总分高于获奖作品；所有六个模型在“创意原创性”维度上得分均较低。结果表明，生成完成度高、视觉吸引人的图像并不意味着模型能够发展出优秀的设计解决方案。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-image benchmarks commonly assess text-image alignment or overall preference. Whether models can produce good designs when a brief leaves the appearance open remains less well understood. We introduce DesignTaste, a visual design benchmark that compares generated images with award-winning works. From these works and their publicly available context, we derive 403 design briefs: 100 poster tasks from 100 Beste Plakate 2025 and 303 tasks spanning 20 categories from ADC 2026. Six leading commercial text-to-image models each generate an image from the same brief. A single model judge scores each output and the corresponding award-winning work independently on five evaluation dimensions. On each dataset, only ArtArk achieves a higher mean overall score than the award-winning works. All six models score lower in Creative Originality on both datasets. These results show that producing finished, visually appealing images does not imply that a model can develop good design solutions.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.16442" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.16442.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15941</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15941" target="_blank">Lang-SVG: Hierarchical Image Vectorization with Language Priors</a>
+      </h3>
+      <p class="paper-title-zh">Lang-SVG：基于语言先验的层次化图像矢量化</p>
+      <p class="paper-authors">Xi Liu, Chaoyi Zhou, Run Wang, Jiaang Li, Feng Luo 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Lang-SVG方法，通过引入带语义标签和父子关系的显式树结构来组织SVG图元，使矢量化结果与人类感知的物体-部件层次对齐，从而生成更易编辑和操作的SVG。同时提出新的评估协议来衡量结构质量和语义部件对齐度。</div>
+        <div class="summary-section"><strong>方法:</strong> Lang-SVG利用粒度可控且开放词汇的分割先验来初始化物体-部件层次结构，并借助多模态大语言模型（MLLMs）结合SVG树上下文为未标注节点分配语义标签。为减少冗余，引入深度自适应简化来降低形状复杂度，并采用树引导的剪枝与合并来消除冗余SVG节点。此外，通过L1-SAM-Prompting恢复缺失区域以提升重建保真度和结构完整性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Lang-SVG在渲染保真度和结构质量两方面均达到最先进性能，生成的SVG不仅像素级重建效果好，还能与人类感知的物体-部件层次结构对齐，显著提升了SVG的可编辑性和可操作性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. However, most existing vectorization methods optimize for pixel-level render- ing fidelity, often producing SVGs that lack alignment with human-perceived object-part hierarchies, making them difficult to manipulate. To address this, we propose Lang-SVG, which introduces an explicit tree structure to organize SVG primitives with semantic labels and parent-child relationships. Lang-SVG incorporates granularity-controllable and open-vocabulary segmentation priors to initialize object-part hierarchies and leverages multimodal large language models (MLLMs) with SVG tree context to assign semantic labels to unlabeled nodes. To reduce redundancy, we introduce depth-adaptive simplification to reduce shape complexity and Tree-Guided Pruning and Merging to eliminate redundant SVG nodes. L1-SAM-Prompting further recovers missing regions to improve recon- struction fidelity and structural completeness. Beyond reconstruction fidelity, we introduce a new evaluation protocol that measures structural quality and semantic part alignment. Experiments demonstrate that Lang-SVG achieves state-of-the-art performance in both rendering fidelity and structural quality. Project website: https://xiliu8006.github.io/Lang-SVG/.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15941" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15941.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.17194</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.17194" target="_blank">eDMD: Endpoint Distribution Matching for Few-Step Diffusion Distillation</a>
+      </h3>
+      <p class="paper-title-zh">eDMD：面向少步扩散蒸馏的端点分布匹配</p>
+      <p class="paper-authors">Tong Zhao, Xianfang Zeng, Yucheng Han, Ruoyu Wang, Mingkun Lei 等 (7 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出端点分布匹配蒸馏（eDMD），通过仅在学生模型的最终输出上训练共享伪评分模型，解决了多步蒸馏中更新信号与中间分布纠缠导致的匹配方向偏差问题，并从理论上证明了端点参考下分布匹配项当且仅当学生最终输出分布与教师匹配时消失。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法训练一个单一的共享伪评分模型，仅以学生的最终输出为训练对象，并用它来校正每一个去噪步骤，从而避免中间状态分布对匹配方向的干扰。理论分析证明，这种端点参考保证了分布匹配项在学生最终输出分布与教师分布一致时（且仅此时）归零，与中间分布无关。此外，作者引入精确教师（PT），在最终噪声区间用短多步轨迹替代单步引导预测，并为中间步骤配备校准的查询密度以加强教师监督。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在 SD3-Medium、FLUX.2-klein（4B 和 9B）以及 Qwen-Image-2.1 上的实验表明，eDMD 在 4 步生成任务中始终优于现有的分布匹配方法。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Distribution matching distillation (DMD) has emerged as a leading paradigm for distilling diffusion models into few-step students, where an auxiliary fake score model tracks the student's distribution and the discrepancy between the teacher and fake predictions drives the student toward the teacher. In multi-step distillation, although only the student's final output is delivered, existing methods train the fake model on intermediate states or across all denoising steps. Consequently, the student's update signal becomes entangled with intermediate distributions, which can distort the matching direction and remain nonzero even after the student's final outputs already match the teacher distribution. To resolve this mismatch, we propose Endpoint Distribution Matching Distillation (eDMD), which trains a single shared fake model exclusively on the student's final outputs and uses it to correct every denoising step. Our theoretical analysis proves that this endpoint reference guarantees that the distribution matching term vanishes if and only if the student's final output distribution matches the teacher's, regardless of intermediate distributions. Beyond the fake reference, we further strengthen teacher supervision through a precise teacher (PT) that replaces single-step guided predictions with short multi-step trajectories on the final noise interval, paired with a calibrated query density for intermediate steps. Experiments on SD3-Medium, FLUX.2-klein (4B and 9B), and Qwen-Image-2.1 demonstrate that eDMD consistently outperforms existing distribution matching methods for 4-step generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.17194" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17194.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.16630</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.16630" target="_blank">When Chekhov's Gun Fires Anyway: Over-Realization in Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">当契诃夫之枪无论如何都会开火：文本到图像模型中的过度实现现象</p>
+      <p class="paper-authors">Jiahao Huang, Kon Woo Kim, Song-Duo Ma, Yuka Kitamura, Felix Wagner 等 (15 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文识别并命名了文本到图像生成中的“过度实现”失败模式——即提示中提及但未被要求的目标仍出现在生成图像中，并构建了OverReal基准来测量该现象，揭示了现有评估指标反而奖励这一失败。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者基于心理空间理论定义了四种易引发过度实现的情境（否定、信念/想象、比喻比较、隐藏视角），构建了OverReal-Gen（698个提示）用于测量各生成器的过度实现率，以及OverReal-Det（2,841张人工标注图像）用于验证自动评判器。随后评估了八个文本到图像系统，并分析了扩散骨干网络的注意力分配。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 所有八个文本到图像系统均存在过度实现现象；CLIPScore等传统指标反而奖励而非惩罚该失败；提示扩展只能部分缓解问题；在生成器内部，扩散骨干对提及目标的关注度几乎与对请求目标相当，而本应抑制目标的线索词获得的注意力低于普通词。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>In text-to-image generation, a target that the prompt mentions often appears in the generated image in a way the prompt does not call for. We call this failure over-realization. Mental-spaces theory points to the situations where it can happen: under a negation, inside what a character believes or imagines, as the vehicle of a figurative comparison, or behind a viewpoint that hides the target. Prior work has studied only negation in depth, and the conventional alignment and preference metrics do not penalize the failure. We build OverReal to measure it: OverReal-Gen, 698 prompts covering the four situations, on which we measure each generator's over-realization rate; and OverReal-Det, 2,841 generated images human-labeled for whether and how the target is over-realized, on which we verify the automatic judge that produces this rate. Our evaluation of eight text-to-image systems reveals that all of them over-realize, and that conventional metrics such as CLIPScore reward the failure rather than penalize it. Prompt expansion only partly mitigates the failure. Inside the generator, the diffusion backbone attends to a mentioned target almost as much as to a requested one. The cue words that should hold the target back receive less attention than ordinary words.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.16630" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.16630.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15418</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15418" target="_blank">ChartGalaxy++: A Richly Annotated Dataset for Chart Understanding and Generation</a>
+      </h3>
+      <p class="paper-title-zh">ChartGalaxy++：面向图表理解与生成的富标注数据集</p>
+      <p class="paper-authors">Duan Li, Zheng Wang, Jiangning Zhu, Yuhui Yuan, Shixia Liu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文提出了ChartGalaxy++，一个包含217,195张信息图表的富标注数据集，其核心是采用场景图表示来捕捉视觉元素间的层次与空间关系，弥补了现有元素级标注的不足，并展示了该数据集在图表理解与生成任务中的价值。</div>
+        <div class="summary-section"><strong>方法:</strong> 对于真实信息图表，通过检测视觉元素并逐步分组来构建场景图；对于合成图表，则直接从生成过程中推导场景图。数据集以场景图为核心表示，其中节点代表视觉元素和语义组，边编码层次与空间关系。论文通过三个应用验证其效用：图像到场景图预测、场景图增强的信息图问答、以及图像生成中场景图保持的评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，ChartGalaxy++能够有效支持图像到场景图的预测、提升信息图问答的性能，并可用于评估生成图像对场景图的保持程度，证明了该数据集在推进图表理解与生成方面的实用价值。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Infographic charts communicate data through cohesive compositions of visual elements such as charts, text, and images. Existing infographic chart datasets primarily annotate individual elements with bounding boxes and category labels. Such element-level annotations do not capture hierarchical and spatial relationships, limiting their use for understanding how elements are organized and related within an infographic and for generating well-organized designs. To address this limitation, we introduce ChartGalaxy++, a richly annotated dataset of 217,195 infographic charts. At the core of this dataset is a scene graph representation, in which nodes represent visual elements and semantic groups, and edges encode their hierarchical and spatial relationships. For real infographics, we construct scene graphs by detecting and progressively grouping visual elements; for synthetic ones, we derive them directly from the generation process. We demonstrate the utility of ChartGalaxy++ through three applications: 1) image-to-scene-graph prediction, 2) scene-graph-augmented infographic question answering, and 3) evaluation of scene graph preservation in image generation. Together, these applications highlight the value of ChartGalaxy++ for advancing chart understanding and generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15418" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15418.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

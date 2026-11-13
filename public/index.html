@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-12</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 3 | 图形学: 1 | 人机交互: 1</p>
+        <p class="date">📅 2026-11-13</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.13172</span>
+          <span class="paper-id">2611.16442</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 92/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13172" target="_blank">Continuous Angular Control in Text-to-Image Generation via Geometric Token Encoding</a>
+        <a href="https://arxiv.org/abs/2611.16442" target="_blank">DesignTaste: Benchmarking AI-Generator Visual Design Against Award-Wining Works</a>
       </h3>
-      <p class="paper-title-zh">通过几何令牌编码实现文本到图像生成中的连续角度控制</p>
-      <p class="paper-authors">Furkan Güzelant, Basavaraj Sunagad, Aysegul Dundar, Adam Kortylewski</p>
+      <p class="paper-title-zh">DesignTaste：以获奖作品为基准评估AI生成视觉设计</p>
+      <p class="paper-authors">Zhou Chen, JiaXiang Li, DanYing Pan, Ye Li, TianRui Yang 等 (17 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种几何令牌编码框架，使文本到图像扩散模型能够精确控制生成对象中的连续角度变量（如模拟时钟的指针角度和圆形物体的分割比例），解决了现有模型无法遵循角度指令的问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法将每个角度分量编码为周期性的正弦-余弦特征，并投影为角色特定的令牌嵌入，在冻结的文本编码器之前注入提示中。为了在推理时无需定位输入即可实现空间接地，作者引入了随机定位松弛（SLR），在训练过程中将注意力监督从组件级随机松弛到对象级再到无约束定位。针对时钟任务，还引入了指针交换偏好目标，以防止将正确角度分配给错误的指针角色。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在模拟时钟生成任务上，该方法在多种评估方法下达到63-78%的Acc@6度，而基线模型低于1%。在圆形比例生成任务上，达到89.5%的Acc@0.10，同时在未见过的对象类别上保持88.8%、在未见过的目标值上保持84.9%的准确率，而预训练基线仅约20%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了DesignTaste这一视觉设计基准，通过将AI生成图像与获奖设计作品进行对比，评估文本到图像模型在开放式设计简报下的设计能力，揭示了生成美观图像并不等同于能产出优秀设计方案。</div>
+        <div class="summary-section"><strong>方法:</strong> 从100 Beste Plakate 2025和ADC 2026获奖作品及其公开背景信息中提炼出403个设计简报（100个海报任务和303个跨20个类别的任务）。六个领先的商业文本到图像模型分别根据相同简报生成图像，再由单一模型评判者对每个生成结果和对应获奖作品在五个评估维度上独立打分。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在两个数据集上，仅ArtArk的平均总分高于获奖作品；所有六个模型在“创意原创性”维度上得分均较低。结果表明，生成完成度高、视觉吸引人的图像并不意味着模型能够发展出优秀的设计解决方案。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-to-image diffusion models can render a photorealistic analog clock but cannot control the time it displays. Across four pretrained models, fewer than 1% of generated clocks place both hands within 6 degrees of the requested time; the models instead collapse onto visually dominant configurations such as the canonical 10:10 pose. The same failure appears when a specific fraction of a circular object is requested, where models return complete or conventionally sliced objects. We observe that these two failures share a geometric structure: both target quantities can be parameterized by angular variables. We introduce a geometric token encoding framework that conditions generation directly on these angles. Each angular component is encoded as a periodic sine-cosine feature and projected into a role-specific token embedding that is injected into the prompt before a frozen text encoder. To spatially ground these tokens without requiring localization input at inference, we introduce Stochastic Localization Relaxation (SLR), which stochastically relaxes attention supervision from component-level to object-level to unconstrained localization during training. For clocks, we additionally introduce a hand-swap preference objective that discourages assigning the correct angles to the wrong hand roles. On analog clocks our method reaches 63-78% Acc@6 degrees across evaluation methods, compared with below 1% for the baselines. On circular-fraction generation, it achieves 89.5% Acc@0.10, while maintaining 88.8% on unseen object categories and 84.9% on unseen target values, compared with roughly 20% for pretrained baselines.</p>
+        <p>Text-to-image benchmarks commonly assess text-image alignment or overall preference. Whether models can produce good designs when a brief leaves the appearance open remains less well understood. We introduce DesignTaste, a visual design benchmark that compares generated images with award-winning works. From these works and their publicly available context, we derive 403 design briefs: 100 poster tasks from 100 Beste Plakate 2025 and 303 tasks spanning 20 categories from ADC 2026. Six leading commercial text-to-image models each generate an image from the same brief. A single model judge scores each output and the corresponding award-winning work independently on five evaluation dimensions. On each dataset, only ArtArk achieves a higher mean overall score than the award-winning works. All six models score lower in Creative Originality on both datasets. These results show that producing finished, visually appealing images does not imply that a model can develop good design solutions.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13172" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13172.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.16442" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.16442.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,94 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.13120</span>
+          <span class="paper-id">2611.15941</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13120" target="_blank">Just Image Transformers with Late-Stage Pixel Refinement</a>
+        <a href="https://arxiv.org/abs/2611.15941" target="_blank">Lang-SVG: Hierarchical Image Vectorization with Language Priors</a>
       </h3>
-      <p class="paper-title-zh">仅用图像Transformer与后期像素精炼</p>
-      <p class="paper-authors">Denis Lukovnikov, Andreas Müller, Asja Fischer</p>
+      <p class="paper-title-zh">Lang-SVG：基于语言先验的层次化图像矢量化</p>
+      <p class="paper-authors">Xi Liu, Chaoyi Zhou, Run Wang, Jiaang Li, Feng Luo 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出在无潜在变量的扩散Transformer（JiT）训练后阶段，加入简单的卷积像素路径，显著提升图像生成质量，且无需额外损失函数。</div>
-        <div class="summary-section"><strong>方法:</strong> 在JiT模型训练完成后，添加卷积像素路径层进行后期精炼；该像素路径仅在去噪过程的最后20%阶段激活，不参与早期去噪；在ImageNet@256上进行实验验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet@256上，FID从原始JiT的2.34（校正采样后）降至1.78，生成质量显著提升，且未使用额外损失。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Lang-SVG方法，通过引入带语义标签和父子关系的显式树结构来组织SVG图元，使矢量化结果与人类感知的物体-部件层次对齐，从而生成更易编辑和操作的SVG。同时提出新的评估协议来衡量结构质量和语义部件对齐度。</div>
+        <div class="summary-section"><strong>方法:</strong> Lang-SVG利用粒度可控且开放词汇的分割先验来初始化物体-部件层次结构，并借助多模态大语言模型（MLLMs）结合SVG树上下文为未标注节点分配语义标签。为减少冗余，引入深度自适应简化来降低形状复杂度，并采用树引导的剪枝与合并来消除冗余SVG节点。此外，通过L1-SAM-Prompting恢复缺失区域以提升重建保真度和结构完整性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Lang-SVG在渲染保真度和结构质量两方面均达到最先进性能，生成的SVG不仅像素级重建效果好，还能与人类感知的物体-部件层次结构对齐，显著提升了SVG的可编辑性和可操作性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Recent work on latent-free diffusion transformers has demonstrated the feasibility of training image generators without a latent VAE. This avoids compression artifacts from the VAE and simplifies the training pipeline. In particular, JiT showed that even a standard transformer can be trained to generate images when the model is trained to predict the final image ($x$-prediction). Even though JiT unlocks training efficiency comparable to latent models, it still suffers from reduced image quality likely arising from modeling the image as a collection of large patches. In this work, we revisit JiT and show that adding simple convolutional pixel-pathway layers in a post-training phase significantly improves generation quality. Moreover, we show that the added pixel-pathway does not need to be active in the early denoising stages, and can be activated as late as in the last $20\%$ of the denoising process. Our experiments on ImageNet@256 show improvements compared to the original JiT results, achieving an FID of $1.78$ (from $2.34$ with corrected sampling), without using additional losses.</p>
+        <p>Image vectorization reconstructs raster images as compact scalable vector graph- ics (SVG), providing a structured and editable code representation of images. However, most existing vectorization methods optimize for pixel-level render- ing fidelity, often producing SVGs that lack alignment with human-perceived object-part hierarchies, making them difficult to manipulate. To address this, we propose Lang-SVG, which introduces an explicit tree structure to organize SVG primitives with semantic labels and parent-child relationships. Lang-SVG incorporates granularity-controllable and open-vocabulary segmentation priors to initialize object-part hierarchies and leverages multimodal large language models (MLLMs) with SVG tree context to assign semantic labels to unlabeled nodes. To reduce redundancy, we introduce depth-adaptive simplification to reduce shape complexity and Tree-Guided Pruning and Merging to eliminate redundant SVG nodes. L1-SAM-Prompting further recovers missing regions to improve recon- struction fidelity and structural completeness. Beyond reconstruction fidelity, we introduce a new evaluation protocol that measures structural quality and semantic part alignment. Experiments demonstrate that Lang-SVG achieves state-of-the-art performance in both rendering fidelity and structural quality. Project website: https://xiliu8006.github.io/Lang-SVG/.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13120" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13120.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">人机交互</span>
-          <span class="paper-id">2611.11561</span>
-        </div>
-        <span class="score-badge">相关性 72/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.11561" target="_blank">From Sketch to Design: A Cross-scale Workflow for Procedural Generative Urban Design</a>
-      </h3>
-      <p class="paper-title-zh">从草图到设计：面向程序化生成式城市设计的跨尺度工作流</p>
-      <p class="paper-authors">Jin Gao, Sayjel Vijay Patel</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种跨尺度工作流及基于网页的原型系统，将设计师的符号化草图转化为可控的程序化城市生成过程，弥合了视觉化草图输入与数值化生成参数之间的鸿沟。</div>
-        <div class="summary-section"><strong>方法:</strong> 通过分析城市设计图解示例和研究生草图练习，构建了一套编码网络结构、密度和功能等属性的形状词汇表；原型系统使用$1 Unistroke Recognizer将手势映射为符号，并将其位置和大小转化为张量场吸引子和加权参数网格；网格和张量场引导街道网络生成，参数网格控制建筑高度和功能；系统基于JavaScript/TypeScript、React和Three.js实现，支持交互式草图绘制、可视化和城市体量生成。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 原型系统能够实现交互式草图输入与城市体量生成的联动，验证了从符号草图到程序化城市设计的可行性；论文还讨论了与建筑尺度生成工具的下游集成，以支持进一步细化与分析，从而将设计师的符号化输入与显式的程序化生成过程连接起来。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Urban designers use sketches and symbols to express spatial intentions, while many generative urban design tools rely on numeric parameters that are difficult to relate to this visual process. We propose a cross-scale workflow and a web-based prototype that translates symbolic sketches into controllable procedural urban generation. A vocabulary of shapes, informed by examples of urban design diagrams and sketching exercises with graduate urban design students, encodes attributes such as network structure, density, and program. The prototype uses the \$1 Unistroke Recognizer to map gestures to symbols and translates their locations and sizes into tensor-field attractors and weighted parameter grids. Grid and radial tensor fields guide street-network generation, while the parameter grids control building heights and programs. Implemented in JavaScript and TypeScript with React and Three.js, the prototype supports interactive sketching, visualization, and urban massing generation. We describe the methodology and illustrate prototype interactions, then discuss downstream integration with architectural-scale generative tools for further refinement and analysis. The work connects designers' symbolic input with an explicit procedural generation process.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.11561" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.11561.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">图形学</span>
-          <span class="paper-id">2611.13677</span>
-        </div>
-        <span class="score-badge">相关性 62/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.13677" target="_blank">Deformable Texture Maps: Compiling Dynamic Microgeometry into Neural Textures</a>
-      </h3>
-      <p class="paper-title-zh">可变形纹理贴图：将动态微观几何编译为神经纹理</p>
-      <p class="paper-authors">Antonio Arian Silaghi, Zhen Chen, Danny Kaufman, Élie Michel, Jean-Marc Thiery 等 (7 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出可变形纹理贴图（DTM），一种将形变驱动的微观几何编译为连续紧凑神经纹理的表示方法，能够在粗糙形变表面上直接评估细尺度结构，并保持光照与材质响应与学习模型解耦。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先将可平铺的纱线块在形变空间中扫描，然后将细节几何渲染到规范纹理空间，最后将所得贴图压缩为单一神经表示。该模型将纹理坐标和局部形变映射为描述不透明度、表面法线、深度和材质身份的本征贴图，并引入持久化纹理空间渲染策略，缓存本征贴图并随形变变化选择性更新。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在纱线基纺织品上验证了方法有效性，非线性材料拉伸和剪切引起的纱线几何、间距和遮挡变化被成功捕获。由于编码几何属性而非辐射度，可实现重光照、着色和材质编辑而无需重新训练，且神经评估与帧渲染解耦，支持跨帧复用和传统渲染效果集成。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Deformable material surfaces, such as cloth, owe their appearance to fine-scale geometries that restructure under deformation. Even when coarse simulation models efficiently recover this microstructure, explicitly instantiating and rendering it remains expensive. We introduce Deformable Texture Maps (DTM), a representation that compiles deformation-driven microgeometry into a continuous and compact neural texture. Our model maps texture coordinates and local deformations to intrinsic maps describing opacity, surface normals, depth, and material identity. This captures the occlusion and visibility changes generated by deformation. At runtime, these maps provide a common texture-space representation of deformation-driven fine-scale structure that can be evaluated directly on coarse deforming surfaces. Since our representation encodes geometric attributes rather than radiance, lighting and material response remain decoupled from the learned model. This allows us to apply relighting, as well as shading and material editing without retraining. We further introduce a persistent texture-space rendering strategy that caches these intrinsic maps and selectively updates them as deformation changes. This effectively decouples neural evaluation from frame rendering and enables their reuse across frames and conventional rendering effects. We demonstrate our approach on yarn-based textiles, where non-linear material stretch and shear induce changes in yarn geometry, spacing and occlusion. We build our model by, first, sweeping tileable yarn patches through deformation space, then, rendering the detailed geometry into a canonical texture-space, and finally, compressing the resulting maps into a single neural representation. Our resulting model can be evaluated directly on arbitrary coarse garment meshes and integrated with conventional shading pipelines, keeping appearance authorable at render time.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.13677" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.13677.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.15941" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15941.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +300,94 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.14097</span>
+          <span class="paper-id">2611.17194</span>
         </div>
-        <span class="score-badge">相关性 62/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.14097" target="_blank">Stylization as Geodesic Navigation on Diffusion Manifolds</a>
+        <a href="https://arxiv.org/abs/2611.17194" target="_blank">eDMD: Endpoint Distribution Matching for Few-Step Diffusion Distillation</a>
       </h3>
-      <p class="paper-title-zh">风格化作为扩散流形上的测地线导航</p>
-      <p class="paper-authors">Yan Li, Zehao Li, Xinlong Sun, Fuchen Long, Xi Chen 等 (7 位作者)</p>
+      <p class="paper-title-zh">eDMD：面向少步扩散蒸馏的端点分布匹配</p>
+      <p class="paper-authors">Tong Zhao, Xianfang Zeng, Yucheng Han, Ruoyu Wang, Mingkun Lei 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Stylus，一个无需训练的框架，将人脸风格迁移视为在预训练扩散模型的弯曲潜在流形上的导航，实现了在保持身份的同时进行强风格化。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法不采用平坦欧几里得空间中的插值，而是通过降低拉回度量下的比率加权离散测地线能量来精化插值的内容-风格点，并利用雅可比矩阵的秩一幂迭代近似使其可处理。该原理驱动两个互补控制：内容-风格潜在插值实现平滑语义融合，以及自注意力查询优化实现空间自适应风格注入。由此产生的双控制机制提供了对风格化强度的连续、细粒度控制，同时保留身份关键的面部结构，且无需额外训练。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Stylus在具有竞争力的风格化强度下实现了最强的身份和内容保持。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出端点分布匹配蒸馏（eDMD），通过仅在学生模型的最终输出上训练共享伪评分模型，解决了多步蒸馏中更新信号与中间分布纠缠导致的匹配方向偏差问题，并从理论上证明了端点参考下分布匹配项当且仅当学生最终输出分布与教师匹配时消失。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法训练一个单一的共享伪评分模型，仅以学生的最终输出为训练对象，并用它来校正每一个去噪步骤，从而避免中间状态分布对匹配方向的干扰。理论分析证明，这种端点参考保证了分布匹配项在学生最终输出分布与教师分布一致时（且仅此时）归零，与中间分布无关。此外，作者引入精确教师（PT），在最终噪声区间用短多步轨迹替代单步引导预测，并为中间步骤配备校准的查询密度以加强教师监督。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在 SD3-Medium、FLUX.2-klein（4B 和 9B）以及 Qwen-Image-2.1 上的实验表明，eDMD 在 4 步生成任务中始终优于现有的分布匹配方法。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Facial stylization asks for a delicate transformation: the image should look unmistakably artistic, yet the person should remain unmistakably the same. Existing training-free and instruction-driven methods often fail to expose such control, either drifting away from identity or producing only weak stylization. We introduce Stylus, a training-free framework that treats facial style transfer as navigation on the curved latent manifold of a pretrained diffusion model. Rather than interpolating in flat Euclidean space, \method refines the interpolated content--style point by lowering a ratio-weighted discrete geodesic energy under the pullback metric, made tractable by a rank-one power-iteration approximation of the Jacobian. This principle drives two complementary controls: content--style latent interpolation for smooth semantic fusion, and self-attention query optimization for spatially adaptive style injection. The resulting dual-control mechanism provides continuous, fine-grained control over stylization strength while preserving identity-critical facial structure, all without additional training. Experiments show that Stylus achieves the strongest identity and content preservation at competitive stylization strength.</p>
+        <p>Distribution matching distillation (DMD) has emerged as a leading paradigm for distilling diffusion models into few-step students, where an auxiliary fake score model tracks the student's distribution and the discrepancy between the teacher and fake predictions drives the student toward the teacher. In multi-step distillation, although only the student's final output is delivered, existing methods train the fake model on intermediate states or across all denoising steps. Consequently, the student's update signal becomes entangled with intermediate distributions, which can distort the matching direction and remain nonzero even after the student's final outputs already match the teacher distribution. To resolve this mismatch, we propose Endpoint Distribution Matching Distillation (eDMD), which trains a single shared fake model exclusively on the student's final outputs and uses it to correct every denoising step. Our theoretical analysis proves that this endpoint reference guarantees that the distribution matching term vanishes if and only if the student's final output distribution matches the teacher's, regardless of intermediate distributions. Beyond the fake reference, we further strengthen teacher supervision through a precise teacher (PT) that replaces single-step guided predictions with short multi-step trajectories on the final noise interval, paired with a calibrated query density for intermediate steps. Experiments on SD3-Medium, FLUX.2-klein (4B and 9B), and Qwen-Image-2.1 demonstrate that eDMD consistently outperforms existing distribution matching methods for 4-step generation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.14097" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.14097.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.17194" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17194.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.16630</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.16630" target="_blank">When Chekhov's Gun Fires Anyway: Over-Realization in Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">当契诃夫之枪无论如何都会开火：文本到图像模型中的过度实现现象</p>
+      <p class="paper-authors">Jiahao Huang, Kon Woo Kim, Song-Duo Ma, Yuka Kitamura, Felix Wagner 等 (15 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文识别并命名了文本到图像生成中的“过度实现”失败模式——即提示中提及但未被要求的目标仍出现在生成图像中，并构建了OverReal基准来测量该现象，揭示了现有评估指标反而奖励这一失败。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者基于心理空间理论定义了四种易引发过度实现的情境（否定、信念/想象、比喻比较、隐藏视角），构建了OverReal-Gen（698个提示）用于测量各生成器的过度实现率，以及OverReal-Det（2,841张人工标注图像）用于验证自动评判器。随后评估了八个文本到图像系统，并分析了扩散骨干网络的注意力分配。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 所有八个文本到图像系统均存在过度实现现象；CLIPScore等传统指标反而奖励而非惩罚该失败；提示扩展只能部分缓解问题；在生成器内部，扩散骨干对提及目标的关注度几乎与对请求目标相当，而本应抑制目标的线索词获得的注意力低于普通词。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>In text-to-image generation, a target that the prompt mentions often appears in the generated image in a way the prompt does not call for. We call this failure over-realization. Mental-spaces theory points to the situations where it can happen: under a negation, inside what a character believes or imagines, as the vehicle of a figurative comparison, or behind a viewpoint that hides the target. Prior work has studied only negation in depth, and the conventional alignment and preference metrics do not penalize the failure. We build OverReal to measure it: OverReal-Gen, 698 prompts covering the four situations, on which we measure each generator's over-realization rate; and OverReal-Det, 2,841 generated images human-labeled for whether and how the target is over-realized, on which we verify the automatic judge that produces this rate. Our evaluation of eight text-to-image systems reveals that all of them over-realize, and that conventional metrics such as CLIPScore reward the failure rather than penalize it. Prompt expansion only partly mitigates the failure. Inside the generator, the diffusion backbone attends to a mentioned target almost as much as to a requested one. The cue words that should hold the target back receive less attention than ordinary words.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.16630" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.16630.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15418</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15418" target="_blank">ChartGalaxy++: A Richly Annotated Dataset for Chart Understanding and Generation</a>
+      </h3>
+      <p class="paper-title-zh">ChartGalaxy++：面向图表理解与生成的富标注数据集</p>
+      <p class="paper-authors">Duan Li, Zheng Wang, Jiangning Zhu, Yuhui Yuan, Shixia Liu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 该论文提出了ChartGalaxy++，一个包含217,195张信息图表的富标注数据集，其核心是采用场景图表示来捕捉视觉元素间的层次与空间关系，弥补了现有元素级标注的不足，并展示了该数据集在图表理解与生成任务中的价值。</div>
+        <div class="summary-section"><strong>方法:</strong> 对于真实信息图表，通过检测视觉元素并逐步分组来构建场景图；对于合成图表，则直接从生成过程中推导场景图。数据集以场景图为核心表示，其中节点代表视觉元素和语义组，边编码层次与空间关系。论文通过三个应用验证其效用：图像到场景图预测、场景图增强的信息图问答、以及图像生成中场景图保持的评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，ChartGalaxy++能够有效支持图像到场景图的预测、提升信息图问答的性能，并可用于评估生成图像对场景图的保持程度，证明了该数据集在推进图表理解与生成方面的实用价值。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Infographic charts communicate data through cohesive compositions of visual elements such as charts, text, and images. Existing infographic chart datasets primarily annotate individual elements with bounding boxes and category labels. Such element-level annotations do not capture hierarchical and spatial relationships, limiting their use for understanding how elements are organized and related within an infographic and for generating well-organized designs. To address this limitation, we introduce ChartGalaxy++, a richly annotated dataset of 217,195 infographic charts. At the core of this dataset is a scene graph representation, in which nodes represent visual elements and semantic groups, and edges encode their hierarchical and spatial relationships. For real infographics, we construct scene graphs by detecting and progressively grouping visual elements; for synthetic ones, we derive them directly from the generation process. We demonstrate the utility of ChartGalaxy++ through three applications: 1) image-to-scene-graph prediction, 2) scene-graph-augmented infographic question answering, and 3) evaluation of scene graph preservation in image generation. Together, these applications highlight the value of ChartGalaxy++ for advancing chart understanding and generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15418" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15418.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
