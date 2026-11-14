@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-14</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15617</span>
+        </div>
+        <span class="score-badge">相关性 78/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15617" target="_blank">WaveletLoRA: Frequency-Aware Content-Style Decomposition for Personalized Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">WaveletLoRA：面向个性化图像生成的频率感知内容-风格解耦</p>
+      <p class="paper-authors">Peiyao Wang, Jiahui Sun, Weining Wang, Jing Liu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出WaveletLoRA，一个基于小波域监督的频率感知框架，通过为不同频率子带分配专用LoRA分支实现单图内容与风格的显式解耦，并构建了WaveBench基准与基于VLM的评估协议。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先对参考图像进行多级离散小波变换（DWT），分解为低频与高频子带；随后为每个子带分配独立的LoRA分支，低频分支建模全局外观以获取风格，高频分支捕捉结构细节以保留内容；进一步引入稠密混合专家（MoE）聚合模块与频域正则化目标，减少风格泄漏并提升内容保真度；最后建立WaveBench基准及基于VLM的评估协议，从属性相似性与属性分离度两方面评估解耦效果。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，WaveletLoRA在个性化图像生成中持续优于现有方法，生成结果更符合人类偏好，并在属性相似性与属性分离度评估中表现更佳。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Content-style decomposition from a single image is a fundamental challenge in personalized image generation, aiming to separate subject identity from visual style for flexible recomposition. Existing approaches primarily operate in the spatial domain, without explicitly exploiting the distinct frequency characteristics naturally associated with content and style. In this paper, we propose WaveletLoRA, a novel frequency-aware framework for explicit content-style decomposition through wavelet-domain supervision. Specifically, we first apply a multi-level discrete wavelet transform (DWT) to decompose the reference image into low-frequency and high-frequency subbands. We then assign a dedicated LoRA branch to each subband, where the low-frequency branch models global appearance for style acquisition, while the high-frequency branches capture structural details for content preservation. To further improve disentanglement quality, we introduce a dense Mixture-of-Experts aggregation module together with a frequency-domain regularization objective, which reduces style leakage and enhance content fidelity. In addition, we establish WaveBench and develop a VLM-based evaluation protocol that explicitly measures both attribute similarity and attribute separation for disentanglement assessment. Extensive experiments demonstrate that WaveletLoRA consistently outperforms existing methods and produces results that better align with human preference.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15617" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15617.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.16517</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.16517" target="_blank">UniSpark: Exploring Hybrid Attention for Multimodal Understanding and Generation</a>
+      </h3>
+      <p class="paper-title-zh">UniSpark：探索用于多模态理解与生成的混合注意力机制</p>
+      <p class="paper-authors">Jiancheng Pan, Yuzheng Liu, Hengyuan Cao, Qiyuan Zhang, Yangyan Li 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出UniSpark-9B统一多模态模型，通过混合注意力机制（全注意力与线性注意力结合）同时支持视觉理解与生成任务，并在多个基准上取得优异表现。</div>
+        <div class="summary-section"><strong>方法:</strong> 基于混合Transformer专家骨干网络（每分支约9B参数），结合全注意力进行显式token交互与GatedDeltaNet线性注意力进行紧凑上下文传播。采用自回归文本预测与视觉流匹配联合训练，支持视觉问答、文生图、指令引导编辑和交错文本-图像预测。通过分块协议在注意力掩码和循环状态保留规则中隔离噪声视觉目标与干净视觉上下文。使用四阶段课程联合训练多模态理解与视觉生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在MME-S上得分2470.3，GenEval上得分0.83。定性示例展示了交错图像生成、视频合成和视频编辑能力，表明混合注意力是统一多模态理解与生成的有效骨干。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present UniSpark-9B, a unified multimodal model that investigates hybrid attention for visual understanding and generation. Built on a Mixture-of-Transformer-Experts backbone with approximately 9B parameters in each branch, UniSpark combines full attention for explicit token interactions with GatedDeltaNet linear attention for compact context propagation. Autoregressive text prediction and visual flow matching jointly support visual question answering, text-to-image generation, instruction-guided editing, and interleaved text-image prediction. In interleaved generation, noisy visual targets are isolated from subsequent predictions, while clean visual representations provide context for later outputs. A blockwise protocol enforces this distinction through attention masks in full-attention layers and recurrent-state retention rules in linear-attention layers. The selected training sources contain 159.7M generation samples, 213.4M understanding samples, and 624.8K interleaved sequences. A four-stage curriculum jointly trains multimodal understanding and visual generation, refining answer accuracy and instruction following while extending image synthesis to 2K. UniSpark scores 2470.3 on MME-S and 0.83 on GenEval. Qualitative examples further illustrate its capabilities in interleaved image generation, video synthesis, and video editing. Together, these results demonstrate that hybrid attention provides an effective backbone for unified multimodal understanding and generation.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.16517" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.16517.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15789</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15789" target="_blank">VibePrevisBench: Evaluating Agentic Coding for 4D Scene Generation in Blender</a>
+      </h3>
+      <p class="paper-title-zh">VibePrevisBench：评估Blender中4D场景生成的智能体编码能力</p>
+      <p class="paper-authors">Yuzhe Chen, Muxi Diao, Lele Yang, Wenbin Xu, Xuyang Liu 等 (22 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了VibePrevisBench，首个用于评估编码智能体在Blender中重建4D场景并渲染代理视频的基准，包含242个任务和两个维度的评估体系。</div>
+        <div class="summary-section"><strong>方法:</strong> 智能体根据简要指令生成可执行的4D场景并渲染代理视频。评估采用规则化场景检查（重新运行代码，将导出的4D场景与隐藏的真实事实在九个维度上对比）和基于VLM的屏幕检查（由VLM评判通过的事实能否在代理视频中被识别）。对11个前沿编码智能体的评估结果和轨迹进行了分析。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 多模态理解能力区分了各智能体，尤其在理解空间和相机运动方面；所有智能体似乎已掌握基本相机工作和场景调度，但在挑战性请求上失败；智能体会检查自己的渲染结果但无法纠正错误。因此智能体需要更好的空间和相机视觉理解、对挑战性请求的显式检查，以及逐项对照简要指令验证渲染结果。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Controllable real-world video generation models can condition on a rendered graybox proxy video, which fixes layout, motion and camera. Coding agents can build such videos by reconstructing a 4D scene in Blender, yet no benchmark checks both these videos and the long, multi-shot scenes behind them. We introduce VibePrevisBench, a benchmark for 4D scene reconstruction: an agent turns a brief into an executable 4D scene and renders its proxy video. Its 242 tasks span four input kinds, including scripts, photos, continuations, and reference videos. Each delivery is scored along two evaluation dimensions. Rule-based Scene Check re-runs the code and compares the exported 4D scene with hidden ground truth facts in nine dimensions. VLM-based Screen Check asks a VLM judge whether the facts that pass can be recognized in the proxy video. We analyze the evaluation results and trajectories of 11 frontier coding agents and identify three key observations. First, multimodal understanding separates the agents, especially in understanding space and camera motion. Second, all agents seem to already master basic camera work and staging, and fail at challenging requests. Third, agents inspect their own renders but fail to correct their errors. Agents thus need better visual understanding of space and camera, explicit checks for challenging requests, and item-by-item verification of renders against the brief.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15789" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15789.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15433</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15433" target="_blank">Verifier Choice is a Benchmark Design Variable: Auditing Structural Counting Evaluation in Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">验证器选择是基准设计变量：文本到图像模型中结构化计数评估的审计</p>
+      <p class="paper-authors">Shurun Li, Michael Hua Wang, Haibo Zeng, Long Wang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文指出自动评估中的验证器不应被视为实现细节，而应作为基准设计的显式变量；作者通过结构化计数任务构建以验证器为中心的审计套件，系统揭示验证器及其使用协议会显著改变文本到图像模型的评估结论。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者围绕七类计数对象（手机、椅子、交通灯等物体计数，以及三叶草小叶、梳妆台抽屉面板、电源插排插孔、涡轮叶片等子结构计数）构建审计套件。基于Qwen-Image-2512和FLUX.2-dev生成的6,240张图像，比较开放多模态大模型验证器在仅计数、拒绝感知、零样本和少样本协议下的表现，并加入类TIFA目标查询、检测器基线和前沿闭源模型检查。在2,280张图像的平衡评估集上分析聚合分数、图像级一致性、生成器排序扭曲和有效计数保真度等指标。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 聚合分数匹配可以与图像级分歧并存，验证器使用协议和生成器分布会改变测得的可靠性；所有验证器-协议配置都将两个生成器之间的人类评分差异缩小7.5–25.0个百分点，且在加入第三个生成器Z-Image后，四种测试协议均反转了Z-Image与FLUX.2-dev在固定提示集上的人类排序。GPT-5.5和Claude Opus 4.7检查未能消除失败模式：GPT-5.5的三叶草有效计数保真度仅为59.92%，Claude Opus 4.7的同切片一致性较低（κ=0.432）。作者因此提出应以因子化验证器可靠性画像报告自动基准分数，包括聚合分数差距、图像级一致性、生成器比较扭曲、有效图像计数保真度、拒绝行为、输出合规性和方向性偏差。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Automatic evaluation is now central to text-to-image benchmarking, but the verifier that converts generated images into scores is often treated as an implementation detail. We argue that this is unsafe: an automatic benchmark score is a property of the image generator, prompt distribution, verifier, verifier-use protocol, and scoring rule, not of the generator alone. We study this issue in structural counting, a controlled setting where human-visible counts can be audited. We construct a verifier-centric audit suite over seven counting objects: cell phones, chairs, and traffic lights for object counting, and clover leaflets, dresser drawer fronts, power-strip sockets, and turbine blades for substructure counting. Across 6,240 generated images from Qwen-Image-2512 and FLUX.2-dev, we compare open MLLM verifiers under count-only, reject-aware, zero-shot and few-shot protocols, plus TIFA-like target queries, a detector baseline, and frontier closed-model checks on two hard objects. On a balanced 2,280-image evaluation split, aggregate score matching can coexist with image-level disagreement, and verifier-use protocols and generator distributions change the measured reliability. Every verifier-protocol configuration also shrinks the human score difference between the two generators, by 7.5-25.0 pp, and with a third generator, Z-Image, all four tested protocols reverse the human ordering of Z-Image and FLUX.2-dev on our fixed prompt suite. GPT-5.5 and Claude Opus 4.7 checks do not remove the failure modes: GPT-5.5 still has only 59.92% clover valid-count fidelity, while Claude Opus 4.7 has lower same-slice agreement ($κ=0.432$). We propose reporting automatic benchmark scores with a factorized verifier reliability profile: aggregate score gap, image-level agreement, generator-comparison distortion, valid-image count fidelity, rejection behavior, output compliance, and directional bias.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15433" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15433.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15149</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15149" target="_blank">From Concepts to Interactions: Dynamic Graph Semantic Recomposition for Safe Visual Generation</a>
+      </h3>
+      <p class="paper-title-zh">从概念到交互：面向安全视觉生成的动态图语义重组</p>
+      <p class="paper-authors">Qinghui Gong, Jinshan Lai, Xunlei Chen, Hua Meng, Zhengchun Zhou</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出动态图语义重组（DGSR）方法，通过建模概念间动态语义交互实现精准的安全干预，在抑制有害内容的同时保留合法生成，解决了传统概念擦除方法因忽略上下文而误伤安全场景的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> DGSR在采样过程中从演化的文本-视觉状态动态构建并更新语义交互图，通过上下文感知的图推理捕捉语义依赖关系，并利用成对的安全/不安全监督区分有害与合法交互，从而精准识别并选择性干预高风险语义关系，同时冻结预训练主干网络以支持图像和视频生成。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，DGSR在12项T2I评估中的10项取得最低攻击成功率（ASR），并将T2V平均不安全帧率相对最强基线降低41.2%，同时保持较高的生成保真度和时间一致性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Recent advances in flow-matching Transformers have greatly improved Text-to-Image (T2I) and Text-to-Video (T2V) generation, but unconstrained generation risks producing illegal or unethical content. Safety alignment must therefore suppress unsafe content while preserving legitimate generation. A concept's safety depends on context: a knife used for cooking is safe, whereas its use in violence is harmful. Yet most concept erasure methods indiscriminately suppress static, isolated representations, overlooking evolving semantic interactions. Consequently, safe scenes containing potentially sensitive terms may be unintentionally suppressed, compromising generation quality. To address this, we propose Dynamic Graph Semantic Recomposition (DGSR), which dynamically constructs and updates a semantic interaction graph from evolving text visual states during sampling. Context aware graph reasoning captures semantic dependencies, while paired safe/unsafe supervision distinguishes harmful from legitimate interactions, enabling precise identification of and selective intervention on high risk semantic relationships while preserving benign semantics. DGSR freezes the pretrained backbone and supports both image and video generation. Experiments show that DGSR achieves the lowest Attack Success Rate (ASR) in 10 of 12 T2I evaluations and reduces the average T2V unsafe frame rate by 41.2\% relative to the strongest baseline, while maintaining high generation fidelity and temporal consistency.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15149" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15149.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
