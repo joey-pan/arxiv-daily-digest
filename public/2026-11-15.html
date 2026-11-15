@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-15</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.17336</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.17336" target="_blank">Back to Pixels: Lifting Latent Video Diffusion into Pixel Space</a>
+      </h3>
+      <p class="paper-title-zh">回归像素：将潜在视频扩散模型提升至像素空间</p>
+      <p class="paper-authors">Yanke Song, Shuo Chen, Chris Rockwell, Guande He, Nan Liu 等 (12 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出PixVid方法，将预训练的潜在视频扩散模型直接提升至像素空间逐帧生成视频，克服了VAE潜在空间压缩导致的分辨率、控制性和交互性限制。</div>
+        <div class="summary-section"><strong>方法:</strong> 保留扩散Transformer架构，用卷积头替换VAE解码器将输出渲染为像素；采用预测干净视频而非速度，并结合更大的噪声偏移；基于Wan2.1-14B微调。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在约130万训练片段下与潜在基线竞争；以相同每帧token数生成2倍分辨率；深度条件视频编辑在快速运动下保持对齐；每个动作在下一帧即时响应。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limits high-resolution, controllable, and interactive generation -- doubling resolution quadruples token count, conditions apply to groups of frames rather than individual ones, and each response must wait for the rest of its multi-frame block. We present PixVid, a simple yet effective method that lifts a pretrained latent video model to directly generate every frame in pixel space. PixVid keeps the diffusion transformer and replaces the VAE decoder with a convolutional head that renders its outputs into pixels. We find that predicting clean video rather than velocity, together with a larger noise shift, is key to quality. Finetuned from Wan2.1-14B, PixVid is competitive with the latent baseline within $\sim 1.3$M training clips. Working framewise in pixels, it generates at $2\times$ higher resolution with the same per-frame token count, keeps depth-conditioned video editing aligned under fast motion, and responds to each action at the next frame. Project page: https://chenshuo20.github.io/PixVid/</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.17336" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17336.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15760</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15760" target="_blank">Image Deblending with Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">基于扩散模型的图像去混合</p>
+      <p class="paper-authors">Dan Botchan, Ohad Fried, Yacov Hel-Or</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 本文将图像去混合建模为联合逆问题，利用扩散后验采样同时重建两幅源图像，并提出一种无需训练的文本引导框架来约束解空间，实现盲去混合。</div>
+        <div class="summary-section"><strong>方法:</strong> 方法采用两阶段架构：首先使用文本引导的潜在扩散模型，以提示作为高层语义线索进行语义分离；随后在像素空间进行细化以恢复细节。通过随机采样生成多个可能的分解结果，并可在无真实标签的情况下进行排序。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，该无需训练的方法在未见域上达到最先进结果，并能扩展到空间变化的alpha图，同时在标准标量混合基准上与监督基线保持竞争力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Image deblending is the task of decomposing a composite image back into its source images, which is an ill-posed problem, as a single blended image can be decomposed into multiple plausible source layers. While diffusion models are often used to solve inverse problems, they typically address single-output reconstruction problems. In this work, we formulate deblending as a joint inverse problem, employing diffusion posterior sampling to simultaneously reconstruct two source images, demonstrating that a single diffusion prior is expressive enough to disentangle two full images at once rather than just one. Drawing inspiration from human perception, where semantic understanding helps disentangle visual inconsistencies, we propose a training-free framework that leverages text prompts to constrain this solution space. We address the blind deblending task through a two-stage architecture: text-guided latent diffusion performs semantic separation using prompts as high-level cues, followed by a pixel-space refinement to recover fine details. Stochastic sampling produces multiple plausible decompositions that can be ranked without ground truth. Extensive experiments show that our training-free method achieves state-of-the-art results on unseen domains and extends to spatially-varying alpha maps, while remaining competitive with supervised baselines on standard scalar blending benchmarks.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15760" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15760.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15602</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15602" target="_blank">CoCode-World: Shared 3D Proxy Representation for Multi-Player World Models</a>
+      </h3>
+      <p class="paper-title-zh">CoCode-World：面向多人世界模型的共享3D代理表示</p>
+      <p class="paper-authors">Qirui Li, Xin Zhang, Yabo Chen, Jinkun Hao, Paul L Rosin 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出CoCode-World框架，通过共享3D代理将结构控制与视觉合成分离，实现两名玩家的视频联合生成，在保持跨视角一致性的同时支持训练中未见过的角色和场景风格的外观迁移。</div>
+        <div class="summary-section"><strong>方法:</strong> 使用可编程代理指定场景布局、运动和遮挡，RGB参考引导角色与场景外观；将成对的代理视频、外观参考和目标视角按一致空间布局拼接，利用预训练视频模型联合生成两个视角，借助模型原生注意力实现单生成分支内的跨视角通信，并通过LoRA适配学习代理遵循和外观对应关系；构建了双人GTA V数据集，配对同步RGB观测与基于共享地图几何和游戏引擎状态生成的代理视频。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明该方法能够将外观迁移到训练中未见的角色和场景风格，在视频质量和跨视角玩家身份一致性上优于评估基线；消融实验进一步分析了代理构建方式和跨视角通信对生成效果的影响。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Multiplayer generative world models must produce observations that agree on shared entities despite different camera motions and occlusions. Explicit world representations provide spatial control, but precise modeling of individual game maps limits scene diversity, while shared geometry alone cannot ensure consistent appearance across views. We present CoCode-World, a shared 3D proxy framework that separates structural control from visual synthesis for two-player video generation. Programmable proxies specify scene layout, motion, and occlusion, while RGB references guide character and scene appearance. To coordinate visual details across players, we concatenate paired proxy videos, appearance references, and target views in a consistent spatial layout and generate both views jointly with a pretrained video model. This formulation uses the model's native attention for cross-view communication within a single generation branch, with LoRA adaptation learning proxy adherence and appearance correspondence from paired observations. We construct a two-player GTA~V dataset that pairs synchronized RGB observations with proxy videos derived from shared map geometry and game-engine state. Experiments demonstrate appearance transfer to characters and scene styles unseen during training, with improvements in video quality and cross-view player identity over the evaluated baseline. Ablations further examine how proxy construction and cross-view communication affect generation. Project page: https://iapple233.github.io/CCW/.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15602" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15602.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15449</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15449" target="_blank">Reading the Unreadable: Text-Aware Image Super-Resolution Needs Reasoning</a>
+      </h3>
+      <p class="paper-title-zh">阅读不可读文本：文本感知图像超分辨率需要推理</p>
+      <p class="paper-authors">Jaeseong Lee, Jinwoo Kim, Jinho Jeong, Seon Joo Kim</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文首次系统性地提出并验证了文本感知图像超分辨率（TAISR）任务需要推理能力，而非仅靠局部视觉恢复，并提出了一个无需训练即插即用的方法（RTC）来显著提升现有模型在推理依赖型文本上的恢复效果。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先构建了ReasonText基准，将需要推理才能识别的文本与局部可恢复文本分开，并提出了基于识别的GTTCA指标以排除文本检测误差。通过评估12个近期超分辨率模型，发现它们在推理依赖型文本上性能显著下降。基于此，作者提出RTC方法：利用外部多模态大语言模型（MLLM）对低分辨率图像中的退化文本进行推理并生成描述，再将描述作为条件输入给文本条件超分辨率模型，从而无需额外训练即可提升文本恢复质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，所有评估的超分辨率模型在需要推理的文本上均出现一致且显著的性能下降，揭示了系统性盲点；文本条件超分辨率模型在给定真实文本时恢复效果大幅提升；MLLM能够通过推理读取低分辨率图像中的退化文本；RTC方法在所有六个文本条件超分辨率模型上均带来一致提升，尤其在推理依赖型文本上效果显著，甚至使真实场景超分辨率模型结合RTC后超越TAISR模型结合RTC的表现，表明推理应成为未来TAISR设计的核心维度。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-aware image super-resolution (TAISR) aims to recover high-resolution images from low-resolution inputs while preserving textual content. Existing methods treat this as a visual restoration problem, yet severely degraded text often cannot be read from local visual evidence alone. Humans instead read it by reasoning over image context, logical patterns, and prior knowledge. This raises a fundamental question: Does TAISR need reasoning? To answer this, we introduce two diagnostic tools. The first, ReasonText, is a human-curated benchmark that separates reasoning-required text from locally recoverable text. The second, Ground-Truth Text-Crop Accuracy (GTTCA), is a recognition-based metric that measures text restoration quality without text detection errors. Evaluating twelve recent super-resolution (SR) models, we find a consistent and substantial performance drop on reasoning-required text, revealing a systematic blind spot. Two observations point to a remedy. One is that text-conditioned SR models restore text substantially better when given ground-truth text. The other is that multimodal large language models (MLLMs) can read degraded text in low-resolution images through reasoning. We therefore propose Reasoning Transfer via Captioning (RTC), a training-free plug-in that uses an external MLLM to infer the degraded text and feeds the resulting caption to a text-conditioned SR model. RTC consistently improves all six text-conditioned SR models we evaluate, especially on reasoning-required text. Surprisingly, a real-world SR model with RTC can even outperform the TAISR model with RTC, suggesting that reasoning should be a core design axis for future TAISR.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15449" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15449.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.15044</span>
+        </div>
+        <span class="score-badge">相关性 62/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.15044" target="_blank">Estimating Image Creativity</a>
+      </h3>
+      <p class="paper-title-zh">图像创造力评估</p>
+      <p class="paper-authors">Nisan Chhetri, Christopher G. Healey, Sina Baghbanijam</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种新颖的框架，通过预测图像在新颖性、惊喜性和唤醒性三个心理学创造力维度上的强度，并将这些维度强度组合起来，自动估计图像的人类感知创造力分数。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究首先在Amazon Mechanical Turk上进行受控的人类被试实验，收集数据以训练监督机器学习模型来估计图像在三个创造力维度上的强度。然后，一个最终的机器学习模型以预测的维度强度为输入，生成估计的图像创造力分数。该方法包括识别并验证三个心理学创造力维度、构建自动估计各维度强度的监督学习模型，以及从维度强度预测创造力分数的模型。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明，所估计的创造力分数在统计上与人类对测试图像的创造力评分等价。研究贡献包括：识别并验证了用于估计图像创造力的三个心理学创造力维度；构建了自动估计新颖性、惊喜性和唤醒性强度的监督机器学习模型；构建了从三个维度强度预测创造力分数的监督机器学习模型；以及确认该方法准确性、优势和局限性的实验方法。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>What makes an image creative? Although this may seem like a highly subjective decision, research in psychology suggests that creativity may be based on a set of fundamental creativity dimensions such as novelty, surprise, and arousal. A deeper understanding of image creativity can benefit both research and practical applications. Exploring how human viewers use creativity dimensions to evaluate image creativity may allow us to predict a target image's human-rated creativity automatically. We present a novel framework to estimate the perceived creativity of an image by: (1) predicting the strengths of an image's novelty, surprise, and arousal creativity dimensions, and (2) combining the creativity dimension strengths to estimate an image creativity score. Controlled human-subject experiments were conducted on Amazon Mechanical Turk to collect data to train supervised machine learning models to estimate an image's strengths on the three creativity dimensions. A final machine learning model takes the predicted dimension strengths as input to produce an estimated image creativity score. Results showed that our estimated creativity scores are statistically equivalent to human ratings of creativity for the images we tested. The novel contributions of our research are: (1) identification and validation of three psychological creativity dimensions used to estimate image creativity; (2) supervised machine learning models to automatically estimate novelty, surprise, and arousal strengths for an input image; (3) a supervised machine learning model to predict a creativity score from novelty, surprise, and arousal strengths for an input image, and (4) experimental methods to confirm the accuracy, advantages, and limitations of our approach.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.15044" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.15044.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

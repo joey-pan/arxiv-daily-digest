@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2611.17336",
+    "title": "Back to Pixels: Lifting Latent Video Diffusion into Pixel Space",
+    "abstract": "Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limits high-resolution, controllable, and interactive generation -- doubling resolution quadruples token count, conditions apply to groups of frames rather than individual ones, and each response must wait for the rest of its multi-frame block. We present PixVid, a simple yet effective method that lifts a pretrained latent video model to directly generate every frame in pixel space. PixVid keeps the diffusion transformer and replaces the VAE decoder with a convolutional head that renders its outputs into pixels. We find that predicting clean video rather than velocity, together with a larger noise shift, is key to quality. Finetuned from Wan2.1-14B, PixVid is competitive with the latent baseline within $\\sim 1.3$M training clips. Working framewise in pixels, it generates at $2\\times$ higher resolution with the same per-frame token count, keeps depth-conditioned video editing aligned under fast motion, and responds to each action at the next frame. Project page: https://chenshuo20.github.io/PixVid/",
+    "authors": [
+      "Yanke Song",
+      "Shuo Chen",
+      "Chris Rockwell",
+      "Guande He",
+      "Nan Liu",
+      "Desai Xie",
+      "Tianpei Gu",
+      "Yong-Hyun Park",
+      "Aryan V S",
+      "Dennis Yuren Menn",
+      "Ming-Hsuan Yang",
+      "Xun Huang"
+    ],
+    "published": "2026-11-12",
+    "updated": "2026-11-12",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.17336.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.17336",
+    "primary_category": "cs.CV",
+    "score": 62,
+    "summary": {
+      "title_zh": "回归像素：将潜在视频扩散模型提升至像素空间",
+      "core_contribution": "提出PixVid方法，将预训练的潜在视频扩散模型直接提升至像素空间逐帧生成视频，克服了VAE潜在空间压缩导致的分辨率、控制性和交互性限制。",
+      "method": "保留扩散Transformer架构，用卷积头替换VAE解码器将输出渲染为像素；采用预测干净视频而非速度，并结合更大的噪声偏移；基于Wan2.1-14B微调。",
+      "findings": "在约130万训练片段下与潜在基线竞争；以相同每帧token数生成2倍分辨率；深度条件视频编辑在快速运动下保持对齐；每个动作在下一帧即时响应。"
+    }
+  },
+  {
+    "id": "2611.15760",
+    "title": "Image Deblending with Diffusion Models",
+    "abstract": "Image deblending is the task of decomposing a composite image back into its source images, which is an ill-posed problem, as a single blended image can be decomposed into multiple plausible source layers. While diffusion models are often used to solve inverse problems, they typically address single-output reconstruction problems. In this work, we formulate deblending as a joint inverse problem, employing diffusion posterior sampling to simultaneously reconstruct two source images, demonstrating that a single diffusion prior is expressive enough to disentangle two full images at once rather than just one. Drawing inspiration from human perception, where semantic understanding helps disentangle visual inconsistencies, we propose a training-free framework that leverages text prompts to constrain this solution space. We address the blind deblending task through a two-stage architecture: text-guided latent diffusion performs semantic separation using prompts as high-level cues, followed by a pixel-space refinement to recover fine details. Stochastic sampling produces multiple plausible decompositions that can be ranked without ground truth. Extensive experiments show that our training-free method achieves state-of-the-art results on unseen domains and extends to spatially-varying alpha maps, while remaining competitive with supervised baselines on standard scalar blending benchmarks.",
+    "authors": [
+      "Dan Botchan",
+      "Ohad Fried",
+      "Yacov Hel-Or"
+    ],
+    "published": "2026-11-11",
+    "updated": "2026-11-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.15760.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.15760",
+    "primary_category": "cs.CV",
+    "score": 62,
+    "summary": {
+      "title_zh": "基于扩散模型的图像去混合",
+      "core_contribution": "本文将图像去混合建模为联合逆问题，利用扩散后验采样同时重建两幅源图像，并提出一种无需训练的文本引导框架来约束解空间，实现盲去混合。",
+      "method": "方法采用两阶段架构：首先使用文本引导的潜在扩散模型，以提示作为高层语义线索进行语义分离；随后在像素空间进行细化以恢复细节。通过随机采样生成多个可能的分解结果，并可在无真实标签的情况下进行排序。",
+      "findings": "实验表明，该无需训练的方法在未见域上达到最先进结果，并能扩展到空间变化的alpha图，同时在标准标量混合基准上与监督基线保持竞争力。"
+    }
+  },
+  {
+    "id": "2611.15602",
+    "title": "CoCode-World: Shared 3D Proxy Representation for Multi-Player World Models",
+    "abstract": "Multiplayer generative world models must produce observations that agree on shared entities despite different camera motions and occlusions. Explicit world representations provide spatial control, but precise modeling of individual game maps limits scene diversity, while shared geometry alone cannot ensure consistent appearance across views. We present CoCode-World, a shared 3D proxy framework that separates structural control from visual synthesis for two-player video generation. Programmable proxies specify scene layout, motion, and occlusion, while RGB references guide character and scene appearance. To coordinate visual details across players, we concatenate paired proxy videos, appearance references, and target views in a consistent spatial layout and generate both views jointly with a pretrained video model. This formulation uses the model's native attention for cross-view communication within a single generation branch, with LoRA adaptation learning proxy adherence and appearance correspondence from paired observations. We construct a two-player GTA~V dataset that pairs synchronized RGB observations with proxy videos derived from shared map geometry and game-engine state. Experiments demonstrate appearance transfer to characters and scene styles unseen during training, with improvements in video quality and cross-view player identity over the evaluated baseline. Ablations further examine how proxy construction and cross-view communication affect generation. Project page: https://iapple233.github.io/CCW/.",
+    "authors": [
+      "Qirui Li",
+      "Xin Zhang",
+      "Yabo Chen",
+      "Jinkun Hao",
+      "Paul L Rosin",
+      "Yu-Kun Lai",
+      "Haibin Huang",
+      "Yin Chen",
+      "Ran Yi",
+      "Chi Zhang"
+    ],
+    "published": "2026-11-11",
+    "updated": "2026-11-11",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.15602.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.15602",
+    "primary_category": "cs.CV",
+    "score": 62,
+    "summary": {
+      "title_zh": "CoCode-World：面向多人世界模型的共享3D代理表示",
+      "core_contribution": "提出CoCode-World框架，通过共享3D代理将结构控制与视觉合成分离，实现两名玩家的视频联合生成，在保持跨视角一致性的同时支持训练中未见过的角色和场景风格的外观迁移。",
+      "method": "使用可编程代理指定场景布局、运动和遮挡，RGB参考引导角色与场景外观；将成对的代理视频、外观参考和目标视角按一致空间布局拼接，利用预训练视频模型联合生成两个视角，借助模型原生注意力实现单生成分支内的跨视角通信，并通过LoRA适配学习代理遵循和外观对应关系；构建了双人GTA V数据集，配对同步RGB观测与基于共享地图几何和游戏引擎状态生成的代理视频。",
+      "findings": "实验表明该方法能够将外观迁移到训练中未见的角色和场景风格，在视频质量和跨视角玩家身份一致性上优于评估基线；消融实验进一步分析了代理构建方式和跨视角通信对生成效果的影响。"
+    }
+  },
+  {
+    "id": "2611.15449",
+    "title": "Reading the Unreadable: Text-Aware Image Super-Resolution Needs Reasoning",
+    "abstract": "Text-aware image super-resolution (TAISR) aims to recover high-resolution images from low-resolution inputs while preserving textual content. Existing methods treat this as a visual restoration problem, yet severely degraded text often cannot be read from local visual evidence alone. Humans instead read it by reasoning over image context, logical patterns, and prior knowledge. This raises a fundamental question: Does TAISR need reasoning? To answer this, we introduce two diagnostic tools. The first, ReasonText, is a human-curated benchmark that separates reasoning-required text from locally recoverable text. The second, Ground-Truth Text-Crop Accuracy (GTTCA), is a recognition-based metric that measures text restoration quality without text detection errors. Evaluating twelve recent super-resolution (SR) models, we find a consistent and substantial performance drop on reasoning-required text, revealing a systematic blind spot. Two observations point to a remedy. One is that text-conditioned SR models restore text substantially better when given ground-truth text. The other is that multimodal large language models (MLLMs) can read degraded text in low-resolution images through reasoning. We therefore propose Reasoning Transfer via Captioning (RTC), a training-free plug-in that uses an external MLLM to infer the degraded text and feeds the resulting caption to a text-conditioned SR model. RTC consistently improves all six text-conditioned SR models we evaluate, especially on reasoning-required text. Surprisingly, a real-world SR model with RTC can even outperform the TAISR model with RTC, suggesting that reasoning should be a core design axis for future TAISR.",
+    "authors": [
+      "Jaeseong Lee",
+      "Jinwoo Kim",
+      "Jinho Jeong",
+      "Seon Joo Kim"
+    ],
+    "published": "2026-11-11",
+    "updated": "2026-11-11",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.15449.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.15449",
+    "primary_category": "cs.CV",
+    "score": 62,
+    "summary": {
+      "title_zh": "阅读不可读文本：文本感知图像超分辨率需要推理",
+      "core_contribution": "论文首次系统性地提出并验证了文本感知图像超分辨率（TAISR）任务需要推理能力，而非仅靠局部视觉恢复，并提出了一个无需训练即插即用的方法（RTC）来显著提升现有模型在推理依赖型文本上的恢复效果。",
+      "method": "作者首先构建了ReasonText基准，将需要推理才能识别的文本与局部可恢复文本分开，并提出了基于识别的GTTCA指标以排除文本检测误差。通过评估12个近期超分辨率模型，发现它们在推理依赖型文本上性能显著下降。基于此，作者提出RTC方法：利用外部多模态大语言模型（MLLM）对低分辨率图像中的退化文本进行推理并生成描述，再将描述作为条件输入给文本条件超分辨率模型，从而无需额外训练即可提升文本恢复质量。",
+      "findings": "实验表明，所有评估的超分辨率模型在需要推理的文本上均出现一致且显著的性能下降，揭示了系统性盲点；文本条件超分辨率模型在给定真实文本时恢复效果大幅提升；MLLM能够通过推理读取低分辨率图像中的退化文本；RTC方法在所有六个文本条件超分辨率模型上均带来一致提升，尤其在推理依赖型文本上效果显著，甚至使真实场景超分辨率模型结合RTC后超越TAISR模型结合RTC的表现，表明推理应成为未来TAISR设计的核心维度。"
+    }
+  },
+  {
+    "id": "2611.15044",
+    "title": "Estimating Image Creativity",
+    "abstract": "What makes an image creative? Although this may seem like a highly subjective decision, research in psychology suggests that creativity may be based on a set of fundamental creativity dimensions such as novelty, surprise, and arousal. A deeper understanding of image creativity can benefit both research and practical applications. Exploring how human viewers use creativity dimensions to evaluate image creativity may allow us to predict a target image's human-rated creativity automatically. We present a novel framework to estimate the perceived creativity of an image by: (1) predicting the strengths of an image's novelty, surprise, and arousal creativity dimensions, and (2) combining the creativity dimension strengths to estimate an image creativity score. Controlled human-subject experiments were conducted on Amazon Mechanical Turk to collect data to train supervised machine learning models to estimate an image's strengths on the three creativity dimensions. A final machine learning model takes the predicted dimension strengths as input to produce an estimated image creativity score. Results showed that our estimated creativity scores are statistically equivalent to human ratings of creativity for the images we tested. The novel contributions of our research are: (1) identification and validation of three psychological creativity dimensions used to estimate image creativity; (2) supervised machine learning models to automatically estimate novelty, surprise, and arousal strengths for an input image; (3) a supervised machine learning model to predict a creativity score from novelty, surprise, and arousal strengths for an input image, and (4) experimental methods to confirm the accuracy, advantages, and limitations of our approach.",
+    "authors": [
+      "Nisan Chhetri",
+      "Christopher G. Healey",
+      "Sina Baghbanijam"
+    ],
+    "published": "2026-11-11",
+    "updated": "2026-11-11",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.HC",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.15044.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.15044",
+    "primary_category": "cs.CV",
+    "score": 62,
+    "summary": {
+      "title_zh": "图像创造力评估",
+      "core_contribution": "提出了一种新颖的框架，通过预测图像在新颖性、惊喜性和唤醒性三个心理学创造力维度上的强度，并将这些维度强度组合起来，自动估计图像的人类感知创造力分数。",
+      "method": "研究首先在Amazon Mechanical Turk上进行受控的人类被试实验，收集数据以训练监督机器学习模型来估计图像在三个创造力维度上的强度。然后，一个最终的机器学习模型以预测的维度强度为输入，生成估计的图像创造力分数。该方法包括识别并验证三个心理学创造力维度、构建自动估计各维度强度的监督学习模型，以及从维度强度预测创造力分数的模型。",
+      "findings": "实验结果表明，所估计的创造力分数在统计上与人类对测试图像的创造力评分等价。研究贡献包括：识别并验证了用于估计图像创造力的三个心理学创造力维度；构建了自动估计新颖性、惊喜性和唤醒性强度的监督机器学习模型；构建了从三个维度强度预测创造力分数的监督机器学习模型；以及确认该方法准确性、优势和局限性的实验方法。"
+    }
+  }
+]
