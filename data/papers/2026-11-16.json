@@ -1,0 +1,148 @@
+[
+  {
+    "id": "2611.18261",
+    "title": "Structural Self-Teaching for Compositional Generation in Unified Multimodal Models",
+    "abstract": "We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst",
+    "authors": [
+      "Jaeyoo Park",
+      "Bohyung Han"
+    ],
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.18261.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.18261",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "面向统一多模态模型组合生成的结构自教学",
+      "core_contribution": "提出结构自教学（SST）框架，利用统一多模态模型理解路径的内部注意力图作为结构监督信号，提升扩散式统一多模态模型在密集组合提示下的图像生成质量，无需外部结构标注或推理时额外输入。",
+      "method": "从理解路径的内部注意力图中提取短语条件支撑掩码，通过两种机制用于生成路径训练：短语局部对比对齐将掩码作为池化区域，对齐生成短语区域与目标图像同一区域；结构脚手架从相同掩码构建短语级布局，在训练中调制生成路径的中间空间状态，并逐步淘汰、推理时移除。",
+      "findings": "在多个统一多模态模型上的实验表明，SST在相同数据上优于LoRA微调，提升了组合保真度，且无推理时开销。"
+    }
+  },
+  {
+    "id": "2611.17797",
+    "title": "Vision-as-a-Tool: Visual Harness for Multimodal Agentic Coding",
+    "abstract": "Multimodal agentic coding requires robust visual reasoning to analyze observations and evaluate generated artifacts. Current frameworks largely rely on a Thinking-with-Images paradigm, where agents depend on their intrinsic vision to execute visually grounded tasks. However, this architectural coupling introduces a fundamental bottleneck. Agent performance remains strictly bounded by internal perceptual limitations. Furthermore, text-only agents lack native perception. Without specialized tools, they cannot perform visual reasoning. To overcome these constraints, we introduce the Vision-as-a-Tool (VaaT) paradigm. Prior visual tool-use merely manipulates images for an agent's intrinsic vision to read. In contrast, VaaT reframes general-purpose multimodal large language models (MLLMs) as callable external utilities. As a result, text-only agents can completely offload visual reasoning during agentic execution. Meanwhile, vision-capable agents can dynamically augment their native perception on demand. We instantiate this paradigm in VHarness, a unified framework driven by five atomic actions. We comprehensively evaluate VHarness across Image-to-HTML, Image-to-SVG, and Image-to-3D generation tasks. Experimental results demonstrate that VHarness consistently improves visual fidelity and geometric accuracy across both text-only and multimodal coding agents. These findings highlight that modularizing visual reasoning into callable utilities provides a flexible and scalable foundation for future agentic coding systems.",
+    "authors": [
+      "Haolin Yang",
+      "Wenshan Wu",
+      "Jin Jiang",
+      "Yu Cheng",
+      "Yan Xia",
+      "Ting Song",
+      "Yangyu Huang",
+      "Zhiliang Peng",
+      "Wenhui Wang",
+      "Hangbo Bao",
+      "Yuzhe Zhang",
+      "Wen-Da Wei",
+      "Tengchao Lv",
+      "Li Dong",
+      "Lei Cui",
+      "Furu Wei"
+    ],
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "categories": [
+      "cs.AI",
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.17797.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.17797",
+    "primary_category": "cs.AI",
+    "score": 88,
+    "summary": {
+      "title_zh": "视觉即工具：面向多模态智能体编程的视觉驾驭框架",
+      "core_contribution": "论文提出“视觉即工具”（VaaT）新范式，将通用多模态大模型重构为可调用的外部视觉工具，使纯文本智能体能够完全卸载视觉推理，同时让具备视觉能力的智能体按需增强原生感知，从而突破智能体内部感知瓶颈。",
+      "method": "作者将通用多模态大模型封装为可调用的外部实用工具，而非依赖智能体内在视觉能力。基于该范式实现了统一框架VHarness，由五个原子动作驱动智能体执行视觉推理。在Image-to-HTML、Image-to-SVG和Image-to-3D三类生成任务上对纯文本和多模态编程智能体进行了全面评估。",
+      "findings": "实验结果表明，VHarness在纯文本和多模态编程智能体上均持续提升了视觉保真度和几何精度。研究说明将视觉推理模块化为可调用工具，为未来智能体编程系统提供了灵活且可扩展的基础。"
+    }
+  },
+  {
+    "id": "2611.18053",
+    "title": "InfiHall-Bench: A Benchmark for Hallucination Evaluation in Autoregressive Text-to-Image Generation",
+    "abstract": "Hallucination benchmarks for text-to-image generation are predominantly designed around diffusion models, limiting their diagnostic value for visual autoregressive (VAR) models and the development of mitigation methods. We identify two limitations in existing prompt construction paradigms: many prompts are no longer challenging for modern generators, while category-based construction relies on recurring object-attribute-relation templates and rarely tests interactions among multiple visual requirements within a single image. We introduce InfiHall-Bench, a controlled benchmark of 411 prompts constructed by systematically composing five foundational and visually verifiable skills: attribute binding, spatial relation, action relation, part consistency, and scene consistency. Each prompt covers 4.05 annotated skills on average, enabling the evaluation of hallucinations under diverse combinations of visual requirements. Using this benchmark, we find that hallucinations in VAR models exhibit a scale-wise persistence pattern: semantic errors can emerge at different autoregressive scales and are rarely corrected by subsequent fine-scale steps. Motivated by this observation, we propose Confidence-Masked Hallucination Mitigation (CMHM), which estimates the prediction confidence of target visual tokens at each autoregressive scale during teacher-forced fine-tuning. CMHM downweights reliably predicted tokens, allowing optimization to focus on uncertain predictions across scales. Experiments show that InfiHall-Bench distinguishes models that existing compositional benchmarks rate as comparable, while CMHM consistently outperforms uniform LoRA fine-tuning for VAR-based text-to-image generation.",
+    "authors": [
+      "Yuxia Qiao",
+      "Xinhao Zhong",
+      "Junhao Li",
+      "Yi Sun",
+      "Jiaxin Hong",
+      "Shuoyang Sun",
+      "Bin Chen"
+    ],
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.18053.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.18053",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "InfiHall-Bench：自回归文本到图像生成中的幻觉评估基准",
+      "core_contribution": "提出了一个由411个提示组成的受控基准InfiHall-Bench，用于评估自回归文本到图像生成模型中的幻觉，并基于发现的幻觉尺度持续性模式提出了置信度掩码幻觉缓解方法（CMHM）。",
+      "method": "通过系统组合五种基础且视觉可验证的技能（属性绑定、空间关系、动作关系、部分一致性和场景一致性）构建提示，每个提示平均覆盖4.05个标注技能。基于该基准评估VAR模型的幻觉表现，并提出CMHM方法：在教师强制微调过程中估计每个自回归尺度上目标视觉标记的预测置信度，降低可靠预测标记的权重，使优化聚焦于跨尺度的不确定预测。",
+      "findings": "VAR模型中的幻觉表现出尺度持续性模式：语义错误可能在不同自回归尺度上出现，且很少被后续细尺度步骤纠正。InfiHall-Bench能够区分现有组合基准评为相当的模型，而CMHM在基于VAR的文本到图像生成中始终优于均匀LoRA微调。"
+    }
+  },
+  {
+    "id": "2611.17767",
+    "title": "Learning Anisotropic Prediction Targets for Flow Models",
+    "abstract": "Flow-based generative models are trained on a hand-chosen prediction target, such as the velocity, the noise, or the clean data. This choice strongly affects training and sample quality. We introduce Anisotropic Flow Models (AnisoFlow), which replaces a fixed prediction target with a fully learnable one. AnisoFlow learns to scale the noise component of the target anisotropically, assigning a separate nonnegative weight to each direction in a jointly learned basis. A closed-form map recovers the velocity from the network's prediction, leaving the architecture, flow-matching loss, and sampler unchanged. Since recovery is exact, training optimizes the target purely to make it easier for the network to predict. We theoretically analyze the resulting prediction error and predict that the preferred noise weight in each direction scales near-linearly with data variance, in agreement with the weights learned empirically in pixel space. AnisoFlow improves FID from 1.90 to 1.55 over the JiT baseline on ImageNet 256$\\times$256, by learning only the prediction target, without representation alignment or architectural changes. In pixel-space text-to-image generation, AnisoFlow improves image quality and, through better-conditioned velocity recovery, largely removes patch-seam artifacts under reduced-precision inference.",
+    "authors": [
+      "Rayhan Zirvi",
+      "Hansheng Chen",
+      "Gordon Wetzstein",
+      "Leonidas Guibas"
+    ],
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.17767.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.17767",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "为流模型学习各向异性预测目标",
+      "core_contribution": "论文提出AnisoFlow，用完全可学习的各向异性预测目标替代流模型中手工选定的固定预测目标（如速度、噪声或干净数据），在不改变网络架构、流匹配损失和采样器的情况下提升生成质量。",
+      "method": "AnisoFlow在联合学习的一组基下，为每个方向分配单独的非负权重，从而各向异性地缩放预测目标中的噪声分量。通过一个闭式映射从网络预测中精确恢复速度，使训练可以纯粹以“让网络更易预测”为目标来优化预测目标。作者还从理论上分析了预测误差，预测各方向偏好的噪声权重随数据方差近似线性缩放。",
+      "findings": "在ImageNet 256×256上，AnisoFlow仅通过学习预测目标（无表示对齐、无架构改动）即将FID从JiT基线的1.90降至1.55；在像素空间文本到图像生成中提升了图像质量，并通过更好的条件化速度恢复，在低精度推理下基本消除了块状拼接伪影。实验中学到的像素空间权重与理论预测的近线性缩放关系一致。"
+    }
+  },
+  {
+    "id": "2611.17585",
+    "title": "Rethinking Visual Reasoning in Text-to-Image Reward Modeling",
+    "abstract": "Reward models are a core component of modern text-to-image systems, serving as the objective for inference-time selection and RL-based post-training. A key prerequisite is visual understanding: to judge prompt adherence and ground aesthetic preferences, a reward model must bind attributes, resolve relations, and count reliably. We find that widely-used reward models perform poorly on targeted visual reasoning evaluations. Even when starting from strong vision-language backbones, preference fine-tuning erodes these capabilities, and continual-learning baselines fail to mitigate a steep tradeoff between visual reasoning and preference accuracy. We propose a data-centric intervention that injects visual reasoning supervision into preference learning by flipping the pairing axis. To complement conventional human preference data (paired images under a shared prompt), we convert existing visual reasoning datasets into preference pairs that share the same image but differ in prompt, and train on the mixture. This yields a Pareto improvement in both visual understanding and preference prediction. Across inference-time best-of-n selection and RL post-training, the resulting reward model improves text-to-image generation on challenging compositional prompts (GenEval) by an average of 4.0% and 5.5% respectively, outperforming HPSv3 which was trained on 6x more preference pairs.",
+    "authors": [
+      "Shiye Su",
+      "Xiaohan Wang",
+      "Ludwig Schmidt",
+      "Serena Yeung-Levy"
+    ],
+    "published": "2026-11-12",
+    "updated": "2026-11-12",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.17585.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.17585",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "重新思考文本到图像奖励建模中的视觉推理",
+      "core_contribution": "论文揭示了广泛使用的文本到图像奖励模型在视觉推理任务上表现不佳，且偏好微调会侵蚀视觉理解能力，并提出一种以数据为中心的干预方法，通过翻转配对轴将视觉推理数据转化为偏好对进行混合训练，从而在视觉理解和偏好预测上实现帕累托改进。",
+      "method": "作者首先评估了现有奖励模型在针对性视觉推理评测上的表现，发现偏好微调会损害视觉理解能力。为此，他们提出将现有视觉推理数据集转换为共享同一图像但提示不同的偏好对，并与传统人类偏好数据（共享提示下的成对图像）混合训练。该方法通过翻转配对轴，将视觉推理监督注入偏好学习过程。",
+      "findings": "混合训练后的奖励模型在视觉理解和偏好预测上均取得帕累托改进。在推理时最佳n选和RL后训练两种设置下，该模型在具有挑战性的组合提示（GenEval）上分别平均提升文本到图像生成4.0%和5.5%，优于在6倍偏好对上训练的HPSv3。"
+    }
+  }
+]

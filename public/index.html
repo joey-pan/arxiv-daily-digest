@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-15</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-11-16</p>
+        <p class="stats">共 5 篇论文 | 人工智能: 1 | 计算机视觉: 4</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,62 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.17336</span>
+          <span class="paper-id">2611.18261</span>
         </div>
-        <span class="score-badge">相关性 62/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.17336" target="_blank">Back to Pixels: Lifting Latent Video Diffusion into Pixel Space</a>
+        <a href="https://arxiv.org/abs/2611.18261" target="_blank">Structural Self-Teaching for Compositional Generation in Unified Multimodal Models</a>
       </h3>
-      <p class="paper-title-zh">回归像素：将潜在视频扩散模型提升至像素空间</p>
-      <p class="paper-authors">Yanke Song, Shuo Chen, Chris Rockwell, Guande He, Nan Liu 等 (12 位作者)</p>
+      <p class="paper-title-zh">面向统一多模态模型组合生成的结构自教学</p>
+      <p class="paper-authors">Jaeyoo Park, Bohyung Han</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出PixVid方法，将预训练的潜在视频扩散模型直接提升至像素空间逐帧生成视频，克服了VAE潜在空间压缩导致的分辨率、控制性和交互性限制。</div>
-        <div class="summary-section"><strong>方法:</strong> 保留扩散Transformer架构，用卷积头替换VAE解码器将输出渲染为像素；采用预测干净视频而非速度，并结合更大的噪声偏移；基于Wan2.1-14B微调。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在约130万训练片段下与潜在基线竞争；以相同每帧token数生成2倍分辨率；深度条件视频编辑在快速运动下保持对齐；每个动作在下一帧即时响应。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出结构自教学（SST）框架，利用统一多模态模型理解路径的内部注意力图作为结构监督信号，提升扩散式统一多模态模型在密集组合提示下的图像生成质量，无需外部结构标注或推理时额外输入。</div>
+        <div class="summary-section"><strong>方法:</strong> 从理解路径的内部注意力图中提取短语条件支撑掩码，通过两种机制用于生成路径训练：短语局部对比对齐将掩码作为池化区域，对齐生成短语区域与目标图像同一区域；结构脚手架从相同掩码构建短语级布局，在训练中调制生成路径的中间空间状态，并逐步淘汰、推理时移除。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个统一多模态模型上的实验表明，SST在相同数据上优于LoRA微调，提升了组合保真度，且无推理时开销。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Frontier video generation models work in a VAE latent space that compresses video in both space and time. This compression made training tractable, but now limits high-resolution, controllable, and interactive generation -- doubling resolution quadruples token count, conditions apply to groups of frames rather than individual ones, and each response must wait for the rest of its multi-frame block. We present PixVid, a simple yet effective method that lifts a pretrained latent video model to directly generate every frame in pixel space. PixVid keeps the diffusion transformer and replaces the VAE decoder with a convolutional head that renders its outputs into pixels. We find that predicting clean video rather than velocity, together with a larger noise shift, is key to quality. Finetuned from Wan2.1-14B, PixVid is competitive with the latent baseline within $\sim 1.3$M training clips. Working framewise in pixels, it generates at $2\times$ higher resolution with the same per-frame token count, keeps depth-conditioned video editing aligned under fast motion, and responds to each action at the next frame. Project page: https://chenshuo20.github.io/PixVid/</p>
+        <p>We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.17336" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.17336.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.18261" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.18261.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">人工智能</span>
+          <span class="paper-id">2611.17797</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.17797" target="_blank">Vision-as-a-Tool: Visual Harness for Multimodal Agentic Coding</a>
+      </h3>
+      <p class="paper-title-zh">视觉即工具：面向多模态智能体编程的视觉驾驭框架</p>
+      <p class="paper-authors">Haolin Yang, Wenshan Wu, Jin Jiang, Yu Cheng, Yan Xia 等 (16 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出“视觉即工具”（VaaT）新范式，将通用多模态大模型重构为可调用的外部视觉工具，使纯文本智能体能够完全卸载视觉推理，同时让具备视觉能力的智能体按需增强原生感知，从而突破智能体内部感知瓶颈。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者将通用多模态大模型封装为可调用的外部实用工具，而非依赖智能体内在视觉能力。基于该范式实现了统一框架VHarness，由五个原子动作驱动智能体执行视觉推理。在Image-to-HTML、Image-to-SVG和Image-to-3D三类生成任务上对纯文本和多模态编程智能体进行了全面评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明，VHarness在纯文本和多模态编程智能体上均持续提升了视觉保真度和几何精度。研究说明将视觉推理模块化为可调用工具，为未来智能体编程系统提供了灵活且可扩展的基础。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Multimodal agentic coding requires robust visual reasoning to analyze observations and evaluate generated artifacts. Current frameworks largely rely on a Thinking-with-Images paradigm, where agents depend on their intrinsic vision to execute visually grounded tasks. However, this architectural coupling introduces a fundamental bottleneck. Agent performance remains strictly bounded by internal perceptual limitations. Furthermore, text-only agents lack native perception. Without specialized tools, they cannot perform visual reasoning. To overcome these constraints, we introduce the Vision-as-a-Tool (VaaT) paradigm. Prior visual tool-use merely manipulates images for an agent's intrinsic vision to read. In contrast, VaaT reframes general-purpose multimodal large language models (MLLMs) as callable external utilities. As a result, text-only agents can completely offload visual reasoning during agentic execution. Meanwhile, vision-capable agents can dynamically augment their native perception on demand. We instantiate this paradigm in VHarness, a unified framework driven by five atomic actions. We comprehensively evaluate VHarness across Image-to-HTML, Image-to-SVG, and Image-to-3D generation tasks. Experimental results demonstrate that VHarness consistently improves visual fidelity and geometric accuracy across both text-only and multimodal coding agents. These findings highlight that modularizing visual reasoning into callable utilities provides a flexible and scalable foundation for future agentic coding systems.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.17797" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17797.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.15760</span>
+          <span class="paper-id">2611.18053</span>
         </div>
-        <span class="score-badge">相关性 62/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.15760" target="_blank">Image Deblending with Diffusion Models</a>
+        <a href="https://arxiv.org/abs/2611.18053" target="_blank">InfiHall-Bench: A Benchmark for Hallucination Evaluation in Autoregressive Text-to-Image Generation</a>
       </h3>
-      <p class="paper-title-zh">基于扩散模型的图像去混合</p>
-      <p class="paper-authors">Dan Botchan, Ohad Fried, Yacov Hel-Or</p>
+      <p class="paper-title-zh">InfiHall-Bench：自回归文本到图像生成中的幻觉评估基准</p>
+      <p class="paper-authors">Yuxia Qiao, Xinhao Zhong, Junhao Li, Yi Sun, Jiaxin Hong 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文将图像去混合建模为联合逆问题，利用扩散后验采样同时重建两幅源图像，并提出一种无需训练的文本引导框架来约束解空间，实现盲去混合。</div>
-        <div class="summary-section"><strong>方法:</strong> 方法采用两阶段架构：首先使用文本引导的潜在扩散模型，以提示作为高层语义线索进行语义分离；随后在像素空间进行细化以恢复细节。通过随机采样生成多个可能的分解结果，并可在无真实标签的情况下进行排序。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，该无需训练的方法在未见域上达到最先进结果，并能扩展到空间变化的alpha图，同时在标准标量混合基准上与监督基线保持竞争力。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个由411个提示组成的受控基准InfiHall-Bench，用于评估自回归文本到图像生成模型中的幻觉，并基于发现的幻觉尺度持续性模式提出了置信度掩码幻觉缓解方法（CMHM）。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过系统组合五种基础且视觉可验证的技能（属性绑定、空间关系、动作关系、部分一致性和场景一致性）构建提示，每个提示平均覆盖4.05个标注技能。基于该基准评估VAR模型的幻觉表现，并提出CMHM方法：在教师强制微调过程中估计每个自回归尺度上目标视觉标记的预测置信度，降低可靠预测标记的权重，使优化聚焦于跨尺度的不确定预测。</div>
+        <div class="summary-section"><strong>关键发现:</strong> VAR模型中的幻觉表现出尺度持续性模式：语义错误可能在不同自回归尺度上出现，且很少被后续细尺度步骤纠正。InfiHall-Bench能够区分现有组合基准评为相当的模型，而CMHM在基于VAR的文本到图像生成中始终优于均匀LoRA微调。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Image deblending is the task of decomposing a composite image back into its source images, which is an ill-posed problem, as a single blended image can be decomposed into multiple plausible source layers. While diffusion models are often used to solve inverse problems, they typically address single-output reconstruction problems. In this work, we formulate deblending as a joint inverse problem, employing diffusion posterior sampling to simultaneously reconstruct two source images, demonstrating that a single diffusion prior is expressive enough to disentangle two full images at once rather than just one. Drawing inspiration from human perception, where semantic understanding helps disentangle visual inconsistencies, we propose a training-free framework that leverages text prompts to constrain this solution space. We address the blind deblending task through a two-stage architecture: text-guided latent diffusion performs semantic separation using prompts as high-level cues, followed by a pixel-space refinement to recover fine details. Stochastic sampling produces multiple plausible decompositions that can be ranked without ground truth. Extensive experiments show that our training-free method achieves state-of-the-art results on unseen domains and extends to spatially-varying alpha maps, while remaining competitive with supervised baselines on standard scalar blending benchmarks.</p>
+        <p>Hallucination benchmarks for text-to-image generation are predominantly designed around diffusion models, limiting their diagnostic value for visual autoregressive (VAR) models and the development of mitigation methods. We identify two limitations in existing prompt construction paradigms: many prompts are no longer challenging for modern generators, while category-based construction relies on recurring object-attribute-relation templates and rarely tests interactions among multiple visual requirements within a single image. We introduce InfiHall-Bench, a controlled benchmark of 411 prompts constructed by systematically composing five foundational and visually verifiable skills: attribute binding, spatial relation, action relation, part consistency, and scene consistency. Each prompt covers 4.05 annotated skills on average, enabling the evaluation of hallucinations under diverse combinations of visual requirements. Using this benchmark, we find that hallucinations in VAR models exhibit a scale-wise persistence pattern: semantic errors can emerge at different autoregressive scales and are rarely corrected by subsequent fine-scale steps. Motivated by this observation, we propose Confidence-Masked Hallucination Mitigation (CMHM), which estimates the prediction confidence of target visual tokens at each autoregressive scale during teacher-forced fine-tuning. CMHM downweights reliably predicted tokens, allowing optimization to focus on uncertain predictions across scales. Experiments show that InfiHall-Bench distinguishes models that existing compositional benchmarks rate as comparable, while CMHM consistently outperforms uniform LoRA fine-tuning for VAR-based text-to-image generation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.15760" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.15760.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.18053" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.18053.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.15602</span>
+          <span class="paper-id">2611.17767</span>
         </div>
-        <span class="score-badge">相关性 62/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.15602" target="_blank">CoCode-World: Shared 3D Proxy Representation for Multi-Player World Models</a>
+        <a href="https://arxiv.org/abs/2611.17767" target="_blank">Learning Anisotropic Prediction Targets for Flow Models</a>
       </h3>
-      <p class="paper-title-zh">CoCode-World：面向多人世界模型的共享3D代理表示</p>
-      <p class="paper-authors">Qirui Li, Xin Zhang, Yabo Chen, Jinkun Hao, Paul L Rosin 等 (10 位作者)</p>
+      <p class="paper-title-zh">为流模型学习各向异性预测目标</p>
+      <p class="paper-authors">Rayhan Zirvi, Hansheng Chen, Gordon Wetzstein, Leonidas Guibas</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出CoCode-World框架，通过共享3D代理将结构控制与视觉合成分离，实现两名玩家的视频联合生成，在保持跨视角一致性的同时支持训练中未见过的角色和场景风格的外观迁移。</div>
-        <div class="summary-section"><strong>方法:</strong> 使用可编程代理指定场景布局、运动和遮挡，RGB参考引导角色与场景外观；将成对的代理视频、外观参考和目标视角按一致空间布局拼接，利用预训练视频模型联合生成两个视角，借助模型原生注意力实现单生成分支内的跨视角通信，并通过LoRA适配学习代理遵循和外观对应关系；构建了双人GTA V数据集，配对同步RGB观测与基于共享地图几何和游戏引擎状态生成的代理视频。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明该方法能够将外观迁移到训练中未见的角色和场景风格，在视频质量和跨视角玩家身份一致性上优于评估基线；消融实验进一步分析了代理构建方式和跨视角通信对生成效果的影响。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出AnisoFlow，用完全可学习的各向异性预测目标替代流模型中手工选定的固定预测目标（如速度、噪声或干净数据），在不改变网络架构、流匹配损失和采样器的情况下提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> AnisoFlow在联合学习的一组基下，为每个方向分配单独的非负权重，从而各向异性地缩放预测目标中的噪声分量。通过一个闭式映射从网络预测中精确恢复速度，使训练可以纯粹以“让网络更易预测”为目标来优化预测目标。作者还从理论上分析了预测误差，预测各方向偏好的噪声权重随数据方差近似线性缩放。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，AnisoFlow仅通过学习预测目标（无表示对齐、无架构改动）即将FID从JiT基线的1.90降至1.55；在像素空间文本到图像生成中提升了图像质量，并通过更好的条件化速度恢复，在低精度推理下基本消除了块状拼接伪影。实验中学到的像素空间权重与理论预测的近线性缩放关系一致。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Multiplayer generative world models must produce observations that agree on shared entities despite different camera motions and occlusions. Explicit world representations provide spatial control, but precise modeling of individual game maps limits scene diversity, while shared geometry alone cannot ensure consistent appearance across views. We present CoCode-World, a shared 3D proxy framework that separates structural control from visual synthesis for two-player video generation. Programmable proxies specify scene layout, motion, and occlusion, while RGB references guide character and scene appearance. To coordinate visual details across players, we concatenate paired proxy videos, appearance references, and target views in a consistent spatial layout and generate both views jointly with a pretrained video model. This formulation uses the model's native attention for cross-view communication within a single generation branch, with LoRA adaptation learning proxy adherence and appearance correspondence from paired observations. We construct a two-player GTA~V dataset that pairs synchronized RGB observations with proxy videos derived from shared map geometry and game-engine state. Experiments demonstrate appearance transfer to characters and scene styles unseen during training, with improvements in video quality and cross-view player identity over the evaluated baseline. Ablations further examine how proxy construction and cross-view communication affect generation. Project page: https://iapple233.github.io/CCW/.</p>
+        <p>Flow-based generative models are trained on a hand-chosen prediction target, such as the velocity, the noise, or the clean data. This choice strongly affects training and sample quality. We introduce Anisotropic Flow Models (AnisoFlow), which replaces a fixed prediction target with a fully learnable one. AnisoFlow learns to scale the noise component of the target anisotropically, assigning a separate nonnegative weight to each direction in a jointly learned basis. A closed-form map recovers the velocity from the network's prediction, leaving the architecture, flow-matching loss, and sampler unchanged. Since recovery is exact, training optimizes the target purely to make it easier for the network to predict. We theoretically analyze the resulting prediction error and predict that the preferred noise weight in each direction scales near-linearly with data variance, in agreement with the weights learned empirically in pixel space. AnisoFlow improves FID from 1.90 to 1.55 over the JiT baseline on ImageNet 256$\times$256, by learning only the prediction target, without representation alignment or architectural changes. In pixel-space text-to-image generation, AnisoFlow improves image quality and, through better-conditioned velocity recovery, largely removes patch-seam artifacts under reduced-precision inference.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.15602" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.15602.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.17767" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17767.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,62 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.15449</span>
+          <span class="paper-id">2611.17585</span>
         </div>
-        <span class="score-badge">相关性 62/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.15449" target="_blank">Reading the Unreadable: Text-Aware Image Super-Resolution Needs Reasoning</a>
+        <a href="https://arxiv.org/abs/2611.17585" target="_blank">Rethinking Visual Reasoning in Text-to-Image Reward Modeling</a>
       </h3>
-      <p class="paper-title-zh">阅读不可读文本：文本感知图像超分辨率需要推理</p>
-      <p class="paper-authors">Jaeseong Lee, Jinwoo Kim, Jinho Jeong, Seon Joo Kim</p>
+      <p class="paper-title-zh">重新思考文本到图像奖励建模中的视觉推理</p>
+      <p class="paper-authors">Shiye Su, Xiaohan Wang, Ludwig Schmidt, Serena Yeung-Levy</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文首次系统性地提出并验证了文本感知图像超分辨率（TAISR）任务需要推理能力，而非仅靠局部视觉恢复，并提出了一个无需训练即插即用的方法（RTC）来显著提升现有模型在推理依赖型文本上的恢复效果。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先构建了ReasonText基准，将需要推理才能识别的文本与局部可恢复文本分开，并提出了基于识别的GTTCA指标以排除文本检测误差。通过评估12个近期超分辨率模型，发现它们在推理依赖型文本上性能显著下降。基于此，作者提出RTC方法：利用外部多模态大语言模型（MLLM）对低分辨率图像中的退化文本进行推理并生成描述，再将描述作为条件输入给文本条件超分辨率模型，从而无需额外训练即可提升文本恢复质量。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，所有评估的超分辨率模型在需要推理的文本上均出现一致且显著的性能下降，揭示了系统性盲点；文本条件超分辨率模型在给定真实文本时恢复效果大幅提升；MLLM能够通过推理读取低分辨率图像中的退化文本；RTC方法在所有六个文本条件超分辨率模型上均带来一致提升，尤其在推理依赖型文本上效果显著，甚至使真实场景超分辨率模型结合RTC后超越TAISR模型结合RTC的表现，表明推理应成为未来TAISR设计的核心维度。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了广泛使用的文本到图像奖励模型在视觉推理任务上表现不佳，且偏好微调会侵蚀视觉理解能力，并提出一种以数据为中心的干预方法，通过翻转配对轴将视觉推理数据转化为偏好对进行混合训练，从而在视觉理解和偏好预测上实现帕累托改进。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先评估了现有奖励模型在针对性视觉推理评测上的表现，发现偏好微调会损害视觉理解能力。为此，他们提出将现有视觉推理数据集转换为共享同一图像但提示不同的偏好对，并与传统人类偏好数据（共享提示下的成对图像）混合训练。该方法通过翻转配对轴，将视觉推理监督注入偏好学习过程。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 混合训练后的奖励模型在视觉理解和偏好预测上均取得帕累托改进。在推理时最佳n选和RL后训练两种设置下，该模型在具有挑战性的组合提示（GenEval）上分别平均提升文本到图像生成4.0%和5.5%，优于在6倍偏好对上训练的HPSv3。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-aware image super-resolution (TAISR) aims to recover high-resolution images from low-resolution inputs while preserving textual content. Existing methods treat this as a visual restoration problem, yet severely degraded text often cannot be read from local visual evidence alone. Humans instead read it by reasoning over image context, logical patterns, and prior knowledge. This raises a fundamental question: Does TAISR need reasoning? To answer this, we introduce two diagnostic tools. The first, ReasonText, is a human-curated benchmark that separates reasoning-required text from locally recoverable text. The second, Ground-Truth Text-Crop Accuracy (GTTCA), is a recognition-based metric that measures text restoration quality without text detection errors. Evaluating twelve recent super-resolution (SR) models, we find a consistent and substantial performance drop on reasoning-required text, revealing a systematic blind spot. Two observations point to a remedy. One is that text-conditioned SR models restore text substantially better when given ground-truth text. The other is that multimodal large language models (MLLMs) can read degraded text in low-resolution images through reasoning. We therefore propose Reasoning Transfer via Captioning (RTC), a training-free plug-in that uses an external MLLM to infer the degraded text and feeds the resulting caption to a text-conditioned SR model. RTC consistently improves all six text-conditioned SR models we evaluate, especially on reasoning-required text. Surprisingly, a real-world SR model with RTC can even outperform the TAISR model with RTC, suggesting that reasoning should be a core design axis for future TAISR.</p>
+        <p>Reward models are a core component of modern text-to-image systems, serving as the objective for inference-time selection and RL-based post-training. A key prerequisite is visual understanding: to judge prompt adherence and ground aesthetic preferences, a reward model must bind attributes, resolve relations, and count reliably. We find that widely-used reward models perform poorly on targeted visual reasoning evaluations. Even when starting from strong vision-language backbones, preference fine-tuning erodes these capabilities, and continual-learning baselines fail to mitigate a steep tradeoff between visual reasoning and preference accuracy. We propose a data-centric intervention that injects visual reasoning supervision into preference learning by flipping the pairing axis. To complement conventional human preference data (paired images under a shared prompt), we convert existing visual reasoning datasets into preference pairs that share the same image but differ in prompt, and train on the mixture. This yields a Pareto improvement in both visual understanding and preference prediction. Across inference-time best-of-n selection and RL post-training, the resulting reward model improves text-to-image generation on challenging compositional prompts (GenEval) by an average of 4.0% and 5.5% respectively, outperforming HPSv3 which was trained on 6x more preference pairs.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.15449" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.15449.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.15044</span>
-        </div>
-        <span class="score-badge">相关性 62/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.15044" target="_blank">Estimating Image Creativity</a>
-      </h3>
-      <p class="paper-title-zh">图像创造力评估</p>
-      <p class="paper-authors">Nisan Chhetri, Christopher G. Healey, Sina Baghbanijam</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种新颖的框架，通过预测图像在新颖性、惊喜性和唤醒性三个心理学创造力维度上的强度，并将这些维度强度组合起来，自动估计图像的人类感知创造力分数。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究首先在Amazon Mechanical Turk上进行受控的人类被试实验，收集数据以训练监督机器学习模型来估计图像在三个创造力维度上的强度。然后，一个最终的机器学习模型以预测的维度强度为输入，生成估计的图像创造力分数。该方法包括识别并验证三个心理学创造力维度、构建自动估计各维度强度的监督学习模型，以及从维度强度预测创造力分数的模型。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明，所估计的创造力分数在统计上与人类对测试图像的创造力评分等价。研究贡献包括：识别并验证了用于估计图像创造力的三个心理学创造力维度；构建了自动估计新颖性、惊喜性和唤醒性强度的监督机器学习模型；构建了从三个维度强度预测创造力分数的监督机器学习模型；以及确认该方法准确性、优势和局限性的实验方法。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>What makes an image creative? Although this may seem like a highly subjective decision, research in psychology suggests that creativity may be based on a set of fundamental creativity dimensions such as novelty, surprise, and arousal. A deeper understanding of image creativity can benefit both research and practical applications. Exploring how human viewers use creativity dimensions to evaluate image creativity may allow us to predict a target image's human-rated creativity automatically. We present a novel framework to estimate the perceived creativity of an image by: (1) predicting the strengths of an image's novelty, surprise, and arousal creativity dimensions, and (2) combining the creativity dimension strengths to estimate an image creativity score. Controlled human-subject experiments were conducted on Amazon Mechanical Turk to collect data to train supervised machine learning models to estimate an image's strengths on the three creativity dimensions. A final machine learning model takes the predicted dimension strengths as input to produce an estimated image creativity score. Results showed that our estimated creativity scores are statistically equivalent to human ratings of creativity for the images we tested. The novel contributions of our research are: (1) identification and validation of three psychological creativity dimensions used to estimate image creativity; (2) supervised machine learning models to automatically estimate novelty, surprise, and arousal strengths for an input image; (3) a supervised machine learning model to predict a creativity score from novelty, surprise, and arousal strengths for an input image, and (4) experimental methods to confirm the accuracy, advantages, and limitations of our approach.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.15044" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.15044.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.17585" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.17585.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
