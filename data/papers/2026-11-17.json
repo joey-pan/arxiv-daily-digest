@@ -1,0 +1,125 @@
+[
+  {
+    "id": "2611.20192",
+    "title": "GlyphAtlas: Disentangling Stroke Detail from Layout for Scene Text Synthesis",
+    "abstract": "Scene text synthesis requires stroke-accurate characters rendered in a specified layout, as well as visual coherence with the surrounding scene. To achieve this, existing methods commonly pre-render the target text at its intended locations to form a glyph image that jointly specifies layout and glyph structure. However, this representation ties the resolution of each glyph to its target region, limiting fine-grained stroke guidance for small, densely packed, or structurally complex text. To tackle this, we propose GlyphAtlas, a scene text synthesis framework that retains the glyph image as a spatial anchor and supplies fine-grained stroke references through a dedicated glyph atlas. The atlas renders and encodes each character or word in a separate cell, decoupling reference resolution from target-region size. We further introduce atlas-anchored attention, which lets each text region retrieve stroke detail only from its corresponding atlas cells to refine the coarse glyph structure provided by the glyph image. This coarse-to-fine conditioning simplifies stroke rendering while preserving explicit layout correspondence. We optimize GlyphAtlas with a mask-weighted flow matching objective and a timestep-weighted text perceptual loss for writing accuracy and background consistency. Random resolution augmentation of atlas cells supports adjustable atlas budgets at inference. Extensive experiments demonstrate that GlyphAtlas achieves stroke-accurate synthesis of small, dense, and structurally complex text, zero-shot transfer to languages unseen during task-specific training, and leading performance in scenes with many text regions. project page: https://fr0zencrane.github.io/project-glyphatlas/",
+    "authors": [
+      "Luozheng Qin",
+      "Changhai Zhou",
+      "Yiyi Zhou"
+    ],
+    "published": "2026-11-15",
+    "updated": "2026-11-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.20192.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.20192",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "GlyphAtlas：将笔画细节与布局解耦用于场景文本合成",
+      "core_contribution": "提出GlyphAtlas框架，通过独立的字形图集提供细粒度笔画参考，将参考分辨率与目标区域大小解耦，实现小尺寸、密集和结构复杂文本的笔画精确合成。",
+      "method": "保留预渲染的字形图像作为空间锚点，同时使用专用字形图集将每个字符或单词渲染并编码在独立单元格中。引入图集锚定注意力机制，使每个文本区域仅从对应的图集单元格检索笔画细节，以细化字形图像提供的粗粒度结构。采用掩码加权流匹配目标和时间步加权文本感知损失进行优化，并通过图集单元格的随机分辨率增强支持推理时调整图集预算。",
+      "findings": "大量实验表明，GlyphAtlas能够实现小尺寸、密集和结构复杂文本的笔画精确合成，可零样本迁移到任务特定训练中未见过的语言，并在包含多个文本区域的场景中取得领先性能。"
+    }
+  },
+  {
+    "id": "2611.19009",
+    "title": "Role-Separated Diffusion Transformers: Global Rule Isolation and Deterministic Sampling Manifold Compression",
+    "abstract": "We present Role-Separated Diffusion Transformers (RoSeDiT), a new diffusion transformer architecture that isolates the global rule from the image tokens. RoSeViT showed in visual reasoning that a vanilla ViT spreads a shared rule over all $L$ tokens at an entropy of order $Ld$, whereas an enforced controller route reduces it to order $d$. In class-conditional DiT and SiT, the class and the noise level are explicitly conditioned by adaLN, so a RoSeViT-style controller channel on the ViT side is insufficient to establish the full role separation. By introducing the adaLN listening mechanism, which makes adaLN compute under the controller's command, RoSeDiT brings the entropy theorem and role separation into the latent diffusion domain. Under the same SiT training and evaluation protocol at the same level of parameter count, RoSeDiT surpasses SiT at all four model scales at 400K steps, and RoSeDiT-L/2 even surpasses SiT-XL/2's 17.2 FID with 15.34 and 32% fewer parameters. RoSeDiT-XL/2 surpasses SiT-XL/2's 7M-step FID of 8.3 at 1.4M steps with 7.98, using one-fifth as many training steps. We further observe that models with the same denoising loss can have a large FID gap, which indicates a misalignment between the denoising objective and the image manifold. We formalize this phenomenon into Deterministic Sampling Manifold Compression (DSMC), a two-stage training schedule with which RoSeDiT-XL/2 surpasses SiT + REPA's 4M-step FID of 5.9 at 2.4M steps with 5.84.",
+    "authors": [
+      "Zhiguang Liu",
+      "Yi Shang"
+    ],
+    "published": "2026-11-13",
+    "updated": "2026-11-13",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.19009.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.19009",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "角色分离扩散Transformer：全局规则隔离与确定性采样流形压缩",
+      "core_contribution": "提出RoSeDiT架构，通过将全局规则从图像token中隔离，并引入adaLN监听机制，在潜在扩散域实现角色分离，显著提升训练效率和生成质量。",
+      "method": "RoSeDiT在ViT侧设置控制器通道，并引入adaLN监听机制使adaLN在控制器指令下计算，从而将熵定理和角色分离引入潜在扩散模型。采用与SiT相同的训练和评估协议，在相同参数量下进行对比实验。进一步提出确定性采样流形压缩（DSMC）两阶段训练策略，以解决去噪目标与图像流形之间的错位问题。",
+      "findings": "在400K步时，RoSeDiT在所有四个模型规模上均超越SiT；RoSeDiT-L/2以少32%的参数量达到15.34 FID，优于SiT-XL/2的17.2；RoSeDiT-XL/2在1.4M步达到7.98 FID，超越SiT-XL/2在7M步的8.3，训练步数仅为其五分之一。采用DSMC后，RoSeDiT-XL/2在2.4M步达到5.84 FID，超越SiT+REPA在4M步的5.9。"
+    }
+  },
+  {
+    "id": "2611.21077",
+    "title": "MORE: Merge Once, Route Early for Training-Free Multi-Subject Composition from Large LoRA Pools",
+    "abstract": "Public hubs offer many personalized LoRAs per text-to-image backbone, yet composing two of them in one image remains fragile. In FLUX, keeping a pool of $K=10$ or $20$ subject LoRAs loaded makes their deltas interfere, and even loading only the two requested LoRAs keeps both subjects in fewer than 4% of images: one subject vanishes, the two fuse, or the image splits into a collage. We present MORE (Merge Once, Route Early), a training-free two-stage pipeline for FLUX. Merge once: the whole pool is folded into a single fixed-rank adapter by the subspace-regression router of SSR-Merge, made reliable by ridge, rank and calibration choices, and factored exactly into a shared part and per-subject parts. Route early: during the first 30% of the denoising steps each subject's part is gated to its layout region; a decaying soft attention bias ties every region to its own subject tokens, and a cyclic swap guidance extrapolates away from the prediction with the subjects' regions permuted, which counteracts region homogenization. On held-out seeds, MORE keeps both subjects in 94.2% ($K=10$) and 78.3% ($K=20$) of images, against 50.8% / 35.8% for FreeFuse and 25.0% / 24.2% for LoRAShop, and reaches an ImageReward of 1.32 (best baseline 0.07), while all $K$ subjects stay in one adapter. With layouts inferred automatically it still keeps both subjects in 70.0% / 55.0% of images.",
+    "authors": [
+      "Tian Xia"
+    ],
+    "published": "2026-11-16",
+    "updated": "2026-11-16",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.21077.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.21077",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "MORE：一次合并，早期路由——面向大型LoRA池的无训练多主体组合",
+      "core_contribution": "提出MORE，一种无需训练的两阶段FLUX多主体组合流水线，通过将整个LoRA池一次性合并为单一固定秩适配器并在去噪早期进行区域路由，显著提升了从大型LoRA池中组合两个主体时的成功率。",
+      "method": "MORE分为两个阶段：首先，利用SSR-Merge的子空间回归路由器将整个LoRA池折叠成一个固定秩适配器，并通过岭回归、秩选择和校准策略确保可靠性，该适配器可精确分解为共享部分和每个主体的部分；其次，在去噪过程的前30%步骤中，将每个主体的部分门控到其布局区域，使用衰减的软注意力偏置将每个区域与其主体令牌绑定，并采用循环交换引导（通过交换主体区域进行外推）来对抗区域同质化。",
+      "findings": "在留出种子上，MORE在K=10和K=20时分别有94.2%和78.3%的图像保留了双主体，而FreeFuse为50.8%/35.8%，LoRAShop为25.0%/24.2%；ImageReward达到1.32（最佳基线为0.07），且所有K个主体均保留在一个适配器中；当布局自动推断时，双主体保留率仍达70.0%/55.0%。"
+    }
+  },
+  {
+    "id": "2611.20021",
+    "title": "FastGRN: Few-Step Generative Refinement Networks",
+    "abstract": "Generative Refinement Networks (GRN) generate an image by repeatedly re-predicting and refining every token of a discrete latent. They reach high fidelity, but need dozens of Markov steps. We therefore train few-step GRNs on the distribution of their own samples. We use its own uniform-state corruption to perform distribution matching on discrete tokens, which lets a discrete generator learn by backpropagation, and we pair noise with samples in the manner of rectified flow. We find that the steps of a few-step GRN do not carry the same amount of information or the same repair load. We therefore exploit its discrete refinement during training and build few-step GRNs in three parts. Oversampling samples the student with more steps than it was trained for and refines its judge on these samples. Non-uniform sampling trains only the last step and hands it most of the information at sampling time. Refinement confidence keeping holds on to the tokens the student is already sure of. We train a fast class-conditional generator on ImageNet 256 and, with the same method, a 2B text-to-image model. On ImageNet 256, the 3-step FastGRN beats the FID of GRN. On a 2B binary-token text-to-image GRN, a 4-step student also nearly matches the GenEval of GRN-T2I 2B.",
+    "authors": [
+      "Haoyang Hu",
+      "Masataka Seo",
+      "Liang Li",
+      "Yen-wei Chen"
+    ],
+    "published": "2026-11-15",
+    "updated": "2026-11-15",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.20021.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.20021",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "FastGRN：少步生成精炼网络",
+      "core_contribution": "提出FastGRN，通过在其自身采样分布上训练少步生成精炼网络，将原本需要数十步马尔可夫步骤的离散潜变量生成过程压缩到3-4步，同时保持甚至超越原模型的质量。",
+      "method": "利用GRN自身的均匀状态损坏机制在离散token上进行分布匹配，使离散生成器可通过反向传播学习，并借鉴rectified flow的方式将噪声与样本配对。针对少步GRN各步骤信息量和修复负担不均的问题，采用三部分策略：过采样（用超出训练步数的更多步采样学生模型并精炼其判别器）、非均匀采样（仅训练最后一步并在采样时赋予其大部分信息）、精炼置信度保持（保留学生模型已确定的token）。",
+      "findings": "在ImageNet 256上，3步FastGRN的FID优于原始GRN；在2B二值token的文本到图像GRN上，4步学生模型的GenEval几乎匹配GRN-T2I 2B，验证了少步精炼方法在大规模生成任务上的有效性。"
+    }
+  },
+  {
+    "id": "2611.19440",
+    "title": "Few-Shot Visual Concept Extraction for Steering Diffusion Transformers",
+    "abstract": "Image steering aims to provide fine-grained control over concepts in generated images, enabling targeted and continuous manipulation without broadly altering the generation process. Recent steering methods for diffusion models primarily focus on the text-conditioning space or rely on costly auxiliary training. Deviating from that, we here propose a novel steering approach that extracts visual concept directions directly from the image-side activations of Diffusion Transformers. Specifically, we showcase few-shot concept extraction in the activation space using a simple difference-of-means estimator over intermediate residuals. We observe (a) scene-level concepts such as lighting, weather, and style are distributed across image tokens, as well as (b) local concepts such as object colors, textures, materials, and facial attributes are concentrated in specific regions. Towards controlling both concepts, we introduce a new unified training-free framework that uses global difference-of-means for (a) distributed concepts and masked difference-of-means for (b) local concepts, preventing local signals from being diluted by global averaging. Notably, using only a handful of positive and negative prompt pairs, our method identifies and extracts reusable concept directions that can be injected at inference for continuous steering. Quantitatively, our method outperforms text-encoder steering and training-free activation-editing baselines, as well as is competitive with specialized editing models. Our results suggest that as concept directions can be applied at patch level, our method enables precise targeted and compositional steering, manipulating multiple concepts in the same image.",
+    "authors": [
+      "Nabyl Quignon",
+      "Antitza Dantcheva"
+    ],
+    "published": "2026-11-14",
+    "updated": "2026-11-14",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.19440.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.19440",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "用于引导扩散Transformer的少样本视觉概念提取",
+      "core_contribution": "提出一种无需训练的引导方法，直接从扩散Transformer的图像侧激活中提取视觉概念方向，仅需少量正负提示对即可实现连续、精细的图像概念控制。",
+      "method": "该方法在激活空间中使用简单的均值差估计器进行少样本概念提取，针对场景级分布式概念（如光照、天气、风格）采用全局均值差，针对局部集中概念（如物体颜色、纹理、材质、面部属性）采用掩码均值差，防止局部信号被全局平均稀释。提取的概念方向可在推理时注入，实现连续引导。",
+      "findings": "实验表明，该方法在定量上优于文本编码器引导和无训练激活编辑基线，并与专用编辑模型具有竞争力；由于概念方向可应用于patch级别，方法能够实现精确的目标引导和组合引导，在同一图像中操控多个概念。"
+    }
+  }
+]

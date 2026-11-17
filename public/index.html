@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-16</p>
-        <p class="stats">共 5 篇论文 | 人工智能: 1 | 计算机视觉: 4</p>
+        <p class="date">📅 2026-11-17</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.18261</span>
+          <span class="paper-id">2611.20192</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.18261" target="_blank">Structural Self-Teaching for Compositional Generation in Unified Multimodal Models</a>
+        <a href="https://arxiv.org/abs/2611.20192" target="_blank">GlyphAtlas: Disentangling Stroke Detail from Layout for Scene Text Synthesis</a>
       </h3>
-      <p class="paper-title-zh">面向统一多模态模型组合生成的结构自教学</p>
-      <p class="paper-authors">Jaeyoo Park, Bohyung Han</p>
+      <p class="paper-title-zh">GlyphAtlas：将笔画细节与布局解耦用于场景文本合成</p>
+      <p class="paper-authors">Luozheng Qin, Changhai Zhou, Yiyi Zhou</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出结构自教学（SST）框架，利用统一多模态模型理解路径的内部注意力图作为结构监督信号，提升扩散式统一多模态模型在密集组合提示下的图像生成质量，无需外部结构标注或推理时额外输入。</div>
-        <div class="summary-section"><strong>方法:</strong> 从理解路径的内部注意力图中提取短语条件支撑掩码，通过两种机制用于生成路径训练：短语局部对比对齐将掩码作为池化区域，对齐生成短语区域与目标图像同一区域；结构脚手架从相同掩码构建短语级布局，在训练中调制生成路径的中间空间状态，并逐步淘汰、推理时移除。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多个统一多模态模型上的实验表明，SST在相同数据上优于LoRA微调，提升了组合保真度，且无推理时开销。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出GlyphAtlas框架，通过独立的字形图集提供细粒度笔画参考，将参考分辨率与目标区域大小解耦，实现小尺寸、密集和结构复杂文本的笔画精确合成。</div>
+        <div class="summary-section"><strong>方法:</strong> 保留预渲染的字形图像作为空间锚点，同时使用专用字形图集将每个字符或单词渲染并编码在独立单元格中。引入图集锚定注意力机制，使每个文本区域仅从对应的图集单元格检索笔画细节，以细化字形图像提供的粗粒度结构。采用掩码加权流匹配目标和时间步加权文本感知损失进行优化，并通过图集单元格的随机分辨率增强支持推理时调整图集预算。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，GlyphAtlas能够实现小尺寸、密集和结构复杂文本的笔画精确合成，可零样本迁移到任务特定训练中未见过的语言，并在包含多个文本区域的场景中取得领先性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>We propose Structural Self-Teaching (SST), a novel framework that enhances compositional image generation in diffusion-based unified multimodal models (UMMs) by leveraging their internal understanding path as a source of structural supervision. The generation path of UMMs often struggles with dense compositional prompts, leading to missing objects, attribute binding failures, and spatial errors. In contrast, their understanding path localizes the same phrases in images that satisfy these prompts. SST converts this phrase-level grounding into training-time structural signals for the generation path. Specifically, we extract phrase-conditioned support masks from internal attention maps derived from the understanding path and employ them through two mechanisms. Phrase-local contrastive alignment uses these masks as pooling regions and aligns each generated phrase region with the same region of the target image. A structural scaffold builds a phrase-level layout from the same masks and modulates an intermediate spatial state of the generation path during training. The scaffold is phased out during training and removed at inference. SST requires no external structural annotations for training and no additional input at test time. Extensive experiments across multiple UMMs demonstrate that SST improves compositional fidelity over LoRA fine-tuning on the same data, with no inference-time cost. Project page is available at https://bellos1203.github.io/sst</p>
+        <p>Scene text synthesis requires stroke-accurate characters rendered in a specified layout, as well as visual coherence with the surrounding scene. To achieve this, existing methods commonly pre-render the target text at its intended locations to form a glyph image that jointly specifies layout and glyph structure. However, this representation ties the resolution of each glyph to its target region, limiting fine-grained stroke guidance for small, densely packed, or structurally complex text. To tackle this, we propose GlyphAtlas, a scene text synthesis framework that retains the glyph image as a spatial anchor and supplies fine-grained stroke references through a dedicated glyph atlas. The atlas renders and encodes each character or word in a separate cell, decoupling reference resolution from target-region size. We further introduce atlas-anchored attention, which lets each text region retrieve stroke detail only from its corresponding atlas cells to refine the coarse glyph structure provided by the glyph image. This coarse-to-fine conditioning simplifies stroke rendering while preserving explicit layout correspondence. We optimize GlyphAtlas with a mask-weighted flow matching objective and a timestep-weighted text perceptual loss for writing accuracy and background consistency. Random resolution augmentation of atlas cells supports adjustable atlas budgets at inference. Extensive experiments demonstrate that GlyphAtlas achieves stroke-accurate synthesis of small, dense, and structurally complex text, zero-shot transfer to languages unseen during task-specific training, and leading performance in scenes with many text regions. project page: https://fr0zencrane.github.io/project-glyphatlas/</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.18261" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.18261.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.20192" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.20192.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -267,31 +267,31 @@
     <article class="paper-card">
       <div class="paper-header">
         <div class="left-header">
-          <span class="category-badge">人工智能</span>
-          <span class="paper-id">2611.17797</span>
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.19009</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.17797" target="_blank">Vision-as-a-Tool: Visual Harness for Multimodal Agentic Coding</a>
+        <a href="https://arxiv.org/abs/2611.19009" target="_blank">Role-Separated Diffusion Transformers: Global Rule Isolation and Deterministic Sampling Manifold Compression</a>
       </h3>
-      <p class="paper-title-zh">视觉即工具：面向多模态智能体编程的视觉驾驭框架</p>
-      <p class="paper-authors">Haolin Yang, Wenshan Wu, Jin Jiang, Yu Cheng, Yan Xia 等 (16 位作者)</p>
+      <p class="paper-title-zh">角色分离扩散Transformer：全局规则隔离与确定性采样流形压缩</p>
+      <p class="paper-authors">Zhiguang Liu, Yi Shang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出“视觉即工具”（VaaT）新范式，将通用多模态大模型重构为可调用的外部视觉工具，使纯文本智能体能够完全卸载视觉推理，同时让具备视觉能力的智能体按需增强原生感知，从而突破智能体内部感知瓶颈。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者将通用多模态大模型封装为可调用的外部实用工具，而非依赖智能体内在视觉能力。基于该范式实现了统一框架VHarness，由五个原子动作驱动智能体执行视觉推理。在Image-to-HTML、Image-to-SVG和Image-to-3D三类生成任务上对纯文本和多模态编程智能体进行了全面评估。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验结果表明，VHarness在纯文本和多模态编程智能体上均持续提升了视觉保真度和几何精度。研究说明将视觉推理模块化为可调用工具，为未来智能体编程系统提供了灵活且可扩展的基础。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出RoSeDiT架构，通过将全局规则从图像token中隔离，并引入adaLN监听机制，在潜在扩散域实现角色分离，显著提升训练效率和生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> RoSeDiT在ViT侧设置控制器通道，并引入adaLN监听机制使adaLN在控制器指令下计算，从而将熵定理和角色分离引入潜在扩散模型。采用与SiT相同的训练和评估协议，在相同参数量下进行对比实验。进一步提出确定性采样流形压缩（DSMC）两阶段训练策略，以解决去噪目标与图像流形之间的错位问题。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在400K步时，RoSeDiT在所有四个模型规模上均超越SiT；RoSeDiT-L/2以少32%的参数量达到15.34 FID，优于SiT-XL/2的17.2；RoSeDiT-XL/2在1.4M步达到7.98 FID，超越SiT-XL/2在7M步的8.3，训练步数仅为其五分之一。采用DSMC后，RoSeDiT-XL/2在2.4M步达到5.84 FID，超越SiT+REPA在4M步的5.9。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Multimodal agentic coding requires robust visual reasoning to analyze observations and evaluate generated artifacts. Current frameworks largely rely on a Thinking-with-Images paradigm, where agents depend on their intrinsic vision to execute visually grounded tasks. However, this architectural coupling introduces a fundamental bottleneck. Agent performance remains strictly bounded by internal perceptual limitations. Furthermore, text-only agents lack native perception. Without specialized tools, they cannot perform visual reasoning. To overcome these constraints, we introduce the Vision-as-a-Tool (VaaT) paradigm. Prior visual tool-use merely manipulates images for an agent's intrinsic vision to read. In contrast, VaaT reframes general-purpose multimodal large language models (MLLMs) as callable external utilities. As a result, text-only agents can completely offload visual reasoning during agentic execution. Meanwhile, vision-capable agents can dynamically augment their native perception on demand. We instantiate this paradigm in VHarness, a unified framework driven by five atomic actions. We comprehensively evaluate VHarness across Image-to-HTML, Image-to-SVG, and Image-to-3D generation tasks. Experimental results demonstrate that VHarness consistently improves visual fidelity and geometric accuracy across both text-only and multimodal coding agents. These findings highlight that modularizing visual reasoning into callable utilities provides a flexible and scalable foundation for future agentic coding systems.</p>
+        <p>We present Role-Separated Diffusion Transformers (RoSeDiT), a new diffusion transformer architecture that isolates the global rule from the image tokens. RoSeViT showed in visual reasoning that a vanilla ViT spreads a shared rule over all $L$ tokens at an entropy of order $Ld$, whereas an enforced controller route reduces it to order $d$. In class-conditional DiT and SiT, the class and the noise level are explicitly conditioned by adaLN, so a RoSeViT-style controller channel on the ViT side is insufficient to establish the full role separation. By introducing the adaLN listening mechanism, which makes adaLN compute under the controller's command, RoSeDiT brings the entropy theorem and role separation into the latent diffusion domain. Under the same SiT training and evaluation protocol at the same level of parameter count, RoSeDiT surpasses SiT at all four model scales at 400K steps, and RoSeDiT-L/2 even surpasses SiT-XL/2's 17.2 FID with 15.34 and 32% fewer parameters. RoSeDiT-XL/2 surpasses SiT-XL/2's 7M-step FID of 8.3 at 1.4M steps with 7.98, using one-fifth as many training steps. We further observe that models with the same denoising loss can have a large FID gap, which indicates a misalignment between the denoising objective and the image manifold. We formalize this phenomenon into Deterministic Sampling Manifold Compression (DSMC), a two-stage training schedule with which RoSeDiT-XL/2 surpasses SiT + REPA's 4M-step FID of 5.9 at 2.4M steps with 5.84.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.17797" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.17797.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.19009" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.19009.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.18053</span>
+          <span class="paper-id">2611.21077</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.18053" target="_blank">InfiHall-Bench: A Benchmark for Hallucination Evaluation in Autoregressive Text-to-Image Generation</a>
+        <a href="https://arxiv.org/abs/2611.21077" target="_blank">MORE: Merge Once, Route Early for Training-Free Multi-Subject Composition from Large LoRA Pools</a>
       </h3>
-      <p class="paper-title-zh">InfiHall-Bench：自回归文本到图像生成中的幻觉评估基准</p>
-      <p class="paper-authors">Yuxia Qiao, Xinhao Zhong, Junhao Li, Yi Sun, Jiaxin Hong 等 (7 位作者)</p>
+      <p class="paper-title-zh">MORE：一次合并，早期路由——面向大型LoRA池的无训练多主体组合</p>
+      <p class="paper-authors">Tian Xia</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个由411个提示组成的受控基准InfiHall-Bench，用于评估自回归文本到图像生成模型中的幻觉，并基于发现的幻觉尺度持续性模式提出了置信度掩码幻觉缓解方法（CMHM）。</div>
-        <div class="summary-section"><strong>方法:</strong> 通过系统组合五种基础且视觉可验证的技能（属性绑定、空间关系、动作关系、部分一致性和场景一致性）构建提示，每个提示平均覆盖4.05个标注技能。基于该基准评估VAR模型的幻觉表现，并提出CMHM方法：在教师强制微调过程中估计每个自回归尺度上目标视觉标记的预测置信度，降低可靠预测标记的权重，使优化聚焦于跨尺度的不确定预测。</div>
-        <div class="summary-section"><strong>关键发现:</strong> VAR模型中的幻觉表现出尺度持续性模式：语义错误可能在不同自回归尺度上出现，且很少被后续细尺度步骤纠正。InfiHall-Bench能够区分现有组合基准评为相当的模型，而CMHM在基于VAR的文本到图像生成中始终优于均匀LoRA微调。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出MORE，一种无需训练的两阶段FLUX多主体组合流水线，通过将整个LoRA池一次性合并为单一固定秩适配器并在去噪早期进行区域路由，显著提升了从大型LoRA池中组合两个主体时的成功率。</div>
+        <div class="summary-section"><strong>方法:</strong> MORE分为两个阶段：首先，利用SSR-Merge的子空间回归路由器将整个LoRA池折叠成一个固定秩适配器，并通过岭回归、秩选择和校准策略确保可靠性，该适配器可精确分解为共享部分和每个主体的部分；其次，在去噪过程的前30%步骤中，将每个主体的部分门控到其布局区域，使用衰减的软注意力偏置将每个区域与其主体令牌绑定，并采用循环交换引导（通过交换主体区域进行外推）来对抗区域同质化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在留出种子上，MORE在K=10和K=20时分别有94.2%和78.3%的图像保留了双主体，而FreeFuse为50.8%/35.8%，LoRAShop为25.0%/24.2%；ImageReward达到1.32（最佳基线为0.07），且所有K个主体均保留在一个适配器中；当布局自动推断时，双主体保留率仍达70.0%/55.0%。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Hallucination benchmarks for text-to-image generation are predominantly designed around diffusion models, limiting their diagnostic value for visual autoregressive (VAR) models and the development of mitigation methods. We identify two limitations in existing prompt construction paradigms: many prompts are no longer challenging for modern generators, while category-based construction relies on recurring object-attribute-relation templates and rarely tests interactions among multiple visual requirements within a single image. We introduce InfiHall-Bench, a controlled benchmark of 411 prompts constructed by systematically composing five foundational and visually verifiable skills: attribute binding, spatial relation, action relation, part consistency, and scene consistency. Each prompt covers 4.05 annotated skills on average, enabling the evaluation of hallucinations under diverse combinations of visual requirements. Using this benchmark, we find that hallucinations in VAR models exhibit a scale-wise persistence pattern: semantic errors can emerge at different autoregressive scales and are rarely corrected by subsequent fine-scale steps. Motivated by this observation, we propose Confidence-Masked Hallucination Mitigation (CMHM), which estimates the prediction confidence of target visual tokens at each autoregressive scale during teacher-forced fine-tuning. CMHM downweights reliably predicted tokens, allowing optimization to focus on uncertain predictions across scales. Experiments show that InfiHall-Bench distinguishes models that existing compositional benchmarks rate as comparable, while CMHM consistently outperforms uniform LoRA fine-tuning for VAR-based text-to-image generation.</p>
+        <p>Public hubs offer many personalized LoRAs per text-to-image backbone, yet composing two of them in one image remains fragile. In FLUX, keeping a pool of $K=10$ or $20$ subject LoRAs loaded makes their deltas interfere, and even loading only the two requested LoRAs keeps both subjects in fewer than 4% of images: one subject vanishes, the two fuse, or the image splits into a collage. We present MORE (Merge Once, Route Early), a training-free two-stage pipeline for FLUX. Merge once: the whole pool is folded into a single fixed-rank adapter by the subspace-regression router of SSR-Merge, made reliable by ridge, rank and calibration choices, and factored exactly into a shared part and per-subject parts. Route early: during the first 30% of the denoising steps each subject's part is gated to its layout region; a decaying soft attention bias ties every region to its own subject tokens, and a cyclic swap guidance extrapolates away from the prediction with the subjects' regions permuted, which counteracts region homogenization. On held-out seeds, MORE keeps both subjects in 94.2% ($K=10$) and 78.3% ($K=20$) of images, against 50.8% / 35.8% for FreeFuse and 25.0% / 24.2% for LoRAShop, and reaches an ImageReward of 1.32 (best baseline 0.07), while all $K$ subjects stay in one adapter. With layouts inferred automatically it still keeps both subjects in 70.0% / 55.0% of images.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.18053" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.18053.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.21077" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.21077.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.17767</span>
+          <span class="paper-id">2611.20021</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.17767" target="_blank">Learning Anisotropic Prediction Targets for Flow Models</a>
+        <a href="https://arxiv.org/abs/2611.20021" target="_blank">FastGRN: Few-Step Generative Refinement Networks</a>
       </h3>
-      <p class="paper-title-zh">为流模型学习各向异性预测目标</p>
-      <p class="paper-authors">Rayhan Zirvi, Hansheng Chen, Gordon Wetzstein, Leonidas Guibas</p>
+      <p class="paper-title-zh">FastGRN：少步生成精炼网络</p>
+      <p class="paper-authors">Haoyang Hu, Masataka Seo, Liang Li, Yen-wei Chen</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出AnisoFlow，用完全可学习的各向异性预测目标替代流模型中手工选定的固定预测目标（如速度、噪声或干净数据），在不改变网络架构、流匹配损失和采样器的情况下提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> AnisoFlow在联合学习的一组基下，为每个方向分配单独的非负权重，从而各向异性地缩放预测目标中的噪声分量。通过一个闭式映射从网络预测中精确恢复速度，使训练可以纯粹以“让网络更易预测”为目标来优化预测目标。作者还从理论上分析了预测误差，预测各方向偏好的噪声权重随数据方差近似线性缩放。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256上，AnisoFlow仅通过学习预测目标（无表示对齐、无架构改动）即将FID从JiT基线的1.90降至1.55；在像素空间文本到图像生成中提升了图像质量，并通过更好的条件化速度恢复，在低精度推理下基本消除了块状拼接伪影。实验中学到的像素空间权重与理论预测的近线性缩放关系一致。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出FastGRN，通过在其自身采样分布上训练少步生成精炼网络，将原本需要数十步马尔可夫步骤的离散潜变量生成过程压缩到3-4步，同时保持甚至超越原模型的质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 利用GRN自身的均匀状态损坏机制在离散token上进行分布匹配，使离散生成器可通过反向传播学习，并借鉴rectified flow的方式将噪声与样本配对。针对少步GRN各步骤信息量和修复负担不均的问题，采用三部分策略：过采样（用超出训练步数的更多步采样学生模型并精炼其判别器）、非均匀采样（仅训练最后一步并在采样时赋予其大部分信息）、精炼置信度保持（保留学生模型已确定的token）。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256上，3步FastGRN的FID优于原始GRN；在2B二值token的文本到图像GRN上，4步学生模型的GenEval几乎匹配GRN-T2I 2B，验证了少步精炼方法在大规模生成任务上的有效性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Flow-based generative models are trained on a hand-chosen prediction target, such as the velocity, the noise, or the clean data. This choice strongly affects training and sample quality. We introduce Anisotropic Flow Models (AnisoFlow), which replaces a fixed prediction target with a fully learnable one. AnisoFlow learns to scale the noise component of the target anisotropically, assigning a separate nonnegative weight to each direction in a jointly learned basis. A closed-form map recovers the velocity from the network's prediction, leaving the architecture, flow-matching loss, and sampler unchanged. Since recovery is exact, training optimizes the target purely to make it easier for the network to predict. We theoretically analyze the resulting prediction error and predict that the preferred noise weight in each direction scales near-linearly with data variance, in agreement with the weights learned empirically in pixel space. AnisoFlow improves FID from 1.90 to 1.55 over the JiT baseline on ImageNet 256$\times$256, by learning only the prediction target, without representation alignment or architectural changes. In pixel-space text-to-image generation, AnisoFlow improves image quality and, through better-conditioned velocity recovery, largely removes patch-seam artifacts under reduced-precision inference.</p>
+        <p>Generative Refinement Networks (GRN) generate an image by repeatedly re-predicting and refining every token of a discrete latent. They reach high fidelity, but need dozens of Markov steps. We therefore train few-step GRNs on the distribution of their own samples. We use its own uniform-state corruption to perform distribution matching on discrete tokens, which lets a discrete generator learn by backpropagation, and we pair noise with samples in the manner of rectified flow. We find that the steps of a few-step GRN do not carry the same amount of information or the same repair load. We therefore exploit its discrete refinement during training and build few-step GRNs in three parts. Oversampling samples the student with more steps than it was trained for and refines its judge on these samples. Non-uniform sampling trains only the last step and hands it most of the information at sampling time. Refinement confidence keeping holds on to the tokens the student is already sure of. We train a fast class-conditional generator on ImageNet 256 and, with the same method, a 2B text-to-image model. On ImageNet 256, the 3-step FastGRN beats the FID of GRN. On a 2B binary-token text-to-image GRN, a 4-step student also nearly matches the GenEval of GRN-T2I 2B.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.17767" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.17767.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.20021" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.20021.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.17585</span>
+          <span class="paper-id">2611.19440</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.17585" target="_blank">Rethinking Visual Reasoning in Text-to-Image Reward Modeling</a>
+        <a href="https://arxiv.org/abs/2611.19440" target="_blank">Few-Shot Visual Concept Extraction for Steering Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">重新思考文本到图像奖励建模中的视觉推理</p>
-      <p class="paper-authors">Shiye Su, Xiaohan Wang, Ludwig Schmidt, Serena Yeung-Levy</p>
+      <p class="paper-title-zh">用于引导扩散Transformer的少样本视觉概念提取</p>
+      <p class="paper-authors">Nabyl Quignon, Antitza Dantcheva</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了广泛使用的文本到图像奖励模型在视觉推理任务上表现不佳，且偏好微调会侵蚀视觉理解能力，并提出一种以数据为中心的干预方法，通过翻转配对轴将视觉推理数据转化为偏好对进行混合训练，从而在视觉理解和偏好预测上实现帕累托改进。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先评估了现有奖励模型在针对性视觉推理评测上的表现，发现偏好微调会损害视觉理解能力。为此，他们提出将现有视觉推理数据集转换为共享同一图像但提示不同的偏好对，并与传统人类偏好数据（共享提示下的成对图像）混合训练。该方法通过翻转配对轴，将视觉推理监督注入偏好学习过程。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 混合训练后的奖励模型在视觉理解和偏好预测上均取得帕累托改进。在推理时最佳n选和RL后训练两种设置下，该模型在具有挑战性的组合提示（GenEval）上分别平均提升文本到图像生成4.0%和5.5%，优于在6倍偏好对上训练的HPSv3。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的引导方法，直接从扩散Transformer的图像侧激活中提取视觉概念方向，仅需少量正负提示对即可实现连续、精细的图像概念控制。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法在激活空间中使用简单的均值差估计器进行少样本概念提取，针对场景级分布式概念（如光照、天气、风格）采用全局均值差，针对局部集中概念（如物体颜色、纹理、材质、面部属性）采用掩码均值差，防止局部信号被全局平均稀释。提取的概念方向可在推理时注入，实现连续引导。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，该方法在定量上优于文本编码器引导和无训练激活编辑基线，并与专用编辑模型具有竞争力；由于概念方向可应用于patch级别，方法能够实现精确的目标引导和组合引导，在同一图像中操控多个概念。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reward models are a core component of modern text-to-image systems, serving as the objective for inference-time selection and RL-based post-training. A key prerequisite is visual understanding: to judge prompt adherence and ground aesthetic preferences, a reward model must bind attributes, resolve relations, and count reliably. We find that widely-used reward models perform poorly on targeted visual reasoning evaluations. Even when starting from strong vision-language backbones, preference fine-tuning erodes these capabilities, and continual-learning baselines fail to mitigate a steep tradeoff between visual reasoning and preference accuracy. We propose a data-centric intervention that injects visual reasoning supervision into preference learning by flipping the pairing axis. To complement conventional human preference data (paired images under a shared prompt), we convert existing visual reasoning datasets into preference pairs that share the same image but differ in prompt, and train on the mixture. This yields a Pareto improvement in both visual understanding and preference prediction. Across inference-time best-of-n selection and RL post-training, the resulting reward model improves text-to-image generation on challenging compositional prompts (GenEval) by an average of 4.0% and 5.5% respectively, outperforming HPSv3 which was trained on 6x more preference pairs.</p>
+        <p>Image steering aims to provide fine-grained control over concepts in generated images, enabling targeted and continuous manipulation without broadly altering the generation process. Recent steering methods for diffusion models primarily focus on the text-conditioning space or rely on costly auxiliary training. Deviating from that, we here propose a novel steering approach that extracts visual concept directions directly from the image-side activations of Diffusion Transformers. Specifically, we showcase few-shot concept extraction in the activation space using a simple difference-of-means estimator over intermediate residuals. We observe (a) scene-level concepts such as lighting, weather, and style are distributed across image tokens, as well as (b) local concepts such as object colors, textures, materials, and facial attributes are concentrated in specific regions. Towards controlling both concepts, we introduce a new unified training-free framework that uses global difference-of-means for (a) distributed concepts and masked difference-of-means for (b) local concepts, preventing local signals from being diluted by global averaging. Notably, using only a handful of positive and negative prompt pairs, our method identifies and extracts reusable concept directions that can be injected at inference for continuous steering. Quantitatively, our method outperforms text-encoder steering and training-free activation-editing baselines, as well as is competitive with specialized editing models. Our results suggest that as concept directions can be applied at patch level, our method enables precise targeted and compositional steering, manipulating multiple concepts in the same image.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.17585" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.17585.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.19440" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.19440.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
