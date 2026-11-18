@@ -1,0 +1,143 @@
+[
+  {
+    "id": "2611.22962",
+    "title": "Hierarchical Diffusion Transformer for End-to-End Image Generation",
+    "abstract": "Pixel-space diffusion learns visual representations and image generation jointly in a single end-to-end training stage, without a separately pretrained visual encoder. However, plain pixel-space Transformers still trail leading two-stage latent diffusion models in generation quality and training efficiency. We hypothesize that part of this gap arises from retaining one token per patch throughout the backbone, which does not explicitly encourage a visual hierarchy that summarizes related content at progressively coarser levels. To address this, we introduce Hierarchical Diffusion Transformers (HiT), which progressively group related tokens and represent each group with a single token. The main Transformer bottleneck processes these compact group tokens, and ungrouping restores features to their original image positions. A compression budget regulates the average compression ratio across the batch, allowing group memberships and counts to vary across images and diffusion timesteps during both training and generation. The model exhibits emergent semantic structure, learning to group coherent objects and object parts without segmentation labels. In text-to-image generation, HiT further learns to group caption words with image patches depicting the same concepts, without region annotations. HiT achieves 1.48 FID on ImageNet $256\\times256$ and reaches comparable generation quality to JiT using approximately 40\\% of its cumulative training FLOPs. For text-to-image generation, HiT exceeds UniLiP's average score across five benchmarks with roughly $6\\times$ fewer denoiser parameters and $3\\times$ fewer forward FLOPs. These results suggest that learning a visual hierarchy within the generator breaks down the barrier to stronger image generation without external visual pretraining.",
+    "authors": [
+      "Xiaoyu Wu",
+      "Yifei Wang",
+      "Weihang Guo",
+      "Chen Wei",
+      "Lydia E Kavraki",
+      "Niloofar Mireshghallah",
+      "Steven Wu"
+    ],
+    "published": "2026-11-17",
+    "updated": "2026-11-17",
+    "categories": [
+      "cs.CV",
+      "cs.AI",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.22962.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.22962",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "用于端到端图像生成的层次化扩散Transformer",
+      "core_contribution": "提出层次化扩散Transformer（HiT），通过在生成器内部学习视觉层次结构，缩小了像素空间扩散模型与两阶段潜在扩散模型在生成质量和训练效率上的差距，无需外部视觉预训练。",
+      "method": "HiT在主干网络中逐步将相关token分组并用单个token表示每组，主Transformer瓶颈处理这些紧凑的组token，再解组恢复特征到原始图像位置。压缩预算调节批次平均压缩比，允许组归属和数量在图像和扩散时间步间变化。模型无需分割标签即可学习分组连贯对象和部件，在文本到图像生成中还能将标题词与对应图像块分组。",
+      "findings": "HiT在ImageNet 256×256上达到1.48 FID，以约40%的累积训练FLOPs达到与JiT相当的生成质量；文本到图像生成中，以约6倍更少的去噪器参数和3倍更少的前向FLOPs超过UniLiP在五个基准上的平均得分。结果表明在生成器内学习视觉层次结构可打破更强图像生成的障碍，无需外部视觉预训练。"
+    }
+  },
+  {
+    "id": "2611.22458",
+    "title": "Sample-Aligned Decoders for Latent Generative Models",
+    "abstract": "Latent generative models synthesize images by decoding generated latents, yet their decoder is trained only to reconstruct encoder latents and never sees the latents it decodes at test time, so the residual errors of the generator are rendered directly into the final image. Existing remedies retrain the generator, add cost at every sampling step, or make the decoder robust to perturbed real latents, assuming that generator errors resemble such perturbations. We find that they do not. Generated latents lie on the encoder latent manifold as closely as real ones, yet follow a different distribution. The decoder should therefore be adapted to the distribution of generated latents, which raises two challenges: (1) unpaired supervision, since a generated latent has no ground-truth image, and (2) latent-space drift, since a decoder freed from paired targets forgets the latent space it must decode. We propose Sample-Aligned Decoders (SAD), a post-training framework that fine-tunes only the decoder of a frozen generator at no inference cost. Generated-Sample Distribution Alignment matches decoded generated latents to unpaired real images in a frozen foundation-model feature space, and Encoder Anchor Preservation keeps the decoder close to the original one on encoder latents. Our analysis shows that the alignment is effective only on generated latents, where it corrects each sample in proportion to how much more often the generator produces such latents than the encoder; on encoder latents it can only work against the anchor. SAD improves four state-of-the-art ImageNet generators across three tokenizers, e.g., FID-50K from 1.15 to 0.98 for REPA-E, complements discriminator guidance, and extends to text-to-image generation. Our code and models are available at https://torpedo2003.github.io/SAD/.",
+    "authors": [
+      "Yu Lei",
+      "Yi Li",
+      "Hongcheng Gao",
+      "Yipeng Wei",
+      "Liang Li",
+      "Li Su",
+      "Qingming Huang"
+    ],
+    "published": "2026-11-17",
+    "updated": "2026-11-17",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.22458.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.22458",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "面向潜在生成模型的样本对齐解码器",
+      "core_contribution": "论文指出潜在生成模型的解码器仅在编码器潜变量上训练，测试时却要解码分布不同的生成潜变量，导致生成器残差直接渲染进图像；为此提出仅微调解码器的后训练框架SAD，在不增加推理成本的前提下提升生成质量。",
+      "method": "SAD冻结生成器，只对解码器进行后训练微调。方法包含两个组件：生成样本分布对齐（Generated-Sample Distribution Alignment），在冻结的基础模型特征空间中将解码后的生成潜变量与无配对真实图像对齐；以及编码器锚点保持（Encoder Anchor Preservation），约束解码器在编码器潜变量上接近原始解码器，以防止潜空间漂移。",
+      "findings": "分析表明分布对齐仅对生成潜变量有效，且按生成器产生该样本的频率相对编码器成比例地校正每个样本，而在编码器潜变量上只会与锚点约束相冲突。SAD在三种分词器上改进了四个最先进的ImageNet生成器，例如REPA-E的FID-50K从1.15降至0.98，并与判别器引导互补，还可扩展到文本到图像生成。"
+    }
+  },
+  {
+    "id": "2611.22287",
+    "title": "Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers",
+    "abstract": "Latent diffusion models rely on a decoder to map denoised latents to pixels, adding complexity and inference cost. We introduce Decoding Without a Decoder (DWD), which lets a finetuned diffusion transformer produce final pixels directly through a linear head. Unlike previous methods, where the denoising output leads to final pixels, DWD separates the two roles: the original denoising head continues to drive sampling, then the new DWD head predicts the pixels at the final step. We extend pretrained latent models with DWD efficiently by finetuning only the last few transformer blocks, training the DWD head with pixel quality losses while anchoring the denoising head to the pretrained model to preserve the sample trajectory. Across latent image and video generators, DWD removes the decoder and reduces inference cost while maintaining or even improving pixel quality. On Wan video generation, it visibly reduces detail distortion and flickering, lowering warping error by 23%. Remarkably, the same separation also improves pixel diffusion models that do not even use a decoder: a final-step DWD head produces substantially better texture detail in text-to-image generation, and improves ImageNet FID from 1.55 to 1.43, a new state of the art among pixel flow models.",
+    "authors": [
+      "Hansheng Chen",
+      "Shengqu Cai",
+      "Jan Ackermann",
+      "Rayhan Zirvi",
+      "Gordon Wetzstein",
+      "Xinchen Yan",
+      "Leonidas Guibas"
+    ],
+    "published": "2026-11-17",
+    "updated": "2026-11-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.22287.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.22287",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "无需解码器的解码：从扩散Transformer直接预测像素",
+      "core_contribution": "提出DWD方法，通过微调扩散Transformer并添加线性头，在最后一步直接预测像素，从而移除解码器并降低推理成本，同时保持或提升像素质量。",
+      "method": "DWD将去噪头和像素预测头分离：原始去噪头继续驱动采样，新增的DWD头在最后一步预测像素。通过仅微调最后几个Transformer块，并用像素质量损失训练DWD头，同时将去噪头锚定到预训练模型以保持采样轨迹。",
+      "findings": "在潜在图像和视频生成器中，DWD移除解码器并降低推理成本，同时保持或提升像素质量。在Wan视频生成上，明显减少细节失真和闪烁，将扭曲误差降低23%。在像素扩散模型上，最后一步DWD头显著提升纹理细节，并将ImageNet FID从1.55提升至1.43，成为像素流模型中的新最优。"
+    }
+  },
+  {
+    "id": "2611.22867",
+    "title": "LOCUS: Causal Support Windows for Attribute Control in Autoregressive Image Generation",
+    "abstract": "Unified autoregressive (AR) image generators struggle to satisfy multiple attribute constraints in a single prompt. Although these attributes are decodable from image-token latents, editing those latents at test time remains difficult. Adding a fixed attribute direction to the prefix can reinforce a requested attribute but rarely overrides a conflicting one, such as turning a car red when the prompt specifies blue. We investigate how the effect of an intervention depends on where it acts in the image-token sequence. We introduce the causal support profile, which measures, for each attribute, how often patching image-token states within a given window flips the rendered attribute. Structural attributes (count and position) are most responsive in early, narrow windows, while appearance attributes (color, size, and material) respond over later, broader windows. A budget-matched comparison of early and middle windows shows that the effect of window location depends on the target attribute, and two-dimensional support maps show that the responsive regions track spatial content. Based on these profiles, we propose LOCUS (Latent Optimization in Causal Support windows), which diagnoses which attribute failed and routes test-time latent optimization to its corresponding support window. With the generator, optimizer, reward, verifier, and token budget held fixed, support-routed windows outperform late windows by 23.6 percentage points in GenEval++ macro accuracy. With the generator frozen, LOCUS raises Janus-Pro's GenEval++ accuracy from 24.6% to 46.8% overall and from 19.5% to 40.5% on multi-attribute tags. On GenEval, LOCUS repairs 48.1% of failed generations in one rollout, compared with 37.4% for prefix optimization, and needs 14% fewer rounds on average to succeed.",
+    "authors": [
+      "Zijun Huang"
+    ],
+    "published": "2026-11-17",
+    "updated": "2026-11-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.22867.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.22867",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "LOCUS：自回归图像生成中属性控制的因果支持窗口",
+      "core_contribution": "论文提出因果支持剖面来刻画不同属性在图像token序列中的响应窗口，并据此设计LOCUS方法，将测试时潜变量优化路由到对应属性的支持窗口，从而显著提升自回归图像生成器对多属性约束的满足能力。",
+      "method": "作者首先引入因果支持剖面，通过在每个滑动窗口内替换图像token状态并测量属性翻转频率，定位各属性的响应区域。基于该剖面，提出LOCUS（Latent Optimization in Causal Support windows），先诊断哪个属性未满足，再将测试时潜变量优化限制在该属性对应的支持窗口内进行。实验在固定生成器、优化器、奖励、验证器和token预算的条件下，与晚期窗口及前缀优化等方法进行对比。",
+      "findings": "结构属性（数量和位置）在早期窄窗口中响应最强，外观属性（颜色、大小和材质）在后期更宽窗口中响应；窗口位置的效果依赖于目标属性。在GenEval++宏平均准确率上，支持窗口路由比晚期窗口高23.6个百分点；在生成器冻结时，LOCUS将Janus-Pro的GenEval++总体准确率从24.6%提升到46.8%，多属性标签从19.5%提升到40.5%；在GenEval上，LOCUS单轮修复48.1%的失败生成（前缀优化为37.4%），平均所需轮数减少14%。"
+    }
+  },
+  {
+    "id": "2611.22318",
+    "title": "Breaking Visual Conventions: Spectrally Coupled Weight Perturbation for Creative Image Generation",
+    "abstract": "Text-to-image (T2I) models often produce high-quality images that follow familiar visual conventions, even in response to open-ended prompts such as ``a creative [CLS]''. Existing methods encourage novelty by exploring semantic conditions or modifying features and guidance during denoising. Pretrained weights offer a complementary source of creative variation, but unstructured perturbations can have little visual effect or degrade image quality. We introduce Coupled Spectral Perturbation (CosPert), a training-free method that targets attention projections in layers identified by a one-time sensitivity analysis. For each projection, CosPert uses a shared random transformation and its transpose to couple updates to the singular-vector factors while perturbing the spectral gains. A common relative budget calibrates the magnitude of weight changes across projections, and a sigmoid schedule concentrates their influence in early denoising and gradually attenuates them during refinement. CosPert provides plug-and-play creativity enhancement at inference time. Once the perturbations are prepared, sampling requires no auxiliary networks or additional model evaluations. On both FLUX.1 and Stable Diffusion 3.5, CosPert enhances visual creativity, producing more varied object structures while preserving category identity. Across 50 object categories, CosPert achieves the highest mean CREward among the evaluated methods while maintaining strong prompt alignment.",
+    "authors": [
+      "Fu Feng",
+      "Ruoheng Zhou",
+      "Yucheng Xie",
+      "Xu Yang",
+      "Jing Wang",
+      "Xin Geng"
+    ],
+    "published": "2026-11-17",
+    "updated": "2026-11-17",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.22318.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.22318",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "打破视觉惯例：用于创意图像生成的谱耦合权重扰动",
+      "core_contribution": "提出了一种无需训练的谱耦合权重扰动方法（CosPert），通过在注意力投影的奇异向量因子和谱增益上施加结构化扰动，在保持类别身份和提示对齐的同时增强文本到图像模型的视觉创造力。",
+      "method": "CosPert首先通过一次性敏感性分析定位注意力投影层，然后对每个投影使用共享随机变换及其转置来耦合奇异向量因子的更新，同时扰动谱增益。采用统一的相对预算校准各投影的权重变化幅度，并用Sigmoid调度使扰动影响集中在去噪早期、在细化阶段逐渐衰减。该方法即插即用，推理时无需辅助网络或额外模型评估。",
+      "findings": "在FLUX.1和Stable Diffusion 3.5上，CosPert均能增强视觉创造力，生成更多样的物体结构同时保持类别身份。在50个物体类别上，CosPert在评估方法中取得最高的平均CREward，同时保持较强的提示对齐。"
+    }
+  }
+]

@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-17</p>
+        <p class="date">📅 2026-11-18</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.20192</span>
+          <span class="paper-id">2611.22962</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.20192" target="_blank">GlyphAtlas: Disentangling Stroke Detail from Layout for Scene Text Synthesis</a>
+        <a href="https://arxiv.org/abs/2611.22962" target="_blank">Hierarchical Diffusion Transformer for End-to-End Image Generation</a>
       </h3>
-      <p class="paper-title-zh">GlyphAtlas：将笔画细节与布局解耦用于场景文本合成</p>
-      <p class="paper-authors">Luozheng Qin, Changhai Zhou, Yiyi Zhou</p>
+      <p class="paper-title-zh">用于端到端图像生成的层次化扩散Transformer</p>
+      <p class="paper-authors">Xiaoyu Wu, Yifei Wang, Weihang Guo, Chen Wei, Lydia E Kavraki 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出GlyphAtlas框架，通过独立的字形图集提供细粒度笔画参考，将参考分辨率与目标区域大小解耦，实现小尺寸、密集和结构复杂文本的笔画精确合成。</div>
-        <div class="summary-section"><strong>方法:</strong> 保留预渲染的字形图像作为空间锚点，同时使用专用字形图集将每个字符或单词渲染并编码在独立单元格中。引入图集锚定注意力机制，使每个文本区域仅从对应的图集单元格检索笔画细节，以细化字形图像提供的粗粒度结构。采用掩码加权流匹配目标和时间步加权文本感知损失进行优化，并通过图集单元格的随机分辨率增强支持推理时调整图集预算。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，GlyphAtlas能够实现小尺寸、密集和结构复杂文本的笔画精确合成，可零样本迁移到任务特定训练中未见过的语言，并在包含多个文本区域的场景中取得领先性能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出层次化扩散Transformer（HiT），通过在生成器内部学习视觉层次结构，缩小了像素空间扩散模型与两阶段潜在扩散模型在生成质量和训练效率上的差距，无需外部视觉预训练。</div>
+        <div class="summary-section"><strong>方法:</strong> HiT在主干网络中逐步将相关token分组并用单个token表示每组，主Transformer瓶颈处理这些紧凑的组token，再解组恢复特征到原始图像位置。压缩预算调节批次平均压缩比，允许组归属和数量在图像和扩散时间步间变化。模型无需分割标签即可学习分组连贯对象和部件，在文本到图像生成中还能将标题词与对应图像块分组。</div>
+        <div class="summary-section"><strong>关键发现:</strong> HiT在ImageNet 256×256上达到1.48 FID，以约40%的累积训练FLOPs达到与JiT相当的生成质量；文本到图像生成中，以约6倍更少的去噪器参数和3倍更少的前向FLOPs超过UniLiP在五个基准上的平均得分。结果表明在生成器内学习视觉层次结构可打破更强图像生成的障碍，无需外部视觉预训练。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Scene text synthesis requires stroke-accurate characters rendered in a specified layout, as well as visual coherence with the surrounding scene. To achieve this, existing methods commonly pre-render the target text at its intended locations to form a glyph image that jointly specifies layout and glyph structure. However, this representation ties the resolution of each glyph to its target region, limiting fine-grained stroke guidance for small, densely packed, or structurally complex text. To tackle this, we propose GlyphAtlas, a scene text synthesis framework that retains the glyph image as a spatial anchor and supplies fine-grained stroke references through a dedicated glyph atlas. The atlas renders and encodes each character or word in a separate cell, decoupling reference resolution from target-region size. We further introduce atlas-anchored attention, which lets each text region retrieve stroke detail only from its corresponding atlas cells to refine the coarse glyph structure provided by the glyph image. This coarse-to-fine conditioning simplifies stroke rendering while preserving explicit layout correspondence. We optimize GlyphAtlas with a mask-weighted flow matching objective and a timestep-weighted text perceptual loss for writing accuracy and background consistency. Random resolution augmentation of atlas cells supports adjustable atlas budgets at inference. Extensive experiments demonstrate that GlyphAtlas achieves stroke-accurate synthesis of small, dense, and structurally complex text, zero-shot transfer to languages unseen during task-specific training, and leading performance in scenes with many text regions. project page: https://fr0zencrane.github.io/project-glyphatlas/</p>
+        <p>Pixel-space diffusion learns visual representations and image generation jointly in a single end-to-end training stage, without a separately pretrained visual encoder. However, plain pixel-space Transformers still trail leading two-stage latent diffusion models in generation quality and training efficiency. We hypothesize that part of this gap arises from retaining one token per patch throughout the backbone, which does not explicitly encourage a visual hierarchy that summarizes related content at progressively coarser levels. To address this, we introduce Hierarchical Diffusion Transformers (HiT), which progressively group related tokens and represent each group with a single token. The main Transformer bottleneck processes these compact group tokens, and ungrouping restores features to their original image positions. A compression budget regulates the average compression ratio across the batch, allowing group memberships and counts to vary across images and diffusion timesteps during both training and generation. The model exhibits emergent semantic structure, learning to group coherent objects and object parts without segmentation labels. In text-to-image generation, HiT further learns to group caption words with image patches depicting the same concepts, without region annotations. HiT achieves 1.48 FID on ImageNet $256\times256$ and reaches comparable generation quality to JiT using approximately 40\% of its cumulative training FLOPs. For text-to-image generation, HiT exceeds UniLiP's average score across five benchmarks with roughly $6\times$ fewer denoiser parameters and $3\times$ fewer forward FLOPs. These results suggest that learning a visual hierarchy within the generator breaks down the barrier to stronger image generation without external visual pretraining.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.20192" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.20192.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.22962" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.22962.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.19009</span>
+          <span class="paper-id">2611.22458</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.19009" target="_blank">Role-Separated Diffusion Transformers: Global Rule Isolation and Deterministic Sampling Manifold Compression</a>
+        <a href="https://arxiv.org/abs/2611.22458" target="_blank">Sample-Aligned Decoders for Latent Generative Models</a>
       </h3>
-      <p class="paper-title-zh">角色分离扩散Transformer：全局规则隔离与确定性采样流形压缩</p>
-      <p class="paper-authors">Zhiguang Liu, Yi Shang</p>
+      <p class="paper-title-zh">面向潜在生成模型的样本对齐解码器</p>
+      <p class="paper-authors">Yu Lei, Yi Li, Hongcheng Gao, Yipeng Wei, Liang Li 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出RoSeDiT架构，通过将全局规则从图像token中隔离，并引入adaLN监听机制，在潜在扩散域实现角色分离，显著提升训练效率和生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> RoSeDiT在ViT侧设置控制器通道，并引入adaLN监听机制使adaLN在控制器指令下计算，从而将熵定理和角色分离引入潜在扩散模型。采用与SiT相同的训练和评估协议，在相同参数量下进行对比实验。进一步提出确定性采样流形压缩（DSMC）两阶段训练策略，以解决去噪目标与图像流形之间的错位问题。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在400K步时，RoSeDiT在所有四个模型规模上均超越SiT；RoSeDiT-L/2以少32%的参数量达到15.34 FID，优于SiT-XL/2的17.2；RoSeDiT-XL/2在1.4M步达到7.98 FID，超越SiT-XL/2在7M步的8.3，训练步数仅为其五分之一。采用DSMC后，RoSeDiT-XL/2在2.4M步达到5.84 FID，超越SiT+REPA在4M步的5.9。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文指出潜在生成模型的解码器仅在编码器潜变量上训练，测试时却要解码分布不同的生成潜变量，导致生成器残差直接渲染进图像；为此提出仅微调解码器的后训练框架SAD，在不增加推理成本的前提下提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> SAD冻结生成器，只对解码器进行后训练微调。方法包含两个组件：生成样本分布对齐（Generated-Sample Distribution Alignment），在冻结的基础模型特征空间中将解码后的生成潜变量与无配对真实图像对齐；以及编码器锚点保持（Encoder Anchor Preservation），约束解码器在编码器潜变量上接近原始解码器，以防止潜空间漂移。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 分析表明分布对齐仅对生成潜变量有效，且按生成器产生该样本的频率相对编码器成比例地校正每个样本，而在编码器潜变量上只会与锚点约束相冲突。SAD在三种分词器上改进了四个最先进的ImageNet生成器，例如REPA-E的FID-50K从1.15降至0.98，并与判别器引导互补，还可扩展到文本到图像生成。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>We present Role-Separated Diffusion Transformers (RoSeDiT), a new diffusion transformer architecture that isolates the global rule from the image tokens. RoSeViT showed in visual reasoning that a vanilla ViT spreads a shared rule over all $L$ tokens at an entropy of order $Ld$, whereas an enforced controller route reduces it to order $d$. In class-conditional DiT and SiT, the class and the noise level are explicitly conditioned by adaLN, so a RoSeViT-style controller channel on the ViT side is insufficient to establish the full role separation. By introducing the adaLN listening mechanism, which makes adaLN compute under the controller's command, RoSeDiT brings the entropy theorem and role separation into the latent diffusion domain. Under the same SiT training and evaluation protocol at the same level of parameter count, RoSeDiT surpasses SiT at all four model scales at 400K steps, and RoSeDiT-L/2 even surpasses SiT-XL/2's 17.2 FID with 15.34 and 32% fewer parameters. RoSeDiT-XL/2 surpasses SiT-XL/2's 7M-step FID of 8.3 at 1.4M steps with 7.98, using one-fifth as many training steps. We further observe that models with the same denoising loss can have a large FID gap, which indicates a misalignment between the denoising objective and the image manifold. We formalize this phenomenon into Deterministic Sampling Manifold Compression (DSMC), a two-stage training schedule with which RoSeDiT-XL/2 surpasses SiT + REPA's 4M-step FID of 5.9 at 2.4M steps with 5.84.</p>
+        <p>Latent generative models synthesize images by decoding generated latents, yet their decoder is trained only to reconstruct encoder latents and never sees the latents it decodes at test time, so the residual errors of the generator are rendered directly into the final image. Existing remedies retrain the generator, add cost at every sampling step, or make the decoder robust to perturbed real latents, assuming that generator errors resemble such perturbations. We find that they do not. Generated latents lie on the encoder latent manifold as closely as real ones, yet follow a different distribution. The decoder should therefore be adapted to the distribution of generated latents, which raises two challenges: (1) unpaired supervision, since a generated latent has no ground-truth image, and (2) latent-space drift, since a decoder freed from paired targets forgets the latent space it must decode. We propose Sample-Aligned Decoders (SAD), a post-training framework that fine-tunes only the decoder of a frozen generator at no inference cost. Generated-Sample Distribution Alignment matches decoded generated latents to unpaired real images in a frozen foundation-model feature space, and Encoder Anchor Preservation keeps the decoder close to the original one on encoder latents. Our analysis shows that the alignment is effective only on generated latents, where it corrects each sample in proportion to how much more often the generator produces such latents than the encoder; on encoder latents it can only work against the anchor. SAD improves four state-of-the-art ImageNet generators across three tokenizers, e.g., FID-50K from 1.15 to 0.98 for REPA-E, complements discriminator guidance, and extends to text-to-image generation. Our code and models are available at https://torpedo2003.github.io/SAD/.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.19009" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.19009.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.22458" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.22458.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.21077</span>
+          <span class="paper-id">2611.22287</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.21077" target="_blank">MORE: Merge Once, Route Early for Training-Free Multi-Subject Composition from Large LoRA Pools</a>
+        <a href="https://arxiv.org/abs/2611.22287" target="_blank">Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">MORE：一次合并，早期路由——面向大型LoRA池的无训练多主体组合</p>
-      <p class="paper-authors">Tian Xia</p>
+      <p class="paper-title-zh">无需解码器的解码：从扩散Transformer直接预测像素</p>
+      <p class="paper-authors">Hansheng Chen, Shengqu Cai, Jan Ackermann, Rayhan Zirvi, Gordon Wetzstein 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出MORE，一种无需训练的两阶段FLUX多主体组合流水线，通过将整个LoRA池一次性合并为单一固定秩适配器并在去噪早期进行区域路由，显著提升了从大型LoRA池中组合两个主体时的成功率。</div>
-        <div class="summary-section"><strong>方法:</strong> MORE分为两个阶段：首先，利用SSR-Merge的子空间回归路由器将整个LoRA池折叠成一个固定秩适配器，并通过岭回归、秩选择和校准策略确保可靠性，该适配器可精确分解为共享部分和每个主体的部分；其次，在去噪过程的前30%步骤中，将每个主体的部分门控到其布局区域，使用衰减的软注意力偏置将每个区域与其主体令牌绑定，并采用循环交换引导（通过交换主体区域进行外推）来对抗区域同质化。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在留出种子上，MORE在K=10和K=20时分别有94.2%和78.3%的图像保留了双主体，而FreeFuse为50.8%/35.8%，LoRAShop为25.0%/24.2%；ImageReward达到1.32（最佳基线为0.07），且所有K个主体均保留在一个适配器中；当布局自动推断时，双主体保留率仍达70.0%/55.0%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出DWD方法，通过微调扩散Transformer并添加线性头，在最后一步直接预测像素，从而移除解码器并降低推理成本，同时保持或提升像素质量。</div>
+        <div class="summary-section"><strong>方法:</strong> DWD将去噪头和像素预测头分离：原始去噪头继续驱动采样，新增的DWD头在最后一步预测像素。通过仅微调最后几个Transformer块，并用像素质量损失训练DWD头，同时将去噪头锚定到预训练模型以保持采样轨迹。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在潜在图像和视频生成器中，DWD移除解码器并降低推理成本，同时保持或提升像素质量。在Wan视频生成上，明显减少细节失真和闪烁，将扭曲误差降低23%。在像素扩散模型上，最后一步DWD头显著提升纹理细节，并将ImageNet FID从1.55提升至1.43，成为像素流模型中的新最优。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Public hubs offer many personalized LoRAs per text-to-image backbone, yet composing two of them in one image remains fragile. In FLUX, keeping a pool of $K=10$ or $20$ subject LoRAs loaded makes their deltas interfere, and even loading only the two requested LoRAs keeps both subjects in fewer than 4% of images: one subject vanishes, the two fuse, or the image splits into a collage. We present MORE (Merge Once, Route Early), a training-free two-stage pipeline for FLUX. Merge once: the whole pool is folded into a single fixed-rank adapter by the subspace-regression router of SSR-Merge, made reliable by ridge, rank and calibration choices, and factored exactly into a shared part and per-subject parts. Route early: during the first 30% of the denoising steps each subject's part is gated to its layout region; a decaying soft attention bias ties every region to its own subject tokens, and a cyclic swap guidance extrapolates away from the prediction with the subjects' regions permuted, which counteracts region homogenization. On held-out seeds, MORE keeps both subjects in 94.2% ($K=10$) and 78.3% ($K=20$) of images, against 50.8% / 35.8% for FreeFuse and 25.0% / 24.2% for LoRAShop, and reaches an ImageReward of 1.32 (best baseline 0.07), while all $K$ subjects stay in one adapter. With layouts inferred automatically it still keeps both subjects in 70.0% / 55.0% of images.</p>
+        <p>Latent diffusion models rely on a decoder to map denoised latents to pixels, adding complexity and inference cost. We introduce Decoding Without a Decoder (DWD), which lets a finetuned diffusion transformer produce final pixels directly through a linear head. Unlike previous methods, where the denoising output leads to final pixels, DWD separates the two roles: the original denoising head continues to drive sampling, then the new DWD head predicts the pixels at the final step. We extend pretrained latent models with DWD efficiently by finetuning only the last few transformer blocks, training the DWD head with pixel quality losses while anchoring the denoising head to the pretrained model to preserve the sample trajectory. Across latent image and video generators, DWD removes the decoder and reduces inference cost while maintaining or even improving pixel quality. On Wan video generation, it visibly reduces detail distortion and flickering, lowering warping error by 23%. Remarkably, the same separation also improves pixel diffusion models that do not even use a decoder: a final-step DWD head produces substantially better texture detail in text-to-image generation, and improves ImageNet FID from 1.55 to 1.43, a new state of the art among pixel flow models.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.21077" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.21077.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.22287" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.22287.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.20021</span>
+          <span class="paper-id">2611.22867</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.20021" target="_blank">FastGRN: Few-Step Generative Refinement Networks</a>
+        <a href="https://arxiv.org/abs/2611.22867" target="_blank">LOCUS: Causal Support Windows for Attribute Control in Autoregressive Image Generation</a>
       </h3>
-      <p class="paper-title-zh">FastGRN：少步生成精炼网络</p>
-      <p class="paper-authors">Haoyang Hu, Masataka Seo, Liang Li, Yen-wei Chen</p>
+      <p class="paper-title-zh">LOCUS：自回归图像生成中属性控制的因果支持窗口</p>
+      <p class="paper-authors">Zijun Huang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出FastGRN，通过在其自身采样分布上训练少步生成精炼网络，将原本需要数十步马尔可夫步骤的离散潜变量生成过程压缩到3-4步，同时保持甚至超越原模型的质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 利用GRN自身的均匀状态损坏机制在离散token上进行分布匹配，使离散生成器可通过反向传播学习，并借鉴rectified flow的方式将噪声与样本配对。针对少步GRN各步骤信息量和修复负担不均的问题，采用三部分策略：过采样（用超出训练步数的更多步采样学生模型并精炼其判别器）、非均匀采样（仅训练最后一步并在采样时赋予其大部分信息）、精炼置信度保持（保留学生模型已确定的token）。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256上，3步FastGRN的FID优于原始GRN；在2B二值token的文本到图像GRN上，4步学生模型的GenEval几乎匹配GRN-T2I 2B，验证了少步精炼方法在大规模生成任务上的有效性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出因果支持剖面来刻画不同属性在图像token序列中的响应窗口，并据此设计LOCUS方法，将测试时潜变量优化路由到对应属性的支持窗口，从而显著提升自回归图像生成器对多属性约束的满足能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先引入因果支持剖面，通过在每个滑动窗口内替换图像token状态并测量属性翻转频率，定位各属性的响应区域。基于该剖面，提出LOCUS（Latent Optimization in Causal Support windows），先诊断哪个属性未满足，再将测试时潜变量优化限制在该属性对应的支持窗口内进行。实验在固定生成器、优化器、奖励、验证器和token预算的条件下，与晚期窗口及前缀优化等方法进行对比。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 结构属性（数量和位置）在早期窄窗口中响应最强，外观属性（颜色、大小和材质）在后期更宽窗口中响应；窗口位置的效果依赖于目标属性。在GenEval++宏平均准确率上，支持窗口路由比晚期窗口高23.6个百分点；在生成器冻结时，LOCUS将Janus-Pro的GenEval++总体准确率从24.6%提升到46.8%，多属性标签从19.5%提升到40.5%；在GenEval上，LOCUS单轮修复48.1%的失败生成（前缀优化为37.4%），平均所需轮数减少14%。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Generative Refinement Networks (GRN) generate an image by repeatedly re-predicting and refining every token of a discrete latent. They reach high fidelity, but need dozens of Markov steps. We therefore train few-step GRNs on the distribution of their own samples. We use its own uniform-state corruption to perform distribution matching on discrete tokens, which lets a discrete generator learn by backpropagation, and we pair noise with samples in the manner of rectified flow. We find that the steps of a few-step GRN do not carry the same amount of information or the same repair load. We therefore exploit its discrete refinement during training and build few-step GRNs in three parts. Oversampling samples the student with more steps than it was trained for and refines its judge on these samples. Non-uniform sampling trains only the last step and hands it most of the information at sampling time. Refinement confidence keeping holds on to the tokens the student is already sure of. We train a fast class-conditional generator on ImageNet 256 and, with the same method, a 2B text-to-image model. On ImageNet 256, the 3-step FastGRN beats the FID of GRN. On a 2B binary-token text-to-image GRN, a 4-step student also nearly matches the GenEval of GRN-T2I 2B.</p>
+        <p>Unified autoregressive (AR) image generators struggle to satisfy multiple attribute constraints in a single prompt. Although these attributes are decodable from image-token latents, editing those latents at test time remains difficult. Adding a fixed attribute direction to the prefix can reinforce a requested attribute but rarely overrides a conflicting one, such as turning a car red when the prompt specifies blue. We investigate how the effect of an intervention depends on where it acts in the image-token sequence. We introduce the causal support profile, which measures, for each attribute, how often patching image-token states within a given window flips the rendered attribute. Structural attributes (count and position) are most responsive in early, narrow windows, while appearance attributes (color, size, and material) respond over later, broader windows. A budget-matched comparison of early and middle windows shows that the effect of window location depends on the target attribute, and two-dimensional support maps show that the responsive regions track spatial content. Based on these profiles, we propose LOCUS (Latent Optimization in Causal Support windows), which diagnoses which attribute failed and routes test-time latent optimization to its corresponding support window. With the generator, optimizer, reward, verifier, and token budget held fixed, support-routed windows outperform late windows by 23.6 percentage points in GenEval++ macro accuracy. With the generator frozen, LOCUS raises Janus-Pro's GenEval++ accuracy from 24.6% to 46.8% overall and from 19.5% to 40.5% on multi-attribute tags. On GenEval, LOCUS repairs 48.1% of failed generations in one rollout, compared with 37.4% for prefix optimization, and needs 14% fewer rounds on average to succeed.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.20021" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.20021.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.22867" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.22867.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.19440</span>
+          <span class="paper-id">2611.22318</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.19440" target="_blank">Few-Shot Visual Concept Extraction for Steering Diffusion Transformers</a>
+        <a href="https://arxiv.org/abs/2611.22318" target="_blank">Breaking Visual Conventions: Spectrally Coupled Weight Perturbation for Creative Image Generation</a>
       </h3>
-      <p class="paper-title-zh">用于引导扩散Transformer的少样本视觉概念提取</p>
-      <p class="paper-authors">Nabyl Quignon, Antitza Dantcheva</p>
+      <p class="paper-title-zh">打破视觉惯例：用于创意图像生成的谱耦合权重扰动</p>
+      <p class="paper-authors">Fu Feng, Ruoheng Zhou, Yucheng Xie, Xu Yang, Jing Wang 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的引导方法，直接从扩散Transformer的图像侧激活中提取视觉概念方向，仅需少量正负提示对即可实现连续、精细的图像概念控制。</div>
-        <div class="summary-section"><strong>方法:</strong> 该方法在激活空间中使用简单的均值差估计器进行少样本概念提取，针对场景级分布式概念（如光照、天气、风格）采用全局均值差，针对局部集中概念（如物体颜色、纹理、材质、面部属性）采用掩码均值差，防止局部信号被全局平均稀释。提取的概念方向可在推理时注入，实现连续引导。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，该方法在定量上优于文本编码器引导和无训练激活编辑基线，并与专用编辑模型具有竞争力；由于概念方向可应用于patch级别，方法能够实现精确的目标引导和组合引导，在同一图像中操控多个概念。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需训练的谱耦合权重扰动方法（CosPert），通过在注意力投影的奇异向量因子和谱增益上施加结构化扰动，在保持类别身份和提示对齐的同时增强文本到图像模型的视觉创造力。</div>
+        <div class="summary-section"><strong>方法:</strong> CosPert首先通过一次性敏感性分析定位注意力投影层，然后对每个投影使用共享随机变换及其转置来耦合奇异向量因子的更新，同时扰动谱增益。采用统一的相对预算校准各投影的权重变化幅度，并用Sigmoid调度使扰动影响集中在去噪早期、在细化阶段逐渐衰减。该方法即插即用，推理时无需辅助网络或额外模型评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1和Stable Diffusion 3.5上，CosPert均能增强视觉创造力，生成更多样的物体结构同时保持类别身份。在50个物体类别上，CosPert在评估方法中取得最高的平均CREward，同时保持较强的提示对齐。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Image steering aims to provide fine-grained control over concepts in generated images, enabling targeted and continuous manipulation without broadly altering the generation process. Recent steering methods for diffusion models primarily focus on the text-conditioning space or rely on costly auxiliary training. Deviating from that, we here propose a novel steering approach that extracts visual concept directions directly from the image-side activations of Diffusion Transformers. Specifically, we showcase few-shot concept extraction in the activation space using a simple difference-of-means estimator over intermediate residuals. We observe (a) scene-level concepts such as lighting, weather, and style are distributed across image tokens, as well as (b) local concepts such as object colors, textures, materials, and facial attributes are concentrated in specific regions. Towards controlling both concepts, we introduce a new unified training-free framework that uses global difference-of-means for (a) distributed concepts and masked difference-of-means for (b) local concepts, preventing local signals from being diluted by global averaging. Notably, using only a handful of positive and negative prompt pairs, our method identifies and extracts reusable concept directions that can be injected at inference for continuous steering. Quantitatively, our method outperforms text-encoder steering and training-free activation-editing baselines, as well as is competitive with specialized editing models. Our results suggest that as concept directions can be applied at patch level, our method enables precise targeted and compositional steering, manipulating multiple concepts in the same image.</p>
+        <p>Text-to-image (T2I) models often produce high-quality images that follow familiar visual conventions, even in response to open-ended prompts such as ``a creative [CLS]''. Existing methods encourage novelty by exploring semantic conditions or modifying features and guidance during denoising. Pretrained weights offer a complementary source of creative variation, but unstructured perturbations can have little visual effect or degrade image quality. We introduce Coupled Spectral Perturbation (CosPert), a training-free method that targets attention projections in layers identified by a one-time sensitivity analysis. For each projection, CosPert uses a shared random transformation and its transpose to couple updates to the singular-vector factors while perturbing the spectral gains. A common relative budget calibrates the magnitude of weight changes across projections, and a sigmoid schedule concentrates their influence in early denoising and gradually attenuates them during refinement. CosPert provides plug-and-play creativity enhancement at inference time. Once the perturbations are prepared, sampling requires no auxiliary networks or additional model evaluations. On both FLUX.1 and Stable Diffusion 3.5, CosPert enhances visual creativity, producing more varied object structures while preserving category identity. Across 50 object categories, CosPert achieves the highest mean CREward among the evaluated methods while maintaining strong prompt alignment.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.19440" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.19440.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.22318" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.22318.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
