@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-18</p>
+        <p class="date">📅 2026-11-19</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.22962</span>
+          <span class="paper-id">2611.24380</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.22962" target="_blank">Hierarchical Diffusion Transformer for End-to-End Image Generation</a>
+        <a href="https://arxiv.org/abs/2611.24380" target="_blank">Where Should a Diffusion Transformer Meet Its Teacher?</a>
       </h3>
-      <p class="paper-title-zh">用于端到端图像生成的层次化扩散Transformer</p>
-      <p class="paper-authors">Xiaoyu Wu, Yifei Wang, Weihang Guo, Chen Wei, Lydia E Kavraki 等 (7 位作者)</p>
+      <p class="paper-title-zh">扩散Transformer应该在哪里与它的教师相遇？</p>
+      <p class="paper-authors">Zhuoqi Hu, Shiwei Li, Haozhao Wang, Xiandi Luo, Yihao Ouyang 等 (10 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出层次化扩散Transformer（HiT），通过在生成器内部学习视觉层次结构，缩小了像素空间扩散模型与两阶段潜在扩散模型在生成质量和训练效率上的差距，无需外部视觉预训练。</div>
-        <div class="summary-section"><strong>方法:</strong> HiT在主干网络中逐步将相关token分组并用单个token表示每组，主Transformer瓶颈处理这些紧凑的组token，再解组恢复特征到原始图像位置。压缩预算调节批次平均压缩比，允许组归属和数量在图像和扩散时间步间变化。模型无需分割标签即可学习分组连贯对象和部件，在文本到图像生成中还能将标题词与对应图像块分组。</div>
-        <div class="summary-section"><strong>关键发现:</strong> HiT在ImageNet 256×256上达到1.48 FID，以约40%的累积训练FLOPs达到与JiT相当的生成质量；文本到图像生成中，以约6倍更少的去噪器参数和3倍更少的前向FLOPs超过UniLiP在五个基准上的平均得分。结果表明在生成器内学习视觉层次结构可打破更强图像生成的障碍，无需外部视觉预训练。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现表征对齐（REPA）中最适合监督的层会随训练阶段变化，并提出AdaREPA在线路由框架，自适应选择监督层以加速扩散Transformer训练并提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过测量流匹配目标与对齐目标之间的梯度兼容性来评估各层适合度，使用平滑后的层兼容性分数上的softmax分布，在每个训练步骤概率性地采样一个层进行对齐监督，从而在线自适应调整教师监督位置，训练开销极小且无额外推理成本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上，AdaREPA在不同模型规模下均加速收敛并提升生成质量，同时揭示了最适合监督的层随训练过程发生偏移的规律。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Pixel-space diffusion learns visual representations and image generation jointly in a single end-to-end training stage, without a separately pretrained visual encoder. However, plain pixel-space Transformers still trail leading two-stage latent diffusion models in generation quality and training efficiency. We hypothesize that part of this gap arises from retaining one token per patch throughout the backbone, which does not explicitly encourage a visual hierarchy that summarizes related content at progressively coarser levels. To address this, we introduce Hierarchical Diffusion Transformers (HiT), which progressively group related tokens and represent each group with a single token. The main Transformer bottleneck processes these compact group tokens, and ungrouping restores features to their original image positions. A compression budget regulates the average compression ratio across the batch, allowing group memberships and counts to vary across images and diffusion timesteps during both training and generation. The model exhibits emergent semantic structure, learning to group coherent objects and object parts without segmentation labels. In text-to-image generation, HiT further learns to group caption words with image patches depicting the same concepts, without region annotations. HiT achieves 1.48 FID on ImageNet $256\times256$ and reaches comparable generation quality to JiT using approximately 40\% of its cumulative training FLOPs. For text-to-image generation, HiT exceeds UniLiP's average score across five benchmarks with roughly $6\times$ fewer denoiser parameters and $3\times$ fewer forward FLOPs. These results suggest that learning a visual hierarchy within the generator breaks down the barrier to stronger image generation without external visual pretraining.</p>
+        <p>Representation Alignment (REPA) significantly accelerates Diffusion Transformer training by guiding intermediate student features with a pretrained visual teacher, yet existing methods typically attach supervision to a single fixed layer. As student representations evolve, however, we find that the most effective layer for alignment varies across training stages. To track this evolving layer suitability online without costly search, we measure gradient compatibility between the flow-matching and alignment objectives, and propose AdaREPA, an online routing framework that adaptively selects the supervision layer as training progresses. AdaREPA uses a softmax distribution over smoothed layer compatibility scores to sample a layer for alignment at each training step. This probabilistic routing adapts teacher supervision to the student's changing learning needs, with minimal training overhead and no additional inference cost. On ImageNet-256, AdaREPA accelerates convergence and improves generation quality across model sizes, while revealing how the most suitable layers for supervision shift over training.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.22962" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.22962.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.24380" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24380.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,94 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.22458</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.22458" target="_blank">Sample-Aligned Decoders for Latent Generative Models</a>
-      </h3>
-      <p class="paper-title-zh">面向潜在生成模型的样本对齐解码器</p>
-      <p class="paper-authors">Yu Lei, Yi Li, Hongcheng Gao, Yipeng Wei, Liang Li 等 (7 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文指出潜在生成模型的解码器仅在编码器潜变量上训练，测试时却要解码分布不同的生成潜变量，导致生成器残差直接渲染进图像；为此提出仅微调解码器的后训练框架SAD，在不增加推理成本的前提下提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> SAD冻结生成器，只对解码器进行后训练微调。方法包含两个组件：生成样本分布对齐（Generated-Sample Distribution Alignment），在冻结的基础模型特征空间中将解码后的生成潜变量与无配对真实图像对齐；以及编码器锚点保持（Encoder Anchor Preservation），约束解码器在编码器潜变量上接近原始解码器，以防止潜空间漂移。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 分析表明分布对齐仅对生成潜变量有效，且按生成器产生该样本的频率相对编码器成比例地校正每个样本，而在编码器潜变量上只会与锚点约束相冲突。SAD在三种分词器上改进了四个最先进的ImageNet生成器，例如REPA-E的FID-50K从1.15降至0.98，并与判别器引导互补，还可扩展到文本到图像生成。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Latent generative models synthesize images by decoding generated latents, yet their decoder is trained only to reconstruct encoder latents and never sees the latents it decodes at test time, so the residual errors of the generator are rendered directly into the final image. Existing remedies retrain the generator, add cost at every sampling step, or make the decoder robust to perturbed real latents, assuming that generator errors resemble such perturbations. We find that they do not. Generated latents lie on the encoder latent manifold as closely as real ones, yet follow a different distribution. The decoder should therefore be adapted to the distribution of generated latents, which raises two challenges: (1) unpaired supervision, since a generated latent has no ground-truth image, and (2) latent-space drift, since a decoder freed from paired targets forgets the latent space it must decode. We propose Sample-Aligned Decoders (SAD), a post-training framework that fine-tunes only the decoder of a frozen generator at no inference cost. Generated-Sample Distribution Alignment matches decoded generated latents to unpaired real images in a frozen foundation-model feature space, and Encoder Anchor Preservation keeps the decoder close to the original one on encoder latents. Our analysis shows that the alignment is effective only on generated latents, where it corrects each sample in proportion to how much more often the generator produces such latents than the encoder; on encoder latents it can only work against the anchor. SAD improves four state-of-the-art ImageNet generators across three tokenizers, e.g., FID-50K from 1.15 to 0.98 for REPA-E, complements discriminator guidance, and extends to text-to-image generation. Our code and models are available at https://torpedo2003.github.io/SAD/.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.22458" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.22458.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.22287</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.22287" target="_blank">Decoding Without a Decoder: Direct Pixel Prediction from Diffusion Transformers</a>
-      </h3>
-      <p class="paper-title-zh">无需解码器的解码：从扩散Transformer直接预测像素</p>
-      <p class="paper-authors">Hansheng Chen, Shengqu Cai, Jan Ackermann, Rayhan Zirvi, Gordon Wetzstein 等 (7 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出DWD方法，通过微调扩散Transformer并添加线性头，在最后一步直接预测像素，从而移除解码器并降低推理成本，同时保持或提升像素质量。</div>
-        <div class="summary-section"><strong>方法:</strong> DWD将去噪头和像素预测头分离：原始去噪头继续驱动采样，新增的DWD头在最后一步预测像素。通过仅微调最后几个Transformer块，并用像素质量损失训练DWD头，同时将去噪头锚定到预训练模型以保持采样轨迹。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在潜在图像和视频生成器中，DWD移除解码器并降低推理成本，同时保持或提升像素质量。在Wan视频生成上，明显减少细节失真和闪烁，将扭曲误差降低23%。在像素扩散模型上，最后一步DWD头显著提升纹理细节，并将ImageNet FID从1.55提升至1.43，成为像素流模型中的新最优。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Latent diffusion models rely on a decoder to map denoised latents to pixels, adding complexity and inference cost. We introduce Decoding Without a Decoder (DWD), which lets a finetuned diffusion transformer produce final pixels directly through a linear head. Unlike previous methods, where the denoising output leads to final pixels, DWD separates the two roles: the original denoising head continues to drive sampling, then the new DWD head predicts the pixels at the final step. We extend pretrained latent models with DWD efficiently by finetuning only the last few transformer blocks, training the DWD head with pixel quality losses while anchoring the denoising head to the pretrained model to preserve the sample trajectory. Across latent image and video generators, DWD removes the decoder and reduces inference cost while maintaining or even improving pixel quality. On Wan video generation, it visibly reduces detail distortion and flickering, lowering warping error by 23%. Remarkably, the same separation also improves pixel diffusion models that do not even use a decoder: a final-step DWD head produces substantially better texture detail in text-to-image generation, and improves ImageNet FID from 1.55 to 1.43, a new state of the art among pixel flow models.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.22287" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.22287.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.22867</span>
+          <span class="paper-id">2611.24738</span>
         </div>
         <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.22867" target="_blank">LOCUS: Causal Support Windows for Attribute Control in Autoregressive Image Generation</a>
+        <a href="https://arxiv.org/abs/2611.24738" target="_blank">Jeveration: System One Models Now Generate</a>
       </h3>
-      <p class="paper-title-zh">LOCUS：自回归图像生成中属性控制的因果支持窗口</p>
-      <p class="paper-authors">Zijun Huang</p>
+      <p class="paper-title-zh">Jeveration：System One模型现已具备生成能力</p>
+      <p class="paper-authors">Yuhe Liu, Qi Li, Shihua Zhang, Xinchao Wang</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出因果支持剖面来刻画不同属性在图像token序列中的响应窗口，并据此设计LOCUS方法，将测试时潜变量优化路由到对应属性的支持窗口，从而显著提升自回归图像生成器对多属性约束的满足能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先引入因果支持剖面，通过在每个滑动窗口内替换图像token状态并测量属性翻转频率，定位各属性的响应区域。基于该剖面，提出LOCUS（Latent Optimization in Causal Support windows），先诊断哪个属性未满足，再将测试时潜变量优化限制在该属性对应的支持窗口内进行。实验在固定生成器、优化器、奖励、验证器和token预算的条件下，与晚期窗口及前缀优化等方法进行对比。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 结构属性（数量和位置）在早期窄窗口中响应最强，外观属性（颜色、大小和材质）在后期更宽窗口中响应；窗口位置的效果依赖于目标属性。在GenEval++宏平均准确率上，支持窗口路由比晚期窗口高23.6个百分点；在生成器冻结时，LOCUS将Janus-Pro的GenEval++总体准确率从24.6%提升到46.8%，多属性标签从19.5%提升到40.5%；在GenEval上，LOCUS单轮修复48.1%的失败生成（前缀优化为37.4%），平均所需轮数减少14%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出Jeveration，证明System One类模型（如Jev）的快速并行决策范式同样可用于单次前向传播的高质量图像生成，并在同一架构下统一了文本到图像、图像到图像和稠密预测三类任务。</div>
+        <div class="summary-section"><strong>方法:</strong> Jeveration基于一个冻结的视觉-语言模型，复用其视觉-语义知识进行整体图像生成。为解决并行预测需保持全局一致性的难题，方法将所有位置条件于一个共享随机状态以协调并行预测，使每次采样得到不同但连贯的图像。由于模型在直接图像监督下容易忽略该随机状态，作者先学习离散图像码的分布来引导单次生成。此外，该方法将图像到图像生成和稠密预测统一到同一架构中，一个检查点即可支持三类任务，且每类任务均只需一次前向传播。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Jeveration可在78毫秒内生成512x512图像，比现有统一模型快最多122倍，同时保持有竞争力的图像质量和稠密预测性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified autoregressive (AR) image generators struggle to satisfy multiple attribute constraints in a single prompt. Although these attributes are decodable from image-token latents, editing those latents at test time remains difficult. Adding a fixed attribute direction to the prefix can reinforce a requested attribute but rarely overrides a conflicting one, such as turning a car red when the prompt specifies blue. We investigate how the effect of an intervention depends on where it acts in the image-token sequence. We introduce the causal support profile, which measures, for each attribute, how often patching image-token states within a given window flips the rendered attribute. Structural attributes (count and position) are most responsive in early, narrow windows, while appearance attributes (color, size, and material) respond over later, broader windows. A budget-matched comparison of early and middle windows shows that the effect of window location depends on the target attribute, and two-dimensional support maps show that the responsive regions track spatial content. Based on these profiles, we propose LOCUS (Latent Optimization in Causal Support windows), which diagnoses which attribute failed and routes test-time latent optimization to its corresponding support window. With the generator, optimizer, reward, verifier, and token budget held fixed, support-routed windows outperform late windows by 23.6 percentage points in GenEval++ macro accuracy. With the generator frozen, LOCUS raises Janus-Pro's GenEval++ accuracy from 24.6% to 46.8% overall and from 19.5% to 40.5% on multi-attribute tags. On GenEval, LOCUS repairs 48.1% of failed generations in one rollout, compared with 37.4% for prefix optimization, and needs 14% fewer rounds on average to succeed.</p>
+        <p>System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consistency. A single prompt admits many valid images, yet parallel predictions must converge on a coherent whole. We therefore condition all positions on a shared random state to coordinate parallel predictions, so that each draw yields a different but coherent image. Since the model tends to ignore this state under direct image supervision, we first learn a distribution over discrete image codes to guide single-pass generation. Beyond text-to-image generation, we further unify image-to-image generation and dense prediction within the same architecture, so that one checkpoint supports all three tasks, each in one forward pass. Experiments show that Jeveration generates a 512x512 image in 78 ms, up to 122x faster than existing unified models, while maintaining competitive image quality and dense prediction performance.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.22867" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.22867.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.24738" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24738.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +300,94 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.22318</span>
+          <span class="paper-id">2611.24793</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.22318" target="_blank">Breaking Visual Conventions: Spectrally Coupled Weight Perturbation for Creative Image Generation</a>
+        <a href="https://arxiv.org/abs/2611.24793" target="_blank">The Elephant in the Question: Unified Models Picture the Concepts Behind Their Answers</a>
       </h3>
-      <p class="paper-title-zh">打破视觉惯例：用于创意图像生成的谱耦合权重扰动</p>
-      <p class="paper-authors">Fu Feng, Ruoheng Zhou, Yucheng Xie, Xu Yang, Jing Wang 等 (6 位作者)</p>
+      <p class="paper-title-zh">问题中的大象：统一模型描绘其答案背后的概念</p>
+      <p class="paper-authors">Tobias Braun, Marcus Rohrbach, Lorenzo Cavallaro</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种无需训练的谱耦合权重扰动方法（CosPert），通过在注意力投影的奇异向量因子和谱增益上施加结构化扰动，在保持类别身份和提示对齐的同时增强文本到图像模型的视觉创造力。</div>
-        <div class="summary-section"><strong>方法:</strong> CosPert首先通过一次性敏感性分析定位注意力投影层，然后对每个投影使用共享随机变换及其转置来耦合奇异向量因子的更新，同时扰动谱增益。采用统一的相对预算校准各投影的权重变化幅度，并用Sigmoid调度使扰动影响集中在去噪早期、在细化阶段逐渐衰减。该方法即插即用，推理时无需辅助网络或额外模型评估。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1和Stable Diffusion 3.5上，CosPert均能增强视觉创造力，生成更多样的物体结构同时保持类别身份。在50个物体类别上，CosPert在评估方法中取得最高的平均CREward，同时保持较强的提示对齐。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出V-lens方法，无需训练解码器即可利用统一多模态模型的图像生成器可视化文本处理过程中形成的隐藏状态，揭示连接问题与答案的中间概念，并提出lens tuning通过图像监督隐藏状态显著提升可视化准确率并意外改善文本回答。</div>
+        <div class="summary-section"><strong>方法:</strong> V-lens利用统一多模态模型中图像生成器可访问文本处理表示的特性，将选定token的隐藏状态直接可视化为图像，无需额外训练解码器。研究在四个基于扩散和两个纯自回归的统一模型上验证该方法，并通过控制实验分析可视化内容随上下文、token位置和深度的变化。进一步提出lens tuning，用图片通过V-lens监督选定的隐藏状态。</div>
+        <div class="summary-section"><strong>关键发现:</strong> V-lens生成的图像能揭示连接问题与答案的关键中间概念，即使这些概念从未被明确命名。在BAGEL、SenseNova-U1和HunyuanImage-3.0上，lens tuning将代词指代正确可视化率从2-11%提升至86-94%。令人意外的是，这种视觉监督还能在不直接监督答案token的情况下改善文本答案质量。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Text-to-image (T2I) models often produce high-quality images that follow familiar visual conventions, even in response to open-ended prompts such as ``a creative [CLS]''. Existing methods encourage novelty by exploring semantic conditions or modifying features and guidance during denoising. Pretrained weights offer a complementary source of creative variation, but unstructured perturbations can have little visual effect or degrade image quality. We introduce Coupled Spectral Perturbation (CosPert), a training-free method that targets attention projections in layers identified by a one-time sensitivity analysis. For each projection, CosPert uses a shared random transformation and its transpose to couple updates to the singular-vector factors while perturbing the spectral gains. A common relative budget calibrates the magnitude of weight changes across projections, and a sigmoid schedule concentrates their influence in early denoising and gradually attenuates them during refinement. CosPert provides plug-and-play creativity enhancement at inference time. Once the perturbations are prepared, sampling requires no auxiliary networks or additional model evaluations. On both FLUX.1 and Stable Diffusion 3.5, CosPert enhances visual creativity, producing more varied object structures while preserving category identity. Across 50 object categories, CosPert achieves the highest mean CREward among the evaluated methods while maintaining strong prompt alignment.</p>
+        <p>Visualizing intermediate representations could help us inspect the reasoning steps underlying a model output. Unified multimodal models offer this opportunity by combining understanding and generation in one architecture. Their image generators can access representations formed while processing text. We introduce the V-lens, which uses this connection to visualize a chosen token's hidden state without training a decoder. Across four diffusion-based and two purely autoregressive unified models, the resulting images reveal key intermediate concepts that connect a question to its answer even when the concepts are never named explicitly. Controlled tests show how this content changes with context, token position, and depth. We then introduce lens tuning, which supervises selected hidden states with pictures through the V-lens. Across BAGEL, SenseNova-U1, and HunyuanImage-3.0, the rate of correct visualizations of pronoun referents rises from 2-11% to 86-94%. Surprisingly, such visual supervision also improves text answers without supervising the answer tokens directly. Code is available at https://github.com/multimodal-ai-lab/V-lens.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.22318" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.22318.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.24793" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24793.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24433</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24433" target="_blank">MLIE-CoT: Chain-of-Thought Reasoning via Multi-Level Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">MLIE-CoT：通过多级图像编辑实现的思维链推理</p>
+      <p class="paper-authors">Baichuan Yang, Dongyuan Xu, Zhao Yang, Yong Liu, Bing Su</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种基于多级图像编辑的视觉思维链框架MLIE-CoT，通过自适应选择修复粒度来保留图像中正确的语义信息并抑制错误内容的干扰，从而提升视觉生成模型处理复杂任务的能力。</div>
+        <div class="summary-section"><strong>方法:</strong> MLIE-CoT将图像作为思维链中的上下文向前传递，但不同于以往反复整图重生成的方式，它学习从三个层级中选择修复粒度，尽可能保留正确语义并减少错误内容的影响。为提升多模态模型将不同严重程度的错误路由到合适修复层级的能力，作者构建了覆盖不同错误情况的图像修复数据集，并据此训练了一个修复层级路由器。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，MLIE-CoT显著优于其基础模型以及采用固定修复策略的方法，在多个基准测试上均取得了明显提升。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Chain-of-thought (CoT) reasoning has proven effective in improving the reasoning abilities of large language models by breaking complex tasks into step-by-step solutions. In recent years, researchers have attempted to extend CoT reasoning to visual generative models to improve their ability to handle complex tasks. However, existing CoT methods for text-to-image generation still rely mainly on textual reasoning and therefore cannot fully use and preserve the correct semantic information already present in an image, as even the most detailed language cannot capture all visual information. With advances in image generation, models such as FLUX and BAGEL can generate images conditioned on visual inputs. Recent work has attempted to carry images forward as context in the chain of thought, but this introduces another limitation: unsuitable earlier images can strongly interfere with the model, while repeated whole-image regeneration introduces new hallucinations at each round and causes them to accumulate. To address these issues, we propose MLIE-CoT, a visual chain-of-thought framework based on multi-level image editing. MLIE-CoT learns to select the repair granularity from three levels, preserving correct semantics whenever possible during reasoning while reducing the effect of incorrect content. To improve the ability of multimodal models to route errors of different severity to appropriate repair levels, we construct an image-repair dataset covering different error cases and use it to train a repair-level router. Extensive experiments demonstrate that MLIE-CoT significantly outperforms both its base models and methods using fixed repair strategies, producing clear improvements across multiple benchmarks.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24433" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24433.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24223</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24223" target="_blank">Training Denoising Models of Any Architecture Without Stored Images</a>
+      </h3>
+      <p class="paper-title-zh">无需存储图像训练任意架构的去噪模型</p>
+      <p class="paper-authors">Christos Koutlis, Ioannis Kompatsiaris, Symeon Papadopoulos</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 首次证明任意架构和规模的连续时间扩散与流模型可以从随机初始化开始，无需存储图像，仅通过教师监督训练即可完成。</div>
+        <div class="summary-section"><strong>方法:</strong> 采用教师监督训练，学生模型在滚动池的噪声样本上回归教师的速度场，这些样本沿随机步数的轨迹推进，以获得独立、密集且近似连续的噪声水平。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在12个教师模型（6个家族）和6个数据集上实验，学生模型比教师小4倍时在CIFAR-10上优于标准训练，与教师同尺寸时FID差距仅0.75到1.92，并超越了基于教师生成图像训练和步数减少方法（无教师初始化）的效果。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Can a pretrained denoising model replace the dataset used to train it? We investigate this question through teacher-supervised training, showing for the first time that continuous-time diffusion and flow models of any architecture and size can be trained from random initialization without stored images. Our students regress the teacher's velocity on a rolling pool of noisy samples, advanced along trajectories of random step counts to obtain independent, dense and approximately continuous noise levels. This saves considerable storage for large datasets and applies even when the data are unreleased or private. Our experiments include 12 teachers of 6 families and 6 datasets. Our method outperforms standard training of the same network on CIFAR-10 for students 4x smaller than the teacher, comes within 0.75 to 1.92 FID of it at the teacher's size and surpasses training on teacher-generated images and step reduction methods without teacher-based initialization. Our code is available at https://github.com/mever-team/ddm.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24223" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24223.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

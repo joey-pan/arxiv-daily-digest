@@ -1,0 +1,139 @@
+[
+  {
+    "id": "2611.24380",
+    "title": "Where Should a Diffusion Transformer Meet Its Teacher?",
+    "abstract": "Representation Alignment (REPA) significantly accelerates Diffusion Transformer training by guiding intermediate student features with a pretrained visual teacher, yet existing methods typically attach supervision to a single fixed layer. As student representations evolve, however, we find that the most effective layer for alignment varies across training stages. To track this evolving layer suitability online without costly search, we measure gradient compatibility between the flow-matching and alignment objectives, and propose AdaREPA, an online routing framework that adaptively selects the supervision layer as training progresses. AdaREPA uses a softmax distribution over smoothed layer compatibility scores to sample a layer for alignment at each training step. This probabilistic routing adapts teacher supervision to the student's changing learning needs, with minimal training overhead and no additional inference cost. On ImageNet-256, AdaREPA accelerates convergence and improves generation quality across model sizes, while revealing how the most suitable layers for supervision shift over training.",
+    "authors": [
+      "Zhuoqi Hu",
+      "Shiwei Li",
+      "Haozhao Wang",
+      "Xiandi Luo",
+      "Yihao Ouyang",
+      "Wenting Shen",
+      "Ang Wang",
+      "Jiamang Wang",
+      "Minyi Guo",
+      "Ruixuan Li"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.24380.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.24380",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "扩散Transformer应该在哪里与它的教师相遇？",
+      "core_contribution": "论文发现表征对齐（REPA）中最适合监督的层会随训练阶段变化，并提出AdaREPA在线路由框架，自适应选择监督层以加速扩散Transformer训练并提升生成质量。",
+      "method": "通过测量流匹配目标与对齐目标之间的梯度兼容性来评估各层适合度，使用平滑后的层兼容性分数上的softmax分布，在每个训练步骤概率性地采样一个层进行对齐监督，从而在线自适应调整教师监督位置，训练开销极小且无额外推理成本。",
+      "findings": "在ImageNet-256上，AdaREPA在不同模型规模下均加速收敛并提升生成质量，同时揭示了最适合监督的层随训练过程发生偏移的规律。"
+    }
+  },
+  {
+    "id": "2611.24738",
+    "title": "Jeveration: System One Models Now Generate",
+    "abstract": "System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consistency. A single prompt admits many valid images, yet parallel predictions must converge on a coherent whole. We therefore condition all positions on a shared random state to coordinate parallel predictions, so that each draw yields a different but coherent image. Since the model tends to ignore this state under direct image supervision, we first learn a distribution over discrete image codes to guide single-pass generation. Beyond text-to-image generation, we further unify image-to-image generation and dense prediction within the same architecture, so that one checkpoint supports all three tasks, each in one forward pass. Experiments show that Jeveration generates a 512x512 image in 78 ms, up to 122x faster than existing unified models, while maintaining competitive image quality and dense prediction performance.",
+    "authors": [
+      "Yuhe Liu",
+      "Qi Li",
+      "Shihua Zhang",
+      "Xinchao Wang"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.24738.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.24738",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "Jeveration：System One模型现已具备生成能力",
+      "core_contribution": "论文提出Jeveration，证明System One类模型（如Jev）的快速并行决策范式同样可用于单次前向传播的高质量图像生成，并在同一架构下统一了文本到图像、图像到图像和稠密预测三类任务。",
+      "method": "Jeveration基于一个冻结的视觉-语言模型，复用其视觉-语义知识进行整体图像生成。为解决并行预测需保持全局一致性的难题，方法将所有位置条件于一个共享随机状态以协调并行预测，使每次采样得到不同但连贯的图像。由于模型在直接图像监督下容易忽略该随机状态，作者先学习离散图像码的分布来引导单次生成。此外，该方法将图像到图像生成和稠密预测统一到同一架构中，一个检查点即可支持三类任务，且每类任务均只需一次前向传播。",
+      "findings": "实验表明，Jeveration可在78毫秒内生成512x512图像，比现有统一模型快最多122倍，同时保持有竞争力的图像质量和稠密预测性能。"
+    }
+  },
+  {
+    "id": "2611.24793",
+    "title": "The Elephant in the Question: Unified Models Picture the Concepts Behind Their Answers",
+    "abstract": "Visualizing intermediate representations could help us inspect the reasoning steps underlying a model output. Unified multimodal models offer this opportunity by combining understanding and generation in one architecture. Their image generators can access representations formed while processing text. We introduce the V-lens, which uses this connection to visualize a chosen token's hidden state without training a decoder. Across four diffusion-based and two purely autoregressive unified models, the resulting images reveal key intermediate concepts that connect a question to its answer even when the concepts are never named explicitly. Controlled tests show how this content changes with context, token position, and depth. We then introduce lens tuning, which supervises selected hidden states with pictures through the V-lens. Across BAGEL, SenseNova-U1, and HunyuanImage-3.0, the rate of correct visualizations of pronoun referents rises from 2-11% to 86-94%. Surprisingly, such visual supervision also improves text answers without supervising the answer tokens directly. Code is available at https://github.com/multimodal-ai-lab/V-lens.",
+    "authors": [
+      "Tobias Braun",
+      "Marcus Rohrbach",
+      "Lorenzo Cavallaro"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV",
+      "cs.CL",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.24793.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.24793",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "问题中的大象：统一模型描绘其答案背后的概念",
+      "core_contribution": "论文提出V-lens方法，无需训练解码器即可利用统一多模态模型的图像生成器可视化文本处理过程中形成的隐藏状态，揭示连接问题与答案的中间概念，并提出lens tuning通过图像监督隐藏状态显著提升可视化准确率并意外改善文本回答。",
+      "method": "V-lens利用统一多模态模型中图像生成器可访问文本处理表示的特性，将选定token的隐藏状态直接可视化为图像，无需额外训练解码器。研究在四个基于扩散和两个纯自回归的统一模型上验证该方法，并通过控制实验分析可视化内容随上下文、token位置和深度的变化。进一步提出lens tuning，用图片通过V-lens监督选定的隐藏状态。",
+      "findings": "V-lens生成的图像能揭示连接问题与答案的关键中间概念，即使这些概念从未被明确命名。在BAGEL、SenseNova-U1和HunyuanImage-3.0上，lens tuning将代词指代正确可视化率从2-11%提升至86-94%。令人意外的是，这种视觉监督还能在不直接监督答案token的情况下改善文本答案质量。"
+    }
+  },
+  {
+    "id": "2611.24433",
+    "title": "MLIE-CoT: Chain-of-Thought Reasoning via Multi-Level Image Editing",
+    "abstract": "Chain-of-thought (CoT) reasoning has proven effective in improving the reasoning abilities of large language models by breaking complex tasks into step-by-step solutions. In recent years, researchers have attempted to extend CoT reasoning to visual generative models to improve their ability to handle complex tasks. However, existing CoT methods for text-to-image generation still rely mainly on textual reasoning and therefore cannot fully use and preserve the correct semantic information already present in an image, as even the most detailed language cannot capture all visual information. With advances in image generation, models such as FLUX and BAGEL can generate images conditioned on visual inputs. Recent work has attempted to carry images forward as context in the chain of thought, but this introduces another limitation: unsuitable earlier images can strongly interfere with the model, while repeated whole-image regeneration introduces new hallucinations at each round and causes them to accumulate. To address these issues, we propose MLIE-CoT, a visual chain-of-thought framework based on multi-level image editing. MLIE-CoT learns to select the repair granularity from three levels, preserving correct semantics whenever possible during reasoning while reducing the effect of incorrect content. To improve the ability of multimodal models to route errors of different severity to appropriate repair levels, we construct an image-repair dataset covering different error cases and use it to train a repair-level router. Extensive experiments demonstrate that MLIE-CoT significantly outperforms both its base models and methods using fixed repair strategies, producing clear improvements across multiple benchmarks.",
+    "authors": [
+      "Baichuan Yang",
+      "Dongyuan Xu",
+      "Zhao Yang",
+      "Yong Liu",
+      "Bing Su"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.24433.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.24433",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "MLIE-CoT：通过多级图像编辑实现的思维链推理",
+      "core_contribution": "提出了一种基于多级图像编辑的视觉思维链框架MLIE-CoT，通过自适应选择修复粒度来保留图像中正确的语义信息并抑制错误内容的干扰，从而提升视觉生成模型处理复杂任务的能力。",
+      "method": "MLIE-CoT将图像作为思维链中的上下文向前传递，但不同于以往反复整图重生成的方式，它学习从三个层级中选择修复粒度，尽可能保留正确语义并减少错误内容的影响。为提升多模态模型将不同严重程度的错误路由到合适修复层级的能力，作者构建了覆盖不同错误情况的图像修复数据集，并据此训练了一个修复层级路由器。",
+      "findings": "大量实验表明，MLIE-CoT显著优于其基础模型以及采用固定修复策略的方法，在多个基准测试上均取得了明显提升。"
+    }
+  },
+  {
+    "id": "2611.24223",
+    "title": "Training Denoising Models of Any Architecture Without Stored Images",
+    "abstract": "Can a pretrained denoising model replace the dataset used to train it? We investigate this question through teacher-supervised training, showing for the first time that continuous-time diffusion and flow models of any architecture and size can be trained from random initialization without stored images. Our students regress the teacher's velocity on a rolling pool of noisy samples, advanced along trajectories of random step counts to obtain independent, dense and approximately continuous noise levels. This saves considerable storage for large datasets and applies even when the data are unreleased or private. Our experiments include 12 teachers of 6 families and 6 datasets. Our method outperforms standard training of the same network on CIFAR-10 for students 4x smaller than the teacher, comes within 0.75 to 1.92 FID of it at the teacher's size and surpasses training on teacher-generated images and step reduction methods without teacher-based initialization. Our code is available at https://github.com/mever-team/ddm.",
+    "authors": [
+      "Christos Koutlis",
+      "Ioannis Kompatsiaris",
+      "Symeon Papadopoulos"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.24223.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.24223",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "无需存储图像训练任意架构的去噪模型",
+      "core_contribution": "首次证明任意架构和规模的连续时间扩散与流模型可以从随机初始化开始，无需存储图像，仅通过教师监督训练即可完成。",
+      "method": "采用教师监督训练，学生模型在滚动池的噪声样本上回归教师的速度场，这些样本沿随机步数的轨迹推进，以获得独立、密集且近似连续的噪声水平。",
+      "findings": "在12个教师模型（6个家族）和6个数据集上实验，学生模型比教师小4倍时在CIFAR-10上优于标准训练，与教师同尺寸时FID差距仅0.75到1.92，并超越了基于教师生成图像训练和步数减少方法（无教师初始化）的效果。"
+    }
+  }
+]

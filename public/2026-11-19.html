@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-19</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24380</span>
+        </div>
+        <span class="score-badge">相关性 88/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24380" target="_blank">Where Should a Diffusion Transformer Meet Its Teacher?</a>
+      </h3>
+      <p class="paper-title-zh">扩散Transformer应该在哪里与它的教师相遇？</p>
+      <p class="paper-authors">Zhuoqi Hu, Shiwei Li, Haozhao Wang, Xiandi Luo, Yihao Ouyang 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现表征对齐（REPA）中最适合监督的层会随训练阶段变化，并提出AdaREPA在线路由框架，自适应选择监督层以加速扩散Transformer训练并提升生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过测量流匹配目标与对齐目标之间的梯度兼容性来评估各层适合度，使用平滑后的层兼容性分数上的softmax分布，在每个训练步骤概率性地采样一个层进行对齐监督，从而在线自适应调整教师监督位置，训练开销极小且无额外推理成本。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上，AdaREPA在不同模型规模下均加速收敛并提升生成质量，同时揭示了最适合监督的层随训练过程发生偏移的规律。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Representation Alignment (REPA) significantly accelerates Diffusion Transformer training by guiding intermediate student features with a pretrained visual teacher, yet existing methods typically attach supervision to a single fixed layer. As student representations evolve, however, we find that the most effective layer for alignment varies across training stages. To track this evolving layer suitability online without costly search, we measure gradient compatibility between the flow-matching and alignment objectives, and propose AdaREPA, an online routing framework that adaptively selects the supervision layer as training progresses. AdaREPA uses a softmax distribution over smoothed layer compatibility scores to sample a layer for alignment at each training step. This probabilistic routing adapts teacher supervision to the student's changing learning needs, with minimal training overhead and no additional inference cost. On ImageNet-256, AdaREPA accelerates convergence and improves generation quality across model sizes, while revealing how the most suitable layers for supervision shift over training.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24380" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24380.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24738</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24738" target="_blank">Jeveration: System One Models Now Generate</a>
+      </h3>
+      <p class="paper-title-zh">Jeveration：System One模型现已具备生成能力</p>
+      <p class="paper-authors">Yuhe Liu, Qi Li, Shihua Zhang, Xinchao Wang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出Jeveration，证明System One类模型（如Jev）的快速并行决策范式同样可用于单次前向传播的高质量图像生成，并在同一架构下统一了文本到图像、图像到图像和稠密预测三类任务。</div>
+        <div class="summary-section"><strong>方法:</strong> Jeveration基于一个冻结的视觉-语言模型，复用其视觉-语义知识进行整体图像生成。为解决并行预测需保持全局一致性的难题，方法将所有位置条件于一个共享随机状态以协调并行预测，使每次采样得到不同但连贯的图像。由于模型在直接图像监督下容易忽略该随机状态，作者先学习离散图像码的分布来引导单次生成。此外，该方法将图像到图像生成和稠密预测统一到同一架构中，一个检查点即可支持三类任务，且每类任务均只需一次前向传播。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Jeveration可在78毫秒内生成512x512图像，比现有统一模型快最多122倍，同时保持有竞争力的图像质量和稠密预测性能。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consistency. A single prompt admits many valid images, yet parallel predictions must converge on a coherent whole. We therefore condition all positions on a shared random state to coordinate parallel predictions, so that each draw yields a different but coherent image. Since the model tends to ignore this state under direct image supervision, we first learn a distribution over discrete image codes to guide single-pass generation. Beyond text-to-image generation, we further unify image-to-image generation and dense prediction within the same architecture, so that one checkpoint supports all three tasks, each in one forward pass. Experiments show that Jeveration generates a 512x512 image in 78 ms, up to 122x faster than existing unified models, while maintaining competitive image quality and dense prediction performance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24738" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24738.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24793</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24793" target="_blank">The Elephant in the Question: Unified Models Picture the Concepts Behind Their Answers</a>
+      </h3>
+      <p class="paper-title-zh">问题中的大象：统一模型描绘其答案背后的概念</p>
+      <p class="paper-authors">Tobias Braun, Marcus Rohrbach, Lorenzo Cavallaro</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出V-lens方法，无需训练解码器即可利用统一多模态模型的图像生成器可视化文本处理过程中形成的隐藏状态，揭示连接问题与答案的中间概念，并提出lens tuning通过图像监督隐藏状态显著提升可视化准确率并意外改善文本回答。</div>
+        <div class="summary-section"><strong>方法:</strong> V-lens利用统一多模态模型中图像生成器可访问文本处理表示的特性，将选定token的隐藏状态直接可视化为图像，无需额外训练解码器。研究在四个基于扩散和两个纯自回归的统一模型上验证该方法，并通过控制实验分析可视化内容随上下文、token位置和深度的变化。进一步提出lens tuning，用图片通过V-lens监督选定的隐藏状态。</div>
+        <div class="summary-section"><strong>关键发现:</strong> V-lens生成的图像能揭示连接问题与答案的关键中间概念，即使这些概念从未被明确命名。在BAGEL、SenseNova-U1和HunyuanImage-3.0上，lens tuning将代词指代正确可视化率从2-11%提升至86-94%。令人意外的是，这种视觉监督还能在不直接监督答案token的情况下改善文本答案质量。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Visualizing intermediate representations could help us inspect the reasoning steps underlying a model output. Unified multimodal models offer this opportunity by combining understanding and generation in one architecture. Their image generators can access representations formed while processing text. We introduce the V-lens, which uses this connection to visualize a chosen token's hidden state without training a decoder. Across four diffusion-based and two purely autoregressive unified models, the resulting images reveal key intermediate concepts that connect a question to its answer even when the concepts are never named explicitly. Controlled tests show how this content changes with context, token position, and depth. We then introduce lens tuning, which supervises selected hidden states with pictures through the V-lens. Across BAGEL, SenseNova-U1, and HunyuanImage-3.0, the rate of correct visualizations of pronoun referents rises from 2-11% to 86-94%. Surprisingly, such visual supervision also improves text answers without supervising the answer tokens directly. Code is available at https://github.com/multimodal-ai-lab/V-lens.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24793" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24793.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24433</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24433" target="_blank">MLIE-CoT: Chain-of-Thought Reasoning via Multi-Level Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">MLIE-CoT：通过多级图像编辑实现的思维链推理</p>
+      <p class="paper-authors">Baichuan Yang, Dongyuan Xu, Zhao Yang, Yong Liu, Bing Su</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种基于多级图像编辑的视觉思维链框架MLIE-CoT，通过自适应选择修复粒度来保留图像中正确的语义信息并抑制错误内容的干扰，从而提升视觉生成模型处理复杂任务的能力。</div>
+        <div class="summary-section"><strong>方法:</strong> MLIE-CoT将图像作为思维链中的上下文向前传递，但不同于以往反复整图重生成的方式，它学习从三个层级中选择修复粒度，尽可能保留正确语义并减少错误内容的影响。为提升多模态模型将不同严重程度的错误路由到合适修复层级的能力，作者构建了覆盖不同错误情况的图像修复数据集，并据此训练了一个修复层级路由器。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，MLIE-CoT显著优于其基础模型以及采用固定修复策略的方法，在多个基准测试上均取得了明显提升。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Chain-of-thought (CoT) reasoning has proven effective in improving the reasoning abilities of large language models by breaking complex tasks into step-by-step solutions. In recent years, researchers have attempted to extend CoT reasoning to visual generative models to improve their ability to handle complex tasks. However, existing CoT methods for text-to-image generation still rely mainly on textual reasoning and therefore cannot fully use and preserve the correct semantic information already present in an image, as even the most detailed language cannot capture all visual information. With advances in image generation, models such as FLUX and BAGEL can generate images conditioned on visual inputs. Recent work has attempted to carry images forward as context in the chain of thought, but this introduces another limitation: unsuitable earlier images can strongly interfere with the model, while repeated whole-image regeneration introduces new hallucinations at each round and causes them to accumulate. To address these issues, we propose MLIE-CoT, a visual chain-of-thought framework based on multi-level image editing. MLIE-CoT learns to select the repair granularity from three levels, preserving correct semantics whenever possible during reasoning while reducing the effect of incorrect content. To improve the ability of multimodal models to route errors of different severity to appropriate repair levels, we construct an image-repair dataset covering different error cases and use it to train a repair-level router. Extensive experiments demonstrate that MLIE-CoT significantly outperforms both its base models and methods using fixed repair strategies, producing clear improvements across multiple benchmarks.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24433" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24433.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.24223</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.24223" target="_blank">Training Denoising Models of Any Architecture Without Stored Images</a>
+      </h3>
+      <p class="paper-title-zh">无需存储图像训练任意架构的去噪模型</p>
+      <p class="paper-authors">Christos Koutlis, Ioannis Kompatsiaris, Symeon Papadopoulos</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 首次证明任意架构和规模的连续时间扩散与流模型可以从随机初始化开始，无需存储图像，仅通过教师监督训练即可完成。</div>
+        <div class="summary-section"><strong>方法:</strong> 采用教师监督训练，学生模型在滚动池的噪声样本上回归教师的速度场，这些样本沿随机步数的轨迹推进，以获得独立、密集且近似连续的噪声水平。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在12个教师模型（6个家族）和6个数据集上实验，学生模型比教师小4倍时在CIFAR-10上优于标准训练，与教师同尺寸时FID差距仅0.75到1.92，并超越了基于教师生成图像训练和步数减少方法（无教师初始化）的效果。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Can a pretrained denoising model replace the dataset used to train it? We investigate this question through teacher-supervised training, showing for the first time that continuous-time diffusion and flow models of any architecture and size can be trained from random initialization without stored images. Our students regress the teacher's velocity on a rolling pool of noisy samples, advanced along trajectories of random step counts to obtain independent, dense and approximately continuous noise levels. This saves considerable storage for large datasets and applies even when the data are unreleased or private. Our experiments include 12 teachers of 6 families and 6 datasets. Our method outperforms standard training of the same network on CIFAR-10 for students 4x smaller than the teacher, comes within 0.75 to 1.92 FID of it at the teacher's size and surpasses training on teacher-generated images and step reduction methods without teacher-based initialization. Our code is available at https://github.com/mever-team/ddm.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.24223" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.24223.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
