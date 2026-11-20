@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-19</p>
+        <p class="date">📅 2026-11-20</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.24380</span>
+          <span class="paper-id">2611.26629</span>
         </div>
         <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.24380" target="_blank">Where Should a Diffusion Transformer Meet Its Teacher?</a>
+        <a href="https://arxiv.org/abs/2611.26629" target="_blank">Posterior Matching Distillation</a>
       </h3>
-      <p class="paper-title-zh">扩散Transformer应该在哪里与它的教师相遇？</p>
-      <p class="paper-authors">Zhuoqi Hu, Shiwei Li, Haozhao Wang, Xiandi Luo, Yihao Ouyang 等 (10 位作者)</p>
+      <p class="paper-title-zh">后验匹配蒸馏</p>
+      <p class="paper-authors">Hidir Yesiltepe, Julius Berner, Arash Vahdat, Pinar Yanardag</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文发现表征对齐（REPA）中最适合监督的层会随训练阶段变化，并提出AdaREPA在线路由框架，自适应选择监督层以加速扩散Transformer训练并提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 通过测量流匹配目标与对齐目标之间的梯度兼容性来评估各层适合度，使用平滑后的层兼容性分数上的softmax分布，在每个训练步骤概率性地采样一个层进行对齐监督，从而在线自适应调整教师监督位置，训练开销极小且无额外推理成本。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet-256上，AdaREPA在不同模型规模下均加速收敛并提升生成质量，同时揭示了最适合监督的层随训练过程发生偏移的规律。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出后验匹配蒸馏（PMD），一种基于分布的扩散蒸馏新方法，通过结合模式覆盖的后验采样与任意步数生成，克服了反向KL目标偏向主导模式而牺牲样本多样性的问题。</div>
+        <div class="summary-section"><strong>方法:</strong> PMD在训练的各噪声水平上恢复教师模型关于干净图像的完整后验分布，其随机学生模型支持在训练时间步网格内任意步数采样而无需额外训练。为学习这些后验，PMD将固定噪声状态下学生样本的指数重加权平均与对应的教师后验均值进行匹配；在高斯损坏下，指数倾斜后验均值等价于在偏移输入处的一次教师评估。作者证明在开邻域上匹配倾斜均值可唯一确定完整后验，从而通过一族均值约束监督整个条件分布，无需辅助学生分数网络。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SDXL和FLUX.2 [klein] 4B上的实验表明，PMD在两种模型上均取得4步方法中最佳的FID，同时在提示对齐和感知质量指标上保持有竞争力或领先的性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Representation Alignment (REPA) significantly accelerates Diffusion Transformer training by guiding intermediate student features with a pretrained visual teacher, yet existing methods typically attach supervision to a single fixed layer. As student representations evolve, however, we find that the most effective layer for alignment varies across training stages. To track this evolving layer suitability online without costly search, we measure gradient compatibility between the flow-matching and alignment objectives, and propose AdaREPA, an online routing framework that adaptively selects the supervision layer as training progresses. AdaREPA uses a softmax distribution over smoothed layer compatibility scores to sample a layer for alignment at each training step. This probabilistic routing adapts teacher supervision to the student's changing learning needs, with minimal training overhead and no additional inference cost. On ImageNet-256, AdaREPA accelerates convergence and improves generation quality across model sizes, while revealing how the most suitable layers for supervision shift over training.</p>
+        <p>Diffusion distillation accelerates image and video generation by compressing a pretrained teacher's iterative sampling process into a few network evaluations. Distribution-based methods achieve this by matching the student's output distribution to the teacher's. This matching is often driven by reverse-KL objectives, whose mode-seeking bias favors dominant teacher modes at the expense of diversity across samples. We introduce Posterior Matching Distillation (PMD), a new member of the distribution-based distillation family that combines mode-covering posterior sampling with any-step generation. At zero population loss, PMD recovers the teacher's full posterior of clean images at each trained noise level. Its stochastic student supports any-step sampling budgets within the trained timestep grid without further training. To learn these posteriors, PMD matches exponentially reweighted averages of student samples conditioned on a fixed noisy state to corresponding teacher posterior means. Under Gaussian corruption, exponentially tilted posterior mean is a single teacher evaluation at a shifted input. We prove that, matching tilted means over an open neighborhood uniquely identifies the full posterior. PMD thus supervises the entire conditional distribution through a family of mean constraints, without any auxiliary student-score network. Experiments on SDXL and FLUX.2 [klein] 4B demonstrate that PMD achieves the best FID among 4-step methods on both models, while maintaining competitive or leading performance across prompt-alignment and perceptual-quality metrics.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.24380" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.24380.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.26629" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.26629.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.24738</span>
+          <span class="paper-id">2611.26627</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.24738" target="_blank">Jeveration: System One Models Now Generate</a>
+        <a href="https://arxiv.org/abs/2611.26627" target="_blank">RL Post-Training in Diffusion Transformers Is Activation Steering</a>
       </h3>
-      <p class="paper-title-zh">Jeveration：System One模型现已具备生成能力</p>
-      <p class="paper-authors">Yuhe Liu, Qi Li, Shihua Zhang, Xinchao Wang</p>
+      <p class="paper-title-zh">扩散Transformer中的强化学习后训练本质上是激活引导</p>
+      <p class="paper-authors">Tuna Han Salih Meral, Kaan Oktay, Alec Helbling, Atakan Kara, Duen Horng Chau 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出Jeveration，证明System One类模型（如Jev）的快速并行决策范式同样可用于单次前向传播的高质量图像生成，并在同一架构下统一了文本到图像、图像到图像和稠密预测三类任务。</div>
-        <div class="summary-section"><strong>方法:</strong> Jeveration基于一个冻结的视觉-语言模型，复用其视觉-语义知识进行整体图像生成。为解决并行预测需保持全局一致性的难题，方法将所有位置条件于一个共享随机状态以协调并行预测，使每次采样得到不同但连贯的图像。由于模型在直接图像监督下容易忽略该随机状态，作者先学习离散图像码的分布来引导单次生成。此外，该方法将图像到图像生成和稠密预测统一到同一架构中，一个检查点即可支持三类任务，且每类任务均只需一次前向传播。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Jeveration可在78毫秒内生成512x512图像，比现有统一模型快最多122倍，同时保持有竞争力的图像质量和稠密预测性能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了扩散Transformer的强化学习后训练所带来的大部分性能提升可以通过一个与输入无关的固定激活偏移（引导向量）来解释和复现，表明RL后训练主要是在引导预训练生成器走向其已有能力，而非学习新的复杂输入依赖变换。</div>
+        <div class="summary-section"><strong>方法:</strong> 研究者向冻结的基础模型各模块输出添加一组固定的引导向量，这些向量在所有提示、token和采样种子上完全相同，参数量仅为RL调优LoRA的1/65（0.29M vs 18.8M）。通过拟合公开RL调优检查点的速度预测来训练这些向量，目标函数中不含奖励信号。此外还以零初始化并通过在线RL训练这些向量，与基于权重的RL方法进行对比。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 固定引导向量恢复了六个RL调优图像模型90.0%–96.3%的奖励增益，在两个RL调优视频模型上分别达到89.8%和111.9%。在SD3.5-M上，仅用这些向量进行在线RL训练，其在文本渲染（OCR）和人类偏好（PickScore）上的奖励增益即超过了基于权重的RL方法。这表明策略梯度RL后训练的大部分收益仅靠一个恒定偏移即可实现，无需学习新的输入依赖变换。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>System One models such as Jev return decisions through fast, parallel prediction. In this paper, we introduce Jeveration, showing that the same decision paradigm can also generate high-quality images in a single forward pass. Jeveration builds on a frozen vision-language model, repurposing its visual-semantic knowledge for holistic image generation. The key challenge is to maintain global consistency. A single prompt admits many valid images, yet parallel predictions must converge on a coherent whole. We therefore condition all positions on a shared random state to coordinate parallel predictions, so that each draw yields a different but coherent image. Since the model tends to ignore this state under direct image supervision, we first learn a distribution over discrete image codes to guide single-pass generation. Beyond text-to-image generation, we further unify image-to-image generation and dense prediction within the same architecture, so that one checkpoint supports all three tasks, each in one forward pass. Experiments show that Jeveration generates a 512x512 image in 78 ms, up to 122x faster than existing unified models, while maintaining competitive image quality and dense prediction performance.</p>
+        <p>Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations. To isolate how much of these gains an input-independent shift explains, we probe each RL-tuned model with a deliberately simple parameterization: a fixed set of steering vectors added to the block outputs of the frozen base model. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). We fit them to match the velocity predictions of public RL-tuned checkpoints, with no reward in the objective. Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. Initialized at zero and trained with online RL, the vectors alone exceed the reward gains of weight-based RL on text rendering (OCR) and human preference (PickScore) on SD3.5-M. A constant shift thus suffices for most of the gain of policy-gradient RL post-training: without new input-dependent transformations, it steers the pretrained generator toward what it can already compute.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.24738" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.24738.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.26627" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.26627.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.24793</span>
+          <span class="paper-id">2611.26437</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.24793" target="_blank">The Elephant in the Question: Unified Models Picture the Concepts Behind Their Answers</a>
+        <a href="https://arxiv.org/abs/2611.26437" target="_blank">Asuka-FM: A System-Architectural Co-Design Framework for Efficient Text-to-Image Pretraining on Consumer Hardware</a>
       </h3>
-      <p class="paper-title-zh">问题中的大象：统一模型描绘其答案背后的概念</p>
-      <p class="paper-authors">Tobias Braun, Marcus Rohrbach, Lorenzo Cavallaro</p>
+      <p class="paper-title-zh">Asuka-FM：面向消费级硬件高效文本到图像预训练的系统-架构协同设计框架</p>
+      <p class="paper-authors">Víctor Rodrigo González, Pablo M. Olmos, Ignacio Peis, Alejandro Lancho</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出V-lens方法，无需训练解码器即可利用统一多模态模型的图像生成器可视化文本处理过程中形成的隐藏状态，揭示连接问题与答案的中间概念，并提出lens tuning通过图像监督隐藏状态显著提升可视化准确率并意外改善文本回答。</div>
-        <div class="summary-section"><strong>方法:</strong> V-lens利用统一多模态模型中图像生成器可访问文本处理表示的特性，将选定token的隐藏状态直接可视化为图像，无需额外训练解码器。研究在四个基于扩散和两个纯自回归的统一模型上验证该方法，并通过控制实验分析可视化内容随上下文、token位置和深度的变化。进一步提出lens tuning，用图片通过V-lens监督选定的隐藏状态。</div>
-        <div class="summary-section"><strong>关键发现:</strong> V-lens生成的图像能揭示连接问题与答案的关键中间概念，即使这些概念从未被明确命名。在BAGEL、SenseNova-U1和HunyuanImage-3.0上，lens tuning将代词指代正确可视化率从2-11%提升至86-94%。令人意外的是，这种视觉监督还能在不直接监督答案token的情况下改善文本答案质量。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Asuka-FM端到端系统与架构框架，证明约2.06亿参数的双流DiT可在单张消费级GPU上从头预训练（约160 GPU小时、成本低于55美元），并达到新的帕累托最优效率标准。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架包含四项核心设计：无AdaLN的双流DiT骨干以减少参数量；通过稀疏-稠密残差融合（SPRINT）进行结构化序列稀疏化，将注意力FLOPs降低50%以上；采用连续宽高比归一化RoPE配合平移方形裁剪训练，保证张量形状静态并实现零样本虚拟相机控制；以及使用1000万参数轻量级Patch Detailer Head在速度回归（v-prediction）下进行像素适配阶段。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在无需基准特定微调的开放域基准上，Asuka-FM在256px下取得GenEval 0.588 / DPG 78.96，在512px下取得GenEval 0.609 / DPG 78.51，为民主化基础模型建模树立了新的帕累托最优效率标准。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Visualizing intermediate representations could help us inspect the reasoning steps underlying a model output. Unified multimodal models offer this opportunity by combining understanding and generation in one architecture. Their image generators can access representations formed while processing text. We introduce the V-lens, which uses this connection to visualize a chosen token's hidden state without training a decoder. Across four diffusion-based and two purely autoregressive unified models, the resulting images reveal key intermediate concepts that connect a question to its answer even when the concepts are never named explicitly. Controlled tests show how this content changes with context, token position, and depth. We then introduce lens tuning, which supervises selected hidden states with pictures through the V-lens. Across BAGEL, SenseNova-U1, and HunyuanImage-3.0, the rate of correct visualizations of pronoun referents rises from 2-11% to 86-94%. Surprisingly, such visual supervision also improves text answers without supervising the answer tokens directly. Code is available at https://github.com/multimodal-ai-lab/V-lens.</p>
+        <p>Frontier text-to-image (T2I) foundation models predominantly rely on multi-billion parameter Diffusion Transformers (DiTs) pretrained across massive compute clusters, creating an accessibility barrier for academic laboratories. When training DiTs from scratch on single consumer GPUs (e.g., an NVIDIA RTX 4090 with 24\,GB VRAM), practitioners encounter three primary bottlenecks: quadratic attention sequence costs, Just-In-Time (JIT) compilation graph breaks induced by variable aspect-ratio bucketing, and an autoencoder throughput wall where frozen Variational Autoencoder (VAE) operations dominate step latency. In this work, we introduce \textbf{Asuka-FM}, an end-to-end system and architectural framework demonstrating that competitive dual-stream DiTs ($\sim$206M parameters) can be pretrained from scratch on a single consumer GPU in $\sim$160 GPU hours for under \$55. Asuka-FM integrates four core designs: (i) an AdaLN-free dual-stream DiT backbone reducing parameter count; (ii) structured sequence sparsification via Sparse-Dense Residual Fusion (SPRINT) to cut attention FLOPs by over 50\%; (iii) continuous aspect-normalized Rotary Position Embeddings (RoPE) coupled with shifted square crop training, guaranteeing static tensor shapes while unlocking zero-shot virtual camera control; and (iv) a pixel adaptation phase utilizing a lightweight (10M parameter) Patch Detailer Head operating under velocity regression ($v$-prediction). Evaluated on open-domain benchmarks without benchmark-specific fine-tuning, Asuka-FM achieves GenEval 0.588 / DPG 78.96 scores at 256px and GenEval 0.609 / DPG 78.51 scores at 512px, setting a new Pareto-optimal efficiency standard for democratic foundation modeling.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.24793" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.24793.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.26437" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.26437.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.24433</span>
+          <span class="paper-id">2611.25708</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.24433" target="_blank">MLIE-CoT: Chain-of-Thought Reasoning via Multi-Level Image Editing</a>
+        <a href="https://arxiv.org/abs/2611.25708" target="_blank">Slide2PPT: Native PowerPoint Reconstruction with Localization-Guided Refinement</a>
       </h3>
-      <p class="paper-title-zh">MLIE-CoT：通过多级图像编辑实现的思维链推理</p>
-      <p class="paper-authors">Baichuan Yang, Dongyuan Xu, Zhao Yang, Yong Liu, Bing Su</p>
+      <p class="paper-title-zh">Slide2PPT：基于定位引导精修的原生PowerPoint重建</p>
+      <p class="paper-authors">Baoliang Chen, Xinlong Bu, Lingyu Zhu, Xiangjie Sui</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种基于多级图像编辑的视觉思维链框架MLIE-CoT，通过自适应选择修复粒度来保留图像中正确的语义信息并抑制错误内容的干扰，从而提升视觉生成模型处理复杂任务的能力。</div>
-        <div class="summary-section"><strong>方法:</strong> MLIE-CoT将图像作为思维链中的上下文向前传递，但不同于以往反复整图重生成的方式，它学习从三个层级中选择修复粒度，尽可能保留正确语义并减少错误内容的影响。为提升多模态模型将不同严重程度的错误路由到合适修复层级的能力，作者构建了覆盖不同错误情况的图像修复数据集，并据此训练了一个修复层级路由器。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，MLIE-CoT显著优于其基础模型以及采用固定修复策略的方法，在多个基准测试上均取得了明显提升。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Slide2PPT——一个模型无关、无需训练的框架，使开源和闭源视觉语言模型均具备原生PowerPoint重建能力，同时恢复视觉外观与可编辑的原生对象结构。</div>
+        <div class="summary-section"><strong>方法:</strong> 通过统一的类型化接口，模型预测对象记录，固定渲染器将其物化为原生属性，从而无需任务特定训练即可适配不同骨干模型。定位引导精修将视觉差异与对象记录关联以进行校正：区域更新保留未选中记录，全幻灯片更新处理跨区域关系。记录精修与目标对象编辑支持结构和属性级修改，渲染反馈控制迭代接受。同时构建Slide2PPT-Bench基准，覆盖受控元素、真实幻灯片和科学图表。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在开源和闭源骨干模型上的实验表明，相比直接代码生成，PPTX生成更可靠；在科学图表上布局和文本恢复更优；除几何图元外，还能生成原生图表和表格接口。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Chain-of-thought (CoT) reasoning has proven effective in improving the reasoning abilities of large language models by breaking complex tasks into step-by-step solutions. In recent years, researchers have attempted to extend CoT reasoning to visual generative models to improve their ability to handle complex tasks. However, existing CoT methods for text-to-image generation still rely mainly on textual reasoning and therefore cannot fully use and preserve the correct semantic information already present in an image, as even the most detailed language cannot capture all visual information. With advances in image generation, models such as FLUX and BAGEL can generate images conditioned on visual inputs. Recent work has attempted to carry images forward as context in the chain of thought, but this introduces another limitation: unsuitable earlier images can strongly interfere with the model, while repeated whole-image regeneration introduces new hallucinations at each round and causes them to accumulate. To address these issues, we propose MLIE-CoT, a visual chain-of-thought framework based on multi-level image editing. MLIE-CoT learns to select the repair granularity from three levels, preserving correct semantics whenever possible during reasoning while reducing the effect of incorrect content. To improve the ability of multimodal models to route errors of different severity to appropriate repair levels, we construct an image-repair dataset covering different error cases and use it to train a repair-level router. Extensive experiments demonstrate that MLIE-CoT significantly outperforms both its base models and methods using fixed repair strategies, producing clear improvements across multiple benchmarks.</p>
+        <p>Image-to-slide reconstruction must recover both visual appearance and native object structure for subsequent editing. Yet visually faithful charts and tables may lack editable series and cells, and direct code generation couples content prediction to rendering implementation. We present Slide2PPT, a model-agnostic, training-free framework that equips both open- and closed-source vision-language models with native PowerPoint reconstruction capabilities. Through a unified typed interface, the model predicts object records while a fixed renderer materializes their native properties, enabling integration with different backbones without task-specific training or architectural changes. Localization-guided refinement then connects visual discrepancies to object records for correction. Regional updates preserve unselected records, while whole-slide updates address cross-region relationships. Record refinement and targeted object editing support structural and attribute-level changes, with rendered feedback governing iterative acceptance. To evaluate this framework across diverse reconstruction demands, we introduce Slide2PPT-Bench, covering controlled elements, real slides, and scientific figures. Evaluation separately measures file production, rendered agreement, and native-object availability. Experiments across open- and closed-source backbones demonstrate substantially more reliable PPTX generation than direct code generation, improved layout and text recovery on scientific figures, and native chart and table interfaces beyond geometric primitives.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.24433" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.24433.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25708" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25708.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.24223</span>
+          <span class="paper-id">2611.25296</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.24223" target="_blank">Training Denoising Models of Any Architecture Without Stored Images</a>
+        <a href="https://arxiv.org/abs/2611.25296" target="_blank">CalibCache: Cache-to-Full Feature Dynamics Calibration for Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">无需存储图像训练任意架构的去噪模型</p>
-      <p class="paper-authors">Christos Koutlis, Ioannis Kompatsiaris, Symeon Papadopoulos</p>
+      <p class="paper-title-zh">CalibCache：面向扩散Transformer的缓存到全量特征动态校准</p>
+      <p class="paper-authors">Mingyu Liang, Dingkun Xu, Jingwei Xu</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 首次证明任意架构和规模的连续时间扩散与流模型可以从随机初始化开始，无需存储图像，仅通过教师监督训练即可完成。</div>
-        <div class="summary-section"><strong>方法:</strong> 采用教师监督训练，学生模型在滚动池的噪声样本上回归教师的速度场，这些样本沿随机步数的轨迹推进，以获得独立、密集且近似连续的噪声水平。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在12个教师模型（6个家族）和6个数据集上实验，学生模型比教师小4倍时在CIFAR-10上优于标准训练，与教师同尺寸时FID差距仅0.75到1.92，并超越了基于教师生成图像训练和步数减少方法（无教师初始化）的效果。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种轻量级离线校准方法CalibCache，通过校正缓存与全量计算特征动态之间的系统性差异，在短采样调度下显著提升特征缓存近似的准确性，从而在不增加额外全网络评估的情况下提高生成质量并保持加速效果。</div>
+        <div class="summary-section"><strong>方法:</strong> CalibCache将特征加速度定义为采样步间的二阶有限差分，并在每种设置下仅使用一对全量计算和朴素缓存轨迹，通过中心最小二乘法离线拟合标量加速度映射。这些映射在采样时直接应用，无需额外全网络评估或在线优化。方法针对扩散Transformer的迭代采样过程，校正历史外推在短调度下的不可靠性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1-dev和Qwen-Image（DrawBench）以及DiT-XL/2（ImageNet-256）上，CalibCache在20步采样、缓存间隔N=3,4,5时均优于TaylorSeer。当N=5时，FLUX.1-dev的LPIPS从0.563降至0.429，同时实现2.86倍去噪加速；DiT-XL/2的FID从16.39降至10.37。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Can a pretrained denoising model replace the dataset used to train it? We investigate this question through teacher-supervised training, showing for the first time that continuous-time diffusion and flow models of any architecture and size can be trained from random initialization without stored images. Our students regress the teacher's velocity on a rolling pool of noisy samples, advanced along trajectories of random step counts to obtain independent, dense and approximately continuous noise levels. This saves considerable storage for large datasets and applies even when the data are unreleased or private. Our experiments include 12 teachers of 6 families and 6 datasets. Our method outperforms standard training of the same network on CIFAR-10 for students 4x smaller than the teacher, comes within 0.75 to 1.92 FID of it at the teacher's size and surpasses training on teacher-generated images and step reduction methods without teacher-based initialization. Our code is available at https://github.com/mever-team/ddm.</p>
+        <p>Diffusion Transformers generate high-quality images, but iterative sampling remains computationally expensive. Feature caching reduces the number of full network evaluations, yet its approximation error can become more severe under short sampling schedules, where fewer full-compute steps and a coarser sampling grid can make history-based extrapolation less reliable. In this paper, we propose CalibCache, a lightweight offline calibration method that corrects systematic discrepancies between cached and full-compute feature dynamics. Specifically, CalibCache calibrates feature acceleration, defined as the second-order finite difference across sampling steps. Using only a single pair of full-compute and naive-cache trajectories at each setting, CalibCache fits scalar acceleration maps offline by centered least squares. These maps are then applied during sampling without additional full-network evaluations or online optimization. Across FLUX.1-dev and Qwen-Image on DrawBench and DiT-XL/2 on ImageNet-256, CalibCache consistently improves fidelity or generation quality over TaylorSeer under 20-step sampling at cache intervals $N=3,4,5$. At $N=5$, it reduces FLUX.1-dev LPIPS from $0.563$ to $0.429$ while achieving a $2.86\times$ denoising speedup over full-compute sampling, and lowers DiT-XL/2 FID from $16.39$ to $10.37$ relative to TaylorSeer.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.24223" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.24223.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25296" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25296.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

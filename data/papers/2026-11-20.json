@@ -1,0 +1,135 @@
+[
+  {
+    "id": "2611.26629",
+    "title": "Posterior Matching Distillation",
+    "abstract": "Diffusion distillation accelerates image and video generation by compressing a pretrained teacher's iterative sampling process into a few network evaluations. Distribution-based methods achieve this by matching the student's output distribution to the teacher's. This matching is often driven by reverse-KL objectives, whose mode-seeking bias favors dominant teacher modes at the expense of diversity across samples. We introduce Posterior Matching Distillation (PMD), a new member of the distribution-based distillation family that combines mode-covering posterior sampling with any-step generation. At zero population loss, PMD recovers the teacher's full posterior of clean images at each trained noise level. Its stochastic student supports any-step sampling budgets within the trained timestep grid without further training. To learn these posteriors, PMD matches exponentially reweighted averages of student samples conditioned on a fixed noisy state to corresponding teacher posterior means. Under Gaussian corruption, exponentially tilted posterior mean is a single teacher evaluation at a shifted input. We prove that, matching tilted means over an open neighborhood uniquely identifies the full posterior. PMD thus supervises the entire conditional distribution through a family of mean constraints, without any auxiliary student-score network. Experiments on SDXL and FLUX.2 [klein] 4B demonstrate that PMD achieves the best FID among 4-step methods on both models, while maintaining competitive or leading performance across prompt-alignment and perceptual-quality metrics.",
+    "authors": [
+      "Hidir Yesiltepe",
+      "Julius Berner",
+      "Arash Vahdat",
+      "Pinar Yanardag"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.26629.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.26629",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "后验匹配蒸馏",
+      "core_contribution": "提出后验匹配蒸馏（PMD），一种基于分布的扩散蒸馏新方法，通过结合模式覆盖的后验采样与任意步数生成，克服了反向KL目标偏向主导模式而牺牲样本多样性的问题。",
+      "method": "PMD在训练的各噪声水平上恢复教师模型关于干净图像的完整后验分布，其随机学生模型支持在训练时间步网格内任意步数采样而无需额外训练。为学习这些后验，PMD将固定噪声状态下学生样本的指数重加权平均与对应的教师后验均值进行匹配；在高斯损坏下，指数倾斜后验均值等价于在偏移输入处的一次教师评估。作者证明在开邻域上匹配倾斜均值可唯一确定完整后验，从而通过一族均值约束监督整个条件分布，无需辅助学生分数网络。",
+      "findings": "在SDXL和FLUX.2 [klein] 4B上的实验表明，PMD在两种模型上均取得4步方法中最佳的FID，同时在提示对齐和感知质量指标上保持有竞争力或领先的性能。"
+    }
+  },
+  {
+    "id": "2611.26627",
+    "title": "RL Post-Training in Diffusion Transformers Is Activation Steering",
+    "abstract": "Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations. To isolate how much of these gains an input-independent shift explains, we probe each RL-tuned model with a deliberately simple parameterization: a fixed set of steering vectors added to the block outputs of the frozen base model. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). We fit them to match the velocity predictions of public RL-tuned checkpoints, with no reward in the objective. Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. Initialized at zero and trained with online RL, the vectors alone exceed the reward gains of weight-based RL on text rendering (OCR) and human preference (PickScore) on SD3.5-M. A constant shift thus suffices for most of the gain of policy-gradient RL post-training: without new input-dependent transformations, it steers the pretrained generator toward what it can already compute.",
+    "authors": [
+      "Tuna Han Salih Meral",
+      "Kaan Oktay",
+      "Alec Helbling",
+      "Atakan Kara",
+      "Duen Horng Chau",
+      "Pinar Yanardag"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.26627.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.26627",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "扩散Transformer中的强化学习后训练本质上是激活引导",
+      "core_contribution": "论文揭示了扩散Transformer的强化学习后训练所带来的大部分性能提升可以通过一个与输入无关的固定激活偏移（引导向量）来解释和复现，表明RL后训练主要是在引导预训练生成器走向其已有能力，而非学习新的复杂输入依赖变换。",
+      "method": "研究者向冻结的基础模型各模块输出添加一组固定的引导向量，这些向量在所有提示、token和采样种子上完全相同，参数量仅为RL调优LoRA的1/65（0.29M vs 18.8M）。通过拟合公开RL调优检查点的速度预测来训练这些向量，目标函数中不含奖励信号。此外还以零初始化并通过在线RL训练这些向量，与基于权重的RL方法进行对比。",
+      "findings": "固定引导向量恢复了六个RL调优图像模型90.0%–96.3%的奖励增益，在两个RL调优视频模型上分别达到89.8%和111.9%。在SD3.5-M上，仅用这些向量进行在线RL训练，其在文本渲染（OCR）和人类偏好（PickScore）上的奖励增益即超过了基于权重的RL方法。这表明策略梯度RL后训练的大部分收益仅靠一个恒定偏移即可实现，无需学习新的输入依赖变换。"
+    }
+  },
+  {
+    "id": "2611.26437",
+    "title": "Asuka-FM: A System-Architectural Co-Design Framework for Efficient Text-to-Image Pretraining on Consumer Hardware",
+    "abstract": "Frontier text-to-image (T2I) foundation models predominantly rely on multi-billion parameter Diffusion Transformers (DiTs) pretrained across massive compute clusters, creating an accessibility barrier for academic laboratories. When training DiTs from scratch on single consumer GPUs (e.g., an NVIDIA RTX 4090 with 24\\,GB VRAM), practitioners encounter three primary bottlenecks: quadratic attention sequence costs, Just-In-Time (JIT) compilation graph breaks induced by variable aspect-ratio bucketing, and an autoencoder throughput wall where frozen Variational Autoencoder (VAE) operations dominate step latency. In this work, we introduce \\textbf{Asuka-FM}, an end-to-end system and architectural framework demonstrating that competitive dual-stream DiTs ($\\sim$206M parameters) can be pretrained from scratch on a single consumer GPU in $\\sim$160 GPU hours for under \\$55. Asuka-FM integrates four core designs: (i) an AdaLN-free dual-stream DiT backbone reducing parameter count; (ii) structured sequence sparsification via Sparse-Dense Residual Fusion (SPRINT) to cut attention FLOPs by over 50\\%; (iii) continuous aspect-normalized Rotary Position Embeddings (RoPE) coupled with shifted square crop training, guaranteeing static tensor shapes while unlocking zero-shot virtual camera control; and (iv) a pixel adaptation phase utilizing a lightweight (10M parameter) Patch Detailer Head operating under velocity regression ($v$-prediction). Evaluated on open-domain benchmarks without benchmark-specific fine-tuning, Asuka-FM achieves GenEval 0.588 / DPG 78.96 scores at 256px and GenEval 0.609 / DPG 78.51 scores at 512px, setting a new Pareto-optimal efficiency standard for democratic foundation modeling.",
+    "authors": [
+      "Víctor Rodrigo González",
+      "Pablo M. Olmos",
+      "Ignacio Peis",
+      "Alejandro Lancho"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.26437.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.26437",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Asuka-FM：面向消费级硬件高效文本到图像预训练的系统-架构协同设计框架",
+      "core_contribution": "提出Asuka-FM端到端系统与架构框架，证明约2.06亿参数的双流DiT可在单张消费级GPU上从头预训练（约160 GPU小时、成本低于55美元），并达到新的帕累托最优效率标准。",
+      "method": "该框架包含四项核心设计：无AdaLN的双流DiT骨干以减少参数量；通过稀疏-稠密残差融合（SPRINT）进行结构化序列稀疏化，将注意力FLOPs降低50%以上；采用连续宽高比归一化RoPE配合平移方形裁剪训练，保证张量形状静态并实现零样本虚拟相机控制；以及使用1000万参数轻量级Patch Detailer Head在速度回归（v-prediction）下进行像素适配阶段。",
+      "findings": "在无需基准特定微调的开放域基准上，Asuka-FM在256px下取得GenEval 0.588 / DPG 78.96，在512px下取得GenEval 0.609 / DPG 78.51，为民主化基础模型建模树立了新的帕累托最优效率标准。"
+    }
+  },
+  {
+    "id": "2611.25708",
+    "title": "Slide2PPT: Native PowerPoint Reconstruction with Localization-Guided Refinement",
+    "abstract": "Image-to-slide reconstruction must recover both visual appearance and native object structure for subsequent editing. Yet visually faithful charts and tables may lack editable series and cells, and direct code generation couples content prediction to rendering implementation. We present Slide2PPT, a model-agnostic, training-free framework that equips both open- and closed-source vision-language models with native PowerPoint reconstruction capabilities. Through a unified typed interface, the model predicts object records while a fixed renderer materializes their native properties, enabling integration with different backbones without task-specific training or architectural changes. Localization-guided refinement then connects visual discrepancies to object records for correction. Regional updates preserve unselected records, while whole-slide updates address cross-region relationships. Record refinement and targeted object editing support structural and attribute-level changes, with rendered feedback governing iterative acceptance. To evaluate this framework across diverse reconstruction demands, we introduce Slide2PPT-Bench, covering controlled elements, real slides, and scientific figures. Evaluation separately measures file production, rendered agreement, and native-object availability. Experiments across open- and closed-source backbones demonstrate substantially more reliable PPTX generation than direct code generation, improved layout and text recovery on scientific figures, and native chart and table interfaces beyond geometric primitives.",
+    "authors": [
+      "Baoliang Chen",
+      "Xinlong Bu",
+      "Lingyu Zhu",
+      "Xiangjie Sui"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.25708.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.25708",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "Slide2PPT：基于定位引导精修的原生PowerPoint重建",
+      "core_contribution": "提出Slide2PPT——一个模型无关、无需训练的框架，使开源和闭源视觉语言模型均具备原生PowerPoint重建能力，同时恢复视觉外观与可编辑的原生对象结构。",
+      "method": "通过统一的类型化接口，模型预测对象记录，固定渲染器将其物化为原生属性，从而无需任务特定训练即可适配不同骨干模型。定位引导精修将视觉差异与对象记录关联以进行校正：区域更新保留未选中记录，全幻灯片更新处理跨区域关系。记录精修与目标对象编辑支持结构和属性级修改，渲染反馈控制迭代接受。同时构建Slide2PPT-Bench基准，覆盖受控元素、真实幻灯片和科学图表。",
+      "findings": "在开源和闭源骨干模型上的实验表明，相比直接代码生成，PPTX生成更可靠；在科学图表上布局和文本恢复更优；除几何图元外，还能生成原生图表和表格接口。"
+    }
+  },
+  {
+    "id": "2611.25296",
+    "title": "CalibCache: Cache-to-Full Feature Dynamics Calibration for Diffusion Transformers",
+    "abstract": "Diffusion Transformers generate high-quality images, but iterative sampling remains computationally expensive. Feature caching reduces the number of full network evaluations, yet its approximation error can become more severe under short sampling schedules, where fewer full-compute steps and a coarser sampling grid can make history-based extrapolation less reliable. In this paper, we propose CalibCache, a lightweight offline calibration method that corrects systematic discrepancies between cached and full-compute feature dynamics. Specifically, CalibCache calibrates feature acceleration, defined as the second-order finite difference across sampling steps. Using only a single pair of full-compute and naive-cache trajectories at each setting, CalibCache fits scalar acceleration maps offline by centered least squares. These maps are then applied during sampling without additional full-network evaluations or online optimization. Across FLUX.1-dev and Qwen-Image on DrawBench and DiT-XL/2 on ImageNet-256, CalibCache consistently improves fidelity or generation quality over TaylorSeer under 20-step sampling at cache intervals $N=3,4,5$. At $N=5$, it reduces FLUX.1-dev LPIPS from $0.563$ to $0.429$ while achieving a $2.86\\times$ denoising speedup over full-compute sampling, and lowers DiT-XL/2 FID from $16.39$ to $10.37$ relative to TaylorSeer.",
+    "authors": [
+      "Mingyu Liang",
+      "Dingkun Xu",
+      "Jingwei Xu"
+    ],
+    "published": "2026-11-18",
+    "updated": "2026-11-18",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.25296.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.25296",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "CalibCache：面向扩散Transformer的缓存到全量特征动态校准",
+      "core_contribution": "提出一种轻量级离线校准方法CalibCache，通过校正缓存与全量计算特征动态之间的系统性差异，在短采样调度下显著提升特征缓存近似的准确性，从而在不增加额外全网络评估的情况下提高生成质量并保持加速效果。",
+      "method": "CalibCache将特征加速度定义为采样步间的二阶有限差分，并在每种设置下仅使用一对全量计算和朴素缓存轨迹，通过中心最小二乘法离线拟合标量加速度映射。这些映射在采样时直接应用，无需额外全网络评估或在线优化。方法针对扩散Transformer的迭代采样过程，校正历史外推在短调度下的不可靠性。",
+      "findings": "在FLUX.1-dev和Qwen-Image（DrawBench）以及DiT-XL/2（ImageNet-256）上，CalibCache在20步采样、缓存间隔N=3,4,5时均优于TaylorSeer。当N=5时，FLUX.1-dev的LPIPS从0.563降至0.429，同时实现2.86倍去噪加速；DiT-XL/2的FID从16.39降至10.37。"
+    }
+  }
+]
