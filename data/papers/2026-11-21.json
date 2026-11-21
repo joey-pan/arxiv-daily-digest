@@ -1,0 +1,149 @@
+[
+  {
+    "id": "2611.25457",
+    "title": "CANDOR: Contrastive Self-Denoising Rewards for Label-Free Text-to-Image Post-Training",
+    "abstract": "Post-training text-to-image generators with reinforcement learning usually relies on external reward models that need annotated preferences or auxiliary evaluators and are prone to reward hacking. We show that the generator's own denoising accuracy, used by a recent intrinsic reward, is a poor proxy for prompt fidelity. Within a same-prompt group, this absolute self-confidence is dominated by image complexity and ranks correct samples above incorrect ones near chance. We introduce CANDOR (Contrastive Alignment from Null-referenced Denoising lOg-Ratio), the log-ratio of unconditional to conditional denoising errors under shared noise probes, which measures how much the prompt helps the model denoise its own sample. It cancels prompt-independent difficulty that scales both errors and ranks the better of two same-prompt samples higher in 60% and 63% of pairs on compositional generation and text rendering. As the only Flow-GRPO reward for a flow-matching model, CANDOR improves text rendering, aesthetic and human-preference scores over the base model and a prior absolute self-confidence reward, with text-rendering and preference gains that stronger classifier-free guidance does not reproduce. On public Flow-GRPO adapters trained on external rewards, CANDOR further raises PickScore and ImageReward, so it can complement those rewards. Code is available at https://github.com/jhlee0619/candor.",
+    "authors": [
+      "Junhyeok Lee",
+      "Byung-Hoon Kim",
+      "Kyu Sung Choi"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.25457.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.25457",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "CANDOR：用于无标签文本到图像后训练的对比自去噪奖励",
+      "core_contribution": "论文提出了一种无需外部奖励模型或标注偏好的内在奖励方法CANDOR，通过对比条件与无条件去噪误差的对数比来衡量提示词对生成样本的实际贡献，从而避免奖励黑客问题并提升文本到图像生成质量。",
+      "method": "作者首先指出生成器自身的绝对去噪准确率（自置信度）受图像复杂度主导，难以有效区分同提示词下样本的优劣。为此提出CANDOR，即在共享噪声探针下计算无条件去噪误差与条件去噪误差的对数比，以衡量提示词对去噪的帮助程度，从而消除与提示词无关的难度因素。该方法作为Flow-GRPO的奖励函数用于流匹配模型的强化学习后训练。",
+      "findings": "CANDOR在同提示词样本对中能以60%（组合生成）和63%（文本渲染）的比例正确排序更优样本。作为唯一的Flow-GRPO奖励时，CANDOR在文本渲染、美学和人类偏好评分上均优于基础模型和先前的绝对自置信度奖励，且文本渲染和偏好提升无法通过更强的无分类器引导复现。在基于外部奖励训练的公开Flow-GRPO适配器上，CANDOR还能进一步提升PickScore和ImageReward，表明其可与外部奖励互补。"
+    }
+  },
+  {
+    "id": "2611.25382",
+    "title": "Text Lives in the Guidance: Preventing Silent Text Rewriting in Cached Diffusion Transformers",
+    "abstract": "Diffusion transformers (DiTs) now render long, legible text in images, and feature caching is a standard way to accelerate them. Caches are judged by image-level metrics, which do not check whether the rendered text is still correct. We find that caching silently rewrites this text. On Z-Image, TaylorSeer at 2.9x fewer FLOPs lowers word accuracy from 62% to 46%, while ImageReward and CLIP Score barely change. Sampling with fewer steps at the same compute keeps almost all of this text, so the loss comes from how the cache predicts the skipped steps. Decomposing the cache error along classifier-free guidance (CFG), we trace this loss mainly to the guidance term, the difference between the conditional and unconditional predictions, which caches extrapolate worst on text. Correcting the guidance inside the text alone recovers most of the lost text. We therefore propose GuideCache, which recomputes both CFG branches only on the tokens with the largest predicted guidance error, using the guidance terms that the cache already stores. At 2.4x fewer FLOPs, GuideCache restores full-compute prompt fidelity on Z-Image and Qwen-Image, and on Z-Image it renders text as well as or better than ToCa, TeaCache, and FasterCache while staying much closer to the full model's output. GuideCache works with caches of any order, and on top of fewer sampling steps it keeps more text than step reduction at a higher speedup. These results suggest that acceleration methods for text-rendering models should be evaluated on the text they render.",
+    "authors": [
+      "Kun Zhou",
+      "Wenmian Yang",
+      "Zhensheng Wang",
+      "Weijia Jia"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.25382.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.25382",
+    "primary_category": "cs.CV",
+    "score": 82,
+    "summary": {
+      "title_zh": "文本存于引导之中：防止缓存扩散Transformer中的静默文本改写",
+      "core_contribution": "论文发现扩散Transformer的特征缓存会静默改写渲染文本，且现有图像级指标无法检测此问题；提出GuideCache方法，通过仅在预测引导误差最大的token上重算CFG双分支，在加速的同时恢复全计算下的文本保真度。",
+      "method": "作者首先分析缓存误差沿无分类器引导（CFG）的分解，定位文本损失主要源于引导项（条件与无条件预测之差）的缓存外推误差。据此提出GuideCache：利用缓存已存储的引导项，仅对预测引导误差最大的token重新计算CFG两个分支，从而以较低额外计算纠正文本区域的引导误差。该方法可与任意阶缓存及减少采样步数结合使用。",
+      "findings": "在Z-Image上，TaylorSeer在FLOPs减少2.9倍时词准确率从62%降至46%，而ImageReward和CLIP Score几乎不变；同等计算下减少采样步数则几乎保留全部文本，说明损失源于缓存对跳过步的预测方式。GuideCache在FLOPs减少2.4倍时于Z-Image和Qwen-Image上恢复全计算的提示保真度，在Z-Image上文本渲染效果与ToCa、TeaCache、FasterCache相当或更优，且输出更接近全模型；与减少采样步数结合时，在更高加速比下保留更多文本。结果表明文本渲染模型的加速方法应基于其渲染文本来评估。"
+    }
+  },
+  {
+    "id": "2611.25689",
+    "title": "D3-Cache: Accelerating Diffusion Models with Dynamic Mode Decomposition",
+    "abstract": "Diffusion Transformers generate high-quality images and videos, but every sampling step requires a full network evaluation. Training-free caching reduces this cost by reusing or forecasting network outputs across steps, but common approaches use per-model calibrated skip criteria or maintain per-layer prediction histories. We present D3-Cache, which applies Dynamic Mode Decomposition (DMD) to Diffusion sampling: it fits DMD to a short history of exact velocities and forecasts only the velocity that the scheduler consumes. A horizon-aware gate decides when to skip: whenever the network is evaluated, its output is compared with the forecast for that step, and the larger the error, the sooner the network is evaluated again, up to a cap on consecutive skipped steps. D3-Cache requires no training or per-model offline calibration curve and adds negligible memory. It shares one history length and risk tolerance across the four evaluated models. On four state-of-the-art image and video models, D3-Cache achieves speedups of 2.6-3.8x with high fidelity to the base model output.",
+    "authors": [
+      "Yanbo Li",
+      "An Xiang",
+      "Xiaoxin Hu",
+      "Feng Wang",
+      "Cheng-zhong Xu",
+      "Kejiang Ye",
+      "Xitong Gao"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.25689.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.25689",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "D3-Cache：利用动态模态分解加速扩散模型",
+      "core_contribution": "提出一种无需训练的扩散采样缓存方法D3-Cache，通过动态模态分解（DMD）对速度历史进行拟合与预测，仅预测调度器实际所需的速度，从而在多个图像和视频扩散模型上实现2.6-3.8倍加速且保持高保真度。",
+      "method": "D3-Cache将动态模态分解应用于扩散采样过程，对近期精确速度序列进行DMD拟合，仅预测调度器下一步所需的速度值。方法引入一种“视野感知门控”机制：每当网络被实际评估时，将其输出与该步的预测值比较，误差越大则越早触发下一次网络评估，并设置连续跳过步数上限。该方法无需训练、无需针对每个模型进行离线校准曲线，额外内存开销可忽略，且四个评估模型共享同一历史长度和风险容忍度参数。",
+      "findings": "在四个最先进的图像和视频扩散模型上，D3-Cache实现了2.6-3.8倍的加速，同时输出与基础模型保持高度保真；方法无需逐模型校准，仅用一组共享超参数即可跨模型通用，验证了其通用性和实用性。"
+    }
+  },
+  {
+    "id": "2611.26107",
+    "title": "HiUni: Harmonizing Understanding and Generation in Shared Visual Space",
+    "abstract": "Unified multimodal models aim to support visual understanding and generation within a single framework. However, prevailing approaches often separate their visual representations or backbone computation to accommodate the different requirements of these two tasks, which limits the degree of unification. In this paper, we present HiUni, which revisits this design choice and explores whether a pretrained vision language model can be directly extended into a unified model with extensive parameter sharing. Specifically, HiUni reuses the same language-aligned ViT and dense Transformer backbone for both capabilities, while confining task-specific computation to the output side. Yet such a design introduces two key challenges. Generation in pixel space is difficult to optimize, and semantic abstraction in pretrained ViT discards fine spatial details required for synthesis. To address these challenges, HiUni introduces a \\emph{Pixel Diffusion Head} tailored to direct pixel-space optimization and a lightweight \\emph{HiGate} pathway that provides fine-grained spatial details near the output stage. Extensive experiments show that HiUni achieves a similar average understanding score to the pretrained VLM while attaining competitive performance on image generation and editing. Controlled comparisons and analyses further demonstrate that a single dense backbone can effectively support both capabilities without task-specific backbone computation, highlighting a simpler path toward unified multimodal modeling.",
+    "authors": [
+      "Jiahao Hu",
+      "Jingdong Du",
+      "Yichen Zhang",
+      "Yi Song",
+      "Zhenyu Zhang",
+      "Jiaxin Niu",
+      "Ruihang Li",
+      "Xiangzhao Hao",
+      "Yiqian Zhang",
+      "Yong Huang",
+      "Zefeng Zhang",
+      "Zheyuan Gu",
+      "Shuohuan Wang"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.26107.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.26107",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "HiUni：在共享视觉空间中协调理解与生成",
+      "core_contribution": "HiUni提出了一种高度统一的多元模态模型，通过共享预训练视觉语言模型的ViT和稠密Transformer骨干网络同时支持视觉理解与生成，仅将任务特定计算限制在输出端，从而简化了统一多模态建模的路径。",
+      "method": "HiUni复用同一个语言对齐的ViT和稠密Transformer骨干网络处理理解与生成任务，任务特定计算仅在输出侧进行。为解决像素空间生成优化困难和ViT语义抽象丢失细粒度空间细节的问题，引入了面向直接像素空间优化的Pixel Diffusion Head和提供输出阶段细粒度空间细节的轻量级HiGate通路。",
+      "findings": "实验表明，HiUni在平均理解得分上与预训练VLM相近，同时在图像生成和编辑任务上取得有竞争力的性能。控制对比和分析进一步证明，单一稠密骨干网络无需任务特定骨干计算即可有效支持两种能力，凸显了更简洁的统一多模态建模路径。"
+    }
+  },
+  {
+    "id": "2611.26040",
+    "title": "Streaming-AAA: Streaming AAA Game Video Generation at High Resolution, High Frame Rate, and Low Latency",
+    "abstract": "Controllable streaming video generation offers a promising route toward interactive game simulation, yet existing methods remain far from practical gameplay. They often fail to jointly achieve high visual fidelity, high frame rates, and low interaction latency, resulting in poor responsiveness and degraded user experience. We present Streaming-AAA, a new paradigm for controllable infinite generation of AAA-quality game videos. Our system generates 1080p gameplay videos at 43 FPS with 198 ms end-to-end latency interaction on merely NVIDIA A800 GPUs, while supporting long-horizon play without severe temporal degradation or collapse. Streaming-AAA is built upon three key designs. First, we redesign the VAE architecture for efficient high-resolution decoding, enabling real-time synthesis at 1080p. Second, we pretrain the diffusion model using diffusion forcing and significantly extend the temporal training horizon, allowing the model to capture long-term dependencies and maintain persistent memory. Third, we perform post-training distillation and memory compression to improve inference efficiency while retaining visual quality and temporal consistency. Experiments show that Streaming-AAA substantially improves visual fidelity, frame rate, latency, and long-term stability over prior controllable video generation approaches, enabling a significantly more playable experience for interactive AAA game video generation.",
+    "authors": [
+      "Zhihao Hu",
+      "Jianqi Ma",
+      "Jun Zhang",
+      "Jiayang Bai",
+      "Haifeng Shi",
+      "Yanxiang Zhuang",
+      "Zhongqian Sun",
+      "Weidong Zhang",
+      "Wei Yang"
+    ],
+    "published": "2026-11-19",
+    "updated": "2026-11-19",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.26040.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.26040",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "Streaming-AAA：高分辨率、高帧率、低延迟的流式AAA游戏视频生成",
+      "core_contribution": "提出Streaming-AAA，一种可控无限生成AAA级游戏视频的新范式，在NVIDIA A800 GPU上实现1080p、43 FPS、端到端延迟198毫秒的交互式游戏视频生成，并支持长时间稳定游玩。",
+      "method": "重新设计VAE架构以实现高效的高分辨率解码，支持1080p实时合成；采用扩散强制（diffusion forcing）预训练扩散模型并显著扩展时间训练范围，以捕获长期依赖并保持持久记忆；通过后训练蒸馏和记忆压缩提升推理效率，同时保持视觉质量和时间一致性。",
+      "findings": "实验表明，Streaming-AAA在视觉保真度、帧率、延迟和长期稳定性方面显著优于先前可控视频生成方法，为交互式AAA游戏视频生成提供了更可玩的体验。"
+    }
+  }
+]

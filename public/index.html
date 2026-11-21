@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-20</p>
+        <p class="date">📅 2026-11-21</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,30 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.26629</span>
+          <span class="paper-id">2611.25457</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.26629" target="_blank">Posterior Matching Distillation</a>
+        <a href="https://arxiv.org/abs/2611.25457" target="_blank">CANDOR: Contrastive Self-Denoising Rewards for Label-Free Text-to-Image Post-Training</a>
       </h3>
-      <p class="paper-title-zh">后验匹配蒸馏</p>
-      <p class="paper-authors">Hidir Yesiltepe, Julius Berner, Arash Vahdat, Pinar Yanardag</p>
+      <p class="paper-title-zh">CANDOR：用于无标签文本到图像后训练的对比自去噪奖励</p>
+      <p class="paper-authors">Junhyeok Lee, Byung-Hoon Kim, Kyu Sung Choi</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出后验匹配蒸馏（PMD），一种基于分布的扩散蒸馏新方法，通过结合模式覆盖的后验采样与任意步数生成，克服了反向KL目标偏向主导模式而牺牲样本多样性的问题。</div>
-        <div class="summary-section"><strong>方法:</strong> PMD在训练的各噪声水平上恢复教师模型关于干净图像的完整后验分布，其随机学生模型支持在训练时间步网格内任意步数采样而无需额外训练。为学习这些后验，PMD将固定噪声状态下学生样本的指数重加权平均与对应的教师后验均值进行匹配；在高斯损坏下，指数倾斜后验均值等价于在偏移输入处的一次教师评估。作者证明在开邻域上匹配倾斜均值可唯一确定完整后验，从而通过一族均值约束监督整个条件分布，无需辅助学生分数网络。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在SDXL和FLUX.2 [klein] 4B上的实验表明，PMD在两种模型上均取得4步方法中最佳的FID，同时在提示对齐和感知质量指标上保持有竞争力或领先的性能。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种无需外部奖励模型或标注偏好的内在奖励方法CANDOR，通过对比条件与无条件去噪误差的对数比来衡量提示词对生成样本的实际贡献，从而避免奖励黑客问题并提升文本到图像生成质量。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先指出生成器自身的绝对去噪准确率（自置信度）受图像复杂度主导，难以有效区分同提示词下样本的优劣。为此提出CANDOR，即在共享噪声探针下计算无条件去噪误差与条件去噪误差的对数比，以衡量提示词对去噪的帮助程度，从而消除与提示词无关的难度因素。该方法作为Flow-GRPO的奖励函数用于流匹配模型的强化学习后训练。</div>
+        <div class="summary-section"><strong>关键发现:</strong> CANDOR在同提示词样本对中能以60%（组合生成）和63%（文本渲染）的比例正确排序更优样本。作为唯一的Flow-GRPO奖励时，CANDOR在文本渲染、美学和人类偏好评分上均优于基础模型和先前的绝对自置信度奖励，且文本渲染和偏好提升无法通过更强的无分类器引导复现。在基于外部奖励训练的公开Flow-GRPO适配器上，CANDOR还能进一步提升PickScore和ImageReward，表明其可与外部奖励互补。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Diffusion distillation accelerates image and video generation by compressing a pretrained teacher's iterative sampling process into a few network evaluations. Distribution-based methods achieve this by matching the student's output distribution to the teacher's. This matching is often driven by reverse-KL objectives, whose mode-seeking bias favors dominant teacher modes at the expense of diversity across samples. We introduce Posterior Matching Distillation (PMD), a new member of the distribution-based distillation family that combines mode-covering posterior sampling with any-step generation. At zero population loss, PMD recovers the teacher's full posterior of clean images at each trained noise level. Its stochastic student supports any-step sampling budgets within the trained timestep grid without further training. To learn these posteriors, PMD matches exponentially reweighted averages of student samples conditioned on a fixed noisy state to corresponding teacher posterior means. Under Gaussian corruption, exponentially tilted posterior mean is a single teacher evaluation at a shifted input. We prove that, matching tilted means over an open neighborhood uniquely identifies the full posterior. PMD thus supervises the entire conditional distribution through a family of mean constraints, without any auxiliary student-score network. Experiments on SDXL and FLUX.2 [klein] 4B demonstrate that PMD achieves the best FID among 4-step methods on both models, while maintaining competitive or leading performance across prompt-alignment and perceptual-quality metrics.</p>
+        <p>Post-training text-to-image generators with reinforcement learning usually relies on external reward models that need annotated preferences or auxiliary evaluators and are prone to reward hacking. We show that the generator's own denoising accuracy, used by a recent intrinsic reward, is a poor proxy for prompt fidelity. Within a same-prompt group, this absolute self-confidence is dominated by image complexity and ranks correct samples above incorrect ones near chance. We introduce CANDOR (Contrastive Alignment from Null-referenced Denoising lOg-Ratio), the log-ratio of unconditional to conditional denoising errors under shared noise probes, which measures how much the prompt helps the model denoise its own sample. It cancels prompt-independent difficulty that scales both errors and ranks the better of two same-prompt samples higher in 60% and 63% of pairs on compositional generation and text rendering. As the only Flow-GRPO reward for a flow-matching model, CANDOR improves text rendering, aesthetic and human-preference scores over the base model and a prior absolute self-confidence reward, with text-rendering and preference gains that stronger classifier-free guidance does not reproduce. On public Flow-GRPO adapters trained on external rewards, CANDOR further raises PickScore and ImageReward, so it can complement those rewards. Code is available at https://github.com/jhlee0619/candor.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.26629" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.26629.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25457" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25457.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.26627</span>
+          <span class="paper-id">2611.25382</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 82/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.26627" target="_blank">RL Post-Training in Diffusion Transformers Is Activation Steering</a>
+        <a href="https://arxiv.org/abs/2611.25382" target="_blank">Text Lives in the Guidance: Preventing Silent Text Rewriting in Cached Diffusion Transformers</a>
       </h3>
-      <p class="paper-title-zh">扩散Transformer中的强化学习后训练本质上是激活引导</p>
-      <p class="paper-authors">Tuna Han Salih Meral, Kaan Oktay, Alec Helbling, Atakan Kara, Duen Horng Chau 等 (6 位作者)</p>
+      <p class="paper-title-zh">文本存于引导之中：防止缓存扩散Transformer中的静默文本改写</p>
+      <p class="paper-authors">Kun Zhou, Wenmian Yang, Zhensheng Wang, Weijia Jia</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了扩散Transformer的强化学习后训练所带来的大部分性能提升可以通过一个与输入无关的固定激活偏移（引导向量）来解释和复现，表明RL后训练主要是在引导预训练生成器走向其已有能力，而非学习新的复杂输入依赖变换。</div>
-        <div class="summary-section"><strong>方法:</strong> 研究者向冻结的基础模型各模块输出添加一组固定的引导向量，这些向量在所有提示、token和采样种子上完全相同，参数量仅为RL调优LoRA的1/65（0.29M vs 18.8M）。通过拟合公开RL调优检查点的速度预测来训练这些向量，目标函数中不含奖励信号。此外还以零初始化并通过在线RL训练这些向量，与基于权重的RL方法进行对比。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 固定引导向量恢复了六个RL调优图像模型90.0%–96.3%的奖励增益，在两个RL调优视频模型上分别达到89.8%和111.9%。在SD3.5-M上，仅用这些向量进行在线RL训练，其在文本渲染（OCR）和人类偏好（PickScore）上的奖励增益即超过了基于权重的RL方法。这表明策略梯度RL后训练的大部分收益仅靠一个恒定偏移即可实现，无需学习新的输入依赖变换。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文发现扩散Transformer的特征缓存会静默改写渲染文本，且现有图像级指标无法检测此问题；提出GuideCache方法，通过仅在预测引导误差最大的token上重算CFG双分支，在加速的同时恢复全计算下的文本保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析缓存误差沿无分类器引导（CFG）的分解，定位文本损失主要源于引导项（条件与无条件预测之差）的缓存外推误差。据此提出GuideCache：利用缓存已存储的引导项，仅对预测引导误差最大的token重新计算CFG两个分支，从而以较低额外计算纠正文本区域的引导误差。该方法可与任意阶缓存及减少采样步数结合使用。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在Z-Image上，TaylorSeer在FLOPs减少2.9倍时词准确率从62%降至46%，而ImageReward和CLIP Score几乎不变；同等计算下减少采样步数则几乎保留全部文本，说明损失源于缓存对跳过步的预测方式。GuideCache在FLOPs减少2.4倍时于Z-Image和Qwen-Image上恢复全计算的提示保真度，在Z-Image上文本渲染效果与ToCa、TeaCache、FasterCache相当或更优，且输出更接近全模型；与减少采样步数结合时，在更高加速比下保留更多文本。结果表明文本渲染模型的加速方法应基于其渲染文本来评估。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reinforcement learning (RL) post-training substantially improves the visual quality, text rendering, and compositional accuracy of diffusion transformers. Because capabilities such as rendering requested text or composing multiple objects are inherently prompt-dependent, a natural hypothesis is that improving them requires learning complex, input-dependent transformations. To isolate how much of these gains an input-independent shift explains, we probe each RL-tuned model with a deliberately simple parameterization: a fixed set of steering vectors added to the block outputs of the frozen base model. On SD3.5-M, these vectors hold 65x fewer parameters than the RL-tuned LoRA (0.29M against 18.8M). We fit them to match the velocity predictions of public RL-tuned checkpoints, with no reward in the objective. Although the vectors are identical for every prompt, token, and sampling seed, they recover 90.0-96.3% of the reward gains of six RL-tuned image models, and 89.8% and 111.9% on two RL-tuned video models. Initialized at zero and trained with online RL, the vectors alone exceed the reward gains of weight-based RL on text rendering (OCR) and human preference (PickScore) on SD3.5-M. A constant shift thus suffices for most of the gain of policy-gradient RL post-training: without new input-dependent transformations, it steers the pretrained generator toward what it can already compute.</p>
+        <p>Diffusion transformers (DiTs) now render long, legible text in images, and feature caching is a standard way to accelerate them. Caches are judged by image-level metrics, which do not check whether the rendered text is still correct. We find that caching silently rewrites this text. On Z-Image, TaylorSeer at 2.9x fewer FLOPs lowers word accuracy from 62% to 46%, while ImageReward and CLIP Score barely change. Sampling with fewer steps at the same compute keeps almost all of this text, so the loss comes from how the cache predicts the skipped steps. Decomposing the cache error along classifier-free guidance (CFG), we trace this loss mainly to the guidance term, the difference between the conditional and unconditional predictions, which caches extrapolate worst on text. Correcting the guidance inside the text alone recovers most of the lost text. We therefore propose GuideCache, which recomputes both CFG branches only on the tokens with the largest predicted guidance error, using the guidance terms that the cache already stores. At 2.4x fewer FLOPs, GuideCache restores full-compute prompt fidelity on Z-Image and Qwen-Image, and on Z-Image it renders text as well as or better than ToCa, TeaCache, and FasterCache while staying much closer to the full model's output. GuideCache works with caches of any order, and on top of fewer sampling steps it keeps more text than step reduction at a higher speedup. These results suggest that acceleration methods for text-rendering models should be evaluated on the text they render.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.26627" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.26627.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25382" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25382.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.26437</span>
+          <span class="paper-id">2611.25689</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 78/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.26437" target="_blank">Asuka-FM: A System-Architectural Co-Design Framework for Efficient Text-to-Image Pretraining on Consumer Hardware</a>
+        <a href="https://arxiv.org/abs/2611.25689" target="_blank">D3-Cache: Accelerating Diffusion Models with Dynamic Mode Decomposition</a>
       </h3>
-      <p class="paper-title-zh">Asuka-FM：面向消费级硬件高效文本到图像预训练的系统-架构协同设计框架</p>
-      <p class="paper-authors">Víctor Rodrigo González, Pablo M. Olmos, Ignacio Peis, Alejandro Lancho</p>
+      <p class="paper-title-zh">D3-Cache：利用动态模态分解加速扩散模型</p>
+      <p class="paper-authors">Yanbo Li, An Xiang, Xiaoxin Hu, Feng Wang, Cheng-zhong Xu 等 (7 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Asuka-FM端到端系统与架构框架，证明约2.06亿参数的双流DiT可在单张消费级GPU上从头预训练（约160 GPU小时、成本低于55美元），并达到新的帕累托最优效率标准。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架包含四项核心设计：无AdaLN的双流DiT骨干以减少参数量；通过稀疏-稠密残差融合（SPRINT）进行结构化序列稀疏化，将注意力FLOPs降低50%以上；采用连续宽高比归一化RoPE配合平移方形裁剪训练，保证张量形状静态并实现零样本虚拟相机控制；以及使用1000万参数轻量级Patch Detailer Head在速度回归（v-prediction）下进行像素适配阶段。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在无需基准特定微调的开放域基准上，Asuka-FM在256px下取得GenEval 0.588 / DPG 78.96，在512px下取得GenEval 0.609 / DPG 78.51，为民主化基础模型建模树立了新的帕累托最优效率标准。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的扩散采样缓存方法D3-Cache，通过动态模态分解（DMD）对速度历史进行拟合与预测，仅预测调度器实际所需的速度，从而在多个图像和视频扩散模型上实现2.6-3.8倍加速且保持高保真度。</div>
+        <div class="summary-section"><strong>方法:</strong> D3-Cache将动态模态分解应用于扩散采样过程，对近期精确速度序列进行DMD拟合，仅预测调度器下一步所需的速度值。方法引入一种“视野感知门控”机制：每当网络被实际评估时，将其输出与该步的预测值比较，误差越大则越早触发下一次网络评估，并设置连续跳过步数上限。该方法无需训练、无需针对每个模型进行离线校准曲线，额外内存开销可忽略，且四个评估模型共享同一历史长度和风险容忍度参数。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在四个最先进的图像和视频扩散模型上，D3-Cache实现了2.6-3.8倍的加速，同时输出与基础模型保持高度保真；方法无需逐模型校准，仅用一组共享超参数即可跨模型通用，验证了其通用性和实用性。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Frontier text-to-image (T2I) foundation models predominantly rely on multi-billion parameter Diffusion Transformers (DiTs) pretrained across massive compute clusters, creating an accessibility barrier for academic laboratories. When training DiTs from scratch on single consumer GPUs (e.g., an NVIDIA RTX 4090 with 24\,GB VRAM), practitioners encounter three primary bottlenecks: quadratic attention sequence costs, Just-In-Time (JIT) compilation graph breaks induced by variable aspect-ratio bucketing, and an autoencoder throughput wall where frozen Variational Autoencoder (VAE) operations dominate step latency. In this work, we introduce \textbf{Asuka-FM}, an end-to-end system and architectural framework demonstrating that competitive dual-stream DiTs ($\sim$206M parameters) can be pretrained from scratch on a single consumer GPU in $\sim$160 GPU hours for under \$55. Asuka-FM integrates four core designs: (i) an AdaLN-free dual-stream DiT backbone reducing parameter count; (ii) structured sequence sparsification via Sparse-Dense Residual Fusion (SPRINT) to cut attention FLOPs by over 50\%; (iii) continuous aspect-normalized Rotary Position Embeddings (RoPE) coupled with shifted square crop training, guaranteeing static tensor shapes while unlocking zero-shot virtual camera control; and (iv) a pixel adaptation phase utilizing a lightweight (10M parameter) Patch Detailer Head operating under velocity regression ($v$-prediction). Evaluated on open-domain benchmarks without benchmark-specific fine-tuning, Asuka-FM achieves GenEval 0.588 / DPG 78.96 scores at 256px and GenEval 0.609 / DPG 78.51 scores at 512px, setting a new Pareto-optimal efficiency standard for democratic foundation modeling.</p>
+        <p>Diffusion Transformers generate high-quality images and videos, but every sampling step requires a full network evaluation. Training-free caching reduces this cost by reusing or forecasting network outputs across steps, but common approaches use per-model calibrated skip criteria or maintain per-layer prediction histories. We present D3-Cache, which applies Dynamic Mode Decomposition (DMD) to Diffusion sampling: it fits DMD to a short history of exact velocities and forecasts only the velocity that the scheduler consumes. A horizon-aware gate decides when to skip: whenever the network is evaluated, its output is compared with the forecast for that step, and the larger the error, the sooner the network is evaluated again, up to a cap on consecutive skipped steps. D3-Cache requires no training or per-model offline calibration curve and adds negligible memory. It shares one history length and risk tolerance across the four evaluated models. On four state-of-the-art image and video models, D3-Cache achieves speedups of 2.6-3.8x with high fidelity to the base model output.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.26437" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.26437.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25689" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25689.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.25708</span>
+          <span class="paper-id">2611.26107</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.25708" target="_blank">Slide2PPT: Native PowerPoint Reconstruction with Localization-Guided Refinement</a>
+        <a href="https://arxiv.org/abs/2611.26107" target="_blank">HiUni: Harmonizing Understanding and Generation in Shared Visual Space</a>
       </h3>
-      <p class="paper-title-zh">Slide2PPT：基于定位引导精修的原生PowerPoint重建</p>
-      <p class="paper-authors">Baoliang Chen, Xinlong Bu, Lingyu Zhu, Xiangjie Sui</p>
+      <p class="paper-title-zh">HiUni：在共享视觉空间中协调理解与生成</p>
+      <p class="paper-authors">Jiahao Hu, Jingdong Du, Yichen Zhang, Yi Song, Zhenyu Zhang 等 (13 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Slide2PPT——一个模型无关、无需训练的框架，使开源和闭源视觉语言模型均具备原生PowerPoint重建能力，同时恢复视觉外观与可编辑的原生对象结构。</div>
-        <div class="summary-section"><strong>方法:</strong> 通过统一的类型化接口，模型预测对象记录，固定渲染器将其物化为原生属性，从而无需任务特定训练即可适配不同骨干模型。定位引导精修将视觉差异与对象记录关联以进行校正：区域更新保留未选中记录，全幻灯片更新处理跨区域关系。记录精修与目标对象编辑支持结构和属性级修改，渲染反馈控制迭代接受。同时构建Slide2PPT-Bench基准，覆盖受控元素、真实幻灯片和科学图表。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在开源和闭源骨干模型上的实验表明，相比直接代码生成，PPTX生成更可靠；在科学图表上布局和文本恢复更优；除几何图元外，还能生成原生图表和表格接口。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> HiUni提出了一种高度统一的多元模态模型，通过共享预训练视觉语言模型的ViT和稠密Transformer骨干网络同时支持视觉理解与生成，仅将任务特定计算限制在输出端，从而简化了统一多模态建模的路径。</div>
+        <div class="summary-section"><strong>方法:</strong> HiUni复用同一个语言对齐的ViT和稠密Transformer骨干网络处理理解与生成任务，任务特定计算仅在输出侧进行。为解决像素空间生成优化困难和ViT语义抽象丢失细粒度空间细节的问题，引入了面向直接像素空间优化的Pixel Diffusion Head和提供输出阶段细粒度空间细节的轻量级HiGate通路。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，HiUni在平均理解得分上与预训练VLM相近，同时在图像生成和编辑任务上取得有竞争力的性能。控制对比和分析进一步证明，单一稠密骨干网络无需任务特定骨干计算即可有效支持两种能力，凸显了更简洁的统一多模态建模路径。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Image-to-slide reconstruction must recover both visual appearance and native object structure for subsequent editing. Yet visually faithful charts and tables may lack editable series and cells, and direct code generation couples content prediction to rendering implementation. We present Slide2PPT, a model-agnostic, training-free framework that equips both open- and closed-source vision-language models with native PowerPoint reconstruction capabilities. Through a unified typed interface, the model predicts object records while a fixed renderer materializes their native properties, enabling integration with different backbones without task-specific training or architectural changes. Localization-guided refinement then connects visual discrepancies to object records for correction. Regional updates preserve unselected records, while whole-slide updates address cross-region relationships. Record refinement and targeted object editing support structural and attribute-level changes, with rendered feedback governing iterative acceptance. To evaluate this framework across diverse reconstruction demands, we introduce Slide2PPT-Bench, covering controlled elements, real slides, and scientific figures. Evaluation separately measures file production, rendered agreement, and native-object availability. Experiments across open- and closed-source backbones demonstrate substantially more reliable PPTX generation than direct code generation, improved layout and text recovery on scientific figures, and native chart and table interfaces beyond geometric primitives.</p>
+        <p>Unified multimodal models aim to support visual understanding and generation within a single framework. However, prevailing approaches often separate their visual representations or backbone computation to accommodate the different requirements of these two tasks, which limits the degree of unification. In this paper, we present HiUni, which revisits this design choice and explores whether a pretrained vision language model can be directly extended into a unified model with extensive parameter sharing. Specifically, HiUni reuses the same language-aligned ViT and dense Transformer backbone for both capabilities, while confining task-specific computation to the output side. Yet such a design introduces two key challenges. Generation in pixel space is difficult to optimize, and semantic abstraction in pretrained ViT discards fine spatial details required for synthesis. To address these challenges, HiUni introduces a \emph{Pixel Diffusion Head} tailored to direct pixel-space optimization and a lightweight \emph{HiGate} pathway that provides fine-grained spatial details near the output stage. Extensive experiments show that HiUni achieves a similar average understanding score to the pretrained VLM while attaining competitive performance on image generation and editing. Controlled comparisons and analyses further demonstrate that a single dense backbone can effectively support both capabilities without task-specific backbone computation, highlighting a simpler path toward unified multimodal modeling.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.25708" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.25708.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.26107" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.26107.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.25296</span>
+          <span class="paper-id">2611.26040</span>
         </div>
-        <span class="score-badge">相关性 88/100</span>
+        <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.25296" target="_blank">CalibCache: Cache-to-Full Feature Dynamics Calibration for Diffusion Transformers</a>
+        <a href="https://arxiv.org/abs/2611.26040" target="_blank">Streaming-AAA: Streaming AAA Game Video Generation at High Resolution, High Frame Rate, and Low Latency</a>
       </h3>
-      <p class="paper-title-zh">CalibCache：面向扩散Transformer的缓存到全量特征动态校准</p>
-      <p class="paper-authors">Mingyu Liang, Dingkun Xu, Jingwei Xu</p>
+      <p class="paper-title-zh">Streaming-AAA：高分辨率、高帧率、低延迟的流式AAA游戏视频生成</p>
+      <p class="paper-authors">Zhihao Hu, Jianqi Ma, Jun Zhang, Jiayang Bai, Haifeng Shi 等 (9 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种轻量级离线校准方法CalibCache，通过校正缓存与全量计算特征动态之间的系统性差异，在短采样调度下显著提升特征缓存近似的准确性，从而在不增加额外全网络评估的情况下提高生成质量并保持加速效果。</div>
-        <div class="summary-section"><strong>方法:</strong> CalibCache将特征加速度定义为采样步间的二阶有限差分，并在每种设置下仅使用一对全量计算和朴素缓存轨迹，通过中心最小二乘法离线拟合标量加速度映射。这些映射在采样时直接应用，无需额外全网络评估或在线优化。方法针对扩散Transformer的迭代采样过程，校正历史外推在短调度下的不可靠性。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1-dev和Qwen-Image（DrawBench）以及DiT-XL/2（ImageNet-256）上，CalibCache在20步采样、缓存间隔N=3,4,5时均优于TaylorSeer。当N=5时，FLUX.1-dev的LPIPS从0.563降至0.429，同时实现2.86倍去噪加速；DiT-XL/2的FID从16.39降至10.37。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Streaming-AAA，一种可控无限生成AAA级游戏视频的新范式，在NVIDIA A800 GPU上实现1080p、43 FPS、端到端延迟198毫秒的交互式游戏视频生成，并支持长时间稳定游玩。</div>
+        <div class="summary-section"><strong>方法:</strong> 重新设计VAE架构以实现高效的高分辨率解码，支持1080p实时合成；采用扩散强制（diffusion forcing）预训练扩散模型并显著扩展时间训练范围，以捕获长期依赖并保持持久记忆；通过后训练蒸馏和记忆压缩提升推理效率，同时保持视觉质量和时间一致性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Streaming-AAA在视觉保真度、帧率、延迟和长期稳定性方面显著优于先前可控视频生成方法，为交互式AAA游戏视频生成提供了更可玩的体验。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Diffusion Transformers generate high-quality images, but iterative sampling remains computationally expensive. Feature caching reduces the number of full network evaluations, yet its approximation error can become more severe under short sampling schedules, where fewer full-compute steps and a coarser sampling grid can make history-based extrapolation less reliable. In this paper, we propose CalibCache, a lightweight offline calibration method that corrects systematic discrepancies between cached and full-compute feature dynamics. Specifically, CalibCache calibrates feature acceleration, defined as the second-order finite difference across sampling steps. Using only a single pair of full-compute and naive-cache trajectories at each setting, CalibCache fits scalar acceleration maps offline by centered least squares. These maps are then applied during sampling without additional full-network evaluations or online optimization. Across FLUX.1-dev and Qwen-Image on DrawBench and DiT-XL/2 on ImageNet-256, CalibCache consistently improves fidelity or generation quality over TaylorSeer under 20-step sampling at cache intervals $N=3,4,5$. At $N=5$, it reduces FLUX.1-dev LPIPS from $0.563$ to $0.429$ while achieving a $2.86\times$ denoising speedup over full-compute sampling, and lowers DiT-XL/2 FID from $16.39$ to $10.37$ relative to TaylorSeer.</p>
+        <p>Controllable streaming video generation offers a promising route toward interactive game simulation, yet existing methods remain far from practical gameplay. They often fail to jointly achieve high visual fidelity, high frame rates, and low interaction latency, resulting in poor responsiveness and degraded user experience. We present Streaming-AAA, a new paradigm for controllable infinite generation of AAA-quality game videos. Our system generates 1080p gameplay videos at 43 FPS with 198 ms end-to-end latency interaction on merely NVIDIA A800 GPUs, while supporting long-horizon play without severe temporal degradation or collapse. Streaming-AAA is built upon three key designs. First, we redesign the VAE architecture for efficient high-resolution decoding, enabling real-time synthesis at 1080p. Second, we pretrain the diffusion model using diffusion forcing and significantly extend the temporal training horizon, allowing the model to capture long-term dependencies and maintain persistent memory. Third, we perform post-training distillation and memory compression to improve inference efficiency while retaining visual quality and temporal consistency. Experiments show that Streaming-AAA substantially improves visual fidelity, frame rate, latency, and long-term stability over prior controllable video generation approaches, enabling a significantly more playable experience for interactive AAA game video generation.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.25296" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.25296.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.26040" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.26040.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
