@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-22</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 多媒体: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25930</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25930" target="_blank">Why Flat Drafts Stay Flat: Region-Mean Latents Govern Texture in Flow-Based Image Generation</a>
+      </h3>
+      <p class="paper-title-zh">为何扁平草图保持扁平：区域均值潜变量主导基于流的图像生成中的纹理</p>
+      <p class="paper-authors">Zihan Gu, Jiangcan Jia, Hua Zhang, Lulu Zhao</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了预训练流式生成器在写实提示下仍能保持扁平色块草图外观的跨尺度机制——扁平化图像区域会系统性地偏移其在VAE潜空间中的区域均值，且偏移集中于各骨干网络的共享通道方向，并据此提出了无需训练的渲染干预方法。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者在FLUX.1-dev和Qwen-Image中通过受控的场交换实验，验证区域均值场对纹理生成的影响；利用二阶编码展开解释编码器曲率如何将零均值扰动转化为均值偏移；并通过可解析求解的条件高斯流模型分析区域噪声平均在高信噪比下产生接近单位端点敏感度的机制。基于该机制，作者提出像素抖动预编码、均值场缩放和早期边界保持等免训练渲染手段，并结合成对低秩适配（LoRA）与草图条件化进行改进。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，将照片导出的区域均值场加到扁平潜变量上可恢复纹理，而仅添加其补场则基本保持扁平；成对LoRA结合草图条件化能提升内容恢复并在标准速度目标下产生类照片的区域均值；显式的区域均值引导在适配后依然有效，可连续控制纹理并改善色彩保真度。这些发现将编码偏移与持续生成行为联系起来，并在纹理、空间保真度和语义恢复方面验证了干预效果。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Flat color-block drafts specify layout and regional color while leaving interior detail unspecified, yet pretrained flow-based generators can preserve their flat appearance even under photorealistic prompts. We trace this behavior to a cross-scale mechanism linking fine pixel variation to regional means in variational autoencoder (VAE) latent space. Flattening photo regions systematically shifts their latent means, with offsets concentrated along a shared channel direction within each backbone. Controlled field exchanges in FLUX.1-dev and Qwen-Image establish the effect of this displacement on texture generation: adding the photo-derived regional mean field to a flat latent restores texture, whereas adding its complementary field alone largely preserves flatness. A second-order encoding expansion explains how encoder curvature can convert zero-mean perturbations into mean shifts. An analytically solvable conditional Gaussian flow shows how regional noise averaging enables near-unit endpoint sensitivity at high signal-to-noise ratios. This mechanism motivates training-free rendering through pixel dither before encoding, mean-field scaling, and early boundary holding. Paired low-rank adaptation (LoRA) with draft conditioning improves content recovery and produces photo-like regional means under the standard velocity objective. Explicit regional mean guidance remains effective after adaptation, continuously controlling texture and improving color fidelity. These findings connect encoding shifts to persistent generation behavior and support interventions evaluated for texture, spatial fidelity, and semantic recovery.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25930" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25930.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25847</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25847" target="_blank">TrajCal: Trajectory-Calibrated Time Schedules for Few-Step Flow Sampling</a>
+      </h3>
+      <p class="paper-title-zh">TrajCal：面向少步流采样的轨迹校准时间调度</p>
+      <p class="paper-authors">Junchi Zhang, Zihan Gu, Jiangcan Jia, Lulu Zhao, Wenbo Su 等 (6 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的校准框架TrajCal，通过搜索并固定一条时间调度方案，使少步流匹配采样在低评估预算下获得比现有基线更高的参考保真度，同时保持有竞争力的视觉质量。</div>
+        <div class="summary-section"><strong>方法:</strong> TrajCal基于散点搜索这一元启发式优化方法，从多样化的种子调度出发，对候选调度进行变形与组合，再依据最终输出保真度选出一条固定调度，供新输入复用。该方法无需额外训练，可同时用于图像和视频生成，并支持基于轨迹的种子初始化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在图像和视频生成任务中，TrajCal在低评估预算下参考保真度优于所有对比基线，视觉质量也具有竞争力；即使使用随机种子搜索依然有效，而基于轨迹的种子可进一步提升保真度；此外，在摄影图像上校准的调度还能泛化到未见过的图像风格，提升其保真度。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Flow matching enables high-quality image and video generation, but its iterative sampling process requires repeated evaluations of large neural networks. Existing few-step methods can distort the output and reduce its agreement with a many-step reference. We propose TrajCal, a training-free calibration framework for few-step sampling. Based on scatter search, a well-established metaheuristic for difficult optimization problems, TrajCal starts with diverse seed schedules, deforms and combines these candidates, and selects one fixed schedule by final output fidelity for reuse on new inputs. For both image and video generation, TrajCal achieves higher reference fidelity than all compared baselines at low evaluation budgets while maintaining competitive visual quality. The search is effective even with randomly generated seeds, while trajectory-based seeds further improve fidelity. For cross-style generalization, photography-calibrated schedules also improve fidelity on unseen image styles.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25847" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25847.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">多媒体</span>
+          <span class="paper-id">2611.25781</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25781" target="_blank">Sonic Palette: Predicting Dynamic Color Themes from Music</a>
+      </h3>
+      <p class="paper-title-zh">声音调色板：从音乐预测动态色彩主题</p>
+      <p class="paper-authors">Wen-Li Wei, Kenneth Yang, Jen-Chun Lin</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Sonic Palette框架，将音乐到色彩主题的生成建模为跨模态序列预测任务，能够根据音频预测随时间变化的色彩主题（每帧五种主色），并构建了配对音频-色彩序列数据集。</div>
+        <div class="summary-section"><strong>方法:</strong> 使用音乐条件自回归Transformer，从输入音频特征预测逐帧色彩主题（每帧由五种主色表示）；构建了来自265个完整官方音乐视频的音频-色彩配对序列数据集；通过调色板引导的重新着色过程可视化预测色彩主题，在保留图像结构的同时呈现与音乐相关的时间变化色彩外观。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 定量结果表明Sonic Palette预测的色彩主题更接近真实值；主观结果表明其具有更自然的时间色彩过渡和更强的音乐-色彩氛围对齐感，在音乐驱动的视觉设计、计算艺术和创意视觉创作方面具有潜力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present Sonic Palette, a music-driven framework for predicting time-varying color themes from audio. Rather than treating music-to-palette generation as a static problem, our method formulates music--color correspondence as a cross-modal sequence prediction task that models how palette-level visual attributes evolve over time in response to music. Specifically, Sonic Palette uses a music-conditioned autoregressive Transformer to predict frame-wise color themes, each represented by five dominant colors, from input audio features. To support this task, we curate a dataset of paired audio--color sequences derived from 265 full-length official music videos. We further visualize the predicted color themes through a palette-guided recoloring process that preserves image structure while revealing temporally varying color appearance associated with the music. Quantitative results show that Sonic Palette predicts color themes that more closely match the ground truth, while subjective results indicate more natural temporal color transitions and stronger perceived music--color atmosphere alignment, highlighting its potential for music-driven visual design, computational art, and creative visual authoring.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25781" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25781.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25648</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25648" target="_blank">TRACE: Attribute Execution for Sequential Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">TRACE：面向序列图像编辑的属性执行</p>
+      <p class="paper-authors">Xiyang Zhang, Yuanhe Tian, Hongzhi Wang, Yan Song</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出TRACE方法，将持续属性与其视觉载体分离，并在完整请求检查下优先执行局部外观操作，从而在序列图像编辑中同时满足新指令并保留仍有效的早期要求。</div>
+        <div class="summary-section"><strong>方法:</strong> TRACE通过活跃目标绑定识别需要持续保留的属性，通过载体选择从当前图像或新生成像素中提供合适的视觉载体，并利用色调校准减少高光和阴影附近的色偏。方法将属性与载体解耦，在局部外观操作中协调同一区域内的属性冲突。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在冻结编辑器、独立视觉阅读器、新源图像和完整序列基准上的实验支持联合颜色-材质恢复，并表明局部执行能够保留周围场景。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Given an image and successive user instructions, sequential image editing should return an updated image that satisfies each new request and preserves earlier requirements that remain active. This lets users develop a result without repeatedly restating or repairing their decisions. The difficulty is that a retrieved image can contain a valid color on an obsolete surface, while the current image may lack the newly requested material. Neither reference selection nor a precise object mask alone specifies how to reconcile attributes occupying the same region. We present TRACE, which separates the continuing attribute from its visual carrier and prioritizes local appearance operations under complete-request checks. Active-goal binding identifies what should persist, carrier selection supplies suitable current or newly generated pixels, and tonal calibration reduces tinting near highlights and shadows. Experiments across frozen editors, independent visual readers, new source images, and complete sequential benchmarks support joint color-material recovery and show how local execution preserves the surrounding scene.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25648" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25648.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25454</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25454" target="_blank">Lossless Latent Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">无损潜在扩散模型</p>
+      <p class="paper-authors">Tongda Xu, Yu Zhang, Jun Hu, Huijuan Huang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出无损潜在扩散模型（LLDM），通过构建无损变换将像素映射到更适合扩散建模的表示，而非修改扩散模型本身，从而在保持像素精确重建的同时实现高质量图像生成。</div>
+        <div class="summary-section"><strong>方法:</strong> LLDM采用残差潜在变换和不均匀潜在缩放构建无损变换，将像素映射到潜在空间；并提出语义秩优先级（SRP）指标来解释其有效性，该指标衡量潜在表示对扩散建模的适用性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> LLDM在生成质量上显著优于先前的像素空间扩散模型，甚至超越若干广泛使用的有损VAE；SRP与下游生成性能高度相关。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We study the problem of training image diffusion models while preserving pixel-exact reconstruction. Prior works typically address this problem by directly modeling images in pixel space, requiring modifications to the diffusion training objective or model architecture. In this work, we introduce a different paradigm: rather than modifying diffusion models, we construct a lossless transformation that maps pixels into a representation more amenable to diffusion modeling. We term our approach the Lossless Latent Diffusion Model (LLDM). We construct LLDM using residual latent transformation and uneven latent scaling, and explain its effectiveness through a proposed metric, semantic rank priority (SRP). Empirically, LLDM substantially outperforms prior pixel-space diffusion models in generation quality and even surpasses several widely used lossy VAEs. Furthermore, we show that SRP is strongly correlated with downstream generative performance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25454" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25454.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>

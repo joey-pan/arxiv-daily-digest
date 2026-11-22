@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-21</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
+        <p class="date">📅 2026-11-22</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 多媒体: 1</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -236,126 +236,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.25457</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.25457" target="_blank">CANDOR: Contrastive Self-Denoising Rewards for Label-Free Text-to-Image Post-Training</a>
-      </h3>
-      <p class="paper-title-zh">CANDOR：用于无标签文本到图像后训练的对比自去噪奖励</p>
-      <p class="paper-authors">Junhyeok Lee, Byung-Hoon Kim, Kyu Sung Choi</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出了一种无需外部奖励模型或标注偏好的内在奖励方法CANDOR，通过对比条件与无条件去噪误差的对数比来衡量提示词对生成样本的实际贡献，从而避免奖励黑客问题并提升文本到图像生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先指出生成器自身的绝对去噪准确率（自置信度）受图像复杂度主导，难以有效区分同提示词下样本的优劣。为此提出CANDOR，即在共享噪声探针下计算无条件去噪误差与条件去噪误差的对数比，以衡量提示词对去噪的帮助程度，从而消除与提示词无关的难度因素。该方法作为Flow-GRPO的奖励函数用于流匹配模型的强化学习后训练。</div>
-        <div class="summary-section"><strong>关键发现:</strong> CANDOR在同提示词样本对中能以60%（组合生成）和63%（文本渲染）的比例正确排序更优样本。作为唯一的Flow-GRPO奖励时，CANDOR在文本渲染、美学和人类偏好评分上均优于基础模型和先前的绝对自置信度奖励，且文本渲染和偏好提升无法通过更强的无分类器引导复现。在基于外部奖励训练的公开Flow-GRPO适配器上，CANDOR还能进一步提升PickScore和ImageReward，表明其可与外部奖励互补。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Post-training text-to-image generators with reinforcement learning usually relies on external reward models that need annotated preferences or auxiliary evaluators and are prone to reward hacking. We show that the generator's own denoising accuracy, used by a recent intrinsic reward, is a poor proxy for prompt fidelity. Within a same-prompt group, this absolute self-confidence is dominated by image complexity and ranks correct samples above incorrect ones near chance. We introduce CANDOR (Contrastive Alignment from Null-referenced Denoising lOg-Ratio), the log-ratio of unconditional to conditional denoising errors under shared noise probes, which measures how much the prompt helps the model denoise its own sample. It cancels prompt-independent difficulty that scales both errors and ranks the better of two same-prompt samples higher in 60% and 63% of pairs on compositional generation and text rendering. As the only Flow-GRPO reward for a flow-matching model, CANDOR improves text rendering, aesthetic and human-preference scores over the base model and a prior absolute self-confidence reward, with text-rendering and preference gains that stronger classifier-free guidance does not reproduce. On public Flow-GRPO adapters trained on external rewards, CANDOR further raises PickScore and ImageReward, so it can complement those rewards. Code is available at https://github.com/jhlee0619/candor.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.25457" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.25457.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.25382</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.25382" target="_blank">Text Lives in the Guidance: Preventing Silent Text Rewriting in Cached Diffusion Transformers</a>
-      </h3>
-      <p class="paper-title-zh">文本存于引导之中：防止缓存扩散Transformer中的静默文本改写</p>
-      <p class="paper-authors">Kun Zhou, Wenmian Yang, Zhensheng Wang, Weijia Jia</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文发现扩散Transformer的特征缓存会静默改写渲染文本，且现有图像级指标无法检测此问题；提出GuideCache方法，通过仅在预测引导误差最大的token上重算CFG双分支，在加速的同时恢复全计算下的文本保真度。</div>
-        <div class="summary-section"><strong>方法:</strong> 作者首先分析缓存误差沿无分类器引导（CFG）的分解，定位文本损失主要源于引导项（条件与无条件预测之差）的缓存外推误差。据此提出GuideCache：利用缓存已存储的引导项，仅对预测引导误差最大的token重新计算CFG两个分支，从而以较低额外计算纠正文本区域的引导误差。该方法可与任意阶缓存及减少采样步数结合使用。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Z-Image上，TaylorSeer在FLOPs减少2.9倍时词准确率从62%降至46%，而ImageReward和CLIP Score几乎不变；同等计算下减少采样步数则几乎保留全部文本，说明损失源于缓存对跳过步的预测方式。GuideCache在FLOPs减少2.4倍时于Z-Image和Qwen-Image上恢复全计算的提示保真度，在Z-Image上文本渲染效果与ToCa、TeaCache、FasterCache相当或更优，且输出更接近全模型；与减少采样步数结合时，在更高加速比下保留更多文本。结果表明文本渲染模型的加速方法应基于其渲染文本来评估。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Diffusion transformers (DiTs) now render long, legible text in images, and feature caching is a standard way to accelerate them. Caches are judged by image-level metrics, which do not check whether the rendered text is still correct. We find that caching silently rewrites this text. On Z-Image, TaylorSeer at 2.9x fewer FLOPs lowers word accuracy from 62% to 46%, while ImageReward and CLIP Score barely change. Sampling with fewer steps at the same compute keeps almost all of this text, so the loss comes from how the cache predicts the skipped steps. Decomposing the cache error along classifier-free guidance (CFG), we trace this loss mainly to the guidance term, the difference between the conditional and unconditional predictions, which caches extrapolate worst on text. Correcting the guidance inside the text alone recovers most of the lost text. We therefore propose GuideCache, which recomputes both CFG branches only on the tokens with the largest predicted guidance error, using the guidance terms that the cache already stores. At 2.4x fewer FLOPs, GuideCache restores full-compute prompt fidelity on Z-Image and Qwen-Image, and on Z-Image it renders text as well as or better than ToCa, TeaCache, and FasterCache while staying much closer to the full model's output. GuideCache works with caches of any order, and on top of fewer sampling steps it keeps more text than step reduction at a higher speedup. These results suggest that acceleration methods for text-rendering models should be evaluated on the text they render.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.25382" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.25382.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.25689</span>
-        </div>
-        <span class="score-badge">相关性 78/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.25689" target="_blank">D3-Cache: Accelerating Diffusion Models with Dynamic Mode Decomposition</a>
-      </h3>
-      <p class="paper-title-zh">D3-Cache：利用动态模态分解加速扩散模型</p>
-      <p class="paper-authors">Yanbo Li, An Xiang, Xiaoxin Hu, Feng Wang, Cheng-zhong Xu 等 (7 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的扩散采样缓存方法D3-Cache，通过动态模态分解（DMD）对速度历史进行拟合与预测，仅预测调度器实际所需的速度，从而在多个图像和视频扩散模型上实现2.6-3.8倍加速且保持高保真度。</div>
-        <div class="summary-section"><strong>方法:</strong> D3-Cache将动态模态分解应用于扩散采样过程，对近期精确速度序列进行DMD拟合，仅预测调度器下一步所需的速度值。方法引入一种“视野感知门控”机制：每当网络被实际评估时，将其输出与该步的预测值比较，误差越大则越早触发下一次网络评估，并设置连续跳过步数上限。该方法无需训练、无需针对每个模型进行离线校准曲线，额外内存开销可忽略，且四个评估模型共享同一历史长度和风险容忍度参数。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在四个最先进的图像和视频扩散模型上，D3-Cache实现了2.6-3.8倍的加速，同时输出与基础模型保持高度保真；方法无需逐模型校准，仅用一组共享超参数即可跨模型通用，验证了其通用性和实用性。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Diffusion Transformers generate high-quality images and videos, but every sampling step requires a full network evaluation. Training-free caching reduces this cost by reusing or forecasting network outputs across steps, but common approaches use per-model calibrated skip criteria or maintain per-layer prediction histories. We present D3-Cache, which applies Dynamic Mode Decomposition (DMD) to Diffusion sampling: it fits DMD to a short history of exact velocities and forecasts only the velocity that the scheduler consumes. A horizon-aware gate decides when to skip: whenever the network is evaluated, its output is compared with the forecast for that step, and the larger the error, the sooner the network is evaluated again, up to a cap on consecutive skipped steps. D3-Cache requires no training or per-model offline calibration curve and adds negligible memory. It shares one history length and risk tolerance across the four evaluated models. On four state-of-the-art image and video models, D3-Cache achieves speedups of 2.6-3.8x with high fidelity to the base model output.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.25689" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.25689.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.26107</span>
+          <span class="paper-id">2611.25930</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.26107" target="_blank">HiUni: Harmonizing Understanding and Generation in Shared Visual Space</a>
+        <a href="https://arxiv.org/abs/2611.25930" target="_blank">Why Flat Drafts Stay Flat: Region-Mean Latents Govern Texture in Flow-Based Image Generation</a>
       </h3>
-      <p class="paper-title-zh">HiUni：在共享视觉空间中协调理解与生成</p>
-      <p class="paper-authors">Jiahao Hu, Jingdong Du, Yichen Zhang, Yi Song, Zhenyu Zhang 等 (13 位作者)</p>
+      <p class="paper-title-zh">为何扁平草图保持扁平：区域均值潜变量主导基于流的图像生成中的纹理</p>
+      <p class="paper-authors">Zihan Gu, Jiangcan Jia, Hua Zhang, Lulu Zhao</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> HiUni提出了一种高度统一的多元模态模型，通过共享预训练视觉语言模型的ViT和稠密Transformer骨干网络同时支持视觉理解与生成，仅将任务特定计算限制在输出端，从而简化了统一多模态建模的路径。</div>
-        <div class="summary-section"><strong>方法:</strong> HiUni复用同一个语言对齐的ViT和稠密Transformer骨干网络处理理解与生成任务，任务特定计算仅在输出侧进行。为解决像素空间生成优化困难和ViT语义抽象丢失细粒度空间细节的问题，引入了面向直接像素空间优化的Pixel Diffusion Head和提供输出阶段细粒度空间细节的轻量级HiGate通路。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，HiUni在平均理解得分上与预训练VLM相近，同时在图像生成和编辑任务上取得有竞争力的性能。控制对比和分析进一步证明，单一稠密骨干网络无需任务特定骨干计算即可有效支持两种能力，凸显了更简洁的统一多模态建模路径。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文揭示了预训练流式生成器在写实提示下仍能保持扁平色块草图外观的跨尺度机制——扁平化图像区域会系统性地偏移其在VAE潜空间中的区域均值，且偏移集中于各骨干网络的共享通道方向，并据此提出了无需训练的渲染干预方法。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者在FLUX.1-dev和Qwen-Image中通过受控的场交换实验，验证区域均值场对纹理生成的影响；利用二阶编码展开解释编码器曲率如何将零均值扰动转化为均值偏移；并通过可解析求解的条件高斯流模型分析区域噪声平均在高信噪比下产生接近单位端点敏感度的机制。基于该机制，作者提出像素抖动预编码、均值场缩放和早期边界保持等免训练渲染手段，并结合成对低秩适配（LoRA）与草图条件化进行改进。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 实验表明，将照片导出的区域均值场加到扁平潜变量上可恢复纹理，而仅添加其补场则基本保持扁平；成对LoRA结合草图条件化能提升内容恢复并在标准速度目标下产生类照片的区域均值；显式的区域均值引导在适配后依然有效，可连续控制纹理并改善色彩保真度。这些发现将编码偏移与持续生成行为联系起来，并在纹理、空间保真度和语义恢复方面验证了干预效果。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified multimodal models aim to support visual understanding and generation within a single framework. However, prevailing approaches often separate their visual representations or backbone computation to accommodate the different requirements of these two tasks, which limits the degree of unification. In this paper, we present HiUni, which revisits this design choice and explores whether a pretrained vision language model can be directly extended into a unified model with extensive parameter sharing. Specifically, HiUni reuses the same language-aligned ViT and dense Transformer backbone for both capabilities, while confining task-specific computation to the output side. Yet such a design introduces two key challenges. Generation in pixel space is difficult to optimize, and semantic abstraction in pretrained ViT discards fine spatial details required for synthesis. To address these challenges, HiUni introduces a \emph{Pixel Diffusion Head} tailored to direct pixel-space optimization and a lightweight \emph{HiGate} pathway that provides fine-grained spatial details near the output stage. Extensive experiments show that HiUni achieves a similar average understanding score to the pretrained VLM while attaining competitive performance on image generation and editing. Controlled comparisons and analyses further demonstrate that a single dense backbone can effectively support both capabilities without task-specific backbone computation, highlighting a simpler path toward unified multimodal modeling.</p>
+        <p>Flat color-block drafts specify layout and regional color while leaving interior detail unspecified, yet pretrained flow-based generators can preserve their flat appearance even under photorealistic prompts. We trace this behavior to a cross-scale mechanism linking fine pixel variation to regional means in variational autoencoder (VAE) latent space. Flattening photo regions systematically shifts their latent means, with offsets concentrated along a shared channel direction within each backbone. Controlled field exchanges in FLUX.1-dev and Qwen-Image establish the effect of this displacement on texture generation: adding the photo-derived regional mean field to a flat latent restores texture, whereas adding its complementary field alone largely preserves flatness. A second-order encoding expansion explains how encoder curvature can convert zero-mean perturbations into mean shifts. An analytically solvable conditional Gaussian flow shows how regional noise averaging enables near-unit endpoint sensitivity at high signal-to-noise ratios. This mechanism motivates training-free rendering through pixel dither before encoding, mean-field scaling, and early boundary holding. Paired low-rank adaptation (LoRA) with draft conditioning improves content recovery and produces photo-like regional means under the standard velocity objective. Explicit regional mean guidance remains effective after adaptation, continuously controlling texture and improving color fidelity. These findings connect encoding shifts to persistent generation behavior and support interventions evaluated for texture, spatial fidelity, and semantic recovery.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.26107" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.26107.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25930" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25930.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +268,126 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.26040</span>
+          <span class="paper-id">2611.25847</span>
         </div>
         <span class="score-badge">相关性 72/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.26040" target="_blank">Streaming-AAA: Streaming AAA Game Video Generation at High Resolution, High Frame Rate, and Low Latency</a>
+        <a href="https://arxiv.org/abs/2611.25847" target="_blank">TrajCal: Trajectory-Calibrated Time Schedules for Few-Step Flow Sampling</a>
       </h3>
-      <p class="paper-title-zh">Streaming-AAA：高分辨率、高帧率、低延迟的流式AAA游戏视频生成</p>
-      <p class="paper-authors">Zhihao Hu, Jianqi Ma, Jun Zhang, Jiayang Bai, Haifeng Shi 等 (9 位作者)</p>
+      <p class="paper-title-zh">TrajCal：面向少步流采样的轨迹校准时间调度</p>
+      <p class="paper-authors">Junchi Zhang, Zihan Gu, Jiangcan Jia, Lulu Zhao, Wenbo Su 等 (6 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Streaming-AAA，一种可控无限生成AAA级游戏视频的新范式，在NVIDIA A800 GPU上实现1080p、43 FPS、端到端延迟198毫秒的交互式游戏视频生成，并支持长时间稳定游玩。</div>
-        <div class="summary-section"><strong>方法:</strong> 重新设计VAE架构以实现高效的高分辨率解码，支持1080p实时合成；采用扩散强制（diffusion forcing）预训练扩散模型并显著扩展时间训练范围，以捕获长期依赖并保持持久记忆；通过后训练蒸馏和记忆压缩提升推理效率，同时保持视觉质量和时间一致性。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 实验表明，Streaming-AAA在视觉保真度、帧率、延迟和长期稳定性方面显著优于先前可控视频生成方法，为交互式AAA游戏视频生成提供了更可玩的体验。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出一种无需训练的校准框架TrajCal，通过搜索并固定一条时间调度方案，使少步流匹配采样在低评估预算下获得比现有基线更高的参考保真度，同时保持有竞争力的视觉质量。</div>
+        <div class="summary-section"><strong>方法:</strong> TrajCal基于散点搜索这一元启发式优化方法，从多样化的种子调度出发，对候选调度进行变形与组合，再依据最终输出保真度选出一条固定调度，供新输入复用。该方法无需额外训练，可同时用于图像和视频生成，并支持基于轨迹的种子初始化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在图像和视频生成任务中，TrajCal在低评估预算下参考保真度优于所有对比基线，视觉质量也具有竞争力；即使使用随机种子搜索依然有效，而基于轨迹的种子可进一步提升保真度；此外，在摄影图像上校准的调度还能泛化到未见过的图像风格，提升其保真度。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Controllable streaming video generation offers a promising route toward interactive game simulation, yet existing methods remain far from practical gameplay. They often fail to jointly achieve high visual fidelity, high frame rates, and low interaction latency, resulting in poor responsiveness and degraded user experience. We present Streaming-AAA, a new paradigm for controllable infinite generation of AAA-quality game videos. Our system generates 1080p gameplay videos at 43 FPS with 198 ms end-to-end latency interaction on merely NVIDIA A800 GPUs, while supporting long-horizon play without severe temporal degradation or collapse. Streaming-AAA is built upon three key designs. First, we redesign the VAE architecture for efficient high-resolution decoding, enabling real-time synthesis at 1080p. Second, we pretrain the diffusion model using diffusion forcing and significantly extend the temporal training horizon, allowing the model to capture long-term dependencies and maintain persistent memory. Third, we perform post-training distillation and memory compression to improve inference efficiency while retaining visual quality and temporal consistency. Experiments show that Streaming-AAA substantially improves visual fidelity, frame rate, latency, and long-term stability over prior controllable video generation approaches, enabling a significantly more playable experience for interactive AAA game video generation.</p>
+        <p>Flow matching enables high-quality image and video generation, but its iterative sampling process requires repeated evaluations of large neural networks. Existing few-step methods can distort the output and reduce its agreement with a many-step reference. We propose TrajCal, a training-free calibration framework for few-step sampling. Based on scatter search, a well-established metaheuristic for difficult optimization problems, TrajCal starts with diverse seed schedules, deforms and combines these candidates, and selects one fixed schedule by final output fidelity for reuse on new inputs. For both image and video generation, TrajCal achieves higher reference fidelity than all compared baselines at low evaluation budgets while maintaining competitive visual quality. The search is effective even with randomly generated seeds, while trajectory-based seeds further improve fidelity. For cross-style generalization, photography-calibrated schedules also improve fidelity on unseen image styles.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.26040" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.26040.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.25847" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25847.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">多媒体</span>
+          <span class="paper-id">2611.25781</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25781" target="_blank">Sonic Palette: Predicting Dynamic Color Themes from Music</a>
+      </h3>
+      <p class="paper-title-zh">声音调色板：从音乐预测动态色彩主题</p>
+      <p class="paper-authors">Wen-Li Wei, Kenneth Yang, Jen-Chun Lin</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Sonic Palette框架，将音乐到色彩主题的生成建模为跨模态序列预测任务，能够根据音频预测随时间变化的色彩主题（每帧五种主色），并构建了配对音频-色彩序列数据集。</div>
+        <div class="summary-section"><strong>方法:</strong> 使用音乐条件自回归Transformer，从输入音频特征预测逐帧色彩主题（每帧由五种主色表示）；构建了来自265个完整官方音乐视频的音频-色彩配对序列数据集；通过调色板引导的重新着色过程可视化预测色彩主题，在保留图像结构的同时呈现与音乐相关的时间变化色彩外观。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 定量结果表明Sonic Palette预测的色彩主题更接近真实值；主观结果表明其具有更自然的时间色彩过渡和更强的音乐-色彩氛围对齐感，在音乐驱动的视觉设计、计算艺术和创意视觉创作方面具有潜力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We present Sonic Palette, a music-driven framework for predicting time-varying color themes from audio. Rather than treating music-to-palette generation as a static problem, our method formulates music--color correspondence as a cross-modal sequence prediction task that models how palette-level visual attributes evolve over time in response to music. Specifically, Sonic Palette uses a music-conditioned autoregressive Transformer to predict frame-wise color themes, each represented by five dominant colors, from input audio features. To support this task, we curate a dataset of paired audio--color sequences derived from 265 full-length official music videos. We further visualize the predicted color themes through a palette-guided recoloring process that preserves image structure while revealing temporally varying color appearance associated with the music. Quantitative results show that Sonic Palette predicts color themes that more closely match the ground truth, while subjective results indicate more natural temporal color transitions and stronger perceived music--color atmosphere alignment, highlighting its potential for music-driven visual design, computational art, and creative visual authoring.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25781" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25781.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25648</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25648" target="_blank">TRACE: Attribute Execution for Sequential Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">TRACE：面向序列图像编辑的属性执行</p>
+      <p class="paper-authors">Xiyang Zhang, Yuanhe Tian, Hongzhi Wang, Yan Song</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出TRACE方法，将持续属性与其视觉载体分离，并在完整请求检查下优先执行局部外观操作，从而在序列图像编辑中同时满足新指令并保留仍有效的早期要求。</div>
+        <div class="summary-section"><strong>方法:</strong> TRACE通过活跃目标绑定识别需要持续保留的属性，通过载体选择从当前图像或新生成像素中提供合适的视觉载体，并利用色调校准减少高光和阴影附近的色偏。方法将属性与载体解耦，在局部外观操作中协调同一区域内的属性冲突。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在冻结编辑器、独立视觉阅读器、新源图像和完整序列基准上的实验支持联合颜色-材质恢复，并表明局部执行能够保留周围场景。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Given an image and successive user instructions, sequential image editing should return an updated image that satisfies each new request and preserves earlier requirements that remain active. This lets users develop a result without repeatedly restating or repairing their decisions. The difficulty is that a retrieved image can contain a valid color on an obsolete surface, while the current image may lack the newly requested material. Neither reference selection nor a precise object mask alone specifies how to reconcile attributes occupying the same region. We present TRACE, which separates the continuing attribute from its visual carrier and prioritizes local appearance operations under complete-request checks. Active-goal binding identifies what should persist, carrier selection supplies suitable current or newly generated pixels, and tonal calibration reduces tinting near highlights and shadows. Experiments across frozen editors, independent visual readers, new source images, and complete sequential benchmarks support joint color-material recovery and show how local execution preserves the surrounding scene.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25648" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25648.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.25454</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.25454" target="_blank">Lossless Latent Diffusion Models</a>
+      </h3>
+      <p class="paper-title-zh">无损潜在扩散模型</p>
+      <p class="paper-authors">Tongda Xu, Yu Zhang, Jun Hu, Huijuan Huang</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出无损潜在扩散模型（LLDM），通过构建无损变换将像素映射到更适合扩散建模的表示，而非修改扩散模型本身，从而在保持像素精确重建的同时实现高质量图像生成。</div>
+        <div class="summary-section"><strong>方法:</strong> LLDM采用残差潜在变换和不均匀潜在缩放构建无损变换，将像素映射到潜在空间；并提出语义秩优先级（SRP）指标来解释其有效性，该指标衡量潜在表示对扩散建模的适用性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> LLDM在生成质量上显著优于先前的像素空间扩散模型，甚至超越若干广泛使用的有损VAE；SRP与下游生成性能高度相关。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We study the problem of training image diffusion models while preserving pixel-exact reconstruction. Prior works typically address this problem by directly modeling images in pixel space, requiring modifications to the diffusion training objective or model architecture. In this work, we introduce a different paradigm: rather than modifying diffusion models, we construct a lossless transformation that maps pixels into a representation more amenable to diffusion modeling. We term our approach the Lossless Latent Diffusion Model (LLDM). We construct LLDM using residual latent transformation and uneven latent scaling, and explain its effectiveness through a proposed metric, semantic rank priority (SRP). Empirically, LLDM substantially outperforms prior pixel-space diffusion models in generation quality and even surpasses several widely used lossy VAEs. Furthermore, we show that SRP is strongly correlated with downstream generative performance.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.25454" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.25454.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
