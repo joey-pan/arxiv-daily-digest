@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 ArXiv Daily Digest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --card-border: #2a2a2a;
+            --text: #e0e0e0;
+            --text-muted: #888;
+            --accent: #6366f1;
+            --accent-hover: #818cf8;
+            --success: #22c55e;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+        }
+        
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        
+        .date {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+        
+        .stats {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .archive-link-top {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .archive-link-top a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        .paper-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.2s;
+        }
+        
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+        
+        .paper-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            gap: 0.75rem;
+        }
+
+        .left-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .category-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .paper-id {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: monospace;
+        }
+
+        .score-badge {
+            border-radius: 999px;
+            border: 1px solid var(--accent);
+            padding: 0.15rem 0.6rem;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(99, 102, 241, 0.12);
+        }
+        
+        .paper-title {
+            font-size: 1.15rem;
+            line-height: 1.4;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-title a {
+            color: var(--text);
+            text-decoration: none;
+        }
+        
+        .paper-title a:hover {
+            color: var(--accent);
+        }
+        
+        .paper-title-zh {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .paper-authors {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .paper-summary {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .summary-section {
+            margin-bottom: 0.5rem;
+        }
+        
+        .summary-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .summary-section strong {
+            color: var(--accent);
+        }
+        
+        .paper-abstract {
+            margin-bottom: 1rem;
+        }
+        
+        .paper-abstract summary {
+            cursor: pointer;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        .paper-abstract p {
+            margin-top: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .paper-links {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+            background: var(--card-border);
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        
+        .link-btn:hover {
+            background: var(--accent);
+        }
+        
+        footer {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 1.75rem; }
+            .paper-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 ArXiv Daily Digest</h1>
+        <p class="subtitle">每日论文精选</p>
+        <p class="date">📅 2026-11-23</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
+    </header>
+    
+    <main>
+        
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">机器学习</span>
+          <span class="paper-id">2611.27288</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.27288" target="_blank">Preserving Pretrained CFG Structure in RL for Diffusion Models with Conditional Contrast Regularization</a>
+      </h3>
+      <p class="paper-title-zh">在扩散模型强化学习中通过条件对比正则化保持预训练CFG结构</p>
+      <p class="paper-authors">Yunfei Zheng, Xiaolong Wang, Dandan Zheng, Xianjun Deng, Shenghao Liu 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出条件对比正则化（CCR），在扩散模型的强化学习后训练中利用冻结参考模型的条件对比作为局部结构先验，以保持预训练CFG结构，从而在维持竞争力的奖励的同时更稳定地保持生成质量，改善奖励-质量权衡。</div>
+        <div class="summary-section"><strong>方法:</strong> 论文首先建立统一几何视角，将CFG和RL都解释为共同预测空间中的校正向量，并将RL诱导校正到预训练CFG校正上的投影作为质量相关结构保持的诊断指标。几何分析和旋转干预表明，预训练CFG方向携带对生成质量有用的信息，而奖励驱动的RL更新不一定保留该信息。基于此，提出CCR，在RL过程中使用冻结参考模型的条件对比作为局部结构先验进行正则化。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多种奖励设置和骨干网络上的实验表明，CCR在保持竞争力的奖励的同时，更一致地保持生成质量，相比标准RL和通用正则化方法实现了更好的奖励-质量权衡。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reinforcement Learning (RL) has become an important component in the post-training of diffusion models. In practice, however, standard RL often improves the target reward without reliably preserving holistic generation quality, leading to unstable reward-quality trade-offs that we view as a form of reward hacking. Since Classifier-Free Guidance (CFG) is known to improve visual clarity, prompt alignment, and perceptual quality in generation, we investigate whether its underlying structure can serve as a useful prior during RL. We present a unified geometric view that interprets both CFG and RL as correction vectors in a common prediction space, and identify the projection of the RL-induced correction onto the pretrained CFG correction as a useful diagnostic of quality-related structural preservation. Geometric analysis and rotation intervention further show that the pretrained CFG direction carries information useful for generation quality that reward-driven RL updates do not necessarily preserve. Based on this insight, we propose Conditional Contrast Regularization (CCR), which uses the frozen reference model's conditional contrast as a local structural prior during RL. Experiments across multiple reward settings and backbones show that CCR more consistently preserves generation quality while maintaining competitive reward, yielding a better reward-quality trade-off than standard RL and generic regularization methods.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.27288" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.27288.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.27266</span>
+        </div>
+        <span class="score-badge">相关性 82/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.27266" target="_blank">PP-CFG: Polarity-Preserving Guidance for Controllable Few-Step Image and Video Generation</a>
+      </h3>
+      <p class="paper-title-zh">PP-CFG：面向可控少步图像与视频生成的极性保持引导</p>
+      <p class="paper-authors">Junyi He, Xu Peng, Chengming Xu, Sixiao Zheng, Donghao Luo 等 (10 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出PP-CFG架构，在少步扩散蒸馏中保持正负文本条件的分离，并在共享视觉主干内以相反符号融合其注意力响应，从而恢复可调的无分类器引导（CFG）和运行时负向提示能力。</div>
+        <div class="summary-section"><strong>方法:</strong> 将正向与负向文本条件分别处理，在共享视觉主干中以相反符号组合二者的注意力响应；引入尺度-时间极性混合器（Scale-Time Polarity Mixer），利用引导尺度和去噪时间步对每个条件进行细化，使提示影响随生成过程动态变化；学生模型保留连续尺度输入和可选负向提示，每步仅需一次视觉主干前向。在Wan2.1视频生成（DMD蒸馏）和Qwen-Image图像生成（LCM与DMD蒸馏）上进行验证。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在四步采样下于VBench取得81.46分，且在多个引导尺度下视频师生距离低于步蒸馏DMD；在自建的NegElement-1K基准（1000个匹配的图像与视频提示案例）上，目标移除率高于对应教师模型；实验表明该方法在注意力架构、生成模态和蒸馏目标上具有通用性，同时保持有竞争力的生成质量。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Few-step diffusion distillation reduces sampling cost but often weakens adjustable classifier-free guidance (CFG) and runtime negative prompting. We introduce PP-CFG, an architecture that keeps positive and negative text conditions separate and combines their attention responses with opposite signs within a shared visual backbone. Its Scale-Time Polarity Mixer refines each condition using the guidance scale and denoising timestep, allowing prompt influence to vary throughout generation. The student retains a continuous scale input and selectable negative prompts with one visual backbone pass per step. We evaluate PP-CFG on Wan2.1 for video generation with distribution matching distillation (DMD), and on Qwen-Image with both latent consistency model (LCM) distillation and DMD. PP-CFG achieves 81.46 VBench in four steps and lower video teacher-student distances across guidance scales than step-distilled DMD. On NegElement-1K, our benchmark of 1,000 matched image and video prompt cases, it achieves higher target-removal rates than the corresponding teachers. These experiments support the method's generality across attention architectures, generation modalities, and distillation objectives while retaining competitive generation quality.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.27266" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.27266.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.27620</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.27620" target="_blank">Sketch2TikZ: Multi-Reward Reinforcement Learning for Converting Hand-Drawn Sketches to Executable TikZ</a>
+      </h3>
+      <p class="paper-title-zh">Sketch2TikZ：用于将手绘草图转换为可执行TikZ代码的多奖励强化学习</p>
+      <p class="paper-authors">Shubham Paliwal, Arushi Jain, Monika Sharma, Manasi Patwardhan</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Sketch2TikZ强化学习框架，通过序列化多奖励策略优化手绘草图到TikZ代码的生成，解决噪声和歧义输入导致的全局图有效性监督不足问题。</div>
+        <div class="summary-section"><strong>方法:</strong> 该框架采用强化学习优化草图到代码的生成过程，结合代码结构奖励、OCR奖励、CleanDIFT奖励和自相似性奖励四种信号，从文本、视觉和结构三个维度约束生成正确性。在SkeTikZ和FlowChart-3B基准上，使用编译成功率、图像相似度、代码相似度和字符相似度等指标进行评估，并通过消融实验验证课程式奖励调度的作用。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 方法实现了接近完美的编译成功率，在视觉和文本对齐上优于强开源基线，并与基于GPT的专有视觉语言模型保持竞争力。消融实验表明，基于课程的奖励调度对于减少奖励干扰、稳定训练和缓解代理过优化至关重要，验证了参考感知多目标强化学习在噪声草图结构化图生成中的有效性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Automatic digitization of hand-drawn sketches into editable formats is crucial for modern document workflows and LaTeX integration. Converting sketches into executable TikZ code provides a structured representation of diagrams, but remains challenging due to noisy and ambiguous inputs, which hinder reliable interpretation and limit the effectiveness of token-level supervision for ensuring global diagram validity. To address these challenges, we propose Sketch2TikZ, a reinforcement learning framework that optimizes sketch-to-code generation via a sequential multi-reward strategy, combining Code-Structure ($\mathcal{R}_{cs}$), OCR ($\mathcal{R}_{ocr}$), CleanDIFT ($\mathcal{R}_{cd}$), and Self-Similarity ($\mathcal{R}_{ss}$) rewards to enforce textual, visual and structural correctness. We evaluate Sketch2TikZ on the SkeTikZ and FlowChart-3B benchmarks using metrics including compilation success rate (CSR), image similarity, code similarity, and character similarity. Our method achieves near-perfect compilation success and improves visual and textual alignment over strong open-source baselines, while remaining competitive with proprietary GPT-based vision-language models. Extensive ablations demonstrate that curriculum-based reward scheduling is critical for reducing reward interference, stabilizing training and mitigating proxy over-optimization. Overall, our results highlight the effectiveness of reference-aware, multi-objective reinforcement learning for structured diagram generation from noisy sketches.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.27620" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.27620.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.27388</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.27388" target="_blank">What Stays in the Picture? From Redundant Instructions to Dependency-Aware Image Editing</a>
+      </h3>
+      <p class="paper-title-zh">画面中保留了什么？从冗余指令到依赖感知的图像编辑</p>
+      <p class="paper-authors">Zi-Jun Wang, Yu Lin, Zhilin Zhao</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出“复杂冗余指令图像编辑”新任务，并设计CRIE-Agent，通过将修订历史解析为最终编辑目标来联合指导规划与验证，避免过时请求变成视觉编辑，从而显著提升完整编辑成功率。</div>
+        <div class="summary-section"><strong>方法:</strong> CRIE-Agent首先将多次修订整合为对象级的最终意图，明确哪些对象和属性需要保留；然后以“引用优先”的块结构执行保留对象，先建立被引用对象再处理依赖对象；验证阶段从源图像出发，结合条件布局提示引导完整重执行，防止失败尝试中的视觉错误被带入后续步骤。同时构建了包含1万条复杂冗余编辑指令及精确最终意图标注的CRIE-S基准。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在CRIE-S基准上，使用五种图像编辑后端，CRIE-Agent将完整编辑成功率从直接编辑的0%提升至27.5%–50.0%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>We introduce complex redundant-instruction image editing, where a single request specifies multiple objects, their attributes, and spatial relations while revising or canceling earlier editing requirements. Direct editing can fail to recover this intent, while splitting the request into successive steps can preserve obsolete edits and visual errors. Our key insight is to resolve the revision history into a final editing target that jointly guides planning and verification, so that obsolete requests do not become visual edits. Based on this insight, CRIE-Agent learns to consolidate revisions into object-level final intent and executes the retained objects in reference-first blocks, establishing referenced objects before their dependents. Verification then guides complete re-execution from the source image, with conditional layout hints, preventing visual errors from failed attempts from being carried into subsequent ones. We also construct CRIE-S, a benchmark containing 10,000 complex and redundant editing instructions with exact final intent annotations. Across five image-editing backends on CRIE-S, CRIE-Agent raises complete editing success from 0% under direct editing to 27.5--50.0%.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.27388" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.27388.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.27360</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.27360" target="_blank">Borrow the Style, Follow the Prompt: Progressive Reference-Guided Stylization</a>
+      </h3>
+      <p class="paper-title-zh">借其风格，循其提示：渐进式参考引导风格化</p>
+      <p class="paper-authors">Yu Lin, Zi-Jun Wang, Zhilin Zhao</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出ProStyle方法，通过内容抑制的风格先验和渐进式参考引导，在保持文本内容控制的同时忠实迁移参考图像的风格；并构建ReConStyle数据集与评测体系，在自动与人工评估中均优于基线。</div>
+        <div class="summary-section"><strong>方法:</strong> 首先通过对不同主体和背景的同风格图像对进行跨内容监督，学习内容抑制的风格先验，并在辅助层以弱条件注入以增强风格表达；然后冻结该风格通路，从完整参考块特征中学习残差修正；最后两条通路在相同目标下联合微调。同时构建ReConStyle数据集（134K训练对、两种测试设置及对象级指标）用于跨内容学习与评估。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在ReConStyle-Full上，ProStyle优于所有基于SD1.5的基线，在四项自动指标和三项人工评估中平均排名1.86；用户研究中文本对齐和综合适宜性选择率分别达84.36%和50.90%；在外部Style-Rank基准上取得最高的CLIP-Text和ImageReward分数。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Reference-guided text-to-image stylization transfers visual appearance to content specified by text, but the reference subjects and backgrounds can interfere with what the generated image depicts. Suppressing this unwanted information can also discard transferable texture and material cues, creating a tension between content control and faithful preservation of the reference style. Accordingly, we propose ProStyle, which learns a content-suppressed style prior through cross-content supervision on same-style pairs with different subjects and backgrounds and injects it with weak conditioning at auxiliary layers to strengthen style expression. Building on this prior, a complementary pathway learns residual corrections from full reference patch features with the content-suppressed style pathway frozen, before both pathways undergo joint refinement under the same objective. For cross-content learning and evaluation, we introduce ReConStyle, which provides 134K training pairs, two test settings, and object-level measures of target-content fidelity and reference-object overlap alongside style similarity and text alignment. ProStyle outperforms all compared SD1.5-based baselines and achieves the best average rank of 1.86 across four automatic and three human-evaluation criteria on ReConStyle-Full. In the user study, it substantially outperforms the baselines in text alignment and combined suitability, with selection rates of 84.36% and 50.90%, respectively. On the external Style-Rank benchmark, it also achieves the highest CLIP-Text and ImageReward scores.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.27360" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.27360.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+    </main>
+    
+    <footer>
+        <p>由 <a href="https://github.com">ArXiv Daily Digest</a> 自动生成</p>
+        <p>数据来源: <a href="https://arxiv.org">arXiv.org</a> | AI 总结: DeepSeek</p>
+    </footer>
+</body>
+</html>
