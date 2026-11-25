@@ -225,8 +225,8 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-23</p>
-        <p class="stats">共 5 篇论文 | 计算机视觉: 4 | 机器学习: 1</p>
+        <p class="date">📅 2026-11-25</p>
+        <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
     
@@ -235,31 +235,31 @@
     <article class="paper-card">
       <div class="paper-header">
         <div class="left-header">
-          <span class="category-badge">机器学习</span>
-          <span class="paper-id">2611.27288</span>
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.32736</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.27288" target="_blank">Preserving Pretrained CFG Structure in RL for Diffusion Models with Conditional Contrast Regularization</a>
+        <a href="https://arxiv.org/abs/2611.32736" target="_blank">Qwen-Image-HD: Autoregressive Diffusion for High Definition Image Generation</a>
       </h3>
-      <p class="paper-title-zh">在扩散模型强化学习中通过条件对比正则化保持预训练CFG结构</p>
-      <p class="paper-authors">Yunfei Zheng, Xiaolong Wang, Dandan Zheng, Xianjun Deng, Shenghao Liu 等 (8 位作者)</p>
+      <p class="paper-title-zh">Qwen-Image-HD：用于高清图像生成的自回归扩散模型</p>
+      <p class="paper-authors">Zihao Liu, Zekai Zhang, Shengming Yin, Zikai Zhou, Donghao Zhou 等 (28 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出条件对比正则化（CCR），在扩散模型的强化学习后训练中利用冻结参考模型的条件对比作为局部结构先验，以保持预训练CFG结构，从而在维持竞争力的奖励的同时更稳定地保持生成质量，改善奖励-质量权衡。</div>
-        <div class="summary-section"><strong>方法:</strong> 论文首先建立统一几何视角，将CFG和RL都解释为共同预测空间中的校正向量，并将RL诱导校正到预训练CFG校正上的投影作为质量相关结构保持的诊断指标。几何分析和旋转干预表明，预训练CFG方向携带对生成质量有用的信息，而奖励驱动的RL更新不一定保留该信息。基于此，提出CCR，在RL过程中使用冻结参考模型的条件对比作为局部结构先验进行正则化。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在多种奖励设置和骨干网络上的实验表明，CCR在保持竞争力的奖励的同时，更一致地保持生成质量，相比标准RL和通用正则化方法实现了更好的奖励-质量权衡。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Qwen-Image-HD，通过局部训练和分块自回归生成将Qwen-Image 2.0适配到高分辨率合成，在降低训练计算量的同时提升生成质量并减少重复条纹伪影。</div>
+        <div class="summary-section"><strong>方法:</strong> 每个预测覆盖1K尺度的目标图块，以高分辨率的上方和左侧邻块以及压缩的历史缩略图为条件。将两种历史形式与目标映射到共享画布坐标系，以表达空间关系和尺度差异。采用分块自回归生成，并引入Wavefront-AutoRegressive推理调度，在GPU上并行生成同一反对角线上的图块以降低单图延迟。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在Qwen-Image-Bench的4K评测中，Qwen-Image-HD整体评估性能优于FLUX-3-Image-Klein的直接4K生成。与同骨干的全图4K监督微调相比，它以更低训练计算量和更高推理效率获得更好生成质量，且在原始分辨率对比中重复条纹伪影更少。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reinforcement Learning (RL) has become an important component in the post-training of diffusion models. In practice, however, standard RL often improves the target reward without reliably preserving holistic generation quality, leading to unstable reward-quality trade-offs that we view as a form of reward hacking. Since Classifier-Free Guidance (CFG) is known to improve visual clarity, prompt alignment, and perceptual quality in generation, we investigate whether its underlying structure can serve as a useful prior during RL. We present a unified geometric view that interprets both CFG and RL as correction vectors in a common prediction space, and identify the projection of the RL-induced correction onto the pretrained CFG correction as a useful diagnostic of quality-related structural preservation. Geometric analysis and rotation intervention further show that the pretrained CFG direction carries information useful for generation quality that reward-driven RL updates do not necessarily preserve. Based on this insight, we propose Conditional Contrast Regularization (CCR), which uses the frozen reference model's conditional contrast as a local structural prior during RL. Experiments across multiple reward settings and backbones show that CCR more consistently preserves generation quality while maintaining competitive reward, yielding a better reward-quality trade-off than standard RL and generic regularization methods.</p>
+        <p>Fine-tuning a generator on a complete high-resolution canvas requires long image sequences and substantial computation, yet local regions can still exhibit unnatural repetitive stripes when training resources are limited. We introduce Qwen-Image-HD, which adapts Qwen-Image 2.0 to high-resolution synthesis through local training and blockwise autoregressive generation. Each prediction covers a target tile at 1K scale, conditioned on high-resolution upper and left neighbors and a compressed historical thumbnail. These conditions provide adjacent fine-scale structures and an overview of the scene generated so far. To integrate these complementary cues, we map both forms of history and the target to a shared canvas coordinate system to express their spatial relationships and scale differences. On Qwen-Image-Bench at 4K, Qwen-Image-HD achieves stronger overall evaluation performance than direct 4K generation with FLUX-3-Image-Klein. Compared with full-image 4K supervised fine-tuning of the same backbone, it achieves better generation quality with lower training compute and higher inference efficiency, while exhibiting fewer unnatural repetitive stripes in original-resolution comparisons. We further introduce a Wavefront-AutoRegressive inference schedule that generates tiles on the same anti-diagonal concurrently across GPUs to reduce single-image latency.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.27288" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.27288.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.32736" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.32736.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -268,30 +268,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.27266</span>
+          <span class="paper-id">2611.32462</span>
         </div>
-        <span class="score-badge">相关性 82/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.27266" target="_blank">PP-CFG: Polarity-Preserving Guidance for Controllable Few-Step Image and Video Generation</a>
+        <a href="https://arxiv.org/abs/2611.32462" target="_blank">MAGPIE: Agentic Multi-Reference Image Generation via Executable Scene Construction</a>
       </h3>
-      <p class="paper-title-zh">PP-CFG：面向可控少步图像与视频生成的极性保持引导</p>
-      <p class="paper-authors">Junyi He, Xu Peng, Chengming Xu, Sixiao Zheng, Donghao Luo 等 (10 位作者)</p>
+      <p class="paper-title-zh">MAGPIE：通过可执行场景构建的智能体多参考图像生成</p>
+      <p class="paper-authors">Yifan Dai, Daili Hua, Bohan Zeng, Yuran Wang, Jialing Liu 等 (18 位作者)</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出PP-CFG架构，在少步扩散蒸馏中保持正负文本条件的分离，并在共享视觉主干内以相反符号融合其注意力响应，从而恢复可调的无分类器引导（CFG）和运行时负向提示能力。</div>
-        <div class="summary-section"><strong>方法:</strong> 将正向与负向文本条件分别处理，在共享视觉主干中以相反符号组合二者的注意力响应；引入尺度-时间极性混合器（Scale-Time Polarity Mixer），利用引导尺度和去噪时间步对每个条件进行细化，使提示影响随生成过程动态变化；学生模型保留连续尺度输入和可选负向提示，每步仅需一次视觉主干前向。在Wan2.1视频生成（DMD蒸馏）和Qwen-Image图像生成（LCM与DMD蒸馏）上进行验证。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在四步采样下于VBench取得81.46分，且在多个引导尺度下视频师生距离低于步蒸馏DMD；在自建的NegElement-1K基准（1000个匹配的图像与视频提示案例）上，目标移除率高于对应教师模型；实验表明该方法在注意力架构、生成模态和蒸馏目标上具有通用性，同时保持有竞争力的生成质量。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出MAGPIE框架，将多参考图像生成中的目标构图表示为可执行的Blender 3D场景程序，通过编码智能体进行规划、检查和修正，从而在图像合成前显式实例化并验证场景关系。</div>
+        <div class="summary-section"><strong>方法:</strong> MAGPIE将预期构图表示为一个由可执行Blender程序定义的简化3D场景。编码智能体将每个场景实例链接到其参考图像，对照指令检查几何结构和渲染视图，并修改程序以纠正偏差。最终的代理渲染作为图像生成器的视觉规划。作者构建了MAGPIE-Instruct-3K数据集，训练生成器遵循该规划，同时从参考图像中提取每个主体的外观。</div>
+        <div class="summary-section"><strong>关键发现:</strong> MAGPIE在DreamOmni2和SconeEval基准上均提升了Qwen和FLUX模型的表现。使用FLUX时，在DreamOmni2上的整体成功率相比原始骨干模型提升了28.21个百分点，并在SconeEval上取得了所评估模型中的最高总体得分。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Few-step diffusion distillation reduces sampling cost but often weakens adjustable classifier-free guidance (CFG) and runtime negative prompting. We introduce PP-CFG, an architecture that keeps positive and negative text conditions separate and combines their attention responses with opposite signs within a shared visual backbone. Its Scale-Time Polarity Mixer refines each condition using the guidance scale and denoising timestep, allowing prompt influence to vary throughout generation. The student retains a continuous scale input and selectable negative prompts with one visual backbone pass per step. We evaluate PP-CFG on Wan2.1 for video generation with distribution matching distillation (DMD), and on Qwen-Image with both latent consistency model (LCM) distillation and DMD. PP-CFG achieves 81.46 VBench in four steps and lower video teacher-student distances across guidance scales than step-distilled DMD. On NegElement-1K, our benchmark of 1,000 matched image and video prompt cases, it achieves higher target-removal rates than the corresponding teachers. These experiments support the method's generality across attention architectures, generation modalities, and distillation objectives while retaining competitive generation quality.</p>
+        <p>Multi-reference image generation requires a model to preserve the appearance of selected subjects while arranging them according to an instruction. Despite recent progress in reference-based generation and compositional control, reliably organizing selected subjects into the intended scene remains challenging. Although existing methods provide various forms of compositional guidance, the planned relationships are not always explicitly instantiated for inspection and refinement before image synthesis. To address this limitation, we introduce MAGPIE, which represents the intended composition as a simplified 3D scene defined by an executable Blender program. A coding agent links each scene instance to its reference, checks the geometry and rendered view against the instruction, and revises the program to correct discrepancies. The final proxy rendering serves as a visual plan for the image generator. Using MAGPIE-Instruct-3K, we train the generator to follow this plan while drawing each subject's appearance from its reference. MAGPIE improves both Qwen and FLUX on DreamOmni2 and SconeEval. With FLUX, it improves overall success on DreamOmni2 by 28.21 percentage points over the original backbone and achieves the highest overall score among the models evaluated on SconeEval.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.27266" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.27266.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.32462" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.32462.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -300,30 +300,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.27620</span>
+          <span class="paper-id">2611.32327</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.27620" target="_blank">Sketch2TikZ: Multi-Reward Reinforcement Learning for Converting Hand-Drawn Sketches to Executable TikZ</a>
+        <a href="https://arxiv.org/abs/2611.32327" target="_blank">FlowVecFont: Scalable Vector Font Generation via Latent Flow Matching</a>
       </h3>
-      <p class="paper-title-zh">Sketch2TikZ：用于将手绘草图转换为可执行TikZ代码的多奖励强化学习</p>
-      <p class="paper-authors">Shubham Paliwal, Arushi Jain, Monika Sharma, Manasi Patwardhan</p>
+      <p class="paper-title-zh">FlowVecFont：基于潜在流匹配的可扩展矢量字体生成</p>
+      <p class="paper-authors">Takumu Fujioka, Gouhei Tanaka</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出Sketch2TikZ强化学习框架，通过序列化多奖励策略优化手绘草图到TikZ代码的生成，解决噪声和歧义输入导致的全局图有效性监督不足问题。</div>
-        <div class="summary-section"><strong>方法:</strong> 该框架采用强化学习优化草图到代码的生成过程，结合代码结构奖励、OCR奖励、CleanDIFT奖励和自相似性奖励四种信号，从文本、视觉和结构三个维度约束生成正确性。在SkeTikZ和FlowChart-3B基准上，使用编译成功率、图像相似度、代码相似度和字符相似度等指标进行评估，并通过消融实验验证课程式奖励调度的作用。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 方法实现了接近完美的编译成功率，在视觉和文本对齐上优于强开源基线，并与基于GPT的专有视觉语言模型保持竞争力。消融实验表明，基于课程的奖励调度对于减少奖励干扰、稳定训练和缓解代理过优化至关重要，验证了参考感知多目标强化学习在噪声草图结构化图生成中的有效性。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文提出FlowVecFont，证明仅通过扩展一个简单模型即可实现高质量的纯矢量字体生成，无需外部预训练或位图表示，并发布了矢量字体机器学习库TorchFont。</div>
+        <div class="summary-section"><strong>方法:</strong> 该方法基于潜在流匹配，仅使用矢量轮廓进行训练。首先用基于Transformer的变分自编码器将字形序列映射为固定长度的连续潜在token，再在此基础上应用标准条件流匹配进行矢量字形生成。模型支持以类别标签或参考字形作为条件，后者可泛化到未见过的字符和字体。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在从Google Fonts收集的500万个字形（含非拉丁字符）上的实验表明，生成质量随模型规模增大而提升，且在不同条件策略下均成立。在拉丁字形的对比中，800M参数的FlowVecFont优于DeepVecFont-v2和DesigNet，并与预训练的27B参数VecGlypher质量相当。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Automatic digitization of hand-drawn sketches into editable formats is crucial for modern document workflows and LaTeX integration. Converting sketches into executable TikZ code provides a structured representation of diagrams, but remains challenging due to noisy and ambiguous inputs, which hinder reliable interpretation and limit the effectiveness of token-level supervision for ensuring global diagram validity. To address these challenges, we propose Sketch2TikZ, a reinforcement learning framework that optimizes sketch-to-code generation via a sequential multi-reward strategy, combining Code-Structure ($\mathcal{R}_{cs}$), OCR ($\mathcal{R}_{ocr}$), CleanDIFT ($\mathcal{R}_{cd}$), and Self-Similarity ($\mathcal{R}_{ss}$) rewards to enforce textual, visual and structural correctness. We evaluate Sketch2TikZ on the SkeTikZ and FlowChart-3B benchmarks using metrics including compilation success rate (CSR), image similarity, code similarity, and character similarity. Our method achieves near-perfect compilation success and improves visual and textual alignment over strong open-source baselines, while remaining competitive with proprietary GPT-based vision-language models. Extensive ablations demonstrate that curriculum-based reward scheduling is critical for reducing reward interference, stabilizing training and mitigating proxy over-optimization. Overall, our results highlight the effectiveness of reference-aware, multi-objective reinforcement learning for structured diagram generation from noisy sketches.</p>
+        <p>Fonts are natively represented as vector outlines. Many existing studies on vector font generation have relied on specialized generation or refinement mechanisms, bitmap representations, or externally pretrained models to address the challenges of learning vector representations. These approaches often increase system complexity, incur additional computational and implementation costs, and introduce dependencies on external resources. We show that scaling a simple model enables high-quality pure vector font generation without external pretraining. We propose FlowVecFont, a scalable model for vector font generation based on latent flow matching and trained solely on vector outlines. A Transformer-based variational autoencoder maps glyph sequences into fixed-length continuous latent tokens, enabling standard conditional flow matching for vector glyph generation. The model supports conditioning on class labels or reference glyphs, with the latter enabling generalization to unseen characters and fonts. Experiments on 5M glyphs collected across Google Fonts, including non-Latin characters, show that generation quality improves with model scale across conditioning strategies. In a comparison on Latin glyphs, the 800M-parameter FlowVecFont outperforms DeepVecFont-v2 and DesigNet and achieves quality competitive with the pretrained 27B-parameter VecGlypher. We also provide TorchFont, a machine learning library for vector fonts.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.27620" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.27620.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.32327" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.32327.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -332,30 +332,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.27388</span>
+          <span class="paper-id">2611.32151</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.27388" target="_blank">What Stays in the Picture? From Redundant Instructions to Dependency-Aware Image Editing</a>
+        <a href="https://arxiv.org/abs/2611.32151" target="_blank">Let The Pixels Through: Rethinking Long Skip Connections for Scalable Pixel Diffusion</a>
       </h3>
-      <p class="paper-title-zh">画面中保留了什么？从冗余指令到依赖感知的图像编辑</p>
-      <p class="paper-authors">Zi-Jun Wang, Yu Lin, Zhilin Zhao</p>
+      <p class="paper-title-zh">让像素通过：重新思考可扩展像素扩散中的长跳跃连接</p>
+      <p class="paper-authors">Jiachen Lei, Jiahong Wu, XiangXiang Chu</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出“复杂冗余指令图像编辑”新任务，并设计CRIE-Agent，通过将修订历史解析为最终编辑目标来联合指导规划与验证，避免过时请求变成视觉编辑，从而显著提升完整编辑成功率。</div>
-        <div class="summary-section"><strong>方法:</strong> CRIE-Agent首先将多次修订整合为对象级的最终意图，明确哪些对象和属性需要保留；然后以“引用优先”的块结构执行保留对象，先建立被引用对象再处理依赖对象；验证阶段从源图像出发，结合条件布局提示引导完整重执行，防止失败尝试中的视觉错误被带入后续步骤。同时构建了包含1万条复杂冗余编辑指令及精确最终意图标注的CRIE-S基准。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在CRIE-S基准上，使用五种图像编辑后端，CRIE-Agent将完整编辑成功率从直接编辑的0%提升至27.5%–50.0%。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文重新审视了U-Net中的长跳跃连接，发现其优化益处对去噪并非必要，且传统线性特征组合在不同噪声水平下不充分，据此提出非对称长跳跃和adaGLU模块，构建了可平滑扩展至1.6B参数的简单像素扩散Transformer架构。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者首先分析现有像素原生设计，发现长跳跃连接的优化益处与去噪益处可分离，且线性特征组合不适应多噪声水平。为此，采用非对称长跳跃将输入嵌入的细粒度信息传播到解码器层，并在解码器层引入类似SwiGLU的adaGLU MLP块，在嵌入特征与主分支特征相加前自适应过滤信息。该设计形成简单的像素扩散Transformer，从头训练可从小规模基线平滑扩展至1.6B参数。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 该模型在ImageNet-256和ImageNet-512上分别达到1.62和1.70 FID，并原生支持文本和图像等多模态输入，在文本到图像生成中取得有竞争力的性能。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>We introduce complex redundant-instruction image editing, where a single request specifies multiple objects, their attributes, and spatial relations while revising or canceling earlier editing requirements. Direct editing can fail to recover this intent, while splitting the request into successive steps can preserve obsolete edits and visual errors. Our key insight is to resolve the revision history into a final editing target that jointly guides planning and verification, so that obsolete requests do not become visual edits. Based on this insight, CRIE-Agent learns to consolidate revisions into object-level final intent and executes the retained objects in reference-first blocks, establishing referenced objects before their dependents. Verification then guides complete re-execution from the source image, with conditional layout hints, preventing visual errors from failed attempts from being carried into subsequent ones. We also construct CRIE-S, a benchmark containing 10,000 complex and redundant editing instructions with exact final intent annotations. Across five image-editing backends on CRIE-S, CRIE-Agent raises complete editing success from 0% under direct editing to 27.5--50.0%.</p>
+        <p>Training pixel diffusion models remains less straightforward, owing to the ad hoc training recipes and architecture designs, along with the sensitivity to hyper-parameter choices. We show that strong denoisers can be built by refining existing pixel-native designs from the literature. Specifically, we revisit the long skip connection in U-Net and find that the optimization benefit commonly attributed to it is not necessary for its denoising benefit. We further find that the conventional linear combination of features from the skip and main backbone is inadequate for regimes of various noise levels. Motivated by these observations, we introduce two core modifications. First, we adopt asymmetric long skips, which propagate fine-grained information from input embeddings to decoder layers. Second, we introduce adaGLU, a SwiGLU-like MLP block, in decoder layers to adaptively filter information from the embeddings before being added to main-branch features. The above designs give a simple pixel diffusion transformer architecture. When trained from scratch, it scales smoothly from small-scale baselines up to 1.6B parameters, achieving 1.62 and 1.70 FID on ImageNet-256 and -512, respectively. Besides, it natively supports multimodal inputs, such as text and images, yielding competitive performance in text-to-image generation. We release our codes at https://github.com/AMAP-ML/PiT</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.27388" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.27388.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.32151" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.32151.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
@@ -364,30 +364,30 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.27360</span>
+          <span class="paper-id">2611.31977</span>
         </div>
-        <span class="score-badge">相关性 72/100</span>
+        <span class="score-badge">相关性 88/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.27360" target="_blank">Borrow the Style, Follow the Prompt: Progressive Reference-Guided Stylization</a>
+        <a href="https://arxiv.org/abs/2611.31977" target="_blank">Distill to Loop: Turning Pretrained Diffusion Transformers into Looped Models with Adjustable Depth</a>
       </h3>
-      <p class="paper-title-zh">借其风格，循其提示：渐进式参考引导风格化</p>
-      <p class="paper-authors">Yu Lin, Zi-Jun Wang, Zhilin Zhao</p>
+      <p class="paper-title-zh">蒸馏至循环：将预训练扩散Transformer转化为可调深度的循环模型</p>
+      <p class="paper-authors">Chenru Wang, Shengwei An</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出ProStyle方法，通过内容抑制的风格先验和渐进式参考引导，在保持文本内容控制的同时忠实迁移参考图像的风格；并构建ReConStyle数据集与评测体系，在自动与人工评估中均优于基线。</div>
-        <div class="summary-section"><strong>方法:</strong> 首先通过对不同主体和背景的同风格图像对进行跨内容监督，学习内容抑制的风格先验，并在辅助层以弱条件注入以增强风格表达；然后冻结该风格通路，从完整参考块特征中学习残差修正；最后两条通路在相同目标下联合微调。同时构建ReConStyle数据集（134K训练对、两种测试设置及对象级指标）用于跨内容学习与评估。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ReConStyle-Full上，ProStyle优于所有基于SD1.5的基线，在四项自动指标和三项人工评估中平均排名1.86；用户研究中文本对齐和综合适宜性选择率分别达84.36%和50.90%；在外部Style-Rank基准上取得最高的CLIP-Text和ImageReward分数。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 提出Dooop方法，通过蒸馏将预训练的非循环扩散Transformer转化为循环学生模型，使其在测试时无需重新训练即可运行任意数量的循环，并支持沿深度维度应用高阶ODE求解器。</div>
+        <div class="summary-section"><strong>方法:</strong> 将蒸馏视为向教师模型的固定点迭代，每个循环的输出都训练逼近教师模型，且每个循环对应深度方向ODE的一步。循环学生模型的块从教师模型初始化，测试时可运行任意循环数。同时利用不同循环数输出构建循环引导，以少量额外计算提升生成样本质量。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SD3-medium上，参数量约为教师37%的循环学生模型在2-4个循环时于GenEval、ImageReward、PickScore和HPSv2.1上平均匹配教师性能，2个循环时计算量约为教师的58%。在四步SD3-medium上，循环引导将四项指标平均值从88.2提升至99.2。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Reference-guided text-to-image stylization transfers visual appearance to content specified by text, but the reference subjects and backgrounds can interfere with what the generated image depicts. Suppressing this unwanted information can also discard transferable texture and material cues, creating a tension between content control and faithful preservation of the reference style. Accordingly, we propose ProStyle, which learns a content-suppressed style prior through cross-content supervision on same-style pairs with different subjects and backgrounds and injects it with weak conditioning at auxiliary layers to strengthen style expression. Building on this prior, a complementary pathway learns residual corrections from full reference patch features with the content-suppressed style pathway frozen, before both pathways undergo joint refinement under the same objective. For cross-content learning and evaluation, we introduce ReConStyle, which provides 134K training pairs, two test settings, and object-level measures of target-content fidelity and reference-object overlap alongside style similarity and text alignment. ProStyle outperforms all compared SD1.5-based baselines and achieves the best average rank of 1.86 across four automatic and three human-evaluation criteria on ReConStyle-Full. In the user study, it substantially outperforms the baselines in text alignment and combined suitability, with selection rates of 84.36% and 50.90%, respectively. On the external Style-Rank benchmark, it also achieves the highest CLIP-Text and ImageReward scores.</p>
+        <p>Looped transformers reuse one block of shared weights along the depth of the network. Recent looped diffusion transformers are trained from scratch, which repeats the full pretraining cost although strong pretrained non-looped diffusion transformers exist. We propose Distill to Loop (Dooop), which distills a pretrained non-looped diffusion transformer into a looped student whose blocks are initialized from the teacher's. We cast distillation as a fixed-point iteration toward the teacher, in which the output after every loop is trained toward the teacher, and each loop is one step of an ordinary differential equation in depth. As a result, one model runs any number of loops at test time without retraining, and the higher-order ODE solvers of diffusion model sampling can be applied along the depth dimension for better results. Meanwhile, because a looped model produces an output after every loop, we also construct loop guidance between the outputs of different loop counts, which improves the generated samples at little extra compute. On SD3-medium, a looped student with about 37% of the teacher's parameters matches the teacher on average over GenEval, ImageReward, PickScore and HPSv2.1 with two to four loops, and with two loops it uses about 58% of the teacher's compute. And on a four-step SD3-medium, loop guidance raises the average of the four metrics from 88.2 to 99.2.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.27360" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.27360.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.31977" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.31977.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     
