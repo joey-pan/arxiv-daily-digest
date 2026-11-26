@@ -1,0 +1,147 @@
+[
+  {
+    "id": "2611.34839",
+    "title": "Diffusion Steering via Adaptive Reward Estimation and Resampling",
+    "abstract": "Text-to-image diffusion models can generate images that satisfy complex prompts, yet often produce images that omit requested objects, attributes, or relationships. We ask if models can more reliably generate text-aligned images by redistributing probability toward their more successful outcomes. We propose TrailMix, a training-free method that uses the base model's distribution of possible outcomes to adaptively guide generation toward better text alignment. During denoising, TrailMix generates inexpensive lookahead images from parallel trajectories (trails) and scores their alignment with the prompt using an external judge. The resulting distribution of reward scores allows us to estimate how strongly to steer generation toward a desired alignment level. We use these estimates to reweight and resample trajectories, favoring more promising outcomes. Across three text-to-image benchmarks, TrailMix outperforms existing baselines, with particularly strong gains on rare multi-object compositions. We further extend TrailMix to targeted image editing and introduce SEAM-Bench (Semantic Editing and Attribute Maintenance), a systematic benchmark evaluating whether semantic edits preserve other image content. Experiments on SEAM-Bench and existing benchmark PIE-Bench demonstrate the effectiveness of our approach for controlled image editing. Our results show how a model's own possible outcomes can inform reliable and controllable generation.",
+    "authors": [
+      "Abinitha Gourabathina",
+      "Sana Tonekaboni",
+      "Marzyeh Ghassemi",
+      "Akbar Rafiey"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34839.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34839",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "通过自适应奖励估计与重采样的扩散引导",
+      "core_contribution": "提出TrailMix，一种无需训练的方法，利用基础模型自身可能输出的分布来估计奖励并重采样去噪轨迹，从而更可靠地生成与文本对齐的图像，并进一步扩展到可控图像编辑。",
+      "method": "在去噪过程中，TrailMix从并行轨迹（trails）生成低成本的前瞻图像，并用外部评判器对其与提示词的对齐程度打分。根据奖励分数的分布，估计应将生成引导到目标对齐水平的强度。随后利用这些估计对轨迹进行重加权和重采样，偏向更有希望的结果。该方法无需额外训练，直接作用于基础模型的采样过程。",
+      "findings": "在三个文本到图像基准上，TrailMix优于现有基线，尤其在罕见的多物体组合上提升显著。作者还将方法扩展到定向图像编辑，并提出SEAM-Bench基准，用于评估语义编辑是否保留其他图像内容；在SEAM-Bench和PIE-Bench上的实验验证了该方法在可控图像编辑上的有效性。结果表明，模型自身可能的结果分布可用于指导可靠且可控的生成。"
+    }
+  },
+  {
+    "id": "2611.34801",
+    "title": "Guidance as Variance Matching",
+    "abstract": "Guidance repels the prediction of a diffusion model away from a weaker reference prediction. It substantially improves sample quality, but its mechanism remains poorly understood. We first find that, at the scales used in practice, guidance does not improve the prediction of the posterior mean (the model's training target); it makes the prediction worse, while samples improve. Second, posterior-mean predictions have less variance than the data, and we find that guidance restores it. We introduce variance-matched guidance: a closed-form rule that picks the guidance scale by matching the variance of the guided predictions to that of the data. Without tuning, it recovers the hand-picked scales of eleven widely used models across image, video, audio, motion, and world generation; to our knowledge, no previous explanation of guidance predicts them. Applied per noise level, it yields a schedule without tuned hyperparameters that users prefer to hand-crafted ones on SD 3.5 Medium. Third, we offer an interpretation of the mechanism behind guidance: each model makes a random error in predicting the posterior mean, and guidance rescales the difference of these errors into a sample with the posterior's covariance, which improves sampling. This view also suggests two new hypotheses that our experiments support: guidance can work with negative scales, and guiding a model with its own checkpoint needs a larger scale than guiding it with an independently trained model.",
+    "authors": [
+      "Ali Backour",
+      "Artem Lukoianov",
+      "Frank Permenter",
+      "Tommi Jaakkola",
+      "Justin Solomon",
+      "Vincent Sitzmann"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34801.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34801",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "引导即方差匹配",
+      "core_contribution": "论文发现扩散模型中的引导机制并非改善后验均值预测，而是通过恢复预测方差来提升样本质量，并提出了方差匹配引导的闭式规则，无需调参即可复现十一个广泛使用模型的手选引导尺度。",
+      "method": "作者首先分析引导对后验均值预测的影响，发现引导使预测变差但样本改善；接着观察到后验均值预测的方差小于数据方差，引导能恢复该方差。基于此提出方差匹配引导：通过匹配引导预测的方差与数据方差来闭式确定引导尺度。进一步给出引导机制的解释：每个模型在后验均值预测中产生随机误差，引导将这些误差的差异重新缩放为具有后验协方差的样本。",
+      "findings": "关键发现包括：引导在实用尺度下不改善后验均值预测反而使其变差；引导能恢复后验均值预测缺失的方差；方差匹配引导无需调参即可复现十一个模型（涵盖图像、视频、音频、运动及世界生成）的手选尺度；按噪声水平应用可得到优于手工调参的调度方案；引导机制可解释为误差重缩放，并支持两个新假设：引导可用负尺度，以及用模型自身检查点引导需要比用独立训练模型更大的尺度。"
+    }
+  },
+  {
+    "id": "2611.34782",
+    "title": "Generation as Reverse Encoding",
+    "abstract": "Pretrained visual representations accelerate generative learning by abstracting away appearance and spatial detail. Yet the same abstraction makes the return to pixels far harder, shifting much of the burden onto a larger decoder. We ask why the representation-to-pixel path should be learned independently when the encoder already provides a learned pixel-to-semantics path (the semantic encoding path). We introduce RevFlow, based on the principle of generation as reverse encoding. RevFlow uses intermediate representations of a frozen encoder as successive generative targets, first generating deep semantic representations, then shallow representations that retain appearance and spatial detail, before decoding to pixels. To learn these transitions without training a separate generator for each stage, we develop HyC-DiT, a unified generative model with a standard DiT backbone shared across stages and stage-specific condition injection. We further show that native matching in semantic representation space enables few-step generation. RevFlow accelerates both learning and sampling. On ImageNet $256 \\times 256$, RevFlow reaches 1.96 FID at 690M and 1.74 FID at 1.55B after only 5 training epochs. It also achieves 30.25 dB reconstruction PSNR with an 89M decoder. After a short native-matching adaptation phase, RevFlow-XL achieves 2.85 FID using a single sampling step in each stage. Our code repository is at https://github.com/ChengShiest/RevFlow",
+    "authors": [
+      "Cheng Shi",
+      "Sibei Yang",
+      "Hanzhong Guo",
+      "Yipeng Qin",
+      "Pietro Lio",
+      "Yizhou Yu"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34782.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34782",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "生成即逆向编码",
+      "core_contribution": "提出RevFlow，将生成过程视为编码的逆过程，利用冻结编码器的中间表示作为生成目标，并设计统一生成模型HyC-DiT，显著加速生成学习与采样。",
+      "method": "RevFlow以冻结编码器的深层语义表示和浅层外观细节表示为连续生成目标，先产生深层语义再产生浅层表示，最后解码为像素。为学习这些阶段转换，开发了HyC-DiT，共享标准DiT骨干并注入阶段特定条件。进一步利用语义表示空间的原生匹配实现少步生成。",
+      "findings": "在ImageNet 256×256上，RevFlow仅训练5个epoch即达到1.96 FID（690M）和1.74 FID（1.55B），89M解码器实现30.25 dB重建PSNR。经短时原生匹配适应后，RevFlow-XL每阶段单步采样达到2.85 FID。"
+    }
+  },
+  {
+    "id": "2611.34292",
+    "title": "WebVibe: Multimodal Interactive Website Generation via Reverse Synthesis and Visual Self-Distillation",
+    "abstract": "Although multimodal large language models translate single screenshots into static HTML, generating interactive functional websites from design specifications still struggles with multi-page routing and stateful widget transitions. Examining existing training pipelines reveals two bottlenecks: (1) in forward data synthesis (X -> Y), writing the specification X before code execution leaves unimplemented or altered requirements in X as supervision noise; and (2) in reinforcement learning, scalar rewards discard the rich state transitions observed during replay. Based on these findings, we introduce WebVibe and Interactive-SDPO to train InteractiveCoder. WebVibe reverses synthesis into Y -> X by verifying cross-page and in-page interactions in the browser before deriving multimodal inputs from replay-confirmed states to build the 31,542-site WebVibe-32K corpus with reusable execution contracts. Interactive-SDPO then conditions a weight-sharing self-teacher on the replay trace and a 2x2 state-transition montage to provide token-level supervision at zero inference-time overhead. On the public Vision2Web L2, one-shot InteractiveCoder-9B nearly 3x its base model's functional score (20.2 to 55.2 FS) and matches a 1T-parameter coding agent in a single pass with 111x fewer total parameters and 78x fewer tokens. On our WebVibeBench, InteractiveCoder-4B and 9B further outperform all evaluated baselines by over 23 points.",
+    "authors": [
+      "Tianxiang Jiang",
+      "Sheng Xia",
+      "Yilin Long",
+      "Kanghui Tian",
+      "Linquan Wu",
+      "Yongheng Zhang",
+      "Daixian Liu",
+      "Di Yin",
+      "Yi Wang",
+      "Yu Qiao",
+      "Qinglong Zhang"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34292.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34292",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "WebVibe：通过逆向合成与视觉自蒸馏实现多模态交互式网站生成",
+      "core_contribution": "论文提出WebVibe数据合成框架与Interactive-SDPO训练方法，用于训练InteractiveCoder模型，实现从设计规格生成具备多页面路由和有状态组件交互的功能性网站。",
+      "method": "作者将传统的前向数据合成（X→Y）反转为逆向合成（Y→X）：先在浏览器中验证跨页面与页面内交互，再从回放确认的状态中派生多模态输入，构建包含31,542个网站的WebVibe-32K语料库及可复用执行契约。随后提出Interactive-SDPO，利用权重共享的自教师模型基于回放轨迹和2×2状态转移拼图提供token级监督，且不增加推理开销。",
+      "findings": "在公开的Vision2Web L2基准上，单次推理的InteractiveCoder-9B功能分数从基座的20.2提升至55.2（近3倍），以少111倍的总参数量和少78倍的token量单次通过即匹配1T参数编码智能体；在自建的WebVibeBench上，4B与9B版本均比所有评估基线高出23分以上。"
+    }
+  },
+  {
+    "id": "2611.33982",
+    "title": "FasterGRN: Reducing the Refinement Redundancy for Accelerating Generative Refinement Networks",
+    "abstract": "Departing from the paradigm of diffusion and autoregressive models, Generative Refinement Networks (GRN) enables high-quality image generation through iterative refinements. However, this repeated processing over the entire visual representations results in substantial computation overhead. Furthermore, the binary representations and global refinement mechanism in GRN disable the direct application of acceleration strategies developed for other generative models. To accelerate GRN model, we first observe several key properties by analyzing the entire generative process. That includes the stage characteristic, dual branch similarity and more importantly, the $\\textbf{refinement redundancy}$. Motivated by the observations, we present $\\textbf{FasterGRN}$, a training-free acceleration method for the Generative Refinement Network. $\\textbf{FasterGRN}$ first divides the GRN into the semantic establishment stage and detail refinement stage according to its semantic establishment. For alleviating the refinement redundancy mainly resulting from the detail refinement stage, we propose Adaptive Retention Expansion ($\\textbf{ARE}$) and Selective Token Freezing ($\\textbf{STF}$) to shrink refinement steps and reduce token computations, respectively. In the experiments on GenEval and DPG-Bench benchmarks, our method $\\textbf{FasterGRN}$ achieves a $2.03\\times$ sampling speedup while largely preserving image generation performance. Our evaluation on COCO datasets additionally demonstrates that $\\textbf{FasterGRN}$ even outperforms the original GRN in image fidelity.",
+    "authors": [
+      "Ziqian Zhang",
+      "Pengcheng Wang",
+      "Yulong Chen",
+      "Yaxing Wang",
+      "Senmao Li",
+      "Kai Wang"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.33982.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.33982",
+    "primary_category": "cs.CV",
+    "score": 88,
+    "summary": {
+      "title_zh": "FasterGRN：减少细化冗余以加速生成式细化网络",
+      "core_contribution": "提出了一种无需训练的加速方法FasterGRN，通过减少生成式细化网络中的细化冗余，在保持图像生成质量的同时实现约2倍采样加速。",
+      "method": "首先分析GRN生成过程的关键特性，包括阶段特征、双分支相似性和细化冗余。然后将GRN分为语义建立阶段和细节细化阶段，针对细节细化阶段的冗余提出自适应保留扩展（ARE）和选择性令牌冻结（STF），分别减少细化步骤和令牌计算量。",
+      "findings": "在GenEval和DPG-Bench基准上实现2.03倍采样加速且大幅保持生成性能；在COCO数据集上，FasterGRN的图像保真度甚至优于原始GRN。"
+    }
+  }
+]
