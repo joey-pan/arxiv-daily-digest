@@ -225,7 +225,7 @@
     <header>
         <h1>📚 ArXiv Daily Digest</h1>
         <p class="subtitle">每日论文精选</p>
-        <p class="date">📅 2026-11-27</p>
+        <p class="date">📅 2026-11-28</p>
         <p class="stats">共 5 篇论文 | 计算机视觉: 5</p>
         <p class="archive-link-top"><a href="archive.html">查看历史归档 →</a></p>
     </header>
@@ -236,158 +236,158 @@
       <div class="paper-header">
         <div class="left-header">
           <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.33885</span>
-        </div>
-        <span class="score-badge">相关性 88/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.33885" target="_blank">LayoutRecall: Preserving Appearance in Multi-Round 3D Layout-Controlled Image Editing</a>
-      </h3>
-      <p class="paper-title-zh">LayoutRecall：在多轮3D布局控制的图像编辑中保持外观</p>
-      <p class="paper-authors">Yankuan Chi, Xin Lin, Baihan Yang, Yuheng Liu, Jason Li 等 (6 位作者)</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出LayoutRecall多轮编辑器，通过存储和重用3D框局部坐标系中的外观信息，解决物体被遮挡或移出视野后重新出现时的外观恢复问题；同时构建了多轮3D布局控制图像编辑基准LayoutLoop。</div>
-        <div class="summary-section"><strong>方法:</strong> 将图像潜在表示存储在3D框表面（Box-Surface Latent Memory），并在目标视角下沿射线检索；通过几何对齐记忆条件（Geometry-Aligned Memory Conditioning）将检索到的token以目标视角位置、共享框局部嵌入和对象级注意力供给FLUX.2编辑器；引入对应损失（correspondence loss）促使编辑器在去噪过程中关注匹配的观测。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在LayoutLoop基准和真实场景数据上的大量实验验证了该方法能够有效恢复物体外观，在多轮编辑中保持外观一致性。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>3D layout-controlled image editing gives users explicit control over object placement and camera viewpoint. In a sequence of edits, however, the latest image can lose the appearance of an object when it is occluded or leaves view. The target layout specifies where the object should reappear, while its appearance must be recovered from earlier observations. We introduce LayoutRecall, a multi-round editor that stores and reuses appearance in the local coordinate systems of 3D boxes. Box-Surface Latent Memory retains image latents on box faces and retrieves them along rays in the target view. Geometry-Aligned Memory Conditioning supplies the retrieved tokens to a FLUX.2 editor using target-view positions, shared box-local embeddings, and object-wise attention. A correspondence loss encourages the editor to attend to matching observations during denoising. We also introduce LayoutLoop, a multi-round 3D layout-controlled image editing benchmark with calibrated layouts and designed revisits. We conduct extensive experiments on LayoutLoop and real-scene data to verify the ability of our method. The project page is at https://ykchizs.github.io/layoutrecall.github.io/.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.33885" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.33885.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.34461</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.34461" target="_blank">SceneDesigner++: A Unified 9-DoF Pose Control Framework for T2I and T2V Generation</a>
-      </h3>
-      <p class="paper-title-zh">SceneDesigner++：面向T2I和T2V生成的统一9自由度姿态控制框架</p>
-      <p class="paper-authors">Xincheng Shuai, Zhenyuan Qin, Henghui Ding, Dacheng Tao</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出了一个统一的9自由度姿态控制框架SceneDesigner++，同时适用于文本到图像（T2I）和文本到视频（T2V）生成，并构建了高质量数据集ObjectPose9D++和评估基准T2IVPoseEval。</div>
-        <div class="summary-section"><strong>方法:</strong> 构建了包含精确姿态标注的图像和视频数据集ObjectPose9D++用于训练。框架结合绝对和相对姿态编码策略：绝对姿态编码利用CNOCS图序列提供逐帧的显式9自由度姿态引导；相对姿态编码（VPRoPE）将相对姿态信息融入旋转位置嵌入以建模帧间姿态过渡。为每个注意力头引入可学习的正交变换以捕获互补几何关系并保持特征范数稳定。采用两阶段训练策略分别学习绝对和相对姿态编码，并支持与独立训练相机控制模块集成。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 大量实验表明，SceneDesigner++在姿态保真度和运动质量上持续优于相同骨干网络的基线方法，并支持对象与相机运动的单独或联合控制。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Precise 9-DoF pose control is essential for visual content generation, enabling users to specify object location, size, and orientation in 3D space. However, existing methods typically focus on either text-to-image (T2I) or text-to-video (T2V) generation, with limitations in pose controllability and temporal coherence. We present SceneDesigner++, a unified framework for 9-DoF pose control across both T2I and T2V generation. We construct ObjectPose9D++, a dataset containing high-quality images and videos with accurate pose annotations. Trained on ObjectPose9D++, SceneDesigner++ combines absolute and relative pose encoding strategies to decouple frame-wise spatial grounding from inter-frame motion modeling. Specifically, absolute pose encoding leverages CNOCS map sequences to provide explicit, frame-wise 9-DoF pose guidance. Meanwhile, our relative pose encoding, termed VPRoPE, incorporates relative pose information into rotary position embeddings to explicitly model inter-frame pose transitions, thereby promoting temporally coherent object motion. A learnable orthogonal transformation is further introduced for each attention head, allowing different heads to capture complementary geometric relationships while preserving input feature norms to promote training stability. We further adopt a two-stage training strategy to learn the absolute and relative pose encoding mechanisms separately. Benefiting from this lightweight and decoupled design, SceneDesigner++ also supports integration with an independently trained camera-control module, enabling separate or joint control over object and camera motion. Finally, we introduce T2IVPoseEval, a benchmark for evaluating diverse object poses and motion patterns in both T2I and T2V tasks. Extensive experiments demonstrate that SceneDesigner++ consistently outperforms same-backbone baselines in pose fidelity and motion quality.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.34461" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.34461.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.34279</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.34279" target="_blank">Semantic State Reading for Joint Image-Semantic Diffusion Transformers</a>
-      </h3>
-      <p class="paper-title-zh">面向图像-语义联合扩散Transformer的语义状态读取</p>
-      <p class="paper-authors">Guanxi Lai, Zixuan Li, Zhiwei Li, Qi Li</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 论文提出语义状态读取（SSR）方法，在扩散Transformer中同时建模图像潜变量、全局CLS语义令牌和局部patch语义状态，从而在去噪全过程中保持全局上下文与局部空间结构的可访问性，显著加速训练并提升生成质量。</div>
-        <div class="summary-section"><strong>方法:</strong> SSR联合去噪图像潜变量、编码图像级上下文的全局CLS令牌以及保留空间对应关系的紧凑patch状态。该方法采用两种不同的读取路径：局部状态在输入端与对应的图像令牌融合，而独立的投影则将当前全局状态注入每个Transformer块。通过这种方式，全局与局部语义范围在整个去噪过程中始终可被访问。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 消融实验表明局部状态建模与重复全局读取具有互补收益，语义轨迹干预可在固定类别标签下改变图像布局。在ImageNet 256×256上，SiT-XL/2结合SSR分别以100倍、40倍和2倍更少的训练迭代达到或超过SiT、REPA和REG的参考FID。SSR在200万次迭代时无引导FID为1.78，仅用无分类器引导时FID为1.34；结合无分类器引导与自引导在100万次迭代时FID达1.31，为主对比表中的最佳FID。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>Pretrained visual representations improve diffusion-transformer training, yet exploiting both global context and local spatial structure requires deciding which semantic states to model and how to access them. We introduce Semantic State Reading (SSR), which jointly denoises image latents, a global CLS token encoding image-level context, and a compact patch state preserving spatial correspondence. SSR couples this global-local modeling with distinct reading paths: local states are fused with corresponding image tokens at the input, while independent projections inject the current global state into every transformer block. Both semantic scopes thus remain accessible throughout denoising. Ablations show complementary benefits from local-state modeling and repeated global reading, and semantic-trajectory interventions alter image layout under a fixed class label. On ImageNet $256 \times 256$, SiT-XL/2 with SSR reaches or surpasses the reference FIDs of SiT, REPA, and Representation Entanglement for Generation (REG) with $100\times$, $40\times$, and $2\times$ fewer training iterations, respectively. SSR achieves unguided FID 1.78 at 2M iterations and FID 1.34 with classifier-free guidance alone. Combining classifier-free guidance with autoguidance yields FID 1.31 at 1M iterations, achieving the best FID in our main comparison table.</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.34279" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.34279.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.34093</span>
-        </div>
-        <span class="score-badge">相关性 82/100</span>
-      </div>
-      <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.34093" target="_blank">Exploring the Design Factors of Pixel-space Diffusion</a>
-      </h3>
-      <p class="paper-title-zh">探索像素空间扩散模型的设计因素</p>
-      <p class="paper-authors">Mang Ning, Le Zhang, Albert Ali Salah, Itir Onal Ertugrul, Jintao Zhang</p>
-      
-      <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 本文通过系统研究模型架构、表示和频域三个关键设计因素，提出了EiT模型，在像素空间扩散中实现了优于JiT的生成质量，并可无缝扩展到视频扩散任务。</div>
-        <div class="summary-section"><strong>方法:</strong> 受去噪自编码器通过瓶颈进行去噪的启发，构建了沿通道维度显式压缩的U形像素扩散Transformer。从表示角度分析了像素和潜在扩散Transformer在层与时间步上的三阶段表示动态。从频域角度建立了像素空间与频率空间扩散的等价性。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在ImageNet 256×256和512×512上，EiT的FID分别为1.61和1.73，优于JiT的1.85和1.99。EiT通过通道瓶颈和增加网络深度自然实现了更早的去噪和更长的基提升阶段，从而获得更好的生成效果。此外，EiT可简单扩展至视频像素扩散，在Kinetics-600上FVD优于视频潜在扩散。</div>
-      </div>
-      
-      <details class="paper-abstract">
-        <summary>查看原文摘要</summary>
-        <p>In this paper, we introduce EiT by exploring the key design factors of pixel-space diffusion from three perspectives: model architecture, representation, and frequency domain. Inspired by Denoising Autoencoders (DAE) which perform denoising through a bottleneck, we construct a U-shaped pixel diffusion transformer that performs explicit compression along the channel dimension. In terms of representation, we find that both pixel and latent diffusion transformers exhibit a three-stage representation dynamics across layers and timesteps: denoising/local feature expansion, basis lift-up, and posterior projection. Moreover, earlier denoising and a longer basis lift-up stage are associated with better generation, which EiT naturally achieves through its channel bottleneck and increased network depth. From the frequency perspective, we establish the equivalence between pixel-space and frequency-space diffusion when keeping the network operating in pixel space. On ImageNet $256\times256$ and $512\times512$, EiT consistently outperforms JiT (Just image Transformers) in generation quality. Specifically, our EiT achieves better FID than JiT: 1.61 vs. 1.85 at $256\times256$, and 1.73 vs. 1.99 at $512\times512$. Remarkably, EiT can be seamlessly applied to video pixel diffusion by simply extending the patch size to temporal dimension and outperforms video latent diffusion in FVD evaluated on Kinetics-600 (resolution 256), under comparable total network parameters. Code is available at https://github.com/forever208/EiT</p>
-      </details>
-      
-      <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.34093" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.34093.pdf" target="_blank" class="link-btn">📥 PDF</a>
-      </div>
-    </article>
-    
-
-    <article class="paper-card">
-      <div class="paper-header">
-        <div class="left-header">
-          <span class="category-badge">计算机视觉</span>
-          <span class="paper-id">2611.33761</span>
+          <span class="paper-id">2611.33316</span>
         </div>
         <span class="score-badge">相关性 78/100</span>
       </div>
       <h3 class="paper-title">
-        <a href="https://arxiv.org/abs/2611.33761" target="_blank">ScanAR: Parallel Row-Scan Decoding for Efficient Image Generation in Unified Autoregressive Models</a>
+        <a href="https://arxiv.org/abs/2611.33316" target="_blank">What Does RL Post-Training Teach Text-to-Image Models? A Skill-Wise Analysis of Flow-GRPO</a>
       </h3>
-      <p class="paper-title-zh">ScanAR：面向统一自回归模型高效图像生成的并行行扫描解码</p>
-      <p class="paper-authors">Jingen Qu, Xi Chen, Yingbo Tang, Xinghang Li, Tao Kong</p>
+      <p class="paper-title-zh">强化学习后训练究竟教会了文生图模型什么？对Flow-GRPO的技能级分析</p>
+      <p class="paper-authors">Cheng Zhang, Jiesong Liu</p>
       
       <div class="paper-summary">
-        <div class="summary-section"><strong>核心贡献:</strong> 提出ScanAR，一种仅通过重新定义视觉token前驱关系的并行行扫描解码方法，将视觉解码深度从H×W降至H+W，在不改变骨干网络、词表或输出头且不增加参数的前提下大幅加速统一自回归模型的图像生成。</div>
-        <div class="summary-section"><strong>方法:</strong> ScanAR保留首行视觉token从左到右的常规自回归生成，后续每一行在单个并行步骤中生成，每个token由上一行垂直对齐的token预测得到，非视觉token仍遵循标准自回归规则。该方法不修改分词器、预测头或模型接口，支持从头训练和轻量级后训练两种方式。</div>
-        <div class="summary-section"><strong>关键发现:</strong> 在Emu3.5-Image-34B上，ScanAR后训练取得82.36的GenEval分数，为同数据训练的后训练加速方法中最佳，相同推理设置下生成512×512图像比栅格解码快13.8倍；在ImageNet上从头训练时各模型规模下吞吐量最高，FID与栅格LlamaGen相当；在34B Xiaomi-Robotics-U0模型上保持了具身场景生成、图文交错生成和视频生成的总体质量。</div>
+        <div class="summary-section"><strong>核心贡献:</strong> 论文通过逐技能、共享噪声种子的pass@k分析，区分了RL后训练带来的性能提升中“锐化”（提高单样本质量）与“解锁”（获得基座模型原本不具备的能力）两种机制，并提出了解释二者何时发生的理论框架。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者在训练未使用过的提示词上，以共享噪声种子逐技能测量RL前后基座模型的pass@k，比较后训练单样本与基座多样本的效果。通过分析GenEval六个技能上的表现差异，并结合奖励背后的评判器进行基座样本筛选实验，量化各技能对总提升的贡献。此外，用无KL训练、提示内多样性和留出物体类别的受控训练检验理论预测，并在文本渲染检查点上验证同一分析框架的适用性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 提升因技能而异：在GenEval六个技能中的四个上，32个基座样本几乎已能解决所有提示，提升表现为“锐化”——一个后训练样本相当于4到10个基座样本，pass@32几乎不变；在空间关系上则是“解锁”——pass@32从0.69升至1.00，128个基座样本不及一个后训练样本，基座模型32样本从未解决的提示有93%被解决。基准平均（每个后训练样本相当于31个基座样本）不能描述任何单一技能。关系类技能贡献35%的提升；其余65%中，用奖励背后的评判器从8个基座样本中筛选可恢复九成。理论解释为：提示内组相对更新只重新加权其样本包含的结果，流策略无法拓宽产生这些结果的噪声；提示间共享参数使某些提示的成功可修复许多提示共有的缺陷。该分析同样适用于文本渲染检查点，且受控实验显示锐化先出现并可迁移，解锁随后发生且先在练习过的物体上出现。</div>
       </div>
       
       <details class="paper-abstract">
         <summary>查看原文摘要</summary>
-        <p>Unified multimodal autoregressive (AR) models represent text and images in one token sequence and generate all modalities with a shared next-token prediction head. Their image generation, however, decodes an $H\times W$ visual grid token by token in raster order, which takes $HW$ sequential steps and dominates inference time. Existing acceleration methods for visual AR generation either change the tokenizer, the prediction head, or the model interface, or keep the model but cannot reach high parallelism without losing quality, so they do not carry over to unified AR models. We propose ScanAR, a row-scan parallel decoding method that only redefines the predecessors of visual tokens. The first visual row is generated from left to right as usual, and each later row is generated in a single parallel step, with every token predicted from the vertically aligned token of the previous row. Nonvisual tokens keep the standard autoregressive rule. ScanAR reduces the visual decoding depth from $HW$ to $H+W$ without changing the backbone, vocabulary, or output head and without adding parameters, and it supports both training from scratch and lightweight post-training. On Emu3.5-Image-34B, ScanAR post-training reaches a GenEval score of 82.36, the best among post-training acceleration methods trained on the same data, and generates $512\times512$ images $13.8\times$ faster than raster decoding under the same inference setting. On ImageNet, ScanAR trained from scratch has the highest throughput at every model size with FID comparable to raster LlamaGen. On the 34B Xiaomi-Robotics-U0 model, ScanAR preserves the overall quality of embodied scene generation, interleaved image-text generation, and video generation.</p>
+        <p>Reinforcement learning (RL) post-training has become a standard way to improve text-to-image flow models: Flow-GRPO lifts the GenEval score of SD3.5-M from 0.63 to 0.95, a gain read as the model having learned compositional generation. We ask how much of that gain the base model's own samples already contained, by measuring pass@k over shared noise seeds, one skill at a time, before and after RL, on prompts never used in training. The answer differs by skill. On four of GenEval's six skills, where 32 base samples already solve almost every prompt, the gain is sharpening: one post-trained sample is worth 4 to 10 base samples, and pass@32 barely moves. On spatial relations it is unlocking: pass@32 rises from 0.69 to 1.00, 128 base samples do not match one post-trained sample, and prompts the base model never solved in 32 samples are solved 93% of the time, as often as those it solved. The benchmark average, 31 base samples per post-trained sample, describes no skill. Relations carry 35% of the gain; of the other 65%, selecting among 8 base samples with the judge behind the reward recovers nine tenths. We propose an account of when each occurs: within a prompt, a group-relative update re-weights only the outcomes its samples contain, and a flow policy cannot widen the noise that produces them; across prompts, shared parameters let successes on some prompts repair a deficit common to many. The same anatomy applies to a text-rendering checkpoint. The account's predictions are tested with a checkpoint trained without KL, within-prompt diversity, and controlled training that holds object classes out, where sharpening comes first and transfers, and unlocking follows, on practised objects before unseen ones.</p>
       </details>
       
       <div class="paper-links">
-        <a href="https://arxiv.org/abs/2611.33761" target="_blank" class="link-btn">📄 arXiv</a>
-        <a href="https://arxiv.org/pdf/2611.33761.pdf" target="_blank" class="link-btn">📥 PDF</a>
+        <a href="https://arxiv.org/abs/2611.33316" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.33316.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.34843</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.34843" target="_blank">Probing Visual Idiosyncrasies in Text-to-Image Models</a>
+      </h3>
+      <p class="paper-title-zh">探究文本到图像模型中的视觉特异性</p>
+      <p class="paper-authors">Yongqian Peng, Hongjie Li, Yichao Zhou, Chi Zhang, Yixin Zhu</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 论文证明前沿开源文本到图像模型生成的图像仍可被高精度溯源分类，并揭示这种可区分性源于模型在纹理统计、物体布局与深度反照率、风格与背景偏好三个层面的视觉特异性。</div>
+        <div class="summary-section"><strong>方法:</strong> 作者选取Text-to-Image Arena排名最高的四个开源模型（HiDream-O1-Dev、FLUX.2-dev、HunyuanImage-3.0、Qwen-Image-2512），用标准ResNet-50在留出提示词上进行图像来源分类，并与人类被试的成对判别准确率对比。为定位判别线索，研究分别考察低层纹理统计（用轻量MLP分类）、从图像估计的物体布局/深度/反照率，以及图像描述所反映的风格与背景偏好。此外还测试了模型在严重图像损坏和分布外提示词下的鲁棒性，并验证一句提示线索能否提升人类判别准确率。</div>
+        <div class="summary-section"><strong>关键发现:</strong> ResNet-50在留出提示词上以100.00%准确率识别图像来源，而人类在成对任务上仅达62.61%，说明判别线索并不视觉显著；这些线索不依赖特定分类器，且在严重图像损坏和分布外提示词下依然存在。仅用低层纹理统计即可让轻量MLP达到与ResNet-50相当的效果，物体布局、深度和反照率各自携带来源信号，图像描述还揭示出提示词未指定的模型特有风格与背景偏好。给人类一句关于这些线索的提示可将其准确率提升9.03个百分点。作者指出这些特异性使来源分类可用于衡量模型间及真实与生成图像间的相似性，并提醒不应假设T2I模型的人类偏好评估具有匿名性。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Text-to-Image (T2I) models turn short text descriptions into images, and the leading models now produce images of comparable visual quality. Whether their outputs still carry model-specific characteristics matters for attribution, for model comparison beyond aggregate quality, and for evaluations that assume anonymity. We ask whether images from frontier T2I models can still be classified by source, and which visual properties make this possible. Here we show that a standard ResNet-50 identifies the source of an image among HiDream-O1-Dev, FLUX.2-dev, HunyuanImage-3.0, and Qwen-Image-2512, the four highest-ranked open-source models on the Text-to-Image Arena, with 100.00% accuracy on held-out prompts. Human participants reach only 62.61% on the pairwise version of this task, so the distinguishing cues are not visually obvious. They are also not tied to a particular classifier and survive severe image corruptions and out-of-distribution prompts. We trace them to visual idiosyncrasies at three levels. Low-level texture statistics alone let a lightweight multi-layer perceptron match ResNet-50. Object layout, depth, and albedo estimated from the images each carry a source signal. Image captions reveal model-specific preferences in style and background that the prompts never specify. A one-sentence hint about these cues raises human accuracy by 9.03 percentage points. These idiosyncrasies make source classification a tool for measuring similarity between models and between real and generated images, and they caution against assuming anonymity in human preference evaluation of T2I models.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.34843" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.34843.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.34783</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.34783" target="_blank">SceneDesigner3D: Agentic Evolutionary Search for Principled Rearrangement of 3D Indoor Scenes</a>
+      </h3>
+      <p class="paper-title-zh">SceneDesigner3D：面向3D室内场景原则性重排的智能体进化搜索</p>
+      <p class="paper-authors">Chandan Yeshwanth, Angela Dai</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出SceneDesigner3D，一种基于智能体进化搜索的3D室内场景重排方法，能够根据常见室内设计原则系统探索设计空间并生成多样、美观且功能合理的重排方案。</div>
+        <div class="summary-section"><strong>方法:</strong> 将场景重排表示为可编辑程序，并进化候选布局种群；从不同设计思路出发，VLM智能体通过优化有希望的候选、探索新策略或从头重新设计来变异程序，同时验证布局的物理有效性；由VLM评判器根据提示遵循度和设计原则（如平衡、分区、重点）以及数值计算原则（如流通性、杂乱度）对提案评分；表现最佳且结构多样的候选存档进一步提升重排多样性。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在SAGE-10k和SceneSmith数据集上的实验表明，SceneDesigner3D在提示遵循度和计算设计原则得分上分别比基线提升高达5.1%和15.2%。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Scene rearrangement is an essential task for 3D content creation applications, requiring generation of diverse, aesthetic and functional scene rearrangements. We present SceneDesigner3D, an agentic evolutionary search method for 3D indoor scene rearrangement that systematically explores the design space of 3D scenes and generates multiple solutions according to common interior design principles. Given an input scene and a text prompt, SceneDesigner3D represents the rearrangement as an editable program and evolves a population of candidate layouts. Starting from distinct design ideas, a VLM agent mutates the programs by refining promising candidates, exploring new rearrangement strategies or redesigning from scratch, while verifying the layouts for physical validity. Proposals are scored by a VLM judge for adherence to the input prompt and satisfaction of design principles such as balance, zoning and emphasis, as well as numerically computed principles such as circulation and clutter. An archive of top-performing, structurally varied candidates further increases diversity of rearrangements. Experiments on the SAGE-10k and SceneSmith datasets show that SceneDesigner3D improves prompt adherence and computed design principle scores over baselines by up to 5.1% and 15.2%, respectively. Code will be made publicly available.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.34783" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.34783.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.34446</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.34446" target="_blank">PreserveReward: Reliable Consistency Reward Modeling for Image Editing via Dual-Teacher On-Policy Self-Distillation</a>
+      </h3>
+      <p class="paper-title-zh">PreserveReward：通过双教师在线策略自蒸馏实现图像编辑的可靠一致性奖励建模</p>
+      <p class="paper-authors">Xueheng Li, Yong Liu, Wen Xue, Shi-Yu Tian, Zhuofan Xia 等 (8 位作者)</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出了一种名为PreserveReward的一致性奖励模型，通过双教师在线策略自蒸馏机制提升对图像编辑中内容保持的细粒度视觉感知与一致性评估能力，为强化学习提供可靠奖励信号。</div>
+        <div class="summary-section"><strong>方法:</strong> 该模型通过基于回归的评分损失从参考保持分数中学习，并采用两个互补的教师视角进行自蒸馏：局部教师使用匹配裁剪识别细微视觉变化，联合教师结合局部细节与全局上下文判断变化是否符合编辑意图。为提高蒸馏监督可靠性，通过最小KL投影在校准教师分数分布的同时约束参考分数误差，并基于与评分目标的梯度对齐自适应选择教师过程监督，以缓解评分偏差和优化冲突。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在多个基准上的大量实验表明，PreserveReward在非编辑内容保持方面与人类偏好高度对齐，并在多样化编辑场景中展现出良好的泛化能力。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Instruction-guided image editing has a wide range of applications, yet existing models may inadvertently alter content that should remain unchanged. Reliable consistency evaluation is therefore essential for assessing content preservation and providing reward signals for Reinforcement Learning (RL). However, existing reward models may overlook subtle visual changes or fail to distinguish necessary modifications from unintended alterations, limiting the reliability of consistency assessment. To address this challenge, we propose PreserveReward, a consistency reward model for image editing that integrates visual On-Policy Self-Distillation (OPSD) to enhance fine-grained visual perception and consistency assessment. PreserveReward learns from reference preservation scores through a regression-based scoring loss and employs two complementary teacher views for self-distillation. The local teacher uses matched crops to identify subtle visual changes, while the joint teacher combines local details with global context to determine whether these changes align with the editing intent. To improve the reliability of distillation supervision, we calibrate teacher score distributions via minimum-KL projection under reference-score error constraints and adaptively select teacher process supervision based on gradient alignment with the scoring objective, mitigating scoring bias and optimization conflicts. Extensive experiments across multiple benchmarks demonstrate that PreserveReward achieves strong alignment with human preference on non-edited content preservation and generalizes well across diverse editing scenarios.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.34446" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.34446.pdf" target="_blank" class="link-btn">📥 PDF</a>
+      </div>
+    </article>
+    
+
+    <article class="paper-card">
+      <div class="paper-header">
+        <div class="left-header">
+          <span class="category-badge">计算机视觉</span>
+          <span class="paper-id">2611.34261</span>
+        </div>
+        <span class="score-badge">相关性 72/100</span>
+      </div>
+      <h3 class="paper-title">
+        <a href="https://arxiv.org/abs/2611.34261" target="_blank">TORE: Token-Wise Taylor Order Selection via Decomposed Residual Error Estimation for Diffusion Acceleration</a>
+      </h3>
+      <p class="paper-title-zh">TORE：通过分解残差误差估计的逐Token泰勒阶数选择用于扩散加速</p>
+      <p class="paper-authors">Lei Tang, Baoquan Zhang, Yakun Zhang, Yunming Ye</p>
+      
+      <div class="paper-summary">
+        <div class="summary-section"><strong>核心贡献:</strong> 提出TORE方法，通过估计全模型残差的预测误差来选择逐Token的泰勒阶数，解决了现有代理-目标不匹配问题，在保持生成质量的同时显著加速扩散模型推理。</div>
+        <div class="summary-section"><strong>方法:</strong> TORE将泰勒外推的预测误差分解为截断误差和有限差分导数误差，利用缓存残差估计这两种误差贡献，从而为即将到来的跳步预选逐Token阶数，避免了对未来真实残差的直接依赖。</div>
+        <div class="summary-section"><strong>关键发现:</strong> 在FLUX.1-dev上实现4.31倍加速，在Wan2.1上实现4.18倍加速，同时保持高生成质量和保真度。</div>
+      </div>
+      
+      <details class="paper-abstract">
+        <summary>查看原文摘要</summary>
+        <p>Diffusion models excel at image and video generation, but iterative denoising incurs substantial inference latency. Recent token-adaptive acceleration methods select Taylor prediction orders for the full-model residual using shallow-layer proxy scores. However, candidate orders are evaluated on these proxy features but used to predict the full-model residual, creating a proxy--target mismatch: the proxy-preferred order may not minimize residual prediction error. To address this mismatch, we propose \textbf{TORE} (\textbf{T}aylor \textbf{O}rder selection via \textbf{R}esidual \textbf{E}rror estimation), which selects token-wise Taylor orders based on estimated prediction errors for the full-model residual. Yet direct error evaluation requires future ground-truth residuals, which are unavailable during order selection. TORE therefore estimates prediction error by analyzing how errors arise in Taylor extrapolation. Specifically, it decomposes prediction error into truncation error and finite-difference derivative error, then estimates both contributions from cached residuals to preselect token-wise orders for upcoming skip steps. Extensive experiments show that TORE achieves $4.31\times$ speedup on FLUX.1-dev and $4.18\times$ on Wan2.1 while maintaining high generation quality and fidelity.</p>
+      </details>
+      
+      <div class="paper-links">
+        <a href="https://arxiv.org/abs/2611.34261" target="_blank" class="link-btn">📄 arXiv</a>
+        <a href="https://arxiv.org/pdf/2611.34261.pdf" target="_blank" class="link-btn">📥 PDF</a>
       </div>
     </article>
     

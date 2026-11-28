@@ -1,0 +1,135 @@
+[
+  {
+    "id": "2611.33316",
+    "title": "What Does RL Post-Training Teach Text-to-Image Models? A Skill-Wise Analysis of Flow-GRPO",
+    "abstract": "Reinforcement learning (RL) post-training has become a standard way to improve text-to-image flow models: Flow-GRPO lifts the GenEval score of SD3.5-M from 0.63 to 0.95, a gain read as the model having learned compositional generation. We ask how much of that gain the base model's own samples already contained, by measuring pass@k over shared noise seeds, one skill at a time, before and after RL, on prompts never used in training. The answer differs by skill. On four of GenEval's six skills, where 32 base samples already solve almost every prompt, the gain is sharpening: one post-trained sample is worth 4 to 10 base samples, and pass@32 barely moves. On spatial relations it is unlocking: pass@32 rises from 0.69 to 1.00, 128 base samples do not match one post-trained sample, and prompts the base model never solved in 32 samples are solved 93% of the time, as often as those it solved. The benchmark average, 31 base samples per post-trained sample, describes no skill. Relations carry 35% of the gain; of the other 65%, selecting among 8 base samples with the judge behind the reward recovers nine tenths. We propose an account of when each occurs: within a prompt, a group-relative update re-weights only the outcomes its samples contain, and a flow policy cannot widen the noise that produces them; across prompts, shared parameters let successes on some prompts repair a deficit common to many. The same anatomy applies to a text-rendering checkpoint. The account's predictions are tested with a checkpoint trained without KL, within-prompt diversity, and controlled training that holds object classes out, where sharpening comes first and transfers, and unlocking follows, on practised objects before unseen ones.",
+    "authors": [
+      "Cheng Zhang",
+      "Jiesong Liu"
+    ],
+    "published": "2026-11-24",
+    "updated": "2026-11-24",
+    "categories": [
+      "cs.CV",
+      "cs.LG"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.33316.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.33316",
+    "primary_category": "cs.CV",
+    "score": 78,
+    "summary": {
+      "title_zh": "强化学习后训练究竟教会了文生图模型什么？对Flow-GRPO的技能级分析",
+      "core_contribution": "论文通过逐技能、共享噪声种子的pass@k分析，区分了RL后训练带来的性能提升中“锐化”（提高单样本质量）与“解锁”（获得基座模型原本不具备的能力）两种机制，并提出了解释二者何时发生的理论框架。",
+      "method": "作者在训练未使用过的提示词上，以共享噪声种子逐技能测量RL前后基座模型的pass@k，比较后训练单样本与基座多样本的效果。通过分析GenEval六个技能上的表现差异，并结合奖励背后的评判器进行基座样本筛选实验，量化各技能对总提升的贡献。此外，用无KL训练、提示内多样性和留出物体类别的受控训练检验理论预测，并在文本渲染检查点上验证同一分析框架的适用性。",
+      "findings": "提升因技能而异：在GenEval六个技能中的四个上，32个基座样本几乎已能解决所有提示，提升表现为“锐化”——一个后训练样本相当于4到10个基座样本，pass@32几乎不变；在空间关系上则是“解锁”——pass@32从0.69升至1.00，128个基座样本不及一个后训练样本，基座模型32样本从未解决的提示有93%被解决。基准平均（每个后训练样本相当于31个基座样本）不能描述任何单一技能。关系类技能贡献35%的提升；其余65%中，用奖励背后的评判器从8个基座样本中筛选可恢复九成。理论解释为：提示内组相对更新只重新加权其样本包含的结果，流策略无法拓宽产生这些结果的噪声；提示间共享参数使某些提示的成功可修复许多提示共有的缺陷。该分析同样适用于文本渲染检查点，且受控实验显示锐化先出现并可迁移，解锁随后发生且先在练习过的物体上出现。"
+    }
+  },
+  {
+    "id": "2611.34843",
+    "title": "Probing Visual Idiosyncrasies in Text-to-Image Models",
+    "abstract": "Text-to-Image (T2I) models turn short text descriptions into images, and the leading models now produce images of comparable visual quality. Whether their outputs still carry model-specific characteristics matters for attribution, for model comparison beyond aggregate quality, and for evaluations that assume anonymity. We ask whether images from frontier T2I models can still be classified by source, and which visual properties make this possible. Here we show that a standard ResNet-50 identifies the source of an image among HiDream-O1-Dev, FLUX.2-dev, HunyuanImage-3.0, and Qwen-Image-2512, the four highest-ranked open-source models on the Text-to-Image Arena, with 100.00% accuracy on held-out prompts. Human participants reach only 62.61% on the pairwise version of this task, so the distinguishing cues are not visually obvious. They are also not tied to a particular classifier and survive severe image corruptions and out-of-distribution prompts. We trace them to visual idiosyncrasies at three levels. Low-level texture statistics alone let a lightweight multi-layer perceptron match ResNet-50. Object layout, depth, and albedo estimated from the images each carry a source signal. Image captions reveal model-specific preferences in style and background that the prompts never specify. A one-sentence hint about these cues raises human accuracy by 9.03 percentage points. These idiosyncrasies make source classification a tool for measuring similarity between models and between real and generated images, and they caution against assuming anonymity in human preference evaluation of T2I models.",
+    "authors": [
+      "Yongqian Peng",
+      "Hongjie Li",
+      "Yichao Zhou",
+      "Chi Zhang",
+      "Yixin Zhu"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV",
+      "cs.AI"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34843.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34843",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "探究文本到图像模型中的视觉特异性",
+      "core_contribution": "论文证明前沿开源文本到图像模型生成的图像仍可被高精度溯源分类，并揭示这种可区分性源于模型在纹理统计、物体布局与深度反照率、风格与背景偏好三个层面的视觉特异性。",
+      "method": "作者选取Text-to-Image Arena排名最高的四个开源模型（HiDream-O1-Dev、FLUX.2-dev、HunyuanImage-3.0、Qwen-Image-2512），用标准ResNet-50在留出提示词上进行图像来源分类，并与人类被试的成对判别准确率对比。为定位判别线索，研究分别考察低层纹理统计（用轻量MLP分类）、从图像估计的物体布局/深度/反照率，以及图像描述所反映的风格与背景偏好。此外还测试了模型在严重图像损坏和分布外提示词下的鲁棒性，并验证一句提示线索能否提升人类判别准确率。",
+      "findings": "ResNet-50在留出提示词上以100.00%准确率识别图像来源，而人类在成对任务上仅达62.61%，说明判别线索并不视觉显著；这些线索不依赖特定分类器，且在严重图像损坏和分布外提示词下依然存在。仅用低层纹理统计即可让轻量MLP达到与ResNet-50相当的效果，物体布局、深度和反照率各自携带来源信号，图像描述还揭示出提示词未指定的模型特有风格与背景偏好。给人类一句关于这些线索的提示可将其准确率提升9.03个百分点。作者指出这些特异性使来源分类可用于衡量模型间及真实与生成图像间的相似性，并提醒不应假设T2I模型的人类偏好评估具有匿名性。"
+    }
+  },
+  {
+    "id": "2611.34783",
+    "title": "SceneDesigner3D: Agentic Evolutionary Search for Principled Rearrangement of 3D Indoor Scenes",
+    "abstract": "Scene rearrangement is an essential task for 3D content creation applications, requiring generation of diverse, aesthetic and functional scene rearrangements. We present SceneDesigner3D, an agentic evolutionary search method for 3D indoor scene rearrangement that systematically explores the design space of 3D scenes and generates multiple solutions according to common interior design principles. Given an input scene and a text prompt, SceneDesigner3D represents the rearrangement as an editable program and evolves a population of candidate layouts. Starting from distinct design ideas, a VLM agent mutates the programs by refining promising candidates, exploring new rearrangement strategies or redesigning from scratch, while verifying the layouts for physical validity. Proposals are scored by a VLM judge for adherence to the input prompt and satisfaction of design principles such as balance, zoning and emphasis, as well as numerically computed principles such as circulation and clutter. An archive of top-performing, structurally varied candidates further increases diversity of rearrangements. Experiments on the SAGE-10k and SceneSmith datasets show that SceneDesigner3D improves prompt adherence and computed design principle scores over baselines by up to 5.1% and 15.2%, respectively. Code will be made publicly available.",
+    "authors": [
+      "Chandan Yeshwanth",
+      "Angela Dai"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34783.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34783",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "SceneDesigner3D：面向3D室内场景原则性重排的智能体进化搜索",
+      "core_contribution": "提出SceneDesigner3D，一种基于智能体进化搜索的3D室内场景重排方法，能够根据常见室内设计原则系统探索设计空间并生成多样、美观且功能合理的重排方案。",
+      "method": "将场景重排表示为可编辑程序，并进化候选布局种群；从不同设计思路出发，VLM智能体通过优化有希望的候选、探索新策略或从头重新设计来变异程序，同时验证布局的物理有效性；由VLM评判器根据提示遵循度和设计原则（如平衡、分区、重点）以及数值计算原则（如流通性、杂乱度）对提案评分；表现最佳且结构多样的候选存档进一步提升重排多样性。",
+      "findings": "在SAGE-10k和SceneSmith数据集上的实验表明，SceneDesigner3D在提示遵循度和计算设计原则得分上分别比基线提升高达5.1%和15.2%。"
+    }
+  },
+  {
+    "id": "2611.34446",
+    "title": "PreserveReward: Reliable Consistency Reward Modeling for Image Editing via Dual-Teacher On-Policy Self-Distillation",
+    "abstract": "Instruction-guided image editing has a wide range of applications, yet existing models may inadvertently alter content that should remain unchanged. Reliable consistency evaluation is therefore essential for assessing content preservation and providing reward signals for Reinforcement Learning (RL). However, existing reward models may overlook subtle visual changes or fail to distinguish necessary modifications from unintended alterations, limiting the reliability of consistency assessment. To address this challenge, we propose PreserveReward, a consistency reward model for image editing that integrates visual On-Policy Self-Distillation (OPSD) to enhance fine-grained visual perception and consistency assessment. PreserveReward learns from reference preservation scores through a regression-based scoring loss and employs two complementary teacher views for self-distillation. The local teacher uses matched crops to identify subtle visual changes, while the joint teacher combines local details with global context to determine whether these changes align with the editing intent. To improve the reliability of distillation supervision, we calibrate teacher score distributions via minimum-KL projection under reference-score error constraints and adaptively select teacher process supervision based on gradient alignment with the scoring objective, mitigating scoring bias and optimization conflicts. Extensive experiments across multiple benchmarks demonstrate that PreserveReward achieves strong alignment with human preference on non-edited content preservation and generalizes well across diverse editing scenarios.",
+    "authors": [
+      "Xueheng Li",
+      "Yong Liu",
+      "Wen Xue",
+      "Shi-Yu Tian",
+      "Zhuofan Xia",
+      "Chengjun Xie",
+      "Yipeng Sun",
+      "Simiu Gu"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34446.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34446",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "PreserveReward：通过双教师在线策略自蒸馏实现图像编辑的可靠一致性奖励建模",
+      "core_contribution": "提出了一种名为PreserveReward的一致性奖励模型，通过双教师在线策略自蒸馏机制提升对图像编辑中内容保持的细粒度视觉感知与一致性评估能力，为强化学习提供可靠奖励信号。",
+      "method": "该模型通过基于回归的评分损失从参考保持分数中学习，并采用两个互补的教师视角进行自蒸馏：局部教师使用匹配裁剪识别细微视觉变化，联合教师结合局部细节与全局上下文判断变化是否符合编辑意图。为提高蒸馏监督可靠性，通过最小KL投影在校准教师分数分布的同时约束参考分数误差，并基于与评分目标的梯度对齐自适应选择教师过程监督，以缓解评分偏差和优化冲突。",
+      "findings": "在多个基准上的大量实验表明，PreserveReward在非编辑内容保持方面与人类偏好高度对齐，并在多样化编辑场景中展现出良好的泛化能力。"
+    }
+  },
+  {
+    "id": "2611.34261",
+    "title": "TORE: Token-Wise Taylor Order Selection via Decomposed Residual Error Estimation for Diffusion Acceleration",
+    "abstract": "Diffusion models excel at image and video generation, but iterative denoising incurs substantial inference latency. Recent token-adaptive acceleration methods select Taylor prediction orders for the full-model residual using shallow-layer proxy scores. However, candidate orders are evaluated on these proxy features but used to predict the full-model residual, creating a proxy--target mismatch: the proxy-preferred order may not minimize residual prediction error. To address this mismatch, we propose \\textbf{TORE} (\\textbf{T}aylor \\textbf{O}rder selection via \\textbf{R}esidual \\textbf{E}rror estimation), which selects token-wise Taylor orders based on estimated prediction errors for the full-model residual. Yet direct error evaluation requires future ground-truth residuals, which are unavailable during order selection. TORE therefore estimates prediction error by analyzing how errors arise in Taylor extrapolation. Specifically, it decomposes prediction error into truncation error and finite-difference derivative error, then estimates both contributions from cached residuals to preselect token-wise orders for upcoming skip steps. Extensive experiments show that TORE achieves $4.31\\times$ speedup on FLUX.1-dev and $4.18\\times$ on Wan2.1 while maintaining high generation quality and fidelity.",
+    "authors": [
+      "Lei Tang",
+      "Baoquan Zhang",
+      "Yakun Zhang",
+      "Yunming Ye"
+    ],
+    "published": "2026-11-25",
+    "updated": "2026-11-25",
+    "categories": [
+      "cs.CV"
+    ],
+    "pdf_url": "https://arxiv.org/pdf/2611.34261.pdf",
+    "abs_url": "https://arxiv.org/abs/2611.34261",
+    "primary_category": "cs.CV",
+    "score": 72,
+    "summary": {
+      "title_zh": "TORE：通过分解残差误差估计的逐Token泰勒阶数选择用于扩散加速",
+      "core_contribution": "提出TORE方法，通过估计全模型残差的预测误差来选择逐Token的泰勒阶数，解决了现有代理-目标不匹配问题，在保持生成质量的同时显著加速扩散模型推理。",
+      "method": "TORE将泰勒外推的预测误差分解为截断误差和有限差分导数误差，利用缓存残差估计这两种误差贡献，从而为即将到来的跳步预选逐Token阶数，避免了对未来真实残差的直接依赖。",
+      "findings": "在FLUX.1-dev上实现4.31倍加速，在Wan2.1上实现4.18倍加速，同时保持高生成质量和保真度。"
+    }
+  }
+]
